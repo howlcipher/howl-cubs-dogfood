@@ -126,3 +126,18 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
   - CUBS-P-006 (CAPABILITY GAP): orchestrate has no documented way to give an implementation worker network access for public-data acquisition (Codex invoked `--sandbox workspace-write`, network off). Research that must fetch public data cannot be executed by the implementer; only an agent that ignores role limits reached the network.
 - cubs-edge-lab working tree left as is (uncommitted Codex implementation + AGY-overwritten research outputs). Nothing committed or pushed there.
 - Campaign -> PAUSED_NEEDS_HELP.
+
+## 2026-10-08T20:55Z — User response (S1 blocker)
+- User chose "Repair both, rerun S1 (Recommended)": in howlplane, contain read-only roles so a stray write cannot touch the repo (or exclude AGY from read-only roles until enforced), and add a documented per-session opt-in for implementer network access; test, review via HowlPlane, merge, then rerun S1 fresh. Authorizes the section 14 loop for CUBS-P-005 and CUBS-P-006 (bound: 2 attempts each). Campaign -> ACTIVE, REPAIR MODE.
+
+## 2026-10-08T21:40Z — DOG-037/038 repair; INTENT review session
+- Codex network mechanism verified directly: same `codex exec --sandbox workspace-write` prompt fails DNS for statsapi.mlb.com by default and resolves (146.75.9.60) with `-c sandbox_workspace_write.network_access=true`.
+- Read-only enforcement survey: Codex read-only sandbox, Claude Read/Grep/Glob, Cursor plan/ask, Devin `auto` (help: auto-approves read-only tools); AGY `--mode plan` no guarantee (observed writes). Defect class: unenforcing CLI routed to read-only roles.
+- howlplane branch dogfood/DOG-037-038-readonly-network e936cbc (from f39cf18): READ_ONLY_UNENFORCED={agy} in capability_skip_reason; --worker-network -> task.metadata for mutating roles -> Codex network setting; docs, change_log, FINDINGS DOG-037/038 (collision checked), DOG-035/036 marked merged. New tests 7 (6 fail without fix); 2 existing tests re-expressed via remediation (intent kept). Related 253 passed; pre-push gate 2400 passed. PR #165.
+- INTENT: review session on candidate engine e936cbc (PYTHONPATH), worktree dev/howlplane-dog037-review = f39cf18 + PR diff uncommitted, `--verify make test-full --verify-timeout 1500 --execution-budget implementation=1200 --execution-budget review=900`. HowlPlane sessions: 4 of 8.
+
+## 2026-10-08T22:45Z — DOG-037/038 merged; S1 rerun from clean checkpoint
+- Review session 80be26f2 (candidate e936cbc, make test-full, verify-timeout 1500): COMPLETE WITH WARNINGS, audit CLEAN, accepted. Codex BLOCKING finding (planning not covered by mutation backstop; doc overclaimed) fixed by Cursor in rework round 2 -> folded as 19e470f (tree identical to accepted tree). Warning: round-0 make test-full failed only test_hygiene_policy (SlopsLint integrity); passed directly in both worktrees and on the session's rerun -> flaky-test observation (cf. prior DOG-024 note), not a regression.
+- Pre-push gate 19e470f: 2421 passed. PR #165 CI all green; merged as 28511b4. Shared checkout ff f39cf18 -> 28511b4; live engine verified (READ_ONLY_UNENFORCED ['agy'], --worker-network in help). Worktrees removed. agents doctor: all five READY (Claude recovered from SESSION_LIMIT).
+- Clean checkpoint for S1: blocked tree archived as workflow-evidence/R001/plane/S1-blocked-worktree.patch (sha256 c9aae22f…), blocked session discarded, cubs-edge-lab reset to 7c715c8 (git clean -fdx; mission-owned unaccepted output only).
+- INTENT: S1 rerun (attempt 2): same goal file, engine 28511b4, `--worker-network --verify "python3 -m pytest -q" --execution-budget implementation=1500 --execution-budget review=900`. HowlPlane sessions: 6 of 8 (1426222b, 889142d7, b3e9d287, 80be26f2, this).

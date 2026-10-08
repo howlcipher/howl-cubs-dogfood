@@ -1,0 +1,549 @@
+diff --git a/change_log.md b/change_log.md
+index 1da157b..53e4a57 100644
+--- a/change_log.md
++++ b/change_log.md
+@@ -23,6 +23,8 @@ All notable changes to this project will be documented in this file.
+ 
+ ### Fixed
+ 
++- Read-only roles go only to CLIs that enforce them (DOG-037). AGY, assigned review with `--mode plan`, ran the project's CLI, used the network and rewrote tracked files; the session ended BLOCKED and a verified implementation was lost. AUTO routing now skips AGY for planning, review and acceptance (an explicitly chosen AGY orchestrator still plans and accepts, never reviews). A repository change during planning, review, or acceptance blocks the session, and that block cannot resume. A review finding or an acceptance rejection does not replace that result. Tests: `test_orchestration_role_containment.py`; two role-scoped-capacity tests now assert eligibility through `remediation`.
++- `orchestrate --worker-network` (DOG-038): opt-in Codex sandbox network access for implementation and remediation workers, for goals that must fetch public data. Other CLIs keep their own network policies; read-only roles never get the Codex setting. Tests: `test_orchestration_role_containment.py`.
+ - `orchestrate --verify-timeout SECONDS` (DOG-036). The verification command's limit was a fixed, undocumented 300 seconds, so a required gate that takes longer (HowlPlane's own full suite takes about 456 seconds) could never pass inside a session, and acceptance kept rejecting for missing full-gate evidence. The default stays 300; 1 to 3600 is accepted on a new session or `resume`; the timeout message names the option. Tests: `test_orchestration_verification_rework.py`.
+ 
+ - `orchestrate --verify` supports quoted verification commands with options (DOG-035), including `--verify="python3 -m pytest -q"`, for new sessions and resume. Single CLI values use POSIX shell splitting, with existing executable paths preserved literally; inner quotes preserve paths with spaces that do not exist yet. Malformed quoting and empty commands report `INVALID_VERIFICATION_COMMAND`. Factory queue arrays remain literal argv, including retries. Dash-free multi-word commands remain supported. Unknown flags on an orchestrate invocation with `--verify` produce a quoting hint; other subcommands keep the usual unknown-argument error. Commands execute without a shell. Contract coverage in `test_orchestration_verification_rework.py` includes real verification and rework, resume, Factory argv, executable paths with spaces, malformed input, and both CLI value forms.
+diff --git a/documentation/ORCHESTRATE.md b/documentation/ORCHESTRATE.md
+index f73973e..47a9de4 100644
+--- a/documentation/ORCHESTRATE.md
++++ b/documentation/ORCHESTRATE.md
+@@ -46,6 +46,10 @@ An `EXECUTION_PERMISSION_REQUIRED` denial marks an agent interactive-only (for t
+ 
+ Cursor runs planning with `--mode plan` and review and acceptance with `--mode ask`. Both are read-only, but in print mode `plan` produced no text for a review, which showed up as repeated `AUDIT_NO_VERDICT` results.
+ 
++**Read-only roles go only to CLIs that enforce them.** Planning, review, and acceptance must not change the repository. Codex runs them in its read-only sandbox, Claude gets only Read, Grep, and Glob, Cursor uses `plan`/`ask`, and Devin's `auto` mode auto-approves read-only tools only. AGY's `--mode plan` makes no such guarantee: as a reviewer it ran the project's CLI, used the network, and rewrote tracked files, so the session ended `BLOCKED` and lost a verified implementation (DOG-037). AUTO routing therefore skips AGY for those roles (`ROUTE AGY skipped: its CLI does not enforce read-only operation`); it still implements and remediates. An explicitly chosen AGY orchestrator still plans and accepts (explicit override) but never reviews. HowlPlane still checks every read-only attempt and blocks the session if one changed the repository.
++
++**Network for workers is opt-in.** `--worker-network` (on a new session or `resume`) requests network access for implementation and remediation. For Codex, it adds `-c sandbox_workspace_write.network_access=true` to the `workspace-write` sandbox; without the flag, HowlPlane leaves Codex's default sandbox network policy in place (DOG-038). Read-only roles never receive the setting. The other CLIs apply their own network policies; HowlPlane does not change their network configuration.
++
+ A rejection judges one repository state. When the repository changes before `resume` (for example you fixed what the verdict named), review and acceptance exclusions that came from verdicts expire, the stale `audit` result is cleared, and the session is judged again after verification (pass `--verify`). If nothing changed, `resume` stops again with the same guidance. `orchestrate discard` starts over.
+ 
+ Only the session orchestrator accepts, with one exception: if the orchestrator is disqualified for a reason unrelated to the work (capability, availability, capacity, as when its own implementation attempt was denied permission), the next eligible agent takes over, with a `TAKEOVER` event, so the session cannot deadlock. A verdict from any agent is final until the repository changes: a rejection is never shopped to another agent (see DOG-007 recovery above).
+@@ -93,7 +97,7 @@ Orchestration sessions classify states into distinct lifecycle categories:
+ - **Successfully terminal:** `COMPLETE`, `COMPLETE WITH WARNINGS`. These represent finished sessions and cannot resume.
+ - **Paused / resumable:** `HANDOFF REQUIRED`, `INTERRUPTED`, and recoverable `BLOCKED` states (such as exhausted independent reviewers, worker timeouts, rate limits, or pending workspace trust repair). `HANDOFF REQUIRED` signifies that autonomous progress stopped safely because external intervention, repository repairs, or changed execution parameters are required. It does NOT mean the session record is dead.
+ - **Superseded:** `SUPERSEDED`. `orchestration.supersede` retires one resumable session in favor of replacement work, for example when a Factory queue task is edited into a new revision (see `FACTORY_QUEUE.md`). Unlike `discard`, it keeps the manifest and records the reason, the replacement, and the previous status. The session is no longer resumable and no longer owns its worktree. A session with a live coordinator lease is refused.
+-- **Truly terminal failures:** `SESSION_STATE_INVALID`, operator discard, or unrecoverable `BLOCKED` states (such as a read-only review or acceptance role mutating the repository). These fail closed and cannot resume.
++- **Truly terminal failures:** `SESSION_STATE_INVALID`, operator discard, or unrecoverable `BLOCKED` states (such as a read-only planning, review, or acceptance role mutating the repository). These fail closed and cannot resume.
+ 
+ Resuming a paused or handoff session re-acquires a coordinator lease, reconciles repository state against checkpoint evidence, applies updated execution parameters, and continues without restarting planning unless reconciliation demonstrates planning is invalidated:
+ 
+diff --git a/dogfood/findings/FINDINGS.md b/dogfood/findings/FINDINGS.md
+index b2dac4b..de28925 100644
+--- a/dogfood/findings/FINDINGS.md
++++ b/dogfood/findings/FINDINGS.md
+@@ -658,7 +658,7 @@ tests/test_git_hook_change_guard.py on a real repo with a bare origin: user hook
+ howlplane dogfood/DOG-034-hook-change-guard 8bbceb0, PR #161, merged cafca95 (pre-push 2351 passed; CI green).
+ 
+ ## DOG-035 — `orchestrate --verify` rejects any verification command that has options
+-Status: FIX IN REVIEW (branch dogfood/DOG-035-verify-argv)
++Status: FIXED (merged #164, f39cf18; HowlPlane review session 889142d7 COMPLETE, audit CLEAN; post-merge public proof recorded in howl-cubs-dogfood)
+ Severity: P1 (documented first-run path unusable; no workaround is documented)
+ Discovered in: howl-cubs-dogfood mission R001 (github.com/howlcipher/howl-cubs-dogfood, workflow-evidence/R001/plane/CUBS-P-001-repro.txt), 2026-10-08
+ Owning component: HowlPlane orchestrate CLI parser; docs in howl README
+@@ -673,7 +673,7 @@ Exit 2 before any session: `howlplane: error: unrecognized arguments: -m unittes
+ `tests/test_orchestration_verification_rework.py`: real verification and rework through both CLI value forms; quoted resume override; literal Factory argv; absolute and repository-relative executable paths containing spaces; inner quoting, dash-free argv, blank commands and malformed quotes; unknown-option errors with and without the quoting hint. New regressions reproduced path corruption, malformed-input handling gaps, and the unrelated-subcommand hint before correction. Existing rework tests retain their intended failure and recovery contracts.
+ 
+ ## DOG-036 — The verification command's 300-second limit is fixed and undocumented
+-Status: FIX IN REVIEW (branch dogfood/DOG-035-verify-argv, with DOG-035)
++Status: FIXED (merged #164, f39cf18; HowlPlane review session 889142d7 COMPLETE, audit CLEAN; post-merge public proof recorded in howl-cubs-dogfood)
+ Severity: P2 (capability gap with a hidden limit; blocks acceptance for repositories with long required gates)
+ Discovered in: howl-cubs-dogfood mission R001, HowlPlane review session 1426222b on the DOG-035 fix, 2026-10-08
+ Owning component: HowlPlane orchestration verification
+@@ -684,3 +684,29 @@ Repository: howlplane
+ `--verify-timeout SECONDS` (1 to 3600, refused outside the range) on a new session or `resume`, stored as `verify_timeout_seconds`; default unchanged; the overrun message names the option; ORCHESTRATE.md documents it.
+ ### Tests
+ tests/test_orchestration_verification_rework.py: a 2 s command times out under a 1 s limit (exit 124, message names the option), then `resume --verify-timeout 10` re-runs the same check on the same tree and completes; out-of-range values refused; CLI parse and default.
++
++## DOG-037 — AGY's read-only roles were not read-only; one write discarded the whole session
++Status: FIX IN REVIEW (branch dogfood/DOG-037-038-readonly-network)
++Severity: P1 (permission boundary; loss of verified work)
++Discovered in: howl-cubs-dogfood mission R001, S1 session b3e9d287 on cubs-edge-lab, 2026-10-08
++Owning component: HowlPlane orchestration routing (AGY backend)
++Repository: howlplane
++### Actual
++AGY was assigned review (`agy -p ... --mode plan`). It ran the project's probe CLI (523 network requests) and overwrote tracked research files. HowlPlane detected READ_ONLY_ROLE_MUTATED_REPOSITORY and ended the session BLOCKED, not resumable, discarding Codex's verified implementation. AGY's `plan` mode makes no read-only guarantee; the other CLIs enforce read-only through sandbox, tool allowlist or mode.
++### Resolution
++READ_ONLY_UNENFORCED = {agy}: AUTO routing skips AGY for planning, review and acceptance with a stated reason; an explicitly chosen AGY orchestrator still plans and accepts (explicit override) but never reviews. A repository change in any of those roles, including a failed or timed-out planning attempt, or a review finding or acceptance rejection that also writes, sets READ_ONLY_ROLE_MUTATED_REPOSITORY and ends the session BLOCKED and not resumable. It is not sent back for rework.
++### Tests
++tests/test_orchestration_role_containment.py: AGY never gets a read-only role in AUTO routing, including configured planning, review, and acceptance fallbacks, acceptance takeover, and resume of an older AUTO session that selected AGY; a session whose only non-implementer is AGY ends AUDIT BLOCKED with the reason; with Cursor available the audit runs and completes; an explicit AGY orchestrator plans and accepts but never reviews. A write during planning, review, or acceptance blocks the session and refuses resume, including a planning failure or timeout, and a review finding or acceptance rejection that also writes; a planning failure that does not write stays resumable. Two role-scoped-capacity tests re-expressed through `remediation`.
++
++## DOG-038 — No way to let an orchestrate worker fetch public data
++Status: FIX IN REVIEW (branch dogfood/DOG-037-038-readonly-network)
++Severity: P2 (capability gap for research and data-acquisition goals)
++Discovered in: howl-cubs-dogfood mission R001, S1 session b3e9d287, 2026-10-08
++Owning component: HowlPlane orchestration / Codex backend
++Repository: howlplane
++### Actual
++Codex implementation runs `--sandbox workspace-write`, whose network is off: `statsapi.mlb.com` failed DNS inside the worker while the host resolved it. No option granted network, so a goal that must fetch public data could not run; the implementer honestly reported "live probe not run".
++### Resolution
++`--worker-network` (new session or resume) sets `worker_network` on the session; implementation and remediation tasks carry it, and Codex adds `-c sandbox_workspace_write.network_access=true`. Verified directly: the same Codex prompt fails DNS without the setting and resolves with it. Read-only roles never receive it.
++### Tests
++tests/test_orchestration_role_containment.py: flag parse and default off; only mutating roles receive the metadata, on and off, including after resume; Codex argv carries the setting only for networked mutating tasks, and AGY, Cursor, Claude, Gemini, and Devin argv do not gain network configuration.
+diff --git a/src/howlplane/control_plane/agent_execution.py b/src/howlplane/control_plane/agent_execution.py
+index 3a18dce..07bd778 100644
+--- a/src/howlplane/control_plane/agent_execution.py
++++ b/src/howlplane/control_plane/agent_execution.py
+@@ -948,12 +948,14 @@ class CodexBackend(SubprocessAgentBackend):
+             # Review roles keep the default read-only sandbox.
+             if r and (r.endswith("-reviewer") or r in ("review", "planning", "acceptance") or r.startswith("writing:")):
+                 return ["codex", "exec", "--skip-git-repo-check", p]
++            network = ["-c", "sandbox_workspace_write.network_access=true"] if (getattr(t, "metadata", None) or {}).get("worker_network") else []
+             return [
+                 "codex",
+                 "exec",
+                 "--skip-git-repo-check",
+                 "--sandbox",
+                 "workspace-write",
++                *network,
+                 p,
+             ]
+         super().__init__("codex", "codex", _codex_cmd)
+diff --git a/src/howlplane/control_plane/orchestration.py b/src/howlplane/control_plane/orchestration.py
+index fc797af..73c0c33 100644
+--- a/src/howlplane/control_plane/orchestration.py
++++ b/src/howlplane/control_plane/orchestration.py
+@@ -40,6 +40,13 @@ SCHEMA_VERSION = 3
+ AGENTS = ("claude_code", "codex", "cursor", "agy", "devin_cli")
+ # AUTO's first choice for mutating roles when the user named no orchestrator (DOG-023).
+ IMPLEMENTATION_PREFERENCE = "codex"
++READ_ONLY_ROLES = frozenset({"planning", "review", "acceptance"})
++# Agents whose CLI does not enforce read-only operation in those roles. AGY's `--mode plan`
++# makes no read-only guarantee: as a reviewer it ran the project's CLI, used the network, and
++# rewrote tracked research files, which ended the session BLOCKED (DOG-037). Codex reviews run in
++# its read-only sandbox, Claude gets only Read/Grep/Glob, Cursor uses plan/ask, Devin `auto`
++# auto-approves read-only tools only.
++READ_ONLY_UNENFORCED = frozenset({"agy"})
+ ROLES = ("planning", "implementation", "review", "acceptance")
+ AGENT_STATES = {"AVAILABLE", "DEGRADED", "UNAVAILABLE", "RESERVED"}
+ UNAVAILABLE_FAILURES = {"MISSING_EXECUTABLE", "AUTHENTICATION_REQUIRED", "PROVIDER_UNAVAILABLE"}
+@@ -961,6 +968,10 @@ def capability_skip_reason(doc: dict[str, Any], agent: str, role: str) -> str |
+     # agent is not consent to burn another call on capacity it just exhausted.
+     if role in state["capacity"]:
+         return capacity_reason(state["capacity"][role])
++    if role in READ_ONLY_ROLES and agent in READ_ONLY_UNENFORCED:
++        if role != "review" and doc.get("requested_orchestrator") == agent:
++            return "explicit override"
++        return "its CLI does not enforce read-only operation"
+     if state["capabilities"]["unattended_execution"] is not False:
+         return None
+     if doc.get("requested_orchestrator") == agent:
+@@ -1144,6 +1155,7 @@ def setup(args: argparse.Namespace, repo: Path) -> dict[str, Any]:
+         "model_states": model_states, "known_models": {}, "attempts": [], "tests": [], "reroutes": [],
+         "execution_budget": budget, "timed_out_assignments": [], "workspace_trust_policy": resolved_policy,
+         "verify_command": verify, "verify_timeout_seconds": verify_timeout,
++        "worker_network": bool(getattr(args, "worker_network", False)),
+         "repository_evidence": snapshot, "base_dirty": dirty_paths(Path(snapshot["root"])),
+         "lease": {"token": token, "pid": os.getpid(), "renewed_at": time.time()},
+     }
+@@ -1311,6 +1323,9 @@ def execute_assignment(doc: dict[str, Any], role: str, agent: str, model: str, r
+     if model != "UNKNOWN":
+         instructions += f" Use model {model} if the CLI supports selecting it; report actual model identity."
+     task = TaskSpec(task_id=doc["id"], repository=str(repo), objective=doc["goal"], constraints=doc["constraints"])
++    if is_mutating_role(role) and doc.get("worker_network"):
++        # Opt-in for goals that must fetch public data; read-only roles never get it (DOG-038).
++        task.metadata["worker_network"] = True
+     if is_mutating_role(role) and implementation_verify_command(doc):
+         # A bounded shell (Claude) is granted this command alongside any it discovers (DOG-018).
+         task.metadata["verification_commands"] = [implementation_verify_command(doc)]
+@@ -1587,14 +1602,17 @@ def run(doc: dict[str, Any], path: Path, repo: Path, progress: SessionProgress |
+                     assignment["state"] = "REVOKED"
+                     assignment["failure"] = "NO_REPOSITORY_CHANGE"
+                     no_change_detail = " (no repository delta detected)"
+-            if stage in {"review", "acceptance"} and before != after:
++            if stage in READ_ONLY_ROLES and before != after:
++                # Planning is read-only too. An explicit AGY planner can still be
++                # selected, and its CLI does not enforce the role (DOG-037).
+                 assignment["state"] = "REVOKED"
+                 assignment["failure"] = "READ_ONLY_ROLE_MUTATED_REPOSITORY"
+-            if result.success and stage == "review" and not result.stdout.strip().endswith("AUDIT_STATUS: CLEAN"):
++            mutated = assignment["failure"] == "READ_ONLY_ROLE_MUTATED_REPOSITORY"
++            if result.success and stage == "review" and not mutated and not result.stdout.strip().endswith("AUDIT_STATUS: CLEAN"):
+                 assignment["state"] = "REVOKED"
+                 # An empty reply is a provider fault, not a finding (DOG-003).
+                 assignment["failure"] = "AUDIT_FINDINGS_OR_UNCONFIRMED" if result.stdout.strip() else "AUDIT_NO_VERDICT"
+-            if result.success and stage == "acceptance" and not result.stdout.strip().endswith("ACCEPTANCE_STATUS: ACCEPTED"):
++            if result.success and stage == "acceptance" and not mutated and not result.stdout.strip().endswith("ACCEPTANCE_STATUS: ACCEPTED"):
+                 assignment["state"] = "REVOKED"
+                 assignment["failure"] = "ACCEPTANCE_REJECTED_OR_UNCONFIRMED"
+             grant_gap = (permission_grant_gap(result, stage, before != after)
+@@ -1699,7 +1717,7 @@ def run(doc: dict[str, Any], path: Path, repo: Path, progress: SessionProgress |
+                 # the updated eligible candidate list, not a stale intermediate.
+                 prev_reroute = (agent, assignment["failure"])
+             checkpoint(doc, path, token, repo)
+-            if stage in {"review", "acceptance"} and before != after:
++            if stage in READ_ONLY_ROLES and before != after:
+                 doc["status"] = "BLOCKED"
+                 doc["audit"] = "AUDIT BLOCKED: read-only role changed the repository"
+                 checkpoint(doc, path, token, repo)
+@@ -1986,6 +2004,8 @@ def command(args: argparse.Namespace) -> int:
+                 doc["verify_command"] = verify
+             if verify_timeout is not None:
+                 doc["verify_timeout_seconds"] = verify_timeout
++            if getattr(args, "worker_network", False):
++                doc["worker_network"] = True
+             path = path_for(root, doc["id"])
+             secure_write(path, doc)
+             if doc["policy"] == "PLAN ONLY" and doc.get("reconciliation", {}).get("needs_validation"):
+@@ -2050,6 +2070,9 @@ def add_parser(subparsers: Any, common_parser: Any) -> None:
+     parser.add_argument("--verify-timeout", type=int, metavar="SECONDS",
+                         help=f"Seconds the verification command may run (default {VERIFY_TIMEOUT_SECONDS}, "
+                              f"max {MAX_VERIFY_TIMEOUT_SECONDS}); also accepted on resume")
++    parser.add_argument("--worker-network", action="store_true",
++                        help="Enable Codex sandbox network access for implementation and remediation; other CLIs "
++                             "keep their own network policies. Read-only roles never get it. Also accepted on resume")
+     parser.add_argument("--execution-budget", action="append", metavar="ROLE=SECONDS",
+                         help=f"Per-assignment deadline for a role, or SECONDS for every role (default "
+                              f"{DEFAULT_EXECUTION_BUDGET_SECONDS}, max {MAX_EXECUTION_BUDGET_SECONDS}; repeatable). "
+diff --git a/tests/test_orchestration_capability_recovery.py b/tests/test_orchestration_capability_recovery.py
+index 194fa32..b99c121 100644
+--- a/tests/test_orchestration_capability_recovery.py
++++ b/tests/test_orchestration_capability_recovery.py
+@@ -212,8 +212,10 @@ def test_candidates_are_recomputed_after_hard_failure_including_configured_fallb
+     options = module.candidates(doc, "implementation")
+     assert all(agent != "agy" for agent, _ in options)
+     assert options[0] == ("codex", "m1")
+-    # Capacity is role-scoped: AGY stays eligible for independent review.
+-    assert any(agent == "agy" for agent, _ in module.candidates(doc, "review"))
++    # Capacity is role-scoped: AGY stays eligible for its other roles. It never reviews, because
++    # its CLI does not enforce read-only operation (DOG-037), not because of this failure.
++    assert any(agent == "agy" for agent, _ in module.candidates(doc, "remediation"))
++    assert module.capability_skip_reason(doc, "agy", "review") == "its CLI does not enforce read-only operation"
+ 
+ 
+ def test_session_limit_exhausts_role_and_model(tmp_path, monkeypatch):
+diff --git a/tests/test_orchestration_execution_budget.py b/tests/test_orchestration_execution_budget.py
+index bfbd87c..97d4de7 100644
+--- a/tests/test_orchestration_execution_budget.py
++++ b/tests/test_orchestration_execution_budget.py
+@@ -134,8 +134,7 @@ def test_agy_derived_print_timeout_keeps_agy_capacity_and_eligibility(tmp_path,
+     assert module.timed_out(doc, "implementation", "agy", "m1")
+     assert ("agy", "m1") not in module.candidates(doc, "implementation")
+     assert ("agy", "m2") in module.candidates(doc, "implementation")
+-    doc["implementer"] = "codex"
+-    assert ("agy", "m1") in module.candidates(doc, "review")
++    assert ("agy", "m1") in module.candidates(doc, "remediation")
+     # Nothing reached provider capacity evidence either.
+     assert not agent_readiness.load_cache().get("agy", {}).get("limits")
+     stderr = capsys.readouterr().err
+diff --git a/tests/test_orchestration_role_containment.py b/tests/test_orchestration_role_containment.py
+new file mode 100644
+index 0000000..3b23dc7
+--- /dev/null
++++ b/tests/test_orchestration_role_containment.py
+@@ -0,0 +1,308 @@
++"""AGY stays out of enforced read-only roles; worker network is an explicit mutating-role opt-in.
++
++DOG-037: AGY review used ``--mode plan``, ran the project CLI, and rewrote tracked files.
++DOG-038: Codex implementation had no network, and no option granted it.
++"""
++
++import pytest
++
++from howlplane.control_plane import orchestration as module
++from howlplane.control_plane.agent_execution import (
++    AgyBackend,
++    ClaudeCodeBackend,
++    CodexBackend,
++    CursorBackend,
++    DevinCLIBackend,
++    GeminiCLIBackend,
++)
++from howlplane.control_plane.task_spec import TaskSpec
++from tests.test_orchestration import arguments, repository
++from tests.test_orchestration_capability_recovery import accepted, budget_exceeded, install_all, persist
++from tests.test_orchestration_handoff_recovery import only
++
++
++pytestmark = pytest.mark.contract
++
++EVERY_ROLE = ("planning", "implementation", "remediation", "review", "acceptance")
++MUTATING = ("implementation", "remediation")
++NETWORK = "sandbox_workspace_write.network_access=true"
++BACKENDS = {
++    "codex": CodexBackend, "agy": AgyBackend, "cursor": CursorBackend,
++    "claude_code": ClaudeCodeBackend, "gemini_cli": GeminiCLIBackend, "devin_cli": DevinCLIBackend,
++}
++SKIP = "its CLI does not enforce read-only operation"
++
++
++def tree(tmp_path, monkeypatch):
++    repo = repository(tmp_path)
++    install_all(tmp_path, monkeypatch, models=("m1",))
++    return repo
++
++
++def note(assigned, role, agent, cwd):
++    assigned.append((role, agent))
++    if role == "implementation":
++        (cwd / "README").write_text("implemented\n")
++    return accepted(agent, role)
++
++
++def bind(monkeypatch, execute):
++    monkeypatch.setattr(module, "execute_assignment", execute)
++
++
++def agy_readonly(assigned):
++    return [role for role, agent in assigned if agent == "agy" and role in module.READ_ONLY_ROLES]
++
++
++def run(tmp_path, monkeypatch, **overrides):
++    repo = tree(tmp_path, monkeypatch)
++    assigned = []
++    bind(monkeypatch, lambda doc, role, agent, model, cwd: note(assigned, role, agent, cwd))
++    values = dict(input="Update README", orchestrator=None, policy="PLAN + EXECUTE + INDEPENDENT AUDIT",
++                  verify=["true"])
++    values.update(overrides)
++    return module.command(arguments(repo, **values)), assigned
++
++
++def opened(tmp_path, monkeypatch, **overrides):
++    repo = tree(tmp_path, monkeypatch)
++    return repo, module.setup(arguments(repo, **overrides), repo)
++
++
++def watch(monkeypatch):
++    seen = {}
++
++    class Recorder:
++        def __init__(self, agent):
++            self.agent = agent
++
++        def execute(self, task, cwd, role="implementation", **kwargs):
++            seen[(self.agent, role)] = task
++            return accepted(self.agent, role)
++
++    monkeypatch.setattr(module.AgentBackendRegistry, "get_backend", lambda agent: Recorder(agent))
++    return seen
++
++
++def carries_network(task, repo, agent, role):
++    command = BACKENDS[agent]().build_command(task, repo, role, "prompt")
++    return NETWORK in command
++
++
++def test_agy_never_gets_a_read_only_role_in_auto_routing(tmp_path, monkeypatch, capsys):
++    code, assigned = run(tmp_path, monkeypatch, **only("codex", "agy"))
++    out, err = capsys.readouterr()
++
++    assert ("implementation", "codex") in assigned and not agy_readonly(assigned)
++    # The only non-implementer cannot be trusted read-only, so the audit is honestly blocked, not run.
++    assert code == 2 and "AUDIT BLOCKED" in out and SKIP in out + err
++
++
++def test_agy_can_still_audit_nothing_but_implement(tmp_path, monkeypatch, capsys):
++    code, assigned = run(tmp_path, monkeypatch, **only("codex", "agy", "cursor"))
++
++    assert code == 0 and "Status: COMPLETE" in capsys.readouterr().out
++    assert ("review", "cursor") in assigned and not agy_readonly(assigned)
++
++
++def test_explicitly_chosen_agy_orchestrator_plans_and_accepts_but_never_reviews(tmp_path, monkeypatch, capsys):
++    code, assigned = run(tmp_path, monkeypatch, orchestrator="agy", **only("codex", "agy", "cursor"))
++
++    assert code == 0
++    assert ("planning", "agy") in assigned and ("acceptance", "agy") in assigned
++    assert ("review", "agy") not in assigned
++
++
++@pytest.mark.parametrize("orchestrator,role,eligible", [
++    ("AUTO", "planning", False),
++    ("AUTO", "review", False),
++    ("AUTO", "acceptance", False),
++    ("agy", "planning", True),
++    ("agy", "review", False),
++    ("agy", "acceptance", True),
++])
++def test_configured_read_only_fallback_cannot_select_unenforced_agy(
++        tmp_path, monkeypatch, orchestrator, role, eligible):
++    _, doc = opened(tmp_path, monkeypatch, orchestrator=orchestrator, fallbacks=f"{role}:agy:m1")
++    present = ("agy", "m1") in module.candidates(doc, role)
++    reason = module.capability_skip_reason(doc, "agy", role)
++
++    assert present is eligible
++    assert reason == ("explicit override" if eligible else SKIP)
++
++
++def test_acceptance_takeover_skips_agy_after_auto_orchestrator_disqualification(tmp_path, monkeypatch):
++    repo = tree(tmp_path, monkeypatch)
++    assigned = []
++
++    def execute(doc, role, agent, model, cwd):
++        if role == "implementation" and agent == "cursor":
++            assigned.append((role, agent))
++            denied = accepted(agent, role)
++            denied.success = False
++            denied.exit_code = 1
++            denied.stderr = "EXECUTION_PERMISSION_REQUIRED"
++            return denied
++        return note(assigned, role, agent, cwd)
++
++    bind(monkeypatch, execute)
++    args = arguments(repo, orchestrator="AUTO", strategy="ECONOMY", policy="PLAN + EXECUTE",
++                     verify=["true"], **only("cursor", "agy", "codex"))
++    assert module.command(args) == 0
++    assert ("planning", "cursor") in assigned and ("implementation", "agy") in assigned
++    assert ("acceptance", "codex") in assigned and not agy_readonly(assigned)
++
++
++@pytest.mark.parametrize("stage,policy", [
++    ("planning", "PLAN ONLY"),
++    ("review", "PLAN + EXECUTE + INDEPENDENT AUDIT"),
++    ("acceptance", "PLAN + EXECUTE"),
++])
++def test_resume_auto_session_selected_agy_never_dispatches_read_only_role_to_agy(
++        tmp_path, monkeypatch, stage, policy):
++    repo, doc = opened(tmp_path, monkeypatch, orchestrator="AUTO", policy=policy, **only("agy", "codex", "cursor"))
++    # An older session selected AGY before the read-only eligibility rule existed.
++    doc.update(orchestrator="agy", selected_orchestrator="agy", stage=stage, status=stage.upper())
++    if stage != "planning":
++        doc["implementer"] = "codex"
++    persist(doc)
++    assigned = []
++    bind(monkeypatch, lambda document, role, agent, model, cwd: note(assigned, role, agent, cwd))
++
++    assert module.command(arguments(repo, input="resume", orchestrator=None)) == 0
++    assert assigned and not agy_readonly(assigned)
++
++
++@pytest.mark.parametrize("enabled", [False, True])
++def test_worker_network_reaches_only_mutating_roles(tmp_path, monkeypatch, enabled):
++    repo = tree(tmp_path, monkeypatch)
++    seen = watch(monkeypatch)
++    doc = module.setup(arguments(repo, input="Fetch public data", orchestrator="codex",
++                                 worker_network=enabled, **only("codex")), repo)
++    assert doc["worker_network"] is enabled
++    for role in EVERY_ROLE:
++        module.execute_assignment(doc, role, "codex", "m1", repo)
++
++    for role in MUTATING:
++        assert bool(seen[("codex", role)].metadata.get("worker_network")) is enabled
++    for role in module.READ_ONLY_ROLES:
++        assert "worker_network" not in seen[("codex", role)].metadata
++
++
++def test_codex_gets_sandbox_network_only_when_the_task_asks_for_it(tmp_path):
++    plain = TaskSpec(task_id="T-1", repository="r", objective="o")
++    networked = TaskSpec(task_id="T-2", repository="r", objective="o", metadata={"worker_network": True})
++
++    assert not carries_network(plain, tmp_path, "codex", "implementation")
++    command = CodexBackend().build_command(networked, tmp_path, "implementation", "p")
++    assert command[command.index(NETWORK) - 1] == "-c" and command[-1] == "p"
++    # Read-only roles stay in Codex's default read-only sandbox, network included.
++    for role in ("planning", "review", "acceptance", "security-reviewer", "writing:summary"):
++        assert not carries_network(networked, tmp_path, "codex", role)
++
++
++@pytest.mark.parametrize("enabled", [False, True])
++def test_resume_worker_network_only_configures_codex_mutating_roles(tmp_path, monkeypatch, enabled):
++    repo, doc = opened(tmp_path, monkeypatch, orchestrator="codex")
++    doc.pop("worker_network")  # A session created before the flag existed.
++    persist(doc)
++    seen = watch(monkeypatch)
++
++    def inspect_resumed(document, path, cwd, progress):
++        assert document.get("worker_network", False) is enabled
++        for role in EVERY_ROLE:
++            for agent in BACKENDS:
++                module.execute_assignment(document, role, agent, "m1", cwd)
++        return 0
++
++    monkeypatch.setattr(module, "run", inspect_resumed)
++    assert module.command(arguments(repo, input="resume", orchestrator=None, worker_network=enabled)) == 0
++    for role in EVERY_ROLE:
++        for agent in BACKENDS:
++            task = seen[(agent, role)]
++            assert carries_network(task, repo, agent, role) is (
++                enabled and agent == "codex" and role in MUTATING)
++            if role in module.READ_ONLY_ROLES:
++                assert "worker_network" not in task.metadata
++
++
++@pytest.mark.parametrize("role,policy,orchestrator,outcome", [
++    ("planning", "PLAN ONLY", "agy", "ok"),
++    ("planning", "PLAN + EXECUTE", "codex", "fail"),
++    ("planning", "PLAN + EXECUTE", "codex", "timeout"),
++    ("planning", "PLAN + EXECUTE", "agy", "ok"),
++    ("review", "PLAN + EXECUTE + INDEPENDENT AUDIT", "codex", "ok"),
++    ("review", "PLAN + EXECUTE + INDEPENDENT AUDIT", "codex", "findings"),
++    ("acceptance", "PLAN + EXECUTE", "codex", "ok"),
++    ("acceptance", "PLAN + EXECUTE", "codex", "reject"),
++])
++def test_read_only_repository_change_blocks_and_cannot_resume(
++        tmp_path, monkeypatch, capsys, role, policy, orchestrator, outcome):
++    repo = tree(tmp_path, monkeypatch)
++    assigned = []
++
++    def execute(doc, current, agent, model, cwd):
++        if current != role:
++            return note(assigned, current, agent, cwd)
++        assigned.append((current, agent))
++        (cwd / "read-only-write.txt").write_text("changed\n")
++        if outcome == "fail":
++            failed = accepted(agent, current)
++            failed.success = False
++            failed.exit_code = 1
++            failed.stderr = "boom"
++            return failed
++        if outcome == "timeout":
++            return budget_exceeded(agent, current)
++        if outcome == "findings":
++            found = accepted(agent, current)
++            found.stdout = "BLOCKING: planner write\nAUDIT_STATUS: FINDINGS"
++            return found
++        if outcome == "reject":
++            rejected = accepted(agent, current)
++            rejected.stdout = "not ready\nACCEPTANCE_STATUS: REJECTED"
++            return rejected
++        return accepted(agent, current)
++
++    bind(monkeypatch, execute)
++    # A second planner and reviewer are available, so a missed block would reroute.
++    code = module.command(arguments(
++        repo, input="Update README", orchestrator=orchestrator, policy=policy, verify=["true"],
++        **only("agy", "codex", "claude_code", "cursor")))
++    out = capsys.readouterr().out
++    order = ("planning", "implementation", "review", "acceptance")
++    later = set(order[order.index(role) + 1:])
++
++    assert code == 2 and "Status: BLOCKED" in out and "Resumable: no" in out
++    assert "READ_ONLY_ROLE_MUTATED_REPOSITORY" in out and "Rework rounds:" not in out
++    assert [item[0] for item in assigned if item[0] == role] == [role]
++    assert not any(current in later for current, _agent in assigned)
++    assert sum(current == "implementation" for current, _agent in assigned) == (0 if role == "planning" else 1)
++    with pytest.raises(ValueError, match="No unfinished session"):
++        module.command(arguments(repo, input="resume", orchestrator=None))
++
++
++def test_planning_failure_without_a_write_stays_resumable(tmp_path, monkeypatch, capsys):
++    repo = tree(tmp_path, monkeypatch)
++
++    def execute(doc, role, agent, model, cwd):
++        failed = accepted(agent, role)
++        failed.success = False
++        failed.exit_code = 1
++        failed.stderr = "boom"
++        return failed
++
++    bind(monkeypatch, execute)
++    code = module.command(arguments(repo, orchestrator="codex", policy="PLAN ONLY", **only("codex")))
++    out = capsys.readouterr().out
++
++    assert code == 2 and "Resumable: yes" in out and "READ_ONLY_ROLE_MUTATED_REPOSITORY" not in out
++
++
++def test_worker_network_flag_parses_and_defaults_off():
++    from howlplane.control_plane.cli import build_parser
++
++    parser = build_parser()
++    assert parser.parse_args(["orchestrate", "Goal", "--worker-network"]).worker_network is True
++    assert parser.parse_args(["orchestrate", "Goal"]).worker_network is False
++    assert parser.parse_args(["orchestrate", "resume", "--worker-network"]).worker_network is True
