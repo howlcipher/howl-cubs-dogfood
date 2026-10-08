@@ -1,0 +1,13 @@
+# Separately managed repositories (baseball product, repair worktrees)
+/projects/
+/worktrees/
+# Restricted or bulky data, private runtime state
+/data-restricted/
+/workflow-evidence/**/private/
+*.raw.jsonl
+.howldream/
+.howlplane/
+.control_plane/
+__pycache__/
+*.pyc
+.venv/

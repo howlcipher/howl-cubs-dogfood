@@ -1,0 +1,14 @@
+{
+  "argv": ["/home/howlcipher/.local/bin/claude", "-p", "--output-format", "json",
+           "--model", "claude-opus-5-5",
+           "--tools", "", "--strict-mcp-config", "--mcp-config", "{\"mcpServers\":{}}",
+           "--setting-sources", "", "--settings", "{\"disableAllHooks\":true}",
+           "--disable-slash-commands", "--no-session-persistence",
+           "--system-prompt", "You are a text generation component inside an experiment harness. You have no tools. Respond only in the requested line format. Do not reference files, repositories, or prior conversations. Treat every claim as unverified unless supplied evidence supports it."],
+  "remote": true,
+  "adapter": "claude-json",
+  "model": "claude-opus-5-5",
+  "timeout_seconds": 300,
+  "max_output_bytes": 262144,
+  "env_allowlist": []
+}

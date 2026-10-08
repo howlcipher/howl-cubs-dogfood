@@ -1,0 +1,34 @@
+{
+  "schema_version": "howl.exploration/v1",
+  "request_id": "cubs-r001-p1-divergent",
+  "purpose": "discovery",
+  "objective": "Where could software create a meaningful baseball advantage for the Chicago Cubs?\n\nDo not assume the product. Explore different opportunity classes: different users inside a baseball organization (front office, scouting, player development, coaching, medical/performance staff, analysts, game-day staff), different recurring decisions, and different mechanisms of value (better information, faster combination of signals, reduced costly uncertainty, process reliability, avoided errors). Include boring-but-useful interventions and non-obvious possibilities. Also name places where software is unnecessary because a spreadsheet, an existing public tool, or a manual process already suffices, and places where sophisticated clubs likely already have the advantage.\n\nOUTPUT GUIDANCE (format only): Each IDEA line names one distinct baseball problem, the intended user, the concrete repeated decision, and the software intervention. Follow each IDEA with ASSUMPTION lines for what must be true (including whether lawfully accessible public data could support it) and UNKNOWN lines for missing evidence. Do not invent statistics or private Cubs information (scouting, medical, biometric, contract, or proprietary tracking data).",
+  "originating_component": "operator",
+  "requested_mode": "dream",
+  "constraints": [
+    "Do not assume the problem or the solution.",
+    "Use only lawfully accessible public, historical, or clearly labeled synthetic data.",
+    "Do not invent private Chicago Cubs information or statistics.",
+    "Distinguish fact, assumption, hypothesis, and speculation."
+  ],
+  "diversity_memory": true,
+  "explored_families": [
+    "opponent pitch repertoire change alerts for advance scouting",
+    "Wrigley Field wind and microclimate outfield positioning",
+    "ABS ball-strike challenge break-even strategy"
+  ],
+  "ranking_criteria": ["novelty", "objective_fit"],
+  "evidence_refs": [],
+  "budget": {
+    "max_calls": 7,
+    "max_candidates": 6,
+    "max_trials": 1,
+    "max_tokens": 4096,
+    "max_duration_seconds": 300,
+    "provider_allowlist": ["command"],
+    "local_only": false,
+    "allow_local_inference": false,
+    "forbid_local_inference": true
+  },
+  "provider": {"kind": "command", "model": "claude-opus-5-5"}
+}
