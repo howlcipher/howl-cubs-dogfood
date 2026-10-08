@@ -1,0 +1,7 @@
+## post-merge, engine f39cf18, no PYTHONPATH
+## unquoted (expect exit 2 + hint)
+howlplane: error: unrecognized arguments: -m unittest; quote a verification command that has options, for example --verify "python3 -m pytest -q"
+## quoted README form, PLAN ONLY
+Status: COMPLETE
+verify_command = ['python3', '-m', 'unittest'] timeout = 600
+Discarded 0 active session(s)

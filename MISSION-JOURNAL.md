@@ -107,3 +107,12 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 ## 2026-10-08T19:30Z — Review session 2 result: COMPLETE
 - Session 889142d7 (candidate engine 1a5d783, `--verify make test-full --verify-timeout 1500`): EXIT 0, Status COMPLETE, independent audit CLEAN, accepted. Evidence: workflow-evidence/R001/repair-DOG-035/09-review2.{stdout,stderr,exit}. DOG-036 resolved the earlier acceptance gap.
 - Next (not done, usage limit): fold any worker changes from dev/howlplane-dog035-review2 into the PR branch, confirm #164 CI on the final head, merge #164 then howl #16, ff the shared checkout, replay S1.
+
+## 2026-10-08T20:00Z — DOG-035/036 merged and verified (user: "do steps 1-3")
+- Step 1: review2 worktree tree identical to PR head 1a5d783 (no worker changes; implementer reported no change). HowlPlane `make test-full` exit 0.
+- Step 2: howlplane #164 merged as f39cf18 (CI all green on 1a5d783; review evidence commented). howl #16 merged as 45478f4 (CI green). Merge order respected.
+- Shared checkouts fast-forwarded (clean, on main): howlplane 4b7fe81 -> f39cf18, howl c9d37d5 -> 45478f4 (docs only; howl binary unchanged). Live engine verified without override: control_plane imported from dev/howlplane/src, verification_timeout present, help shows --verify-timeout.
+- Post-merge public proof (10-postmerge-proof.txt): unquoted documented form exits 2 with hint; quoted README form + --verify-timeout 600 starts a session, records ['python3','-m','unittest'] and 600.
+- Worktrees dev/howlplane-dog035, -review2, dev/howl-dog035 removed; merged local branches deleted.
+- Pending: howlplane FINDINGS.md still says "FIX IN REVIEW" for DOG-035/036; update in the CUBS-P-002/003 repair PR (avoids a docs-only PR chain).
+- INTENT step 3: S1 feasibility research on cubs-edge-lab via public CLI, engine f39cf18: `howl orchestrate "$(cat workflow-evidence/R001/plane/S1-feasibility.goal.txt)" --repo dev/cubs-edge-lab --verify "python3 -m pytest -q" --execution-budget implementation=1200 --constraint <worker contract> --constraint <public data>`. HowlPlane sessions: 3 of 8.
