@@ -1,0 +1,18 @@
+## candidate fe0ff37 via PYTHONPATH=/run/media/system/tallgeese/dev/howlplane-dog035/src
+                             [--verify VERIFY [VERIFY ...]]
+                             [--execution-budget ROLE=SECONDS]
+--
+  --verify VERIFY [VERIFY ...]
+                        Explicit verification command. Quote a command that
+## unquoted documented example (expect exit 2 + hint)
+usage: howlplane [-h] [--control-plane-dir CONTROL_PLANE_DIR] [--repo REPO]
+                 [--version] [--color MODE] [--debug]
+                 <command> ...
+howlplane: error: unrecognized arguments: -m unittest; quote a verification command that has options, for example --verify "python3 -m pytest -q"
+EXIT=2
+## baseline without override (main 4b7fe81)
+                             [--verify VERIFY [VERIFY ...]]
+                             [--execution-budget ROLE=SECONDS]
+--
+  --verify VERIFY [VERIFY ...]
+                        Explicit verification command and arguments
