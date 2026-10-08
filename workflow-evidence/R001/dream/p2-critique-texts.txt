@@ -1,0 +1,222 @@
+COMPLETE 6 ['claude-sonnet-5-5'] []
+=== CAND claude-sonnet-5-5 False 9012
+ASSUMPTION: callups: Recurrence is real but low-frequency. Promotion calls number in the dozens per season, and they are driven by roster slots, 40-man status, injuries and development plans more than by readiness estimates.
+ASSUMPTION: callups: Public MiLB stats are available at decision time, but Statcast-style tracking coverage varies by level, so a translation model may rest on thin features such as outcomes and age relative to level.
+ASSUMPTION: callups: A staff member would change little. They probably already read public translated stats such as FanGraphs and Baseball Savant, so uncertainty bands may only confirm a decision already made on roster grounds.
+ASSUMPTION: callups: A retrospective test is feasible with public data. Use only information available as of each date, compare against a naive baseline (raw or league-adjusted rate stats with age), and score on later MLB outcomes. Survivorship bias is the main risk, because only promoted players have MLB outcomes.
+ASSUMPTION: callups: Alternatives are existing public translation and projection systems and whatever sophisticated clubs hold internally. A public-data version is at best a baseline.
+ASSUMPTION: callups: It would look useful through polished uncertainty bands that are never scored for calibration, in-sample fits, or accuracy gained mainly by predicting who is called up rather than who succeeds.
+ASSUMPTION: rules_ledger: The decision recurs, but errors are probably rare. A well-kept spreadsheet plus a rules-literate staffer may already deliver most of the value.
+ASSUMPTION: rules_ledger: Public transaction logs may not capture option-year edge cases, injured-list time or non-public clauses, so the ledger could be wrong in the cases where it matters most.
+ASSUMPTION: rules_ledger: The action is concrete, a warning before a move becomes impossible. But the value is avoided error, not information, so it is only worth building if past errors happened.
+ASSUMPTION: rules_ledger: Retrospective testing is weak. Public logs rarely show near-misses, so one could only check whether the ledger reproduces known statuses.
+ASSUMPTION: rules_ledger: It would look useful through an impressive dashboard of dates that duplicates what the transactions office already tracks, with no measured reduction in errors.
+ASSUMPTION: rules_ledger: Rule and CBA changes would need manual upkeep, and a stale encoding is worse than a person who knows the rules.
+ASSUMPTION: return_to_play: Public IL data carries only coarse injury descriptions, which may not be specific enough to define meaningful comparables.
+ASSUMPTION: return_to_play: Clinical judgment and private medical information dominate timelines, so a public distribution may anchor staff on a misleading base rate.
+ASSUMPTION: return_to_play: The action is limited to roster contingency planning, such as how long to plan for a replacement. This is plausibly useful but small.
+ASSUMPTION: return_to_play: A test is possible. Compare predicted days missed from public comparables against a simple baseline such as the league median by coarse injury category. The IL placement date is known at decision time, but injury labels may be revised afterward.
+ASSUMPTION: return_to_play: It would look useful through wide, honest-looking distributions that no one acts on, or through a tool that implicitly pulls in private Cubs medical data and creates a privacy and compliance problem.
+ASSUMPTION: return_to_play: Clubs with internal medical databases likely already do this better, so a public version is parity at best.
+ASSUMPTION: pitch_predictability: The decision is real and recurs daily. Public pitch data (count, prior pitch, handedness) is lawful and available, and an opponent could build the same model.
+ASSUMPTION: pitch_predictability: Predictability is not the same as exploitability. A predictable pitch may still be effective if its quality is high, and reducing predictability may cost pitch quality.
+ASSUMPTION: pitch_predictability: Actionability is plausible, since a pitching coach or catcher could change sequencing. Real clubs probably already run versions of this, so the gain is likely parity.
+ASSUMPTION: pitch_predictability: Testing is feasible on public data. Compare a count-only baseline with richer models and check whether predictability measured early in a season relates to later outcomes. The link to run prevention is unproven.
+ASSUMPTION: pitch_predictability: It would look useful through entropy numbers or predictive accuracy that mostly reflect each pitcher's pitch mix, which is already visible in public data.
+ASSUMPTION: normalization: The decision recurs, and it overlaps heavily with callups. Both need the same league-season adjustments and could be one project.
+ASSUMPTION: normalization: Public MiLB data and documented rule changes are available by season. But rule regimes change mid-season and sample sizes per league-season are small, so adjustment factors may be noisy.
+ASSUMPTION: normalization: The staff action is a different promotion order or prospect ranking. Public sites and park factors partly normalize already, so the marginal change may be small.
+ASSUMPTION: normalization: A retrospective test is possible. Check whether adjusted stats predict next-level or MLB performance better than raw stats with level and age. Rule regimes confound this, because few players cross regimes.
+ASSUMPTION: normalization: It would look useful through elaborate park and rule adjustments that fit past data well but add nothing to out-of-sample prediction over a simple level-and-age baseline.
+ASSUMPTION: opp_bullpen: Reliever usage is public after the fact through box scores, but availability at decision time depends on unobservable warm-ups, injuries and internal usage rules, so forecasts may be only slightly better than a naive rule.
+ASSUMPTION: opp_bullpen: Actionability is limited. Lineups are usually set before the opponent's bullpen use is known, and the Cubs' moves are mostly dictated by game state.
+ASSUMPTION: opp_bullpen: Testing is feasible. Predict each opponent's relievers used on each date and compare against a naive baseline such as no pitches in the last two days. A test with no real baseline would only show that rested pitchers pitch.
+ASSUMPTION: opp_bullpen: Advance staff already estimate this informally, and sophisticated clubs probably have fuller internal usage models.
+ASSUMPTION: opp_bullpen: It would look useful through high accuracy on easy cases, such as relievers who pitched yesterday, while saying nothing about the closer calls where the decision actually changes.
+UNKNOWN: callups: public_milb_statcast_coverage_by_level
+UNKNOWN: callups: cubs_existing_translation_models
+UNKNOWN: rules_ledger: cubs_roster_admin_error_history
+UNKNOWN: rules_ledger: completeness_of_public_option_status_data
+UNKNOWN: return_to_play: granularity_of_public_injury_descriptions
+UNKNOWN: return_to_play: cubs_current_timeline_estimation_process
+UNKNOWN: pitch_predictability: evidence_linking_sequence_entropy_to_run_prevention
+UNKNOWN: pitch_predictability: cubs_existing_sequence_audit
+UNKNOWN: normalization: minor_league_rule_regime_effect_sizes
+UNKNOWN: normalization: public_milb_park_factor_quality
+UNKNOWN: opp_bullpen: forecast_accuracy_vs_naive_rule
+UNKNOWN: opp_bullpen: unobserved_bullpen_warmups_effect
+CONFLICT: pooled_assumption_attribution (the assumption lists are pooled across many ideas and not mapped to the six candidates, so some listed assumptions, such as tipping or grounds crew, do not belong to these six)
+ASSUMPTION: blind_spots: All six lean on public data and assume a public-data tool can beat what sophisticated clubs already hold. At best they reach parity.
+ASSUMPTION: blind_spots: None addresses amateur draft or international scouting, hitter or pitcher development decisions, in-season roster optimization, or players themselves as users.
+ASSUMPTION: blind_spots: Four of the six (callups, normalization, return_to_play, rules_ledger) are front-office or analyst tools. Coaches and game-day staff are barely covered, and those groups' willingness to use a tool is untested.
+ASSUMPTION: blind_spots: Common failure modes include small samples, no pre-registered baseline, hindsight leakage from later-revised data, adoption failure, and no measurement of changed decisions.
+ASSUMPTION: blind_spots: Success is judged by prediction accuracy rather than by changed decisions and downstream wins, so a tool could be accurate and still add nothing.
+IDEA: shared: a pre-registered backtest harness on public data, with naive baselines and time-stamped inputs, that scores any candidate on out-of-sample performance before anything is built
+IDEA: callups: merge callups and normalization into one translation baseline, evaluated on out-of-sample MLB outcomes against a level-and-age baseline, before any interface is built
+IDEA: rules_ledger: first audit whether any rules-related errors have occurred, via interviews with staff, and build the ledger only if they have
+=== CAND claude-sonnet-5-5 False 10712
+ASSUMPTION: CallUpCalibration (1 recurrence) Promotion decisions recur, but they are driven by 40-man space, option status, injuries and service-time, not only readiness. A stats-to-MLB translation may inform a small share of actual decisions.
+ASSUMPTION: CallUpCalibration (2 data) Public MiLB stats are lawful. Statcast-style tracking coverage differs by level and year, and the final-season stat line is hindsight-contaminated unless snapshots are frozen as of each decision date.
+ASSUMPTION: CallUpCalibration (3 action) Uncertainty bands only matter if staff would change timing or choice. If promotions are mostly driven by roster need, the output is decoration.
+ASSUMPTION: CallUpCalibration (4 test) Backtest on public history: forecast the first-MLB-season outcome from snapshots at promotion date and compare against a baseline of raw age-adjusted OPS/ERA with regression to the mean. Check interval coverage and calibration. Promotion selection bias means only promoted players have MLB outcomes.
+ASSUMPTION: CallUpCalibration (5 alternatives) Public projection systems and translation methods exist, and sophisticated clubs likely hold better private models using scouting and tracking data. A public-data version is a baseline at best.
+ASSUMPTION: CallUpCalibration (6 looks-useful) Polished bands with no demonstrated coverage, or a tool tuned in-sample to past call-ups, would look rigorous while adding nothing over public projections.
+UNKNOWN: CallUpCalibration public_milb_statcast_coverage_by_level
+UNKNOWN: CallUpCalibration how_often_cubs_promotion_timing_is_readiness_driven_vs_roster_driven
+ASSUMPTION: RosterLedger (1 recurrence) The problem is real and recurs through the season, but errors may be rare because staff already track options. Value depends on a history of missed or costly moves, which is not shown.
+ASSUMPTION: RosterLedger (2 data) Public transactions are lawful and timely. Option years, optional-assignment days, and some service-time and IL edge cases are not fully public, so the ledger needs internal inputs the project cannot test publicly.
+ASSUMPTION: RosterLedger (3 action) A warning before a move becomes impossible changes behavior only if the deadlines were being missed. Otherwise it only reminds.
+ASSUMPTION: RosterLedger (4 test) Public data can reconstruct past option and eligibility states and count how often clubs lost a player to Rule 5 or burned an option inefficiently. That requires a baseline of a rules-literate spreadsheet, and the frequency of such errors may be too low to measure.
+ASSUMPTION: RosterLedger (5 alternatives) Front offices almost certainly have a spreadsheet or internal database for this, and league systems handle official status. The gain is reliability only.
+ASSUMPTION: RosterLedger (6 looks-useful) A dashboard that restates already-known deadlines looks useful, and rule-encoding bugs after CBA changes could produce false confidence.
+UNKNOWN: RosterLedger cubs_roster_admin_error_history
+UNKNOWN: RosterLedger completeness_of_public_option_status_data
+ASSUMPTION: ReturnToPlay (1 recurrence) IL events recur, but a timeline decision is made by medical staff on individual diagnosis. A comparables search may not change that.
+ASSUMPTION: ReturnToPlay (2 data) Public IL entries have coarse injury labels and no imaging, grade or surgery detail. Public comparables then mix heterogeneous injuries. Any use of Cubs medical data creates privacy and CBA issues and falls outside the public-data constraint.
+ASSUMPTION: ReturnToPlay (3 action) The plausible use is roster contingency planning, such as how long to hold a replacement. Even there, a wide distribution may be uninformative.
+ASSUMPTION: ReturnToPlay (4 test) Backtest predicted days missed from public IL history against a baseline of the median by injury label or the league-wide median. Compare error on out-of-time seasons. Reporting inconsistencies and retroactive IL placement degrade labels.
+ASSUMPTION: ReturnToPlay (5 alternatives) Public injury trackers exist, and clubs with internal medical records and team physicians already hold better information. This is near-certain parity at best.
+ASSUMPTION: ReturnToPlay (6 looks-useful) Tight-looking distributions from vague labels, or post-return performance comparisons confounded by survivorship and by who gets reinstated, would seem informative.
+UNKNOWN: ReturnToPlay granularity_of_public_injury_descriptions
+UNKNOWN: ReturnToPlay cubs_medical_staff_current_use_of_comparables
+ASSUMPTION: PitchSeqSelfScout (1 recurrence) Pregame planning recurs every series and the question of whether pitchers are predictable is real. It is plausible but no evidence shows predictability is exploitable by hitters.
+ASSUMPTION: PitchSeqSelfScout (2 data) Public pitch type, count and handedness data is lawful and available before the next game, so there is no hindsight problem. Hitters use richer cues than this model captures.
+ASSUMPTION: PitchSeqSelfScout (3 action) Staff would vary sequencing. Reducing predictability may cost pitch quality, so the gain is not guaranteed, and catchers and pitchers already adjust by feel.
+ASSUMPTION: PitchSeqSelfScout (4 test) Check whether lower-entropy pitchers allow worse outcomes than predicted by pitch quality, using league-wide public data and a baseline of simple pitch-mix-by-count averages. Predictability of pitch choice and run prevention must be separated from pitch quality and selection by game state.
+ASSUMPTION: PitchSeqSelfScout (5 alternatives) Sophisticated clubs already run sequencing audits, and public tools show pitch mix by count. The edge is parity.
+ASSUMPTION: PitchSeqSelfScout (6 looks-useful) An entropy score that is high or low without being tied to run value looks scientific. Predictable from count alone is also the normal, near-optimal behavior.
+UNKNOWN: PitchSeqSelfScout evidence_linking_sequence_entropy_to_run_prevention
+UNKNOWN: PitchSeqSelfScout cubs_existing_sequence_audit
+ASSUMPTION: CrossLeagueNorm (1 recurrence) It recurs for every minor league evaluation, but it overlaps CallUpCalibration. It is really a preprocessing step, not a separate product.
+ASSUMPTION: CrossLeagueNorm (2 data) Rule regime and park factors are lawful and public. Effect sizes of rule experiments are estimated from a few league-seasons, confounded with who plays there, and rules change faster than data accumulates.
+ASSUMPTION: CrossLeagueNorm (3 action) Evaluators would discount or boost stats by league. They may already do this mentally, so the change is unclear.
+ASSUMPTION: CrossLeagueNorm (4 test) Test whether adjusted stats predict next-level or MLB performance better than raw age-adjusted stats and published park factors. Natural experiments occur when a rule changes within a league, but sample and roster churn limit power.
+ASSUMPTION: CrossLeagueNorm (5 alternatives) Public sites partly normalize already, and clubs hold private adjustments. A public-data version risks only matching them.
+ASSUMPTION: CrossLeagueNorm (6 looks-useful) An adjustment table with many decimals looks precise while its error exceeds its correction.
+UNKNOWN: CrossLeagueNorm minor_league_rule_regime_effect_sizes
+UNKNOWN: CrossLeagueNorm public_milb_park_factor_quality
+CONFLICT: CallUpCalibration_vs_CrossLeagueNorm overlapping scope and shared data dependency, which suggests merging them and testing once
+ASSUMPTION: OppBullpenForecast (1 recurrence) Late-game choices against likely relievers recur nightly. But the lineup, pinch-hit and platoon decisions are largely set by matchup and roster, and knowing who is unavailable is a marginal input.
+ASSUMPTION: OppBullpenForecast (2 data) Public box scores give appearances and pitch counts after the game, so a forecast for tonight is legitimate. Injuries, internal usage limits and warm-up-only workload are not public, so true availability is only partly observable.
+ASSUMPTION: OppBullpenForecast (3 action) Staff might hold a pinch-hitter or adjust a platoon start. The effect of any such change is small, and bullpens can be reshaped by the opponent in-game.
+ASSUMPTION: OppBullpenForecast (4 test) Backtest availability predictions from rolling workload against the naive rule of used yesterday or at 25+ pitches means unavailable, and score precision, recall and Brier loss. Then ask whether predictions would have changed any decision. That second step cannot be done with public data alone.
+ASSUMPTION: OppBullpenForecast (5 alternatives) Advance scouts and analysts already estimate this, and public workload trackers exist. Clubs likely have more complete information, including real warm-up information.
+ASSUMPTION: OppBullpenForecast (6 looks-useful) High accuracy on trivial cases such as pitched three days in a row looks good, but it matches the naive rule and does not affect any decision.
+UNKNOWN: OppBullpenForecast forecast_accuracy_vs_naive_rule
+UNKNOWN: OppBullpenForecast unobserved_bullpen_warmups_effect
+ASSUMPTION: BlindSpots Shared assumption: public data suffices to create an edge. For most of these candidates sophisticated clubs hold richer private data, so the likely outcome is parity.
+ASSUMPTION: BlindSpots Shared assumption: staff behavior would change when handed a tool. Adoption, trust and incentives are untested for all six, and none states a measurable decision change.
+ASSUMPTION: BlindSpots Common failure mode: evaluating on outcomes without freezing the information available at decision time, which creates hindsight leakage. Also small samples, selection effects, and comparing against weak baselines instead of simple ones.
+ASSUMPTION: BlindSpots The candidate set is analyst-centric and information-centric. It does not cover amateur draft and scouting workflow, pro acquisition and trade valuation, hitter development, strength and conditioning, ticketing and business operations, or defensive and baserunning in-game decisions.
+ASSUMPTION: BlindSpots The supplied context mixes assumptions from different ideas under each candidate, and no source records support any claim, so every statement above is unverified critique.
+UNKNOWN: BlindSpots cubs_internal_analytics_capabilities
+UNKNOWN: BlindSpots supplied_evidence_records_for_any_candidate
+IDEA: DecisionSnapshotBacktestHarness Build a frozen as-of-date public-data archive and a scoring harness that tests any of these six predictions against simple baselines. Users are analysts, the decision is which tool deserves staff time, and the intervention is an evaluation framework rather than a product.
+ASSUMPTION: DecisionSnapshotBacktestHarness Public historical snapshots, such as dated transaction logs and box scores, can be reconstructed without hindsight leakage. This needs verification.
+=== CAND claude-sonnet-5-5 False 9797
+ASSUMPTION: Callup-calibration: the promotion decision recurs, but it is driven by 40-man status, roster need, service-time and option rules, and development-staff judgment, so a translation estimate may rarely be the binding input.
+ASSUMPTION: Callup-calibration: public MiLB stats exist at decision time, but public MiLB tracking coverage varies by level and season (UNVERIFIED); the best inputs (scouting, private tracking) are not public, so the tool is a baseline, not an edge.
+ASSUMPTION: Callup-calibration: a staffer would change promotion timing or the comparison set only if bands move a decision across a threshold; bands wide enough to be honest may never do so.
+ASSUMPTION: Callup-calibration: a retrospective test is feasible: for each past league-season, use only data through the promotion date, predict MLB outcomes after promotion, and compare against a simple baseline (raw wRC+ or ERA with a fixed level discount). Check calibration of the intervals, not just point error. Selection bias applies because only promoted players have MLB outcomes.
+ASSUMPTION: Callup-calibration: public alternatives already exist (FanGraphs, Baseball Prospectus, and Baseball Savant minor-league pages and translation or projection systems), and sophisticated clubs likely have better models. The software overlaps heavily with these.
+ASSUMPTION: Callup-calibration: it would look useful with polished dashboards, narrow bands from an overconfident model, or a backtest scored on players who reached MLB anyway or tuned with later-season data (hindsight leakage).
+ASSUMPTION: Roster-ledger: option years, optional assignments, DFA timing and Rule 5 deadlines recur every season, and mistakes are costly, but they are likely rare in a club with dedicated baseball operations staff.
+ASSUMPTION: Roster-ledger: public transactions can reconstruct part of the status, but option-year counts, minimum-days-down tracking, service time and injured-list edge cases may not be fully public or may rest on rules that change with each CBA. Treat completeness as UNKNOWN.
+ASSUMPTION: Roster-ledger: the actionable output is an alert before a move becomes costly. Value depends on the club's current error history, which is not supplied. A spreadsheet plus a rules-literate staffer may already suffice.
+ASSUMPTION: Roster-ledger: retrospective testing is weak. Public data cannot show a missed move that was never made, so you could only replay known historical cases and count how many the ledger would have flagged. That is a unit test, not evidence of advantage.
+ASSUMPTION: Roster-ledger: it would look useful with a good-looking calendar of deadlines for facts staff already know, or by being tested only on cases chosen in hindsight.
+ASSUMPTION: RTP-comparables: IL placements recur often, but timelines come mainly from private diagnosis, imaging and clinician judgment; public IL records give only a coarse injury label (granularity UNKNOWN), so comparables may mislead.
+ASSUMPTION: RTP-comparables: public IL data are lawfully available, but the diagnosis at decision time is private. Putting private Cubs medical data into the tool would need a separate privacy and governance review. Public return dates are labelled after the fact.
+ASSUMPTION: RTP-comparables: the actionable change is a contingency plan, such as whether to call up a replacement or stash an IL slot. A distribution wide enough to be honest may not change that choice.
+ASSUMPTION: RTP-comparables: the backtest would predict days missed from information known at IL placement and compare against a baseline of the league-wide median by IL type. Selection and reporting bias is a risk because teams describe injuries inconsistently and sometimes vaguely.
+ASSUMPTION: RTP-comparables: medical departments and vendors probably already hold richer internal databases, and public injury trackers exist. It would look useful with fine-grained comparable "matches" that are really noise from small samples.
+ASSUMPTION: Pitch-predictability: the pregame game-plan decision recurs every series, but predictability from count, prior pitch and batter handedness is a coarse model, and the real game plan is driven by hitter-specific weaknesses and pitch quality.
+ASSUMPTION: Pitch-predictability: public pitch-by-pitch data is lawful and available before the game, so there is no hindsight problem if only past games are used. But opponents' actual models and the catcher's in-game adaptation are not visible.
+ASSUMPTION: Pitch-predictability: the staff action would be to change pitch mix or sequencing. This may trade lower predictability for worse pitch quality, so lower predictability need not mean fewer runs.
+ASSUMPTION: Pitch-predictability: a falsifiable test is whether sequence entropy or model predictive accuracy on earlier games predicts run prevention in later games after controlling for pitch quality, against a baseline of pitch quality alone. Evidence linking predictability to results is UNKNOWN.
+ASSUMPTION: Pitch-predictability: sophisticated clubs likely already run this self-scout. It would look useful with accurate next-pitch prediction scores that merely reflect obvious count effects, or with pitcher charts that nobody can act on.
+ASSUMPTION: Cross-league-normalization: promotion comparison across affiliates recurs constantly, and rule regimes (ABS, pitch clock, park) differ, so the problem is plausible. The effect sizes of rule regimes are UNKNOWN.
+ASSUMPTION: Cross-league-normalization: public stats and park information are available at decision time, but rule changes and few league-seasons give little data for estimating adjustments. Rosters turn over, and the adjustments partly confound player quality.
+ASSUMPTION: Cross-league-normalization: the action is a fairer comparison, but it matters mainly when it flips a ranking, which may be uncommon. Public sites already partly normalize by league and park.
+ASSUMPTION: Cross-league-normalization: the backtest compares against raw league-relative stats or existing public park-adjusted ones, scored on out-of-sample MLB outcomes. Compare adjusted versus unadjusted rank correlation using only information through the evaluation date.
+ASSUMPTION: Cross-league-normalization: it would look useful with many adjustment factors fit to a handful of league-seasons, which overfits and looks rigorous.
+ASSUMPTION: Opp-bullpen: lineup and pinch-hit decisions recur daily, but the manager and coaches already estimate who is likely to pitch, and knowing it must change the choice for the forecast to matter.
+ASSUMPTION: Opp-bullpen: public box scores are lawful and available the morning of the game. They omit warmups, injuries, undisclosed rest, and the opposing club's private usage rules, so accuracy may be capped.
+ASSUMPTION: Opp-bullpen: the staff would reorder a lineup, hold a pinch hitter, or choose a platoon starter. The effect on win probability is probably small because lineup order matters little, and unavoidable constraints bind the choice.
+ASSUMPTION: Opp-bullpen: the test is easy and falsifiable. Predict each day's available relievers from prior-day usage and compare against a naive rule such as "pitched yesterday and threw more than a fixed pitch count means unavailable." Use only prior data. Whether the gain converts to runs is UNKNOWN.
+ASSUMPTION: Opp-bullpen: public availability-style trackers and clubs' advance scouts already do this. It would look useful with a high forecast hit rate that mostly reflects the naive rule.
+ASSUMPTION: Shared-blind-spot: all six lean on public data, so the best case is parity with clubs holding private tracking, medical and scouting data; none shows a mechanism for a durable edge.
+ASSUMPTION: Shared-blind-spot: none establishes the Cubs' current process, staff size, or error history, and these are UNKNOWN. A tool built without that is guessing about the need.
+ASSUMPTION: Shared-blind-spot: adoption is unaddressed. Staff must trust, see and use outputs at the moment of decision. No candidate names a workflow or an owner.
+ASSUMPTION: Shared-blind-spot: backtests are proxies for the metric, not for decisions. None defines the counterfactual, the cost of a wrong alert, or a win-value estimate. Small samples, multiple comparisons and retrospective tuning threaten all of them.
+ASSUMPTION: Shared-blind-spot: the set mostly covers analysts, front office and coaches. It barely covers amateur and international scouting, strength and conditioning, mental performance, and clubhouse or equipment operations. Draft and trade valuation, contract or free-agent decisions, and minor-league logistics beyond promotion are largely absent.
+ASSUMPTION: Shared-blind-spot: shared failure modes include dashboards that report accuracy without decisions changed, leakage of post-decision information, privacy and rules compliance concerns, and tools that duplicate public sites.
+UNKNOWN: cubs_current_decision_processes_and_tooling
+UNKNOWN: cubs_roster_admin_error_history
+UNKNOWN: public_milb_tracking_coverage_by_level
+UNKNOWN: granularity_of_public_injury_descriptions
+UNKNOWN: evidence_linking_sequence_predictability_to_run_prevention
+UNKNOWN: minor_league_rule_regime_effect_sizes
+UNKNOWN: win_value_of_bullpen_forecast_driven_lineup_changes
+IDEA: Decision-change audit (replacement): for a small set of recurring decisions, log pre-decision recommendations and what staff actually did, then score the outcome with a pre-registered baseline. First measure how often an output would have changed a choice before building any model.
+IDEA: Sharpened roster-ledger test: have a baseball-operations lawyer or analyst list past near-misses from public transaction reports (known only after the fact) as a regression check. Then measure only alert timeliness and false-alarm rate, not claimed wins.
+=== CAND claude-sonnet-5-5 False 10005
+ASSUMPTION: META - No evidence records or fact keys were supplied, so there are no FACT or CITE lines. Every critique below is speculative and unverified.
+ASSUMPTION: META - The candidate assumption lists are pooled across unrelated ideas and are not mapped to their candidates. Several (tipping, grounds crew, replay) belong to ideas outside these six, so they cannot be treated as support for any one of them.
+
+ASSUMPTION: CALLUP_TRANSLATOR - Problem plausibility: promotion decisions recur, but they are driven by roster slots, 40-man status, injuries and development goals as much as by projected performance. A translated-stats forecast may address only a small part of the decision.
+ASSUMPTION: CALLUP_TRANSLATOR - Data: public MiLB box-score stats are lawful and timely. Tracking data coverage differs by level and is unverified, and scouting-grade inputs are private and out of scope.
+ASSUMPTION: CALLUP_TRANSLATOR - Actionability: staff would change a call-up only if the uncertainty band is wide enough to alter a ranking. Otherwise it is a display of what they already believe.
+ASSUMPTION: CALLUP_TRANSLATOR - Testability: backtest translated MiLB lines against later MLB outcomes for players who were actually promoted, using year-by-year training cutoffs, against a naive baseline such as a raw-stat or age-adjusted rule. Survivorship bias is a threat, because only promoted players generate MLB samples. Interval calibration (coverage rates) is a stronger test than point error.
+ASSUMPTION: CALLUP_TRANSLATOR - Alternatives: public projection systems and translation methods already exist, and sophisticated clubs likely hold better internal models. A public-data version is at best a baseline.
+ASSUMPTION: CALLUP_TRANSLATOR - Looks useful but isn't: polished uncertainty bands on small samples, backtests that leak league-season context from later years, and accuracy measured against a weak baseline rather than the public systems.
+UNKNOWN: CALLUP_TRANSLATOR - public_milb_statcast_coverage_by_level, and how often the Cubs' promotions hinge on projection rather than roster mechanics.
+
+ASSUMPTION: ROSTER_LEDGER - Problem plausibility: the rules are real and the deadlines are hard. But errors may be rare, and a rules-literate operations staffer with a spreadsheet may already prevent them.
+ASSUMPTION: ROSTER_LEDGER - Data: transactions are public, but option-year counts, service-time edge cases and injured-list interactions may not be fully reconstructible. The ledger would depend on internal records anyway.
+ASSUMPTION: ROSTER_LEDGER - Actionability: the warning must arrive early enough to change a move, and someone must own acting on it.
+ASSUMPTION: ROSTER_LEDGER - Testability: public data supports little. You could replay past public transactions for violations or near-misses, but internal error history is private. A baseline of a manual calendar would be hard to beat visibly.
+ASSUMPTION: ROSTER_LEDGER - Alternatives: league transaction systems, spreadsheets and likely existing club tooling.
+ASSUMPTION: ROSTER_LEDGER - Looks useful but isn't: a dashboard with many alerts and no avoided losses, or deadline reminders for items staff already track.
+UNKNOWN: ROSTER_LEDGER - cubs_roster_admin_error_history, completeness_of_public_option_status_data.
+
+ASSUMPTION: RTP_COMPS - Problem plausibility: injury timelines recur, but medical staff set them from private exams and imaging. Public IL labels are coarse.
+ASSUMPTION: RTP_COMPS - Data: public IL entries are lawful but carry limited detail, and injury descriptions may be vague, delayed or inconsistent. The IL date is a roster decision, not an injury date, so it can mislead.
+ASSUMPTION: RTP_COMPS - Actionability: the output would shift roster contingency planning only if the comparable distribution is tighter than staff priors. Wide distributions mostly confirm uncertainty.
+ASSUMPTION: RTP_COMPS - Testability: forecast days missed by injury type using only information public at the placement date. Compare against a baseline of the league-wide median for IL type, or a position-only baseline, and score interval coverage. Confounding by team medical practice and roster need is a risk.
+ASSUMPTION: RTP_COMPS - Alternatives: public injury trackers exist, and clubs with internal medical databases likely already do this better.
+ASSUMPTION: RTP_COMPS - Looks useful but isn't: backtests that use diagnoses revealed after the placement date (hindsight), or attractive comparables that are not predictive.
+ASSUMPTION: RTP_COMPS - Risk: shared tooling must not take in private Cubs medical data.
+UNKNOWN: RTP_COMPS - granularity_of_public_injury_descriptions.
+
+ASSUMPTION: SEQ_SELFSCOUT - Problem plausibility: pregame planning recurs. But predictability from count, previous pitch and handedness is only a weak proxy for exploitability, which also depends on pitch quality and location.
+ASSUMPTION: SEQ_SELFSCOUT - Data: public pitch-by-pitch data is lawful and available after each game. Pregame use depends on prior games only, so a strict walk-forward test is needed.
+ASSUMPTION: SEQ_SELFSCOUT - Actionability: a coach changes sequencing only if reduced predictability improves outcomes. Making a pitcher less predictable can cost pitch quality.
+ASSUMPTION: SEQ_SELFSCOUT - Testability: compare sequence entropy or predictability with run prevention in later games. Use a baseline of league-average predictability, and check whether outcomes differ for high- versus low-predictability pitchers. Small samples per pitcher will dominate.
+ASSUMPTION: SEQ_SELFSCOUT - Alternatives: public pitch-mix tools and likely internal audits at sophisticated clubs. The edge may be parity.
+ASSUMPTION: SEQ_SELFSCOUT - Looks useful but isn't: an entropy chart with no link to runs, or a flagged pattern that is really a pitch-quality or situational artifact.
+UNKNOWN: SEQ_SELFSCOUT - evidence_linking_sequence_entropy_to_run_prevention, cubs_existing_sequence_audit.
+
+ASSUMPTION: MILB_CONTEXT_NORM - Problem plausibility: league and park differences are real and the comparison recurs. But public sites partly adjust already, and overlap with CALLUP_TRANSLATOR is large, so it is arguably one project.
+ASSUMPTION: MILB_CONTEXT_NORM - Data: public stats and rule-change dates are lawful and usable. Rule-regime effects are confounded with talent and call-up churn, and single league-seasons give few samples.
+ASSUMPTION: MILB_CONTEXT_NORM - Actionability: staff would alter promotion timing or prospect ranking only if the adjustment moves players across decision thresholds.
+ASSUMPTION: MILB_CONTEXT_NORM - Testability: test whether adjusted stats predict later performance better than raw stats, using players who move between leagues or rule regimes as natural checks. Baselines are raw stats and simple park factors.
+ASSUMPTION: MILB_CONTEXT_NORM - Alternatives: public park factors, league-level adjusted metrics, and likely internal models.
+ASSUMPTION: MILB_CONTEXT_NORM - Looks useful but isn't: over-fit regime coefficients from tiny samples, or adjustments that change values trivially next to the noise.
+UNKNOWN: MILB_CONTEXT_NORM - minor_league_rule_regime_effect_sizes, public_milb_park_factor_quality.
+
+ASSUMPTION: OPP_BULLPEN - Problem plausibility: reliever usage affects lineup and pinch-hit choices daily. But opposing managers' choices also depend on private warm-up, health and front-office information.
+ASSUMPTION: OPP_BULLPEN - Data: public box scores and pitch counts are lawful and available before game time, but they omit unrecorded warm-ups and injuries, which the Cubs would not see either.
+ASSUMPTION: OPP_BULLPEN - Actionability: a lineup or pinch-hit change must follow from a forecast. Often a manager already assumes the opponent's best relievers are used when needed, so the forecast may change little.
+ASSUMPTION: OPP_BULLPEN - Testability: strong. Predict which relievers appear using only the prior-day data and compare against naive rules such as "rested if not used yesterday". Score by log loss or Brier score. Then test whether any decisions would have differed.
+ASSUMPTION: OPP_BULLPEN - Alternatives: advance scouts, public usage trackers and likely club tools.
+ASSUMPTION: OPP_BULLPEN - Looks useful but isn't: high forecast accuracy that merely reproduces the naive rule, or accuracy on easy cases only.
+UNKNOWN: OPP_BULLPEN - forecast_accuracy_vs_naive_rule, unobserved_bullpen_warmups_effect.
+
+ASSUMPTION: BLINDSPOTS - Shared assumption: public data plus a model equals an edge. Several candidates are parity with sophisticated clubs at best, and the set never shows a Cubs-specific bottleneck.
+ASSUMPTION: BLINDSPOTS - Shared assumption: adoption by busy staff. None of the candidates describes how it would reach a decision-maker, or who is accountable when the tool is wrong.
+ASSUMPTION: BLINDSPOTS - Shared failure modes: hindsight leakage in backtests, small samples, weak or missing baselines, survivorship bias, and measuring forecast accuracy rather than changed decisions or wins.
+ASSUMPTION: BLINDSPOTS - Uncovered user groups and decisions: amateur draft and scouting, in-season pitching staff workload, defense and positioning, ticket and fan-facing operations, and business-side staff. Most candidates also focus on information tools rather than on coordination, data-entry burden or error prevention.
+IDEA: BLINDSPOTS - Merge CALLUP_TRANSLATOR and MILB_CONTEXT_NORM into one baseline: a public-data translation model with walk-forward calibration, scored against raw-stat and public-projection baselines. Only if it beats those baselines would any added staff tooling be justified.
+IDEA: OPP_BULLPEN - Start with a pre-registered forecast-only test, run as a spreadsheet, and record which Cubs decisions would have changed. Build software only if the forecast beats the naive rule and decisions change.
+UNKNOWN: BLINDSPOTS - cubs_internal_analytics_capabilities, existing_cubs_decision_review_process, and the rate at which each candidate decision recurs per season.

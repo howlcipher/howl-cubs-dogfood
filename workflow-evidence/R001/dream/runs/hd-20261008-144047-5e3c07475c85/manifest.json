@@ -1,0 +1,101 @@
+{
+  "schema": "howldream.run/v1",
+  "run_id": "hd-20261008-144047-5e3c07475c85",
+  "experiment_id": "c67ad79548a9e848707c1df1bff01289aeeeaa991cba2a38e8bae08a332127c5",
+  "version": "0.4.4",
+  "git_commit": "f1cc5ca1f9e1d120da6cbf18bbc192ab6ef23abe",
+  "implementation_hash": "4146772cb46f4e4a159f89881dc87831680ca5d5527763163c20294427d2469c",
+  "mode": "dream",
+  "started_at": "2026-10-08T14:40:47.210479+00:00",
+  "provider": {
+    "kind": "command",
+    "model": "claude-opus-5-5",
+    "base_url": null,
+    "allow_remote": true,
+    "allow_local_inference": false,
+    "forbid_local_inference": true,
+    "timeout_seconds": 300,
+    "max_tokens": 4096
+  },
+  "capabilities": {
+    "supports_seed": false,
+    "supports_temperature": false,
+    "supports_top_p": false,
+    "supports_logprobs": false,
+    "supports_tool_calls": false,
+    "supports_structured_output": false,
+    "supports_token_usage": false,
+    "supports_local_instrumentation": false
+  },
+  "authority": "NONE",
+  "parent_run": null,
+  "status": "COMPLETE",
+  "errors": [],
+  "template_version": "line_experiment/v2",
+  "template_hash": "8096777d16cf15dcd68f34f709eeb4f81e1b983ba58fdda00c8008f2aa7add7b",
+  "source_hashes": {
+    "objective_context": "f1bc42c71215e9c6e76df168ec08e879a86cc88ba49f040df32efa08b2cffc3e"
+  },
+  "replay": "CONFIGURATION_REPLAY_NOT_GUARANTEED",
+  "replay_available": true,
+  "warnings": [
+    "Verification is scoped to supplied evidence; generated text has no authority.",
+    "EXPERIMENT_CONTROL_NOT_APPLIED: inspect sampling requested/supported/applied; condition differences are confounded"
+  ],
+  "call_count": 9,
+  "analysis": {
+    "version": "0.4.4",
+    "implementation_hash": "4146772cb46f4e4a159f89881dc87831680ca5d5527763163c20294427d2469c",
+    "analyzed_at": "2026-10-08T14:46:47.738248+00:00",
+    "git_commit": "f1cc5ca1f9e1d120da6cbf18bbc192ab6ef23abe"
+  },
+  "participation": [
+    {
+      "operation": "GENERATED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": "claude",
+      "origin_model": "claude-opus-5-5",
+      "subject_count": 6,
+      "inference_occurred": true,
+      "note": "Dream prompted the provider; the provider authored the text."
+    },
+    {
+      "operation": "CLUSTERED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 49,
+      "inference_occurred": false,
+      "note": "Deterministic concept-token clustering; no inference."
+    },
+    {
+      "operation": "RANKED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 25,
+      "inference_occurred": false,
+      "note": "Advisory heuristic ranking; no execution authority."
+    }
+  ],
+  "observed_models": [
+    "claude-opus-5-5"
+  ],
+  "completed_at": "2026-10-08T14:46:48.327335+00:00",
+  "file_hashes": {
+    "baseline.jsonl": "24a87a604edc9c55d97959af59ff61f72bc0eadf16d7cd63b6e6660321c34df3",
+    "candidates.jsonl": "d0554c70d6353ebe2dffb20fc87c607da70968fd6b1b48884c955d6c7c9e3b9e",
+    "claims.jsonl": "cacc12a77b6c6c1fee12a6cc3377d1546e87c4741b6894e1ca4aa339d3a6cfd4",
+    "discovery.json": "b200b79ee691a782b9e0b83dde44fc4cf838ecea15cee7c81154d6570e6547a6",
+    "experiment.json": "7b7cd8bd534e765177620470b484b2b4789d129f2bc73ed270e8c98459166332",
+    "handoff.json": "16f17ffdb840cfec52e883e329ae0e13c9ef0de01bc006487f5606c91dc0c724",
+    "metrics.json": "b8270c3b48efd014b9dc1fcc28d41846134aa10c9863891f50d9cf4de845a8cf",
+    "report.md": "28354b6b1d8dfe4a0308f0842f5b96f2e4f56d11a1dfe2a67dc5e9c5e082b104",
+    "scores.json": "d86b24e74f3028b8a964588900fca96c4281277f3735cb7a1847a08f2bd01a70",
+    "verification.jsonl": "e8d300a0ad326ad6538f90ec56b8fb0dcf4d893b5b8070b4c657e1b7910ad099",
+    "exploration_envelope.json": "43c4b46afade958e42805f1af30235f24d1543559ef61c58d686bed63fbe2b61"
+  }
+}

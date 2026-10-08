@@ -1,0 +1,139 @@
+{
+  "schema": "howldream.handoff/v1",
+  "authority": "NONE",
+  "run_id": "hd-20261008-143010-528e5330b08f",
+  "outcome": "DEFER",
+  "outcome_namespace": "howldream.advisory",
+  "confidence": null,
+  "candidates": [
+    {
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/0",
+      "duplicate_of": null,
+      "cluster_id": "hd-20261008-143010-528e5330b08f/candidates/0/0",
+      "novelty": {
+        "value": 0.6923937360178971,
+        "scorer_type": "heuristic"
+      },
+      "relevance": {
+        "value": true,
+        "scorer_type": "heuristic",
+        "method": "objective_content_token_overlap"
+      },
+      "failure_count": 0,
+      "blocking_failure_count": 0,
+      "claim_status_counts": {
+        "SUPPORTED": 0,
+        "ECHO": 0,
+        "CONTRADICTED": 0,
+        "UNCERTAIN": 70,
+        "UNSUPPORTED": 0
+      },
+      "citation_error_count": 0,
+      "unresolved_count": 70,
+      "measurement_version": 2,
+      "supported_count": 0,
+      "false_premise_rejection_count": 0,
+      "measurement_type": "deterministic",
+      "decision": "INVESTIGATE",
+      "decision_type": "heuristic",
+      "reason": "Proposal merits investigation only; feasibility and assumptions remain unverified."
+    },
+    {
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/1",
+      "duplicate_of": null,
+      "cluster_id": "hd-20261008-143010-528e5330b08f/candidates/0/1",
+      "novelty": {
+        "value": 0.7524339360222532,
+        "scorer_type": "heuristic"
+      },
+      "relevance": {
+        "value": true,
+        "scorer_type": "heuristic",
+        "method": "objective_content_token_overlap"
+      },
+      "failure_count": 0,
+      "blocking_failure_count": 0,
+      "claim_status_counts": {
+        "SUPPORTED": 0,
+        "ECHO": 0,
+        "CONTRADICTED": 0,
+        "UNCERTAIN": 38,
+        "UNSUPPORTED": 0
+      },
+      "citation_error_count": 0,
+      "unresolved_count": 38,
+      "measurement_version": 2,
+      "supported_count": 0,
+      "false_premise_rejection_count": 0,
+      "measurement_type": "deterministic",
+      "decision": "INVESTIGATE",
+      "decision_type": "heuristic",
+      "reason": "Proposal merits investigation only; feasibility and assumptions remain unverified."
+    },
+    {
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/2",
+      "duplicate_of": null,
+      "cluster_id": "hd-20261008-143010-528e5330b08f/candidates/0/2",
+      "novelty": {
+        "value": 0.7412587412587412,
+        "scorer_type": "heuristic"
+      },
+      "relevance": {
+        "value": true,
+        "scorer_type": "heuristic",
+        "method": "objective_content_token_overlap"
+      },
+      "failure_count": 0,
+      "blocking_failure_count": 0,
+      "claim_status_counts": {
+        "SUPPORTED": 0,
+        "ECHO": 0,
+        "CONTRADICTED": 0,
+        "UNCERTAIN": 46,
+        "UNSUPPORTED": 0
+      },
+      "citation_error_count": 0,
+      "unresolved_count": 46,
+      "measurement_version": 2,
+      "supported_count": 0,
+      "false_premise_rejection_count": 0,
+      "measurement_type": "deterministic",
+      "decision": "INVESTIGATE",
+      "decision_type": "heuristic",
+      "reason": "Proposal merits investigation only; feasibility and assumptions remain unverified."
+    },
+    {
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/3",
+      "duplicate_of": null,
+      "cluster_id": "hd-20261008-143010-528e5330b08f/candidates/0/3",
+      "novelty": {
+        "value": 0.7322175732217573,
+        "scorer_type": "heuristic"
+      },
+      "relevance": {
+        "value": true,
+        "scorer_type": "heuristic",
+        "method": "objective_content_token_overlap"
+      },
+      "failure_count": 0,
+      "blocking_failure_count": 0,
+      "claim_status_counts": {
+        "SUPPORTED": 0,
+        "ECHO": 0,
+        "CONTRADICTED": 0,
+        "UNCERTAIN": 54,
+        "UNSUPPORTED": 0
+      },
+      "citation_error_count": 0,
+      "unresolved_count": 54,
+      "measurement_version": 2,
+      "supported_count": 0,
+      "false_premise_rejection_count": 0,
+      "measurement_type": "deterministic",
+      "decision": "INVESTIGATE",
+      "decision_type": "heuristic",
+      "reason": "Proposal merits investigation only; feasibility and assumptions remain unverified."
+    }
+  ],
+  "verification_status": "REQUIRES_DOWNSTREAM_REVIEW"
+}

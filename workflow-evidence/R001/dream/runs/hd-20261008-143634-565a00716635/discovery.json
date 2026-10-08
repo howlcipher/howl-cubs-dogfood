@@ -1,0 +1,247 @@
+{
+  "context_echo_ratio": 0.125,
+  "evidence_echo_ratio": 0.125,
+  "novel_concept_ratio": 1.0,
+  "repeated_family_ratio": 0.25,
+  "idea_count": 8,
+  "cluster_count": 6,
+  "units": [
+    {
+      "id": "hd-20261008-143634-565a00716635/candidates/0/0/idea/1",
+      "candidate_id": "hd-20261008-143634-565a00716635/candidates/0/0",
+      "text": "IDEA: shared: a pre-registered backtest harness on public data, with naive baselines and time-stamped inputs, that scores any candidate on out-of-sample performance before anything is built",
+      "source_span": [
+        8495,
+        8684
+      ],
+      "source_hash": "d1d287303fc8c03ebcf54639b7e87a3cd34305dca87ef1892760ad5ae2b0d482",
+      "cluster": "cluster-1",
+      "representative": "hd-20261008-143634-565a00716635/candidates/0/0/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.23809523809523808,
+      "context_token_overlap": 0.23809523809523808,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-143634-565a00716635/candidates/0/0/idea/2",
+      "candidate_id": "hd-20261008-143634-565a00716635/candidates/0/0",
+      "text": "IDEA: callups: merge callups and normalization into one translation baseline, evaluated on out-of-sample MLB outcomes against a level-and-age baseline, before any interface is built",
+      "source_span": [
+        8685,
+        8866
+      ],
+      "source_hash": "d1d287303fc8c03ebcf54639b7e87a3cd34305dca87ef1892760ad5ae2b0d482",
+      "cluster": "cluster-2",
+      "representative": "hd-20261008-143634-565a00716635/candidates/0/0/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.16666666666666666,
+      "context_token_overlap": 0.16666666666666666,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-143634-565a00716635/candidates/0/0/idea/3",
+      "candidate_id": "hd-20261008-143634-565a00716635/candidates/0/0",
+      "text": "IDEA: rules_ledger: first audit whether any rules-related errors have occurred, via interviews with staff, and build the ledger only if they have",
+      "source_span": [
+        8867,
+        9012
+      ],
+      "source_hash": "d1d287303fc8c03ebcf54639b7e87a3cd34305dca87ef1892760ad5ae2b0d482",
+      "cluster": "cluster-3",
+      "representative": "hd-20261008-143634-565a00716635/candidates/0/0/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.25,
+      "context_token_overlap": 0.25,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-143634-565a00716635/candidates/0/1/idea/1",
+      "candidate_id": "hd-20261008-143634-565a00716635/candidates/0/1",
+      "text": "IDEA: DecisionSnapshotBacktestHarness Build a frozen as-of-date public-data archive and a scoring harness that tests any of these six predictions against simple baselines. Users are analysts, the decision is which tool deserves staff time, and the intervention is an evaluation framework rather than a product.",
+      "source_span": [
+        10209,
+        10519
+      ],
+      "source_hash": "aaa79611a4c209bd7f5a677df20f17978e792545789d73b182e690b8fbfa739a",
+      "cluster": "cluster-1",
+      "representative": "hd-20261008-143634-565a00716635/candidates/0/0/idea/1",
+      "similar_to": "hd-20261008-143634-565a00716635/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.3448275862068966,
+      "context_token_overlap": 0.3448275862068966,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143634-565a00716635/candidates/0/2/idea/1",
+      "candidate_id": "hd-20261008-143634-565a00716635/candidates/0/2",
+      "text": "IDEA: Decision-change audit (replacement): for a small set of recurring decisions, log pre-decision recommendations and what staff actually did, then score the outcome with a pre-registered baseline. First measure how often an output would have changed a choice before building any model.",
+      "source_span": [
+        9248,
+        9536
+      ],
+      "source_hash": "d815e9d2fa43085e87d0494392a77aaa83a52407fa3ae3642c07d00bb48e9eb4",
+      "cluster": "cluster-4",
+      "representative": "hd-20261008-143634-565a00716635/candidates/0/2/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.3125,
+      "context_token_overlap": 0.3125,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-143634-565a00716635/candidates/0/2/idea/2",
+      "candidate_id": "hd-20261008-143634-565a00716635/candidates/0/2",
+      "text": "IDEA: Sharpened roster-ledger test: have a baseball-operations lawyer or analyst list past near-misses from public transaction reports (known only after the fact) as a regression check. Then measure only alert timeliness and false-alarm rate, not claimed wins.",
+      "source_span": [
+        9537,
+        9797
+      ],
+      "source_hash": "d815e9d2fa43085e87d0494392a77aaa83a52407fa3ae3642c07d00bb48e9eb4",
+      "cluster": "cluster-5",
+      "representative": "hd-20261008-143634-565a00716635/candidates/0/2/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.1935483870967742,
+      "context_token_overlap": 0.1935483870967742,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-143634-565a00716635/candidates/0/3/idea/1",
+      "candidate_id": "hd-20261008-143634-565a00716635/candidates/0/3",
+      "text": "IDEA: BLINDSPOTS - Merge CALLUP_TRANSLATOR and MILB_CONTEXT_NORM into one baseline: a public-data translation model with walk-forward calibration, scored against raw-stat and public-projection baselines. Only if it beats those baselines would any added staff tooling be justified.",
+      "source_span": [
+        9340,
+        9620
+      ],
+      "source_hash": "c0dfb48e07a6da10ab1dfb587a6f295f5147d269d5e43c8781ce3773da4ef462",
+      "cluster": "cluster-6",
+      "representative": "hd-20261008-143634-565a00716635/candidates/0/3/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.1935483870967742,
+      "context_token_overlap": 0.1935483870967742,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-143634-565a00716635/candidates/0/3/idea/2",
+      "candidate_id": "hd-20261008-143634-565a00716635/candidates/0/3",
+      "text": "IDEA: OPP_BULLPEN - Start with a pre-registered forecast-only test, run as a spreadsheet, and record which Cubs decisions would have changed. Build software only if the forecast beats the naive rule and decisions change.",
+      "source_span": [
+        9621,
+        9841
+      ],
+      "source_hash": "c0dfb48e07a6da10ab1dfb587a6f295f5147d269d5e43c8781ce3773da4ef462",
+      "cluster": "cluster-1",
+      "representative": "hd-20261008-143634-565a00716635/candidates/0/0/idea/1",
+      "similar_to": "hd-20261008-143634-565a00716635/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.14285714285714285,
+      "context_token_overlap": 0.14285714285714285,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    }
+  ],
+  "clusters": [
+    {
+      "id": "cluster-1",
+      "representative": "hd-20261008-143634-565a00716635/candidates/0/0/idea/1",
+      "representative_text": "IDEA: shared: a pre-registered backtest harness on public data, with naive baselines and time-stamped inputs, that scores any candidate on out-of-sample performance before anything is built",
+      "label": "any, anything, backtest, baselines, before, built, candidate, data",
+      "members": [
+        "hd-20261008-143634-565a00716635/candidates/0/0/idea/1",
+        "hd-20261008-143634-565a00716635/candidates/0/1/idea/1",
+        "hd-20261008-143634-565a00716635/candidates/0/3/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-2",
+      "representative": "hd-20261008-143634-565a00716635/candidates/0/0/idea/2",
+      "representative_text": "IDEA: callups: merge callups and normalization into one translation baseline, evaluated on out-of-sample MLB outcomes against a level-and-age baseline, before any interface is built",
+      "label": "against, age, any, baseline, before, built, callups, evaluated",
+      "members": [
+        "hd-20261008-143634-565a00716635/candidates/0/0/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-3",
+      "representative": "hd-20261008-143634-565a00716635/candidates/0/0/idea/3",
+      "representative_text": "IDEA: rules_ledger: first audit whether any rules-related errors have occurred, via interviews with staff, and build the ledger only if they have",
+      "label": "any, audit, errors, first, have, if, interviews, ledger",
+      "members": [
+        "hd-20261008-143634-565a00716635/candidates/0/0/idea/3"
+      ]
+    },
+    {
+      "id": "cluster-4",
+      "representative": "hd-20261008-143634-565a00716635/candidates/0/2/idea/1",
+      "representative_text": "IDEA: Decision-change audit (replacement): for a small set of recurring decisions, log pre-decision recommendations and what staff actually did, then score the outcome with a pre-registered baseline. First measure how often an output would have changed a choice before building any model.",
+      "label": "actually, any, audit, baseline, before, building, change, changed",
+      "members": [
+        "hd-20261008-143634-565a00716635/candidates/0/2/idea/1"
+      ]
+    },
+    {
+      "id": "cluster-5",
+      "representative": "hd-20261008-143634-565a00716635/candidates/0/2/idea/2",
+      "representative_text": "IDEA: Sharpened roster-ledger test: have a baseball-operations lawyer or analyst list past near-misses from public transaction reports (known only after the fact) as a regression check. Then measure only alert timeliness and false-alarm rate, not claimed wins.",
+      "label": "after, alarm, alert, analyst, baseball, check, claimed, fact",
+      "members": [
+        "hd-20261008-143634-565a00716635/candidates/0/2/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-6",
+      "representative": "hd-20261008-143634-565a00716635/candidates/0/3/idea/1",
+      "representative_text": "IDEA: BLINDSPOTS - Merge CALLUP_TRANSLATOR and MILB_CONTEXT_NORM into one baseline: a public-data translation model with walk-forward calibration, scored against raw-stat and public-projection baselines. Only if it beats those baselines would any added staff tooling be justified.",
+      "label": "added, against, any, baseline, baselines, beats, blindspots, calibration",
+      "members": [
+        "hd-20261008-143634-565a00716635/candidates/0/3/idea/1"
+      ]
+    }
+  ],
+  "ranking": [],
+  "warnings": [],
+  "explored_families": [
+    "any, anything, backtest, baselines, before, built, candidate, data",
+    "against, age, any, baseline, before, built, callups, evaluated",
+    "any, audit, errors, first, have, if, interviews, ledger",
+    "actually, any, audit, baseline, before, building, change, changed",
+    "after, alarm, alert, analyst, baseball, check, claimed, fact",
+    "added, against, any, baseline, baselines, beats, blindspots, calibration"
+  ],
+  "method": "concept_tokens_and_leading_phrases/v3; Jaccard cluster threshold 0.5 or first-8-content-word phrase link; echo coverage 0.6 or first-16-word phrase link",
+  "measurement_type": "ADVISORY_HEURISTIC",
+  "limitations": "Not semantic equivalence, calibrated novelty, entailment or usefulness",
+  "participation": [
+    {
+      "operation": "GENERATED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": "claude",
+      "origin_model": "claude-sonnet-5-5",
+      "subject_count": 4,
+      "inference_occurred": true,
+      "note": "Dream prompted the provider; the provider authored the text."
+    },
+    {
+      "operation": "CLUSTERED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 8,
+      "inference_occurred": false,
+      "note": "Deterministic concept-token clustering; no inference."
+    }
+  ]
+}

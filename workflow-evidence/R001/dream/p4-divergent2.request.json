@@ -1,0 +1,61 @@
+{
+ "schema_version": "howl.exploration/v1",
+ "request_id": "cubs-r001-p4-divergent2",
+ "purpose": "discovery",
+ "objective": "Where could software create a meaningful baseball advantage for the Chicago Cubs? Second pass, informed by a critique of earlier ideas. The critique found: (a) most public-data analytics tools reach only parity with sophisticated clubs that hold private tracking, medical and scouting data; (b) earlier ideas were analyst-centric information tools with no named decision owner and no measurable change in decisions; (c) uncovered areas include amateur draft and scouting workflow, pro acquisition, trade and free-agent valuation, contract and non-tender decisions, defense, strength and conditioning, and coordination or error-prevention tools rather than information tools. The current date is in the Cubs' offseason (their 2026 season ended in the Wild Card Series), so prefer decisions that recur every offseason or every season and that can be evaluated retrospectively on public history. Seek mechanisms by which public data could still create an edge despite private-data clubs: speed, coverage of neglected populations, combining signals few look at, market inefficiencies in league-wide processes, or avoiding systematic human biases. Also name where software is unnecessary. OUTPUT GUIDANCE (format only): Each IDEA names one problem, the decision owner, the concrete recurring decision, the mechanism of advantage, and the software intervention. Follow with ASSUMPTION and UNKNOWN lines. Do not invent statistics or private Cubs information.",
+ "originating_component": "operator",
+ "requested_mode": "dream",
+ "constraints": [
+  "Do not assume the problem or the solution.",
+  "Lawfully accessible public, historical, or clearly labeled synthetic data only.",
+  "Do not invent private Chicago Cubs information or statistics.",
+  "Distinguish fact, assumption, hypothesis, and speculation."
+ ],
+ "diversity_memory": true,
+ "explored_families": [
+  "day-game and travel rest planning",
+  "own bullpen readiness ledger",
+  "roster rules and option ledger",
+  "waiver and DFA monitor",
+  "minor league call-up translation",
+  "cross-league minor league normalization",
+  "return-to-play comparables from IL data",
+  "pitch-sequence predictability self-scout",
+  "opposing bullpen availability forecast",
+  "opposing manager tendencies",
+  "pitch clock and disengagement baserunning",
+  "replay challenge triage",
+  "institutional memory and decision journals",
+  "multilingual coaching communication",
+  "grounds crew field logging",
+  "international bonus pool allocation",
+  "arbitration comparables",
+  "opponent pitch repertoire change alerts",
+  "Wrigley wind outfield positioning",
+  "ABS challenge strategy",
+  "pitch design and biomechanics",
+  "public leaderboards and splits"
+ ],
+ "ranking_criteria": [
+  "novelty",
+  "objective_fit"
+ ],
+ "evidence_refs": [],
+ "budget": {
+  "max_calls": 9,
+  "max_candidates": 6,
+  "max_trials": 1,
+  "max_tokens": 4096,
+  "max_duration_seconds": 300,
+  "provider_allowlist": [
+   "command"
+  ],
+  "local_only": false,
+  "allow_local_inference": false,
+  "forbid_local_inference": true
+ },
+ "provider": {
+  "kind": "command",
+  "model": "claude-opus-5-5"
+ }
+}

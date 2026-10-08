@@ -1,0 +1,4 @@
+usage: howlplane [-h] [--control-plane-dir CONTROL_PLANE_DIR] [--repo REPO]
+                 [--version] [--color MODE] [--debug]
+                 <command> ...
+howlplane: error: unrecognized arguments: -m pytest -q
