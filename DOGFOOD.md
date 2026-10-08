@@ -31,15 +31,26 @@ Registry state at mission start (2026-10-08T14:27Z): highest allocated DOG-034; 
 - Evidence: 06-session-ledger.md; 03-push-prepush-suite.log (2364 passed in 456.70 s).
 - Status: FIXED and MERGED with DOG-035 (f39cf18): `--verify-timeout SECONDS`.
 
-### CUBS-P-005 (provisional): AGY read-only roles are not enforced; one mutation discards the whole session
+### DOG-037 (was CUBS-P-005): AGY read-only roles are not enforced; one mutation discards the whole session
 - Category: HOWL FAILURE (permission boundary). Owner: howlplane AGY backend / orchestration.
 - Observed: S1 session b3e9d287; AGY assigned review (`agy -p ... --mode plan`) executed the project's probe CLI, used the network, and overwrote research outputs. HowlPlane detected READ_ONLY_ROLE_MUTATED_REPOSITORY and ended BLOCKED, not resumable, losing a verified Codex implementation.
 - Evidence: workflow-evidence/R001/plane/S1-session-ledger.md, S1-invalid-reviewer-outputs/.
 
-### CUBS-P-006 (provisional): no supported way to give orchestrate workers network access for public data
+### DOG-038 (was CUBS-P-006): no supported way to give orchestrate workers network access for public data
 - Category: CAPABILITY GAP. Owner: howlplane (worker sandbox policy, docs).
 - Observed: Codex implementation runs `--sandbox workspace-write` (network off); `statsapi.mlb.com` failed DNS in the worker; no documented option grants network to a role. Research that must fetch public data cannot run through HowlPlane's implementer.
 - Evidence: S1-session-ledger.md; S1-invalid-reviewer-outputs is from the reviewer, the implementer's report said "live probe not run".
+
+- DOG-037/038 status: FIXED and MERGED (howlplane #165 -> 28511b4); review session 80be26f2 COMPLETE WITH WARNINGS (audit CLEAN). Verified live in S1 rerun 6713a592: AGY skipped for read-only roles; Codex fetched public data with --worker-network.
+
+### CUBS-P-007 (provisional): a provider usage limit is recorded as "not authenticated"
+- Category: HOWL FAILURE (failure classification / capacity evidence). Owner: howlplane failure taxonomy + readiness cache.
+- Observed: S1 rerun 6713a592; Codex ended with `usage_limit_exceeded` ("try again at 8:01 PM"); HowlPlane recorded AUTHENTICATION_REQUIRED and the readiness cache now says "Codex UNAVAILABLE not authenticated"; `codex login status` says logged in.
+- Expected: QUOTA/SESSION_LIMIT with the stated reset time, expiring on its own (ORCHESTRATE.md capacity table).
+- Evidence: workflow-evidence/R001/plane/CUBS-P-007-codex-error.json, S1b-session-ledger.md.
+
+### NOTE-007: flaky hygiene test under session verification
+- `tests/test_hygiene_policy.py::test_verification_plan_executes_with_hygiene_integrity_checks` failed once in review session 80be26f2 round 0 and passed on rerun and directly. Possibly the unidentified flaky test noted by the prior campaign (DOG-024 era).
 
 ## Capability notes and nonblocking friction
 
