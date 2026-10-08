@@ -91,3 +91,15 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
   - Operator lesson: my narrow --verify contributed; for howlplane repairs the session verify should be the required gate, which CUBS-P-004 currently prevents.
 - Mission state: PR #164 (fe0ff37) CI all green; howl PR #16 pending on #164. Neither merged. Claude excluded from AUTO routing until recovered.
 - Campaign -> PAUSED_NEEDS_HELP. No new work launched.
+
+## 2026-10-08T17:55Z — User response (DOG-035 gate)
+- User chose "Fix 004 first, re-review (Recommended)": recover Claude via documented `agents doctor --live`; fold reviewed worker improvements into PR #164; add a configurable, documented verify timeout (CUBS-P-004) in the same repair; rerun the HowlPlane review with `--verify make test-full`; then merge #164 and howl #16; queue CUBS-P-002/003 as bounded follow-up repairs. Campaign -> ACTIVE, REPAIR MODE.
+
+## 2026-10-08T18:45Z — DOG-035/036 branch updated; INTENT review session 2
+- Claude recovered via documented `howlplane agents doctor --live --agent claude_code --repo cubs-edge-lab`: READY, unattended YES (07-claude-recovery.txt).
+- PR branch dogfood/DOG-035-verify-argv: aae9545 (worker improvements from session 1426222b, attributed), 1a5d783 (DOG-036 --verify-timeout, docs, FINDINGS DOG-036; collision re-checked). Pre-push gate: 2393 passed in 470.66 s, lint, docs. Pushed.
+- Old review session 1426222b discarded via public CLI after evidence preserved; old review worktree removed. Fresh checkpoint: dev/howlplane-dog035-review2 = origin/main 4b7fe81 + full PR diff uncommitted; factory prepared.
+- INTENT: review session 2 on the committed candidate engine 1a5d783 (PYTHONPATH=dev/howlplane-dog035/src, clean worktree): `howl orchestrate "$(cat 09-review2.goal.txt)" --repo dev/howlplane-dog035-review2 --verify make test-full --verify-timeout 1500 --execution-budget implementation=1200 --execution-budget review=900`. HowlPlane sessions: 2 of 8.
+
+## 2026-10-08T19:15Z — Controller stop (usage limit)
+- Review session 2 launched ~17:57Z on candidate 1a5d783; events: Claude planning SESSION_LIMIT (external quota) -> Cursor planning timeout -> AGY planned, now implementing. Outcome unknown at stop. PR #164 head 1a5d783 CI pending at last check. Nothing merged. Handoff updated with the exact next steps.

@@ -1,10 +1,10 @@
 # HOWL-CUBS HANDOFF (recovery entry point)
 
-Updated: 2026-10-08T17:50Z
+Updated: 2026-10-08T19:15Z
 
 ## Mission and state
 - Mission: discover and test where software could create a meaningful baseball advantage for the Chicago Cubs, while dogfooding the Howl ecosystem (HowlDream discovery, HowlPlane lifecycle).
-- Campaign status: PAUSED_NEEDS_HELP. Operating mode: REPAIR MODE (DOG-035). Phase: R001 pre-selection; S1 feasibility research blocked on DOG-035 merge.
+- Campaign status: ACTIVE (controller stopped at the usage limit mid-repair). Mode: REPAIR MODE (DOG-035/036). Phase: R001 pre-selection; S1 feasibility research waits for the DOG-035 merge.
 - Run: R001, type DISCOVERY_BUILD. Prompt: EXECUTION-PROMPT.md v1 sha256 e1b5ca33…a5439d6. Snapshot: runs/R001/PROMPT-SNAPSHOT.md. Contract: runs/R001/RUN-CONTRACT.md.
 - Hypothesis: not yet selected. Opportunity: not yet selected. Project: not yet selected. Experiment: not yet selected.
 
@@ -27,15 +27,17 @@ Updated: 2026-10-08T17:50Z
 - Dream discovery complete: pass 1 (hd-20261008-143010-528e5330b08f, PARTIAL by operator budget), pass 2 critique (hd-20261008-143634-565a00716635), pass 4 second divergent (hd-20261008-144047-5e3c07475c85). Finalists in OPPORTUNITIES.md. cubs-edge-lab created, pushed (main 7c715c8), factory prepared.
 
 ## Next action
-- WAIT for the user's answer to the help question of 2026-10-08T17:50Z (DOG-035 acceptance gate + CUBS-P-002..004). Do not merge, launch S1, or repair new findings before it.
-- Resume commands: `export HOWL_FORBID_LOCAL_INFERENCE=1`; `howl orchestrate inspect --repo /run/media/system/tallgeese/dev/howlplane-dog035-review` (session 1426222b, HANDOFF REQUIRED, resumable); `gh pr checks 164 -R howlcipher/howlplane`; `howl agents doctor` (Claude interactive-only).
-- Worktrees: dev/howlplane-dog035 (branch dogfood/DOG-035-verify-argv fe0ff37), dev/howlplane-dog035-review (origin/main + reviewed uncommitted diff), dev/howl-dog035 (docs/DOG-035-quote-verify a781bcb).
+1. Check review session 2: `cat workflow-evidence/R001/repair-DOG-035/09-review2.exit` and `09-review2.stdout`; `PYTHONPATH=/run/media/system/tallgeese/dev/howlplane-dog035/src howl orchestrate inspect --repo /run/media/system/tallgeese/dev/howlplane-dog035-review2`. It runs on candidate engine 1a5d783 with `--verify make test-full --verify-timeout 1500`.
+2. If COMPLETE: fold any worker changes from the review2 worktree into branch dogfood/DOG-035-verify-argv (attributed commit), wait for PR #164 CI, merge #164, then howl #16; ff-only the shared dev/howlplane checkout; verify the engine provenance; replay S1 via the public CLI with `--verify "python3 -m pytest -q"`.
+3. If HANDOFF/BLOCKED: preserve the ledger (sanitized, like 06-session-ledger.md) and pause for help.
+4. Queue the follow-up repairs CUBS-P-002 (false interactive-only downgrade) and CUBS-P-003 (stale planner verify shown to acceptors), as authorized 17:55Z.
+- Check `howl agents doctor` for readiness downgrades after every session (Claude hit SESSION_LIMIT in session 2).
 
 ## Active processes
-- None owned by this mission.
+- Review session 2 (`howl orchestrate`, background shell of the ended controller session), started 2026-10-08T17:57Z local 12:57. It may still be running or finished; check the exit file. Do not launch a duplicate.
 
 ## Bounds remaining (R001)
-- Dream passes: 3 of 5. Dream calls 22 of 40. Pivots 1 unused. HowlPlane sessions 1 of 8 (repair review 1426222b). DOG-035 repair attempts: 1 of 2 (fe0ff37 + reviewed worker improvements).
+- Dream passes: 3 of 5. Dream calls 22 of 40. Pivots 1 unused. HowlPlane sessions 2 of 8. DOG-035 repair attempts: 2 of 2 (fe0ff37+aae9545, then 1a5d783/DOG-036): a further failure requires a help request.
 
 ## Warnings / blockers
 - Shared engine: `dev/howlplane` checkout is used by other campaigns; re-verify HEAD and branch before every orchestrate.
