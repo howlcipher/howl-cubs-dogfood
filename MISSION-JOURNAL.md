@@ -116,3 +116,13 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - Worktrees dev/howlplane-dog035, -review2, dev/howl-dog035 removed; merged local branches deleted.
 - Pending: howlplane FINDINGS.md still says "FIX IN REVIEW" for DOG-035/036; update in the CUBS-P-002/003 repair PR (avoids a docs-only PR chain).
 - INTENT step 3: S1 feasibility research on cubs-edge-lab via public CLI, engine f39cf18: `howl orchestrate "$(cat workflow-evidence/R001/plane/S1-feasibility.goal.txt)" --repo dev/cubs-edge-lab --verify "python3 -m pytest -q" --execution-budget implementation=1200 --constraint <worker contract> --constraint <public data>`. HowlPlane sessions: 3 of 8.
+
+## 2026-10-08T20:45Z — S1 result: BLOCKED (terminal); new incidents -> PAUSED_NEEDS_HELP
+- S1 session b3e9d287 (engine f39cf18, `--verify "python3 -m pytest -q"`; DOG-035 fix works in a real session): planning Codex OK; implementation Codex OK (repo changed; probe package, CLI, tests, research/FEASIBILITY.md); verification passed. Review: Cursor TIMED_OUT (600 s); AGY review REVOKED READ_ONLY_ROLE_MUTATED_REPOSITORY -> AUDIT BLOCKED, status BLOCKED, resumable: no. Ledger: workflow-evidence/R001/plane/S1-session-ledger.md.
+- Codex implementation sandbox had no network: statsapi.mlb.com NameResolutionError; its FEASIBILITY.md honestly reported "live probe not run" (no fabricated counts). Host resolves the API fine.
+- AGY, invoked for review with `--mode plan`, ran the probe (523 queries, network available), overwriting research/FEASIBILITY.md, probe_results.json, raw_manifest.json and creating data/raw (gitignored). Outputs preserved as INVALID evidence: workflow-evidence/R001/plane/S1-invalid-reviewer-outputs/ (sha256 listed). Code files unchanged after implementation (only research/ outputs and caches newer than 15:21:30).
+- Findings:
+  - CUBS-P-005 (HOWL FAILURE): AGY's `--mode plan` used for planning/review/acceptance does not enforce read-only; HowlPlane relies on it and only detects mutation afterwards, making the whole session terminally BLOCKED and discarding a valid implementation.
+  - CUBS-P-006 (CAPABILITY GAP): orchestrate has no documented way to give an implementation worker network access for public-data acquisition (Codex invoked `--sandbox workspace-write`, network off). Research that must fetch public data cannot be executed by the implementer; only an agent that ignores role limits reached the network.
+- cubs-edge-lab working tree left as is (uncommitted Codex implementation + AGY-overwritten research outputs). Nothing committed or pushed there.
+- Campaign -> PAUSED_NEEDS_HELP.

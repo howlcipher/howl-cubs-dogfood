@@ -1,0 +1,1 @@
+INVALID AS EVIDENCE: written by AGY while assigned the read-only review role in HowlPlane session b3e9d287 (READ_ONLY_ROLE_MUTATED_REPOSITORY), unreviewed, incomplete (print timeout). Preserved only as evidence of the incident.

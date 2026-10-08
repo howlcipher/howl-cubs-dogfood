@@ -12,7 +12,7 @@ Registry state at mission start (2026-10-08T14:27Z): highest allocated DOG-034; 
 - Observed: exit 2, `howlplane: error: unrecognized arguments: -m unittest`; no session created.
 - Root cause: `--verify` uses argparse `nargs="+"` (src/howlplane/control_plane/orchestration.py:2003), which treats dash-prefixed command tokens as options. No CLI-level test covers it.
 - Evidence: workflow-evidence/R001/plane/CUBS-P-001-repro.txt, S1.stderr.
-- Status: FIX IN REVIEW. howlplane PR #164 (fe0ff37, CI green); howl PR #16 (docs). HowlPlane review session 1426222b: reviews CLEAN (Codex, Cursor), acceptance REJECTED for missing full gate (see CUBS-P-004); reviewed tree includes worker improvements (06-reviewed-tree.patch). Not merged.
+- Status: FIXED and MERGED: howlplane #164 -> f39cf18, howl #16 -> 45478f4. HowlPlane review session 889142d7 COMPLETE (audit CLEAN, accepted, make test-full exit 0). Post-merge public proof: workflow-evidence/R001/repair-DOG-035/10-postmerge-proof.txt. Registry text on main still says FIX IN REVIEW (update pending).
 
 ### CUBS-P-002 (provisional): denial of an equivalent test command marks a proven agent interactive-only everywhere
 - Category: HOWL FAILURE (false capability evidence, persisted). Owner: howlplane routing/readiness cache.
@@ -25,10 +25,21 @@ Registry state at mission start (2026-10-08T14:27Z): highest allocated DOG-034; 
 - Observed: planner VERIFY_COMMAND named nonexistent tests/test_task_queue.py; explicit --verify superseded it; two acceptors reported "the supplied verification command names nonexistent tests/test_task_queue.py".
 - Evidence: 06-session-ledger.md (planned_verify_command, attempts 6, 9, 13).
 
-### CUBS-P-004 (provisional): fixed 300 s verification timeout makes some repositories' required gate unreachable
+### DOG-036 (was CUBS-P-004): fixed 300 s verification timeout makes some repositories' required gate unreachable
 - Category: CAPABILITY GAP with defect aspects (undocumented limit). Owner: howlplane orchestration.
 - Observed: VERIFY_TIMEOUT_SECONDS = 300 (orchestration.py:159), not configurable or documented; howlplane full suite ~456 s; acceptance requires the full gate; no session role can run it.
 - Evidence: 06-session-ledger.md; 03-push-prepush-suite.log (2364 passed in 456.70 s).
+- Status: FIXED and MERGED with DOG-035 (f39cf18): `--verify-timeout SECONDS`.
+
+### CUBS-P-005 (provisional): AGY read-only roles are not enforced; one mutation discards the whole session
+- Category: HOWL FAILURE (permission boundary). Owner: howlplane AGY backend / orchestration.
+- Observed: S1 session b3e9d287; AGY assigned review (`agy -p ... --mode plan`) executed the project's probe CLI, used the network, and overwrote research outputs. HowlPlane detected READ_ONLY_ROLE_MUTATED_REPOSITORY and ended BLOCKED, not resumable, losing a verified Codex implementation.
+- Evidence: workflow-evidence/R001/plane/S1-session-ledger.md, S1-invalid-reviewer-outputs/.
+
+### CUBS-P-006 (provisional): no supported way to give orchestrate workers network access for public data
+- Category: CAPABILITY GAP. Owner: howlplane (worker sandbox policy, docs).
+- Observed: Codex implementation runs `--sandbox workspace-write` (network off); `statsapi.mlb.com` failed DNS in the worker; no documented option grants network to a role. Research that must fetch public data cannot run through HowlPlane's implementer.
+- Evidence: S1-session-ledger.md; S1-invalid-reviewer-outputs is from the reviewer, the implementer's report said "live probe not run".
 
 ## Capability notes and nonblocking friction
 
