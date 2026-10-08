@@ -103,3 +103,7 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 
 ## 2026-10-08T19:15Z — Controller stop (usage limit)
 - Review session 2 launched ~17:57Z on candidate 1a5d783; events: Claude planning SESSION_LIMIT (external quota) -> Cursor planning timeout -> AGY planned, now implementing. Outcome unknown at stop. PR #164 head 1a5d783 CI pending at last check. Nothing merged. Handoff updated with the exact next steps.
+
+## 2026-10-08T19:30Z — Review session 2 result: COMPLETE
+- Session 889142d7 (candidate engine 1a5d783, `--verify make test-full --verify-timeout 1500`): EXIT 0, Status COMPLETE, independent audit CLEAN, accepted. Evidence: workflow-evidence/R001/repair-DOG-035/09-review2.{stdout,stderr,exit}. DOG-036 resolved the earlier acceptance gap.
+- Next (not done, usage limit): fold any worker changes from dev/howlplane-dog035-review2 into the PR branch, confirm #164 CI on the final head, merge #164 then howl #16, ff the shared checkout, replay S1.

@@ -1,0 +1,44 @@
+HOWL ORCHESTRATION REPORT
+Session: 889142d7dc8b4d2081cb1d01dccfd1f0
+Goal: Finalize and validate the existing uncommitted work in this repository: fixes for DOG-035 and DOG-036 (see both entries in dogfood/findings/FINDINGS.md, the change_log.md entries, and documentation/ORCHESTRATE.md "Verification command").
+
+DOG-035: `orchestrate --verify` used argparse nargs="+", so a verification command with its own flags failed with "unrecognized arguments". The change normalizes a single quoted CLI value with POSIX shell splitting (keeping an existing executable path whole), keeps Factory queue argv literal, reports malformed quoting as INVALID_VERIFICATION_COMMAND, and adds a quoting hint. DOG-036: the verification command's 300 s limit was fixed and undocumented; the change adds `--verify-timeout SECONDS` (1 to 3600) on new sessions and resume.
+
+If the existing change is correct and complete, report IMPLEMENTATION_STATUS: NO_CHANGE_REQUIRED with reasons; otherwise fix only what is wrong and add tests. HowlPlane itself runs this repository's full regression gate (`make test-full`) after implementation and supplies the result to review and acceptance, so do not re-run the full suite yourself; targeted tests are enough. Reviewers: try to falsify both fixes, including every path that consumes --verify and --verify-timeout (new session, resume, Factory queue), interaction with the existing VERIFY_TIMEOUT_SECONDS default, documentation claims the code does not keep, and whether the tests would fail without the fixes.
+Status: COMPLETE
+Resumable: no
+Orchestrator: agy
+Implementer: agy
+Policy: PLAN + EXECUTE + INDEPENDENT AUDIT
+Constraints: The current HowlPlane session IS the orchestration workflow. Perform the assigned work in the target project. Do not launch howl/howlplane or another orchestration session merely to prove Howl was used. Do not copy internal orchestration state into the target project.
+Assignments: 6
+Reroutes: 2
+Repository head: 4b7fe81ea7de5ddb665f54ea5f4356c3900937de
+Repository status: M change_log.md
+ M documentation/ORCHESTRATE.md
+ M dogfood/findings/FINDINGS.md
+ M src/howlplane/control_plane/cli.py
+ M src/howlplane/control_plane/factory/task_queue.py
+ M src/howlplane/control_plane/orchestration.py
+ M tests/test_orchestration_verification_rework.py
+Tests: [{"command": "git diff --check", "exit_code": 0, "output": ""}, {"command": ["make", "test-full"], "rework_round": 0, "exit_code": 0, "output": "tests/test_ai_resource_pool.py::test_failure_taxonomy_is_normalized_without_conflation[authentication required-AUTHENTICATION_REQUIRED] PASSED [  6%]\ntests/test_ai_resource_pool.py::test_failure_taxonomy_is_normalized_without_conflation[Failed to authenticate: OAuth session expired and could not be refreshed-AUTHENTICATION_REQUIRED] PASSED [  6%]\ntests/test_ai_resource_pool.py::test_failure_taxonomy_is_normalized_without_conflation[provider service unavailable-PROVIDER_UNAVAILABLE] PASSED [  6%]\ntests/test_ai_resource_pool.py::test_failure_taxonomy_is_normalized_without_conflation[command not found-MISSING_EXECUTABLE] PASSED [  7%]\ntests/test_ai_resource_pool.py::test_failure_taxonomy_is_normalized_without_conflation[tests failed: assertion error-ENGINEERING_FAILURE] PASSED [  7%]\ntests/test_ai_resource_pool.py::test_failure_taxonomy_is_normalized_without_conflation[malformed yaml review-MALFORMED_OUTPUT] PASSED [  7%]\ntests/test_ai_resource_pool.py::test_capacity_state_persists_recovers_and_is_shared PASSED [  7%]\ntests/test_ai_resource_pool.py::test_oauth_expiration_persists_and_routes_to_another_worker PASSED [  7%]\ntests/test_ai_resource_pool.py::test_engineering_failure_does_not_exhaust_resource PASSED [  7%]\ntests/test_ai_resource_pool.py::test_independent_review_prefers_distinct_resource_and_reports_unavailability PASSED [  7%]\ntests/test_ai_resource_pool.py::test_legacy_settings_load_without_declaring_new_provider_authority PASSED [  7%]\ntests/test_authority_execution\n[... output trimmed by HowlPlane; tail follows ...]\nlaneBranding\n--- PASS: TestNewRootCommandUsesHowlPlaneBranding (0.00s)\n=== RUN   TestLegacyCommandHasProjectValidationParityAndWritesWarningToStderr\n--- PASS: TestLegacyCommandHasProjectValidationParityAndWritesWarningToStderr (0.00s)\n=== RUN   TestPlaneCommandComposesBeneathUmbrellaParent\n--- PASS: TestPlaneCommandComposesBeneathUmbrellaParent (0.00s)\n=== RUN   TestCommandConstructionDoesNotDependOnRootExecutableName\n--- PASS: TestCommandConstructionDoesNotDependOnRootExecutableName (0.00s)\n=== RUN   TestUnknownSubcommandDelegatesToEngineEntrypoint\n--- PASS: TestUnknownSubcommandDelegatesToEngineEntrypoint (0.00s)\n=== RUN   TestUnknownSubcommandPropagatesEngineExitCode\n--- PASS: TestUnknownSubcommandPropagatesEngineExitCode (0.00s)\n=== RUN   TestNoArgsPrintsNativeHelpWhenEngineMissing\n--- PASS: TestNoArgsPrintsNativeHelpWhenEngineMissing (0.00s)\n=== RUN   TestVersionFlagReportsGoBinaryVersionWithoutDelegating\n--- PASS: TestVersionFlagReportsGoBinaryVersionWithoutDelegating (0.00s)\n=== RUN   TestHelpFlagsShowNativeHelpWhenEngineMissing\n--- PASS: TestHelpFlagsShowNativeHelpWhenEngineMissing (0.00s)\n=== RUN   TestNoArgsHelpAndHelpSubcommandForwardToEngine\n--- PASS: TestNoArgsHelpAndHelpSubcommandForwardToEngine (0.01s)\n=== RUN   TestShortVersionAliasAndSignalExitCode\n--- PASS: TestShortVersionAliasAndSignalExitCode (0.00s)\n=== RUN   TestMissingEngineErrorIsActionable\n--- PASS: TestMissingEngineErrorIsActionable (0.00s)\nPASS\nok  \tgithub.com/howlcipher/howlplane/pkg/cli\t(cached)\n"}]
+Independent audit: CLEAN
+Recovery: {}
+Timed-out assignments: [{"stage": "planning", "agent": "cursor", "model": "UNKNOWN", "execution_budget_seconds": 300}]
+Failures: [{"stage": "planning", "agent": "claude_code", "model": "UNKNOWN", "failure": "SESSION_LIMIT"}, {"stage": "planning", "agent": "cursor", "model": "UNKNOWN", "failure": "EXECUTION_BUDGET_EXCEEDED"}]
+Review notes from Cursor (review, CLEAN):
+  The DOG-035 and DOG-036 changes match the findings, the changelog, and the verification section of `documentation/ORCHESTRATE.md`. No files were edited.
+  
+  **DOG-035.** A single `--verify` or `--verify=` value is POSIX-split with `shlex.split` and run as argv with no shell. An existing executable path, including spaces, is kept as one argument; a path that does not exist yet stays intact only with inner quotes. Multiple CLI values and Factory queue arrays stay literal argv, including resume retries (`verify_is_argv`). Empty commands and unbalanced quotes raise `INVALID_VERIFICATION_COMMAND` before the session file is written. Unknown flags on an `orchestrate` invocation that already has `--verify` exit 2 with the quoting hint; other subcommands do not get that hint.
+  
+  **DOG-036.** `--verify-timeout` accepts 1 through 3600 on a new session and on `resume`, and stores `verify_timeout_seconds`. An omitted value still uses `VERIFY_TIMEOUT_SECONDS` (300) via `doc.get("verify_timeout_seconds") or VERIFY_TIMEOUT_SECONDS`. An overrun is exit 124, is treated as a failed verification, and the message names `--verify-timeout`. This limit is separate from `--execution-budget`. Factory tasks do not grow a timeout field; unknown queue fields are still rejected, and those sessions keep the 300-second default.
+  
+  The contract tests would fail if splitting, the quoting hint, literal Factory argv, or the session timeout were removed. `make test-full` was already reported as exit 0 on this tree; pytest was not run again.
+  
+  NON-BLOCKING:
+  - An out-of-range `--verify-timeout` is refused and not clamped, but the `ValueError` is reported as `INTERNAL_ERROR` and a diagnostic file, because it is not an `OperatorFailure`. The session is not saved.
+  - `resume --verify` replaces `verify_command` and does not clear `verify_source`, so a command that was previously discovered or taken from the plan can be printed with the old provenance label. The argv actually run is the new command.
+  - A bare name with spaces is preserved when it is found on `PATH`. The test that covers a spaced name uses `PATH=.` and a file in the repo, so it does not isolate an absolute `PATH` directory.
+  - A non-executable file with spaces is split, because only an executable path is kept whole.
+  
+  AUDIT_STATUS: CLEAN
