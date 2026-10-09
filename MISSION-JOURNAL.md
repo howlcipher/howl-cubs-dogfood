@@ -243,3 +243,5 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 
 ## 2026-10-09T15:35Z — User response (S3 acceptance)
 - User chose "Lint fix, then resume (Recommended)": a HowlPlane lint session (--separate) to make flake8 pass repo-wide with no behavior change, then `resume` S3 so the same acceptor re-judges. HowlPlane sessions: lint = 14 of 16.
+- Lint session attempt with `--separate` refused: separate sessions need a distinct Git worktree (documented; operator error). The refusal surfaced as INTERNAL_ERROR (NOTE-008). No session created; no session count consumed.
+- Equivalent documented path: discard S3 (evidence kept: S3.stdout/stderr, ledger below) and start a fresh existing-WIP session with --orchestrator codex (the acceptor that rejected), quoting its rejection reason in the goal, so the same agent re-judges (no acceptor shopping). Goal: S3b-explore-accept.goal.txt. HowlPlane sessions: 14 of 16.

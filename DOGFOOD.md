@@ -58,6 +58,9 @@ Registry state at mission start (2026-10-08T14:27Z): highest allocated DOG-034; 
 - Expected: a declared INCOMPLETE status is surfaced as such (handoff with the stated reason, or rework with that reason) rather than forwarded to review as finished work.
 - Evidence: workflow-evidence/R001/plane/S2.stdout; Codex session log 2026-10-09T09:22 (local, not published).
 
+### NOTE-008: a documented usage refusal is reported as INTERNAL_ERROR
+- `orchestrate --separate` on a worktree with an unfinished session is refused by design ("Separate sessions need a distinct Git worktree"), but the CLI prints "Something unexpected failed ... likely a HowlPlane bug or an unhandled condition (ValueError) ... Code: INTERNAL_ERROR" with a diagnostic ID. It should be a usage error with the documented remedy. Evidence: workflow-evidence/R001/plane/S3L.stdout (diagnostic HP-20261009-142706-a864 kept locally).
+
 ## Capability notes and nonblocking friction
 
 | ID | Component | Note | Evidence |
