@@ -1,0 +1,11 @@
+## post-merge proof, engine 99d3aa4
+## DOG-043: resume with no session
+No unfinished session
+Why: The orchestrate request has invalid arguments or conflicts with session state; nothing was changed.
+Next: Start a session with a goal, or inspect earlier ones.
+## DOG-043: --verify-timeout 0
+--verify-timeout must be between 1 and 3600 seconds, got 0
+Why: The orchestrate request has invalid arguments or conflicts with session state; nothing was changed.
+DOG-042 regex present: True
+DOG-041 note fn present: True
+DOG-040 signature: (result: 'Any', stage: 'str') -> 'list[str]'
