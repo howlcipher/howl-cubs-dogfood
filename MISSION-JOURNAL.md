@@ -199,3 +199,9 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - Run (latest under workflow-evidence/R001/dream/runs): COMPLETE, 3 calls, remote claude-sonnet-5-5, mocked=false. LOCAL_LLM_USED: NO. Text: p5-challenge-texts.txt. Dream calls 25 of 40; passes 4 of 5.
 - Reconciled (evidence-based, table in design v2): stronger baselines B2 + persistence; primary evaluation in the no-MLB-in-Y segment; bootstrap + rolling-origin success rule; k from measured Cubs signing volume; feature window ends at election date; hash pre-registration before 2026 outcomes; early stop at <30 positives; ID-only joins. Limitations: opportunity-confounded outcome; no projection-system comparison.
 - Open authority question: whether building multi-year cohort tables from the Stats API (local only, rate-limited, aggregate publication) is consistent with MLBAM's "individual, non-commercial, non-bulk use" terms. Campaign -> PAUSED_NEEDS_HELP until answered.
+
+## 2026-10-09T07:10Z — User response (data terms)
+- User chose "Yes, local-only as described (Recommended)": ~200 rate-limited Stats API requests (league-wide season stats 2018-2026) to build cohort tables kept local; publish only aggregates and short attributed examples. Campaign -> ACTIVE.
+
+## 2026-10-09T07:15Z — INTENT S2 (experiment build, no holdout)
+- Goal: workflow-evidence/R001/plane/S2-build.goal.txt; cubs-edge-lab main 35f803b; engine af9f40a; `--worker-network --verify "python3 -m pytest -q" --execution-budget implementation=1800 --execution-budget review=900`. HowlPlane sessions: 10 of 12.
