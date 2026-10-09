@@ -272,3 +272,7 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - S4 Cubs case (session 27ab9371): COMPLETE, review CLEAN after 2 rework rounds, accepted. Independent recount from live Cubs transactions + raw season files matches every cell (signed 14/12/10/8; positive 3/1/6/0; no-MLB segment 1/0/1/0 vs league 14/12/22/23). cubs-edge-lab PR #5 merged f7caca6. HowlPlane sessions used: 15 of 16.
 - Final assessment written: runs/R001/FINAL-ASSESSMENT.md (COMPLETE_NEGATIVE); index FINAL-ASSESSMENT.md; REPOSITORIES refreshed; handoff points to R002.
 - INTENT: PR records/R001 -> main in howl-cubs-dogfood (no checks configured), merge, record receipt.
+
+## 2026-10-09T19:58:56Z — R001 closed; R002 started
+- Receipt: howl-cubs-dogfood PR #1 (records/R001 -> main) merged as f4852d7. R001 delivery: MERGED_VERIFIED in every changed repository (cubs-edge-lab f7caca6, howlplane af9f40a, howl 45478f4, howl-cubs-dogfood f4852d7). R001 outcome COMPLETE_NEGATIVE.
+- R002 (REGRESSION) started under prompt v2 (snapshot runs/R002/PROMPT-SNAPSHOT.md, sha256 7fa1b0c151ef593e07a4d3a3c44d1626a1ceae7693ca615a1d756f83b59d75d5). Contract: runs/R002/RUN-CONTRACT.md. Records branch records/R002.
