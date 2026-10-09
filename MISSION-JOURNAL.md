@@ -179,3 +179,14 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - Local backup branch backup/records-R001-pre-rewrite (63d1991; local only, never pushed; contains the bulk files). filter-branch --index-filter removed S1-blocked-worktree.patch, S1b-worktree.patch, S1-invalid-reviewer-outputs/probe_results.json from all 12 branch commits (main..records/R001); tip tree unchanged; all 12 commits re-signed (SSH); refs/original deleted.
 - Force-pushed with lease pinned to 4e3fbaf: origin/records/R001 4e3fbaf -> d7fa0f9; purged paths in remote branch history: 0. main untouched.
 - Limitation: GitHub still serves orphaned pre-rewrite commits by SHA (verified: commits/1b7b308 resolves). Full purge requires a GitHub Support request to remove cached views; not performed (needs the owner).
+
+## 2026-10-09T05:20Z — INTENT S1d (publication compliance + readable report)
+- S1c deliverable snapshot (local, ignored): workflow-evidence/R001/plane/private/S1c-deliverable/S1c-tree.tgz; hash in S1c-deliverable.sha256.
+- INTENT S1d: goal workflow-evidence/R001/plane/S1d-compliance.goal.txt on cubs-edge-lab (existing WIP), engine af9f40a, `--verify "python3 -m pytest -q" --execution-budget implementation=1500 --execution-budget review=900` (no worker network needed). HowlPlane sessions: 9 of 12.
+
+## 2026-10-09T06:10Z — S1d COMPLETE; S1 deliverable merged
+- S1d session 0bbd1442 (engine af9f40a): implementation Codex, review CLEAN, accepted. Bulk responses moved to ignored data/ (evidence.json, observations.json, raw/); committed: code, tests, raw_manifest.json (no bodies), research/summary.json (aggregates + <=5 short examples per candidate), readable FEASIBILITY.md; README attributes MLBAM terms and how to re-create data for individual use.
+- Controller audit: publishable files contain no bulk records (summary.json 10 short example descriptions); 2018 MILBFA values identical to accepted S1c (585; A 530/52/3; B 417/133/35); report free of entity-encoded JSON; tests 32 passed with local data, 29 passed + 3 explicit skips in a clean clone.
+- cubs-edge-lab PR #1 (research/S1-feasibility 3487460) merged as 35f803b (no CI configured; independent review = HowlPlane sessions 2027b3fe and 0bbd1442). Post-merge: 32 passed; bulk data still local-only.
+- S1 research status: ACCEPTED. Verdicts: MILBFA PARTIAL, RULE5 PARTIAL, CALLUP PARTIAL. HowlPlane sessions used: 9 of 12.
+- Next: opportunity selection (section 9) with this evidence, then the early independent challenge of selection and design through a Howl workflow.
