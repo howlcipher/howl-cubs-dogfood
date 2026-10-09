@@ -75,3 +75,7 @@ HowlPlane sessions remaining for R001: 3 of 12 (user-raised bound). Data acquisi
 | Name/ID matching risk | ACCEPTED | Join only on Stats API person IDs; no name matching. |
 | A positive result alone is not a Cubs recommendation | ACCEPTED | Any Cubs output is labeled decision support only, with availability, cost and competing-bid information explicitly unknown. |
 | Source terms vs cohort construction | OPEN (authority) | Pending user decision (journal 2026-10-09T07:00Z). |
+
+## Pre-holdout decision: primary k (2026-10-09T10:05Z)
+
+Measured (cubs-edge-lab research/data_summary.json, merged 0e53744; live recount of 2025-26 = 66 agreed): Cubs minor-league contracts per offseason 2021-22..2025-26 = 41, 38, 41, 65, 66; median `k_basis` = 41. Rule fixed now, before any outcome label exists: primary k = the smallest of {25, 50, 100} that is at least k_basis, so **primary k = 50**. k = 25 and 100 remain secondary.

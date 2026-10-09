@@ -216,3 +216,9 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 ## 2026-10-09T09:45Z — User response (S2 block)
 - User chose "Raise to 16, split build (Recommended)". Bound amended in RUN-CONTRACT.md. CUBS-P-002/003/008 repairs deferred to a follow-up run. Campaign -> ACTIVE.
 - INTENT S2a: goal workflow-evidence/R001/plane/S2a-data.goal.txt (existing WIP), engine af9f40a, `--worker-network`, owner authorization also passed as --constraint. HowlPlane sessions: 11 of 16.
+
+## 2026-10-09T10:05Z — S2a COMPLETE and merged; primary k fixed
+- S2a session 9f5d484c: COMPLETE, audit CLEAN after 2 rework rounds, accepted. Data: 629 manifest entries (151 league-wide stats requests), 0 season-2026 requests; cohort tables local (2018 pool 584 distinct, 530 matched, 75% no MLB in Y). Cubs minor-league contracts 41/38/41/65/66 (2021-25); live recount 2025-26 = 66 matches.
+- Controller audit: clean clone 48 passed + 3 skips, local 51 passed; publishable files aggregate-only.
+- cubs-edge-lab PR #2 merged 0e53744.
+- Primary k = 50 fixed in design (k_basis 41, rule: smallest of {25,50,100} >= k_basis), before any outcome label.
