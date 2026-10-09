@@ -150,3 +150,16 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - CUBS-P-007 (HOWL FAILURE): Codex returned `usage_limit_exceeded` ("try again at 8:01 PM", CUBS-P-007-codex-error.json); HowlPlane classified it AUTHENTICATION_REQUIRED and wrote "not authenticated" to the readiness cache (`howl agents doctor`: Codex UNAVAILABLE not authenticated) while `codex login status` = logged in. Wrong recovery advice; no expiry. External cause: Codex quota exhausted until ~20:01 local.
 - Bounds: HowlPlane sessions 6 of 8 used. S1 attempts: 3 (attempt0 parse error, attempt1 BLOCKED by DOG-037/038, attempt2 BLOCKED by review).
 - Campaign -> PAUSED_NEEDS_HELP (exhausted rework + new Howl failure).
+
+## 2026-10-08T23:45Z — User response (S1 exhausted rework + CUBS-P-007)
+- User chose "Fix 007, then fresh S1 (Recommended)": repair CUBS-P-007 (usage limit -> quota with reset time), merge, then a fresh narrowed S1 folding in the reviewer's findings. R001 HowlPlane session bound raised 8 -> 12 by explicit user authorization (recorded in RUN-CONTRACT.md as an amendment; consumed sessions not reset). Campaign -> ACTIVE, REPAIR MODE.
+
+## 2026-10-09T03:35Z — DOG-039 (was CUBS-P-007) repair; INTENT review
+- Root cause: provider_pool.classify_result; no anchored pattern for Codex "You've hit your usage limit. ..."; transcript-wide fallback checks auth markers first and matched "unauthorized" (10x, from the user's AGENTS.md rules prose loaded by Codex). Fix efe91b0 on dogfood/CUBS-P-007-usage-limit-classification (from 28511b4): anchored SESSION_LIMIT stop line + fallback "401 unauthorized". Tests 9 (4 fail without fix); related 511 passed; pre-push gate 2430 passed. PR #166.
+- Codex readiness recovered via documented `howlplane agents doctor --live --agent codex --repo cubs-edge-lab` (all five READY).
+- INTENT: review session on candidate efe91b0 (PYTHONPATH), worktree dev/howlplane-dog039-review = 28511b4 + PR diff, `--verify make test-full --verify-timeout 1500 --execution-budget implementation=1200 --execution-budget review=900`. HowlPlane sessions: 7 of 12.
+
+## 2026-10-09T04:05Z — DOG-039 merged; INTENT S1c (fresh narrowed S1 on existing WIP)
+- Review session 751c1ce8 (candidate efe91b0, make test-full): COMPLETE, audit CLEAN, accepted; tree identical to PR head. PR #166 CI green; merged as af9f40a. Shared engine ff 28511b4 -> af9f40a; live check: Codex usage-limit stop with "unauthorized" prose classifies SESSION_LIMIT. Repair worktrees removed.
+- S1b blocked session 6713a592 discarded via public CLI (worktree untouched; evidence archived earlier). cubs-edge-lab keeps the uncommitted Howl-produced S1b implementation as WIP.
+- INTENT S1c: goal workflow-evidence/R001/plane/S1c-feasibility.goal.txt (existing-WIP; acceptance criteria A-E from the reviewer's findings), engine af9f40a, `--worker-network --verify "python3 -m pytest -q" --execution-budget implementation=1500 --execution-budget review=900`. HowlPlane sessions: 8 of 12.

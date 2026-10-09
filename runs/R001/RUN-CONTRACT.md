@@ -29,3 +29,6 @@
 ## Local inference
 
 HOWL_FORBID_LOCAL_INFERENCE=1 exported for every Howl/provider invocation. Dream budgets set `forbid_local_inference: true`, `allow_local_inference: false`.
+
+## Amendment 2026-10-08T23:45Z (user-authorized)
+- HowlPlane sessions bound for R001 raised from 8 to 12 by the user (help response on S1 exhausted rework + CUBS-P-007). Sessions already consumed (6) are not reset.
