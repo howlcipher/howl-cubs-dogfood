@@ -1,0 +1,93 @@
+{
+  "schema": "howldream.run/v1",
+  "run_id": "hd-20261009-190350-f071c0bf5d2c",
+  "experiment_id": "edecda12ce6d7bfb3841ec7d663de806cd4c32758503999dcbd522b3c9fae498",
+  "version": "0.4.4",
+  "git_commit": "f1cc5ca1f9e1d120da6cbf18bbc192ab6ef23abe",
+  "implementation_hash": "4146772cb46f4e4a159f89881dc87831680ca5d5527763163c20294427d2469c",
+  "mode": "dream",
+  "started_at": "2026-10-09T19:03:50.620230+00:00",
+  "provider": {
+    "kind": "command",
+    "model": "claude-sonnet-5-5",
+    "base_url": null,
+    "allow_remote": true,
+    "allow_local_inference": false,
+    "forbid_local_inference": true,
+    "timeout_seconds": 300,
+    "max_tokens": 4096
+  },
+  "capabilities": {
+    "supports_seed": false,
+    "supports_temperature": false,
+    "supports_top_p": false,
+    "supports_logprobs": false,
+    "supports_tool_calls": false,
+    "supports_structured_output": false,
+    "supports_token_usage": false,
+    "supports_local_instrumentation": false
+  },
+  "authority": "NONE",
+  "parent_run": null,
+  "status": "COMPLETE",
+  "errors": [],
+  "template_version": "line_experiment/v2",
+  "template_hash": "8096777d16cf15dcd68f34f709eeb4f81e1b983ba58fdda00c8008f2aa7add7b",
+  "source_hashes": {
+    "prompt-s18": "dc4044b255f169381b1e0c606c927502bd15e53c2481d05daf177e79e9fc611e",
+    "r001-journal": "8cdff16f79bfc6be37171cf468c4c750d833df0f781b932a45298b3ad015af95"
+  },
+  "replay": "CONFIGURATION_REPLAY_NOT_GUARANTEED",
+  "replay_available": true,
+  "warnings": [
+    "Verification is scoped to supplied evidence; generated text has no authority.",
+    "EXPERIMENT_CONTROL_NOT_APPLIED: inspect sampling requested/supported/applied; condition differences are confounded",
+    "DISCOVERY_ANCHORING_HIGH"
+  ],
+  "call_count": 3,
+  "analysis": {
+    "version": "0.4.4",
+    "implementation_hash": "4146772cb46f4e4a159f89881dc87831680ca5d5527763163c20294427d2469c",
+    "analyzed_at": "2026-10-09T19:05:35.951876+00:00",
+    "git_commit": "f1cc5ca1f9e1d120da6cbf18bbc192ab6ef23abe"
+  },
+  "participation": [
+    {
+      "operation": "GENERATED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": "claude",
+      "origin_model": "claude-sonnet-5-5",
+      "subject_count": 2,
+      "inference_occurred": true,
+      "note": "Dream prompted the provider; the provider authored the text."
+    },
+    {
+      "operation": "CLUSTERED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 10,
+      "inference_occurred": false,
+      "note": "Deterministic concept-token clustering; no inference."
+    }
+  ],
+  "observed_models": [
+    "claude-sonnet-5-5"
+  ],
+  "completed_at": "2026-10-09T19:05:36.301780+00:00",
+  "file_hashes": {
+    "baseline.jsonl": "efeef57dcffdfefd4773bf93751668f8e7ccdf9d62ce850264412d0de380a0b2",
+    "candidates.jsonl": "561851396eadf6a89f9a66935cf8d08823ecddab82abbd64f66b5cdd2f064a8f",
+    "claims.jsonl": "395ca8456acdcd2d4cf00394757d3d67f74c68f5454bee4ea0e924ead47978e7",
+    "discovery.json": "5405c263fb4fcdd47f072f987b45262bf088cbc1a052edb3c4770541f1c2268b",
+    "experiment.json": "bf39f074ecb6f94d82eb0a534f646aa7d5e4f1e9d1a2e2b57c338b064d81494c",
+    "handoff.json": "c55b7da1db83bcac66be193840f51b5c0e1a7d82ef9535c4539aa5066a97be62",
+    "metrics.json": "2732274506dfe0b88cdb24f61196d5d27ecac883a3586a8c37f0afd867362b93",
+    "report.md": "1744e77cf8dd230571826ad111ad1c71dd1f5b04c9d479e4d7cd7092925774b5",
+    "scores.json": "ffa209d2311a5d41838391ac39d3ddf4125d5434c5283e83363e1b1aee48259e",
+    "verification.jsonl": "7c1f471498c69e768870030f9975b2979a3c90349ce3c84cc00177664e298bf9",
+    "exploration_envelope.json": "9352b7cc088655b696f1cdc103a768ed564d0fcf73f9c99bd94d6650ea4c68b7"
+  }
+}

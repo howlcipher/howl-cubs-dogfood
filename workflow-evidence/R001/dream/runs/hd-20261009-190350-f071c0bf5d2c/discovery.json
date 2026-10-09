@@ -1,0 +1,296 @@
+{
+  "context_echo_ratio": 0.8,
+  "evidence_echo_ratio": 0.8,
+  "novel_concept_ratio": 0.6,
+  "repeated_family_ratio": 0.3,
+  "idea_count": 10,
+  "cluster_count": 7,
+  "units": [
+    {
+      "id": "hd-20261009-190350-f071c0bf5d2c/candidates/0/0/idea/1",
+      "candidate_id": "hd-20261009-190350-f071c0bf5d2c/candidates/0/0",
+      "text": "IDEA: Replace \"(R001: at most 5 per table)\" with \"only a number of examples the user has approved in a dated, journaled instruction; if none is journaled, the number is zero.\"",
+      "source_span": [
+        499,
+        674
+      ],
+      "source_hash": "5c5bf4f3658c78358af79b68e7b13885da8335e38024d1fd08cae83f62084bd8",
+      "cluster": "cluster-1",
+      "representative": "hd-20261009-190350-f071c0bf5d2c/candidates/0/0/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.5,
+      "context_token_overlap": 0.5,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-190350-f071c0bf5d2c/candidates/0/0/idea/2",
+      "candidate_id": "hd-20261009-190350-f071c0bf5d2c/candidates/0/0",
+      "text": "IDEA: Delete the PYTHONPATH sentence. Alternatively, limit it to a throwaway repo, state that session counts stay consumed and are recorded, and forbid discarding sessions.",
+      "source_span": [
+        1269,
+        1441
+      ],
+      "source_hash": "5c5bf4f3658c78358af79b68e7b13885da8335e38024d1fd08cae83f62084bd8",
+      "cluster": "cluster-2",
+      "representative": "hd-20261009-190350-f071c0bf5d2c/candidates/0/0/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.5625,
+      "context_token_overlap": 0.5625,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-190350-f071c0bf5d2c/candidates/0/0/idea/3",
+      "candidate_id": "hd-20261009-190350-f071c0bf5d2c/candidates/0/0",
+      "text": "IDEA: Say that a Howl-caused downgrade is still recorded as a help incident and paused under section 17. Only after that may the user-approved documented recovery command be run.",
+      "source_span": [
+        1874,
+        2052
+      ],
+      "source_hash": "5c5bf4f3658c78358af79b68e7b13885da8335e38024d1fd08cae83f62084bd8",
+      "cluster": "cluster-3",
+      "representative": "hd-20261009-190350-f071c0bf5d2c/candidates/0/0/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.8571428571428571,
+      "context_token_overlap": 0.8571428571428571,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-190350-f071c0bf5d2c/candidates/0/0/idea/4",
+      "candidate_id": "hd-20261009-190350-f071c0bf5d2c/candidates/0/0",
+      "text": "IDEA: Add that a replacement session counts toward the session budget, that rework rounds carried over from the discarded session are recorded, and that the total rework budget is not reset.",
+      "source_span": [
+        2856,
+        3046
+      ],
+      "source_hash": "5c5bf4f3658c78358af79b68e7b13885da8335e38024d1fd08cae83f62084bd8",
+      "cluster": "cluster-4",
+      "representative": "hd-20261009-190350-f071c0bf5d2c/candidates/0/0/idea/4",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.7142857142857143,
+      "context_token_overlap": 0.7142857142857143,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-190350-f071c0bf5d2c/candidates/0/1/idea/1",
+      "candidate_id": "hd-20261009-190350-f071c0bf5d2c/candidates/0/1",
+      "text": "IDEA: Replace \"(R001: at most 5 per table)\" with \"the number the user has approved in a dated instruction recorded in the journal; if none is recorded, zero raw records\". This also fits the bullet's own default of no raw records.",
+      "source_span": [
+        554,
+        783
+      ],
+      "source_hash": "ab5c771107f31790f2d2a930bc5011c7f78bb7237c6e473d03b650e9f5e91536",
+      "cluster": "cluster-1",
+      "representative": "hd-20261009-190350-f071c0bf5d2c/candidates/0/0/idea/1",
+      "similar_to": "hd-20261009-190350-f071c0bf5d2c/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5172413793103449,
+      "evidence_token_overlap": 0.5384615384615384,
+      "context_token_overlap": 0.5769230769230769,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-190350-f071c0bf5d2c/candidates/0/1/idea/2",
+      "candidate_id": "hd-20261009-190350-f071c0bf5d2c/candidates/0/1",
+      "text": "IDEA: Delete the PYTHONPATH sentence. If it is kept, move it to a separately triggered, user-authorized change.",
+      "source_span": [
+        1335,
+        1446
+      ],
+      "source_hash": "ab5c771107f31790f2d2a930bc5011c7f78bb7237c6e473d03b650e9f5e91536",
+      "cluster": "cluster-2",
+      "representative": "hd-20261009-190350-f071c0bf5d2c/candidates/0/0/idea/2",
+      "similar_to": "hd-20261009-190350-f071c0bf5d2c/candidates/0/0/idea/2",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.6363636363636364,
+      "context_token_overlap": 0.6363636363636364,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-190350-f071c0bf5d2c/candidates/0/1/idea/3",
+      "candidate_id": "hd-20261009-190350-f071c0bf5d2c/candidates/0/1",
+      "text": "IDEA: Delete the scratch-session clause together with the PYTHONPATH sentence. Otherwise, say that scratch sessions count against the session bounds and fall under the same preservation rule.",
+      "source_span": [
+        1944,
+        2135
+      ],
+      "source_hash": "ab5c771107f31790f2d2a930bc5011c7f78bb7237c6e473d03b650e9f5e91536",
+      "cluster": "cluster-2",
+      "representative": "hd-20261009-190350-f071c0bf5d2c/candidates/0/0/idea/2",
+      "similar_to": "hd-20261009-190350-f071c0bf5d2c/candidates/0/0/idea/2",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.5,
+      "context_token_overlap": 0.5,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-190350-f071c0bf5d2c/candidates/0/1/idea/4",
+      "candidate_id": "hd-20261009-190350-f071c0bf5d2c/candidates/0/1",
+      "text": "IDEA: Reword to \"an authorization to fetch applies only within the scope the user stated, does not authorize publication, and is not a representation that the source's terms permit that use. Quote the scope words verbatim.\"",
+      "source_span": [
+        2651,
+        2874
+      ],
+      "source_hash": "ab5c771107f31790f2d2a930bc5011c7f78bb7237c6e473d03b650e9f5e91536",
+      "cluster": "cluster-5",
+      "representative": "hd-20261009-190350-f071c0bf5d2c/candidates/0/1/idea/4",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.631578947368421,
+      "context_token_overlap": 0.631578947368421,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-190350-f071c0bf5d2c/candidates/0/1/idea/5",
+      "candidate_id": "hd-20261009-190350-f071c0bf5d2c/candidates/0/1",
+      "text": "IDEA: Add \"also preserve the session ledger, verdicts and rejection reasons, and quote them in the new goal. Discard only when --separate with a distinct worktree is impossible, and never discard a session whose verdict is unresolved without pausing under section 17.\"",
+      "source_span": [
+        3438,
+        3706
+      ],
+      "source_hash": "ab5c771107f31790f2d2a930bc5011c7f78bb7237c6e473d03b650e9f5e91536",
+      "cluster": "cluster-6",
+      "representative": "hd-20261009-190350-f071c0bf5d2c/candidates/0/1/idea/5",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.7142857142857143,
+      "context_token_overlap": 0.7142857142857143,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-190350-f071c0bf5d2c/candidates/0/1/idea/6",
+      "candidate_id": "hd-20261009-190350-f071c0bf5d2c/candidates/0/1",
+      "text": "IDEA: Say \"run only a recovery command documented in the CLI help, after confirming it makes no model call or that the call is within the approved budget. If the cause is an external quota or outage, record the reset time and do not clear the downgrade manually. Otherwise pause under section 17.\"",
+      "source_span": [
+        4303,
+        4600
+      ],
+      "source_hash": "ab5c771107f31790f2d2a930bc5011c7f78bb7237c6e473d03b650e9f5e91536",
+      "cluster": "cluster-7",
+      "representative": "hd-20261009-190350-f071c0bf5d2c/candidates/0/1/idea/6",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.7272727272727273,
+      "context_token_overlap": 0.7272727272727273,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    }
+  ],
+  "clusters": [
+    {
+      "id": "cluster-1",
+      "representative": "hd-20261009-190350-f071c0bf5d2c/candidates/0/0/idea/1",
+      "representative_text": "IDEA: Replace \"(R001: at most 5 per table)\" with \"only a number of examples the user has approved in a dated, journaled instruction; if none is journaled, the number is zero.\"",
+      "label": "5, approved, at, dated, examples, has, if, instruction",
+      "members": [
+        "hd-20261009-190350-f071c0bf5d2c/candidates/0/0/idea/1",
+        "hd-20261009-190350-f071c0bf5d2c/candidates/0/1/idea/1"
+      ]
+    },
+    {
+      "id": "cluster-2",
+      "representative": "hd-20261009-190350-f071c0bf5d2c/candidates/0/0/idea/2",
+      "representative_text": "IDEA: Delete the PYTHONPATH sentence. Alternatively, limit it to a throwaway repo, state that session counts stay consumed and are recorded, and forbid discarding sessions.",
+      "label": "alternatively, consumed, counts, delete, discarding, forbid, limit, pythonpath",
+      "members": [
+        "hd-20261009-190350-f071c0bf5d2c/candidates/0/0/idea/2",
+        "hd-20261009-190350-f071c0bf5d2c/candidates/0/1/idea/2",
+        "hd-20261009-190350-f071c0bf5d2c/candidates/0/1/idea/3"
+      ]
+    },
+    {
+      "id": "cluster-3",
+      "representative": "hd-20261009-190350-f071c0bf5d2c/candidates/0/0/idea/3",
+      "representative_text": "IDEA: Say that a Howl-caused downgrade is still recorded as a help incident and paused under section 17. Only after that may the user-approved documented recovery command be run.",
+      "label": "17, after, approved, caused, command, documented, downgrade, help",
+      "members": [
+        "hd-20261009-190350-f071c0bf5d2c/candidates/0/0/idea/3"
+      ]
+    },
+    {
+      "id": "cluster-4",
+      "representative": "hd-20261009-190350-f071c0bf5d2c/candidates/0/0/idea/4",
+      "representative_text": "IDEA: Add that a replacement session counts toward the session budget, that rework rounds carried over from the discarded session are recorded, and that the total rework budget is not reset.",
+      "label": "add, budget, carried, counts, discarded, over, recorded, replacement",
+      "members": [
+        "hd-20261009-190350-f071c0bf5d2c/candidates/0/0/idea/4"
+      ]
+    },
+    {
+      "id": "cluster-5",
+      "representative": "hd-20261009-190350-f071c0bf5d2c/candidates/0/1/idea/4",
+      "representative_text": "IDEA: Reword to \"an authorization to fetch applies only within the scope the user stated, does not authorize publication, and is not a representation that the source's terms permit that use. Quote the scope words verbatim.\"",
+      "label": "applies, authorization, authorize, fetch, only, permit, publication, quote",
+      "members": [
+        "hd-20261009-190350-f071c0bf5d2c/candidates/0/1/idea/4"
+      ]
+    },
+    {
+      "id": "cluster-6",
+      "representative": "hd-20261009-190350-f071c0bf5d2c/candidates/0/1/idea/5",
+      "representative_text": "IDEA: Add \"also preserve the session ledger, verdicts and rejection reasons, and quote them in the new goal. Discard only when --separate with a distinct worktree is impossible, and never discard a session whose verdict is unresolved without pausing under section 17.\"",
+      "label": "17, add, also, discard, distinct, goal, impossible, ledger",
+      "members": [
+        "hd-20261009-190350-f071c0bf5d2c/candidates/0/1/idea/5"
+      ]
+    },
+    {
+      "id": "cluster-7",
+      "representative": "hd-20261009-190350-f071c0bf5d2c/candidates/0/1/idea/6",
+      "representative_text": "IDEA: Say \"run only a recovery command documented in the CLI help, after confirming it makes no model call or that the call is within the approved budget. If the cause is an external quota or outage, record the reset time and do not clear the downgrade manually. Otherwise pause under section 17.\"",
+      "label": "17, after, approved, budget, call, cause, clear, cli",
+      "members": [
+        "hd-20261009-190350-f071c0bf5d2c/candidates/0/1/idea/6"
+      ]
+    }
+  ],
+  "ranking": [],
+  "warnings": [
+    "DISCOVERY_ANCHORING_HIGH"
+  ],
+  "explored_families": [
+    "5, approved, at, dated, examples, has, if, instruction",
+    "alternatively, consumed, counts, delete, discarding, forbid, limit, pythonpath",
+    "17, after, approved, caused, command, documented, downgrade, help",
+    "add, budget, carried, counts, discarded, over, recorded, replacement",
+    "applies, authorization, authorize, fetch, only, permit, publication, quote",
+    "17, add, also, discard, distinct, goal, impossible, ledger",
+    "17, after, approved, budget, call, cause, clear, cli"
+  ],
+  "method": "concept_tokens_and_leading_phrases/v3; Jaccard cluster threshold 0.5 or first-8-content-word phrase link; echo coverage 0.6 or first-16-word phrase link",
+  "measurement_type": "ADVISORY_HEURISTIC",
+  "limitations": "Not semantic equivalence, calibrated novelty, entailment or usefulness",
+  "participation": [
+    {
+      "operation": "GENERATED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": "claude",
+      "origin_model": "claude-sonnet-5-5",
+      "subject_count": 2,
+      "inference_occurred": true,
+      "note": "Dream prompted the provider; the provider authored the text."
+    },
+    {
+      "operation": "CLUSTERED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 10,
+      "inference_occurred": false,
+      "note": "Deterministic concept-token clustering; no inference."
+    }
+  ]
+}

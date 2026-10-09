@@ -255,3 +255,12 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 ## 2026-10-09T15:45Z — Closeout plan; INTENT S4 (Cubs case)
 - User: "finish with the next steps and continue with what you would do next and keep the process rolling". CLOSEOUT-PROMPT.md written (R001 closeout + R002 regression run).
 - INTENT S4: goal workflow-evidence/R001/plane/S4-cubs-case.goal.txt on cubs-edge-lab main ad3ce14, `--verify "sh -c 'python3 -m flake8 -j1 cubs_edge_lab tests && python3 -m pytest -q'"`. HowlPlane sessions: 15 of 16.
+
+## 2026-10-09T19:40Z — Journal correction (append-only)
+- The entry headed "2026-10-09T15:15Z — S3b COMPLETE" was mis-stamped; it was written at about 19:15Z, after the 15:20Z and 15:35Z entries. The stray line "== 2026-10-09T12:37:15Z" before the 05:00Z entry is a command artifact. Order of events: S3 handoff (15:20Z) -> user decision and failed --separate (15:35Z) -> S3b launched and COMPLETE (~19:15Z).
+
+## 2026-10-09T19:45Z — Prompt v2 retrospective (section 18)
+- Draft: section 19A added to EXECUTION-PROMPT.md (header notes v1 hash). Independent review through HowlDream verification-purpose exploration (remote claude-sonnet-5-5, 3 calls per round): round 1 p6, round 2 p7, round 3 p8 (texts under workflow-evidence/R001/dream/p6-, p7-, p8-*-texts.txt). Dream calls 34 of 40.
+- Reconciliation (evidence-based): accepted most findings across rounds (verbatim-authorization scope limits; terms incl. embedded notices; example allowance tied to the user's dated wording, not an invented number; budget sizing within approval; required-gate verification; readiness downgrades from Howl defects are help incidents; discard preserves ledger/verdicts, counts against budget, never with an unresolved verdict without the user; same-acceptor rule with out-of-goal criteria recorded as findings). Removed the PYTHONPATH pre-merge proof from the prompt (new procedure without trigger; remains documented in the journal). Rejected with evidence: "--verify-timeout does not exist" (DOG-036 merged f39cf18). Dropped the stage-split rule (weak trigger).
+- Help incidents without a prompt lesson: CUBS-P-008 (INCOMPLETE recorded as success), DOG-035 (parser), DOG-037/038 (role containment, network): component repairs and their regression tests address them; a prompt change would add nothing.
+- Structural validation: sections 16-20 present, 19A once, section references valid. v2 activates at the R002 boundary. Final diff: workflow-evidence/R001/prompt-v2.diff; hash: workflow-evidence/R001/prompt-v2.sha256.

@@ -1,0 +1,66 @@
+[
+  {
+    "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+    "duplicate_of": null,
+    "cluster_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+    "novelty": {
+      "value": 0.5606617647058824,
+      "scorer_type": "heuristic"
+    },
+    "relevance": {
+      "value": true,
+      "scorer_type": "heuristic",
+      "method": "objective_content_token_overlap"
+    },
+    "failure_count": 0,
+    "blocking_failure_count": 0,
+    "claim_status_counts": {
+      "SUPPORTED": 2,
+      "ECHO": 0,
+      "CONTRADICTED": 0,
+      "UNCERTAIN": 24,
+      "UNSUPPORTED": 0
+    },
+    "citation_error_count": 0,
+    "unresolved_count": 24,
+    "measurement_version": 2,
+    "supported_count": 2,
+    "false_premise_rejection_count": 0,
+    "measurement_type": "deterministic",
+    "decision": "INVESTIGATE",
+    "decision_type": "heuristic",
+    "reason": "Proposal merits investigation only; feasibility and assumptions remain unverified."
+  },
+  {
+    "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+    "duplicate_of": null,
+    "cluster_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+    "novelty": {
+      "value": 0.55078125,
+      "scorer_type": "heuristic"
+    },
+    "relevance": {
+      "value": true,
+      "scorer_type": "heuristic",
+      "method": "objective_content_token_overlap"
+    },
+    "failure_count": 0,
+    "blocking_failure_count": 0,
+    "claim_status_counts": {
+      "SUPPORTED": 1,
+      "ECHO": 0,
+      "CONTRADICTED": 0,
+      "UNCERTAIN": 23,
+      "UNSUPPORTED": 0
+    },
+    "citation_error_count": 0,
+    "unresolved_count": 23,
+    "measurement_version": 2,
+    "supported_count": 1,
+    "false_premise_rejection_count": 0,
+    "measurement_type": "deterministic",
+    "decision": "INVESTIGATE",
+    "decision_type": "heuristic",
+    "reason": "Proposal merits investigation only; feasibility and assumptions remain unverified."
+  }
+]

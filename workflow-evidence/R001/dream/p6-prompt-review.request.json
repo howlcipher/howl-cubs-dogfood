@@ -1,0 +1,53 @@
+{
+ "schema_version": "howl.exploration/v1",
+ "request_id": "cubs-r001-prompt-v2-review",
+ "purpose": "verification",
+ "objective": "Independently review this proposed change to a campaign execution prompt (the candidate is a unified diff adding section 19A). The prompt's own rules for such changes are in evidence id prompt-s18. Check: contradictions with the rest of the prompt; whether any line weakens or bypasses public-interface use, independent review, evidence, acceptance or merge gates, the pause-and-help rule, the no-local-LLM rule, isolation, or protections for human work; whether it grants new permissions or spending; recovery gaps; unnecessary burden; vague or untestable wording; and whether each lesson's cited trigger justifies it. Use ASSUMPTION lines for problems, CITE for evidence ids, and IDEA only for a concrete wording fix.",
+ "originating_component": "operator",
+ "requested_mode": "dream",
+ "constraints": [
+  "Review only; do not rewrite the whole prompt."
+ ],
+ "source_candidates": [
+  {
+   "schema_version": "howl.candidate/v1",
+   "candidate_id": "prompt-v2-diff",
+   "source_run_id": "r001-retrospective",
+   "parent_request_id": "r001-retrospective",
+   "objective": "Proposed EXECUTION-PROMPT v2 change",
+   "text": "0a1,2\n> EXECUTION-PROMPT v2 (2026-10-09). Changes from v1: section 19A added from R001 evidence. v1 sha256 e1b5ca33c7f1d85c5b8b2145be2133ec50e811feaf13e9a97bc3a5fcda5439d6.\n> \n836a839,851\n> \n> \n> 19A. OPERATING LESSONS (added in prompt v2 from R001 evidence)\n> \n> These instructions refine how earlier sections are carried out. They add no authority and remove no gate.\n> \n> - Owner authorizations reach workers verbatim. When the user authorizes an action that a repository's own documentation restricts, state the decision, its scope and its date verbatim in the goal and as a --constraint. (R001: a worker refused an approved data fetch because the README documented a restriction.)\n> - Third-party data is checked before any public push. Before the first public push of fetched data or evidence, read the source's terms; keep bulk responses local and publish aggregates and short attributed examples. Scan staged files for bulk records as a separate step, review the result, and only then push. (R001: bulk MLB records reached a public branch and needed a history rewrite.)\n> - Dream budgets are sized before launch: max_calls at least clamp(max_candidates // 2, 1, 3) + max_candidates; record the number. (R001 pass 1 ended PARTIAL.)\n> - A Howl repair is reviewed against the repository's required gate: pass that gate as --verify with an adequate --verify-timeout. Before merge, prove a committed candidate through the public chain with PYTHONPATH pointing at a clean repair worktree (record the SHA); never switch the shared engine checkout. (R001: DOG-036, DOG-035 proof.)\n> - After every HowlPlane session, check `howl agents doctor` for readiness changes; trace any downgrade to its cause before relying on it and recover through the documented live doctor. (R001: CUBS-P-002, DOG-039.)\n> - Goals stay small enough for one implementation pass: separate data acquisition from evaluation. A second session on a worktree with an unfinished one needs a distinct Git worktree (`--separate`) or a documented discard. (R001: S2 block; NOTE-008.)\n> - When resuming after a rejected acceptance, the same acceptor judges again (pin it with --orchestrator) with its quoted reasons in the goal; never route a rejection to a different acceptor.\n",
+   "status": "GENERATED",
+   "trust": "UNVERIFIED"
+  }
+ ],
+ "evidence_refs": [
+  {
+   "id": "prompt-s18",
+   "text": "18. VERSIONED SELF-IMPROVEMENT OF THE EXECUTION PROMPT\n\nMaintain EXECUTION-PROMPT.md in the campaign control repository. Initialize it with the executable prompt text, excluding the surrounding audit summary. Record the seed source; this file is the canonical campaign copy. Do not depend on changing hidden conversation instructions or on modifying external skill/AGENTS.md files.\n\nAt each run start, save an immutable prompt snapshot and its version/commit/hash under runs/<run-id>/. Associate all results with that version. A fresh session must read the canonical prompt plus the handoff and reconcile any recorded mid-run clarifications.\n\nAt each run's retrospective:\n1. Examine execution friction, help incidents, repairs, reviews, false-success risks, and recovery experience.\n2. Decide whether a prompt change would prevent recurrence or improve execution. No edit is required merely because a run ended.\n3. Draft the smallest justified change. Record the triggering evidence, intended behavior, and scope in the run assessment or prompt commit.\n4. Independently review the diff for contradictions, bypasses, recovery gaps, burden, and changed authority. Use the supported Howl review path. If review is unavailable, pause; do not self-certify it.\n5. Validate structure, section references, status transitions, and the behavior the revised instruction is meant to cause. Use a bounded scenario review where execution would be inappropriate.\n6. Commit, PR, and merge the prompt update under section 16. Activate it at the next run boundary and record the new version.\n\nThe outer controller may edit this campaign prompt as an explicit maintenance responsibility. This does not permit manual product implementation, bypassing Howl, or editing protected runtime state.\n\nPrompt changes must not:\n- Predetermine a baseball product contrary to mission-first discovery.\n- Remove public-interface use, independent review, evidence, acceptance, or merge gates.\n- Weaken research criteria after observing results, erase findings, or relabel failures as passes.\n- Remove the pause-and-help rule, no-local-LLM rule, isolation rules, or protections for human work.\n- Grant new permissions, bypass policies, acquire spending authority, or reset consumed budgets.\n- Reinterpret old runs under new success criteria.\n\nOnly a subsequent explicit user instruction can authorize a change to those mission constraints, subject to higher-priority instructions. Self-authored text cannot do so.\n\nIf a current instruction is itself blocking execution, pause under section 17, propose a concrete amendment, and wait for the response. Preserve the starting prompt and record the authorized amendment separately; never silently rewrite the active run's history.\n\nFor each help incident, add an actionable prevention/recovery instruction where warranted, or explicitly explain why the component repair and regression coverage already address it and a prompt change would add no value. Preserve the lesson either way.\n\n\n",
+   "provenance": {
+    "source_type": "OPERATOR_EXPECTATION",
+    "produced_by": "user",
+    "source_ref": "EXECUTION-PROMPT.md section 18",
+    "independent_of_implementation": true,
+    "represents_observed_reality": false
+   }
+  }
+ ],
+ "budget": {
+  "max_calls": 3,
+  "max_candidates": 2,
+  "max_trials": 1,
+  "max_tokens": 4096,
+  "max_duration_seconds": 300,
+  "provider_allowlist": [
+   "command"
+  ],
+  "local_only": false,
+  "allow_local_inference": false,
+  "forbid_local_inference": true
+ },
+ "provider": {
+  "kind": "command",
+  "model": "claude-sonnet-5-5"
+ }
+}
