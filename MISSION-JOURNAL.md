@@ -240,3 +240,6 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - Controller checks: primary validation.json hash unchanged; EXPERIMENT.md primary prefix byte-identical to HEAD (only the exploratory section appended); 2025 cohort never opened (review); tests 69 passed.
 - EXPLORATORY results (whole pool, comparator B0 chosen on 2024): top-50 hits M vs B0: 2021 43 vs 41, 2022 48 vs 44, 2023 41 vs 43, 2024 38 vs 32. 2024 AUROC M 0.823 vs B0 0.839 (paired bootstrap M-B0 -0.016, 95% -0.049 to 0.014). Reading: the model roughly ties "prior-season MLB playing time"; edge small and inconsistent; matches the Dream challenge's prediction. Hypothesis only; no claim.
 - HowlPlane sessions: 13 of 16.
+
+## 2026-10-09T15:35Z — User response (S3 acceptance)
+- User chose "Lint fix, then resume (Recommended)": a HowlPlane lint session (--separate) to make flake8 pass repo-wide with no behavior change, then `resume` S3 so the same acceptor re-judges. HowlPlane sessions: lint = 14 of 16.
