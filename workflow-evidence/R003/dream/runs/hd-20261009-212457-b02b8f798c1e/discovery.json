@@ -1,0 +1,435 @@
+{
+  "context_echo_ratio": 0.5625,
+  "evidence_echo_ratio": 0.5625,
+  "novel_concept_ratio": 0.75,
+  "repeated_family_ratio": 0.375,
+  "idea_count": 16,
+  "cluster_count": 10,
+  "units": [
+    {
+      "id": "hd-20261009-212457-b02b8f798c1e/candidates/0/0/idea/1",
+      "candidate_id": "hd-20261009-212457-b02b8f798c1e/candidates/0/0",
+      "text": "IDEA: Build a single pre-registered, dated-snapshot backtest harness for the offseason decisions (non-tender, QO, arbitration, posting). It would freeze public inputs as of each decision date, score each simple club baseline against a candidate model out of sample, and report n and interval width, so any candidate whose interval includes zero edge is dropped before software is built.",
+      "source_span": [
+        9226,
+        9612
+      ],
+      "source_hash": "c30d163886d01e9e50ac210f4118eaf7a23b5e1572200209c62edadce2fc0766",
+      "cluster": "cluster-1",
+      "representative": "hd-20261009-212457-b02b8f798c1e/candidates/0/0/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.30952380952380953,
+      "context_token_overlap": 0.30952380952380953,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-212457-b02b8f798c1e/candidates/0/0/idea/2",
+      "candidate_id": "hd-20261009-212457-b02b8f798c1e/candidates/0/0",
+      "text": "IDEA: Replace the coaching-ledger build with a persistence-first test: check on public data whether apparent coach effects in year T repeat in T+1 for coaches who moved clubs. Proceed to a hiring tool only if they persist beyond regression to the mean, and treat a null result as the useful output.",
+      "source_span": [
+        9613,
+        9911
+      ],
+      "source_hash": "c30d163886d01e9e50ac210f4118eaf7a23b5e1572200209c62edadce2fc0766",
+      "cluster": "cluster-2",
+      "representative": "hd-20261009-212457-b02b8f798c1e/candidates/0/0/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.2727272727272727,
+      "context_token_overlap": 0.2727272727272727,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-212457-b02b8f798c1e/candidates/0/0/idea/3",
+      "candidate_id": "hd-20261009-212457-b02b8f798c1e/candidates/0/0",
+      "text": "IDEA: Sharpen arbitration to settle-versus-hearing selection: estimate, from public filed-number gaps and past outcomes, the filing-gap threshold above which hearings favor the club. State the result as a decision table with explicit uncertainty rather than a point predictor.",
+      "source_span": [
+        9912,
+        10188
+      ],
+      "source_hash": "c30d163886d01e9e50ac210f4118eaf7a23b5e1572200209c62edadce2fc0766",
+      "cluster": "cluster-3",
+      "representative": "hd-20261009-212457-b02b8f798c1e/candidates/0/0/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.16129032258064516,
+      "context_token_overlap": 0.16129032258064516,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-212457-b02b8f798c1e/candidates/0/1/idea/1",
+      "candidate_id": "hd-20261009-212457-b02b8f798c1e/candidates/0/1",
+      "text": "IDEA: Sharpened replacement: one pooled \"decision-quality audit\" that, for non-tender, QO and arbitration decisions, uses only timestamped public data (projections and prices known on decision day) and reports the gap versus the simple baseline with bootstrap intervals. Build more only for the decision where the interval excludes zero by a margin larger than the dollar noise, and report a null for the others.",
+      "source_span": [
+        9518,
+        9930
+      ],
+      "source_hash": "26f3c7805fa03de2fe26f3da066945863c42282885ea97ce53162aad15dac8e6",
+      "cluster": "cluster-4",
+      "representative": "hd-20261009-212457-b02b8f798c1e/candidates/0/1/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.35,
+      "context_token_overlap": 0.35,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-212457-b02b8f798c1e/candidates/0/2/idea/1",
+      "candidate_id": "hd-20261009-212457-b02b8f798c1e/candidates/0/2",
+      "text": "IDEA: Replace the six with one pre-registered \"dated-snapshot decision audit\" on league-wide winter market decisions (non-tender, QO, posting), scoring forecast calibration against realized prices and outcomes. Cubs-specific tooling would be built only where it beats staff-style baselines out of sample.",
+      "source_span": [
+        10314,
+        10618
+      ],
+      "source_hash": "a642fdc656152738482d21bfea0920ec51ea81b1722035adca76011b336eeabc",
+      "cluster": "cluster-1",
+      "representative": "hd-20261009-212457-b02b8f798c1e/candidates/0/0/idea/1",
+      "similar_to": "hd-20261009-212457-b02b8f798c1e/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.2571428571428571,
+      "context_token_overlap": 0.2571428571428571,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-212457-b02b8f798c1e/candidates/0/2/idea/2",
+      "candidate_id": "hd-20261009-212457-b02b8f798c1e/candidates/0/2",
+      "text": "IDEA: Narrow the arbitration idea to a settle-versus-hearing expected-value calculator that uses exchanged figures and public award history, reported with intervals. Stop if annual hearing counts are too low to bound the error.",
+      "source_span": [
+        10619,
+        10846
+      ],
+      "source_hash": "a642fdc656152738482d21bfea0920ec51ea81b1722035adca76011b336eeabc",
+      "cluster": "cluster-3",
+      "representative": "hd-20261009-212457-b02b8f798c1e/candidates/0/0/idea/3",
+      "similar_to": "hd-20261009-212457-b02b8f798c1e/candidates/0/0/idea/3",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.125,
+      "context_token_overlap": 0.125,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-212457-b02b8f798c1e/candidates/0/2/idea/3",
+      "candidate_id": "hd-20261009-212457-b02b8f798c1e/candidates/0/2",
+      "text": "IDEA: Run the coaching idea as a null-result test: check whether year-T coach ratings predict year-T+1 changes better than a tenure or reputation proxy, with matched controls. Fund it only if intervals are narrow enough to change a hire.",
+      "source_span": [
+        10847,
+        11084
+      ],
+      "source_hash": "a642fdc656152738482d21bfea0920ec51ea81b1722035adca76011b336eeabc",
+      "cluster": "cluster-2",
+      "representative": "hd-20261009-212457-b02b8f798c1e/candidates/0/0/idea/2",
+      "similar_to": "hd-20261009-212457-b02b8f798c1e/candidates/0/0/idea/2",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.20689655172413793,
+      "context_token_overlap": 0.20689655172413793,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-212457-b02b8f798c1e/candidates/0/2/idea/4",
+      "candidate_id": "hd-20261009-212457-b02b8f798c1e/candidates/0/2",
+      "text": "IDEA: Defer the postseason roster optimizer, and instead build a reusable matchup simulator only if the series win-probability gain from marginal slots is shown to exceed what noise could hide.",
+      "source_span": [
+        11085,
+        11278
+      ],
+      "source_hash": "a642fdc656152738482d21bfea0920ec51ea81b1722035adca76011b336eeabc",
+      "cluster": "cluster-5",
+      "representative": "hd-20261009-212457-b02b8f798c1e/candidates/0/2/idea/4",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.19047619047619047,
+      "context_token_overlap": 0.19047619047619047,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-212457-b02b8f798c1e/candidates/0/3/idea/1",
+      "candidate_id": "hd-20261009-212457-b02b8f798c1e/candidates/0/3",
+      "text": "IDEA: Replace the six-candidate portfolio with one narrow, falsifiable pilot: a dated-snapshot backtest of tender/non-tender and qualifying-offer decisions pooled league-wide, scored against the \"projected WAR per dollar vs club threshold\" and \"offer if market AAV clearly exceeds QO\" baselines, with every input timestamped to the decision date.",
+      "source_span": [
+        0,
+        346
+      ],
+      "source_hash": "10fe7a92f9895a4392bdf447effefde1ee139c578210a92b569e5e90df6b8d39",
+      "cluster": "cluster-1",
+      "representative": "hd-20261009-212457-b02b8f798c1e/candidates/0/0/idea/1",
+      "similar_to": "hd-20261009-212457-b02b8f798c1e/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.2972972972972973,
+      "context_token_overlap": 0.2972972972972973,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-212457-b02b8f798c1e/candidates/0/3/idea/2",
+      "candidate_id": "hd-20261009-212457-b02b8f798c1e/candidates/0/3",
+      "text": "IDEA: Candidate 1, coaching-hire evaluation. Keep only as a null-result study, not a decision tool: a coach-movement panel with matched non-moving controls and a pre-registered test of year-over-year persistence of coach effects.",
+      "source_span": [
+        568,
+        797
+      ],
+      "source_hash": "10fe7a92f9895a4392bdf447effefde1ee139c578210a92b569e5e90df6b8d39",
+      "cluster": "cluster-6",
+      "representative": "hd-20261009-212457-b02b8f798c1e/candidates/0/3/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.4,
+      "context_token_overlap": 0.4,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-212457-b02b8f798c1e/candidates/0/3/idea/3",
+      "candidate_id": "hd-20261009-212457-b02b8f798c1e/candidates/0/3",
+      "text": "IDEA: Candidate 2, non-tender decisions. This is the strongest candidate: it recurs every year, the decision date is fixed, and tender decisions, projected salaries, and later signings are public, so a pooled backtest across all clubs is possible.",
+      "source_span": [
+        1885,
+        2132
+      ],
+      "source_hash": "10fe7a92f9895a4392bdf447effefde1ee139c578210a92b569e5e90df6b8d39",
+      "cluster": "cluster-4",
+      "representative": "hd-20261009-212457-b02b8f798c1e/candidates/0/1/idea/1",
+      "similar_to": "hd-20261009-212457-b02b8f798c1e/candidates/0/1/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.4583333333333333,
+      "context_token_overlap": 0.4583333333333333,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-212457-b02b8f798c1e/candidates/0/3/idea/4",
+      "candidate_id": "hd-20261009-212457-b02b8f798c1e/candidates/0/3",
+      "text": "IDEA: Candidate 3, qualifying offers. Treat as a small-n calibration exercise embedded in the tender pilot, not a standalone product.",
+      "source_span": [
+        3187,
+        3320
+      ],
+      "source_hash": "10fe7a92f9895a4392bdf447effefde1ee139c578210a92b569e5e90df6b8d39",
+      "cluster": "cluster-7",
+      "representative": "hd-20261009-212457-b02b8f798c1e/candidates/0/3/idea/4",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.46153846153846156,
+      "context_token_overlap": 0.46153846153846156,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-212457-b02b8f798c1e/candidates/0/3/idea/5",
+      "candidate_id": "hd-20261009-212457-b02b8f798c1e/candidates/0/3",
+      "text": "IDEA: Candidate 4, NPB/KBO posting bids. Use as a Bayesian translation with wide intervals, reporting where the model cannot separate itself from simple ratios plus scouting.",
+      "source_span": [
+        4176,
+        4350
+      ],
+      "source_hash": "10fe7a92f9895a4392bdf447effefde1ee139c578210a92b569e5e90df6b8d39",
+      "cluster": "cluster-8",
+      "representative": "hd-20261009-212457-b02b8f798c1e/candidates/0/3/idea/5",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.35,
+      "context_token_overlap": 0.35,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-212457-b02b8f798c1e/candidates/0/3/idea/6",
+      "candidate_id": "hd-20261009-212457-b02b8f798c1e/candidates/0/3",
+      "text": "IDEA: Candidate 5, postseason roster construction. Reframe as a one-time sensitivity analysis to bound the value of the 25th and 26th roster slots, and build nothing until that bound exceeds measurement noise.",
+      "source_span": [
+        5235,
+        5444
+      ],
+      "source_hash": "10fe7a92f9895a4392bdf447effefde1ee139c578210a92b569e5e90df6b8d39",
+      "cluster": "cluster-5",
+      "representative": "hd-20261009-212457-b02b8f798c1e/candidates/0/2/idea/4",
+      "similar_to": "hd-20261009-212457-b02b8f798c1e/candidates/0/2/idea/4",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.42105263157894735,
+      "context_token_overlap": 0.42105263157894735,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-212457-b02b8f798c1e/candidates/0/3/idea/7",
+      "candidate_id": "hd-20261009-212457-b02b8f798c1e/candidates/0/3",
+      "text": "IDEA: Candidate 6, arbitration filing. Restrict to a settle-vs-hearing expected-value calculator built on public hearing results, and report the sample size before any modeling.",
+      "source_span": [
+        6380,
+        6557
+      ],
+      "source_hash": "10fe7a92f9895a4392bdf447effefde1ee139c578210a92b569e5e90df6b8d39",
+      "cluster": "cluster-9",
+      "representative": "hd-20261009-212457-b02b8f798c1e/candidates/0/3/idea/7",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.3,
+      "context_token_overlap": 0.3,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-212457-b02b8f798c1e/candidates/0/3/idea/8",
+      "candidate_id": "hd-20261009-212457-b02b8f798c1e/candidates/0/3",
+      "text": "IDEA: Blind spot analysis across the set: add a shared evaluation protocol, with decision-date snapshots, a pooled league-wide test, a pre-registered simple baseline, and a reported minimum detectable effect, before any build decision.",
+      "source_span": [
+        7604,
+        7839
+      ],
+      "source_hash": "10fe7a92f9895a4392bdf447effefde1ee139c578210a92b569e5e90df6b8d39",
+      "cluster": "cluster-10",
+      "representative": "hd-20261009-212457-b02b8f798c1e/candidates/0/3/idea/8",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.4230769230769231,
+      "context_token_overlap": 0.4230769230769231,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    }
+  ],
+  "clusters": [
+    {
+      "id": "cluster-1",
+      "representative": "hd-20261009-212457-b02b8f798c1e/candidates/0/0/idea/1",
+      "representative_text": "IDEA: Build a single pre-registered, dated-snapshot backtest harness for the offseason decisions (non-tender, QO, arbitration, posting). It would freeze public inputs as of each decision date, score each simple club baseline against a candidate model out of sample, and report n and interval width, so any candidate whose interval includes zero edge is dropped before software is built.",
+      "label": "against, any, arbitration, backtest, baseline, before, built, candidate",
+      "members": [
+        "hd-20261009-212457-b02b8f798c1e/candidates/0/0/idea/1",
+        "hd-20261009-212457-b02b8f798c1e/candidates/0/2/idea/1",
+        "hd-20261009-212457-b02b8f798c1e/candidates/0/3/idea/1"
+      ]
+    },
+    {
+      "id": "cluster-2",
+      "representative": "hd-20261009-212457-b02b8f798c1e/candidates/0/0/idea/2",
+      "representative_text": "IDEA: Replace the coaching-ledger build with a persistence-first test: check on public data whether apparent coach effects in year T repeat in T+1 for coaches who moved clubs. Proceed to a hiring tool only if they persist beyond regression to the mean, and treat a null result as the useful output.",
+      "label": "1, apparent, beyond, check, clubs, coach, coaches, coaching",
+      "members": [
+        "hd-20261009-212457-b02b8f798c1e/candidates/0/0/idea/2",
+        "hd-20261009-212457-b02b8f798c1e/candidates/0/2/idea/3"
+      ]
+    },
+    {
+      "id": "cluster-3",
+      "representative": "hd-20261009-212457-b02b8f798c1e/candidates/0/0/idea/3",
+      "representative_text": "IDEA: Sharpen arbitration to settle-versus-hearing selection: estimate, from public filed-number gaps and past outcomes, the filing-gap threshold above which hearings favor the club. State the result as a decision table with explicit uncertainty rather than a point predictor.",
+      "label": "above, arbitration, club, decision, estimate, explicit, favor, filed",
+      "members": [
+        "hd-20261009-212457-b02b8f798c1e/candidates/0/0/idea/3",
+        "hd-20261009-212457-b02b8f798c1e/candidates/0/2/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-4",
+      "representative": "hd-20261009-212457-b02b8f798c1e/candidates/0/1/idea/1",
+      "representative_text": "IDEA: Sharpened replacement: one pooled \"decision-quality audit\" that, for non-tender, QO and arbitration decisions, uses only timestamped public data (projections and prices known on decision day) and reports the gap versus the simple baseline with bootstrap intervals. Build more only for the decision where the interval excludes zero by a margin larger than the dollar noise, and report a null for the others.",
+      "label": "arbitration, audit, baseline, bootstrap, data, day, decision, decisions",
+      "members": [
+        "hd-20261009-212457-b02b8f798c1e/candidates/0/1/idea/1",
+        "hd-20261009-212457-b02b8f798c1e/candidates/0/3/idea/3"
+      ]
+    },
+    {
+      "id": "cluster-5",
+      "representative": "hd-20261009-212457-b02b8f798c1e/candidates/0/2/idea/4",
+      "representative_text": "IDEA: Defer the postseason roster optimizer, and instead build a reusable matchup simulator only if the series win-probability gain from marginal slots is shown to exceed what noise could hide.",
+      "label": "defer, exceed, gain, hide, if, instead, marginal, matchup",
+      "members": [
+        "hd-20261009-212457-b02b8f798c1e/candidates/0/2/idea/4",
+        "hd-20261009-212457-b02b8f798c1e/candidates/0/3/idea/6"
+      ]
+    },
+    {
+      "id": "cluster-6",
+      "representative": "hd-20261009-212457-b02b8f798c1e/candidates/0/3/idea/2",
+      "representative_text": "IDEA: Candidate 1, coaching-hire evaluation. Keep only as a null-result study, not a decision tool: a coach-movement panel with matched non-moving controls and a pre-registered test of year-over-year persistence of coach effects.",
+      "label": "1, candidate, coach, coaching, controls, decision, effects, evaluation",
+      "members": [
+        "hd-20261009-212457-b02b8f798c1e/candidates/0/3/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-7",
+      "representative": "hd-20261009-212457-b02b8f798c1e/candidates/0/3/idea/4",
+      "representative_text": "IDEA: Candidate 3, qualifying offers. Treat as a small-n calibration exercise embedded in the tender pilot, not a standalone product.",
+      "label": "3, calibration, candidate, embedded, exercise, n, offers, pilot",
+      "members": [
+        "hd-20261009-212457-b02b8f798c1e/candidates/0/3/idea/4"
+      ]
+    },
+    {
+      "id": "cluster-8",
+      "representative": "hd-20261009-212457-b02b8f798c1e/candidates/0/3/idea/5",
+      "representative_text": "IDEA: Candidate 4, NPB/KBO posting bids. Use as a Bayesian translation with wide intervals, reporting where the model cannot separate itself from simple ratios plus scouting.",
+      "label": "4, bayesian, bids, candidate, cannot, intervals, itself, kbo",
+      "members": [
+        "hd-20261009-212457-b02b8f798c1e/candidates/0/3/idea/5"
+      ]
+    },
+    {
+      "id": "cluster-9",
+      "representative": "hd-20261009-212457-b02b8f798c1e/candidates/0/3/idea/7",
+      "representative_text": "IDEA: Candidate 6, arbitration filing. Restrict to a settle-vs-hearing expected-value calculator built on public hearing results, and report the sample size before any modeling.",
+      "label": "6, any, arbitration, before, built, calculator, candidate, expected",
+      "members": [
+        "hd-20261009-212457-b02b8f798c1e/candidates/0/3/idea/7"
+      ]
+    },
+    {
+      "id": "cluster-10",
+      "representative": "hd-20261009-212457-b02b8f798c1e/candidates/0/3/idea/8",
+      "representative_text": "IDEA: Blind spot analysis across the set: add a shared evaluation protocol, with decision-date snapshots, a pooled league-wide test, a pre-registered simple baseline, and a reported minimum detectable effect, before any build decision.",
+      "label": "across, add, analysis, any, baseline, before, blind, date",
+      "members": [
+        "hd-20261009-212457-b02b8f798c1e/candidates/0/3/idea/8"
+      ]
+    }
+  ],
+  "ranking": [],
+  "warnings": [],
+  "explored_families": [
+    "against, any, arbitration, backtest, baseline, before, built, candidate",
+    "1, apparent, beyond, check, clubs, coach, coaches, coaching",
+    "above, arbitration, club, decision, estimate, explicit, favor, filed",
+    "arbitration, audit, baseline, bootstrap, data, day, decision, decisions",
+    "defer, exceed, gain, hide, if, instead, marginal, matchup",
+    "1, candidate, coach, coaching, controls, decision, effects, evaluation",
+    "3, calibration, candidate, embedded, exercise, n, offers, pilot",
+    "4, bayesian, bids, candidate, cannot, intervals, itself, kbo",
+    "6, any, arbitration, before, built, calculator, candidate, expected",
+    "across, add, analysis, any, baseline, before, blind, date"
+  ],
+  "method": "concept_tokens_and_leading_phrases/v3; Jaccard cluster threshold 0.5 or first-8-content-word phrase link; echo coverage 0.6 or first-16-word phrase link",
+  "measurement_type": "ADVISORY_HEURISTIC",
+  "limitations": "Not semantic equivalence, calibrated novelty, entailment or usefulness",
+  "participation": [
+    {
+      "operation": "GENERATED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": "claude",
+      "origin_model": "claude-sonnet-5-5",
+      "subject_count": 4,
+      "inference_occurred": true,
+      "note": "Dream prompted the provider; the provider authored the text."
+    },
+    {
+      "operation": "CLUSTERED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 16,
+      "inference_occurred": false,
+      "note": "Deterministic concept-token clustering; no inference."
+    }
+  ]
+}

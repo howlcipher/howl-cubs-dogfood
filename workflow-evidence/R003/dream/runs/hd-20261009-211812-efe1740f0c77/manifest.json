@@ -1,0 +1,101 @@
+{
+  "schema": "howldream.run/v1",
+  "run_id": "hd-20261009-211812-efe1740f0c77",
+  "experiment_id": "4653b0ec18a2a88d6925bf253a58dcf3fe3053fb4315451f9dd1c48559b3b295",
+  "version": "0.4.4",
+  "git_commit": "f1cc5ca1f9e1d120da6cbf18bbc192ab6ef23abe",
+  "implementation_hash": "4146772cb46f4e4a159f89881dc87831680ca5d5527763163c20294427d2469c",
+  "mode": "dream",
+  "started_at": "2026-10-09T21:18:12.165646+00:00",
+  "provider": {
+    "kind": "command",
+    "model": "claude-opus-5-5",
+    "base_url": null,
+    "allow_remote": true,
+    "allow_local_inference": false,
+    "forbid_local_inference": true,
+    "timeout_seconds": 300,
+    "max_tokens": 4096
+  },
+  "capabilities": {
+    "supports_seed": false,
+    "supports_temperature": false,
+    "supports_top_p": false,
+    "supports_logprobs": false,
+    "supports_tool_calls": false,
+    "supports_structured_output": false,
+    "supports_token_usage": false,
+    "supports_local_instrumentation": false
+  },
+  "authority": "NONE",
+  "parent_run": null,
+  "status": "COMPLETE",
+  "errors": [],
+  "template_version": "line_experiment/v2",
+  "template_hash": "8096777d16cf15dcd68f34f709eeb4f81e1b983ba58fdda00c8008f2aa7add7b",
+  "source_hashes": {
+    "objective_context": "f33af47aaac9788f56a54f70558a5bc21bd0d80850543494c0511ce5170fff8c"
+  },
+  "replay": "CONFIGURATION_REPLAY_NOT_GUARANTEED",
+  "replay_available": true,
+  "warnings": [
+    "Verification is scoped to supplied evidence; generated text has no authority.",
+    "EXPERIMENT_CONTROL_NOT_APPLIED: inspect sampling requested/supported/applied; condition differences are confounded"
+  ],
+  "call_count": 9,
+  "analysis": {
+    "version": "0.4.4",
+    "implementation_hash": "4146772cb46f4e4a159f89881dc87831680ca5d5527763163c20294427d2469c",
+    "analyzed_at": "2026-10-09T21:24:31.304581+00:00",
+    "git_commit": "f1cc5ca1f9e1d120da6cbf18bbc192ab6ef23abe"
+  },
+  "participation": [
+    {
+      "operation": "GENERATED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": "claude",
+      "origin_model": "claude-opus-5-5",
+      "subject_count": 6,
+      "inference_occurred": true,
+      "note": "Dream prompted the provider; the provider authored the text."
+    },
+    {
+      "operation": "CLUSTERED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 53,
+      "inference_occurred": false,
+      "note": "Deterministic concept-token clustering; no inference."
+    },
+    {
+      "operation": "RANKED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 30,
+      "inference_occurred": false,
+      "note": "Advisory heuristic ranking; no execution authority."
+    }
+  ],
+  "observed_models": [
+    "claude-opus-5-5"
+  ],
+  "completed_at": "2026-10-09T21:24:31.972885+00:00",
+  "file_hashes": {
+    "baseline.jsonl": "4602a0cabe000833996cacd34dde04229e1af449b7eacd339abcef89491a2d4c",
+    "candidates.jsonl": "d58bdf8d1078f351dabaf55895f41e9bd626b4bd33b47aa8fca639e292bfa98b",
+    "claims.jsonl": "e8ce688ffc1302e451b232a05db5fa5fe9aabaf2f11d52da56b4110de10b67a5",
+    "discovery.json": "5d7b4c1a6062ae0dd641568a02ddd941512564df7860a68e2938983e77d5234b",
+    "experiment.json": "3c60d39504c6c539c6ec29bbb7f8a55a0dca89355b8cde7c9af4615363bef737",
+    "handoff.json": "137b232fbed7d23ec22ed5f1f8b288ee5f6bdc3ad8c9c4dc0a6bb143fcf91189",
+    "metrics.json": "d0a57de4fe0d6581828c6dba80909f676a7874bfcd71615c9fe5b7e3b746050e",
+    "report.md": "d15237b2b8d7a26945cc28d86f91d059138290df4095327d681907f2f9a9909f",
+    "scores.json": "8c58a133af786061b9c6389b26b076d3715fbcf366e8f45ef06021a528f3ca67",
+    "verification.jsonl": "58a5187a312dd7dd55a195b23645feac2681ce5fe223ddbae4c55dd6d159e9f7",
+    "exploration_envelope.json": "49085aacccff46fdaecf00fc6ba0baa2e91f122046cdf57ecc71cf64282aba0b"
+  }
+}

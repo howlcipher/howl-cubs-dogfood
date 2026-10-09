@@ -65,3 +65,18 @@ Evidence: cubs-edge-lab research/FEASIBILITY.md (S1c/S1d, accepted, merged 35f80
 | OPPBULL, SPRING | not probed | PARKED | In-season or widely studied; no feasibility evidence gathered. |
 
 Pivot budget: unused (1 remaining).
+
+## R003 discovery (prompt v2)
+
+- Pass 1 (hd-20261009-211812-efe1740f0c77): 53 units, 30 clusters (remote Opus). Strongest convergence: coaching-hire evaluation (4 of 6 trials); also non-tender, qualifying offers, NPB/KBO posting, arbitration filing, postseason roster construction.
+- Pass 2 critique + blind spot (hd-20261009-212457-b02b8f798c1e, remote Sonnet): sample size is the shared weakness (QO, posting, hearings, postseason, coach movers); many outcomes are counterparty-driven; recommended a persistence-first test of coach effects and a dated-snapshot backtest harness.
+- Pass 4 critique-informed divergent (hd-20261009-212841-eccdc1b3971d, remote Opus): high-n decisions. Convergence: third-base send/hold (4 of 6), level-to-level MiLB promotion timing (5 of 6), replay challenges (4 of 6); also starter removal, intentional walks, defensive substitutions, catcher assignment.
+
+### R003 finalists (pre-feasibility)
+
+| Key | Decision / owner | Cases | Outcome | Decision-time public info | Main risks |
+| --- | --- | --- | --- | --- | --- |
+| SENDHOLD | Third-base coach send/hold, every game | Thousands per season league-wide | Safe/out at home, runs (public play-by-play) | Runner sprint speed, outfielder arm strength, batted-ball type and location, outs, score (public Statcast leaderboards and play data) | Needs per-game play data (thousands of requests: outside the 07:10Z authorization scope); hold outcomes are counterfactual; in-season use only from 2027 |
+| COACH | Coaching hires, Oct-Dec (now) | Coach moves across clubs: few dozen | Persistence of player-level change under the same coach at a new club | Public coach rosters per team-season, player season stats (cached) | Low n; confounding (movers selected); null likely |
+| MILBPROMO | Level-to-level promotions | Thousands | Next-level performance, MLB arrival | Season stats; game logs for timing | Promotion is selected on performance (counterfactual unobserved) |
+| REPLAY, STARTER, IBB | In-game | Thousands | Public | Decision-time info private (video) or well studied | Parity likely |

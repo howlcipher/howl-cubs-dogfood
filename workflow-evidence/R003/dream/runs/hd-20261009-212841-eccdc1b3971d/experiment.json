@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "exp-cubs-r003-p4-divergent2",
+  "objective": "Where could software create a meaningful baseball advantage for the Chicago Cubs? Second pass. A critique of the first pass found that most candidate decisions (qualifying offers, posting bids, arbitration hearings, postseason rosters, coach moves) have too few historical cases to test any tool against a club's simple rule, and many outcomes are driven by counterparties. Find decisions that combine: (a) many historical cases per season league-wide, so a retrospective test has statistical power; (b) an outcome that is publicly observable after the decision; (c) value at stake that adds up to something meaningful for one club over a season; (d) public information available before the decision that a simple rule might underuse. Include player-development, in-season management and roster decisions, and say where (a) to (d) would fail. OUTPUT GUIDANCE (format only): Each IDEA names the problem, owner, decision and its frequency, an estimate-free description of the number of historical cases, the observable outcome, the simple baseline, and the intervention. Follow with ASSUMPTION and UNKNOWN lines. Do not invent statistics or private Cubs information.",
+  "hypothesis": "",
+  "mode": "dream",
+  "purpose": "discovery",
+  "constraints": [
+    "Do not assume the problem or the solution.",
+    "Lawfully accessible public, historical, or clearly labeled synthetic data only.",
+    "Do not invent private Chicago Cubs information or statistics.",
+    "Distinguish fact, assumption, hypothesis, and speculation."
+  ],
+  "explored_families": [
+    "opponent pitch repertoire change alerts",
+    "Wrigley wind outfield positioning",
+    "ABS ball-strike challenge strategy",
+    "minor-league free agent triage (tested in R001: low ceiling, model ties prior-MLB-time rule)",
+    "roster rules and option ledger",
+    "minor league call-up translation",
+    "Rule 5 selection modeling (public labels only from 2024)",
+    "opposing bullpen availability forecast",
+    "return-to-play comparables",
+    "pitch-sequence predictability self-scout",
+    "travel and rest planning",
+    "institutional memory and decision journals",
+    "public leaderboards and splits",
+    "pitch design and biomechanics",
+    "coaching-hire evaluation",
+    "non-tender decisions",
+    "qualifying offers",
+    "NPB/KBO posting bids",
+    "postseason roster construction",
+    "arbitration filing",
+    "pre-arbitration extensions",
+    "draft bonus pool allocation",
+    "trade deadline posture",
+    "rain delay starter management"
+  ],
+  "diversity_memory": true,
+  "ranking_criteria": [
+    "novelty",
+    "objective_fit"
+  ],
+  "provider": {
+    "kind": "command",
+    "model": "claude-opus-5-5",
+    "base_url": null,
+    "allow_remote": true,
+    "allow_local_inference": false,
+    "forbid_local_inference": true,
+    "timeout_seconds": 300,
+    "max_tokens": 4096
+  },
+  "baseline": {
+    "candidates": 3,
+    "temperature": 0.2
+  },
+  "generation": {
+    "candidates": 6,
+    "temperature": 1.1
+  },
+  "max_calls": 9,
+  "trials": 1,
+  "seed": 42,
+  "evidence": [
+    {
+      "id": "objective_context",
+      "text": "Where could software create a meaningful baseball advantage for the Chicago Cubs? Second pass. A critique of the first pass found that most candidate decisions (qualifying offers, posting bids, arbitration hearings, postseason rosters, coach moves) have too few historical cases to test any tool against a club's simple rule, and many outcomes are driven by counterparties. Find decisions that combine: (a) many historical cases per season league-wide, so a retrospective test has statistical power; (b) an outcome that is publicly observable after the decision; (c) value at stake that adds up to something meaningful for one club over a season; (d) public information available before the decision that a simple rule might underuse. Include player-development, in-season management and roster decisions, and say where (a) to (d) would fail. OUTPUT GUIDANCE (format only): Each IDEA names the problem, owner, decision and its frequency, an estimate-free description of the number of historical cases, the observable outcome, the simple baseline, and the intervention. Follow with ASSUMPTION and UNKNOWN lines. Do not invent statistics or private Cubs information.",
+      "facts": {},
+      "provenance": {
+        "source_type": "UNCLASSIFIED",
+        "produced_by": "unknown",
+        "source_ref": "",
+        "independent_of_implementation": false,
+        "represents_observed_reality": false
+      }
+    }
+  ],
+  "context": [],
+  "speculative_candidates": [],
+  "perturbations": [],
+  "retain_text": true
+}

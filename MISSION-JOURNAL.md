@@ -291,3 +291,10 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 ## 2026-10-09T21:17:55Z — R002 closeout receipt; R003 started
 - Receipt: howl-cubs-dogfood PR #2 (records/R002 -> main) merged as 258a05b. Correction: the PR text said the bulk-data sweep found nothing before it was run; the sweep was run after merge on main 258a05b and found no file over the threshold (claim true, timing wrong).
 - R003 (DISCOVERY_BUILD) started under prompt v2 (snapshot runs/R003/PROMPT-SNAPSHOT.md, sha256 7fa1b0c151ef593e07a4d3a3c44d1626a1ceae7693ca615a1d756f83b59d75d5). Contract runs/R003/RUN-CONTRACT.md. Reason: no credible new MILBFA hypothesis; test a different offseason decision with a larger value ceiling.
+
+## 2026-10-09T21:18:11Z — INTENT R003 Dream pass 1 (divergent)
+- `howldream explore workflow-evidence/R003/dream/p1-divergent.request.json --command-config config/dream-claude-opus.json --allow-remote --output workflow-evidence/R003/dream/runs`; max_calls 9 = 3 baseline + 6 (prompt v2 sizing). Dream calls R003: 0 -> 9 of 40.
+
+## 2026-10-09T21:36:37Z — R003 discovery passes complete; data-scope question
+- Pass 1, pass 2 (critique + blind spot) and pass 4 (critique-informed divergent) done: 24 Dream calls of 40, all remote Claude, mocked=false. LOCAL_LLM_USED: NO. Finalists in OPPORTUNITIES.md (R003 section).
+- The strongest high-n finalist (SENDHOLD) needs per-game play data, thousands of requests, outside the scope of the user's 2026-10-09T07:10Z authorization (about 200 league-wide season-stat requests). Per prompt v2 section 19A (authorization applies only within the stated scope; pause if unclear) -> asking the user.

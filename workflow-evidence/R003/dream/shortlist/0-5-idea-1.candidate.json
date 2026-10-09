@@ -1,0 +1,181 @@
+{
+  "schema_version": "howl.candidate/v1",
+  "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/1",
+  "source_run_id": "hd-20261009-211812-efe1740f0c77",
+  "parent_request_id": "cubs-r003-p1-divergent",
+  "objective": "Where could software create a meaningful baseball advantage for the Chicago Cubs? The current date is early October 2026, in the Cubs' offseason (their 2026 season ended in the Wild Card Series). A prior experiment found that triaging the November minor-league free-agent pool offers little: the low-attention pool holds under one next-season contributor per club per year, and a simple 'played in MLB last year' rule already finds most value. Prefer recurring decisions where the value at stake is large enough to matter, where public information available at decision time could plausibly beat a simple rule, and where a retrospective test on public history is possible. Consider front office, player development, scouting, coaching and business-of-baseball decisions, and name where software is unnecessary or clubs are already ahead. OUTPUT GUIDANCE (format only): Each IDEA names one problem, the decision owner, the concrete recurring decision and its timing, the size of value at stake, the mechanism of advantage, the simple baseline a club already uses, and the software intervention. Follow with ASSUMPTION and UNKNOWN lines. Do not invent statistics or private Cubs information.",
+  "text": "IDEA: Problem: building the postseason roster. Owner: GM and manager, with input from the analytics and pitching staff. Decision: who fills the 26 spots for each round, set before each series and reset between rounds, about 1 to 4 times per year when the club qualifies.",
+  "condition": "dream",
+  "trust": "UNVERIFIED",
+  "status": "UNRESOLVED",
+  "authority": {
+    "type": "ADVISORY",
+    "executable": false
+  },
+  "claims": [
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/1/claim/1",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/1",
+      "kind": "IDEA",
+      "text": "Problem: building the postseason roster. Owner: GM and manager, with input from the analytics and pitching staff. Decision: who fills the 26 spots for each round, set before each series and reset between rounds, about 1 to 4 times per year when the club qualifies.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    }
+  ],
+  "evidence_refs": [
+    "objective_context"
+  ],
+  "assumptions": [
+    "The difference in series win probability between a well-built roster and the baseline is large enough to measure. It may be well under one percentage point and lost in noise.",
+    "The 25th and 26th players get enough playing time in a series to matter. Postseason managers may concentrate innings on the top 8 to 10 pitchers regardless of roster choice.",
+    "Contending clubs, including the Cubs, already run private versions of this simulation, so a public tool may only match current practice.",
+    "Retrospective validation will suffer from very small samples, since each club plays few postseason series per decade. League-wide pooling is needed, and it removes club-specific context such as health.",
+    "Rotation alignment changes series outcomes enough to matter. Pitcher quality gaps within a playoff rotation may be smaller than the value of a top seed.",
+    "Public seeding-odds models are already widely used, so the advantage may lie only in combining seeding odds with rotation choices, not in either piece alone.",
+    "Clubs may already handle this through staff judgment, and the decision is often forced by health or by how the race unfolds rather than chosen freely.",
+    "Both ideas above may fail the objective's \"large enough to matter\" test because the decisions happen rarely. They are offered as a challenge to the preference for high-volume decisions, not as validated opportunities."
+  ],
+  "unresolved_issues": [
+    "The difference in series win probability between a well-built roster and the baseline is large enough to measure. It may be well under one percentage point and lost in noise.",
+    "The 25th and 26th players get enough playing time in a series to matter. Postseason managers may concentrate innings on the top 8 to 10 pitchers regardless of roster choice.",
+    "Contending clubs, including the Cubs, already run private versions of this simulation, so a public tool may only match current practice.",
+    "Retrospective validation will suffer from very small samples, since each club plays few postseason series per decade. League-wide pooling is needed, and it removes club-specific context such as health.",
+    "Rotation alignment changes series outcomes enough to matter. Pitcher quality gaps within a playoff rotation may be smaller than the value of a top seed.",
+    "Public seeding-odds models are already widely used, so the advantage may lie only in combining seeding odds with rotation choices, not in either piece alone.",
+    "Clubs may already handle this through staff judgment, and the decision is often forced by health or by how the race unfolds rather than chosen freely.",
+    "Both ideas above may fail the objective's \"large enough to matter\" test because the decisions happen rarely. They are offered as a challenge to the preference for high-volume decisions, not as validated opportunities.",
+    "Problem: building the postseason roster. Owner: GM and manager, with input from the analytics and pitching staff. Decision: who fills the 26 spots for each round, set before each series and reset between rounds, about 1 to 4 times per year when the club qualifies.",
+    "Value at stake: in October one marginal win carries far more championship probability and revenue than a regular-season win, so small roster gains may be worth more than their run value suggests.",
+    "Mechanism: short series with off-days need fewer starters and favor high-leverage relief depth, platoon bats against a known small set of opposing pitchers, and specialists such as a pinch runner or defensive replacement whose regular-season value was low.",
+    "Baseline: carry the top 26 players by regular-season value, then adjust by staff judgment for health and matchups.",
+    "Intervention: a series-specific simulator. Inputs are the public opponent rotation and bullpen, the off-day schedule, and public platoon and pitch-type splits. Output is the expected series win probability for each candidate roster compared with the baseline roster.",
+    "Retrospective test: rebuild past postseason rosters league-wide from public transaction records and box scores, then score the alternatives a simulator would have recommended against the rosters actually used.",
+    "postseason_marginal_win_value_cubs",
+    "cubs_current_postseason_roster_process",
+    "public_injury_status_completeness_at_roster_deadline",
+    "Problem: setting up the late-season pitching rotation for the playoffs. Owner: manager and pitching coach, with front office input. Decision: in roughly the final 10 to 14 days, whether to keep using top starters to chase seeding or a bye, or to line them up for Game 1 of the Wild Card Series.",
+    "Mechanism: weigh the change in odds of securing a bye or home field against the series win probability gained by starting the best pitcher in an elimination game. Feed live public standings and remaining schedules into a seeding simulation.",
+    "Baseline: chase the best seed until it is clinched or out of reach, then line up the ace. Alternatively, rest regulars once the club has clinched.",
+    "Retrospective test: from public game logs, reconstruct each contender's rotation choices in the final two weeks. Simulate alternative alignments using projected seeding odds as of each date, and compare.",
+    "magnitude_of_bye_value_under_current_playoff_format",
+    "how_often_cubs_face_this_decision_per_decade",
+    "Where software is likely unnecessary: legal roster eligibility and deadline rules for the postseason. Checklists and league office review already cover this, and the value is avoiding errors, not gaining an edge."
+  ],
+  "contradictions": [],
+  "verified_constraints": [],
+  "provenance": {
+    "run_id": "hd-20261009-211812-efe1740f0c77",
+    "producer_component": "howldream",
+    "producer_version": "0.4.4",
+    "model_or_provider": "claude-opus-5-5",
+    "observation_kind": "EXTERNALLY_OBSERVED",
+    "created_at": "2026-10-09T21:24:32.108594+00:00",
+    "transformations": [
+      "generated",
+      "idea_unit_selection"
+    ],
+    "participation": [
+      {
+        "operation": "GENERATED",
+        "transforming_component": "howldream",
+        "origin_component": "howldream",
+        "origin_provider": "claude",
+        "origin_model": "claude-opus-5-5",
+        "subject_count": 1,
+        "inference_occurred": true,
+        "note": "Dream prompted the provider; the provider authored the text."
+      },
+      {
+        "operation": "CLUSTERED",
+        "transforming_component": "howldream",
+        "origin_component": "howldream",
+        "origin_provider": null,
+        "origin_model": null,
+        "subject_count": 53,
+        "inference_occurred": false,
+        "note": "Deterministic concept-token clustering; no inference."
+      },
+      {
+        "operation": "SELECTED",
+        "transforming_component": "howldream",
+        "origin_component": "howldream",
+        "origin_provider": "claude",
+        "origin_model": "claude-opus-5-5",
+        "subject_count": 1,
+        "inference_occurred": false,
+        "note": "Operator selected this idea unit through `howldream export`."
+      }
+    ],
+    "request_id": "cubs-r003-p1-divergent",
+    "originating_component": "operator",
+    "execution": {
+      "requested_provider": "command",
+      "selected_provider": "command",
+      "actual_provider": "claude",
+      "adapter": "claude-json",
+      "model": "claude-opus-5-5",
+      "requested_model": "claude-opus-5-5",
+      "deterministic": false,
+      "mocked": false,
+      "inference_occurred": true,
+      "remote": true,
+      "remote_observation": "OPERATOR_DECLARED",
+      "fallback_reason": null,
+      "elapsed_seconds": 30.256485371000053,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 2809,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 2366,
+        "output_tokens_details": {
+          "thinking_tokens": 945
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 2809,
+          "ephemeral_5m_input_tokens": 0
+        }
+      },
+      "cost": 0.0698,
+      "request_id": "8faca56e-f2f4-4f08-834c-1fa47aec1c16",
+      "raw_output_received": true,
+      "parse_status": "VALID",
+      "repair_attempted": false,
+      "sampling": null
+    },
+    "source_candidate_refs": [],
+    "source_candidates_location": "exploration_envelope.json#/provenance/source_candidates",
+    "hard_constraints": [
+      "Do not assume the problem or the solution.",
+      "Lawfully accessible public, historical, or clearly labeled synthetic data only.",
+      "Do not invent private Chicago Cubs information or statistics.",
+      "Distinguish fact, assumption, hypothesis, and speculation."
+    ],
+    "constraint_scope": "UNVERIFIED_GENERATION_GUIDANCE",
+    "purpose": "discovery",
+    "candidate_index": 5,
+    "trial": 0,
+    "prompt_hash": "28d7f1939599e96493b943f2c0d20db401377a8f3cb42338642d69b9845fc0a5",
+    "output_hash": "d3932a1a2a4726ca4fcb6cfc6d900112a484a1c85d2dd221fc8ffd77084b782a",
+    "selection": {
+      "selected_by": "operator",
+      "operation": "SELECTED",
+      "via": "howldream export"
+    },
+    "parent_candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/5",
+    "source_unit": {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/1",
+      "source_span": [
+        0,
+        270
+      ],
+      "source_hash": "d3932a1a2a4726ca4fcb6cfc6d900112a484a1c85d2dd221fc8ffd77084b782a",
+      "cluster": "cluster-1"
+    },
+    "parent_verification_ref": "verification.jsonl#candidate=hd-20261009-211812-efe1740f0c77/candidates/0/5",
+    "unit_selection_scope": "Single IDEA line; batch assumptions/unresolved issues retained without claim-specific association. Parent rejection/contradiction gates retained."
+  }
+}
