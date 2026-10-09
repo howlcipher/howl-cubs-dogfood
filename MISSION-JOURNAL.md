@@ -298,3 +298,7 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 ## 2026-10-09T21:36:37Z — R003 discovery passes complete; data-scope question
 - Pass 1, pass 2 (critique + blind spot) and pass 4 (critique-informed divergent) done: 24 Dream calls of 40, all remote Claude, mocked=false. LOCAL_LLM_USED: NO. Finalists in OPPORTUNITIES.md (R003 section).
 - The strongest high-n finalist (SENDHOLD) needs per-game play data, thousands of requests, outside the scope of the user's 2026-10-09T07:10Z authorization (about 200 league-wide season-stat requests). Per prompt v2 section 19A (authorization applies only within the stated scope; pause if unclear) -> asking the user.
+
+## 2026-10-09T21:39:46Z — User decision (R003 data scope)
+- Verbatim choice: "Feasibility sample first (Recommended)": "Approve up to ~150 rate-limited requests now (a sample of game feeds plus public sprint-speed and arm-strength leaderboards) to measure whether the data supports the study; ask again before any full-season retrieval." Data kept local; only aggregates and a few short examples published.
+- 2026-10-09T21:39:46Z INTENT R3-S1: goal workflow-evidence/R003/R3S1-sendhold-feasibility.goal.txt on cubs-edge-lab main f7caca6, engine 99d3aa4, `--worker-network --verify "sh -c 'python3 -m flake8 -j1 cubs_edge_lab tests && python3 -m pytest -q'"`. R003 HowlPlane sessions: 1 of 10.
