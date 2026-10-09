@@ -222,3 +222,4 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - Controller audit: clean clone 48 passed + 3 skips, local 51 passed; publishable files aggregate-only.
 - cubs-edge-lab PR #2 merged 0e53744.
 - Primary k = 50 fixed in design (k_basis 41, rule: smallest of {25,50,100} >= k_basis), before any outcome label.
+- INTENT S2b: goal workflow-evidence/R001/plane/S2b-eval.goal.txt on cubs-edge-lab main 0e53744, engine af9f40a, no worker network. HowlPlane sessions: 12 of 16.
