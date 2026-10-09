@@ -174,3 +174,8 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 
 ## 2026-10-09T05:00Z — User response (data history)
 - User chose "Rewrite branch history (Recommended)": rewrite records/R001 to drop the bulk-data files from every commit and force-push that mission-owned, never-merged branch; main untouched.
+
+## 2026-10-09T05:10Z — records/R001 history rewritten
+- Local backup branch backup/records-R001-pre-rewrite (63d1991; local only, never pushed; contains the bulk files). filter-branch --index-filter removed S1-blocked-worktree.patch, S1b-worktree.patch, S1-invalid-reviewer-outputs/probe_results.json from all 12 branch commits (main..records/R001); tip tree unchanged; all 12 commits re-signed (SSH); refs/original deleted.
+- Force-pushed with lease pinned to 4e3fbaf: origin/records/R001 4e3fbaf -> d7fa0f9; purged paths in remote branch history: 0. main untouched.
+- Limitation: GitHub still serves orphaned pre-rewrite commits by SHA (verified: commits/1b7b308 resolves). Full purge requires a GitHub Support request to remove cached views; not performed (needs the owner).
