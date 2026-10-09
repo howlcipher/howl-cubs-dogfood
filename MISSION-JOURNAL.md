@@ -267,3 +267,8 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 
 ## 2026-10-09T19:06:30Z — Correction: journal heading times
 - Journal headings in this file were controller estimates, not clock readings, and several are wrong by up to about an hour (for example the two entries headed 19:40Z and 19:45Z were written at about 19:00-19:05Z; the earlier "correction" of the S3b time is itself approximate). HowlPlane progress lines print local time (EDT, UTC-4). Reliable timing evidence is in the per-session *.started files (date -u) and Git commit times. Headings remain usable as entry identifiers (prompt v2 cites them that way). From this entry on, headings come from `date -u`.
+
+## 2026-10-09T19:58:17Z — R001 closeout
+- S4 Cubs case (session 27ab9371): COMPLETE, review CLEAN after 2 rework rounds, accepted. Independent recount from live Cubs transactions + raw season files matches every cell (signed 14/12/10/8; positive 3/1/6/0; no-MLB segment 1/0/1/0 vs league 14/12/22/23). cubs-edge-lab PR #5 merged f7caca6. HowlPlane sessions used: 15 of 16.
+- Final assessment written: runs/R001/FINAL-ASSESSMENT.md (COMPLETE_NEGATIVE); index FINAL-ASSESSMENT.md; REPOSITORIES refreshed; handoff points to R002.
+- INTENT: PR records/R001 -> main in howl-cubs-dogfood (no checks configured), merge, record receipt.

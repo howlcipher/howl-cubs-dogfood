@@ -1,12 +1,12 @@
 {
   "schema": "howl-cubs-dogfood/repositories/v1",
-  "recorded_at": "2026-10-08T14:30:00Z",
+  "recorded_at": "2026-10-09T19:58Z",
   "dev_root": "/run/media/system/tallgeese/dev",
   "control_repository": {
     "name": "howl-cubs-dogfood",
     "path": "/run/media/system/tallgeese/dev/howl-cubs-dogfood",
     "remote": "https://github.com/howlcipher/howl-cubs-dogfood.git (PUBLIC)",
-    "branch": "main",
+    "branch": "records/R001 -> main at closeout",
     "modified_by_mission": "YES",
     "pushed": "main 5d9235d"
   },
@@ -19,7 +19,16 @@
     "state": "clean",
     "modified_by_mission": "YES",
     "pushed": "YES (main 7c715c8)",
-    "factory_prepared": "yes 2026-10-08T15:50Z"
+    "factory_prepared": "yes 2026-10-08T15:50Z",
+    "current_sha": "f7caca6",
+    "merged_prs": [
+      "#1 35f803b",
+      "#2 0e53744",
+      "#3 c33a70a",
+      "#4 ad3ce14",
+      "#5 f7caca6"
+    ],
+    "local_only_data": "data/ (raw responses, cohort tables) ignored; never committed"
   },
   "howl_repositories": [
     {
@@ -32,13 +41,20 @@
       "engine_src_equivalent_to": "bb7ba21 (git diff bb7ba21 4b7fe81 -- src pyproject.toml is empty)",
       "state": "clean",
       "fetch": "ok 2026-10-08T14:25Z, 0 ahead / 0 behind",
-      "modified_by_mission": "NO",
+      "modified_by_mission": "YES",
       "execution_provenance": {
         "path_chain": "~/.local/bin/howl (Go, howl c9d37d5 build) -> ~/.local/bin/howlplane (Go release 0.1.0, v1.3.1) -> enginepath step 2: ~/.local/share/howl/components/howlplane-engine/current/howlplane-engine -> ~/.local/share/howl/runtimes/howlplane-engine/venv/bin/howlplane",
         "engine_import": "console script runs howlplane.control_plane.cli:main from /run/media/system/tallgeese/dev/howlplane/src/howlplane (editable; direct_url file:///.../howlplane). src/control_plane is a compatibility shim.",
         "verified_by": "read-only: enginepath.go resolution order, wrapper script, venv python import path, direct_url.json",
         "warning": "Engine follows whatever branch the shared howlplane checkout has checked out. Other campaigns use this checkout; re-verify HEAD before each orchestrate."
-      }
+      },
+      "current_sha": "af9f40a",
+      "merged_prs": [
+        "#164 f39cf18 (DOG-035/036)",
+        "#165 28511b4 (DOG-037/038)",
+        "#166 af9f40a (DOG-039)"
+      ],
+      "pushed": "YES (branches merged and deleted)"
     },
     {
       "name": "howldream",
@@ -63,11 +79,16 @@
       "starting_sha": "c9d37d5",
       "state": "clean",
       "fetch": "ok, 0/0",
-      "modified_by_mission": "NO",
+      "modified_by_mission": "YES",
       "execution_provenance": {
         "executable": "~/.local/bin/howl (Go, built 2026-10-07)",
         "version": "0.1.1 dev (commit metadata reported as 'unknown')"
-      }
+      },
+      "current_sha": "45478f4",
+      "merged_prs": [
+        "#16 45478f4 (DOG-035 docs)"
+      ],
+      "pushed": "YES"
     },
     {
       "name": "howlcreate",
@@ -98,7 +119,8 @@
       "modified_by_mission": "NO",
       "execution_provenance": {
         "executable": "~/.local/bin/howlframe -> howl components release 0.1.0 (not the checkout)"
-      }
+      },
+      "note": "fast-forwarded only; not used"
     },
     {
       "name": "howlwriter",
