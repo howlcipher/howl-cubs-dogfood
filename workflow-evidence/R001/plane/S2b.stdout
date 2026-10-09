@@ -1,0 +1,133 @@
+HOWL ORCHESTRATION REPORT
+Session: ab665ab6ea9240c5880177ba3befdade
+Goal: Implement and run the EVALUATION stage of the pre-registered MILBFA experiment in this repository, using the local cohort tables built by `cubs_edge_lab` (data/cohorts, data/stats) and the existing triage modules. Do NOT evaluate the final holdout cohort (2025, outcomes in season 2026) and never request season-2026 data.
+
+OWNER AUTHORIZATION (2026-10-09T07:10Z): local-only use of the already-fetched MLB Stats API data is approved; publish only aggregates and short attributed examples.
+
+Fixed definitions (do not change):
+- Outcome for cohort Y: at least 50 MLB plate appearances or at least 20 MLB innings pitched in season Y+1 (2019 cohort: thresholds scaled by 60/162 for 2020). Secondary: any MLB appearance in Y+1. Outcomes come from the cached league-wide MLB (sportId 1) season statistics; a player absent from them had no MLB playing time.
+- Primary segment: players with no MLB appearance in Y. Also report pitchers and hitters separately and the whole pool.
+- Rankings: B0 (MLB PA+IP in Y desc, then highest level in Y, then younger); B1 (highest level, then OPS for hitters or K-BB% for pitchers at that level, then younger); B2 (logistic regression on MLB PA+IP in Y, highest level, age); P (persistence: positive iff the player met the outcome threshold in season Y); M (logistic regression on all existing features, standardization fitted on training cohorts only, L2 strength chosen once on the validation cohort's primary segment from {0.01, 0.1, 1, 10}).
+- Training cohorts 2018, 2019, 2021, 2022, 2023; validation cohort 2024; rolling-origin test years 2021, 2022, 2023 (train on all earlier cohorts).
+- Primary metric: top-k outcome-positive counts in the primary segment, k = 50 primary (fixed, from Cubs signing volume), 25 and 100 secondary; plus precision@k, AUROC, and a calibration table for M. Paired bootstrap (2,000 resamples, fixed seed) for M minus each baseline.
+- Comparator for the later holdout: the best of B0/B1/B2/P on the validation cohort's primary-segment top-50 hits (ties broken in the order B2, B0, B1, P).
+- Early stop: if the validation cohort's primary segment has fewer than 30 outcome-positive players, record early_stop = true and stop after writing the outputs.
+
+Deliverables:
+1. A CLI command that builds outcomes for cohorts 2018-2024 only, runs training, rolling-origin and validation evaluation, and writes research/validation.json (aggregates: base rates per cohort and segment, all metrics with bootstrap intervals, chosen L2 strength, chosen comparator, early_stop) and research/EXPERIMENT.md (readable tables; FACT/INFERENCE/UNKNOWN labels; every number taken from validation.json).
+2. Run it in this session and commit-ready outputs must be exactly what the code produces.
+3. The existing `preregister` command must write research/preregistration.json with SHA-256 hashes of every evaluation-relevant code file (all cubs_edge_lab/triage*.py), the config, and research/validation.json; the holdout guard must refuse to build 2025-cohort outcomes unless those hashes match. Run `preregister` in this session after validation.json is final.
+4. Tests (offline, fixtures only, no tracked-file writes; all existing tests pass, also in a clean clone without data/): outcome thresholds including 2020 scaling; each ranking's order; comparator selection with ties; bootstrap determinism; early-stop path; every number in EXPERIMENT.md appears in validation.json; the guard refuses on a hash mismatch and on the 2025 cohort without preregistration; no code path requests season 2026.
+
+Integrity: never invent or alter values; label FACT/INFERENCE/UNKNOWN; report negative or null results as they are.
+Status: COMPLETE
+Resumable: no
+Orchestrator: claude_code
+Implementer: codex
+Policy: PLAN + EXECUTE + INDEPENDENT AUDIT
+Constraints: The current HowlPlane session IS the orchestration workflow. Perform the assigned work in the target project. Do not launch howl/howlplane or another orchestration session merely to prove Howl was used. Do not copy internal orchestration state into the target project., Owner authorization 2026-10-09T07:10Z: local-only use of the fetched MLB Stats API data is approved; publish only aggregates and short attributed examples; never request season 2026; do not evaluate the 2025 holdout cohort., Never invent or alter statistics, counts, or examples; label FACT, INFERENCE, UNKNOWN.
+Assignments: 8
+Reroutes: 0
+Repository head: 0e537444665f13ae1b0bd8b91587aeb0eaa4e309
+Repository status: M README.md
+ M cubs_edge_lab/triage.py
+ M cubs_edge_lab/triage_cli.py
+ M cubs_edge_lab/triage_eval.py
+ M tests/test_publication.py
+ M tests/test_triage.py
+?? cubs_edge_lab/triage_experiment.py
+?? cubs_edge_lab/triage_report.py
+?? research/EXPERIMENT.md
+?? research/validation.json
+?? tests/test_triage_experiment.py
+Tests: [{"command": "git diff --check", "exit_code": 0, "output": ""}, {"command": ["python3", "-m", "pytest", "-q"], "rework_round": 0, "exit_code": 0, "output": "...........................................................         [100%]\n59 passed, 5 subtests passed in 4.95s\n"}, {"command": "git diff --check", "exit_code": 0, "output": ""}, {"command": ["python3", "-m", "pytest", "-q"], "rework_round": 1, "exit_code": 0, "output": "............................................................        [100%]\n60 passed, 5 subtests passed in 6.53s\n"}, {"command": "git diff --check", "exit_code": 0, "output": ""}, {"command": ["python3", "-m", "pytest", "-q"], "rework_round": 2, "exit_code": 0, "output": "...............................................................     [100%]\n63 passed, 5 subtests passed in 25.74s\n"}]
+Independent audit: CLEAN
+Recovery: {}
+Rework rounds: 2 of 2
+Failures: [{"stage": "review", "agent": "claude_code", "model": "UNKNOWN", "failure": "AUDIT_FINDINGS_OR_UNCONFIRMED"}, {"stage": "review", "agent": "claude_code", "model": "UNKNOWN", "failure": "AUDIT_FINDINGS_OR_UNCONFIRMED"}]
+Verdict from Claude (review, AUDIT_FINDINGS_OR_UNCONFIRMED, rework round 0: sent back to implementation and re-judged):
+  Reviewing the non-early-stop evaluation path now. I found one blocking bug there and one test-coverage gap.
+  
+  **BLOCKING**
+  
+  1. **Bootstrap uses the wrong scores (`cubs_edge_lab/triage_experiment.py:159-168`).**
+     - `_rank_eval` builds `scored` copies that carry `m_probability` and `b2_probability`, but it never writes them back to `val`.
+     - `model_scores = [float(r.get("m_probability", .5)) for r in val]` therefore reads the default `.5` for every row, so M's AUROC in each resample is a constant 0.5.
+     - `rank(scored, "B2")` is called on copies of `val` with no `b2_probability`, so the B2 baseline orders by `person_id` only.
+     - The result is a wrong "M minus baseline" bootstrap for every baseline (B2 is also scored on the wrong ordering). Any non-early-stop run would write this wrong evidence into `validation.json` and `EXPERIMENT.md`.
+     - The committed output hides it only because the validation cohort stopped early.
+  
+  2. **No test covers the non-early-stop path.**
+     - Nothing exercises λ selection, the bootstrap-score wiring, the comparator, rolling origin or the calibration table. The only end-to-end test (`test_early_stop_and_report_number_source`) uses 29 positives.
+     - The goal requires working tests for required behavior, and this missing coverage is how the bug above got through.
+     - One synthetic run with at least 30 positives, asserting that the bootstrap inputs are M's real probabilities, would have caught it.
+  
+  **NON-BLOCKING**
+  
+  - The required tests I checked are thin. `test_bootstrap_order_independent` has no different-seed assertion. I saw no test that `preregister` refuses after an early stop. I did not read the guard tests in `test_triage.py`, so I can't say whether they cover every case.
+  - The bootstrap compares AUROC, not top-50 hits, which is the stated primary metric. The brief left this open, but `EXPERIMENT.md` should state it.
+  - The AUROC scores for B0/B1/B2 use `ordered.index(r)` on dict equality, which is O(n²) and fragile.
+  - `triage_experiment.py` has unused imports (`math`).
+  
+  AUDIT_STATUS: FINDINGS
+Verdict from Claude (review, AUDIT_FINDINGS_OR_UNCONFIRMED, rework round 1: sent back to implementation and re-judged):
+  e code, the tests and the committed `validation.json`. I could not run anything in this role, so I am relying on the harness evidence (60 tests pass, `git diff --check` is clean).
+  
+  **Real result, from `research/validation.json`:** `early_stop` is true. The 2024 validation primary segment has 23 outcome-positive players, below the 30 minimum. So `chosen_l2_strength`, `chosen_comparator`, `validation` and `rolling_origin` are all null. No `preregistration.json` exists, and that is correct, because `preregister` must refuse after an early stop. The goal's "run `preregister` after validation.json is final" cannot be satisfied here, and the handoff should say so plainly.
+  
+  **BLOCKING**
+  1. **`preregister` refusal is untested.** The spec requires the early-stop path test to also show that `preregister` refuses. No test calls `triage_cli.main(["preregister", ...])` with an early-stop JSON, a missing `validation.json`, or the success path. Grepping `tests/` for "preregister" or "early-stop" finds only `test_triage_experiment.py:76` (`test_early_stop_and_report_number_source`), which never invokes the command. The refusal logic itself, in `cubs_edge_lab/triage_cli.py:360-368`, looks correct.
+  2. **The non-early-stop path never runs in any test.**
+     - `evaluate()` is only run end to end with an early-stop fixture, with 29 positives in the 2024 cohort (`tests/test_triage_experiment.py:76-112`).
+     - `evaluate()`'s lambda choice, comparator, validation bootstrap, rolling-origin runs and `_round` are never executed.
+     - The `render()` branches for metrics, bootstrap, calibration and rolling-origin tables never run, so the "every number in EXPERIMENT.md appears in validation.json" check covers only the early-stop report.
+     - The spec asks for a synthetic end-to-end run in a temp root. `test_non_early_stop_scores_feed_real_bootstrap_metrics` exercises `_rank_eval` and the bootstrap only.
+     - The untested code is also fragile. `render()` indexes `row["rankings"]["M"]` for every rolling year, but `_rank_eval` returns `rankings: {}` for an empty segment, which would raise `KeyError`.
+  
+  **NON-BLOCKING**
+  - `met_threshold_y` applies the 60/162 scale when the cohort year is 2019 (`triage_experiment.py:42,54`), but season 2019 is a full season. The scale belongs to the 2020 outcomes. It has no effect on the reported results, because primary-segment players have no MLB appearance in Y and P is never ranked on the whole pool.
+  - Metrics and bootstrap are computed for the primary segment only. Pitchers, hitters and the whole pool get base rates but no metrics. This matches the planning decision.
+  - The early-stop `EXPERIMENT.md` is minimal. It shows base-rate tables and one UNKNOWN line, with no explicit statement of the 30 minimum or the observed 23. It has no INFERENCE line and says nothing about P being degenerate. Null results are reported but thinly.
+  - `evaluate` writes `validation.json` first and `EXPERIMENT.md` second. A render failure would leave the pair inconsistent.
+  - The lambda tie-break (smaller lambda wins) is unspecified in the goal. Remaining risks are as listed in the plan: level and missing-age interpretation, row double-counting on stats, the 2024-chosen lambda reused for earlier rolling years, the bootstrap not refitting M, and exclusion of unmatched players.
+  
+  Verified as correct:
+  - Outcome thresholds, including the 2019 scaling.
+  - Ranking changes (level 0 sorts last, missing age sorts last, id tie-break).
+  - `choose_comparator` tie order.
+  - Bootstrap order-independence.
+  - Guard behaviour: it refuses 2025 without a match, 2026, a malformed file, a missing `validation.json` and a newly added `triage*.py`, and allows 2024.
+  - `_stats` refuses seasons ≥ 2026 and truncated artifacts.
+  - The `LogisticModel` fix imputes with the training mean.
+  - The `test_publication` allowlist matches the current `research/` contents. If `preregistration.json` is later generated into `research/`, that allowlist test will need updating.
+  
+  AUDIT_STATUS: FINDINGS
+Review notes from Claude (review, CLEAN):
+  I found no blocking issues. I could only read files, so I didn't run anything myself. The pass counts below are HowlPlane's results (63 passed, `git diff --check` clean). I'm not claiming a clean-clone run or a rerun of `evaluate`.
+  
+  **What I checked**
+  - **Early stop:** `research/validation.json` records `early_stop: true`, with 23 validation primary positives against the minimum of 30. The model sections and `chosen_comparator` are null, and the file has no absolute paths. This is the preregistered rule working, not a defect.
+  - **Report:** `research/EXPERIMENT.md` has FACT, INFERENCE and UNKNOWN labels, the MLBAM attribution line, no player names or IDs, and base rates for every cohort and segment. Its numbers come from the JSON, and tests check that regenerating it gives identical Markdown.
+  - **No preregistration file:** `research/preregistration.json` does not exist. That matches the plan, which says not to preregister after an early stop. The `preregister` command refuses, so the 2025 holdout stays locked.
+  - **Rankings:** B0 and B1 now put MLB first (lower sport ID is the higher level), and a missing age sorts last. Ties break on player ID. B2, P and M behave as defined. The persistence baseline P is degenerate in the primary segment, as expected.
+  - **Outcomes and model:** the 2019 scaling is right (19 PA and 7.2 IP count as positive, 18 PA does not). The model is fitted on training data only and fills a missing age with the training mean.
+  - **Comparator and bootstrap:** ties are broken in the order B2, B0, B1, P. The bootstrap gives the same result whatever the row order.
+  - **Guard:** it refuses 2025 when the preregistration is missing, malformed or mismatched, including after a new `triage*.py` file is added or `validation.json` is deleted. It allows 2024 and refuses 2026.
+  - **Season 2026:** the stats loader refuses any season of 2026 or later. The `fetch` test checks that no 2026 request is made.
+  - **Offline `evaluate`:** it only reads local files and never constructs a `Client`.
+  - **Cohort tables:** the local cohort files include the new `mlb_appearance_y` feature, so the run used regenerated data rather than stale tables.
+  
+  **Non-blocking**
+  - The `evaluate` no-`Client` test only uses an empty root, so it fails early. It still proves the `Client` is never constructed.
+  - The ranking-order tests use levels 11 to 14 and do not include an MLB (level 1) row.
+  - The report hard-codes "2025" in two sentences. The value is in the JSON, so the number-source check passes.
+  - Metrics, as opposed to base rates, are reported for the primary segment only, which is what the plan specifies.
+  - `outcome()` would fail on a row whose `stat` is null. It is not triggered by the cached data.
+  - Remaining risks to list in the handoff:
+    - the level and missing-age interpretations;
+    - the check for double-counted stats rows;
+    - the 2024-chosen L2 strength reused for earlier rolling years (moot here because of the early stop);
+    - the bootstrap not refitting M;
+    - exclusion of unmatched players.
+  
+  AUDIT_STATUS: CLEAN

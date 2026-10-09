@@ -223,3 +223,10 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - cubs-edge-lab PR #2 merged 0e53744.
 - Primary k = 50 fixed in design (k_basis 41, rule: smallest of {25,50,100} >= k_basis), before any outcome label.
 - INTENT S2b: goal workflow-evidence/R001/plane/S2b-eval.goal.txt on cubs-edge-lab main 0e53744, engine af9f40a, no worker network. HowlPlane sessions: 12 of 16.
+
+## 2026-10-09T11:00Z — S2b COMPLETE: pre-registered early stop; merged
+- S2b session: COMPLETE, audit CLEAN after 2 rework rounds, accepted. Outcomes built for cohorts 2018-2024 only. Primary segment (no MLB in Y) outcome-positive counts: 2018 20, 2019 12, 2021 14, 2022 12, 2023 22, validation 2024 23 (rates 2.4-5.1%). Early-stop rule (<30 in validation primary segment) met -> no modelling, no comparator, no preregistration; 2025 holdout untouched (no 2026 outcome retrieved).
+- Controller independent recount from raw MLB season files (not the worker's outcome code): 2024 pool 636, primary 451, primary positives 23, whole-pool positives 91: matches exactly.
+- cubs-edge-lab PR #3 merged c33a70a. Tests: 63 local, 60 + 3 skips clean clone.
+- Scientific reading: in the low-attention segment, only 12-23 players per year league-wide reach >=50 PA / >=20 IP next season (under one per club per year). The proposed mechanism (hidden value in the neglected November pool) has a small ceiling; a ranking tool cannot test or deliver a large advantage there at this data's power. Supported negative result for the primary hypothesis's premise.
+- HowlPlane sessions used: 12 of 16. Pivot: 1 unused.
