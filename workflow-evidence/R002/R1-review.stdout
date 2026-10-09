@@ -1,0 +1,68 @@
+HOWL ORCHESTRATION REPORT
+Session: 8fd993a062b942d59b2af4f04573e049
+Goal: Finalize and validate the existing uncommitted work in this repository: fixes for DOG-040, DOG-041, DOG-042 and DOG-043 (see their entries at the end of dogfood/findings/FINDINGS.md, the change_log.md entries, and documentation/ORCHESTRATE.md).
+
+- DOG-042: an implementation attempt whose output declares IMPLEMENTATION_STATUS: INCOMPLETE is recorded as IMPLEMENTATION_INCOMPLETE (not success), keeps partial changes and the stated reason, and the next implementer continues; the session hands off when none can.
+- DOG-041: when an explicit --verify differs from the plan's VERIFY_COMMAND, review and acceptance are told which command verifies the session.
+- DOG-043: user-correctable orchestrate refusals raise OrchestrateRequestError and render as ORCHESTRATE_REQUEST_REFUSED with a next step instead of INTERNAL_ERROR; internal failures keep their handling.
+- DOG-040: a refusal of only named Bash commands in a mutating role is a session-scoped grant gap whether or not files changed; edit-tool refusals and unnamed denials still mark the agent interactive-only. One existing DOG-018 test was intentionally revised.
+
+If the existing change is correct and complete, report IMPLEMENTATION_STATUS: NO_CHANGE_REQUIRED with reasons; otherwise fix only what is wrong and add tests. HowlPlane runs `make test-full` itself and supplies the result; run only targeted tests. Reviewers: try to falsify each fix, including: prose that merely mentions INCOMPLETE; INCOMPLETE during rework rounds and its effect on rework counting; whether IMPLEMENTATION_INCOMPLETE could be abused to dodge review; refusals still raised as plain ValueError that a user can correct; any real HowlPlane bug now hidden as a user error; whether DOG-040 lets an agent that truly cannot edit unattended stay marked ready in a way that would repeatedly waste sessions; and documentation claims the code does not keep.
+Status: COMPLETE
+Resumable: no
+Orchestrator: claude_code
+Implementer: codex
+Policy: PLAN + EXECUTE + INDEPENDENT AUDIT
+Constraints: The current HowlPlane session IS the orchestration workflow. Perform the assigned work in the target project. Do not launch howl/howlplane or another orchestration session merely to prove Howl was used. Do not copy internal orchestration state into the target project.
+Assignments: 4
+Reroutes: 0
+Repository head: af9f40a24165188c9ba9cd3537ec39f78b1cfef9
+Repository status: M change_log.md
+ M documentation/ORCHESTRATE.md
+ M dogfood/findings/FINDINGS.md
+ M src/howlplane/control_plane/agent_execution.py
+ M src/howlplane/control_plane/orchestration.py
+ M src/howlplane/control_plane/presentation/errors.py
+ M tests/test_orchestration_capability_recovery.py
+ M tests/test_provider_permissions.py
+?? tests/test_orchestration_declared_status.py
+Tests: [{"command": "git diff --check", "exit_code": 0, "output": ""}, {"command": ["make", "test-full"], "rework_round": 0, "exit_code": 0, "output": "tests/test_ai_resource_pool.py::test_failure_taxonomy_is_normalized_without_conflation[authentication required-AUTHENTICATION_REQUIRED] PASSED [  6%]\ntests/test_ai_resource_pool.py::test_failure_taxonomy_is_normalized_without_conflation[Failed to authenticate: OAuth session expired and could not be refreshed-AUTHENTICATION_REQUIRED] PASSED [  6%]\ntests/test_ai_resource_pool.py::test_failure_taxonomy_is_normalized_without_conflation[provider service unavailable-PROVIDER_UNAVAILABLE] PASSED [  6%]\ntests/test_ai_resource_pool.py::test_failure_taxonomy_is_normalized_without_conflation[command not found-MISSING_EXECUTABLE] PASSED [  6%]\ntests/test_ai_resource_pool.py::test_failure_taxonomy_is_normalized_without_conflation[tests failed: assertion error-ENGINEERING_FAILURE] PASSED [  6%]\ntests/test_ai_resource_pool.py::test_failure_taxonomy_is_normalized_without_conflation[malformed yaml review-MALFORMED_OUTPUT] PASSED [  6%]\ntests/test_ai_resource_pool.py::test_capacity_state_persists_recovers_and_is_shared PASSED [  6%]\ntests/test_ai_resource_pool.py::test_oauth_expiration_persists_and_routes_to_another_worker PASSED [  7%]\ntests/test_ai_resource_pool.py::test_engineering_failure_does_not_exhaust_resource PASSED [  7%]\ntests/test_ai_resource_pool.py::test_independent_review_prefers_distinct_resource_and_reports_unavailability PASSED [  7%]\ntests/test_ai_resource_pool.py::test_legacy_settings_load_without_declaring_new_provider_authority PASSED [  7%]\ntests/test_authority_execution\n[... output trimmed by HowlPlane; tail follows ...]\nlPlaneBranding\n--- PASS: TestNewRootCommandUsesHowlPlaneBranding (0.00s)\n=== RUN   TestLegacyCommandHasProjectValidationParityAndWritesWarningToStderr\n--- PASS: TestLegacyCommandHasProjectValidationParityAndWritesWarningToStderr (0.00s)\n=== RUN   TestPlaneCommandComposesBeneathUmbrellaParent\n--- PASS: TestPlaneCommandComposesBeneathUmbrellaParent (0.00s)\n=== RUN   TestCommandConstructionDoesNotDependOnRootExecutableName\n--- PASS: TestCommandConstructionDoesNotDependOnRootExecutableName (0.00s)\n=== RUN   TestUnknownSubcommandDelegatesToEngineEntrypoint\n--- PASS: TestUnknownSubcommandDelegatesToEngineEntrypoint (0.00s)\n=== RUN   TestUnknownSubcommandPropagatesEngineExitCode\n--- PASS: TestUnknownSubcommandPropagatesEngineExitCode (0.00s)\n=== RUN   TestNoArgsPrintsNativeHelpWhenEngineMissing\n--- PASS: TestNoArgsPrintsNativeHelpWhenEngineMissing (0.00s)\n=== RUN   TestVersionFlagReportsGoBinaryVersionWithoutDelegating\n--- PASS: TestVersionFlagReportsGoBinaryVersionWithoutDelegating (0.00s)\n=== RUN   TestHelpFlagsShowNativeHelpWhenEngineMissing\n--- PASS: TestHelpFlagsShowNativeHelpWhenEngineMissing (0.00s)\n=== RUN   TestNoArgsHelpAndHelpSubcommandForwardToEngine\n--- PASS: TestNoArgsHelpAndHelpSubcommandForwardToEngine (0.00s)\n=== RUN   TestShortVersionAliasAndSignalExitCode\n--- PASS: TestShortVersionAliasAndSignalExitCode (0.00s)\n=== RUN   TestMissingEngineErrorIsActionable\n--- PASS: TestMissingEngineErrorIsActionable (0.00s)\nPASS\nok  \tgithub.com/howlcipher/howlplane/pkg/cli\t0.016s\n"}]
+Independent audit: CLEAN
+Recovery: {}
+Failures: []
+Review notes from Claude (review, CLEAN):
+  The existing change is correct and complete. I found no BLOCKING issues. This was a read-only review: I inspected the diff and the files directly and ran no tests. The `make test-full` exit 0 comes from the harness evidence you supplied.
+  
+  **DOG-042.**
+  - **Detection:** the marker is a line-anchored regex (`orchestration.py:85`), pinned by `test_only_a_status_line_counts_as_a_declaration`. Prose that merely mentions INCOMPLETE does not trigger it.
+  - **Recording and rework:** the attempt is recorded as `IMPLEMENTATION_INCOMPLETE`, revoked rather than sent to review (`orchestration.py:1645-1652`). That keeps `partial_changes` and the stated reason. A test covers INCOMPLETE during a rework round: it does not consume another round, and the next worker still gets the findings.
+  - **Abuse:** it cannot dodge review. The attempt is revoked, so the loop moves to the next implementer or hands off.
+  - **Both markers in one output:** the INCOMPLETE block runs after the no-change block and overrides it. A test covers this.
+  - **Failed results:** the block only applies when `result.success` is true, so a failed result keeps its original failure. A test covers this.
+  - **Exclusion:** `IMPLEMENTATION_INCOMPLETE` is in `ROLE_FAILURES`, so the agent is excluded from implementation for this session only, and readiness is untouched.
+  
+  **DOG-041.** The supersession note appears only when the explicit and planned commands differ. Positive and negative cases are tested.
+  
+  **DOG-043.**
+  - **User-correctable refusals:** these raise `OrchestrateRequestError`, which subclasses `ValueError`.
+  - **Internal failures:** git inspection failures, the coordinator lease race and the command parse stay plain `ValueError`. `test_internal_failures_are_not_relabelled_as_user_errors` pins this.
+  - **Invalid session ID:** `path_for` (`orchestration.py:499`) still raises a plain `ValueError`, so it is not hidden as a user error.
+  
+  **DOG-040.**
+  - **Mixed denials:** the hole from the planning stage is closed. The Claude backend counts denials with no extractable command (`agent_execution.py:920-938`) and stores it as `unnamed_denials`. `permission_grant_gap` returns `[]` when that count is non-zero (`orchestration.py:838-839`).
+  - **Tests:** these cover it:
+    - the parametrized grant-gap cases for unnamed-only and mixed denials;
+    - `test_mixed_named_and_unnamed_bash_denials_keep_both_evidence_kinds`;
+    - the revised DOG-018 cases, where edit-tool refusals still return `[]`.
+  - **Pure named-Bash refusals:** these stay a grant gap whether or not files changed, in mutating roles only.
+  - **Docs:** `ORCHESTRATE.md` and `change_log.md` match the code. They say an unnamed denial marks the agent interactive-only, and that the exclusion is session-scoped and can cost one attempt per session.
+  
+  **NON-BLOCKING:**
+  - `ClaudeCodeBackend()` is assigned to `backend` in `test_mixed_named_and_unnamed_bash_denials_keep_both_evidence_kinds` and never used.
+  - The marker regex can still match a bulleted or quoted marker line. It requires the line to start with the marker, with optional bold markers.
+  - The `except ValueError` handlers at about lines 470 and 765 were not examined.
+  - `FINDINGS.md` was not checked for the mixed-denial note, because the diff was truncated.
+  
+  Files changed in this review: none.
+  
+  AUDIT_STATUS: CLEAN

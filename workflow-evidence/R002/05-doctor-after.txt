@@ -1,0 +1,7 @@
+Worker       Status  Detail
+Codex        READY
+Claude Code  READY
+Cursor       READY
+AGY          READY   unattended use unverified
+Devin        READY   unattended use unverified
+

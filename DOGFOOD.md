@@ -14,13 +14,13 @@ Registry state at mission start (2026-10-08T14:27Z): highest allocated DOG-034; 
 - Evidence: workflow-evidence/R001/plane/CUBS-P-001-repro.txt, S1.stderr.
 - Status: FIXED and MERGED: howlplane #164 -> f39cf18, howl #16 -> 45478f4. HowlPlane review session 889142d7 COMPLETE (audit CLEAN, accepted, make test-full exit 0). Post-merge public proof: workflow-evidence/R001/repair-DOG-035/10-postmerge-proof.txt. Registry text on main still says FIX IN REVIEW (update pending).
 
-### CUBS-P-002 (provisional): denial of an equivalent test command marks a proven agent interactive-only everywhere
+### DOG-040 (was CUBS-P-002; FIXED in howlplane 99d3aa4): denial of an equivalent test command marks a proven agent interactive-only everywhere
 - Category: HOWL FAILURE (false capability evidence, persisted). Owner: howlplane routing/readiness cache.
 - Observed: existing-WIP validation; Claude ran `python3 -m pytest <same tests>` while the granted command was `pytest <same tests>`; denied with no repo change; readiness cache now says interactive-only (`howl agents doctor`).
 - Expected: a refused test/verification command in a validation attempt should not erase previously verified unattended-edit capability for all repositories.
 - Evidence: workflow-evidence/R001/repair-DOG-035/06-session-ledger.md attempt 2; agents doctor output in journal 17:45Z. Documented recovery exists: `howlplane agents doctor --live --agent claude_code --repo <repo>`.
 
-### CUBS-P-003 (provisional): acceptance cites a superseded planner VERIFY_COMMAND as the session's verification command
+### DOG-041 (was CUBS-P-003; FIXED in howlplane 99d3aa4): acceptance cites a superseded planner VERIFY_COMMAND as the session's verification command
 - Category: HOWL FAILURE (review context). Owner: howlplane orchestration prompts.
 - Observed: planner VERIFY_COMMAND named nonexistent tests/test_task_queue.py; explicit --verify superseded it; two acceptors reported "the supplied verification command names nonexistent tests/test_task_queue.py".
 - Evidence: 06-session-ledger.md (planned_verify_command, attempts 6, 9, 13).
@@ -52,13 +52,13 @@ Registry state at mission start (2026-10-08T14:27Z): highest allocated DOG-034; 
 ### NOTE-007: flaky hygiene test under session verification
 - `tests/test_hygiene_policy.py::test_verification_plan_executes_with_hygiene_integrity_checks` failed once in review session 80be26f2 round 0 and passed on rerun and directly. Possibly the unidentified flaky test noted by the prior campaign (DOG-024 era).
 
-### CUBS-P-008 (provisional): an implementer's "IMPLEMENTATION_STATUS: INCOMPLETE" is recorded as success
+### DOG-042 (was CUBS-P-008; FIXED in howlplane 99d3aa4): an implementer's "IMPLEMENTATION_STATUS: INCOMPLETE" is recorded as success
 - Category: CAPABILITY GAP (false-success risk, contained by review). Owner: howlplane orchestration.
 - Observed: S2 session 43b8a9e6; Codex ended three implementation attempts stating INCOMPLETE with reasons; each was recorded SUCCEEDED and reviewed; the session ended AUDIT BLOCKED after spending both rework rounds.
 - Expected: a declared INCOMPLETE status is surfaced as such (handoff with the stated reason, or rework with that reason) rather than forwarded to review as finished work.
 - Evidence: workflow-evidence/R001/plane/S2.stdout; Codex session log 2026-10-09T09:22 (local, not published).
 
-### NOTE-008: a documented usage refusal is reported as INTERNAL_ERROR
+### DOG-043 (was NOTE-008; FIXED in howlplane 99d3aa4): a documented usage refusal is reported as INTERNAL_ERROR
 - `orchestrate --separate` on a worktree with an unfinished session is refused by design ("Separate sessions need a distinct Git worktree"), but the CLI prints "Something unexpected failed ... likely a HowlPlane bug or an unhandled condition (ValueError) ... Code: INTERNAL_ERROR" with a diagnostic ID. It should be a usage error with the documented remedy. Evidence: workflow-evidence/R001/plane/S3L.stdout (diagnostic HP-20261009-142706-a864 kept locally).
 
 ## Capability notes and nonblocking friction

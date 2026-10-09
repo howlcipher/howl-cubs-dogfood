@@ -276,3 +276,14 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 ## 2026-10-09T19:58:56Z — R001 closed; R002 started
 - Receipt: howl-cubs-dogfood PR #1 (records/R001 -> main) merged as f4852d7. R001 delivery: MERGED_VERIFIED in every changed repository (cubs-edge-lab f7caca6, howlplane af9f40a, howl 45478f4, howl-cubs-dogfood f4852d7). R001 outcome COMPLETE_NEGATIVE.
 - R002 (REGRESSION) started under prompt v2 (snapshot runs/R002/PROMPT-SNAPSHOT.md, sha256 7fa1b0c151ef593e07a4d3a3c44d1626a1ceae7693ca615a1d756f83b59d75d5). Contract: runs/R002/RUN-CONTRACT.md. Records branch records/R002.
+
+## 2026-10-09T20:43:40Z — R002 repairs pushed; INTENT review session R002-1
+- Branch dogfood/R002-orchestration-fixes (from af9f40a): 378c31e DOG-042, 4ddd25f DOG-041, 1843df8 DOG-043, 864f0da DOG-040 (+ registry DOG-037/038/039 FIXED). Collision check: next free ID was DOG-040. Tests fail without each fix; related suites 449 passed.
+- First push: pre-push lint step crashed (flake8 MemoryError: Parser stack overflowed) after 2448 tests passed; not reproducible (lint passes parallel x2 and serial; 18 GB free) -> transient environment fault during process restart; one bounded retry passed (2448 passed, lint, docs). Evidence: workflow-evidence/R002/01-*, 02-*.
+- PR howlplane #167. Review worktree dev/howlplane-r002-review = af9f40a + PR diff uncommitted; engine main af9f40a (no candidate override).
+- INTENT: `howl orchestrate "$(cat workflow-evidence/R002/R1-review.goal.txt)" --repo dev/howlplane-r002-review --verify make test-full --verify-timeout 1000` (2x the ~500 s gate). R002 HowlPlane sessions: 1 of 6.
+
+## 2026-10-09T21:17:19Z — R002 complete
+- Review session: COMPLETE, audit CLEAN; worker tightenings folded as 022d294; pre-push 2455 passed; CI green; PR #167 merged as 99d3aa4. Engine fast-forwarded to 99d3aa4.
+- Post-merge proof: CLI operator errors (DOG-043) on merged main; proof session 55b942cf on dogfood-missions/r002-proof reproduced the DOG-040 scenario live (session-scoped exclusion, Claude READY after); DOG-041 condition present without misattribution; DOG-042 contract-tested only.
+- Repair worktrees removed; proof session discarded. Outcome COMPLETE_REGRESSION (runs/R002/FINAL-ASSESSMENT.md). R002 HowlPlane sessions 2 of 6.
