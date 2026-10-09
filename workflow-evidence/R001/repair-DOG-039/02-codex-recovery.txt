@@ -1,0 +1,37 @@
+HOWLPLANE AGENT DOCTOR
+
+Worker  Status  Detail
+Codex   READY
+
+1 worker ready
+
+Next
+No action required.
+
+GLOBAL READINESS
+
+Codex
+  Backend:        codex
+  CLI:            AVAILABLE
+  Version:        0.161.0
+  Auth:           READY — CLI reports an active login
+  Unattended:     YES (live smoke in workspace)
+  Edits allowed:  YES
+  Models:         10 listed (gpt-6.1-sol, gpt-6-astra, gpt-6-sol, gpt-6-luna, …); default gpt-6-astra (codex config.toml)
+  Live smoke:     STALE (last PASS 337h3m ago, 3.76s)
+  Capacity:       UNKNOWN — CLI does not expose remaining allowance
+  Verified:       2026-10-09T03:04:08.207479+00:00
+  Vendor trust:   NOT ENFORCED
+  Trust policy:   BYPASS
+  Workspace:      READY
+
+WORKSPACE READINESS
+  Workspace:      /run/media/system/tallgeese/dev/cubs-edge-lab
+  Authorized:     YES — /run/media/system/tallgeese/dev/cubs-edge-lab (factory root /home/howlcipher/.local/share/howlplane/worktrees/aff301745111d059653dd8d9)
+  Trust policy:   BYPASS (from config)
+
+  Codex
+    Vendor trust:        NOT ENFORCED — `codex exec` shows no workspace trust dialog (observed codex-cli 0.156.1)
+    Trust policy:        BYPASS
+    Effective workspace: READY — noninteractive mode does not enforce workspace trust
+    Workspace smoke: PASS (2026-10-09T03:04:08.207479+00:00)

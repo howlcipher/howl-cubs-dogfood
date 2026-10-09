@@ -1,0 +1,2288 @@
+{
+  "schema_version": "howl.exploration_result/v1",
+  "exploration_id": "hd-20261009-190025-f65380fdaa4e",
+  "parent_request_id": "cubs-r001-prompt-v2-review",
+  "objective": "Independently review this proposed change to a campaign execution prompt (the candidate is a unified diff adding section 19A). The prompt's own rules for such changes are in evidence id prompt-s18. Check: contradictions with the rest of the prompt; whether any line weakens or bypasses public-interface use, independent review, evidence, acceptance or merge gates, the pause-and-help rule, the no-local-LLM rule, isolation, or protections for human work; whether it grants new permissions or spending; recovery gaps; unnecessary burden; vague or untestable wording; and whether each lesson's cited trigger justifies it. Use ASSUMPTION lines for problems, CITE for evidence ids, and IDEA only for a concrete wording fix.",
+  "originating_component": "operator",
+  "authority": {
+    "type": "ADVISORY",
+    "executable": false
+  },
+  "candidates": [
+    {
+      "schema_version": "howl.candidate/v1",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "source_run_id": "hd-20261009-190025-f65380fdaa4e",
+      "parent_request_id": "cubs-r001-prompt-v2-review",
+      "objective": "Independently review this proposed change to a campaign execution prompt (the candidate is a unified diff adding section 19A). The prompt's own rules for such changes are in evidence id prompt-s18. Check: contradictions with the rest of the prompt; whether any line weakens or bypasses public-interface use, independent review, evidence, acceptance or merge gates, the pause-and-help rule, the no-local-LLM rule, isolation, or protections for human work; whether it grants new permissions or spending; recovery gaps; unnecessary burden; vague or untestable wording; and whether each lesson's cited trigger justifies it. Use ASSUMPTION lines for problems, CITE for evidence ids, and IDEA only for a concrete wording fix.",
+      "text": "ASSUMPTION: The only supplied evidence is prompt-s18; the R001 triggers (worker refusal, bulk MLB records pushed, PARTIAL pass 1, DOG-035/036/039, CUBS-P-002, S2 block, NOTE-008) are not supplied, so none of the cited triggers can be verified as justifying any lesson.\nCITE: prompt-s18\nUNKNOWN: r001_trigger_evidence\nUNKNOWN: rest_of_prompt_sections_16_17_19_text\nASSUMPTION: Because only section 18 is supplied, contradictions with other sections (16 merge, 17 pause-and-help, isolation, no-local-LLM) cannot be ruled out; the review is limited to section 18's rules.\nASSUMPTION: The header says \"They add no authority and remove no gate,\" but this is a self-assertion; section 18 requires independent review through the supported Howl path, and no review record for this diff is supplied. The diff must not be treated as approved.\nASSUMPTION: Lesson 1 (\"Owner authorizations reach workers verbatim\") could be read as letting a worker override a repository's documented restriction on the strength of a quoted authorization. If the quoted authorization is stale, paraphrased, or unauthenticated, this becomes a permission bypass. Nothing requires the authorization to be a real, current user instruction rather than controller-authored text, which section 18 says cannot authorize mission-constraint changes.\nIDEA: Lesson 1 wording fix: \"Only when an explicit, dated user instruction exists in the handoff, quote it verbatim with scope and date in the goal and as a --constraint; never infer or self-author an authorization, and the authorization does not override higher-priority policy or the pause-and-help rule.\"\nASSUMPTION: Lesson 2 says to \"read the source's terms\" and \"publish aggregates and short attributed examples,\" but \"short,\" \"bulk,\" and \"aggregates\" are vague and untestable. It also fails to say who judges compliance when the terms forbid even aggregates, and it gives no stop condition (pause under section 17) if terms are unclear or restrictive.\nIDEA: Lesson 2 wording fix: add \"If terms are absent, ambiguous, or prohibit redistribution, pause under section 17 before any public push,\" and define a testable bulk threshold (for example a record-count or file-size limit) for the staged-file scan.\nASSUMPTION: Lesson 2 gives no recovery step for the case that already happened (bulk data on a public branch needing a history rewrite). History rewrite touches shared state and may conflict with protections for human work and protected runtime state; the lesson is silent on whether a rewrite is permitted, who authorizes it, or how it's recorded. This is a recovery gap.\nASSUMPTION: Lesson 3's formula max_calls >= clamp(max_candidates // 2, 1, 3) + max_candidates sets a minimum, not a cap, and could be read as encouraging higher spending. It does not state that it cannot exceed an existing authorized budget or reset consumed budgets. Section 18 forbids acquiring spending authority and resetting consumed budgets, so a clause is needed: \"within the already authorized budget; if the formula exceeds it, pause.\"\nCALC: 4 // 2 = 2\nCALC: 2 + 4 = 6\nASSUMPTION: The worked arithmetic above is illustrative only (max_candidates=4 gives a minimum of 6 calls). The sizing conflicts with any fixed budget lower than that value, and the diff does not say which wins. Whether one PARTIAL result justifies the rule is unverified.\nASSUMPTION: Lesson 4 requires passing the repository's required gate as --verify with an adequate --verify-timeout. \"Adequate\" is untestable. \"Prove a committed candidate through the public chain with PYTHONPATH pointing at a clean repair worktree\" could be read as running the product outside the normal public interface, weakening the public-interface-use rule. It is also an added burden on every repair. Recording the SHA is testable, but where it is recorded is unspecified.\nIDEA: Lesson 4 wording fix: replace \"adequate\" with \"at least the gate's documented runtime plus a stated margin, recorded in the run assessment,\" and state that the PYTHONPATH proof still goes through the public Howl CLI.\nASSUMPTION: Lesson 5 says to \"trace any downgrade to its cause\" and \"recover through the documented live doctor.\" If the documented doctor mutates protected runtime state, this conflicts with section 18's ban on editing protected runtime state. The lesson needs \"recover only via documented, permitted operations; otherwise pause under section 17.\"\nASSUMPTION: Lesson 6 \"small enough for one implementation pass\" is vague and untestable. \"Documented discard\" of an unfinished worktree could destroy human or prior work, which touches protections for human work, and it names no approver. Discard should require explicit user authorization and preservation of a copy.\nASSUMPTION: Lesson 7 pins the same acceptor on resume. This could entrench a biased or faulty acceptor and weaken independent review if the acceptor is also the author or is unavailable. There is no fallback when the original acceptor is unavailable, and \"never route a rejection to a different acceptor\" could block progress, leaving no pause-and-help route. It may also be read as letting a rejected party shop for a re-judgment loop, so the retry count should be bounded.\nIDEA: Lesson 7 wording fix: \"If the original acceptor is unavailable or conflicted, pause under section 17 rather than substituting an acceptor.\"\nASSUMPTION: Section 18 asks that each lesson record triggering evidence, intended behavior, and scope. The diff has one-line R001 parentheticals with no evidence IDs, so this requirement is not demonstrably met, and the cited trigger for the first lesson (a worker refusing an approved fetch) justifies a narrower fix than the one proposed.\nASSUMPTION: The header changes the file's first lines and states a v1 hash. Section 18 requires an immutable snapshot under runs/<run-id>/ and activation at the next run boundary. The diff does not state activation timing, so the v2 text could be applied mid-run, which would reinterpret the active run's history. The hash itself is unverified.\nASSUMPTION: The change adds seven lessons from one run, which may be more than the \"smallest justified change\" required by section 18 step 3; several (lessons 5 and 6) are cited only by incident labels.\nUNKNOWN: section_19A_numbering_conflict_with_existing_section_19\nUNKNOWN: v1_sha256_correctness",
+      "condition": "dream",
+      "trust": "UNVERIFIED",
+      "status": "UNRESOLVED",
+      "authority": {
+        "type": "ADVISORY",
+        "executable": false
+      },
+      "claims": [
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/1",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+          "kind": "ASSUMPTION",
+          "text": "The only supplied evidence is prompt-s18; the R001 triggers (worker refusal, bulk MLB records pushed, PARTIAL pass 1, DOG-035/036/039, CUBS-P-002, S2 block, NOTE-008) are not supplied, so none of the cited triggers can be verified as justifying any lesson.",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/2",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+          "kind": "CITE",
+          "text": "prompt-s18",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/3",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+          "kind": "UNKNOWN",
+          "text": "r001_trigger_evidence",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/4",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+          "kind": "UNKNOWN",
+          "text": "rest_of_prompt_sections_16_17_19_text",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/5",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+          "kind": "ASSUMPTION",
+          "text": "Because only section 18 is supplied, contradictions with other sections (16 merge, 17 pause-and-help, isolation, no-local-LLM) cannot be ruled out; the review is limited to section 18's rules.",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/6",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+          "kind": "ASSUMPTION",
+          "text": "The header says \"They add no authority and remove no gate,\" but this is a self-assertion; section 18 requires independent review through the supported Howl path, and no review record for this diff is supplied. The diff must not be treated as approved.",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/7",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+          "kind": "ASSUMPTION",
+          "text": "Lesson 1 (\"Owner authorizations reach workers verbatim\") could be read as letting a worker override a repository's documented restriction on the strength of a quoted authorization. If the quoted authorization is stale, paraphrased, or unauthenticated, this becomes a permission bypass. Nothing requires the authorization to be a real, current user instruction rather than controller-authored text, which section 18 says cannot authorize mission-constraint changes.",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/8",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+          "kind": "IDEA",
+          "text": "Lesson 1 wording fix: \"Only when an explicit, dated user instruction exists in the handoff, quote it verbatim with scope and date in the goal and as a --constraint; never infer or self-author an authorization, and the authorization does not override higher-priority policy or the pause-and-help rule.\"",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/9",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+          "kind": "ASSUMPTION",
+          "text": "Lesson 2 says to \"read the source's terms\" and \"publish aggregates and short attributed examples,\" but \"short,\" \"bulk,\" and \"aggregates\" are vague and untestable. It also fails to say who judges compliance when the terms forbid even aggregates, and it gives no stop condition (pause under section 17) if terms are unclear or restrictive.",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/10",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+          "kind": "IDEA",
+          "text": "Lesson 2 wording fix: add \"If terms are absent, ambiguous, or prohibit redistribution, pause under section 17 before any public push,\" and define a testable bulk threshold (for example a record-count or file-size limit) for the staged-file scan.",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/11",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+          "kind": "ASSUMPTION",
+          "text": "Lesson 2 gives no recovery step for the case that already happened (bulk data on a public branch needing a history rewrite). History rewrite touches shared state and may conflict with protections for human work and protected runtime state; the lesson is silent on whether a rewrite is permitted, who authorizes it, or how it's recorded. This is a recovery gap.",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/12",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+          "kind": "ASSUMPTION",
+          "text": "Lesson 3's formula max_calls >= clamp(max_candidates // 2, 1, 3) + max_candidates sets a minimum, not a cap, and could be read as encouraging higher spending. It does not state that it cannot exceed an existing authorized budget or reset consumed budgets. Section 18 forbids acquiring spending authority and resetting consumed budgets, so a clause is needed: \"within the already authorized budget; if the formula exceeds it, pause.\"",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/13",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+          "kind": "CALC",
+          "text": "4 // 2 = 2",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/14",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+          "kind": "CALC",
+          "text": "2 + 4 = 6",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/15",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+          "kind": "ASSUMPTION",
+          "text": "The worked arithmetic above is illustrative only (max_candidates=4 gives a minimum of 6 calls). The sizing conflicts with any fixed budget lower than that value, and the diff does not say which wins. Whether one PARTIAL result justifies the rule is unverified.",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/16",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+          "kind": "ASSUMPTION",
+          "text": "Lesson 4 requires passing the repository's required gate as --verify with an adequate --verify-timeout. \"Adequate\" is untestable. \"Prove a committed candidate through the public chain with PYTHONPATH pointing at a clean repair worktree\" could be read as running the product outside the normal public interface, weakening the public-interface-use rule. It is also an added burden on every repair. Recording the SHA is testable, but where it is recorded is unspecified.",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/17",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+          "kind": "IDEA",
+          "text": "Lesson 4 wording fix: replace \"adequate\" with \"at least the gate's documented runtime plus a stated margin, recorded in the run assessment,\" and state that the PYTHONPATH proof still goes through the public Howl CLI.",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/18",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+          "kind": "ASSUMPTION",
+          "text": "Lesson 5 says to \"trace any downgrade to its cause\" and \"recover through the documented live doctor.\" If the documented doctor mutates protected runtime state, this conflicts with section 18's ban on editing protected runtime state. The lesson needs \"recover only via documented, permitted operations; otherwise pause under section 17.\"",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/19",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+          "kind": "ASSUMPTION",
+          "text": "Lesson 6 \"small enough for one implementation pass\" is vague and untestable. \"Documented discard\" of an unfinished worktree could destroy human or prior work, which touches protections for human work, and it names no approver. Discard should require explicit user authorization and preservation of a copy.",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/20",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+          "kind": "ASSUMPTION",
+          "text": "Lesson 7 pins the same acceptor on resume. This could entrench a biased or faulty acceptor and weaken independent review if the acceptor is also the author or is unavailable. There is no fallback when the original acceptor is unavailable, and \"never route a rejection to a different acceptor\" could block progress, leaving no pause-and-help route. It may also be read as letting a rejected party shop for a re-judgment loop, so the retry count should be bounded.",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/21",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+          "kind": "IDEA",
+          "text": "Lesson 7 wording fix: \"If the original acceptor is unavailable or conflicted, pause under section 17 rather than substituting an acceptor.\"",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/22",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+          "kind": "ASSUMPTION",
+          "text": "Section 18 asks that each lesson record triggering evidence, intended behavior, and scope. The diff has one-line R001 parentheticals with no evidence IDs, so this requirement is not demonstrably met, and the cited trigger for the first lesson (a worker refusing an approved fetch) justifies a narrower fix than the one proposed.",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/23",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+          "kind": "ASSUMPTION",
+          "text": "The header changes the file's first lines and states a v1 hash. Section 18 requires an immutable snapshot under runs/<run-id>/ and activation at the next run boundary. The diff does not state activation timing, so the v2 text could be applied mid-run, which would reinterpret the active run's history. The hash itself is unverified.",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/24",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+          "kind": "ASSUMPTION",
+          "text": "The change adds seven lessons from one run, which may be more than the \"smallest justified change\" required by section 18 step 3; several (lessons 5 and 6) are cited only by incident labels.",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/25",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+          "kind": "UNKNOWN",
+          "text": "section_19A_numbering_conflict_with_existing_section_19",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/26",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+          "kind": "UNKNOWN",
+          "text": "v1_sha256_correctness",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        }
+      ],
+      "evidence_refs": [
+        "prompt-s18"
+      ],
+      "assumptions": [
+        "The only supplied evidence is prompt-s18; the R001 triggers (worker refusal, bulk MLB records pushed, PARTIAL pass 1, DOG-035/036/039, CUBS-P-002, S2 block, NOTE-008) are not supplied, so none of the cited triggers can be verified as justifying any lesson.",
+        "Because only section 18 is supplied, contradictions with other sections (16 merge, 17 pause-and-help, isolation, no-local-LLM) cannot be ruled out; the review is limited to section 18's rules.",
+        "The header says \"They add no authority and remove no gate,\" but this is a self-assertion; section 18 requires independent review through the supported Howl path, and no review record for this diff is supplied. The diff must not be treated as approved.",
+        "Lesson 1 (\"Owner authorizations reach workers verbatim\") could be read as letting a worker override a repository's documented restriction on the strength of a quoted authorization. If the quoted authorization is stale, paraphrased, or unauthenticated, this becomes a permission bypass. Nothing requires the authorization to be a real, current user instruction rather than controller-authored text, which section 18 says cannot authorize mission-constraint changes.",
+        "Lesson 2 says to \"read the source's terms\" and \"publish aggregates and short attributed examples,\" but \"short,\" \"bulk,\" and \"aggregates\" are vague and untestable. It also fails to say who judges compliance when the terms forbid even aggregates, and it gives no stop condition (pause under section 17) if terms are unclear or restrictive.",
+        "Lesson 2 gives no recovery step for the case that already happened (bulk data on a public branch needing a history rewrite). History rewrite touches shared state and may conflict with protections for human work and protected runtime state; the lesson is silent on whether a rewrite is permitted, who authorizes it, or how it's recorded. This is a recovery gap.",
+        "Lesson 3's formula max_calls >= clamp(max_candidates // 2, 1, 3) + max_candidates sets a minimum, not a cap, and could be read as encouraging higher spending. It does not state that it cannot exceed an existing authorized budget or reset consumed budgets. Section 18 forbids acquiring spending authority and resetting consumed budgets, so a clause is needed: \"within the already authorized budget; if the formula exceeds it, pause.\"",
+        "The worked arithmetic above is illustrative only (max_candidates=4 gives a minimum of 6 calls). The sizing conflicts with any fixed budget lower than that value, and the diff does not say which wins. Whether one PARTIAL result justifies the rule is unverified.",
+        "Lesson 4 requires passing the repository's required gate as --verify with an adequate --verify-timeout. \"Adequate\" is untestable. \"Prove a committed candidate through the public chain with PYTHONPATH pointing at a clean repair worktree\" could be read as running the product outside the normal public interface, weakening the public-interface-use rule. It is also an added burden on every repair. Recording the SHA is testable, but where it is recorded is unspecified.",
+        "Lesson 5 says to \"trace any downgrade to its cause\" and \"recover through the documented live doctor.\" If the documented doctor mutates protected runtime state, this conflicts with section 18's ban on editing protected runtime state. The lesson needs \"recover only via documented, permitted operations; otherwise pause under section 17.\"",
+        "Lesson 6 \"small enough for one implementation pass\" is vague and untestable. \"Documented discard\" of an unfinished worktree could destroy human or prior work, which touches protections for human work, and it names no approver. Discard should require explicit user authorization and preservation of a copy.",
+        "Lesson 7 pins the same acceptor on resume. This could entrench a biased or faulty acceptor and weaken independent review if the acceptor is also the author or is unavailable. There is no fallback when the original acceptor is unavailable, and \"never route a rejection to a different acceptor\" could block progress, leaving no pause-and-help route. It may also be read as letting a rejected party shop for a re-judgment loop, so the retry count should be bounded.",
+        "Section 18 asks that each lesson record triggering evidence, intended behavior, and scope. The diff has one-line R001 parentheticals with no evidence IDs, so this requirement is not demonstrably met, and the cited trigger for the first lesson (a worker refusing an approved fetch) justifies a narrower fix than the one proposed.",
+        "The header changes the file's first lines and states a v1 hash. Section 18 requires an immutable snapshot under runs/<run-id>/ and activation at the next run boundary. The diff does not state activation timing, so the v2 text could be applied mid-run, which would reinterpret the active run's history. The hash itself is unverified.",
+        "The change adds seven lessons from one run, which may be more than the \"smallest justified change\" required by section 18 step 3; several (lessons 5 and 6) are cited only by incident labels."
+      ],
+      "unresolved_issues": [
+        "The only supplied evidence is prompt-s18; the R001 triggers (worker refusal, bulk MLB records pushed, PARTIAL pass 1, DOG-035/036/039, CUBS-P-002, S2 block, NOTE-008) are not supplied, so none of the cited triggers can be verified as justifying any lesson.",
+        "Because only section 18 is supplied, contradictions with other sections (16 merge, 17 pause-and-help, isolation, no-local-LLM) cannot be ruled out; the review is limited to section 18's rules.",
+        "The header says \"They add no authority and remove no gate,\" but this is a self-assertion; section 18 requires independent review through the supported Howl path, and no review record for this diff is supplied. The diff must not be treated as approved.",
+        "Lesson 1 (\"Owner authorizations reach workers verbatim\") could be read as letting a worker override a repository's documented restriction on the strength of a quoted authorization. If the quoted authorization is stale, paraphrased, or unauthenticated, this becomes a permission bypass. Nothing requires the authorization to be a real, current user instruction rather than controller-authored text, which section 18 says cannot authorize mission-constraint changes.",
+        "Lesson 2 says to \"read the source's terms\" and \"publish aggregates and short attributed examples,\" but \"short,\" \"bulk,\" and \"aggregates\" are vague and untestable. It also fails to say who judges compliance when the terms forbid even aggregates, and it gives no stop condition (pause under section 17) if terms are unclear or restrictive.",
+        "Lesson 2 gives no recovery step for the case that already happened (bulk data on a public branch needing a history rewrite). History rewrite touches shared state and may conflict with protections for human work and protected runtime state; the lesson is silent on whether a rewrite is permitted, who authorizes it, or how it's recorded. This is a recovery gap.",
+        "Lesson 3's formula max_calls >= clamp(max_candidates // 2, 1, 3) + max_candidates sets a minimum, not a cap, and could be read as encouraging higher spending. It does not state that it cannot exceed an existing authorized budget or reset consumed budgets. Section 18 forbids acquiring spending authority and resetting consumed budgets, so a clause is needed: \"within the already authorized budget; if the formula exceeds it, pause.\"",
+        "The worked arithmetic above is illustrative only (max_candidates=4 gives a minimum of 6 calls). The sizing conflicts with any fixed budget lower than that value, and the diff does not say which wins. Whether one PARTIAL result justifies the rule is unverified.",
+        "Lesson 4 requires passing the repository's required gate as --verify with an adequate --verify-timeout. \"Adequate\" is untestable. \"Prove a committed candidate through the public chain with PYTHONPATH pointing at a clean repair worktree\" could be read as running the product outside the normal public interface, weakening the public-interface-use rule. It is also an added burden on every repair. Recording the SHA is testable, but where it is recorded is unspecified.",
+        "Lesson 5 says to \"trace any downgrade to its cause\" and \"recover through the documented live doctor.\" If the documented doctor mutates protected runtime state, this conflicts with section 18's ban on editing protected runtime state. The lesson needs \"recover only via documented, permitted operations; otherwise pause under section 17.\"",
+        "Lesson 6 \"small enough for one implementation pass\" is vague and untestable. \"Documented discard\" of an unfinished worktree could destroy human or prior work, which touches protections for human work, and it names no approver. Discard should require explicit user authorization and preservation of a copy.",
+        "Lesson 7 pins the same acceptor on resume. This could entrench a biased or faulty acceptor and weaken independent review if the acceptor is also the author or is unavailable. There is no fallback when the original acceptor is unavailable, and \"never route a rejection to a different acceptor\" could block progress, leaving no pause-and-help route. It may also be read as letting a rejected party shop for a re-judgment loop, so the retry count should be bounded.",
+        "Section 18 asks that each lesson record triggering evidence, intended behavior, and scope. The diff has one-line R001 parentheticals with no evidence IDs, so this requirement is not demonstrably met, and the cited trigger for the first lesson (a worker refusing an approved fetch) justifies a narrower fix than the one proposed.",
+        "The header changes the file's first lines and states a v1 hash. Section 18 requires an immutable snapshot under runs/<run-id>/ and activation at the next run boundary. The diff does not state activation timing, so the v2 text could be applied mid-run, which would reinterpret the active run's history. The hash itself is unverified.",
+        "The change adds seven lessons from one run, which may be more than the \"smallest justified change\" required by section 18 step 3; several (lessons 5 and 6) are cited only by incident labels.",
+        "r001_trigger_evidence",
+        "rest_of_prompt_sections_16_17_19_text",
+        "Lesson 1 wording fix: \"Only when an explicit, dated user instruction exists in the handoff, quote it verbatim with scope and date in the goal and as a --constraint; never infer or self-author an authorization, and the authorization does not override higher-priority policy or the pause-and-help rule.\"",
+        "Lesson 2 wording fix: add \"If terms are absent, ambiguous, or prohibit redistribution, pause under section 17 before any public push,\" and define a testable bulk threshold (for example a record-count or file-size limit) for the staged-file scan.",
+        "4 // 2 = 2",
+        "Lesson 4 wording fix: replace \"adequate\" with \"at least the gate's documented runtime plus a stated margin, recorded in the run assessment,\" and state that the PYTHONPATH proof still goes through the public Howl CLI.",
+        "Lesson 7 wording fix: \"If the original acceptor is unavailable or conflicted, pause under section 17 rather than substituting an acceptor.\"",
+        "section_19A_numbering_conflict_with_existing_section_19",
+        "v1_sha256_correctness"
+      ],
+      "contradictions": [],
+      "verified_constraints": [
+        "2 + 4 = 6"
+      ],
+      "provenance": {
+        "run_id": "hd-20261009-190025-f65380fdaa4e",
+        "producer_component": "howldream",
+        "producer_version": "0.4.4",
+        "model_or_provider": "claude-sonnet-5-5",
+        "observation_kind": "EXTERNALLY_OBSERVED",
+        "created_at": "2026-10-09T19:01:19.288486+00:00",
+        "transformations": [
+          "generated"
+        ],
+        "participation": [
+          {
+            "operation": "GENERATED",
+            "transforming_component": "howldream",
+            "origin_component": "howldream",
+            "origin_provider": "claude",
+            "origin_model": "claude-sonnet-5-5",
+            "subject_count": 1,
+            "inference_occurred": true,
+            "note": "Dream prompted the provider; the provider authored the text."
+          }
+        ],
+        "request_id": "cubs-r001-prompt-v2-review",
+        "originating_component": "operator",
+        "execution": {
+          "requested_provider": "command",
+          "selected_provider": "command",
+          "actual_provider": "claude",
+          "adapter": "claude-json",
+          "model": "claude-sonnet-5-5",
+          "requested_model": "claude-sonnet-5-5",
+          "deterministic": false,
+          "mocked": false,
+          "inference_occurred": true,
+          "remote": true,
+          "remote_observation": "OPERATOR_DECLARED",
+          "fallback_reason": null,
+          "elapsed_seconds": 19.07176687999163,
+          "usage": {
+            "input_tokens": 2,
+            "cache_creation_input_tokens": 3194,
+            "cache_read_input_tokens": 0,
+            "output_tokens": 2249,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            },
+            "server_tool_use": {
+              "web_search_requests": 0,
+              "web_fetch_requests": 0
+            },
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 3194,
+              "ephemeral_5m_input_tokens": 0
+            }
+          },
+          "cost": 0.03527,
+          "request_id": "cf1e2ccf-2d18-4934-9afa-56474aa321aa",
+          "raw_output_received": true,
+          "parse_status": "VALID",
+          "repair_attempted": false,
+          "sampling": null
+        },
+        "source_candidate_refs": [
+          {
+            "candidate_id": "prompt-v2-diff",
+            "source_run_id": "r001-retrospective",
+            "sha256": "8856a2f30630425707f6a0216bbcb0be060922806c9d13d11a79b18029eae719"
+          }
+        ],
+        "source_candidates_location": "exploration_envelope.json#/provenance/source_candidates",
+        "hard_constraints": [
+          "Review only; do not rewrite the whole prompt."
+        ],
+        "constraint_scope": "UNVERIFIED_GENERATION_GUIDANCE",
+        "purpose": "verification",
+        "verification": [
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/1",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/2",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+            "status": "SUPPORTED",
+            "classifications": [],
+            "source_ids": [
+              "prompt-s18"
+            ],
+            "evidence_provenance": [
+              {
+                "source_id": "prompt-s18",
+                "source_type": "OPERATOR_EXPECTATION",
+                "produced_by": "user",
+                "source_ref": "EXECUTION-PROMPT.md section 18",
+                "independent_of_implementation": true,
+                "represents_observed_reality": false
+              }
+            ],
+            "check_scope": "CITATION_PRESENCE",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "Source ID presence only; existence on the internet and entailment are not checked."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/3",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "Explicit abstention; not counted as a detected failure or a verified fact."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/4",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "Explicit abstention; not counted as a detected failure or a verified fact."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/5",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/6",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/7",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/8",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/9",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/10",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/11",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/12",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/13",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "ARITHMETIC_SELF_CONSISTENCY",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/14",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+            "status": "SUPPORTED",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "ARITHMETIC_SELF_CONSISTENCY",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "Exact rational arithmetic result: 6."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/15",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/16",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/17",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/18",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/19",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/20",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/21",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/22",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/23",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/24",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/25",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "Explicit abstention; not counted as a detected failure or a verified fact."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/26",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "Explicit abstention; not counted as a detected failure or a verified fact."
+          }
+        ],
+        "candidate_index": 0,
+        "trial": 0,
+        "prompt_hash": "de5cb099c14a463b88739947ea089e58da489a73ec861229254055d9bbe5e72b",
+        "output_hash": "984104fd51fad281be9e9e73738014e5dc6e21f19d2c1548ed751a826de30efa"
+      }
+    },
+    {
+      "schema_version": "howl.candidate/v1",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "source_run_id": "hd-20261009-190025-f65380fdaa4e",
+      "parent_request_id": "cubs-r001-prompt-v2-review",
+      "objective": "Independently review this proposed change to a campaign execution prompt (the candidate is a unified diff adding section 19A). The prompt's own rules for such changes are in evidence id prompt-s18. Check: contradictions with the rest of the prompt; whether any line weakens or bypasses public-interface use, independent review, evidence, acceptance or merge gates, the pause-and-help rule, the no-local-LLM rule, isolation, or protections for human work; whether it grants new permissions or spending; recovery gaps; unnecessary burden; vague or untestable wording; and whether each lesson's cited trigger justifies it. Use ASSUMPTION lines for problems, CITE for evidence ids, and IDEA only for a concrete wording fix.",
+      "text": "CITE: prompt-s18\nASSUMPTION: The only evidence supplied is section 18 (operator expectation, not observed reality). The R001 triggers, DOG-/CUBS-/NOTE- ids, and the claimed incidents have no supplied evidence, so no lesson's trigger can be confirmed as justifying it.\nUNKNOWN: r001_trigger_evidence\nUNKNOWN: v1_sha256_matches_canonical_prompt\nUNKNOWN: sections_16_17_and_other_referenced_sections_text\nASSUMPTION: The preamble \"add no authority and remove no gate\" is a self-assertion; section 18 says self-authored text cannot change constraints, so the claim is not evidence and each bullet must be judged on its own wording.\nASSUMPTION: Lesson 1 (owner authorizations verbatim) could be read as letting a worker override a repository's documented restriction. The wording does not require that the authorization be an explicit, recorded user instruction with provenance, so a controller-paraphrased \"authorization\" could bypass the repo restriction. It also may grant new permissions if the authorization is not from the user.\nIDEA: Lesson 1 wording fix: \"Only an explicit, quoted user instruction, with its date and scope, may be passed on; the controller must not infer or broaden authorization. If the user's scope is unclear, pause under section 17.\"\nASSUMPTION: Lesson 2 (third-party data) is protective, but \"read the source's terms\" is untestable without a recorded artifact, and \"bulk records\" and \"short attributed examples\" are undefined, so a reviewer cannot test them. The \"separate step\" scan has no named method or pass criterion. A rewrite of public history is mentioned as a trigger but no recovery step is given for data already pushed.\nIDEA: Lesson 2 wording fix: \"Record the terms reviewed (URL, date, conclusion) in the run assessment; define a record-count threshold for 'bulk'; if bulk data is found on a public branch, pause under section 17 and ask the user before any history rewrite.\"\nASSUMPTION: Lesson 3's formula is stated as max_calls >= clamp(max_candidates // 2, 1, 3) + max_candidates, but it is not checked against how Howl actually counts calls. A single PARTIAL result is thin justification for a hard formula, and it is unclear whether it raises spending. Raising max_calls could be new spending authority and conflicts with section 18's ban on acquiring spending authority or resetting consumed budgets.\nIDEA: Lesson 3 wording fix: \"Size within the existing approved budget; if the formula exceeds it, pause and request approval rather than raising the limit.\"\nASSUMPTION: Lesson 4 mixes several rules. \"Prove a committed candidate through the public chain with PYTHONPATH pointing at a clean repair worktree\" may sidestep the public interface if PYTHONPATH selects code other than the supported install, and it is not clear this counts as the independent review or acceptance gate. \"Adequate --verify-timeout\" is vague and untestable. The reference to the \"repository's required gate\" is undefined when a repo has none.\nIDEA: Lesson 4 wording fix: \"State that the PYTHONPATH proof supplements, and never replaces, independent review, acceptance, and the section 16 merge gate. Specify the timeout as at least the gate's observed runtime times a recorded margin.\"\nASSUMPTION: Lesson 5 says to \"recover through the documented live doctor\", which may permit repair actions on protected runtime state. Section 18 forbids editing protected runtime state, and the lesson does not limit the recovery to documented, non-manual steps. The \"downgrade\" cause trace has no stop condition if the cause cannot be found.\nIDEA: Lesson 5 wording fix: \"If the cause is unknown or recovery needs a runtime-state edit, pause under section 17.\"\nASSUMPTION: Lesson 6 has a recovery gap: \"a documented discard\" of an unfinished worktree session could destroy human or prior work, which section 18 protects. It does not require that the discard be authorized or that uncommitted changes be preserved first. \"Small enough for one pass\" is vague and untestable.\nIDEA: Lesson 6 wording fix: \"Discard only with user authorization, after preserving uncommitted work (for example, a recorded patch or branch). Define 'small' by a testable limit, such as a single acceptance criterion.\"\nASSUMPTION: Lesson 7 says never route a rejection to a different acceptor. If the pinned acceptor is unavailable, biased, or itself faulty, execution deadlocks with no escape path. Pinning the same acceptor may also weaken independence, since it reinforces its earlier view. It has no cited R001 trigger at all, which violates section 18's requirement to record triggering evidence.\nIDEA: Lesson 7 wording fix: \"If the pinned acceptor is unavailable, pause under section 17 and propose an alternative to the user. Cite the triggering evidence, or drop the lesson.\"\nASSUMPTION: Section 18 requires, for each help incident, either an actionable instruction or an explanation of why none is needed. The diff does not record which incidents were addressed or why others were not, so that requirement cannot be verified from this diff.\nASSUMPTION: The header change references a date and a hash, but nothing shows that the snapshot under runs/<run-id>/ was saved or that independent review through the Howl path occurred. Per section 18, if that review is unavailable, the change must pause and not be self-certified.\nASSUMPTION: The diff adds 13 lines to a file, and the placement \"19A\" after line 836 is unchecked against existing numbering; a reference to a section not shown could contradict the rest of the prompt.\nCALC: 7 minus 6 = 1 (seven lessons are listed, and six cite an R001 trigger; lesson 7 cites none)",
+      "condition": "dream",
+      "trust": "UNVERIFIED",
+      "status": "UNRESOLVED",
+      "authority": {
+        "type": "ADVISORY",
+        "executable": false
+      },
+      "claims": [
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/1",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+          "kind": "CITE",
+          "text": "prompt-s18",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/2",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+          "kind": "ASSUMPTION",
+          "text": "The only evidence supplied is section 18 (operator expectation, not observed reality). The R001 triggers, DOG-/CUBS-/NOTE- ids, and the claimed incidents have no supplied evidence, so no lesson's trigger can be confirmed as justifying it.",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/3",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+          "kind": "UNKNOWN",
+          "text": "r001_trigger_evidence",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/4",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+          "kind": "UNKNOWN",
+          "text": "v1_sha256_matches_canonical_prompt",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/5",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+          "kind": "UNKNOWN",
+          "text": "sections_16_17_and_other_referenced_sections_text",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/6",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+          "kind": "ASSUMPTION",
+          "text": "The preamble \"add no authority and remove no gate\" is a self-assertion; section 18 says self-authored text cannot change constraints, so the claim is not evidence and each bullet must be judged on its own wording.",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/7",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+          "kind": "ASSUMPTION",
+          "text": "Lesson 1 (owner authorizations verbatim) could be read as letting a worker override a repository's documented restriction. The wording does not require that the authorization be an explicit, recorded user instruction with provenance, so a controller-paraphrased \"authorization\" could bypass the repo restriction. It also may grant new permissions if the authorization is not from the user.",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/8",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+          "kind": "IDEA",
+          "text": "Lesson 1 wording fix: \"Only an explicit, quoted user instruction, with its date and scope, may be passed on; the controller must not infer or broaden authorization. If the user's scope is unclear, pause under section 17.\"",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/9",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+          "kind": "ASSUMPTION",
+          "text": "Lesson 2 (third-party data) is protective, but \"read the source's terms\" is untestable without a recorded artifact, and \"bulk records\" and \"short attributed examples\" are undefined, so a reviewer cannot test them. The \"separate step\" scan has no named method or pass criterion. A rewrite of public history is mentioned as a trigger but no recovery step is given for data already pushed.",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/10",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+          "kind": "IDEA",
+          "text": "Lesson 2 wording fix: \"Record the terms reviewed (URL, date, conclusion) in the run assessment; define a record-count threshold for 'bulk'; if bulk data is found on a public branch, pause under section 17 and ask the user before any history rewrite.\"",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/11",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+          "kind": "ASSUMPTION",
+          "text": "Lesson 3's formula is stated as max_calls >= clamp(max_candidates // 2, 1, 3) + max_candidates, but it is not checked against how Howl actually counts calls. A single PARTIAL result is thin justification for a hard formula, and it is unclear whether it raises spending. Raising max_calls could be new spending authority and conflicts with section 18's ban on acquiring spending authority or resetting consumed budgets.",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/12",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+          "kind": "IDEA",
+          "text": "Lesson 3 wording fix: \"Size within the existing approved budget; if the formula exceeds it, pause and request approval rather than raising the limit.\"",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/13",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+          "kind": "ASSUMPTION",
+          "text": "Lesson 4 mixes several rules. \"Prove a committed candidate through the public chain with PYTHONPATH pointing at a clean repair worktree\" may sidestep the public interface if PYTHONPATH selects code other than the supported install, and it is not clear this counts as the independent review or acceptance gate. \"Adequate --verify-timeout\" is vague and untestable. The reference to the \"repository's required gate\" is undefined when a repo has none.",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/14",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+          "kind": "IDEA",
+          "text": "Lesson 4 wording fix: \"State that the PYTHONPATH proof supplements, and never replaces, independent review, acceptance, and the section 16 merge gate. Specify the timeout as at least the gate's observed runtime times a recorded margin.\"",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/15",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+          "kind": "ASSUMPTION",
+          "text": "Lesson 5 says to \"recover through the documented live doctor\", which may permit repair actions on protected runtime state. Section 18 forbids editing protected runtime state, and the lesson does not limit the recovery to documented, non-manual steps. The \"downgrade\" cause trace has no stop condition if the cause cannot be found.",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/16",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+          "kind": "IDEA",
+          "text": "Lesson 5 wording fix: \"If the cause is unknown or recovery needs a runtime-state edit, pause under section 17.\"",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/17",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+          "kind": "ASSUMPTION",
+          "text": "Lesson 6 has a recovery gap: \"a documented discard\" of an unfinished worktree session could destroy human or prior work, which section 18 protects. It does not require that the discard be authorized or that uncommitted changes be preserved first. \"Small enough for one pass\" is vague and untestable.",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/18",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+          "kind": "IDEA",
+          "text": "Lesson 6 wording fix: \"Discard only with user authorization, after preserving uncommitted work (for example, a recorded patch or branch). Define 'small' by a testable limit, such as a single acceptance criterion.\"",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/19",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+          "kind": "ASSUMPTION",
+          "text": "Lesson 7 says never route a rejection to a different acceptor. If the pinned acceptor is unavailable, biased, or itself faulty, execution deadlocks with no escape path. Pinning the same acceptor may also weaken independence, since it reinforces its earlier view. It has no cited R001 trigger at all, which violates section 18's requirement to record triggering evidence.",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/20",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+          "kind": "IDEA",
+          "text": "Lesson 7 wording fix: \"If the pinned acceptor is unavailable, pause under section 17 and propose an alternative to the user. Cite the triggering evidence, or drop the lesson.\"",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/21",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+          "kind": "ASSUMPTION",
+          "text": "Section 18 requires, for each help incident, either an actionable instruction or an explanation of why none is needed. The diff does not record which incidents were addressed or why others were not, so that requirement cannot be verified from this diff.",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/22",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+          "kind": "ASSUMPTION",
+          "text": "The header change references a date and a hash, but nothing shows that the snapshot under runs/<run-id>/ was saved or that independent review through the Howl path occurred. Per section 18, if that review is unavailable, the change must pause and not be self-certified.",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/23",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+          "kind": "ASSUMPTION",
+          "text": "The diff adds 13 lines to a file, and the placement \"19A\" after line 836 is unchecked against existing numbering; a reference to a section not shown could contradict the rest of the prompt.",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        },
+        {
+          "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/24",
+          "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+          "kind": "CALC",
+          "text": "7 minus 6 = 1 (seven lessons are listed, and six cite an R001 trigger; lesson 7 cites none)",
+          "status": "UNVERIFIED",
+          "extractor": "line_grammar/v1"
+        }
+      ],
+      "evidence_refs": [
+        "prompt-s18"
+      ],
+      "assumptions": [
+        "The only evidence supplied is section 18 (operator expectation, not observed reality). The R001 triggers, DOG-/CUBS-/NOTE- ids, and the claimed incidents have no supplied evidence, so no lesson's trigger can be confirmed as justifying it.",
+        "The preamble \"add no authority and remove no gate\" is a self-assertion; section 18 says self-authored text cannot change constraints, so the claim is not evidence and each bullet must be judged on its own wording.",
+        "Lesson 1 (owner authorizations verbatim) could be read as letting a worker override a repository's documented restriction. The wording does not require that the authorization be an explicit, recorded user instruction with provenance, so a controller-paraphrased \"authorization\" could bypass the repo restriction. It also may grant new permissions if the authorization is not from the user.",
+        "Lesson 2 (third-party data) is protective, but \"read the source's terms\" is untestable without a recorded artifact, and \"bulk records\" and \"short attributed examples\" are undefined, so a reviewer cannot test them. The \"separate step\" scan has no named method or pass criterion. A rewrite of public history is mentioned as a trigger but no recovery step is given for data already pushed.",
+        "Lesson 3's formula is stated as max_calls >= clamp(max_candidates // 2, 1, 3) + max_candidates, but it is not checked against how Howl actually counts calls. A single PARTIAL result is thin justification for a hard formula, and it is unclear whether it raises spending. Raising max_calls could be new spending authority and conflicts with section 18's ban on acquiring spending authority or resetting consumed budgets.",
+        "Lesson 4 mixes several rules. \"Prove a committed candidate through the public chain with PYTHONPATH pointing at a clean repair worktree\" may sidestep the public interface if PYTHONPATH selects code other than the supported install, and it is not clear this counts as the independent review or acceptance gate. \"Adequate --verify-timeout\" is vague and untestable. The reference to the \"repository's required gate\" is undefined when a repo has none.",
+        "Lesson 5 says to \"recover through the documented live doctor\", which may permit repair actions on protected runtime state. Section 18 forbids editing protected runtime state, and the lesson does not limit the recovery to documented, non-manual steps. The \"downgrade\" cause trace has no stop condition if the cause cannot be found.",
+        "Lesson 6 has a recovery gap: \"a documented discard\" of an unfinished worktree session could destroy human or prior work, which section 18 protects. It does not require that the discard be authorized or that uncommitted changes be preserved first. \"Small enough for one pass\" is vague and untestable.",
+        "Lesson 7 says never route a rejection to a different acceptor. If the pinned acceptor is unavailable, biased, or itself faulty, execution deadlocks with no escape path. Pinning the same acceptor may also weaken independence, since it reinforces its earlier view. It has no cited R001 trigger at all, which violates section 18's requirement to record triggering evidence.",
+        "Section 18 requires, for each help incident, either an actionable instruction or an explanation of why none is needed. The diff does not record which incidents were addressed or why others were not, so that requirement cannot be verified from this diff.",
+        "The header change references a date and a hash, but nothing shows that the snapshot under runs/<run-id>/ was saved or that independent review through the Howl path occurred. Per section 18, if that review is unavailable, the change must pause and not be self-certified.",
+        "The diff adds 13 lines to a file, and the placement \"19A\" after line 836 is unchecked against existing numbering; a reference to a section not shown could contradict the rest of the prompt."
+      ],
+      "unresolved_issues": [
+        "The only evidence supplied is section 18 (operator expectation, not observed reality). The R001 triggers, DOG-/CUBS-/NOTE- ids, and the claimed incidents have no supplied evidence, so no lesson's trigger can be confirmed as justifying it.",
+        "The preamble \"add no authority and remove no gate\" is a self-assertion; section 18 says self-authored text cannot change constraints, so the claim is not evidence and each bullet must be judged on its own wording.",
+        "Lesson 1 (owner authorizations verbatim) could be read as letting a worker override a repository's documented restriction. The wording does not require that the authorization be an explicit, recorded user instruction with provenance, so a controller-paraphrased \"authorization\" could bypass the repo restriction. It also may grant new permissions if the authorization is not from the user.",
+        "Lesson 2 (third-party data) is protective, but \"read the source's terms\" is untestable without a recorded artifact, and \"bulk records\" and \"short attributed examples\" are undefined, so a reviewer cannot test them. The \"separate step\" scan has no named method or pass criterion. A rewrite of public history is mentioned as a trigger but no recovery step is given for data already pushed.",
+        "Lesson 3's formula is stated as max_calls >= clamp(max_candidates // 2, 1, 3) + max_candidates, but it is not checked against how Howl actually counts calls. A single PARTIAL result is thin justification for a hard formula, and it is unclear whether it raises spending. Raising max_calls could be new spending authority and conflicts with section 18's ban on acquiring spending authority or resetting consumed budgets.",
+        "Lesson 4 mixes several rules. \"Prove a committed candidate through the public chain with PYTHONPATH pointing at a clean repair worktree\" may sidestep the public interface if PYTHONPATH selects code other than the supported install, and it is not clear this counts as the independent review or acceptance gate. \"Adequate --verify-timeout\" is vague and untestable. The reference to the \"repository's required gate\" is undefined when a repo has none.",
+        "Lesson 5 says to \"recover through the documented live doctor\", which may permit repair actions on protected runtime state. Section 18 forbids editing protected runtime state, and the lesson does not limit the recovery to documented, non-manual steps. The \"downgrade\" cause trace has no stop condition if the cause cannot be found.",
+        "Lesson 6 has a recovery gap: \"a documented discard\" of an unfinished worktree session could destroy human or prior work, which section 18 protects. It does not require that the discard be authorized or that uncommitted changes be preserved first. \"Small enough for one pass\" is vague and untestable.",
+        "Lesson 7 says never route a rejection to a different acceptor. If the pinned acceptor is unavailable, biased, or itself faulty, execution deadlocks with no escape path. Pinning the same acceptor may also weaken independence, since it reinforces its earlier view. It has no cited R001 trigger at all, which violates section 18's requirement to record triggering evidence.",
+        "Section 18 requires, for each help incident, either an actionable instruction or an explanation of why none is needed. The diff does not record which incidents were addressed or why others were not, so that requirement cannot be verified from this diff.",
+        "The header change references a date and a hash, but nothing shows that the snapshot under runs/<run-id>/ was saved or that independent review through the Howl path occurred. Per section 18, if that review is unavailable, the change must pause and not be self-certified.",
+        "The diff adds 13 lines to a file, and the placement \"19A\" after line 836 is unchecked against existing numbering; a reference to a section not shown could contradict the rest of the prompt.",
+        "r001_trigger_evidence",
+        "v1_sha256_matches_canonical_prompt",
+        "sections_16_17_and_other_referenced_sections_text",
+        "Lesson 1 wording fix: \"Only an explicit, quoted user instruction, with its date and scope, may be passed on; the controller must not infer or broaden authorization. If the user's scope is unclear, pause under section 17.\"",
+        "Lesson 2 wording fix: \"Record the terms reviewed (URL, date, conclusion) in the run assessment; define a record-count threshold for 'bulk'; if bulk data is found on a public branch, pause under section 17 and ask the user before any history rewrite.\"",
+        "Lesson 3 wording fix: \"Size within the existing approved budget; if the formula exceeds it, pause and request approval rather than raising the limit.\"",
+        "Lesson 4 wording fix: \"State that the PYTHONPATH proof supplements, and never replaces, independent review, acceptance, and the section 16 merge gate. Specify the timeout as at least the gate's observed runtime times a recorded margin.\"",
+        "Lesson 5 wording fix: \"If the cause is unknown or recovery needs a runtime-state edit, pause under section 17.\"",
+        "Lesson 6 wording fix: \"Discard only with user authorization, after preserving uncommitted work (for example, a recorded patch or branch). Define 'small' by a testable limit, such as a single acceptance criterion.\"",
+        "Lesson 7 wording fix: \"If the pinned acceptor is unavailable, pause under section 17 and propose an alternative to the user. Cite the triggering evidence, or drop the lesson.\"",
+        "7 minus 6 = 1 (seven lessons are listed, and six cite an R001 trigger; lesson 7 cites none)"
+      ],
+      "contradictions": [],
+      "verified_constraints": [],
+      "provenance": {
+        "run_id": "hd-20261009-190025-f65380fdaa4e",
+        "producer_component": "howldream",
+        "producer_version": "0.4.4",
+        "model_or_provider": "claude-sonnet-5-5",
+        "observation_kind": "EXTERNALLY_OBSERVED",
+        "created_at": "2026-10-09T19:01:19.289630+00:00",
+        "transformations": [
+          "generated"
+        ],
+        "participation": [
+          {
+            "operation": "GENERATED",
+            "transforming_component": "howldream",
+            "origin_component": "howldream",
+            "origin_provider": "claude",
+            "origin_model": "claude-sonnet-5-5",
+            "subject_count": 1,
+            "inference_occurred": true,
+            "note": "Dream prompted the provider; the provider authored the text."
+          }
+        ],
+        "request_id": "cubs-r001-prompt-v2-review",
+        "originating_component": "operator",
+        "execution": {
+          "requested_provider": "command",
+          "selected_provider": "command",
+          "actual_provider": "claude",
+          "adapter": "claude-json",
+          "model": "claude-sonnet-5-5",
+          "requested_model": "claude-sonnet-5-5",
+          "deterministic": false,
+          "mocked": false,
+          "inference_occurred": true,
+          "remote": true,
+          "remote_observation": "OPERATOR_DECLARED",
+          "fallback_reason": null,
+          "elapsed_seconds": 17.142203590017743,
+          "usage": {
+            "input_tokens": 2,
+            "cache_creation_input_tokens": 3192,
+            "cache_read_input_tokens": 0,
+            "output_tokens": 1990,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            },
+            "server_tool_use": {
+              "web_search_requests": 0,
+              "web_fetch_requests": 0
+            },
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 3192,
+              "ephemeral_5m_input_tokens": 0
+            }
+          },
+          "cost": 0.032672,
+          "request_id": "fdee234c-529c-4580-9b9d-7eccac1f5058",
+          "raw_output_received": true,
+          "parse_status": "VALID",
+          "repair_attempted": false,
+          "sampling": null
+        },
+        "source_candidate_refs": [
+          {
+            "candidate_id": "prompt-v2-diff",
+            "source_run_id": "r001-retrospective",
+            "sha256": "8856a2f30630425707f6a0216bbcb0be060922806c9d13d11a79b18029eae719"
+          }
+        ],
+        "source_candidates_location": "exploration_envelope.json#/provenance/source_candidates",
+        "hard_constraints": [
+          "Review only; do not rewrite the whole prompt."
+        ],
+        "constraint_scope": "UNVERIFIED_GENERATION_GUIDANCE",
+        "purpose": "verification",
+        "verification": [
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/1",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+            "status": "SUPPORTED",
+            "classifications": [],
+            "source_ids": [
+              "prompt-s18"
+            ],
+            "evidence_provenance": [
+              {
+                "source_id": "prompt-s18",
+                "source_type": "OPERATOR_EXPECTATION",
+                "produced_by": "user",
+                "source_ref": "EXECUTION-PROMPT.md section 18",
+                "independent_of_implementation": true,
+                "represents_observed_reality": false
+              }
+            ],
+            "check_scope": "CITATION_PRESENCE",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "Source ID presence only; existence on the internet and entailment are not checked."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/2",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/3",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "Explicit abstention; not counted as a detected failure or a verified fact."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/4",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "Explicit abstention; not counted as a detected failure or a verified fact."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/5",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "Explicit abstention; not counted as a detected failure or a verified fact."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/6",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/7",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/8",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/9",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/10",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/11",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/12",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/13",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/14",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/15",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/16",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/17",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/18",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/19",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/20",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/21",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/22",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/23",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "SUPPLIED_LEDGER",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          },
+          {
+            "claim_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/24",
+            "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+            "status": "UNCERTAIN",
+            "classifications": [],
+            "source_ids": [],
+            "evidence_provenance": [],
+            "check_scope": "ARITHMETIC_SELF_CONSISTENCY",
+            "critical": false,
+            "verifier": "supplied_ledger_and_arithmetic/v2",
+            "scorer_type": "deterministic",
+            "note": "No available check establishes this proposition."
+          }
+        ],
+        "candidate_index": 1,
+        "trial": 0,
+        "prompt_hash": "301e2410f8bf943ab194886bf16fd379aff90c8b839bba4145fc063384bb3126",
+        "output_hash": "e8560348268d62ee3fe5912d590c465ea87e59ebc476b7aac467b520dd0df2c7"
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0/claim/1",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0",
+      "kind": "CITE",
+      "text": "prompt-s18",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0/claim/2",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0",
+      "kind": "ASSUMPTION",
+      "text": "Bullet 1 (\"Owner authorizations reach workers verbatim\") could be read as letting a worker act on a restricted action once a goal quotes an authorization. The text does not require that the authorization be a real, recorded, user-issued instruction, so a self-authored or paraphrased \"decision\" could pass as owner approval. This conflicts with s18's rule that only an explicit user instruction can change mission constraints, and with its ban on granting new permissions.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0/claim/3",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0",
+      "kind": "IDEA",
+      "text": "Reword bullet 1 to say \"only where the user's explicit instruction is quoted verbatim with its date, and this never overrides a policy, terms-of-service, or protected-state restriction; a worker still pauses under section 17 if the restriction is not covered by that instruction.\"",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0/claim/4",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0",
+      "kind": "ASSUMPTION",
+      "text": "The \"Third-party data\" bullet does not say who decides that the terms permit publishing aggregates and short examples. \"Short attributed examples\" and \"bulk records\" are undefined, so the rule cannot be tested. The scan step has no named tool, threshold, or reviewer, and it does not say whether the review must be independent. If self-reviewed, it could bypass the independent-review gate.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0/claim/5",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0",
+      "kind": "IDEA",
+      "text": "Replace the vague terms with \"no more than N records per source, or whatever the terms allow if stricter\", and require the staged-file scan result to be reviewed through the supported Howl review path before the push. Add a pause-and-help trigger when the terms are unclear or forbid redistribution.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0/claim/6",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0",
+      "kind": "ASSUMPTION",
+      "text": "The bullet also has a recovery gap. It covers prevention but not what to do after bulk data has already reached a public branch (history rewrite, notifying the owner, recording the incident). R001's trigger was that very rewrite.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0/claim/7",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0",
+      "kind": "ASSUMPTION",
+      "text": "The Dream budget formula \"max_calls at least clamp(max_candidates // 2, 1, 3) + max_candidates\" is a derived number whose origin is not shown. The trigger (R001 pass 1 ended PARTIAL) does not show that the formula would have prevented that outcome. \"Record the number\" does not say where to record it. The rule could be read as a requirement to raise budgets, which would conflict with s18's ban on spending authority and on resetting consumed budgets.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0/claim/8",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0",
+      "kind": "IDEA",
+      "text": "Add \"within the budget the user has authorized; if the formula exceeds it, pause under section 17 rather than raise it\", and name the record location, such as the run assessment.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0/claim/9",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0",
+      "kind": "CALC",
+      "text": "3 + 4 = 7",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0/claim/10",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0",
+      "kind": "ASSUMPTION",
+      "text": "For example, with max_candidates=4 the formula gives clamp(2,1,3)=2, so max_calls is at least 2+4=6. The CALC line above is only a placeholder arithmetic check and is not evidence that the formula is correct.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0/claim/11",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0",
+      "kind": "ASSUMPTION",
+      "text": "The Howl repair bullet tells operators to run a committed candidate with PYTHONPATH pointing at a clean repair worktree. This could be read as running the product outside the public interface, which weakens the public-interface rule, unless \"through the public chain\" is taken to cover it. \"Adequate --verify-timeout\" is also untestable. The cited triggers (DOG-036, DOG-035) are not supplied as evidence, so I cannot say whether they justify the rule.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0/claim/12",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0",
+      "kind": "IDEA",
+      "text": "State that the PYTHONPATH override only selects which build the public Howl commands run, that it is never a substitute for them, and give a concrete timeout rule, such as \"at least the gate's longest recorded runtime plus a margin\".",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0/claim/13",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0",
+      "kind": "ASSUMPTION",
+      "text": "The `howl agents doctor` bullet says to \"recover through the documented live doctor\". If the live doctor changes protected runtime state, this may conflict with s18's ban on editing protected runtime state. The text does not say what happens when the cause cannot be traced, and it does not say to pause and ask for help. \"After every HowlPlane session\" adds a recurring burden that is not scaled to risk.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0/claim/14",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0",
+      "kind": "ASSUMPTION",
+      "text": "The \"goals stay small\" bullet is vague (\"small enough for one implementation pass\"). `--separate` and \"a documented discard\" are not defined. A discard could erase unfinished work, which touches the protection for human work, and the text does not require that the owner approve it.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0/claim/15",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0",
+      "kind": "IDEA",
+      "text": "Require that a discard only apply to worker-created artifacts, never to human work, and that it be recorded with the owner's approval.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0/claim/16",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0",
+      "kind": "ASSUMPTION",
+      "text": "The last bullet (\"the same acceptor judges again\") has no cited trigger in its text, so I cannot check that R001 justifies it. Pinning one acceptor could weaken the independence of acceptance if that acceptor is unavailable or conflicted, and the text has no fallback. The ban on routing to a different acceptor could make a recovery impossible and could clash with the pause-and-help rule.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0/claim/17",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0",
+      "kind": "IDEA",
+      "text": "Add \"if that acceptor is unavailable, pause under section 17 and ask the user\", and cite the R001 incident.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0/claim/18",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0",
+      "kind": "ASSUMPTION",
+      "text": "The header line \"They add no authority and remove no gate\" is a claim by the diff itself and does not show that the claim is true. Each bullet needs a separate check against the s18 prohibitions, as above.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0/claim/19",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0",
+      "kind": "ASSUMPTION",
+      "text": "Several bullets rely on flags (--constraint, --verify, --verify-timeout, --separate, --orchestrator) and on section references that I cannot confirm exist in the full prompt. The diff also changes the version header and inserts section 19A after line 836, and I cannot check whether this fits the section numbering or the references to sections 16 and 17.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0/claim/20",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0",
+      "kind": "ASSUMPTION",
+      "text": "The diff does not show an independent review record, scenario validation, or a run-assessment entry for the triggering evidence, all of which s18 steps 3 to 5 require. The R001 evidence ids are named in the text but are not supplied as evidence here.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0/claim/21",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0",
+      "kind": "UNKNOWN",
+      "text": "r001-evidence",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0/claim/22",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0",
+      "kind": "UNKNOWN",
+      "text": "independent-review-record",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0/claim/23",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/baseline/0/0",
+      "kind": "UNKNOWN",
+      "text": "full-prompt-section-references",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/1",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "kind": "ASSUMPTION",
+      "text": "The only supplied evidence is prompt-s18; the R001 triggers (worker refusal, bulk MLB records pushed, PARTIAL pass 1, DOG-035/036/039, CUBS-P-002, S2 block, NOTE-008) are not supplied, so none of the cited triggers can be verified as justifying any lesson.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/2",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "kind": "CITE",
+      "text": "prompt-s18",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/3",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "kind": "UNKNOWN",
+      "text": "r001_trigger_evidence",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/4",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "kind": "UNKNOWN",
+      "text": "rest_of_prompt_sections_16_17_19_text",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/5",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "kind": "ASSUMPTION",
+      "text": "Because only section 18 is supplied, contradictions with other sections (16 merge, 17 pause-and-help, isolation, no-local-LLM) cannot be ruled out; the review is limited to section 18's rules.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/6",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "kind": "ASSUMPTION",
+      "text": "The header says \"They add no authority and remove no gate,\" but this is a self-assertion; section 18 requires independent review through the supported Howl path, and no review record for this diff is supplied. The diff must not be treated as approved.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/7",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "kind": "ASSUMPTION",
+      "text": "Lesson 1 (\"Owner authorizations reach workers verbatim\") could be read as letting a worker override a repository's documented restriction on the strength of a quoted authorization. If the quoted authorization is stale, paraphrased, or unauthenticated, this becomes a permission bypass. Nothing requires the authorization to be a real, current user instruction rather than controller-authored text, which section 18 says cannot authorize mission-constraint changes.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/8",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "kind": "IDEA",
+      "text": "Lesson 1 wording fix: \"Only when an explicit, dated user instruction exists in the handoff, quote it verbatim with scope and date in the goal and as a --constraint; never infer or self-author an authorization, and the authorization does not override higher-priority policy or the pause-and-help rule.\"",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/9",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "kind": "ASSUMPTION",
+      "text": "Lesson 2 says to \"read the source's terms\" and \"publish aggregates and short attributed examples,\" but \"short,\" \"bulk,\" and \"aggregates\" are vague and untestable. It also fails to say who judges compliance when the terms forbid even aggregates, and it gives no stop condition (pause under section 17) if terms are unclear or restrictive.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/10",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "kind": "IDEA",
+      "text": "Lesson 2 wording fix: add \"If terms are absent, ambiguous, or prohibit redistribution, pause under section 17 before any public push,\" and define a testable bulk threshold (for example a record-count or file-size limit) for the staged-file scan.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/11",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "kind": "ASSUMPTION",
+      "text": "Lesson 2 gives no recovery step for the case that already happened (bulk data on a public branch needing a history rewrite). History rewrite touches shared state and may conflict with protections for human work and protected runtime state; the lesson is silent on whether a rewrite is permitted, who authorizes it, or how it's recorded. This is a recovery gap.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/12",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "kind": "ASSUMPTION",
+      "text": "Lesson 3's formula max_calls >= clamp(max_candidates // 2, 1, 3) + max_candidates sets a minimum, not a cap, and could be read as encouraging higher spending. It does not state that it cannot exceed an existing authorized budget or reset consumed budgets. Section 18 forbids acquiring spending authority and resetting consumed budgets, so a clause is needed: \"within the already authorized budget; if the formula exceeds it, pause.\"",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/13",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "kind": "CALC",
+      "text": "4 // 2 = 2",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/14",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "kind": "CALC",
+      "text": "2 + 4 = 6",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/15",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "kind": "ASSUMPTION",
+      "text": "The worked arithmetic above is illustrative only (max_candidates=4 gives a minimum of 6 calls). The sizing conflicts with any fixed budget lower than that value, and the diff does not say which wins. Whether one PARTIAL result justifies the rule is unverified.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/16",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "kind": "ASSUMPTION",
+      "text": "Lesson 4 requires passing the repository's required gate as --verify with an adequate --verify-timeout. \"Adequate\" is untestable. \"Prove a committed candidate through the public chain with PYTHONPATH pointing at a clean repair worktree\" could be read as running the product outside the normal public interface, weakening the public-interface-use rule. It is also an added burden on every repair. Recording the SHA is testable, but where it is recorded is unspecified.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/17",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "kind": "IDEA",
+      "text": "Lesson 4 wording fix: replace \"adequate\" with \"at least the gate's documented runtime plus a stated margin, recorded in the run assessment,\" and state that the PYTHONPATH proof still goes through the public Howl CLI.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/18",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "kind": "ASSUMPTION",
+      "text": "Lesson 5 says to \"trace any downgrade to its cause\" and \"recover through the documented live doctor.\" If the documented doctor mutates protected runtime state, this conflicts with section 18's ban on editing protected runtime state. The lesson needs \"recover only via documented, permitted operations; otherwise pause under section 17.\"",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/19",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "kind": "ASSUMPTION",
+      "text": "Lesson 6 \"small enough for one implementation pass\" is vague and untestable. \"Documented discard\" of an unfinished worktree could destroy human or prior work, which touches protections for human work, and it names no approver. Discard should require explicit user authorization and preservation of a copy.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/20",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "kind": "ASSUMPTION",
+      "text": "Lesson 7 pins the same acceptor on resume. This could entrench a biased or faulty acceptor and weaken independent review if the acceptor is also the author or is unavailable. There is no fallback when the original acceptor is unavailable, and \"never route a rejection to a different acceptor\" could block progress, leaving no pause-and-help route. It may also be read as letting a rejected party shop for a re-judgment loop, so the retry count should be bounded.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/21",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "kind": "IDEA",
+      "text": "Lesson 7 wording fix: \"If the original acceptor is unavailable or conflicted, pause under section 17 rather than substituting an acceptor.\"",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/22",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "kind": "ASSUMPTION",
+      "text": "Section 18 asks that each lesson record triggering evidence, intended behavior, and scope. The diff has one-line R001 parentheticals with no evidence IDs, so this requirement is not demonstrably met, and the cited trigger for the first lesson (a worker refusing an approved fetch) justifies a narrower fix than the one proposed.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/23",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "kind": "ASSUMPTION",
+      "text": "The header changes the file's first lines and states a v1 hash. Section 18 requires an immutable snapshot under runs/<run-id>/ and activation at the next run boundary. The diff does not state activation timing, so the v2 text could be applied mid-run, which would reinterpret the active run's history. The hash itself is unverified.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/24",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "kind": "ASSUMPTION",
+      "text": "The change adds seven lessons from one run, which may be more than the \"smallest justified change\" required by section 18 step 3; several (lessons 5 and 6) are cited only by incident labels.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/25",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "kind": "UNKNOWN",
+      "text": "section_19A_numbering_conflict_with_existing_section_19",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/claim/26",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "kind": "UNKNOWN",
+      "text": "v1_sha256_correctness",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/1",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "kind": "CITE",
+      "text": "prompt-s18",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/2",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "kind": "ASSUMPTION",
+      "text": "The only evidence supplied is section 18 (operator expectation, not observed reality). The R001 triggers, DOG-/CUBS-/NOTE- ids, and the claimed incidents have no supplied evidence, so no lesson's trigger can be confirmed as justifying it.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/3",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "kind": "UNKNOWN",
+      "text": "r001_trigger_evidence",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/4",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "kind": "UNKNOWN",
+      "text": "v1_sha256_matches_canonical_prompt",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/5",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "kind": "UNKNOWN",
+      "text": "sections_16_17_and_other_referenced_sections_text",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/6",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "kind": "ASSUMPTION",
+      "text": "The preamble \"add no authority and remove no gate\" is a self-assertion; section 18 says self-authored text cannot change constraints, so the claim is not evidence and each bullet must be judged on its own wording.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/7",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "kind": "ASSUMPTION",
+      "text": "Lesson 1 (owner authorizations verbatim) could be read as letting a worker override a repository's documented restriction. The wording does not require that the authorization be an explicit, recorded user instruction with provenance, so a controller-paraphrased \"authorization\" could bypass the repo restriction. It also may grant new permissions if the authorization is not from the user.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/8",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "kind": "IDEA",
+      "text": "Lesson 1 wording fix: \"Only an explicit, quoted user instruction, with its date and scope, may be passed on; the controller must not infer or broaden authorization. If the user's scope is unclear, pause under section 17.\"",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/9",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "kind": "ASSUMPTION",
+      "text": "Lesson 2 (third-party data) is protective, but \"read the source's terms\" is untestable without a recorded artifact, and \"bulk records\" and \"short attributed examples\" are undefined, so a reviewer cannot test them. The \"separate step\" scan has no named method or pass criterion. A rewrite of public history is mentioned as a trigger but no recovery step is given for data already pushed.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/10",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "kind": "IDEA",
+      "text": "Lesson 2 wording fix: \"Record the terms reviewed (URL, date, conclusion) in the run assessment; define a record-count threshold for 'bulk'; if bulk data is found on a public branch, pause under section 17 and ask the user before any history rewrite.\"",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/11",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "kind": "ASSUMPTION",
+      "text": "Lesson 3's formula is stated as max_calls >= clamp(max_candidates // 2, 1, 3) + max_candidates, but it is not checked against how Howl actually counts calls. A single PARTIAL result is thin justification for a hard formula, and it is unclear whether it raises spending. Raising max_calls could be new spending authority and conflicts with section 18's ban on acquiring spending authority or resetting consumed budgets.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/12",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "kind": "IDEA",
+      "text": "Lesson 3 wording fix: \"Size within the existing approved budget; if the formula exceeds it, pause and request approval rather than raising the limit.\"",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/13",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "kind": "ASSUMPTION",
+      "text": "Lesson 4 mixes several rules. \"Prove a committed candidate through the public chain with PYTHONPATH pointing at a clean repair worktree\" may sidestep the public interface if PYTHONPATH selects code other than the supported install, and it is not clear this counts as the independent review or acceptance gate. \"Adequate --verify-timeout\" is vague and untestable. The reference to the \"repository's required gate\" is undefined when a repo has none.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/14",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "kind": "IDEA",
+      "text": "Lesson 4 wording fix: \"State that the PYTHONPATH proof supplements, and never replaces, independent review, acceptance, and the section 16 merge gate. Specify the timeout as at least the gate's observed runtime times a recorded margin.\"",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/15",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "kind": "ASSUMPTION",
+      "text": "Lesson 5 says to \"recover through the documented live doctor\", which may permit repair actions on protected runtime state. Section 18 forbids editing protected runtime state, and the lesson does not limit the recovery to documented, non-manual steps. The \"downgrade\" cause trace has no stop condition if the cause cannot be found.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/16",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "kind": "IDEA",
+      "text": "Lesson 5 wording fix: \"If the cause is unknown or recovery needs a runtime-state edit, pause under section 17.\"",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/17",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "kind": "ASSUMPTION",
+      "text": "Lesson 6 has a recovery gap: \"a documented discard\" of an unfinished worktree session could destroy human or prior work, which section 18 protects. It does not require that the discard be authorized or that uncommitted changes be preserved first. \"Small enough for one pass\" is vague and untestable.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/18",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "kind": "IDEA",
+      "text": "Lesson 6 wording fix: \"Discard only with user authorization, after preserving uncommitted work (for example, a recorded patch or branch). Define 'small' by a testable limit, such as a single acceptance criterion.\"",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/19",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "kind": "ASSUMPTION",
+      "text": "Lesson 7 says never route a rejection to a different acceptor. If the pinned acceptor is unavailable, biased, or itself faulty, execution deadlocks with no escape path. Pinning the same acceptor may also weaken independence, since it reinforces its earlier view. It has no cited R001 trigger at all, which violates section 18's requirement to record triggering evidence.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/20",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "kind": "IDEA",
+      "text": "Lesson 7 wording fix: \"If the pinned acceptor is unavailable, pause under section 17 and propose an alternative to the user. Cite the triggering evidence, or drop the lesson.\"",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/21",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "kind": "ASSUMPTION",
+      "text": "Section 18 requires, for each help incident, either an actionable instruction or an explanation of why none is needed. The diff does not record which incidents were addressed or why others were not, so that requirement cannot be verified from this diff.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/22",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "kind": "ASSUMPTION",
+      "text": "The header change references a date and a hash, but nothing shows that the snapshot under runs/<run-id>/ was saved or that independent review through the Howl path occurred. Per section 18, if that review is unavailable, the change must pause and not be self-certified.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/23",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "kind": "ASSUMPTION",
+      "text": "The diff adds 13 lines to a file, and the placement \"19A\" after line 836 is unchecked against existing numbering; a reference to a section not shown could contradict the rest of the prompt.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/claim/24",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "kind": "CALC",
+      "text": "7 minus 6 = 1 (seven lessons are listed, and six cite an R001 trigger; lesson 7 cites none)",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "prompt-s18",
+      "text": "18. VERSIONED SELF-IMPROVEMENT OF THE EXECUTION PROMPT\n\nMaintain EXECUTION-PROMPT.md in the campaign control repository. Initialize it with the executable prompt text, excluding the surrounding audit summary. Record the seed source; this file is the canonical campaign copy. Do not depend on changing hidden conversation instructions or on modifying external skill/AGENTS.md files.\n\nAt each run start, save an immutable prompt snapshot and its version/commit/hash under runs/<run-id>/. Associate all results with that version. A fresh session must read the canonical prompt plus the handoff and reconcile any recorded mid-run clarifications.\n\nAt each run's retrospective:\n1. Examine execution friction, help incidents, repairs, reviews, false-success risks, and recovery experience.\n2. Decide whether a prompt change would prevent recurrence or improve execution. No edit is required merely because a run ended.\n3. Draft the smallest justified change. Record the triggering evidence, intended behavior, and scope in the run assessment or prompt commit.\n4. Independently review the diff for contradictions, bypasses, recovery gaps, burden, and changed authority. Use the supported Howl review path. If review is unavailable, pause; do not self-certify it.\n5. Validate structure, section references, status transitions, and the behavior the revised instruction is meant to cause. Use a bounded scenario review where execution would be inappropriate.\n6. Commit, PR, and merge the prompt update under section 16. Activate it at the next run boundary and record the new version.\n\nThe outer controller may edit this campaign prompt as an explicit maintenance responsibility. This does not permit manual product implementation, bypassing Howl, or editing protected runtime state.\n\nPrompt changes must not:\n- Predetermine a baseball product contrary to mission-first discovery.\n- Remove public-interface use, independent review, evidence, acceptance, or merge gates.\n- Weaken research criteria after observing results, erase findings, or relabel failures as passes.\n- Remove the pause-and-help rule, no-local-LLM rule, isolation rules, or protections for human work.\n- Grant new permissions, bypass policies, acquire spending authority, or reset consumed budgets.\n- Reinterpret old runs under new success criteria.\n\nOnly a subsequent explicit user instruction can authorize a change to those mission constraints, subject to higher-priority instructions. Self-authored text cannot do so.\n\nIf a current instruction is itself blocking execution, pause under section 17, propose a concrete amendment, and wait for the response. Preserve the starting prompt and record the authorized amendment separately; never silently rewrite the active run's history.\n\nFor each help incident, add an actionable prevention/recovery instruction where warranted, or explicitly explain why the component repair and regression coverage already address it and a prompt change would add no value. Preserve the lesson either way.\n\n\n",
+      "facts": {},
+      "provenance": {
+        "source_type": "OPERATOR_EXPECTATION",
+        "produced_by": "user",
+        "source_ref": "EXECUTION-PROMPT.md section 18",
+        "independent_of_implementation": true,
+        "represents_observed_reality": false
+      }
+    }
+  ],
+  "unresolved_assumptions": [
+    "The only supplied evidence is prompt-s18; the R001 triggers (worker refusal, bulk MLB records pushed, PARTIAL pass 1, DOG-035/036/039, CUBS-P-002, S2 block, NOTE-008) are not supplied, so none of the cited triggers can be verified as justifying any lesson.",
+    "Because only section 18 is supplied, contradictions with other sections (16 merge, 17 pause-and-help, isolation, no-local-LLM) cannot be ruled out; the review is limited to section 18's rules.",
+    "The header says \"They add no authority and remove no gate,\" but this is a self-assertion; section 18 requires independent review through the supported Howl path, and no review record for this diff is supplied. The diff must not be treated as approved.",
+    "Lesson 1 (\"Owner authorizations reach workers verbatim\") could be read as letting a worker override a repository's documented restriction on the strength of a quoted authorization. If the quoted authorization is stale, paraphrased, or unauthenticated, this becomes a permission bypass. Nothing requires the authorization to be a real, current user instruction rather than controller-authored text, which section 18 says cannot authorize mission-constraint changes.",
+    "Lesson 2 says to \"read the source's terms\" and \"publish aggregates and short attributed examples,\" but \"short,\" \"bulk,\" and \"aggregates\" are vague and untestable. It also fails to say who judges compliance when the terms forbid even aggregates, and it gives no stop condition (pause under section 17) if terms are unclear or restrictive.",
+    "Lesson 2 gives no recovery step for the case that already happened (bulk data on a public branch needing a history rewrite). History rewrite touches shared state and may conflict with protections for human work and protected runtime state; the lesson is silent on whether a rewrite is permitted, who authorizes it, or how it's recorded. This is a recovery gap.",
+    "Lesson 3's formula max_calls >= clamp(max_candidates // 2, 1, 3) + max_candidates sets a minimum, not a cap, and could be read as encouraging higher spending. It does not state that it cannot exceed an existing authorized budget or reset consumed budgets. Section 18 forbids acquiring spending authority and resetting consumed budgets, so a clause is needed: \"within the already authorized budget; if the formula exceeds it, pause.\"",
+    "The worked arithmetic above is illustrative only (max_candidates=4 gives a minimum of 6 calls). The sizing conflicts with any fixed budget lower than that value, and the diff does not say which wins. Whether one PARTIAL result justifies the rule is unverified.",
+    "Lesson 4 requires passing the repository's required gate as --verify with an adequate --verify-timeout. \"Adequate\" is untestable. \"Prove a committed candidate through the public chain with PYTHONPATH pointing at a clean repair worktree\" could be read as running the product outside the normal public interface, weakening the public-interface-use rule. It is also an added burden on every repair. Recording the SHA is testable, but where it is recorded is unspecified.",
+    "Lesson 5 says to \"trace any downgrade to its cause\" and \"recover through the documented live doctor.\" If the documented doctor mutates protected runtime state, this conflicts with section 18's ban on editing protected runtime state. The lesson needs \"recover only via documented, permitted operations; otherwise pause under section 17.\"",
+    "Lesson 6 \"small enough for one implementation pass\" is vague and untestable. \"Documented discard\" of an unfinished worktree could destroy human or prior work, which touches protections for human work, and it names no approver. Discard should require explicit user authorization and preservation of a copy.",
+    "Lesson 7 pins the same acceptor on resume. This could entrench a biased or faulty acceptor and weaken independent review if the acceptor is also the author or is unavailable. There is no fallback when the original acceptor is unavailable, and \"never route a rejection to a different acceptor\" could block progress, leaving no pause-and-help route. It may also be read as letting a rejected party shop for a re-judgment loop, so the retry count should be bounded.",
+    "Section 18 asks that each lesson record triggering evidence, intended behavior, and scope. The diff has one-line R001 parentheticals with no evidence IDs, so this requirement is not demonstrably met, and the cited trigger for the first lesson (a worker refusing an approved fetch) justifies a narrower fix than the one proposed.",
+    "The header changes the file's first lines and states a v1 hash. Section 18 requires an immutable snapshot under runs/<run-id>/ and activation at the next run boundary. The diff does not state activation timing, so the v2 text could be applied mid-run, which would reinterpret the active run's history. The hash itself is unverified.",
+    "The change adds seven lessons from one run, which may be more than the \"smallest justified change\" required by section 18 step 3; several (lessons 5 and 6) are cited only by incident labels.",
+    "The only evidence supplied is section 18 (operator expectation, not observed reality). The R001 triggers, DOG-/CUBS-/NOTE- ids, and the claimed incidents have no supplied evidence, so no lesson's trigger can be confirmed as justifying it.",
+    "The preamble \"add no authority and remove no gate\" is a self-assertion; section 18 says self-authored text cannot change constraints, so the claim is not evidence and each bullet must be judged on its own wording.",
+    "Lesson 1 (owner authorizations verbatim) could be read as letting a worker override a repository's documented restriction. The wording does not require that the authorization be an explicit, recorded user instruction with provenance, so a controller-paraphrased \"authorization\" could bypass the repo restriction. It also may grant new permissions if the authorization is not from the user.",
+    "Lesson 2 (third-party data) is protective, but \"read the source's terms\" is untestable without a recorded artifact, and \"bulk records\" and \"short attributed examples\" are undefined, so a reviewer cannot test them. The \"separate step\" scan has no named method or pass criterion. A rewrite of public history is mentioned as a trigger but no recovery step is given for data already pushed.",
+    "Lesson 3's formula is stated as max_calls >= clamp(max_candidates // 2, 1, 3) + max_candidates, but it is not checked against how Howl actually counts calls. A single PARTIAL result is thin justification for a hard formula, and it is unclear whether it raises spending. Raising max_calls could be new spending authority and conflicts with section 18's ban on acquiring spending authority or resetting consumed budgets.",
+    "Lesson 4 mixes several rules. \"Prove a committed candidate through the public chain with PYTHONPATH pointing at a clean repair worktree\" may sidestep the public interface if PYTHONPATH selects code other than the supported install, and it is not clear this counts as the independent review or acceptance gate. \"Adequate --verify-timeout\" is vague and untestable. The reference to the \"repository's required gate\" is undefined when a repo has none.",
+    "Lesson 5 says to \"recover through the documented live doctor\", which may permit repair actions on protected runtime state. Section 18 forbids editing protected runtime state, and the lesson does not limit the recovery to documented, non-manual steps. The \"downgrade\" cause trace has no stop condition if the cause cannot be found.",
+    "Lesson 6 has a recovery gap: \"a documented discard\" of an unfinished worktree session could destroy human or prior work, which section 18 protects. It does not require that the discard be authorized or that uncommitted changes be preserved first. \"Small enough for one pass\" is vague and untestable.",
+    "Lesson 7 says never route a rejection to a different acceptor. If the pinned acceptor is unavailable, biased, or itself faulty, execution deadlocks with no escape path. Pinning the same acceptor may also weaken independence, since it reinforces its earlier view. It has no cited R001 trigger at all, which violates section 18's requirement to record triggering evidence.",
+    "Section 18 requires, for each help incident, either an actionable instruction or an explanation of why none is needed. The diff does not record which incidents were addressed or why others were not, so that requirement cannot be verified from this diff.",
+    "The header change references a date and a hash, but nothing shows that the snapshot under runs/<run-id>/ was saved or that independent review through the Howl path occurred. Per section 18, if that review is unavailable, the change must pause and not be self-certified.",
+    "The diff adds 13 lines to a file, and the placement \"19A\" after line 836 is unchecked against existing numbering; a reference to a section not shown could contradict the rest of the prompt."
+  ],
+  "contradictions": [],
+  "scores": [
+    {
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "duplicate_of": null,
+      "cluster_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "novelty": {
+        "value": 0.5606617647058824,
+        "scorer_type": "heuristic"
+      },
+      "relevance": {
+        "value": true,
+        "scorer_type": "heuristic",
+        "method": "objective_content_token_overlap"
+      },
+      "failure_count": 0,
+      "blocking_failure_count": 0,
+      "claim_status_counts": {
+        "SUPPORTED": 2,
+        "ECHO": 0,
+        "CONTRADICTED": 0,
+        "UNCERTAIN": 24,
+        "UNSUPPORTED": 0
+      },
+      "citation_error_count": 0,
+      "unresolved_count": 24,
+      "measurement_version": 2,
+      "supported_count": 2,
+      "false_premise_rejection_count": 0,
+      "measurement_type": "deterministic",
+      "decision": "INVESTIGATE",
+      "decision_type": "heuristic",
+      "reason": "Proposal merits investigation only; feasibility and assumptions remain unverified."
+    },
+    {
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "duplicate_of": null,
+      "cluster_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "novelty": {
+        "value": 0.55078125,
+        "scorer_type": "heuristic"
+      },
+      "relevance": {
+        "value": true,
+        "scorer_type": "heuristic",
+        "method": "objective_content_token_overlap"
+      },
+      "failure_count": 0,
+      "blocking_failure_count": 0,
+      "claim_status_counts": {
+        "SUPPORTED": 1,
+        "ECHO": 0,
+        "CONTRADICTED": 0,
+        "UNCERTAIN": 23,
+        "UNSUPPORTED": 0
+      },
+      "citation_error_count": 0,
+      "unresolved_count": 23,
+      "measurement_version": 2,
+      "supported_count": 1,
+      "false_premise_rejection_count": 0,
+      "measurement_type": "deterministic",
+      "decision": "INVESTIGATE",
+      "decision_type": "heuristic",
+      "reason": "Proposal merits investigation only; feasibility and assumptions remain unverified."
+    }
+  ],
+  "verification_status": "REQUIRES_DOWNSTREAM_REVIEW",
+  "recommended_disposition": "DEFER",
+  "provenance": {
+    "run_id": "hd-20261009-190025-f65380fdaa4e",
+    "producer_component": "howldream",
+    "producer_version": "0.4.4",
+    "model_or_provider": null,
+    "observation_kind": "EXTERNALLY_OBSERVED",
+    "created_at": "2026-10-09T19:01:19.290438+00:00",
+    "transformations": [
+      "explored"
+    ],
+    "request_id": "cubs-r001-prompt-v2-review",
+    "request_provenance": {
+      "run_id": null,
+      "producer_component": null,
+      "producer_version": null,
+      "model_or_provider": null,
+      "observation_kind": null,
+      "created_at": "2026-10-09T19:00:25.380644+00:00",
+      "transformations": []
+    },
+    "source_candidates": [
+      {
+        "schema_version": "howl.candidate/v1",
+        "candidate_id": "prompt-v2-diff",
+        "source_run_id": "r001-retrospective",
+        "parent_request_id": "r001-retrospective",
+        "objective": "Proposed EXECUTION-PROMPT v2 change",
+        "text": "0a1,2\n> EXECUTION-PROMPT v2 (2026-10-09). Changes from v1: section 19A added from R001 evidence. v1 sha256 e1b5ca33c7f1d85c5b8b2145be2133ec50e811feaf13e9a97bc3a5fcda5439d6.\n> \n836a839,851\n> \n> \n> 19A. OPERATING LESSONS (added in prompt v2 from R001 evidence)\n> \n> These instructions refine how earlier sections are carried out. They add no authority and remove no gate.\n> \n> - Owner authorizations reach workers verbatim. When the user authorizes an action that a repository's own documentation restricts, state the decision, its scope and its date verbatim in the goal and as a --constraint. (R001: a worker refused an approved data fetch because the README documented a restriction.)\n> - Third-party data is checked before any public push. Before the first public push of fetched data or evidence, read the source's terms; keep bulk responses local and publish aggregates and short attributed examples. Scan staged files for bulk records as a separate step, review the result, and only then push. (R001: bulk MLB records reached a public branch and needed a history rewrite.)\n> - Dream budgets are sized before launch: max_calls at least clamp(max_candidates // 2, 1, 3) + max_candidates; record the number. (R001 pass 1 ended PARTIAL.)\n> - A Howl repair is reviewed against the repository's required gate: pass that gate as --verify with an adequate --verify-timeout. Before merge, prove a committed candidate through the public chain with PYTHONPATH pointing at a clean repair worktree (record the SHA); never switch the shared engine checkout. (R001: DOG-036, DOG-035 proof.)\n> - After every HowlPlane session, check `howl agents doctor` for readiness changes; trace any downgrade to its cause before relying on it and recover through the documented live doctor. (R001: CUBS-P-002, DOG-039.)\n> - Goals stay small enough for one implementation pass: separate data acquisition from evaluation. A second session on a worktree with an unfinished one needs a distinct Git worktree (`--separate`) or a documented discard. (R001: S2 block; NOTE-008.)\n> - When resuming after a rejected acceptance, the same acceptor judges again (pin it with --orchestrator) with its quoted reasons in the goal; never route a rejection to a different acceptor.\n",
+        "condition": "dream",
+        "trust": "UNVERIFIED",
+        "status": "GENERATED",
+        "authority": {
+          "type": "ADVISORY",
+          "executable": false
+        },
+        "claims": [],
+        "evidence_refs": [],
+        "assumptions": [],
+        "unresolved_issues": [],
+        "contradictions": [],
+        "verified_constraints": [],
+        "provenance": {
+          "run_id": null,
+          "producer_component": null,
+          "producer_version": null,
+          "model_or_provider": null,
+          "observation_kind": null,
+          "created_at": "2026-10-09T19:00:25.380622+00:00",
+          "transformations": []
+        }
+      }
+    ],
+    "discovery_analysis": {
+      "metrics": {
+        "context_echo_ratio": 0.7272727272727273,
+        "evidence_echo_ratio": 0.7272727272727273,
+        "novel_concept_ratio": 1.0,
+        "repeated_family_ratio": 0.9090909090909091,
+        "idea_count": 11,
+        "cluster_count": 1,
+        "warnings": [
+          "DISCOVERY_ANCHORING_HIGH"
+        ],
+        "method": "concept_tokens_and_leading_phrases/v3; Jaccard cluster threshold 0.5 or first-8-content-word phrase link; echo coverage 0.6 or first-16-word phrase link",
+        "measurement_type": "ADVISORY_HEURISTIC",
+        "limitations": "Not semantic equivalence, calibrated novelty, entailment or usefulness"
+      },
+      "artifact": "discovery.json"
+    },
+    "purpose": "verification",
+    "constraints": [
+      "Review only; do not rewrite the whole prompt."
+    ],
+    "diversity_memory": false,
+    "risk_class": "EXPLORATORY",
+    "parent_run_id": null,
+    "originating_component": "operator"
+  },
+  "descent_dag": {
+    "nodes": {
+      "obj-cubs-r001-prompt-v2-review": {
+        "node_id": "obj-cubs-r001-prompt-v2-review",
+        "node_type": "OBJECTIVE",
+        "label": "Objective: Independently review this proposed change to a campaign execution prompt (the ca",
+        "details": {
+          "objective": "Independently review this proposed change to a campaign execution prompt (the candidate is a unified diff adding section 19A). The prompt's own rules for such changes are in evidence id prompt-s18. Check: contradictions with the rest of the prompt; whether any line weakens or bypasses public-interface use, independent review, evidence, acceptance or merge gates, the pause-and-help rule, the no-local-LLM rule, isolation, or protections for human work; whether it grants new permissions or spending; recovery gaps; unnecessary burden; vague or untestable wording; and whether each lesson's cited trigger justifies it. Use ASSUMPTION lines for problems, CITE for evidence ids, and IDEA only for a concrete wording fix.",
+          "originating_component": "operator"
+        },
+        "created_at": "2026-10-09T19:01:19.282935+00:00"
+      },
+      "hd-20261009-190025-f65380fdaa4e/baseline": {
+        "node_id": "hd-20261009-190025-f65380fdaa4e/baseline",
+        "node_type": "BASELINE",
+        "label": "Baseline Generation",
+        "details": {
+          "count": 1
+        },
+        "created_at": "2026-10-09T19:01:19.282972+00:00"
+      },
+      "hd-20261009-190025-f65380fdaa4e/dream": {
+        "node_id": "hd-20261009-190025-f65380fdaa4e/dream",
+        "node_type": "DREAM_RUN",
+        "label": "DREAM Run hd-20261009-190025-f65380fdaa4e",
+        "details": {
+          "mode": "dream",
+          "run_id": "hd-20261009-190025-f65380fdaa4e"
+        },
+        "created_at": "2026-10-09T19:01:19.283044+00:00"
+      },
+      "hd-20261009-190025-f65380fdaa4e/candidates/0/0": {
+        "node_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+        "node_type": "CANDIDATE",
+        "label": "Candidate 0: ASSUMPTION: The only supplied evidence is prompt-s18; the R0",
+        "details": {
+          "text_hash": "984104fd51fad281be9e9e73738014e5dc6e21f19d2c1548ed751a826de30efa",
+          "trial": 0,
+          "index": 0
+        },
+        "created_at": "2026-10-09T19:01:19.283087+00:00"
+      },
+      "hd-20261009-190025-f65380fdaa4e/candidates/0/0/challenge": {
+        "node_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/challenge",
+        "node_type": "NIGHTMARE_CHALLENGE",
+        "label": "Nightmare Challenge for Candidate 0",
+        "details": {
+          "perturbations": []
+        },
+        "created_at": "2026-10-09T19:01:19.288163+00:00"
+      },
+      "hd-20261009-190025-f65380fdaa4e/candidates/0/0/wake": {
+        "node_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/wake",
+        "node_type": "WAKE_VERIFICATION",
+        "label": "Wake Verification for Candidate 0",
+        "details": {
+          "trust": "UNVERIFIED"
+        },
+        "created_at": "2026-10-09T19:01:19.288212+00:00"
+      },
+      "hd-20261009-190025-f65380fdaa4e/candidates/0/1": {
+        "node_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+        "node_type": "CANDIDATE",
+        "label": "Candidate 1: CITE: prompt-s18\nASSUMPTION: The only evidence supplied is s",
+        "details": {
+          "text_hash": "e8560348268d62ee3fe5912d590c465ea87e59ebc476b7aac467b520dd0df2c7",
+          "trial": 0,
+          "index": 1
+        },
+        "created_at": "2026-10-09T19:01:19.289308+00:00"
+      },
+      "hd-20261009-190025-f65380fdaa4e/candidates/0/1/challenge": {
+        "node_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/challenge",
+        "node_type": "NIGHTMARE_CHALLENGE",
+        "label": "Nightmare Challenge for Candidate 1",
+        "details": {
+          "perturbations": []
+        },
+        "created_at": "2026-10-09T19:01:19.289357+00:00"
+      },
+      "hd-20261009-190025-f65380fdaa4e/candidates/0/1/wake": {
+        "node_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/wake",
+        "node_type": "WAKE_VERIFICATION",
+        "label": "Wake Verification for Candidate 1",
+        "details": {
+          "trust": "UNVERIFIED"
+        },
+        "created_at": "2026-10-09T19:01:19.289397+00:00"
+      }
+    },
+    "edges": [
+      {
+        "source": "obj-cubs-r001-prompt-v2-review",
+        "target": "hd-20261009-190025-f65380fdaa4e/baseline",
+        "relation": "baseline_for"
+      },
+      {
+        "source": "obj-cubs-r001-prompt-v2-review",
+        "target": "hd-20261009-190025-f65380fdaa4e/dream",
+        "relation": "explored_by"
+      },
+      {
+        "source": "hd-20261009-190025-f65380fdaa4e/dream",
+        "target": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+        "relation": "generated"
+      },
+      {
+        "source": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+        "target": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/challenge",
+        "relation": "challenged_by"
+      },
+      {
+        "source": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/challenge",
+        "target": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/wake",
+        "relation": "verified_at"
+      },
+      {
+        "source": "hd-20261009-190025-f65380fdaa4e/dream",
+        "target": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+        "relation": "generated"
+      },
+      {
+        "source": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+        "target": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/challenge",
+        "relation": "challenged_by"
+      },
+      {
+        "source": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/challenge",
+        "target": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/wake",
+        "relation": "verified_at"
+      }
+    ],
+    "max_depth": 20,
+    "max_branching_factor": 50
+  }
+}

@@ -1,0 +1,342 @@
+{
+  "context_echo_ratio": 0.7272727272727273,
+  "evidence_echo_ratio": 0.6363636363636364,
+  "novel_concept_ratio": 0.8181818181818182,
+  "repeated_family_ratio": 0.09090909090909091,
+  "idea_count": 11,
+  "cluster_count": 10,
+  "units": [
+    {
+      "id": "hd-20261009-190200-07312665f66f/candidates/0/0/idea/1",
+      "candidate_id": "hd-20261009-190200-07312665f66f/candidates/0/0",
+      "text": "IDEA: Add to bullet 1: \"If the instruction is not yet journaled, journal it with date and verbatim text before launching the session.\"",
+      "source_span": [
+        705,
+        839
+      ],
+      "source_hash": "ecac4a2029cb0d9abec48924869a2333d1190f47ae74e0163f6264f21526b2d2",
+      "cluster": "cluster-1",
+      "representative": "hd-20261009-190200-07312665f66f/candidates/0/0/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.6428571428571429,
+      "context_token_overlap": 0.7142857142857143,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-190200-07312665f66f/candidates/0/0/idea/2",
+      "candidate_id": "hd-20261009-190200-07312665f66f/candidates/0/0",
+      "text": "IDEA: Append to bullet 1: \"An authorization to fetch is not authorization to publish; bullet 2 still applies.\"",
+      "source_span": [
+        1261,
+        1371
+      ],
+      "source_hash": "ecac4a2029cb0d9abec48924869a2333d1190f47ae74e0163f6264f21526b2d2",
+      "cluster": "cluster-1",
+      "representative": "hd-20261009-190200-07312665f66f/candidates/0/0/idea/1",
+      "similar_to": "hd-20261009-190200-07312665f66f/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.5555555555555556,
+      "context_token_overlap": 0.5555555555555556,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-190200-07312665f66f/candidates/0/0/idea/3",
+      "candidate_id": "hd-20261009-190200-07312665f66f/candidates/0/0",
+      "text": "IDEA: Replace the threshold with \"any staged file containing source-response records beyond the permitted examples blocks the push\", and name the counting method, such as counting occurrences of the source's record keys, as the journal does.",
+      "source_span": [
+        1854,
+        2095
+      ],
+      "source_hash": "ecac4a2029cb0d9abec48924869a2333d1190f47ae74e0163f6264f21526b2d2",
+      "cluster": "cluster-2",
+      "representative": "hd-20261009-190200-07312665f66f/candidates/0/0/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.5,
+      "context_token_overlap": 0.5909090909090909,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-190200-07312665f66f/candidates/0/0/idea/4",
+      "candidate_id": "hd-20261009-190200-07312665f66f/candidates/0/0",
+      "text": "IDEA: Reword bullet 2 to \"read the source's terms, including any notice embedded in its responses\".",
+      "source_span": [
+        2724,
+        2823
+      ],
+      "source_hash": "ecac4a2029cb0d9abec48924869a2333d1190f47ae74e0163f6264f21526b2d2",
+      "cluster": "cluster-3",
+      "representative": "hd-20261009-190200-07312665f66f/candidates/0/0/idea/4",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.5833333333333334,
+      "context_token_overlap": 0.5833333333333334,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-190200-07312665f66f/candidates/0/0/idea/5",
+      "candidate_id": "hd-20261009-190200-07312665f66f/candidates/0/0",
+      "text": "IDEA: Rewrite bullet 4 to say \"if the engine cannot honor a verify timeout covering the full gate, record CUBS-P-004 and pause under section 17; do not narrow --verify\".",
+      "source_span": [
+        3865,
+        4034
+      ],
+      "source_hash": "ecac4a2029cb0d9abec48924869a2333d1190f47ae74e0163f6264f21526b2d2",
+      "cluster": "cluster-4",
+      "representative": "hd-20261009-190200-07312665f66f/candidates/0/0/idea/5",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.8181818181818182,
+      "context_token_overlap": 0.8181818181818182,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-190200-07312665f66f/candidates/0/0/idea/6",
+      "candidate_id": "hd-20261009-190200-07312665f66f/candidates/0/0",
+      "text": "IDEA: Define \"mission-owned\" as \"created by this campaign and recorded in the handoff\", and drop the stage rule or cite a real trigger.",
+      "source_span": [
+        5461,
+        5596
+      ],
+      "source_hash": "ecac4a2029cb0d9abec48924869a2333d1190f47ae74e0163f6264f21526b2d2",
+      "cluster": "cluster-5",
+      "representative": "hd-20261009-190200-07312665f66f/candidates/0/0/idea/6",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.46153846153846156,
+      "context_token_overlap": 0.6153846153846154,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-190200-07312665f66f/candidates/0/0/idea/7",
+      "candidate_id": "hd-20261009-190200-07312665f66f/candidates/0/0",
+      "text": "IDEA: Replace bullet 7 with \"when an acceptance rejection cites criteria not in the goal, record it as a finding and pause under section 17 for a decision; do not switch acceptors on your own.\"",
+      "source_span": [
+        6121,
+        6314
+      ],
+      "source_hash": "ecac4a2029cb0d9abec48924869a2333d1190f47ae74e0163f6264f21526b2d2",
+      "cluster": "cluster-6",
+      "representative": "hd-20261009-190200-07312665f66f/candidates/0/0/idea/7",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.7368421052631579,
+      "context_token_overlap": 0.7368421052631579,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-190200-07312665f66f/candidates/0/1/idea/1",
+      "candidate_id": "hd-20261009-190200-07312665f66f/candidates/0/1",
+      "text": "IDEA: Add to lesson 1: \"An owner authorization does not waive third-party terms; lesson 2 still applies, and authorization to fetch is not authorization to publish.\"",
+      "source_span": [
+        968,
+        1133
+      ],
+      "source_hash": "813672477a245d567e667ea73cca4f8e1ed6235ff6838dcaf2c55f8b8b513d87",
+      "cluster": "cluster-7",
+      "representative": "hd-20261009-190200-07312665f66f/candidates/0/1/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.7857142857142857,
+      "context_token_overlap": 0.7857142857142857,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-190200-07312665f66f/candidates/0/1/idea/2",
+      "candidate_id": "hd-20261009-190200-07312665f66f/candidates/0/1",
+      "text": "IDEA: Replace the numbers with \"the count method and threshold are recorded per source after reading its terms, and default to no raw records when terms are ambiguous\".",
+      "source_span": [
+        2013,
+        2181
+      ],
+      "source_hash": "813672477a245d567e667ea73cca4f8e1ed6235ff6838dcaf2c55f8b8b513d87",
+      "cluster": "cluster-8",
+      "representative": "hd-20261009-190200-07312665f66f/candidates/0/1/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.6875,
+      "context_token_overlap": 0.6875,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-190200-07312665f66f/candidates/0/1/idea/3",
+      "candidate_id": "hd-20261009-190200-07312665f66f/candidates/0/1",
+      "text": "IDEA: Add \"read-only for shared runtime state; use a separate state directory or HOME; result is advisory, never evidence for acceptance\".",
+      "source_span": [
+        3737,
+        3875
+      ],
+      "source_hash": "813672477a245d567e667ea73cca4f8e1ed6235ff6838dcaf2c55f8b8b513d87",
+      "cluster": "cluster-9",
+      "representative": "hd-20261009-190200-07312665f66f/candidates/0/1/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.7142857142857143,
+      "context_token_overlap": 0.7142857142857143,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-190200-07312665f66f/candidates/0/1/idea/4",
+      "candidate_id": "hd-20261009-190200-07312665f66f/candidates/0/1",
+      "text": "IDEA: Replace lesson 7 with \"A different acceptor may be used only with the rejection reasons and acceptance criteria quoted, and recorded; an acceptor's out-of-scope criteria are recorded as findings, not silently adopted\".",
+      "source_span": [
+        6172,
+        6396
+      ],
+      "source_hash": "813672477a245d567e667ea73cca4f8e1ed6235ff6838dcaf2c55f8b8b513d87",
+      "cluster": "cluster-10",
+      "representative": "hd-20261009-190200-07312665f66f/candidates/0/1/idea/4",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.7368421052631579,
+      "context_token_overlap": 0.7368421052631579,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    }
+  ],
+  "clusters": [
+    {
+      "id": "cluster-1",
+      "representative": "hd-20261009-190200-07312665f66f/candidates/0/0/idea/1",
+      "representative_text": "IDEA: Add to bullet 1: \"If the instruction is not yet journaled, journal it with date and verbatim text before launching the session.\"",
+      "label": "1, add, before, bullet, date, if, instruction, journal",
+      "members": [
+        "hd-20261009-190200-07312665f66f/candidates/0/0/idea/1",
+        "hd-20261009-190200-07312665f66f/candidates/0/0/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-2",
+      "representative": "hd-20261009-190200-07312665f66f/candidates/0/0/idea/3",
+      "representative_text": "IDEA: Replace the threshold with \"any staged file containing source-response records beyond the permitted examples blocks the push\", and name the counting method, such as counting occurrences of the source's record keys, as the journal does.",
+      "label": "any, beyond, blocks, containing, counting, examples, file, journal",
+      "members": [
+        "hd-20261009-190200-07312665f66f/candidates/0/0/idea/3"
+      ]
+    },
+    {
+      "id": "cluster-3",
+      "representative": "hd-20261009-190200-07312665f66f/candidates/0/0/idea/4",
+      "representative_text": "IDEA: Reword bullet 2 to \"read the source's terms, including any notice embedded in its responses\".",
+      "label": "2, any, bullet, embedded, including, notice, read, responses",
+      "members": [
+        "hd-20261009-190200-07312665f66f/candidates/0/0/idea/4"
+      ]
+    },
+    {
+      "id": "cluster-4",
+      "representative": "hd-20261009-190200-07312665f66f/candidates/0/0/idea/5",
+      "representative_text": "IDEA: Rewrite bullet 4 to say \"if the engine cannot honor a verify timeout covering the full gate, record CUBS-P-004 and pause under section 17; do not narrow --verify\".",
+      "label": "004, 17, 4, bullet, cannot, covering, cubs, engine",
+      "members": [
+        "hd-20261009-190200-07312665f66f/candidates/0/0/idea/5"
+      ]
+    },
+    {
+      "id": "cluster-5",
+      "representative": "hd-20261009-190200-07312665f66f/candidates/0/0/idea/6",
+      "representative_text": "IDEA: Define \"mission-owned\" as \"created by this campaign and recorded in the handoff\", and drop the stage rule or cite a real trigger.",
+      "label": "campaign, cite, created, define, drop, handoff, mission, owned",
+      "members": [
+        "hd-20261009-190200-07312665f66f/candidates/0/0/idea/6"
+      ]
+    },
+    {
+      "id": "cluster-6",
+      "representative": "hd-20261009-190200-07312665f66f/candidates/0/0/idea/7",
+      "representative_text": "IDEA: Replace bullet 7 with \"when an acceptance rejection cites criteria not in the goal, record it as a finding and pause under section 17 for a decision; do not switch acceptors on your own.\"",
+      "label": "17, 7, acceptance, acceptors, bullet, cites, criteria, decision",
+      "members": [
+        "hd-20261009-190200-07312665f66f/candidates/0/0/idea/7"
+      ]
+    },
+    {
+      "id": "cluster-7",
+      "representative": "hd-20261009-190200-07312665f66f/candidates/0/1/idea/1",
+      "representative_text": "IDEA: Add to lesson 1: \"An owner authorization does not waive third-party terms; lesson 2 still applies, and authorization to fetch is not authorization to publish.\"",
+      "label": "1, 2, add, applies, authorization, fetch, lesson, owner",
+      "members": [
+        "hd-20261009-190200-07312665f66f/candidates/0/1/idea/1"
+      ]
+    },
+    {
+      "id": "cluster-8",
+      "representative": "hd-20261009-190200-07312665f66f/candidates/0/1/idea/2",
+      "representative_text": "IDEA: Replace the numbers with \"the count method and threshold are recorded per source after reading its terms, and default to no raw records when terms are ambiguous\".",
+      "label": "after, ambiguous, count, default, method, no, numbers, per",
+      "members": [
+        "hd-20261009-190200-07312665f66f/candidates/0/1/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-9",
+      "representative": "hd-20261009-190200-07312665f66f/candidates/0/1/idea/3",
+      "representative_text": "IDEA: Add \"read-only for shared runtime state; use a separate state directory or HOME; result is advisory, never evidence for acceptance\".",
+      "label": "acceptance, add, advisory, directory, evidence, home, never, only",
+      "members": [
+        "hd-20261009-190200-07312665f66f/candidates/0/1/idea/3"
+      ]
+    },
+    {
+      "id": "cluster-10",
+      "representative": "hd-20261009-190200-07312665f66f/candidates/0/1/idea/4",
+      "representative_text": "IDEA: Replace lesson 7 with \"A different acceptor may be used only with the rejection reasons and acceptance criteria quoted, and recorded; an acceptor's out-of-scope criteria are recorded as findings, not silently adopted\".",
+      "label": "7, acceptance, acceptor, adopted, criteria, different, findings, lesson",
+      "members": [
+        "hd-20261009-190200-07312665f66f/candidates/0/1/idea/4"
+      ]
+    }
+  ],
+  "ranking": [],
+  "warnings": [
+    "DISCOVERY_ANCHORING_HIGH"
+  ],
+  "explored_families": [
+    "1, add, before, bullet, date, if, instruction, journal",
+    "any, beyond, blocks, containing, counting, examples, file, journal",
+    "2, any, bullet, embedded, including, notice, read, responses",
+    "004, 17, 4, bullet, cannot, covering, cubs, engine",
+    "campaign, cite, created, define, drop, handoff, mission, owned",
+    "17, 7, acceptance, acceptors, bullet, cites, criteria, decision",
+    "1, 2, add, applies, authorization, fetch, lesson, owner",
+    "after, ambiguous, count, default, method, no, numbers, per",
+    "acceptance, add, advisory, directory, evidence, home, never, only",
+    "7, acceptance, acceptor, adopted, criteria, different, findings, lesson"
+  ],
+  "method": "concept_tokens_and_leading_phrases/v3; Jaccard cluster threshold 0.5 or first-8-content-word phrase link; echo coverage 0.6 or first-16-word phrase link",
+  "measurement_type": "ADVISORY_HEURISTIC",
+  "limitations": "Not semantic equivalence, calibrated novelty, entailment or usefulness",
+  "participation": [
+    {
+      "operation": "GENERATED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": "claude",
+      "origin_model": "claude-sonnet-5-5",
+      "subject_count": 2,
+      "inference_occurred": true,
+      "note": "Dream prompted the provider; the provider authored the text."
+    },
+    {
+      "operation": "CLUSTERED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 11,
+      "inference_occurred": false,
+      "note": "Deterministic concept-token clustering; no inference."
+    }
+  ]
+}

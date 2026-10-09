@@ -1,0 +1,261 @@
+{
+  "context_echo_ratio": 0.7272727272727273,
+  "evidence_echo_ratio": 0.7272727272727273,
+  "novel_concept_ratio": 1.0,
+  "repeated_family_ratio": 0.9090909090909091,
+  "idea_count": 11,
+  "cluster_count": 1,
+  "units": [
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/1",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "text": "IDEA: Lesson 1 wording fix: \"Only when an explicit, dated user instruction exists in the handoff, quote it verbatim with scope and date in the goal and as a --constraint; never infer or self-author an authorization, and the authorization does not override higher-priority policy or the pause-and-help rule.\"",
+      "source_span": [
+        1310,
+        1617
+      ],
+      "source_hash": "984104fd51fad281be9e9e73738014e5dc6e21f19d2c1548ed751a826de30efa",
+      "cluster": "cluster-1",
+      "representative": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.5,
+      "context_token_overlap": 0.5666666666666667,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/2",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "text": "IDEA: Lesson 2 wording fix: add \"If terms are absent, ambiguous, or prohibit redistribution, pause under section 17 before any public push,\" and define a testable bulk threshold (for example a record-count or file-size limit) for the staged-file scan.",
+      "source_span": [
+        1968,
+        2219
+      ],
+      "source_hash": "984104fd51fad281be9e9e73738014e5dc6e21f19d2c1548ed751a826de30efa",
+      "cluster": "cluster-1",
+      "representative": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/1",
+      "similar_to": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.3870967741935484,
+      "context_token_overlap": 0.45161290322580644,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/3",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "text": "IDEA: Lesson 4 wording fix: replace \"adequate\" with \"at least the gate's documented runtime plus a stated margin, recorded in the run assessment,\" and state that the PYTHONPATH proof still goes through the public Howl CLI.",
+      "source_span": [
+        3824,
+        4046
+      ],
+      "source_hash": "984104fd51fad281be9e9e73738014e5dc6e21f19d2c1548ed751a826de30efa",
+      "cluster": "cluster-1",
+      "representative": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/1",
+      "similar_to": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.46153846153846156,
+      "context_token_overlap": 0.5384615384615384,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/4",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/0",
+      "text": "IDEA: Lesson 7 wording fix: \"If the original acceptor is unavailable or conflicted, pause under section 17 rather than substituting an acceptor.\"",
+      "source_span": [
+        5189,
+        5334
+      ],
+      "source_hash": "984104fd51fad281be9e9e73738014e5dc6e21f19d2c1548ed751a826de30efa",
+      "cluster": "cluster-1",
+      "representative": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/1",
+      "similar_to": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.4375,
+      "context_token_overlap": 0.5625,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/idea/1",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "text": "IDEA: Lesson 1 wording fix: \"Only an explicit, quoted user instruction, with its date and scope, may be passed on; the controller must not infer or broaden authorization. If the user's scope is unclear, pause under section 17.\"",
+      "source_span": [
+        1030,
+        1257
+      ],
+      "source_hash": "e8560348268d62ee3fe5912d590c465ea87e59ebc476b7aac467b520dd0df2c7",
+      "cluster": "cluster-1",
+      "representative": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/1",
+      "similar_to": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.64,
+      "context_token_overlap": 0.72,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/idea/2",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "text": "IDEA: Lesson 2 wording fix: \"Record the terms reviewed (URL, date, conclusion) in the run assessment; define a record-count threshold for 'bulk'; if bulk data is found on a public branch, pause under section 17 and ask the user before any history rewrite.\"",
+      "source_span": [
+        1657,
+        1913
+      ],
+      "source_hash": "e8560348268d62ee3fe5912d590c465ea87e59ebc476b7aac467b520dd0df2c7",
+      "cluster": "cluster-1",
+      "representative": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/1",
+      "similar_to": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.4838709677419355,
+      "context_token_overlap": 0.5483870967741935,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/idea/3",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "text": "IDEA: Lesson 3 wording fix: \"Size within the existing approved budget; if the formula exceeds it, pause and request approval rather than raising the limit.\"",
+      "source_span": [
+        2345,
+        2501
+      ],
+      "source_hash": "e8560348268d62ee3fe5912d590c465ea87e59ebc476b7aac467b520dd0df2c7",
+      "cluster": "cluster-1",
+      "representative": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/1",
+      "similar_to": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.21052631578947367,
+      "context_token_overlap": 0.3157894736842105,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/idea/4",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "text": "IDEA: Lesson 4 wording fix: \"State that the PYTHONPATH proof supplements, and never replaces, independent review, acceptance, and the section 16 merge gate. Specify the timeout as at least the gate's observed runtime times a recorded margin.\"",
+      "source_span": [
+        2962,
+        3204
+      ],
+      "source_hash": "e8560348268d62ee3fe5912d590c465ea87e59ebc476b7aac467b520dd0df2c7",
+      "cluster": "cluster-1",
+      "representative": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/1",
+      "similar_to": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.5185185185185185,
+      "context_token_overlap": 0.5925925925925926,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/idea/5",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "text": "IDEA: Lesson 5 wording fix: \"If the cause is unknown or recovery needs a runtime-state edit, pause under section 17.\"",
+      "source_span": [
+        3548,
+        3665
+      ],
+      "source_hash": "e8560348268d62ee3fe5912d590c465ea87e59ebc476b7aac467b520dd0df2c7",
+      "cluster": "cluster-1",
+      "representative": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/1",
+      "similar_to": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.75,
+      "context_token_overlap": 0.875,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/idea/6",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "text": "IDEA: Lesson 6 wording fix: \"Discard only with user authorization, after preserving uncommitted work (for example, a recorded patch or branch). Define 'small' by a testable limit, such as a single acceptance criterion.\"",
+      "source_span": [
+        3978,
+        4197
+      ],
+      "source_hash": "e8560348268d62ee3fe5912d590c465ea87e59ebc476b7aac467b520dd0df2c7",
+      "cluster": "cluster-1",
+      "representative": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/1",
+      "similar_to": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.3333333333333333,
+      "context_token_overlap": 0.4583333333333333,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1/idea/7",
+      "candidate_id": "hd-20261009-190025-f65380fdaa4e/candidates/0/1",
+      "text": "IDEA: Lesson 7 wording fix: \"If the pinned acceptor is unavailable, pause under section 17 and propose an alternative to the user. Cite the triggering evidence, or drop the lesson.\"",
+      "source_span": [
+        4581,
+        4762
+      ],
+      "source_hash": "e8560348268d62ee3fe5912d590c465ea87e59ebc476b7aac467b520dd0df2c7",
+      "cluster": "cluster-1",
+      "representative": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/1",
+      "similar_to": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.5882352941176471,
+      "context_token_overlap": 0.7647058823529411,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    }
+  ],
+  "clusters": [
+    {
+      "id": "cluster-1",
+      "representative": "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/1",
+      "representative_text": "IDEA: Lesson 1 wording fix: \"Only when an explicit, dated user instruction exists in the handoff, quote it verbatim with scope and date in the goal and as a --constraint; never infer or self-author an authorization, and the authorization does not override higher-priority policy or the pause-and-help rule.\"",
+      "label": "1, author, authorization, constraint, date, dated, exists, explicit",
+      "members": [
+        "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/1",
+        "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/2",
+        "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/3",
+        "hd-20261009-190025-f65380fdaa4e/candidates/0/0/idea/4",
+        "hd-20261009-190025-f65380fdaa4e/candidates/0/1/idea/1",
+        "hd-20261009-190025-f65380fdaa4e/candidates/0/1/idea/2",
+        "hd-20261009-190025-f65380fdaa4e/candidates/0/1/idea/3",
+        "hd-20261009-190025-f65380fdaa4e/candidates/0/1/idea/4",
+        "hd-20261009-190025-f65380fdaa4e/candidates/0/1/idea/5",
+        "hd-20261009-190025-f65380fdaa4e/candidates/0/1/idea/6",
+        "hd-20261009-190025-f65380fdaa4e/candidates/0/1/idea/7"
+      ]
+    }
+  ],
+  "ranking": [],
+  "warnings": [
+    "DISCOVERY_ANCHORING_HIGH"
+  ],
+  "explored_families": [
+    "1, author, authorization, constraint, date, dated, exists, explicit"
+  ],
+  "method": "concept_tokens_and_leading_phrases/v3; Jaccard cluster threshold 0.5 or first-8-content-word phrase link; echo coverage 0.6 or first-16-word phrase link",
+  "measurement_type": "ADVISORY_HEURISTIC",
+  "limitations": "Not semantic equivalence, calibrated novelty, entailment or usefulness",
+  "participation": [
+    {
+      "operation": "GENERATED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": "claude",
+      "origin_model": "claude-sonnet-5-5",
+      "subject_count": 2,
+      "inference_occurred": true,
+      "note": "Dream prompted the provider; the provider authored the text."
+    },
+    {
+      "operation": "CLUSTERED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 11,
+      "inference_occurred": false,
+      "note": "Deterministic concept-token clustering; no inference."
+    }
+  ]
+}

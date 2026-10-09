@@ -1,0 +1,117 @@
+HOWL ORCHESTRATION REPORT
+Session: 9f5d484c57b2497289f6f30ac01987be
+Goal: Finalize the existing uncommitted triage work in this repository by completing its DATA ACQUISITION stage only (the evaluation pipeline is a later, separate task). Keep and build on the existing cubs_edge_lab/triage*.py modules and tests.
+
+OWNER AUTHORIZATION (verbatim decision of the repository owner, 2026-10-09T07:10Z): "Yes, local-only as described": the project may make approximately 200 rate-limited MLB Stats API requests for league-wide season statistics, seasons 2017-2025, to build cohort tables that stay local; only aggregates and a few short attributed examples are published. This is the owner's reading of MLBAM's "individual, non-commercial, non-bulk use" terms for this personal, non-commercial research. Do perform these requests in this session (network access is available); do not commit any response content.
+
+Requirements:
+1. Fetch, through the existing client (sequential, at most 2 requests per second, cache and manifest), league-wide regular-season statistics for sportIds 1, 11, 12, 13, 14, groups hitting and pitching, seasons 2017 through 2025, paginating as needed. Never request season 2026. Record every request in research/raw_manifest.json; responses stay under ignored data/.
+2. Build local cohort tables (ignored data/, e.g. data/cohorts/*.json) for cohorts 2018, 2019, 2021, 2022, 2023, 2024, 2025: the pool (typeCode DFA, "elected free agency", Nov 1 to Dec 31 of Y, from the cached transactions), per-player season-Y and Y-1 statistics by level, highest level in Y, age on the election date, and MLB PA/IP in Y and Y-1. Join only on person IDs. Do NOT build outcome labels (season Y+1) for any cohort in this task.
+3. Report coverage per cohort in research/DATA.md and research/data_summary.json (aggregates only): pool size, players matched to any season-Y statistics, unmatched count with reasons, and the share with no MLB appearance in Y.
+4. Measure the Chicago Cubs (team id 112) offseason signings for 2021-22 through 2025-26 (Nov 1 to Mar 31): first list the observed (typeCode, typeDesc) groups among Cubs transactions, then count minor-league contracts and spring-training invitations with explicit, tested matching rules; record counts per offseason, the rules, unmatched cases, and at most 5 short examples per offseason in research/data_summary.json and research/DATA.md. Record the median of the yearly combined counts as `k_basis`.
+5. Tests (offline, fixtures only, no tracked-file writes, all existing tests still pass): fetch pagination and the season ceiling (a fake client asserting no request has season 2026 or later), cohort selection and the as-of window, ID-only joins, coverage counting, and the Cubs matching rules.
+
+Integrity: never invent or alter values; every number in DATA.md must come from the code's outputs; label FACT/INFERENCE/UNKNOWN. If the API cannot provide something, report it as UNKNOWN with the measured reason.
+Status: COMPLETE
+Resumable: no
+Orchestrator: claude_code
+Implementer: codex
+Policy: PLAN + EXECUTE + INDEPENDENT AUDIT
+Constraints: The current HowlPlane session IS the orchestration workflow. Perform the assigned work in the target project. Do not launch howl/howlplane or another orchestration session merely to prove Howl was used. Do not copy internal orchestration state into the target project., Owner authorization 2026-10-09T07:10Z: about 200 rate-limited MLB Stats API league-wide season-stat requests (2017-2025) for local cohort tables are approved; publish only aggregates and short attributed examples; never request season 2026., Never invent or alter statistics, counts, or examples; label FACT, INFERENCE, UNKNOWN.
+Assignments: 8
+Reroutes: 0
+Repository head: 35f803bcecfedec7be64fbaeeaa90a055cf083c4
+Repository status: M README.md
+ M cubs_edge_lab/probe/client.py
+ M cubs_edge_lab/probe/parse.py
+ M research/raw_manifest.json
+ M tests/test_publication.py
+?? cubs_edge_lab/triage.py
+?? cubs_edge_lab/triage_cli.py
+?? cubs_edge_lab/triage_config.py
+?? cubs_edge_lab/triage_eval.py
+?? research/DATA.md
+?? research/data_summary.json
+?? tests/test_triage.py
+?? tests/test_triage_data.py
+Tests: [{"command": "git diff --check", "exit_code": 0, "output": ""}, {"command": ["python3", "-m", "pytest", "-q"], "rework_round": 0, "exit_code": 0, "output": "................................................                    [100%]\n48 passed, 5 subtests passed in 4.70s\n"}, {"command": "git diff --check", "exit_code": 0, "output": ""}, {"command": ["python3", "-m", "pytest", "-q"], "rework_round": 1, "exit_code": 0, "output": ".................................................                   [100%]\n49 passed, 5 subtests passed in 4.76s\n"}, {"command": "git diff --check", "exit_code": 0, "output": ""}, {"command": ["python3", "-m", "pytest", "-q"], "rework_round": 2, "exit_code": 0, "output": "...................................................                 [100%]\n51 passed, 5 subtests passed in 5.05s\n"}]
+Independent audit: CLEAN
+Recovery: {}
+Rework rounds: 2 of 2
+Failures: [{"stage": "review", "agent": "claude_code", "model": "UNKNOWN", "failure": "AUDIT_FINDINGS_OR_UNCONFIRMED"}, {"stage": "review", "agent": "claude_code", "model": "UNKNOWN", "failure": "AUDIT_FINDINGS_OR_UNCONFIRMED"}]
+Verdict from Claude (review, AUDIT_FINDINGS_OR_UNCONFIRMED, rework round 0: sent back to implementation and re-judged):
+  The data and the reports are sound, but one required test is missing, so the audit status is FINDINGS. I could only read files here, so I did not re-run the suite. The harness evidence shows 48 tests passing and `git diff --check` clean.
+  
+  **BLOCKING**
+  
+  1. **The season-ceiling test is missing.** Goal requirement 5 asks for "a fake client asserting no request has season 2026 or later". Neither fake client in `tests/test_triage_data.py` records or asserts the seasons it receives. The only ceiling checks are:
+     - `request_guard("stats", {"season": 2026})`, called directly.
+     - `test_holdout_guard_and_request_ceiling` in `tests/test_triage.py`, which checks the `STAT_YEARS` constant.
+  
+     Nothing shows that `fetch()` itself never issues a call with season 2026 or later. A change to `STAT_YEARS` or the `fetch` loop that bypassed `request_guard` would not fail any test. The fix is to have the fake in `test_pagination_and_short_last_page` collect `params["season"]` from every stats call and assert that `max(...) < 2026`.
+  
+  **NON-BLOCKING**
+  
+  - **Coverage test:** `test_coverage_reasons_and_no_mlb_share` uses a pool of 2 with a single reason bucket. It never checks `matched + unmatched == pool_size`, or that buckets sum correctly with more than one bucket. Production code currently has only one bucket.
+  - **Unmatched reasons:** the report's only reason is `missing_season_stats`, which restates "unmatched" rather than explaining it. There is no breakdown such as player absent from tracked levels versus no row at all. The goal asks for unmatched counts with reasons, so UNKNOWN labelling of the cause would be more honest.
+  - **Age is UNKNOWN for every cohort:**
+    - This is acceptable under the integrity rule. The manifest does record a measured HTTP 400 for the bulk `/people` lookup, so the claim is supported.
+    - The report text is hard-coded in `generate_report`, not derived from the manifest.
+    - The code never retries with per-person lookups, which would exceed the request budget anyway.
+  - **Rule deviation:** DATA.md says the invitation regex was extended after observing rows. It does not state the original frozen pattern, and `triage_config.py` still comments "Frozen before measuring". The deviation is disclosed, but it is not reproducible from the report alone.
+  - **Cubs examples:** the five examples per offseason mix matched and unmatched rows and do not say which is which. In the generated output all five are matched rows, so no unmatched IDs are listed, only counts.
+  - **Request budget:** the client cap is 220, against "about 200" in the authorization. The manifest grew by roughly 200 entries and has no season 2026 or later (grep found zero hits). I did not count the new entries exactly. Manifest size is expected to be under the 600,000-byte limit.
+  - **Odd phrasing:** `fetch` builds an unused `ids` list in the cohort loop.
+  
+  AUDIT_STATUS: FINDINGS
+Verdict from Claude (review, AUDIT_FINDINGS_OR_UNCONFIRMED, rework round 1: sent back to implementation and re-judged):
+  Two BLOCKING findings, so the audit status is FINDINGS. I could only read files here; I did not rerun the tests.
+  
+  **BLOCKING**
+  
+  1. **Age on the election date is not delivered for any cohort.**
+     - Requirement 2 asks for it. `build_cohorts` (`cubs_edge_lab/triage_cli.py:108`) hardcodes `birth_date: None`, so every cohort row gets `age = None`. `research/DATA.md:100-106` reports "age unknown for N pool members" for all 7 cohorts, with N equal to the full pool size.
+     - Neither `fetch()` nor `build_cohorts` makes any `/people` request. The only such failure in the manifest is a single bulk `/people?personIds=…` call that returned HTTP 400 (`raw_manifest.json` near line 8386, `byte_size` 435). It is not reproducible from the code, and there was no retry with smaller batches or per-person lookups.
+     - The goal allows UNKNOWN only when "the API cannot provide something". The measured fact is that one bulk call failed. DATA.md concedes "no per-person birth-date requests were made". The requirement is unmet, and the "measured reason" does not show the API can't supply birth dates.
+     - Nothing tests an acquisition path. `test_id_only_join_same_names_and_missing_id` passes a hand-written people list.
+  
+  2. **`highest_level` is inverted.**
+     - `as_of_features` (`cubs_edge_lab/triage.py:74`) uses `max(sport_id)`, but sportId 1 is MLB and 14 is Single-A. This picks the lowest level a player appeared at in Y.
+     - The same value selects `level_rows` (`triage.py:91`), so `pa`, `ops`, `bb_pct`, `k_pct`, `ip`, `k_bb_pct` and `era` in the cohort tables come from the lowest level, not the highest.
+     - The B0 and B1 rankers (`triage.py:175-183`) sort descending by this value, so they would favour Single-A players.
+     - The requirement "highest level in Y" is therefore wrong in the built `data/cohorts/*.json`. No test covers a player with several levels in a season. `test_feature_rates_classification_and_baseball_innings` only uses a single level.
+  
+  **NON-BLOCKING**
+  
+  - `MAX_NEW_REQUESTS = 220` in `triage_cli.py` is never used. The cap that applies is `Client(request_cap=220)`.
+  - The Cubs `INVITATION_PATTERN` was widened from the frozen rule. DATA.md discloses this, but only as an INFERENCE that cannot be checked from the report. The report doesn't say which descriptions motivated the change.
+  - `coverage` ignores its `attach_reasons` argument (`del attach_reasons`). The only unmatched reasons it reports are "no season-Y stats" and "person record missing".
+  - `generate_report` reads the cohort JSON a second time just to count unknown ages (`triage_cli.py:178`).
+  - The no-MLB-in-Y share uses "matched with season-Y stats" as its denominator, not the full pool. DATA.md states this.
+  - The large one-line expressions in `generate_report` are hard to read.
+  
+  Test Impact Assessment: the tests cover pagination, the season ceiling, the request budget, ID-only joins, coverage counting, the Cubs rules and the publication allowlist. They do not cover the two defects above (age acquisition and multi-level `highest_level`). Fixing them needs new tests, and the cohort tables, DATA.md and `data_summary.json` must then be regenerated.
+  
+  AUDIT_STATUS: FINDINGS
+Review notes from Claude (review, CLEAN):
+  No BLOCKING findings. I could only read files here, so I did not re-run the tests or the live fetch, and `git status` and the ignored `data/` directory were not inspected.
+  
+  **What I checked against the goal**
+  - **Fetch (requirement 1):** `fetch` covers STAT_YEARS 2017–2025 × SPORT_IDS × both groups, which is 90 combinations. It paginates on `totalSplits`, stops on a short or empty page, and records `truncated` and `coverage_unknown` flags. `request_guard` rejects any season of 2026 or later before each stats request. `Client` aborts at `request_cap` and does not count cache hits.
+  - **Evidence in the reports:** `research/data_summary.json` shows all 90 stat combinations as COMPLETE, with rows equal to expected. The manifest holds 151 stats entries, but I can't separate this session's new requests from earlier probe entries without git, so I did not check the ~200 budget.
+  - **Cohorts (requirement 2):** `select_cohort` applies DFA, "elected free agency", Nov 1 to Dec 31 and dedupes by person ID. `as_of_features` only admits seasons Y and Y-1 and joins on person ID. No outcome or Y+1 fields are built. Age comes from the cached `/people` birth dates by ID, and missing birth dates are counted.
+  - **Coverage (requirement 3):** `coverage` assigns each pool member to exactly one bucket, so the buckets sum to the unmatched count and matched plus unmatched equals the pool size. The report numbers are consistent with that.
+  - **Cubs (requirement 4):** the observed `(typeCode, typeDesc)` groups are listed first, then the rules, per-offseason counts, overlap, union (combined), and unmatched signing-like rows. Each offseason has at most 5 examples, given as ID, date and type code. `k_basis` is the median of the five combined counts and comes out at 41.
+  - **Rule deviation:** `INVITATION_PATTERN` was extended beyond the frozen expression. `DATA.md` discloses this as an INFERENCE, so the deviation is recorded.
+  - **Tests (requirement 5):** `tests/test_triage_data.py` covers pagination with a short last page, the truncation flag, the season ceiling (`request_guard` and `main`), the request cap, ID-only joins, coverage reasons, the no-MLB share, the as-of window, Cubs overlap and unmatched counts, and the median with odd and even years. `tests/test_publication.py` includes `DATA.md` and `data_summary.json` with size limits and a 5-example check. HowlPlane's run reported 51 passed with the diff check clean.
+  
+  **NON-BLOCKING**
+  1. The unmatched signing-like examples can never be published. `cubs_signings` appends them after the matched examples and then slices to 5, so any offseason with five or more matched rows shows none. The unmatched counts are still reported, which is why this is not blocking.
+  2. No test covers unmatched-example selection, the monthly-versus-full-window query comparison, or the `cached_people_by_id` handling of missing files.
+  3. The 2020 minor-league rows (0 of 0) are labelled FACT/COMPLETE. A note that no minor-league season was played would make that clearer.
+  4. `fetch` has an unused `ids` variable in its cohort-transactions loop. The `Client` has no season guard of its own, only `request_guard` in `fetch`, so a direct `Client.get` call with season 2026 is not blocked.
+  5. The `DATA.md` generator builds its lines in one long inline function that is hard to review, and the "unmatched" bucket name `no_season_y_stats_in_cached_levels` doesn't say why those players have no stats.
+  
+  I found no other defects.
+  
+  AUDIT_STATUS: CLEAN

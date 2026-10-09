@@ -1,0 +1,353 @@
+diff --git a/change_log.md b/change_log.md
+index 84645dc..247178c 100644
+--- a/change_log.md
++++ b/change_log.md
+@@ -23,6 +23,8 @@ All notable changes to this project will be documented in this file.
+ 
+ ### Fixed
+ 
++- `orchestrate --verify` supports quoted verification commands with options (DOG-035), including `--verify="python3 -m pytest -q"`, for new sessions and resume. Single CLI values use POSIX shell splitting, with existing executable paths preserved literally; inner quotes preserve paths with spaces that do not exist yet. Malformed quoting and empty commands report `INVALID_VERIFICATION_COMMAND`. Factory queue arrays remain literal argv, including retries. Dash-free multi-word commands remain supported. Unknown flags on an orchestrate invocation with `--verify` produce a quoting hint; other subcommands keep the usual unknown-argument error. Commands execute without a shell. Contract coverage in `test_orchestration_verification_rework.py` includes real verification and rework, resume, Factory argv, executable paths with spaces, malformed input, and both CLI value forms.
++
+ - `HowlDreamRunner.promote_candidate_to_howlcreate` calls `scaffold_candidate` explicitly. It previously reached the same scaffold through HowlCreate's deprecated provider-less `develop_candidate` fallback, which only emitted a warning.
+ 
+ - Everyday product front door (backlog row 85). Bare `howlplane` is a read-only contextual home screen (exit 0; the deprecated `ai` alias still prints help). New `howlplane start [OBJECTIVE]`, `status`, `logs` and `stop` delegate to the Factory handlers; `start` continues an operator stop or a normal bounded completion without a resume step and refuses to restart a failed run until `--retry`. `howlplane approve|reject ID` finds the task, work item or repository proposal the id names in the current repository's campaign (`factory/decision_resolver.py`), fails closed on ambiguous or unknown ids, and uses the unchanged decision paths. `howlplane doctor` composes system, workers, repository and Factory checks (`doctor_report.py`, schema `howlplane.doctor/v1`) with `--ready`, `--system`, `--agents`, `--factory`, `--live` and `--json`. Tests: `test_product_journey.py`, `test_product_home.py`, `test_product_start_stop.py`, `test_decision_resolver.py`, `test_doctor_report.py`.
+diff --git a/documentation/ORCHESTRATE.md b/documentation/ORCHESTRATE.md
+index 1a6c9db..d200d1f 100644
+--- a/documentation/ORCHESTRATE.md
++++ b/documentation/ORCHESTRATE.md
+@@ -2,8 +2,10 @@
+ 
+ `howlplane orchestrate "Goal"` starts a session in the current Git worktree. `howl orchestrate` forwards to the same command. With an interactive terminal and no goal, the command asks eight questions. With a goal, defaults are Auto orchestrator, installed agents on AUTO, BALANCED routing, AUTO models, AUTO REROUTE, and PLAN + EXECUTE + INDEPENDENT AUDIT.
+ 
++These are alternative invocations; resume requires an unfinished session in the chosen repository.
++
+ ```bash
+-howlplane orchestrate "Update the parser" --repo /path/to/repo --orchestrator codex --claude-code RESERVED --strategy BALANCED --verify go test ./...
++howlplane orchestrate "Update the parser" --repo /path/to/repo --orchestrator codex --claude-code RESERVED --strategy BALANCED --verify "go test ./..."
+ howlplane orchestrate "Update the parser" --heartbeat 25
+ howlplane orchestrate inspect --repo /path/to/repo --json
+ howlplane orchestrate resume --repo /path/to/repo
+@@ -56,6 +58,27 @@ Only the session orchestrator accepts, with one exception: if the orchestrator i
+ 
+ **Verification command.** Without `--verify`, HowlPlane uses the repository's own test command as project discovery finds it (for example `bash scripts/test.sh`), runs it after each implementation, and reports `Verification command: ... (derived from the project's discovered test command)`. If discovery finds nothing, HowlPlane uses the test command the plan named on its `VERIFY_COMMAND:` line (for example `python3 -m unittest discover -s tests` in a new repository) and reports `(named by the plan (VERIFY_COMMAND))`, so reviewers still receive test evidence (DOG-019). If neither exists, a session that needs validation still stops and asks for an explicit `--verify`.
+ 
++Quote a CLI verification command that has its own options:
++`--verify "python3 -m pytest -q"` or `--verify="python3 -m pytest -q"`.
++For new sessions and `resume`, a single value is split using POSIX shell
++quoting rules, then executed as argv without a shell. There is no variable
++expansion, wildcard expansion, piping, or redirection. Empty commands and
++unbalanced quotes produce an `INVALID_VERIFICATION_COMMAND` error.
++A dash-free command can stay unquoted (`--verify go test ./...`); multiple
++values remain literal argv. Unquoted flags can be consumed as orchestrate
++options; unknown flags such as `-m` exit 2 with a quoting hint (DOG-035).
++
++An existing executable supplied as a single value is preserved literally,
++including spaces in its path. Relative paths with a directory component are
++checked against `--repo`; bare executable names are checked on `PATH`.
++For a path that does not exist yet, or for a path followed by arguments,
++preserve inner quotes: `--verify "'/opt/my tests/run.sh'"` or
++`--verify "'/opt/my tests/run.sh' --fast"`. This also avoids ambiguity when a
++single value could name an existing executable or describe a command.
++Factory queue JSON uses literal argv arrays throughout, including retries:
++`"verify": ["python3", "-m", "pytest", "-q"]` or
++`"verify": ["/opt/my tests/run.sh"]`. Queue arrays are never shell-split.
++
+ ### Session lifecycle and resumability
+ 
+ Orchestration sessions classify states into distinct lifecycle categories:
+diff --git a/dogfood/findings/FINDINGS.md b/dogfood/findings/FINDINGS.md
+index f0d57c2..ce3c9fd 100644
+--- a/dogfood/findings/FINDINGS.md
++++ b/dogfood/findings/FINDINGS.md
+@@ -656,3 +656,18 @@ Keep the user's hooks; refuse to commit when the hook setup changed after the ta
+ tests/test_git_hook_change_guard.py on a real repo with a bare origin: user hook still runs; new hook, changed hook and hooksPath redirect each block the commit with the planted hook unrun and HEAD unmoved. Git integration, marathon, crash recovery, acceptance canary modules unchanged (96 pass).
+ ### Commit
+ howlplane dogfood/DOG-034-hook-change-guard 8bbceb0, PR #161, merged cafca95 (pre-push 2351 passed; CI green).
++
++## DOG-035 — `orchestrate --verify` rejects any verification command that has options
++Status: FIX IN REVIEW (branch dogfood/DOG-035-verify-argv)
++Severity: P1 (documented first-run path unusable; no workaround is documented)
++Discovered in: howl-cubs-dogfood mission R001 (github.com/howlcipher/howl-cubs-dogfood, workflow-evidence/R001/plane/CUBS-P-001-repro.txt), 2026-10-08
++Owning component: HowlPlane orchestrate CLI parser; docs in howl README
++Repository: howlplane (parser, ORCHESTRATE.md); howl (README example)
++### Expected
++`howl orchestrate "Add a --version flag" --repo . --verify python3 -m unittest` (howl README.md:160) starts a session verified by that command.
++### Actual
++Exit 2 before any session: `howlplane: error: unrecognized arguments: -m unittest`. `--verify` is `nargs="+"`, so argparse reads the command's own flags as orchestrate options. Same for `--verify python3 -m pytest -q`. Factory queue tasks already bypassed argv for this reason; the CLI did not, and no test parsed a dashed `--verify` through the CLI.
++### Resolution
++`verification_command()` parses a single CLI value using POSIX shell quoting for new sessions and resume, including `--verify "python3 -m pytest -q"` and the `--verify=...` form. Existing executable paths remain literal, including spaces; inner quotes preserve paths that do not exist yet. Multiple CLI values and Factory queue arrays remain literal argv, including queue retries. Empty CLI commands and malformed quoting report `INVALID_VERIFICATION_COMMAND`; execution uses no shell. Unquoted flags can collide with orchestrate options; unknown flags such as `-m` exit 2 with a quoting hint restricted to orchestrate invocations using `--verify`. ORCHESTRATE.md documents these rules. The external howl README example needs the quoted form; this checkout does not establish its update status.
++### Tests
++`tests/test_orchestration_verification_rework.py`: real verification and rework through both CLI value forms; quoted resume override; literal Factory argv; absolute and repository-relative executable paths containing spaces; inner quoting, dash-free argv, blank commands and malformed quotes; unknown-option errors with and without the quoting hint. New regressions reproduced path corruption, malformed-input handling gaps, and the unrelated-subcommand hint before correction. Existing rework tests retain their intended failure and recovery contracts.
+diff --git a/src/howlplane/control_plane/cli.py b/src/howlplane/control_plane/cli.py
+index 7dea38e..39f9f0e 100644
+--- a/src/howlplane/control_plane/cli.py
++++ b/src/howlplane/control_plane/cli.py
+@@ -2603,7 +2603,13 @@ def main(args: Optional[List[str]] = None, program_name: str = "howlplane") -> i
+         print("--color must be one of: auto, always, never", file=sys.stderr)
+         return 2
+     parser = build_parser(program_name=program_name)
+-    parsed_args = parser.parse_args(args)
++    parsed_args, unknown = parser.parse_known_args(args)
++    if unknown:
++        message = f"unrecognized arguments: {' '.join(unknown)}"
++        if parsed_args.subcommand == "orchestrate" and parsed_args.verify is not None:
++            # argparse reads a verification command's own flags as options (DOG-035).
++            message += '; quote a verification command that has options, for example --verify "python3 -m pytest -q"'
++        parser.error(message)
+ 
+     if not parsed_args.subcommand:
+         if program_name != "howlplane":
+diff --git a/src/howlplane/control_plane/factory/task_queue.py b/src/howlplane/control_plane/factory/task_queue.py
+index a9ca58c..17a38f5 100644
+--- a/src/howlplane/control_plane/factory/task_queue.py
++++ b/src/howlplane/control_plane/factory/task_queue.py
+@@ -180,6 +180,7 @@ def _task(raw: Any, position: int, base: Path, default_repo: Path, parser: argpa
+     args.input = goal.strip()
+     args.constraint = _strings(raw.get("constraints", []), f"{label} constraints")
+     args.verify = _strings(raw["verify"], f"{label} verify") if raw.get("verify") is not None else None
++    args.verify_is_argv = True  # JSON arrays are literal argv, including a single path with spaces.
+     args.retain_report = True  # the session report is the evidence the ledger points at
+     args.separate = False
+     args.json = False
+diff --git a/src/howlplane/control_plane/orchestration.py b/src/howlplane/control_plane/orchestration.py
+index 6f9fbb7..8009d59 100644
+--- a/src/howlplane/control_plane/orchestration.py
++++ b/src/howlplane/control_plane/orchestration.py
+@@ -520,6 +520,33 @@ def now() -> str:
+     return datetime.now(timezone.utc).isoformat()
+ 
+ 
++def verification_command(value: Any, repo: Path | None = None, *, literal: bool = False) -> list[str] | None:
++    """Normalize CLI command text, preserving Factory argv and existing executables."""
++    if not value:
++        return None
++    command = list(value)
++    if literal:
++        return command
++    try:
++        if len(command) == 1:
++            # The outer shell removes quotes around both a command string and a
++            # path with spaces. An existing executable takes precedence.
++            token = command[0]
++            paths = [Path(token)] if os.path.dirname(token) else [Path(entry) / token for entry in os.get_exec_path()]
++            executables = [(repo or Path.cwd()) / path for path in paths]
++            if not any(os.path.isfile(path) and os.access(path, os.X_OK) for path in executables):
++                command = shlex.split(token)
++        if not command or not command[0]:
++            raise ValueError("needs a command")
++    except ValueError as exc:
++        raise OperatorFailure(OperatorError(
++            "INVALID_VERIFICATION_COMMAND", f"--verify {exc}",
++            "A single CLI command is parsed using shell quoting rules.",
++            'Supply a non-empty command with balanced quotes, for example --verify "python3 -m pytest -q"',
++        )) from exc
++    return command
++
++
+ def live_lease(doc: dict[str, Any]) -> bool:
+     """True while another process still holds this session's coordinator lease."""
+     lease = doc.get("lease") or {}
+@@ -1040,6 +1067,7 @@ def question(label: str, default: str) -> str:
+ 
+ 
+ def setup(args: argparse.Namespace, repo: Path) -> dict[str, Any]:
++    verify = verification_command(args.verify, repo, literal=getattr(args, "verify_is_argv", False))
+     interactive = sys.stdin.isatty() and not args.input
+     goal = args.input or (question("1. Goal", "") if interactive else "")
+     if not goal:
+@@ -1104,7 +1132,7 @@ def setup(args: argparse.Namespace, repo: Path) -> dict[str, Any]:
+         "failover": failover, "policy": policy, "status": "PLANNED", "stage": "planning",
+         "model_states": model_states, "known_models": {}, "attempts": [], "tests": [], "reroutes": [],
+         "execution_budget": budget, "timed_out_assignments": [], "workspace_trust_policy": resolved_policy,
+-        "verify_command": args.verify,
++        "verify_command": verify,
+         "repository_evidence": snapshot, "base_dirty": dirty_paths(Path(snapshot["root"])),
+         "lease": {"token": token, "pid": os.getpid(), "renewed_at": time.time()},
+     }
+@@ -1893,6 +1921,7 @@ def command(args: argparse.Namespace) -> int:
+         if operation == "resume":
+             if not active:
+                 raise ValueError("No unfinished session")
++            verify = verification_command(args.verify, repo, literal=getattr(args, "verify_is_argv", False))
+             doc = active[0]
+             try:
+                 migrations = normalize_session(doc)
+@@ -1941,7 +1970,7 @@ def command(args: argparse.Namespace) -> int:
+             if getattr(args, "strategy", None):
+                 doc["strategy"] = args.strategy
+             if getattr(args, "verify", None):
+-                doc["verify_command"] = args.verify
++                doc["verify_command"] = verify
+             path = path_for(root, doc["id"])
+             secure_write(path, doc)
+             if doc["policy"] == "PLAN ONLY" and doc.get("reconciliation", {}).get("needs_validation"):
+@@ -2000,7 +2029,9 @@ def add_parser(subparsers: Any, common_parser: Any) -> None:
+     parser.add_argument("--failover", choices=["AUTO REROUTE", "OFF"])
+     parser.add_argument("--policy", choices=["PLAN + EXECUTE + INDEPENDENT AUDIT", "PLAN + EXECUTE", "PLAN ONLY"])
+     parser.add_argument("--constraint", action="append", default=[])
+-    parser.add_argument("--verify", nargs="+", help="Explicit verification command and arguments")
++    parser.add_argument("--verify", nargs="+",
++                        help='Explicit verification command. Quote a command that has options: '
++                             '--verify "python3 -m pytest -q"')
+     parser.add_argument("--execution-budget", action="append", metavar="ROLE=SECONDS",
+                         help=f"Per-assignment deadline for a role, or SECONDS for every role (default "
+                              f"{DEFAULT_EXECUTION_BUDGET_SECONDS}, max {MAX_EXECUTION_BUDGET_SECONDS}; repeatable). "
+diff --git a/tests/test_orchestration_verification_rework.py b/tests/test_orchestration_verification_rework.py
+index 8e0cecc..06eb5f1 100644
+--- a/tests/test_orchestration_verification_rework.py
++++ b/tests/test_orchestration_verification_rework.py
+@@ -123,3 +123,154 @@ def test_test_output_excerpt_keeps_failures_and_the_summary():
+ 
+     no_failure_lines = "\n".join("ok %d - fine" % i for i in range(600))
+     assert module.test_output_excerpt(no_failure_lines).endswith("ok 599 - fine")
++
++
++def parsed_verify(*argv):
++    from howlplane.control_plane.cli import build_parser
++
++    return build_parser().parse_args(["orchestrate", "Fix the README", *argv]).verify
++
++
++@pytest.mark.parametrize("equals", [False, True])
++def test_quoted_verification_command_keeps_its_options_and_runs_split(tmp_path, monkeypatch, capsys, equals):
++    """DOG-035: `--verify python3 -m unittest` (howl's documented example) died in argparse on `-m`."""
++    command = "sh -c 'grep -q FIXED README'"
++    quoted = parsed_verify(f"--verify={command}") if equals else parsed_verify("--verify", command)
++    assert quoted == ["sh -c 'grep -q FIXED README'"]
++    repo, args, implementations = session(tmp_path, monkeypatch, lambda repo: quoted, fixed_on_attempt=2)
++
++    assert module.command(args) == 0
++    out, err = capsys.readouterr()
++    # The first tree fails the real grep and is reworked; a command run unsplit could not have started at all.
++    assert "Status: COMPLETE" in out and "Rework rounds: 1 of 2" in out
++    assert "`sh -c 'grep -q FIXED README'` on the implemented tree and it exited 1" in implementations[1]["findings"]
++
++
++@pytest.mark.parametrize("value, expected", [
++    (None, None),
++    (["pytest"], ["pytest"]),
++    (["bash", "scripts/test.sh"], ["bash", "scripts/test.sh"]),
++    (["go", "test", "./..."], ["go", "test", "./..."]),
++    (["go test ./..."], ["go", "test", "./..."]),
++    (["/not created/my tests/run.sh"], ["/not", "created/my", "tests/run.sh"]),
++    (["'pytest'"], ["pytest"]),
++    (["python3 -m pytest -q"], ["python3", "-m", "pytest", "-q"]),
++    (["'/not created/my tests/run.sh'"], ["/not created/my tests/run.sh"]),
++    (["'/opt/my tests/run.sh' --fast"], ["/opt/my tests/run.sh", "--fast"]),
++    (["echo '$HOME' '*.py' '|' '>'"], ["echo", "$HOME", "*.py", "|", ">"]),
++    (["echo " + "x" * 300], ["echo", "x" * 300]),
++])
++def test_verification_command_splits_only_a_single_quoted_command(value, expected):
++    assert module.verification_command(value) == expected
++
++
++@pytest.mark.parametrize("command", ["", "   ", "''", "'' --fast"])
++def test_verification_command_rejects_a_blank_command(command):
++    with pytest.raises(module.OperatorFailure, match="--verify needs a command"):
++        module.verification_command([command])
++
++
++@pytest.mark.parametrize("relative", [False, True])
++def test_cli_preserves_existing_executable_path_with_spaces(tmp_path, monkeypatch, capsys, relative):
++    def verify(repo):
++        script = repo / "my tests" / "run.sh"
++        script.parent.mkdir()
++        script.write_text("#!/bin/sh\ngrep -q FIXED README\n")
++        script.chmod(0o755)
++        return parsed_verify("--verify", "./my tests/run.sh" if relative else str(script))
++
++    repo, args, _ = session(tmp_path, monkeypatch, verify, fixed_on_attempt=1)
++    assert module.command(args) == 0
++    assert "Status: COMPLETE" in capsys.readouterr().out
++
++
++def test_cli_preserves_executable_name_with_spaces_on_relative_path(tmp_path, monkeypatch):
++    script = tmp_path / "my runner"
++    script.write_text("#!/bin/sh\nexit 0\n")
++    script.chmod(0o755)
++    monkeypatch.setenv("PATH", ".")
++    assert module.verification_command(["my runner"], tmp_path) == ["my runner"]
++
++
++def test_resume_replaces_verification_with_quoted_command(tmp_path, monkeypatch, capsys):
++    repo, args, _ = session(tmp_path, monkeypatch, failing_check)
++    assert module.command(args) == 2
++    capsys.readouterr()
++    # check.sh still requires FIXED. Only the replacement command accepts REPAIRED.
++    (repo / "README").write_text("REPAIRED by the user\n")
++    from howlplane.control_plane.cli import build_parser
++
++    resumed = build_parser().parse_args([
++        "orchestrate", "resume", "--repo", str(repo),
++        "--verify=sh -c 'grep -q REPAIRED README'",
++    ])
++    assert module.command(resumed) == 0
++    assert "Status: COMPLETE" in capsys.readouterr().out
++
++
++@pytest.mark.parametrize("operation", ["Goal", "resume"])
++@pytest.mark.parametrize("command", ["python3 -m 'x", "'pytest"])
++def test_malformed_verify_has_clean_cli_error(tmp_path, monkeypatch, capsys, operation, command):
++    from howlplane.control_plane.cli import main
++    from tests.test_orchestration_capability_recovery import persist
++
++    repo, args, _ = session(tmp_path, monkeypatch, lambda repo: None)
++    if operation == "resume":
++        path = persist(module.setup(args, repo))
++        before = path.read_bytes()
++    assert main(["orchestrate", operation, "--repo", str(repo), "--verify", command]) != 0
++    err = capsys.readouterr().err
++    assert "--verify" in err and "No closing quotation" in err
++    assert "Traceback" not in err
++    assert "INVALID_VERIFICATION_COMMAND" in err
++    if operation == "resume":
++        assert path.read_bytes() == before
++
++
++@pytest.mark.parametrize("verify", [["/not created/my tests/run.sh"], ["python3", "-m", "pytest", "-q"]])
++@pytest.mark.parametrize("resume", [False, True])
++def test_factory_queue_keeps_verification_argv_literal(tmp_path, monkeypatch, verify, resume):
++    from tests.test_factory_task_queue import task, write_queue
++    from tests.test_orchestration_capability_recovery import persist
++    from howlplane.control_plane.factory.task_queue import load_queue
++
++    repo, args, _ = session(tmp_path, monkeypatch, lambda repo: None)
++    path = write_queue(tmp_path, [task("A", repo, verify=verify)])
++    [queued] = load_queue(path, repo)
++    if resume:
++        persist(module.setup(args, repo))
++    observed = []
++
++    def run(doc, path, repo, progress):
++        observed.append(doc["verify_command"])
++        return 0
++
++    monkeypatch.setattr(module, "run", run)
++    assert module.command(queued.launch_args(quiet=True, no_progress=True, heartbeat=30, resume=resume)) == 0
++    assert observed == [verify]
++
++
++def test_other_subcommand_unknown_verify_gets_no_hint(capsys):
++    from howlplane.control_plane.cli import main
++
++    with pytest.raises(SystemExit) as stop:
++        main(["status", "--verify=python3 -m pytest"])
++    assert stop.value.code == 2
++    err = capsys.readouterr().err
++    assert "unrecognized arguments" in err
++    assert "quote a verification command" not in err
++
++
++def test_unquoted_verification_options_fail_with_a_quoting_hint(capsys):
++    from howlplane.control_plane.cli import main
++
++    with pytest.raises(SystemExit) as stop:
++        main(["orchestrate", "Goal", "--verify", "python3", "-m", "unittest"])
++    assert stop.value.code == 2
++    err = capsys.readouterr().err
++    assert "unrecognized arguments: -m unittest" in err
++    assert 'quote a verification command that has options, for example --verify "python3 -m pytest -q"' in err
++
++    with pytest.raises(SystemExit):
++        main(["orchestrate", "Goal", "--no-such-flag"])
++    assert "quote a verification command" not in capsys.readouterr().err

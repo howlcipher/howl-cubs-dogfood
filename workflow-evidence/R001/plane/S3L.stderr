@@ -1,0 +1,5 @@
+Something unexpected failed: Separate sessions need a distinct Git worktree passed with --repo; overlapping worktree ownership is refused
+Why: This is likely a HowlPlane bug or an unhandled condition (ValueError). Traceback saved to /home/howlcipher/.local/state/howlplane/diagnostics/HP-20261009-142706-a864.txt.
+Next: Re-run with --debug to print the traceback, and include the diagnostic ID in a bug report.
+Diagnostic ID: HP-20261009-142706-a864
+Code: INTERNAL_ERROR

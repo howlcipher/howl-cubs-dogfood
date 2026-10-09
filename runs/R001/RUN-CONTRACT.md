@@ -29,3 +29,9 @@
 ## Local inference
 
 HOWL_FORBID_LOCAL_INFERENCE=1 exported for every Howl/provider invocation. Dream budgets set `forbid_local_inference: true`, `allow_local_inference: false`.
+
+## Amendment 2026-10-08T23:45Z (user-authorized)
+- HowlPlane sessions bound for R001 raised from 8 to 12 by the user (help response on S1 exhausted rework + CUBS-P-007). Sessions already consumed (6) are not reset.
+
+## Amendment 2026-10-09T09:45Z (user-authorized)
+- HowlPlane sessions bound for R001 raised from 12 to 16 by the user (help response after S2 block). Consumed sessions (10) not reset. Build split into S2a (data + Cubs counts), S2b (evaluation + validation + preregistration), S3 (holdout + Cubs case). Repairs of CUBS-P-002/003/008 deferred to a follow-up run.

@@ -1,0 +1,15 @@
+CUBS-P-001 (provisional; expected global ID DOG-035, registry highest DOG-034 at 2026-10-08T15:55Z)
+Executed: 2026-10-08T15:52Z, engine howlplane main 4b7fe81 (src == bb7ba21), howl c9d37d5 build, entry howlplane.control_plane.cli:main
+
+1) Mission command (S1):
+   howl orchestrate "<goal>" --repo dev/cubs-edge-lab --execution-budget implementation=1200 --retain-report --constraint ... --constraint ... --verify python3 -m pytest -q
+   -> exit 2: "howlplane: error: unrecognized arguments: -m pytest -q"  (S1.stderr). No session created (inspect: none).
+
+2) Documented first-run example, howl README.md:160, scratch git repo:
+   howl orchestrate "Add a --version flag" --repo . --verify python3 -m unittest
+   -> exit 2: "howlplane: error: unrecognized arguments: -m unittest"
+   howlplane orchestrate ... (same)  -> same error. inspect: "No orchestration sessions found".
+
+Root cause (read-only diagnosis): src/howlplane/control_plane/orchestration.py:2003
+   parser.add_argument("--verify", nargs="+", ...)  -> argparse treats dash-prefixed tokens of the command as options.
+Coverage gap: tests/test_factory_task_queue.py:264 passes verify=["pytest","-q"] by constructing args directly; no test exercises CLI parsing of a dash-containing --verify.

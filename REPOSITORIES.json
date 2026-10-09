@@ -1,18 +1,34 @@
 {
   "schema": "howl-cubs-dogfood/repositories/v1",
-  "recorded_at": "2026-10-08T14:30:00Z",
+  "recorded_at": "2026-10-09T19:58Z",
   "dev_root": "/run/media/system/tallgeese/dev",
   "control_repository": {
     "name": "howl-cubs-dogfood",
     "path": "/run/media/system/tallgeese/dev/howl-cubs-dogfood",
-    "remote": "none (destination and visibility not yet established)",
-    "branch": "main",
+    "remote": "https://github.com/howlcipher/howl-cubs-dogfood.git (PUBLIC)",
+    "branch": "records/R001 -> main at closeout",
     "modified_by_mission": "YES",
-    "pushed": "NO (no remote)"
+    "pushed": "main 5d9235d"
   },
   "baseball_repository": {
-    "name": "not yet selected",
-    "note": "Named after discovery; separate Git repository under projects/ (gitignored by the control repo)"
+    "name": "cubs-edge-lab",
+    "path": "/run/media/system/tallgeese/dev/cubs-edge-lab",
+    "remote": "https://github.com/howlcipher/cubs-edge-lab.git",
+    "branch": "main",
+    "starting_sha": "7c715c8",
+    "state": "clean",
+    "modified_by_mission": "YES",
+    "pushed": "YES (main 7c715c8)",
+    "factory_prepared": "yes 2026-10-08T15:50Z",
+    "current_sha": "f7caca6",
+    "merged_prs": [
+      "#1 35f803b",
+      "#2 0e53744",
+      "#3 c33a70a",
+      "#4 ad3ce14",
+      "#5 f7caca6"
+    ],
+    "local_only_data": "data/ (raw responses, cohort tables) ignored; never committed"
   },
   "howl_repositories": [
     {
@@ -25,30 +41,122 @@
       "engine_src_equivalent_to": "bb7ba21 (git diff bb7ba21 4b7fe81 -- src pyproject.toml is empty)",
       "state": "clean",
       "fetch": "ok 2026-10-08T14:25Z, 0 ahead / 0 behind",
-      "modified_by_mission": "NO",
+      "modified_by_mission": "YES",
       "execution_provenance": {
         "path_chain": "~/.local/bin/howl (Go, howl c9d37d5 build) -> ~/.local/bin/howlplane (Go release 0.1.0, v1.3.1) -> enginepath step 2: ~/.local/share/howl/components/howlplane-engine/current/howlplane-engine -> ~/.local/share/howl/runtimes/howlplane-engine/venv/bin/howlplane",
-        "engine_import": "control_plane imported from /run/media/system/tallgeese/dev/howlplane/src (editable, direct_url.json file:///.../howlplane)",
+        "engine_import": "console script runs howlplane.control_plane.cli:main from /run/media/system/tallgeese/dev/howlplane/src/howlplane (editable; direct_url file:///.../howlplane). src/control_plane is a compatibility shim.",
         "verified_by": "read-only: enginepath.go resolution order, wrapper script, venv python import path, direct_url.json",
         "warning": "Engine follows whatever branch the shared howlplane checkout has checked out. Other campaigns use this checkout; re-verify HEAD before each orchestrate."
-      }
+      },
+      "current_sha": "af9f40a",
+      "merged_prs": [
+        "#164 f39cf18 (DOG-035/036)",
+        "#165 28511b4 (DOG-037/038)",
+        "#166 af9f40a (DOG-039)"
+      ],
+      "pushed": "YES (branches merged and deleted)"
     },
     {
       "name": "howldream",
       "path": "/run/media/system/tallgeese/dev/howldream",
       "remote": "https://github.com/howlcipher/howldream.git",
-      "branch": "main", "upstream": "origin/main", "starting_sha": "f1cc5ca", "state": "clean",
+      "branch": "main",
+      "upstream": "origin/main",
+      "starting_sha": "f1cc5ca",
+      "state": "clean",
       "fetch": "ok 2026-10-08T14:25Z, 0/0",
       "modified_by_mission": "NO",
-      "execution_provenance": {"executable": "~/.local/bin/howldream -> howldream/.venv/bin/howldream (editable venv of checkout)", "verified_by": "symlink + shebang"}
+      "execution_provenance": {
+        "executable": "~/.local/bin/howldream -> howldream/.venv/bin/howldream (editable venv of checkout)",
+        "verified_by": "symlink + shebang"
+      }
     },
-    {"name": "howl", "path": "/run/media/system/tallgeese/dev/howl", "remote": "https://github.com/howlcipher/howl.git", "branch": "main", "starting_sha": "c9d37d5", "state": "clean", "fetch": "ok, 0/0", "modified_by_mission": "NO", "execution_provenance": {"executable": "~/.local/bin/howl (Go, built 2026-10-07)", "version": "0.1.1 dev (commit metadata reported as 'unknown')"}},
-    {"name": "howlcreate", "path": "/run/media/system/tallgeese/dev/howlcreate", "branch": "main", "starting_sha": "bab145a", "state": "clean", "fetch": "ok, 0/0", "modified_by_mission": "NO"},
-    {"name": "howl-provider-core", "path": "/run/media/system/tallgeese/dev/howl-provider-core", "branch": "main", "starting_sha": "d0054c4", "state": "clean", "fetch": "ok, 0/0", "modified_by_mission": "NO"},
-    {"name": "howlframe", "path": "/run/media/system/tallgeese/dev/howlframe", "branch": "main", "starting_sha": "bd3c2a9", "current_sha": "8793d6e", "state": "clean", "fetch": "ok; was 26 behind; fast-forwarded --ff-only 2026-10-08T14:26Z", "modified_by_mission": "NO", "execution_provenance": {"executable": "~/.local/bin/howlframe -> howl components release 0.1.0 (not the checkout)"}},
-    {"name": "howlwriter", "path": "/run/media/system/tallgeese/dev/howlwriter", "branch": "main", "starting_sha": "5e09bf6", "state": "clean", "fetch": "ok, 0/0", "modified_by_mission": "NO"},
-    {"name": "howlproof", "path": "/run/media/system/tallgeese/dev/howlproof", "branch": "main", "starting_sha": "07ae8fb", "state": "clean", "fetch": "ok, 0/0", "modified_by_mission": "NO"},
-    {"name": "howlforge", "path": "/run/media/system/tallgeese/dev/howlforge", "branch": "main", "starting_sha": "067aee9", "state": "clean", "fetch": "ok, 0/0", "modified_by_mission": "NO"},
-    {"name": "howlrelay", "path": "/run/media/system/tallgeese/dev/howlrelay", "branch": "main", "starting_sha": "7d6b600", "state": "clean", "fetch": "ok, 0/0", "modified_by_mission": "NO"}
+    {
+      "name": "howl",
+      "path": "/run/media/system/tallgeese/dev/howl",
+      "remote": "https://github.com/howlcipher/howl.git",
+      "branch": "main",
+      "starting_sha": "c9d37d5",
+      "state": "clean",
+      "fetch": "ok, 0/0",
+      "modified_by_mission": "YES",
+      "execution_provenance": {
+        "executable": "~/.local/bin/howl (Go, built 2026-10-07)",
+        "version": "0.1.1 dev (commit metadata reported as 'unknown')"
+      },
+      "current_sha": "45478f4",
+      "merged_prs": [
+        "#16 45478f4 (DOG-035 docs)"
+      ],
+      "pushed": "YES"
+    },
+    {
+      "name": "howlcreate",
+      "path": "/run/media/system/tallgeese/dev/howlcreate",
+      "branch": "main",
+      "starting_sha": "bab145a",
+      "state": "clean",
+      "fetch": "ok, 0/0",
+      "modified_by_mission": "NO"
+    },
+    {
+      "name": "howl-provider-core",
+      "path": "/run/media/system/tallgeese/dev/howl-provider-core",
+      "branch": "main",
+      "starting_sha": "d0054c4",
+      "state": "clean",
+      "fetch": "ok, 0/0",
+      "modified_by_mission": "NO"
+    },
+    {
+      "name": "howlframe",
+      "path": "/run/media/system/tallgeese/dev/howlframe",
+      "branch": "main",
+      "starting_sha": "bd3c2a9",
+      "current_sha": "8793d6e",
+      "state": "clean",
+      "fetch": "ok; was 26 behind; fast-forwarded --ff-only 2026-10-08T14:26Z",
+      "modified_by_mission": "NO",
+      "execution_provenance": {
+        "executable": "~/.local/bin/howlframe -> howl components release 0.1.0 (not the checkout)"
+      },
+      "note": "fast-forwarded only; not used"
+    },
+    {
+      "name": "howlwriter",
+      "path": "/run/media/system/tallgeese/dev/howlwriter",
+      "branch": "main",
+      "starting_sha": "5e09bf6",
+      "state": "clean",
+      "fetch": "ok, 0/0",
+      "modified_by_mission": "NO"
+    },
+    {
+      "name": "howlproof",
+      "path": "/run/media/system/tallgeese/dev/howlproof",
+      "branch": "main",
+      "starting_sha": "07ae8fb",
+      "state": "clean",
+      "fetch": "ok, 0/0",
+      "modified_by_mission": "NO"
+    },
+    {
+      "name": "howlforge",
+      "path": "/run/media/system/tallgeese/dev/howlforge",
+      "branch": "main",
+      "starting_sha": "067aee9",
+      "state": "clean",
+      "fetch": "ok, 0/0",
+      "modified_by_mission": "NO"
+    },
+    {
+      "name": "howlrelay",
+      "path": "/run/media/system/tallgeese/dev/howlrelay",
+      "branch": "main",
+      "starting_sha": "7d6b600",
+      "state": "clean",
+      "fetch": "ok, 0/0",
+      "modified_by_mission": "NO"
+    }
   ]
 }

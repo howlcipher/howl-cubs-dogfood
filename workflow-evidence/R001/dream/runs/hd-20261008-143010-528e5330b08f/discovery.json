@@ -1,0 +1,1346 @@
+{
+  "context_echo_ratio": 0.6666666666666666,
+  "evidence_echo_ratio": 0.6666666666666666,
+  "novel_concept_ratio": 0.7555555555555555,
+  "repeated_family_ratio": 0.4888888888888889,
+  "idea_count": 45,
+  "cluster_count": 23,
+  "units": [
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/1",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/0",
+      "text": "IDEA: Day-game rest planner for medical/performance staff. The repeated decision is which regulars get a day off or a lighter pregame workload after a night game followed by a day game. The software would turn the public schedule, travel legs and start times into a \"turnaround stress\" flag for each series.",
+      "source_span": [
+        0,
+        307
+      ],
+      "source_hash": "8c2eb8ea7ca380ecdd9b13d5c95f12e2dd92cb3d2abf01fc59bb4a98e6ee55bb",
+      "cluster": "cluster-1",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.28125,
+      "context_token_overlap": 0.28125,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/2",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/0",
+      "text": "IDEA: Roster-rules ledger for front office operations. The repeated decision is optioning, recalling, DFA timing, 40-man protection and Rule 5 eligibility. The software would track option years, the days a player must stay down after being optioned, and eligibility deadlines, then warn before a move becomes impossible or costly.",
+      "source_span": [
+        896,
+        1226
+      ],
+      "source_hash": "8c2eb8ea7ca380ecdd9b13d5c95f12e2dd92cb3d2abf01fc59bb4a98e6ee55bb",
+      "cluster": "cluster-2",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.1891891891891892,
+      "context_token_overlap": 0.1891891891891892,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/3",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/0",
+      "text": "IDEA: Waiver and DFA market monitor for the front office. The repeated decision is whether to claim, trade for, or pass on a player designated by another club. The software would rank newly available players against the Cubs' 40-man needs within the claim window.",
+      "source_span": [
+        1672,
+        1935
+      ],
+      "source_hash": "8c2eb8ea7ca380ecdd9b13d5c95f12e2dd92cb3d2abf01fc59bb4a98e6ee55bb",
+      "cluster": "cluster-2",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/2",
+      "similar_to": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/2",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.2692307692307692,
+      "context_token_overlap": 0.2692307692307692,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/4",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/0",
+      "text": "IDEA: Own-pitcher tip self-audit for coaching and player development. The repeated decision is which mechanical tells to fix between starts. The software would compare a pitcher's set position, glove and timing by pitch type using the club's own video, outside games, to find tells opponents could read.",
+      "source_span": [
+        2238,
+        2541
+      ],
+      "source_hash": "8c2eb8ea7ca380ecdd9b13d5c95f12e2dd92cb3d2abf01fc59bb4a98e6ee55bb",
+      "cluster": "cluster-3",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/4",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.16129032258064516,
+      "context_token_overlap": 0.1935483870967742,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/5",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/0",
+      "text": "IDEA: Bullpen readiness ledger for the coaching staff. The repeated decision is which relievers are truly available tonight. The software would log warm-ups that never led to a game appearance, back-to-back days and high-stress innings in one shared view for the manager and pitching coach.",
+      "source_span": [
+        3078,
+        3368
+      ],
+      "source_hash": "8c2eb8ea7ca380ecdd9b13d5c95f12e2dd92cb3d2abf01fc59bb4a98e6ee55bb",
+      "cluster": "cluster-1",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/1",
+      "similar_to": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.1724137931034483,
+      "context_token_overlap": 0.1724137931034483,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/6",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/0",
+      "text": "IDEA: Rain-delay and start-time decision support for game-day staff and the manager. The repeated decision is whether to start the starting pitcher, delay, or switch to a bullpen game when rain is forecast. The software would combine public radar nowcasts with the starter-reentry risk after a delay.",
+      "source_span": [
+        3772,
+        4072
+      ],
+      "source_hash": "8c2eb8ea7ca380ecdd9b13d5c95f12e2dd92cb3d2abf01fc59bb4a98e6ee55bb",
+      "cluster": "cluster-4",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/6",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.3076923076923077,
+      "context_token_overlap": 0.3076923076923077,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/7",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/0",
+      "text": "IDEA: Shared development-plan record for player development across minor league affiliates. The repeated decision is which cue or drill a player works on this week. The software would keep one plan per player that every coach sees, so a player promoted between affiliates does not receive contradictory instruction.",
+      "source_span": [
+        4478,
+        4793
+      ],
+      "source_hash": "8c2eb8ea7ca380ecdd9b13d5c95f12e2dd92cb3d2abf01fc59bb4a98e6ee55bb",
+      "cluster": "cluster-3",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/4",
+      "similar_to": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/4",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.14814814814814814,
+      "context_token_overlap": 0.14814814814814814,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/8",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/0",
+      "text": "IDEA: Multilingual plan delivery for player development and coaching. The repeated decision is how to communicate daily plans to international and Spanish-speaking players. The software would deliver plans as reviewed translations with short video, rather than through ad hoc interpretation.",
+      "source_span": [
+        5159,
+        5450
+      ],
+      "source_hash": "8c2eb8ea7ca380ecdd9b13d5c95f12e2dd92cb3d2abf01fc59bb4a98e6ee55bb",
+      "cluster": "cluster-2",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/2",
+      "similar_to": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/2",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.18518518518518517,
+      "context_token_overlap": 0.18518518518518517,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/9",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/0",
+      "text": "IDEA: Pre-game decision cards for the manager and bench coach. The repeated decision is pinch-hitting, platoon and double-switch choices in late innings. The software would precompute the bench options matchup by matchup before first pitch, so in-game choices become a lookup.",
+      "source_span": [
+        5676,
+        5952
+      ],
+      "source_hash": "8c2eb8ea7ca380ecdd9b13d5c95f12e2dd92cb3d2abf01fc59bb4a98e6ee55bb",
+      "cluster": "cluster-5",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/9",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.12,
+      "context_token_overlap": 0.16,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/10",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/0",
+      "text": "IDEA: Decision journal and calibration log for front office and analysts. The repeated decision is any forecast-based call: trades, call-ups, or draft picks. The software would record each forecast and its confidence before the decision, then score those forecasts later to show where staff judgment is over- or under-confident.",
+      "source_span": [
+        6291,
+        6619
+      ],
+      "source_hash": "8c2eb8ea7ca380ecdd9b13d5c95f12e2dd92cb3d2abf01fc59bb4a98e6ee55bb",
+      "cluster": "cluster-2",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/2",
+      "similar_to": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/2",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.25,
+      "context_token_overlap": 0.25,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/11",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/0",
+      "text": "IDEA: Calibration tool for minor league call-ups, for analysts and the front office. The repeated decision is whether a minor leaguer is ready to be promoted. The software would translate public minor league stats into MLB-equivalent estimates with explicit uncertainty bands, not just a single number.",
+      "source_span": [
+        6879,
+        7181
+      ],
+      "source_hash": "8c2eb8ea7ca380ecdd9b13d5c95f12e2dd92cb3d2abf01fc59bb4a98e6ee55bb",
+      "cluster": "cluster-2",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/2",
+      "similar_to": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/2",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.2962962962962963,
+      "context_token_overlap": 0.2962962962962963,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/12",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/0",
+      "text": "IDEA: Baserunning disengagement exploiter for coaching. The repeated decision is when to attempt a steal or take a larger lead given how many pickoffs and step-offs (disengagements) the pitcher has already used. The software would show live opponent disengagement counts and each pitcher's tendency after reaching the limit.",
+      "source_span": [
+        7498,
+        7822
+      ],
+      "source_hash": "8c2eb8ea7ca380ecdd9b13d5c95f12e2dd92cb3d2abf01fc59bb4a98e6ee55bb",
+      "cluster": "cluster-2",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/2",
+      "similar_to": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/2",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.15151515151515152,
+      "context_token_overlap": 0.18181818181818182,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/13",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/0",
+      "text": "IDEA: International signing pool allocator for the front office and international scouting. The repeated decision is how to spread the bonus pool across prospects and whether to trade for extra pool space. The software would model budget scenarios against signing deadlines.",
+      "source_span": [
+        8146,
+        8420
+      ],
+      "source_hash": "8c2eb8ea7ca380ecdd9b13d5c95f12e2dd92cb3d2abf01fc59bb4a98e6ee55bb",
+      "cluster": "cluster-2",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/2",
+      "similar_to": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/2",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.2608695652173913,
+      "context_token_overlap": 0.2608695652173913,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/14",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/0",
+      "text": "IDEA: Arbitration comparables finder for the front office. The repeated decision is filing numbers and whether to settle or go to a hearing. The software would retrieve public past arbitration outcomes and similar players.",
+      "source_span": [
+        8714,
+        8936
+      ],
+      "source_hash": "8c2eb8ea7ca380ecdd9b13d5c95f12e2dd92cb3d2abf01fc59bb4a98e6ee55bb",
+      "cluster": "cluster-2",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/2",
+      "similar_to": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/2",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.3157894736842105,
+      "context_token_overlap": 0.3157894736842105,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/15",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/0",
+      "text": "IDEA: Not worth building: custom public leaderboards and basic split lookups. Existing public tools such as Baseball Savant and FanGraphs already serve analysts for routine queries.",
+      "source_span": [
+        9173,
+        9354
+      ],
+      "source_hash": "8c2eb8ea7ca380ecdd9b13d5c95f12e2dd92cb3d2abf01fc59bb4a98e6ee55bb",
+      "cluster": "cluster-6",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/15",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.2631578947368421,
+      "context_token_overlap": 0.2631578947368421,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/16",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/0",
+      "text": "IDEA: Likely already covered at sophisticated clubs: pitch design, biomechanics labs, and defensive positioning models. New software here would compete with mature systems and probably add little.",
+      "source_span": [
+        9432,
+        9628
+      ],
+      "source_hash": "8c2eb8ea7ca380ecdd9b13d5c95f12e2dd92cb3d2abf01fc59bb4a98e6ee55bb",
+      "cluster": "cluster-7",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/16",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.19047619047619047,
+      "context_token_overlap": 0.2857142857142857,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/1",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/1",
+      "text": "IDEA: Travel and circadian load planner; user=traveling secretary and performance staff; decision=flight departure times, hotel arrival windows, and early-arrival choices on each road trip; intervention=score itineraries from the public MLB schedule, time zones, and getaway-day start times, then flag the worst sequences before travel is booked.",
+      "source_span": [
+        0,
+        346
+      ],
+      "source_hash": "a858d13a11c1865308a9b95dd5e67ee43991b1794b99e6856fbeded0bb9d0959",
+      "cluster": "cluster-8",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.21052631578947367,
+      "context_token_overlap": 0.21052631578947367,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/2",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/1",
+      "text": "IDEA: Institutional memory search over the club's own past scouting and development notes; user=amateur and pro scouts and crosscheckers; decision=whether a current player resembles prior evaluations and how those evaluations turned out; intervention=retrieval that links an old report to the player's later public outcome so evaluators can see their own past calibration.",
+      "source_span": [
+        816,
+        1188
+      ],
+      "source_hash": "a858d13a11c1865308a9b95dd5e67ee43991b1794b99e6856fbeded0bb9d0959",
+      "cluster": "cluster-9",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.1951219512195122,
+      "context_token_overlap": 0.1951219512195122,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/3",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/1",
+      "text": "IDEA: Onboarding kit for newly acquired players; user=coaching staff and the newly traded or called-up player; decision=how fast a new arrival learns signs, defensive alignments, communication norms, and staff contacts; intervention=a structured checklist plus quiz app with versioned sign and alignment packages, so no one depends on hallway explanations.",
+      "source_span": [
+        1621,
+        1977
+      ],
+      "source_hash": "a858d13a11c1865308a9b95dd5e67ee43991b1794b99e6856fbeded0bb9d0959",
+      "cluster": "cluster-10",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.15384615384615385,
+      "context_token_overlap": 0.15384615384615385,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/4",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/1",
+      "text": "IDEA: Data pipeline quality monitor; user=analysts and the baseball systems team; decision=whether today's tracking, video, and stat feeds can be trusted before reports go to coaches; intervention=automated checks for missing pitches, calibration drift by park, and duplicate player IDs, with alerts sent before reports are distributed.",
+      "source_span": [
+        2224,
+        2560
+      ],
+      "source_hash": "a858d13a11c1865308a9b95dd5e67ee43991b1794b99e6856fbeded0bb9d0959",
+      "cluster": "cluster-11",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/4",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.2777777777777778,
+      "context_token_overlap": 0.3055555555555556,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/5",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/1",
+      "text": "IDEA: Language and translation support for coaching cues; user=coaches and Spanish-, Japanese-, Korean-, or Portuguese-speaking players across affiliates; decision=how a mechanical or game-plan instruction is phrased so it means the same thing in every language; intervention=a shared glossary of approved cue translations with audio examples, maintained by staff interpreters.",
+      "source_span": [
+        2807,
+        3184
+      ],
+      "source_hash": "a858d13a11c1865308a9b95dd5e67ee43991b1794b99e6856fbeded0bb9d0959",
+      "cluster": "cluster-12",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/5",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.18421052631578946,
+      "context_token_overlap": 0.18421052631578946,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/6",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/1",
+      "text": "IDEA: Return-to-play comparables finder; user=medical and front office staff; decision=setting realistic timelines and roster contingency plans when a player goes on the injured list; intervention=search public IL transaction histories for similar injury types, positions, and ages, then show the distribution of time missed and post-return performance.",
+      "source_span": [
+        3439,
+        3792
+      ],
+      "source_hash": "a858d13a11c1865308a9b95dd5e67ee43991b1794b99e6856fbeded0bb9d0959",
+      "cluster": "cluster-2",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/2",
+      "similar_to": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/2",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.2564102564102564,
+      "context_token_overlap": 0.2564102564102564,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/7",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/1",
+      "text": "IDEA: Grounds crew field-condition logging; user=head groundskeeper and infield coach; decision=infield dirt moisture, mowing pattern, and grass height before each home game; intervention=a simple log joined to public batted-ball outcomes, to test whether field-prep choices measurably change ground-ball conversion.",
+      "source_span": [
+        4130,
+        4446
+      ],
+      "source_hash": "a858d13a11c1865308a9b95dd5e67ee43991b1794b99e6856fbeded0bb9d0959",
+      "cluster": "cluster-13",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/7",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.1891891891891892,
+      "context_token_overlap": 0.2702702702702703,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/8",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/1",
+      "text": "IDEA: Unnecessary software case: a spreadsheet or the existing depth-chart tool already covers daily depth charts and minor league roster lists, so a custom tool there adds little.",
+      "source_span": [
+        4680,
+        4860
+      ],
+      "source_hash": "a858d13a11c1865308a9b95dd5e67ee43991b1794b99e6856fbeded0bb9d0959",
+      "cluster": "cluster-14",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/8",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.21052631578947367,
+      "context_token_overlap": 0.21052631578947367,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/9",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/1",
+      "text": "IDEA: Unnecessary software case: Baseball Savant and FanGraphs leaderboards already cover public player-level batted-ball and pitch-quality lookups.",
+      "source_span": [
+        4861,
+        5009
+      ],
+      "source_hash": "a858d13a11c1865308a9b95dd5e67ee43991b1794b99e6856fbeded0bb9d0959",
+      "cluster": "cluster-14",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/8",
+      "similar_to": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/8",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.3125,
+      "context_token_overlap": 0.4375,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/10",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/1",
+      "text": "IDEA: Likely already-saturated area: pitch design and biomechanics optimization, where sophisticated clubs and private vendors likely hold existing advantages.",
+      "source_span": [
+        5139,
+        5298
+      ],
+      "source_hash": "a858d13a11c1865308a9b95dd5e67ee43991b1794b99e6856fbeded0bb9d0959",
+      "cluster": "cluster-7",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/16",
+      "similar_to": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/16",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.4375,
+      "context_token_overlap": 0.5,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/1",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/2",
+      "text": "IDEA: Replay-challenge triage (non-ABS) for the manager and video-replay coordinator; the repeated decision is whether to challenge a close safe/out or fair/foul call within the time limit; software would cue the angles most predictive of overturns and show the remaining challenge inventory and game leverage.",
+      "source_span": [
+        0,
+        310
+      ],
+      "source_hash": "8f5550aed78f69b103871d9bdf6f809bd73cb87790ccc3caa6f9273d5547a974",
+      "cluster": "cluster-15",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.16666666666666666,
+      "context_token_overlap": 0.23333333333333334,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/2",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/2",
+      "text": "IDEA: Opponent-manager tendency profiles for the bench coach and advance scouts; the repeated decision is anticipating when the opposing manager pulls a starter, brings in a matchup reliever, or pinch-hits, so the Cubs can stage their own counter-moves an inning earlier.",
+      "source_span": [
+        868,
+        1139
+      ],
+      "source_hash": "8f5550aed78f69b103871d9bdf6f809bd73cb87790ccc3caa6f9273d5547a974",
+      "cluster": "cluster-5",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/9",
+      "similar_to": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/9",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.1,
+      "context_token_overlap": 0.16666666666666666,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/3",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/2",
+      "text": "IDEA: Self-scouting of pitch-sequence predictability for the pitching coach and catchers; the repeated decision is pregame game-plan design; software would measure how predictable the club's own pitchers' next-pitch choices are from count, previous pitch, and batter handedness, which is the same model an opponent could build.",
+      "source_span": [
+        1695,
+        2022
+      ],
+      "source_hash": "8f5550aed78f69b103871d9bdf6f809bd73cb87790ccc3caa6f9273d5547a974",
+      "cluster": "cluster-16",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.12903225806451613,
+      "context_token_overlap": 0.1935483870967742,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/4",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/2",
+      "text": "IDEA: Pitch-clock tempo self-scout for pitching coaches; the repeated decision is whether to coach a pitcher to vary tempo or use disengagements; software would relate each pitcher's time-between-pitches distribution to public outcomes and flag pitchers whose tempo is constant enough for hitters to time.",
+      "source_span": [
+        2583,
+        2888
+      ],
+      "source_hash": "8f5550aed78f69b103871d9bdf6f809bd73cb87790ccc3caa6f9273d5547a974",
+      "cluster": "cluster-17",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/4",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.1724137931034483,
+      "context_token_overlap": 0.20689655172413793,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/5",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/2",
+      "text": "IDEA: Institutional-memory decision log for the front office and coaching staff; the repeated decision occurs when staff turnover leaves a newcomer re-deciding questions such as why a player's cue, role, or plan was chosen; software would provide a searchable, permissioned record of rationale linked to the outcome.",
+      "source_span": [
+        3259,
+        3575
+      ],
+      "source_hash": "8f5550aed78f69b103871d9bdf6f809bd73cb87790ccc3caa6f9273d5547a974",
+      "cluster": "cluster-2",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/2",
+      "similar_to": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/2",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.21212121212121213,
+      "context_token_overlap": 0.21212121212121213,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/6",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/2",
+      "text": "IDEA: Cross-league context normalization for minor league evaluators; the repeated decision is promotion timing and prospect comparison across affiliates whose leagues differ in rules, such as automated strike zones, pitch clocks, or experimental rules, and in parks; software would adjust public minor league stats for the rule regime and environment of each league-season.",
+      "source_span": [
+        4018,
+        4392
+      ],
+      "source_hash": "8f5550aed78f69b103871d9bdf6f809bd73cb87790ccc3caa6f9273d5547a974",
+      "cluster": "cluster-18",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/6",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.11764705882352941,
+      "context_token_overlap": 0.17647058823529413,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/7",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/2",
+      "text": "IDEA: Hitting-cage and work-session scheduler for player development and game-day staff; the repeated decision is allocating limited cage, mound, and coach time pregame without conflicts; software would enforce priorities and capacity.",
+      "source_span": [
+        4728,
+        4963
+      ],
+      "source_hash": "8f5550aed78f69b103871d9bdf6f809bd73cb87790ccc3caa6f9273d5547a974",
+      "cluster": "cluster-3",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/4",
+      "similar_to": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/4",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.30434782608695654,
+      "context_token_overlap": 0.30434782608695654,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/8",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/2",
+      "text": "IDEA: Postseason or short-series opponent-specific roster-construction simulator for the front office; the repeated decision is which 26 players to carry against a specific opponent; software would simulate matchup value under the opponent's likely starters and bullpen.",
+      "source_span": [
+        5167,
+        5437
+      ],
+      "source_hash": "8f5550aed78f69b103871d9bdf6f809bd73cb87790ccc3caa6f9273d5547a974",
+      "cluster": "cluster-19",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/8",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.24,
+      "context_token_overlap": 0.28,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/9",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/2",
+      "text": "IDEA: An area where software is likely unnecessary: generic lineup-order optimization, because public research and spreadsheets show small run differences between reasonable orders.",
+      "source_span": [
+        5673,
+        5854
+      ],
+      "source_hash": "8f5550aed78f69b103871d9bdf6f809bd73cb87790ccc3caa6f9273d5547a974",
+      "cluster": "cluster-20",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/9",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.2631578947368421,
+      "context_token_overlap": 0.2631578947368421,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/10",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/2",
+      "text": "IDEA: An area where sophisticated clubs likely already hold the advantage: pitch-design and bat-tracking modeling, where proprietary high-speed capture and internal biomechanics teams exceed what public data supports.",
+      "source_span": [
+        6014,
+        6231
+      ],
+      "source_hash": "8f5550aed78f69b103871d9bdf6f809bd73cb87790ccc3caa6f9273d5547a974",
+      "cluster": "cluster-7",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/16",
+      "similar_to": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/16",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.4583333333333333,
+      "context_token_overlap": 0.5,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/1",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/3",
+      "text": "IDEA: Own-pitcher tipping self-audit, where pitching coaches and the video staff regularly review whether a Cubs pitcher's pre-release cues such as glove position, set timing, or grip visibility differ by pitch type, using software that flags pitch-type-separable patterns in the club's own game video for a coach to verify.",
+      "source_span": [
+        0,
+        324
+      ],
+      "source_hash": "fbdcd5104ec00846b4eace6d59a4c1f0e21728547ff0ff8939c44367447d0379",
+      "cluster": "cluster-3",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/4",
+      "similar_to": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/4",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.14285714285714285,
+      "context_token_overlap": 0.17142857142857143,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/2",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/3",
+      "text": "IDEA: Opponent bullpen availability forecast, where the manager and hitting coaches decide lineup order, platoon starts, and pinch-hit timing based on likely opposing relievers, using a model built from public box-score appearance and pitch-count history.",
+      "source_span": [
+        1019,
+        1274
+      ],
+      "source_hash": "fbdcd5104ec00846b4eace6d59a4c1f0e21728547ff0ff8939c44367447d0379",
+      "cluster": "cluster-21",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.10344827586206896,
+      "context_token_overlap": 0.1724137931034483,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/3",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/3",
+      "text": "IDEA: Opposing-manager tendency profiles, where advance scouts and the bench coach anticipate when an opposing manager will intentionally walk, pull a starter, bunt, or pinch-run, using software that summarizes public play-by-play decisions by game state for each opposing manager.",
+      "source_span": [
+        1844,
+        2125
+      ],
+      "source_hash": "fbdcd5104ec00846b4eace6d59a4c1f0e21728547ff0ff8939c44367447d0379",
+      "cluster": "cluster-22",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.19230769230769232,
+      "context_token_overlap": 0.23076923076923078,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/4",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/3",
+      "text": "IDEA: Infield surface condition logging, where grounds crew and infield coaches decide how to water and drag the infield before games, using software that logs those choices alongside weather and public batted-ball outcomes at Wrigley to estimate their effect on ground-ball speed relative to the club's defensive and pitching mix.",
+      "source_span": [
+        2615,
+        2946
+      ],
+      "source_hash": "fbdcd5104ec00846b4eace6d59a4c1f0e21728547ff0ff8939c44367447d0379",
+      "cluster": "cluster-13",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/7",
+      "similar_to": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/7",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.05555555555555555,
+      "context_token_overlap": 0.1111111111111111,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/5",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/3",
+      "text": "IDEA: Rehab assignment venue planner, where player development and medical coordinators choose which affiliate hosts a rehab stint, using software that combines public affiliate schedules, forecast weather, travel distance, and opponent quality.",
+      "source_span": [
+        3497,
+        3742
+      ],
+      "source_hash": "fbdcd5104ec00846b4eace6d59a4c1f0e21728547ff0ff8939c44367447d0379",
+      "cluster": "cluster-3",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/4",
+      "similar_to": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/4",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.21739130434782608,
+      "context_token_overlap": 0.2608695652173913,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/6",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/3",
+      "text": "IDEA: Searchable institutional memory of past reports, where front-office staff weigh a trade or waiver target, using software that retrieves the club's own prior evaluations and the outcomes of similar past acquisitions so analysts can see how earlier judgments held up.",
+      "source_span": [
+        4208,
+        4479
+      ],
+      "source_hash": "fbdcd5104ec00846b4eace6d59a4c1f0e21728547ff0ff8939c44367447d0379",
+      "cluster": "cluster-2",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/2",
+      "similar_to": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/2",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.16129032258064516,
+      "context_token_overlap": 0.16129032258064516,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/7",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/3",
+      "text": "IDEA: Postseason roster eligibility and rules checker, where front-office and baseball operations staff confirm eligibility, injury-replacement, and position-player-pitching rules before key roster moves, using a rule-encoded checklist that flags conflicts.",
+      "source_span": [
+        4902,
+        5159
+      ],
+      "source_hash": "fbdcd5104ec00846b4eace6d59a4c1f0e21728547ff0ff8939c44367447d0379",
+      "cluster": "cluster-2",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/2",
+      "similar_to": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/2",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.24,
+      "context_token_overlap": 0.24,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/8",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/3",
+      "text": "IDEA: Unnecessary-software zone for replay challenges, since managers decide whether to challenge safe/out calls and replay coordinators with live video and league feeds already make this decision.",
+      "source_span": [
+        5576,
+        5773
+      ],
+      "source_hash": "fbdcd5104ec00846b4eace6d59a4c1f0e21728547ff0ff8939c44367447d0379",
+      "cluster": "cluster-23",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/8",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.21052631578947367,
+      "context_token_overlap": 0.2631578947368421,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/9",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/3",
+      "text": "IDEA: Unnecessary-software zone for heat and day-game workload, where staff plan rest for position players in hot afternoon games. Public weather and schedule data in a shared calendar likely suffice, and any biometric layer would depend on private data out of scope here.",
+      "source_span": [
+        6005,
+        6277
+      ],
+      "source_hash": "fbdcd5104ec00846b4eace6d59a4c1f0e21728547ff0ff8939c44367447d0379",
+      "cluster": "cluster-1",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/1",
+      "similar_to": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.3225806451612903,
+      "context_token_overlap": 0.3225806451612903,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    }
+  ],
+  "clusters": [
+    {
+      "id": "cluster-1",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/1",
+      "representative_text": "IDEA: Day-game rest planner for medical/performance staff. The repeated decision is which regulars get a day off or a lighter pregame workload after a night game followed by a day game. The software would turn the public schedule, travel legs and start times into a \"turnaround stress\" flag for each series.",
+      "label": "after, day, decision, each, flag, followed, game, get",
+      "members": [
+        "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/1",
+        "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/5",
+        "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/9"
+      ]
+    },
+    {
+      "id": "cluster-2",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/2",
+      "representative_text": "IDEA: Roster-rules ledger for front office operations. The repeated decision is optioning, recalling, DFA timing, 40-man protection and Rule 5 eligibility. The software would track option years, the days a player must stay down after being optioned, and eligibility deadlines, then warn before a move becomes impossible or costly.",
+      "label": "40, 5, after, becomes, before, being, costly, days",
+      "members": [
+        "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/2",
+        "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/3",
+        "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/8",
+        "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/10",
+        "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/11",
+        "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/12",
+        "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/13",
+        "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/14",
+        "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/6",
+        "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/5",
+        "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/6",
+        "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/7"
+      ]
+    },
+    {
+      "id": "cluster-3",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/4",
+      "representative_text": "IDEA: Own-pitcher tip self-audit for coaching and player development. The repeated decision is which mechanical tells to fix between starts. The software would compare a pitcher's set position, glove and timing by pitch type using the club's own video, outside games, to find tells opponents could read.",
+      "label": "audit, between, club, coaching, compare, decision, development, find",
+      "members": [
+        "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/4",
+        "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/7",
+        "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/7",
+        "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/1",
+        "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/5"
+      ]
+    },
+    {
+      "id": "cluster-4",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/6",
+      "representative_text": "IDEA: Rain-delay and start-time decision support for game-day staff and the manager. The repeated decision is whether to start the starting pitcher, delay, or switch to a bullpen game when rain is forecast. The software would combine public radar nowcasts with the starter-reentry risk after a delay.",
+      "label": "after, bullpen, combine, day, decision, delay, game, manager",
+      "members": [
+        "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/6"
+      ]
+    },
+    {
+      "id": "cluster-5",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/9",
+      "representative_text": "IDEA: Pre-game decision cards for the manager and bench coach. The repeated decision is pinch-hitting, platoon and double-switch choices in late innings. The software would precompute the bench options matchup by matchup before first pitch, so in-game choices become a lookup.",
+      "label": "become, before, bench, cards, choices, coach, decision, double",
+      "members": [
+        "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/9",
+        "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-6",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/15",
+      "representative_text": "IDEA: Not worth building: custom public leaderboards and basic split lookups. Existing public tools such as Baseball Savant and FanGraphs already serve analysts for routine queries.",
+      "label": "already, analysts, baseball, basic, building, custom, existing, fangraphs",
+      "members": [
+        "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/15"
+      ]
+    },
+    {
+      "id": "cluster-7",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/16",
+      "representative_text": "IDEA: Likely already covered at sophisticated clubs: pitch design, biomechanics labs, and defensive positioning models. New software here would compete with mature systems and probably add little.",
+      "label": "add, already, at, biomechanics, clubs, compete, covered, defensive",
+      "members": [
+        "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/16",
+        "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/10",
+        "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/10"
+      ]
+    },
+    {
+      "id": "cluster-8",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/1",
+      "representative_text": "IDEA: Travel and circadian load planner; user=traveling secretary and performance staff; decision=flight departure times, hotel arrival windows, and early-arrival choices on each road trip; intervention=score itineraries from the public MLB schedule, time zones, and getaway-day start times, then flag the worst sequences before travel is booked.",
+      "label": "arrival, before, booked, choices, circadian, day, decision, departure",
+      "members": [
+        "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/1"
+      ]
+    },
+    {
+      "id": "cluster-9",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/2",
+      "representative_text": "IDEA: Institutional memory search over the club's own past scouting and development notes; user=amateur and pro scouts and crosscheckers; decision=whether a current player resembles prior evaluations and how those evaluations turned out; intervention=retrieval that links an old report to the player's later public outcome so evaluators can see their own past calibration.",
+      "label": "amateur, calibration, can, club, crosscheckers, current, decision, development",
+      "members": [
+        "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-10",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/3",
+      "representative_text": "IDEA: Onboarding kit for newly acquired players; user=coaching staff and the newly traded or called-up player; decision=how fast a new arrival learns signs, defensive alignments, communication norms, and staff contacts; intervention=a structured checklist plus quiz app with versioned sign and alignment packages, so no one depends on hallway explanations.",
+      "label": "acquired, alignment, alignments, app, arrival, called, checklist, coaching",
+      "members": [
+        "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/3"
+      ]
+    },
+    {
+      "id": "cluster-11",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/4",
+      "representative_text": "IDEA: Data pipeline quality monitor; user=analysts and the baseball systems team; decision=whether today's tracking, video, and stat feeds can be trusted before reports go to coaches; intervention=automated checks for missing pitches, calibration drift by park, and duplicate player IDs, with alerts sent before reports are distributed.",
+      "label": "alerts, analysts, automated, baseball, before, calibration, can, checks",
+      "members": [
+        "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/4"
+      ]
+    },
+    {
+      "id": "cluster-12",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/5",
+      "representative_text": "IDEA: Language and translation support for coaching cues; user=coaches and Spanish-, Japanese-, Korean-, or Portuguese-speaking players across affiliates; decision=how a mechanical or game-plan instruction is phrased so it means the same thing in every language; intervention=a shared glossary of approved cue translations with audio examples, maintained by staff interpreters.",
+      "label": "across, affiliates, approved, audio, coaches, coaching, cue, cues",
+      "members": [
+        "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/5"
+      ]
+    },
+    {
+      "id": "cluster-13",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/7",
+      "representative_text": "IDEA: Grounds crew field-condition logging; user=head groundskeeper and infield coach; decision=infield dirt moisture, mowing pattern, and grass height before each home game; intervention=a simple log joined to public batted-ball outcomes, to test whether field-prep choices measurably change ground-ball conversion.",
+      "label": "ball, batted, before, change, choices, coach, condition, conversion",
+      "members": [
+        "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/7",
+        "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/4"
+      ]
+    },
+    {
+      "id": "cluster-14",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/8",
+      "representative_text": "IDEA: Unnecessary software case: a spreadsheet or the existing depth-chart tool already covers daily depth charts and minor league roster lists, so a custom tool there adds little.",
+      "label": "adds, already, case, chart, charts, covers, custom, daily",
+      "members": [
+        "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/8",
+        "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/9"
+      ]
+    },
+    {
+      "id": "cluster-15",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/1",
+      "representative_text": "IDEA: Replay-challenge triage (non-ABS) for the manager and video-replay coordinator; the repeated decision is whether to challenge a close safe/out or fair/foul call within the time limit; software would cue the angles most predictive of overturns and show the remaining challenge inventory and game leverage.",
+      "label": "abs, angles, call, challenge, close, coordinator, cue, decision",
+      "members": [
+        "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/1"
+      ]
+    },
+    {
+      "id": "cluster-16",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/3",
+      "representative_text": "IDEA: Self-scouting of pitch-sequence predictability for the pitching coach and catchers; the repeated decision is pregame game-plan design; software would measure how predictable the club's own pitchers' next-pitch choices are from count, previous pitch, and batter handedness, which is the same model an opponent could build.",
+      "label": "batter, catchers, choices, club, coach, count, decision, design",
+      "members": [
+        "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/3"
+      ]
+    },
+    {
+      "id": "cluster-17",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/4",
+      "representative_text": "IDEA: Pitch-clock tempo self-scout for pitching coaches; the repeated decision is whether to coach a pitcher to vary tempo or use disengagements; software would relate each pitcher's time-between-pitches distribution to public outcomes and flag pitchers whose tempo is constant enough for hitters to time.",
+      "label": "between, clock, coach, coaches, constant, decision, disengagements, distribution",
+      "members": [
+        "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/4"
+      ]
+    },
+    {
+      "id": "cluster-18",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/6",
+      "representative_text": "IDEA: Cross-league context normalization for minor league evaluators; the repeated decision is promotion timing and prospect comparison across affiliates whose leagues differ in rules, such as automated strike zones, pitch clocks, or experimental rules, and in parks; software would adjust public minor league stats for the rule regime and environment of each league-season.",
+      "label": "across, adjust, affiliates, automated, clocks, comparison, context, cross",
+      "members": [
+        "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/6"
+      ]
+    },
+    {
+      "id": "cluster-19",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/8",
+      "representative_text": "IDEA: Postseason or short-series opponent-specific roster-construction simulator for the front office; the repeated decision is which 26 players to carry against a specific opponent; software would simulate matchup value under the opponent's likely starters and bullpen.",
+      "label": "26, against, bullpen, carry, construction, decision, front, likely",
+      "members": [
+        "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/8"
+      ]
+    },
+    {
+      "id": "cluster-20",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/9",
+      "representative_text": "IDEA: An area where software is likely unnecessary: generic lineup-order optimization, because public research and spreadsheets show small run differences between reasonable orders.",
+      "label": "area, because, between, differences, generic, likely, lineup, optimization",
+      "members": [
+        "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/9"
+      ]
+    },
+    {
+      "id": "cluster-21",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/2",
+      "representative_text": "IDEA: Opponent bullpen availability forecast, where the manager and hitting coaches decide lineup order, platoon starts, and pinch-hit timing based on likely opposing relievers, using a model built from public box-score appearance and pitch-count history.",
+      "label": "appearance, availability, based, box, built, bullpen, coaches, count",
+      "members": [
+        "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-22",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/3",
+      "representative_text": "IDEA: Opposing-manager tendency profiles, where advance scouts and the bench coach anticipate when an opposing manager will intentionally walk, pull a starter, bunt, or pinch-run, using software that summarizes public play-by-play decisions by game state for each opposing manager.",
+      "label": "advance, anticipate, bench, bunt, coach, decisions, each, game",
+      "members": [
+        "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/3"
+      ]
+    },
+    {
+      "id": "cluster-23",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/8",
+      "representative_text": "IDEA: Unnecessary-software zone for replay challenges, since managers decide whether to challenge safe/out calls and replay coordinators with live video and league feeds already make this decision.",
+      "label": "already, calls, challenge, challenges, coordinators, decide, decision, feeds",
+      "members": [
+        "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/8"
+      ]
+    }
+  ],
+  "ranking": [
+    {
+      "cluster": "cluster-1",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/1",
+      "score": 0.5189743052646278,
+      "criteria": {
+        "novelty": 0.9653679653679653,
+        "objective_fit": 0.07258064516129033
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-4",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/6",
+      "score": 0.5183296025833914,
+      "criteria": {
+        "novelty": 0.9694323144104804,
+        "objective_fit": 0.06722689075630252
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-11",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/4",
+      "score": 0.5165935060720447,
+      "criteria": {
+        "novelty": 0.9544468546637744,
+        "objective_fit": 0.07874015748031496
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-20",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/9",
+      "score": 0.5123406341941811,
+      "criteria": {
+        "novelty": 0.981203007518797,
+        "objective_fit": 0.043478260869565216
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-13",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/7",
+      "score": 0.5117921841175801,
+      "criteria": {
+        "novelty": 0.9701492537313433,
+        "objective_fit": 0.05343511450381679
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-8",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/1",
+      "score": 0.5112210464240081,
+      "criteria": {
+        "novelty": 0.9613733905579399,
+        "objective_fit": 0.061068702290076333
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-23",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/8",
+      "score": 0.5090847724587951,
+      "criteria": {
+        "novelty": 0.9836867862969005,
+        "objective_fit": 0.034482758620689655
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-15",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/1",
+      "score": 0.5078042328042328,
+      "criteria": {
+        "novelty": 0.975925925925926,
+        "objective_fit": 0.03968253968253968
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-22",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/3",
+      "score": 0.507448325017819,
+      "criteria": {
+        "novelty": 0.9739130434782609,
+        "objective_fit": 0.040983606557377046
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-19",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/8",
+      "score": 0.5074175824175824,
+      "criteria": {
+        "novelty": 0.9648351648351648,
+        "objective_fit": 0.05
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-6",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/15",
+      "score": 0.5073585994613313,
+      "criteria": {
+        "novelty": 0.9712389380530974,
+        "objective_fit": 0.043478260869565216
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-9",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/2",
+      "score": 0.507318557427455,
+      "criteria": {
+        "novelty": 0.9549356223175965,
+        "objective_fit": 0.05970149253731343
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-12",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/5",
+      "score": 0.5062558322282795,
+      "criteria": {
+        "novelty": 0.9594813614262561,
+        "objective_fit": 0.05303030303030303
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-10",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/3",
+      "score": 0.5055070307625857,
+      "criteria": {
+        "novelty": 0.9662379421221865,
+        "objective_fit": 0.04477611940298507
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-14",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/1/idea/8",
+      "score": 0.503996346197762,
+      "criteria": {
+        "novelty": 0.9735099337748344,
+        "objective_fit": 0.034482758620689655
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-3",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/4",
+      "score": 0.5034512731363125,
+      "criteria": {
+        "novelty": 0.9675324675324676,
+        "objective_fit": 0.03937007874015748
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-7",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/16",
+      "score": 0.5027714587805581,
+      "criteria": {
+        "novelty": 0.9716446124763705,
+        "objective_fit": 0.03389830508474576
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-17",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/4",
+      "score": 0.5025708061002179,
+      "criteria": {
+        "novelty": 0.9651416122004357,
+        "objective_fit": 0.04
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-16",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/3",
+      "score": 0.500202922077922,
+      "criteria": {
+        "novelty": 0.9691558441558441,
+        "objective_fit": 0.03125
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-5",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/9",
+      "score": 0.4990865077190098,
+      "criteria": {
+        "novelty": 0.9737827715355806,
+        "objective_fit": 0.024390243902439025
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-18",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/6",
+      "score": 0.4957866560919996,
+      "criteria": {
+        "novelty": 0.961038961038961,
+        "objective_fit": 0.030534351145038167
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-21",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/2",
+      "score": 0.4943818297222651,
+      "criteria": {
+        "novelty": 0.9651416122004357,
+        "objective_fit": 0.023622047244094488
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-2",
+      "representative": "hd-20261008-143010-528e5330b08f/candidates/0/0/idea/2",
+      "score": 0.2767175572519084,
+      "criteria": {
+        "novelty": 0.5,
+        "objective_fit": 0.05343511450381679
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    }
+  ],
+  "warnings": [
+    "DISCOVERY_ANCHORING_HIGH"
+  ],
+  "explored_families": [
+    "after, day, decision, each, flag, followed, game, get",
+    "40, 5, after, becomes, before, being, costly, days",
+    "audit, between, club, coaching, compare, decision, development, find",
+    "after, bullpen, combine, day, decision, delay, game, manager",
+    "become, before, bench, cards, choices, coach, decision, double",
+    "already, analysts, baseball, basic, building, custom, existing, fangraphs",
+    "add, already, at, biomechanics, clubs, compete, covered, defensive",
+    "arrival, before, booked, choices, circadian, day, decision, departure",
+    "amateur, calibration, can, club, crosscheckers, current, decision, development",
+    "acquired, alignment, alignments, app, arrival, called, checklist, coaching",
+    "alerts, analysts, automated, baseball, before, calibration, can, checks",
+    "across, affiliates, approved, audio, coaches, coaching, cue, cues",
+    "ball, batted, before, change, choices, coach, condition, conversion",
+    "adds, already, case, chart, charts, covers, custom, daily",
+    "abs, angles, call, challenge, close, coordinator, cue, decision",
+    "batter, catchers, choices, club, coach, count, decision, design",
+    "between, clock, coach, coaches, constant, decision, disengagements, distribution",
+    "across, adjust, affiliates, automated, clocks, comparison, context, cross",
+    "26, against, bullpen, carry, construction, decision, front, likely",
+    "area, because, between, differences, generic, likely, lineup, optimization",
+    "appearance, availability, based, box, built, bullpen, coaches, count",
+    "advance, anticipate, bench, bunt, coach, decisions, each, game",
+    "already, calls, challenge, challenges, coordinators, decide, decision, feeds"
+  ],
+  "method": "concept_tokens_and_leading_phrases/v3; Jaccard cluster threshold 0.5 or first-8-content-word phrase link; echo coverage 0.6 or first-16-word phrase link",
+  "measurement_type": "ADVISORY_HEURISTIC",
+  "limitations": "Not semantic equivalence, calibrated novelty, entailment or usefulness",
+  "participation": [
+    {
+      "operation": "GENERATED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": "claude",
+      "origin_model": "claude-opus-5-5",
+      "subject_count": 4,
+      "inference_occurred": true,
+      "note": "Dream prompted the provider; the provider authored the text."
+    },
+    {
+      "operation": "CLUSTERED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 45,
+      "inference_occurred": false,
+      "note": "Deterministic concept-token clustering; no inference."
+    },
+    {
+      "operation": "RANKED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 23,
+      "inference_occurred": false,
+      "note": "Advisory heuristic ranking; no execution authority."
+    }
+  ]
+}

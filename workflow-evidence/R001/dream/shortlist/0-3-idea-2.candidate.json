@@ -1,0 +1,230 @@
+{
+  "schema_version": "howl.candidate/v1",
+  "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/2",
+  "source_run_id": "hd-20261008-143010-528e5330b08f",
+  "parent_request_id": "cubs-r001-p1-divergent",
+  "objective": "Where could software create a meaningful baseball advantage for the Chicago Cubs?\n\nDo not assume the product. Explore different opportunity classes: different users inside a baseball organization (front office, scouting, player development, coaching, medical/performance staff, analysts, game-day staff), different recurring decisions, and different mechanisms of value (better information, faster combination of signals, reduced costly uncertainty, process reliability, avoided errors). Include boring-but-useful interventions and non-obvious possibilities. Also name places where software is unnecessary because a spreadsheet, an existing public tool, or a manual process already suffices, and places where sophisticated clubs likely already have the advantage.\n\nOUTPUT GUIDANCE (format only): Each IDEA line names one distinct baseball problem, the intended user, the concrete repeated decision, and the software intervention. Follow each IDEA with ASSUMPTION lines for what must be true (including whether lawfully accessible public data could support it) and UNKNOWN lines for missing evidence. Do not invent statistics or private Cubs information (scouting, medical, biometric, contract, or proprietary tracking data).",
+  "text": "IDEA: Opponent bullpen availability forecast, where the manager and hitting coaches decide lineup order, platoon starts, and pinch-hit timing based on likely opposing relievers, using a model built from public box-score appearance and pitch-count history.",
+  "condition": "dream",
+  "trust": "UNVERIFIED",
+  "status": "UNRESOLVED",
+  "authority": {
+    "type": "ADVISORY",
+    "executable": false
+  },
+  "claims": [
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/2/claim/1",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/2",
+      "kind": "IDEA",
+      "text": "Opponent bullpen availability forecast, where the manager and hitting coaches decide lineup order, platoon starts, and pinch-hit timing based on likely opposing relievers, using a model built from public box-score appearance and pitch-count history.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    }
+  ],
+  "evidence_refs": [
+    "objective_context"
+  ],
+  "assumptions": [
+    "Tipping happens often enough, and is costly enough, that a systematic check beats ad hoc coach observation.",
+    "Pitch-type labels from public pitch-tracking data can be time-aligned to the club's own broadcast or center-field video without proprietary tracking feeds.",
+    "The tool must be limited to the club's own pitchers to avoid rule or ethics problems with real-time decoding of opponents.",
+    "Sophisticated clubs may already run this internally, so the advantage would be catching up rather than leading.",
+    "Public box scores reliably capture reliever usage, including pitch counts and back-to-back days.",
+    "Opposing clubs' availability rules are inferable from public usage patterns and are not dominated by unobservable injury or warm-up information.",
+    "This differs enough from opponent bench-counter anticipation to add value rather than duplicate it.",
+    "Many clubs already do this informally, so the value may come only from speed and consistency.",
+    "Manager decisions are consistent enough within game states to be predictable from public play-by-play data.",
+    "Front-office input on the opposing side is stable enough within a season for past patterns to hold.",
+    "Knowing an opponent's likely move changes a Cubs decision often enough to matter, for example by holding a pinch hitter in reserve.",
+    "Surface preparation varies enough day to day to affect ground-ball outcomes measurably.",
+    "Field-preparation choices stay within MLB rules on field conditions, which would need verification.",
+    "Sample sizes per home stand are large enough to separate the effect from noise.",
+    "A paper log maintained by the grounds crew may be enough without custom software.",
+    "Venue choice actually changes rehab quality or timing, for example by avoiding rainouts or getting the right opponent level.",
+    "The tool can run without any private medical data, with medical staff entering only the required dates and constraints.",
+    "Rehab stints may be too few per season to justify more than a spreadsheet and a calendar.",
+    "The club stores past reports in a structured, searchable form, or could migrate them into one.",
+    "Prior evaluations of the same or similar players inform current decisions instead of anchoring them badly.",
+    "Commercial scouting platforms may already provide this, making custom software unnecessary.",
+    "Errors here are rare but very costly, so a process-reliability tool has positive expected value.",
+    "The rules are public and stable enough to encode accurately each season.",
+    "This may be fully covered by existing league office review and a manual checklist, making software unnecessary.",
+    "Sophisticated clubs already hold this advantage through dedicated replay staff.",
+    "Any remaining gain is small compared with the existing human-plus-video process.",
+    "Rest decisions are mainly driven by private physiological and medical information rather than schedule and weather alone."
+  ],
+  "unresolved_issues": [
+    "Tipping happens often enough, and is costly enough, that a systematic check beats ad hoc coach observation.",
+    "Pitch-type labels from public pitch-tracking data can be time-aligned to the club's own broadcast or center-field video without proprietary tracking feeds.",
+    "The tool must be limited to the club's own pitchers to avoid rule or ethics problems with real-time decoding of opponents.",
+    "Sophisticated clubs may already run this internally, so the advantage would be catching up rather than leading.",
+    "Public box scores reliably capture reliever usage, including pitch counts and back-to-back days.",
+    "Opposing clubs' availability rules are inferable from public usage patterns and are not dominated by unobservable injury or warm-up information.",
+    "This differs enough from opponent bench-counter anticipation to add value rather than duplicate it.",
+    "Many clubs already do this informally, so the value may come only from speed and consistency.",
+    "Manager decisions are consistent enough within game states to be predictable from public play-by-play data.",
+    "Front-office input on the opposing side is stable enough within a season for past patterns to hold.",
+    "Knowing an opponent's likely move changes a Cubs decision often enough to matter, for example by holding a pinch hitter in reserve.",
+    "Surface preparation varies enough day to day to affect ground-ball outcomes measurably.",
+    "Field-preparation choices stay within MLB rules on field conditions, which would need verification.",
+    "Sample sizes per home stand are large enough to separate the effect from noise.",
+    "A paper log maintained by the grounds crew may be enough without custom software.",
+    "Venue choice actually changes rehab quality or timing, for example by avoiding rainouts or getting the right opponent level.",
+    "The tool can run without any private medical data, with medical staff entering only the required dates and constraints.",
+    "Rehab stints may be too few per season to justify more than a spreadsheet and a calendar.",
+    "The club stores past reports in a structured, searchable form, or could migrate them into one.",
+    "Prior evaluations of the same or similar players inform current decisions instead of anchoring them badly.",
+    "Commercial scouting platforms may already provide this, making custom software unnecessary.",
+    "Errors here are rare but very costly, so a process-reliability tool has positive expected value.",
+    "The rules are public and stable enough to encode accurately each season.",
+    "This may be fully covered by existing league office review and a manual checklist, making software unnecessary.",
+    "Sophisticated clubs already hold this advantage through dedicated replay staff.",
+    "Any remaining gain is small compared with the existing human-plus-video process.",
+    "Rest decisions are mainly driven by private physiological and medical information rather than schedule and weather alone.",
+    "Own-pitcher tipping self-audit, where pitching coaches and the video staff regularly review whether a Cubs pitcher's pre-release cues such as glove position, set timing, or grip visibility differ by pitch type, using software that flags pitch-type-separable patterns in the club's own game video for a coach to verify.",
+    "base_rate_of_detectable_tipping_mlb",
+    "public_video_frame_rate_and_angle_sufficiency",
+    "existing_cubs_tipping_review_process",
+    "Opponent bullpen availability forecast, where the manager and hitting coaches decide lineup order, platoon starts, and pinch-hit timing based on likely opposing relievers, using a model built from public box-score appearance and pitch-count history.",
+    "forecast_accuracy_vs_naive_rule",
+    "unobserved_bullpen_warmups_effect",
+    "Opposing-manager tendency profiles, where advance scouts and the bench coach anticipate when an opposing manager will intentionally walk, pull a starter, bunt, or pinch-run, using software that summarizes public play-by-play decisions by game state for each opposing manager.",
+    "manager_decision_predictability_by_state",
+    "decision_frequency_where_anticipation_changes_choice",
+    "Infield surface condition logging, where grounds crew and infield coaches decide how to water and drag the infield before games, using software that logs those choices alongside weather and public batted-ball outcomes at Wrigley to estimate their effect on ground-ball speed relative to the club's defensive and pitching mix.",
+    "mlb_field_preparation_rule_limits",
+    "measurable_effect_size_surface_on_groundball_outcomes",
+    "current_grounds_crew_record_keeping",
+    "Rehab assignment venue planner, where player development and medical coordinators choose which affiliate hosts a rehab stint, using software that combines public affiliate schedules, forecast weather, travel distance, and opponent quality.",
+    "rehab_assignment_frequency_per_season",
+    "rainout_disruption_rate_by_affiliate",
+    "Searchable institutional memory of past reports, where front-office staff weigh a trade or waiver target, using software that retrieves the club's own prior evaluations and the outcomes of similar past acquisitions so analysts can see how earlier judgments held up.",
+    "existing_cubs_report_storage_system",
+    "vendor_platform_retrieval_capability",
+    "Postseason roster eligibility and rules checker, where front-office and baseball operations staff confirm eligibility, injury-replacement, and position-player-pitching rules before key roster moves, using a rule-encoded checklist that flags conflicts.",
+    "historical_rate_of_club_roster_rule_errors",
+    "league_preclearance_process_details",
+    "Unnecessary-software zone for replay challenges, since managers decide whether to challenge safe/out calls and replay coordinators with live video and league feeds already make this decision.",
+    "cubs_replay_overturn_rate_vs_league",
+    "Unnecessary-software zone for heat and day-game workload, where staff plan rest for position players in hot afternoon games. Public weather and schedule data in a shared calendar likely suffice, and any biometric layer would depend on private data out of scope here.",
+    "incremental_value_of_schedule_weather_model_over_staff_judgment"
+  ],
+  "contradictions": [],
+  "verified_constraints": [],
+  "provenance": {
+    "run_id": "hd-20261008-143010-528e5330b08f",
+    "producer_component": "howldream",
+    "producer_version": "0.4.4",
+    "model_or_provider": "claude-opus-5-5",
+    "observation_kind": "EXTERNALLY_OBSERVED",
+    "created_at": "2026-10-08T14:35:18.091585+00:00",
+    "transformations": [
+      "generated",
+      "idea_unit_selection"
+    ],
+    "participation": [
+      {
+        "operation": "GENERATED",
+        "transforming_component": "howldream",
+        "origin_component": "howldream",
+        "origin_provider": "claude",
+        "origin_model": "claude-opus-5-5",
+        "subject_count": 1,
+        "inference_occurred": true,
+        "note": "Dream prompted the provider; the provider authored the text."
+      },
+      {
+        "operation": "CLUSTERED",
+        "transforming_component": "howldream",
+        "origin_component": "howldream",
+        "origin_provider": null,
+        "origin_model": null,
+        "subject_count": 45,
+        "inference_occurred": false,
+        "note": "Deterministic concept-token clustering; no inference."
+      },
+      {
+        "operation": "SELECTED",
+        "transforming_component": "howldream",
+        "origin_component": "howldream",
+        "origin_provider": "claude",
+        "origin_model": "claude-opus-5-5",
+        "subject_count": 1,
+        "inference_occurred": false,
+        "note": "Operator selected this idea unit through `howldream export`."
+      }
+    ],
+    "request_id": "cubs-r001-p1-divergent",
+    "originating_component": "operator",
+    "execution": {
+      "requested_provider": "command",
+      "selected_provider": "command",
+      "actual_provider": "claude",
+      "adapter": "claude-json",
+      "model": "claude-opus-5-5",
+      "requested_model": "claude-opus-5-5",
+      "deterministic": false,
+      "mocked": false,
+      "inference_occurred": true,
+      "remote": true,
+      "remote_observation": "OPERATOR_DECLARED",
+      "fallback_reason": null,
+      "elapsed_seconds": 51.84848654305097,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 2379,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 4188,
+        "output_tokens_details": {
+          "thinking_tokens": 1839
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 2379,
+          "ephemeral_5m_input_tokens": 0
+        }
+      },
+      "cost": 0.1028,
+      "request_id": "52dd343a-83e4-4055-a3b9-3628af1b44e3",
+      "raw_output_received": true,
+      "parse_status": "VALID",
+      "repair_attempted": false,
+      "sampling": null
+    },
+    "source_candidate_refs": [],
+    "source_candidates_location": "exploration_envelope.json#/provenance/source_candidates",
+    "hard_constraints": [
+      "Do not assume the problem or the solution.",
+      "Use only lawfully accessible public, historical, or clearly labeled synthetic data.",
+      "Do not invent private Chicago Cubs information or statistics.",
+      "Distinguish fact, assumption, hypothesis, and speculation."
+    ],
+    "constraint_scope": "UNVERIFIED_GENERATION_GUIDANCE",
+    "purpose": "discovery",
+    "candidate_index": 3,
+    "trial": 0,
+    "prompt_hash": "0b0d86fb982f9c2597994ff3db2b8c66514c25cd6a469fb9617fba6a79f8d550",
+    "output_hash": "fbdcd5104ec00846b4eace6d59a4c1f0e21728547ff0ff8939c44367447d0379",
+    "selection": {
+      "selected_by": "operator",
+      "operation": "SELECTED",
+      "via": "howldream export"
+    },
+    "parent_candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/3",
+    "source_unit": {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/3/idea/2",
+      "source_span": [
+        1019,
+        1274
+      ],
+      "source_hash": "fbdcd5104ec00846b4eace6d59a4c1f0e21728547ff0ff8939c44367447d0379",
+      "cluster": "cluster-21"
+    },
+    "parent_verification_ref": "verification.jsonl#candidate=hd-20261008-143010-528e5330b08f/candidates/0/3",
+    "unit_selection_scope": "Single IDEA line; batch assumptions/unresolved issues retained without claim-specific association. Parent rejection/contradiction gates retained."
+  }
+}

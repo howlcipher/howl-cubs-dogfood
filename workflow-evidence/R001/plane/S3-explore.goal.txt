@@ -1,0 +1,16 @@
+Add and run an EXPLORATORY whole-pool evaluation to the existing MILBFA triage pipeline in this repository. The pre-registered primary test already stopped at its early-stop rule; do not change that result, its files, or its numbers.
+
+OWNER AUTHORIZATION (2026-10-09T07:10Z): local-only use of the already-fetched MLB Stats API data is approved; publish only aggregates and short attributed examples. Never request season-2026 data; do not use the 2025 cohort (the final holdout) in any way.
+
+Fixed rules (from the design's exploratory addendum):
+- Population: the whole November pool for each cohort (players with and without MLB time in Y), plus pitchers and hitters separately.
+- Cohorts: training 2018, 2019, 2021, 2022, 2023; rolling-origin test years 2021, 2022, 2023 (train on all earlier cohorts); validation 2024. The 2025 cohort must not be loaded, featurized, labeled or scored.
+- Rankings B0, B1, B2, P, M exactly as already implemented (M: L2 strength chosen on the 2024 whole pool from {0.01, 0.1, 1, 10}); comparator = best of B0/B1/B2/P on 2024 whole-pool top-50 hits (ties: B2, B0, B1, P).
+- Metrics: top-k outcome-positive counts for k in {25, 50, 100}, precision@k, AUROC, calibration table for M; paired bootstrap (2,000 resamples, fixed seed) for M minus each ranking, on the validation cohort and on each rolling-origin year.
+
+Deliverables:
+1. A CLI command that writes research/exploratory_whole_pool.json (aggregates only) and adds a clearly separated "EXPLORATORY: whole pool" section to research/EXPERIMENT.md whose numbers all come from that JSON. Every statement in the section is labeled EXPLORATORY plus FACT/INFERENCE/UNKNOWN, and the section states that it supports no usefulness claim or recommendation.
+2. Run it in this session; outputs must be exactly what the code produces.
+3. Tests (offline, fixtures only, no tracked-file writes; all existing tests pass, also in a clean clone without data/): the 2025 cohort is never loaded by the exploratory command; comparator selection on the whole pool; bootstrap determinism; every number in the new section appears in the JSON; the primary early-stop result files are unchanged.
+
+Integrity: never invent or alter values; report null or negative results as they are.

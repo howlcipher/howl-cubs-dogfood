@@ -1,0 +1,177 @@
+HOWL ORCHESTRATION REPORT
+Session: 59c7be4ab3114948a3cdedd21a8171ad
+Goal: Add and run an EXPLORATORY whole-pool evaluation to the existing MILBFA triage pipeline in this repository. The pre-registered primary test already stopped at its early-stop rule; do not change that result, its files, or its numbers.
+
+OWNER AUTHORIZATION (2026-10-09T07:10Z): local-only use of the already-fetched MLB Stats API data is approved; publish only aggregates and short attributed examples. Never request season-2026 data; do not use the 2025 cohort (the final holdout) in any way.
+
+Fixed rules (from the design's exploratory addendum):
+- Population: the whole November pool for each cohort (players with and without MLB time in Y), plus pitchers and hitters separately.
+- Cohorts: training 2018, 2019, 2021, 2022, 2023; rolling-origin test years 2021, 2022, 2023 (train on all earlier cohorts); validation 2024. The 2025 cohort must not be loaded, featurized, labeled or scored.
+- Rankings B0, B1, B2, P, M exactly as already implemented (M: L2 strength chosen on the 2024 whole pool from {0.01, 0.1, 1, 10}); comparator = best of B0/B1/B2/P on 2024 whole-pool top-50 hits (ties: B2, B0, B1, P).
+- Metrics: top-k outcome-positive counts for k in {25, 50, 100}, precision@k, AUROC, calibration table for M; paired bootstrap (2,000 resamples, fixed seed) for M minus each ranking, on the validation cohort and on each rolling-origin year.
+
+Deliverables:
+1. A CLI command that writes research/exploratory_whole_pool.json (aggregates only) and adds a clearly separated "EXPLORATORY: whole pool" section to research/EXPERIMENT.md whose numbers all come from that JSON. Every statement in the section is labeled EXPLORATORY plus FACT/INFERENCE/UNKNOWN, and the section states that it supports no usefulness claim or recommendation.
+2. Run it in this session; outputs must be exactly what the code produces.
+3. Tests (offline, fixtures only, no tracked-file writes; all existing tests pass, also in a clean clone without data/): the 2025 cohort is never loaded by the exploratory command; comparator selection on the whole pool; bootstrap determinism; every number in the new section appears in the JSON; the primary early-stop result files are unchanged.
+
+Integrity: never invent or alter values; report null or negative results as they are.
+Status: HANDOFF REQUIRED
+Resumable: yes
+Orchestrator: claude_code
+Implementer: codex
+Policy: PLAN + EXECUTE + INDEPENDENT AUDIT
+Constraints: The current HowlPlane session IS the orchestration workflow. Perform the assigned work in the target project. Do not launch howl/howlplane or another orchestration session merely to prove Howl was used. Do not copy internal orchestration state into the target project., Owner authorization 2026-10-09T07:10Z: local-only use of fetched MLB Stats API data; publish aggregates only; never request season 2026; never load the 2025 holdout cohort., Never invent or alter statistics; label EXPLORATORY and FACT, INFERENCE, UNKNOWN.
+Assignments: 10
+Reroutes: 2
+Repository head: c33a70af5dfe0e863884ea88ce00228cccc28b4e
+Repository status: M README.md
+ M research/EXPERIMENT.md
+ M tests/test_publication.py
+ M tests/test_triage_experiment.py
+?? cubs_edge_lab/exploratory_whole_pool.py
+?? research/exploratory_whole_pool.json
+?? tests/test_exploratory_whole_pool.py
+Tests: [{"command": "git diff --check", "exit_code": 0, "output": ""}, {"command": ["python3", "-m", "pytest", "-q"], "rework_round": 0, "exit_code": 0, "output": "................................................................... [ 97%]\n..                                                                       [100%]\n69 passed, 5 subtests passed in 46.83s\n"}, {"command": "git diff --check", "exit_code": 0, "output": ""}, {"command": ["python3", "-m", "pytest", "-q"], "rework_round": 1, "exit_code": 0, "output": "................................................................... [ 97%]\n..                                                                       [100%]\n69 passed, 5 subtests passed in 47.21s\n"}, {"command": "git diff --check", "exit_code": 0, "output": ""}, {"command": ["python3", "-m", "pytest", "-q"], "rework_round": 2, "exit_code": 0, "output": "................................................................... [ 97%]\n..                                                                       [100%]\n69 passed, 5 subtests passed in 51.64s\n"}]
+Independent audit: CLEAN
+Recovery: {}
+Rework rounds: 2 of 2
+Excluded acceptance workers: [{"agent": "claude_code", "reason": "unavailable"}, {"agent": "codex", "reason": "failed earlier this session (ACCEPTANCE_REJECTED_OR_UNCONFIRMED)"}, {"agent": "cursor", "reason": "not the session orchestrator"}, {"agent": "agy", "reason": "its CLI does not enforce read-only operation"}, {"agent": "devin_cli", "reason": "not the session orchestrator"}]
+Failures: [{"stage": "review", "agent": "claude_code", "model": "UNKNOWN", "failure": "AUDIT_FINDINGS_OR_UNCONFIRMED"}, {"stage": "acceptance", "agent": "claude_code", "model": "UNKNOWN", "failure": "ACCEPTANCE_REJECTED_OR_UNCONFIRMED"}, {"stage": "review", "agent": "claude_code", "model": "UNKNOWN", "failure": "SESSION_LIMIT"}, {"stage": "acceptance", "agent": "codex", "model": "UNKNOWN", "failure": "ACCEPTANCE_REJECTED_OR_UNCONFIRMED"}]
+Next: the orchestrator rejected acceptance (verdict below). Address what it names in the repository, then run
+  howlplane orchestrate resume --repo /run/media/system/tallgeese/dev/cubs-edge-lab --verify <your test command>
+Changing the repository lets the same session be judged again. If the verdict is not actionable, run
+  howlplane orchestrate discard --repo /run/media/system/tallgeese/dev/cubs-edge-lab
+and start a new session.
+Verdict from Claude (review, AUDIT_FINDINGS_OR_UNCONFIRMED, rework round 0: sent back to implementation and re-judged):
+  **Review of the exploratory whole-pool diff**
+  
+  I read the new module and test file and the generated `EXPERIMENT.md`. I could not run anything. HowlPlane's evidence shows 69 tests passing and `git diff --check` clean.
+  
+  **BLOCKING**
+  
+  1. **The rendered EXPERIMENT.md section has broken tables, so the report is misleading.**
+     - Cause: `render_section` (`cubs_edge_lab/exploratory_whole_pool.py:154-175`) emits the ranking-table header once, before the first population. It then writes each population's ranking rows, then its calibration table, then its bootstrap table.
+     - Effect in `research/EXPERIMENT.md`: the 2024 pitchers ranking rows (line 78 onward) come straight after the 2024 whole_pool bootstrap table row (line 77), with no blank line, header or labeled line. A Markdown renderer attaches them to the 4-column bootstrap table, and the same happens for every later year and population. Rows with 12 fields show up under the header "Comparator | Mean AUROC difference | 95% interval | Valid resamples".
+     - Requirement missed: "Tables are introduced by a labeled line" is not met for these tables.
+     - Test gap: the label test (`tests/test_exploratory_whole_pool.py:129`) skips every line starting with `|`, so it cannot catch this.
+     - Fix: emit a labeled line, header and separator per population and year, and add a test that checks table structure.
+  
+  **NON-BLOCKING**
+  
+  - Null values render as the literal strings `None` (calibration bins with no data, such as `| 9 | 0 | None | None |`). Intervals render as Python list text, e.g. `[-0.048764, 0.014118]`. The numbers are correct, but it should say "null" or "n/a".
+  - `render_section` (lines 159-164) builds a `values` list and then immediately overwrites it. The first computation is dead code.
+  - The comparator test does not exercise the pipeline.
+    - It never builds a fixture where the primary-only winner differs from the whole-pool winner. It calls `choose_comparator` directly on hand-written counts.
+    - The only pipeline check is that the payload comparator equals `choose_comparator` on its own rankings. A regression to a primary-segment comparator would not necessarily fail it.
+  - Parts of the 2025 test are weak.
+    - The `Client` patch targets `triage_cli`, which this module never imports, so that assertion is trivially true.
+    - The `guard_outcome_build` patch on the `triage_eval` module may not intercept callers that imported the name directly.
+    - The `call.args[1]` check would raise `IndexError` if the guard were ever called with keyword arguments.
+    - The poison-file check on `open` and `Path.read_text` is the useful part. By construction the code only reads `YEARS` cohorts.
+  - The number-token test is weak. It checks digits against the whole JSON text, which contains many small numbers, so it would pass even if a value were mismatched.
+  - `_MODEL_CACHE` is process-global. Its key is only `(person_id, positive)` tuples, strength and features, not the feature values. Two roots with the same IDs and labels but different features would reuse a stale model. This is harmless for the current deterministic fixtures but it is a latent hazard.
+  - Missing inputs fail with an uncaught `FileNotFoundError` traceback instead of a clean error. It is still a nonzero exit before any write, and the test covers it.
+  - Your remaining risks are as stated: `evaluate` overwrites the section, populations use whole-pool training, one L2 value is reused across years, and B2 trains on no-MLB-in-Y rows only. They are documented in the JSON config and the README.
+  
+  Confirmed fine:
+  - The primary prefix and `validation.json` are guarded by pinned hashes.
+  - The `_stats` loader refuses seasons from 2026 on. The 2025 stats files are read only as outcome data for the 2024 cohort, and the 2025 cohort file is never read.
+  - The JSON is aggregate-only.
+  - The command is idempotent in the test.
+  
+  AUDIT_STATUS: FINDINGS
+Review notes from Claude (review, CLEAN):
+  I found no blocking defects. I could not run flake8, git or the command, so I judged this from reading the files and the HowlPlane evidence (`pytest` passed, 69 tests, and `git diff --check` was clean).
+  
+  **What checked out**
+  - **2025 holdout:** `evaluate()` in `cubs_edge_lab/exploratory_whole_pool.py` loads only the `YEARS` cohort files (2018 to 2024). It never constructs a `Client` and never calls the outcome builder with 2025. `_stats` rejects any stats season of 2026 or later. The JSON contains 2025 only as `holdout_excluded`.
+  - **Method:** the comparator is chosen with `choose_comparator` on the 2024 whole-pool rankings, and L2 strength is chosen by 2024 whole-pool top-50 hits. Bootstrap uses seed 43017 and 2,000 resamples. Populations and training windows match the stated plan, and B2 trains on no-MLB-in-Y rows only, as in the primary code.
+  - **Privacy:** the JSON has no `person_id` or name keys.
+  - **Output safety:** `evaluate()` runs before any write, so missing inputs fail before anything is written. The JSON write is atomic, and the `EXPERIMENT.md` write goes through a temp file. Rewriting the section starts from the pinned primary prefix, so a second run should give identical bytes, and the tests assert this.
+  - **Primary result:** the committed `EXPERIMENT.md` keeps the primary bytes before the start marker, which a pinned-sha256 test checks. The same test file pins `validation.json`'s sha256.
+  - **Section labels:** the section header and the table lines I read carry the labels, and the no-claim statement is present. The three required UNKNOWN lines and the MLBAM attribution line are present.
+  - **Existing tests:** `test_triage_experiment.py` now compares only the primary prefix, `test_publication.py` has the new file in its allowlist with a size limit, and the README paragraph covers the command, scope and the `evaluate` overwrite.
+  - **Negative results:** the hitters table keeps its negative M-minus-B0 and M-minus-B1 intervals as computed.
+  
+  **NON-BLOCKING**
+  1. **Comparator test is weak** (`tests/test_exploratory_whole_pool.py:81-104`). The "primary-only winner differs from whole-pool winner" case uses hand-built dictionaries passed to `choose_comparator`, not the pipeline. The comment at lines 100-101 claims more than the test proves. The ties check only covers the all-equal case, which gives B2. The check that the payload comparator equals `choose_comparator` on its own recorded rankings is sound.
+  2. **Equivalence and seed tests are partial** (`tests/test_exploratory_whole_pool.py:106-132`). The direct `_rank_eval` comparison covers only the 2024 whole pool, not pitchers, hitters or rolling years. The "different seed gives a different result" test runs on a four-row toy input, not the pipeline.
+  3. **flake8 is unverified.** The harness evidence shows only `pytest`. The new module has 28 lines over 79 characters and the new test file has 33. There is no flake8 config in the repo, and the existing triage code already has about 75 long lines. The acceptance criterion "flake8 clean" is unconfirmed, and it likely fails at baseline too, unless a config outside the repo sets a longer limit.
+  4. **Number check is loose.** The token test only requires each number in the section to appear somewhere in the JSON, not at the matching field. This meets the stated requirement.
+  5. **Remaining risks:** re-running `evaluate` removes the section (documented). The pitcher and hitter reading and the single L2 choice are assumptions recorded in the JSON. I did not confirm that a clean clone passes.
+  
+  AUDIT_STATUS: CLEAN
+Verdict from Claude (acceptance, ACCEPTANCE_REJECTED_OR_UNCONFIRMED, rework round 1: sent back to implementation and re-judged):
+  The work is rejected because the "flake8 is clean" criterion fails. I could only inspect files with Read, Grep and Glob. I could not run anything, so I have no pytest or flake8 results of my own.
+  
+  **Blocking: flake8**
+  - The repo has no flake8 configuration (no `.flake8`, `setup.cfg`, `tox.ini` or `pyproject.toml`), so the default 79-column limit applies.
+  - `cubs_edge_lab/exploratory_whole_pool.py` clearly breaks it. Lines 153–157, 168–169, 178–185 and 189–192 run well past 79 columns, and `_fit_cached` and `_rank_eval_cached` also have long lines.
+  - The audit counted 28 long lines in the module and 33 in the new test file. The rework round left them in place.
+  - Nothing in the evidence shows `python3 -m flake8 cubs_edge_lab tests` was run on the final tree.
+  
+  **Other gaps**
+  - **Verification:** the audit evidence shows no pytest result for the final tree and no clean-clone run.
+  - **Comparator test:** one reviewer flagged that it never builds a pipeline fixture where the primary-only winner differs from the whole-pool winner. That was not fixed.
+  - **Weaker tests:** the equivalence check covers only the 2024 whole pool. The number-token test only requires each number to appear somewhere in the JSON.
+  
+  **What I confirmed**
+  - **n/a rendering:** null values now render as `n/a` and intervals as `a to b`, which fixes the earlier `None` finding.
+  - **Cache key:** `_fit_cached` now keys on the feature values, which fixes the stale-model hazard.
+  - **Section content:** the section carries EXPLORATORY labels, the no-claim line, the three UNKNOWN lines and the MLBAM attribution.
+  - **Idempotence:** the writer inserts or replaces the section after the pinned primary prefix, so a re-run should give the same bytes.
+  - **Cohorts and seasons:** `evaluate` reads only the `YEARS` cohorts, and `_stats` refuses seasons from 2026 on.
+  - **Missing inputs:** the command exits nonzero without writing anything, but the failure is an uncaught `FileNotFoundError` traceback rather than a clean error.
+  
+  **Required to accept**
+  1. Reformat the new module and test file so flake8 passes.
+  2. Make the comparator test run the pipeline on a fixture where the primary-only winner and the whole-pool winner differ.
+  3. Rerun the command if the code changes the output, then run flake8 and the full `python3 -m pytest -q` with no edits afterward.
+  4. Optionally repeat the full run in a clean clone without `data/`.
+  
+  ACCEPTANCE_STATUS: REJECTED
+Review notes from Cursor (review, CLEAN):
+  The exploratory whole-pool evaluation matches the design, leaves the preregistered early-stop result untouched, and reports negative comparisons as computed.
+  
+  The primary prefix of `research/EXPERIMENT.md` is still the early-stop report: validation primary positives 23 against a minimum of 30, with validation metrics null. `research/validation.json` is not in the diff. The new material starts only at `<!-- EXPLORATORY WHOLE POOL START -->`.
+  
+  The command evaluates cohorts 2018, 2019, 2021, 2022, 2023, and 2024. It never opens `data/cohorts/2025.json`. Season-2025 league statistics are used only as the existing year+1 outcome source for the 2024 cohort. There is no HTTP client on this path, and a local stats file for season 2026 or later makes `_stats` raise. The whole-pool comparator is B0, from 2024 top-50 hits of 32, 24, 20, and 25 for B0, B1, B2, and P. Pitchers are not re-ranked for that choice: on pitchers, P has 28 top-50 hits and B0 has 26, and the stored comparator remains B0. Selected L2 strength is 0.01. Whole-pool counts match the frozen base rates (2024 is 636 players and 91 positives; 2023 pitchers plus hitters is 509 + 316 = 825). Precision equals hits divided by k, and calibration counts sum to N. M is worse than B0 on the 2024 whole-pool AUROC (bootstrap mean difference −0.016329, interval crossing zero) and worse than B0 and B1 on 2024 hitters (intervals entirely below zero). Those values are in both the JSON and the labeled section.
+  
+  ## Findings
+  
+  **NON-BLOCKING.** The different-seed check calls `paired_bootstrap` directly. `evaluate` does pass `seed` through `_deltas`, and each stored bootstrap row records seed 43017 and 2000 resamples.
+  
+  **NON-BLOCKING.** The attribution sentence and the “95%” table label are fixed strings in `render_section`. They match `config["source"]` and the 2.5/97.5 percentiles in `paired_bootstrap`, and 95 is also stored as `bootstrap_interval_percentile`.
+  
+  **NON-BLOCKING.** `write_outputs` writes the JSON before reading `EXPERIMENT.md`. A missing report after a successful cohort load can leave the JSON behind. An empty root still exits 2 before either file is created.
+  
+  **NON-BLOCKING.** The older README sentence after the new paragraph still says the evaluation stage has not been run. The new paragraph itself matches the command, the offline cached-data scope, the 2025 exclusion, and the fact that `triage_cli evaluate` rewrites `EXPERIMENT.md` from the primary result and drops this section.
+  
+  ## Files changed
+  
+  - `cubs_edge_lab/exploratory_whole_pool.py` (new)
+  - `research/exploratory_whole_pool.json` (new, aggregates only)
+  - `research/EXPERIMENT.md` (exploratory section appended)
+  - `tests/test_exploratory_whole_pool.py` (new)
+  - `tests/test_triage_experiment.py` (primary prefix only)
+  - `tests/test_publication.py` (allowlist includes the new JSON)
+  - `README.md`
+  
+  ## Tests and status
+  
+  HowlPlane’s harness reported `git diff --check` exit 0 and `python3 -m pytest -q` exit 0: 69 passed, 5 subtests passed. This review did not re-run the suite or edit the tree. No commit or push.
+  
+  Remaining risks are the ones already recorded: re-running `evaluate` removes the section; pitcher and hitter metrics use whole-pool training; the 2024 L2 choice is reused for earlier rolling-origin years; B2 trains only on no-MLB-in-Y rows.
+  
+  AUDIT_STATUS: CLEAN
+Verdict from Codex (acceptance, ACCEPTANCE_REJECTED_OR_UNCONFIRMED):
+  **ACCEPTANCE_STATUS: REJECTED**
+  
+  The prior comparator-test concern is resolved: the test runs `evaluate` with a fixture where the whole-pool winner differs from the primary-segment winner. The two new Python files also pass a targeted flake8 check.
+  
+  The full `python3 -m pytest -q` run passed: **69 passed, 5 subtests passed**. The pinned hashes for `validation.json` and the primary `EXPERIMENT.md` prefix match, and the generated JSON contains no person or name keys.
+  
+  The flake8 acceptance criterion remains unmet. The exact requested command failed because the sandbox could not bind a worker-pool socket. Running flake8 serially completed, but reported numerous violations in other repository files. The new module and test file passed that serial check; the full repository did not.
+  
+  No files were edited. I did not rerun the output-generating command. The implementation still carries the documented risks: `triage_cli evaluate` removes the exploratory section, pitcher and hitter evaluations use whole-pool training, and the 2024-selected L2 strength is reused for rolling-origin years.

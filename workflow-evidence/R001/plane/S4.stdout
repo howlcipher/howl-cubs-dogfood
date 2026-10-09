@@ -1,0 +1,111 @@
+HOWL ORCHESTRATION REPORT
+Session: 27ab9371fe65425c88a3a734ee6f6e68
+Goal: Add a dated, DESCRIPTIVE Chicago Cubs case to the MILBFA experiment in this repository, using only the local data already present (data/cohorts, data/stats, cached transactions). Do not change the primary or exploratory results or their files.
+
+OWNER AUTHORIZATION (verbatim decision of the repository owner, 2026-10-09T07:10Z): "Yes, local-only as described": local use of the MLB Stats API data for this personal, non-commercial research is approved; publish only aggregates and short attributed examples. Never request season-2026 data and never load the 2025 cohort (the untouched holdout).
+
+Content (cohorts 2021, 2022, 2023, 2024; Cubs team id 112; join on person IDs only):
+1. For each cohort Y: how many players in the November pool the Cubs signed to minor-league contracts or spring-training invitations between the player's election date and March 31 of Y+1 (reuse the existing Cubs matching rules), how many of those reached the outcome (>=50 MLB PA or >=20 MLB IP in Y+1, any club), and the same two counts restricted to the no-MLB-in-Y segment.
+2. Beside each row, the league-wide no-MLB-in-Y outcome-positive count for that cohort (already in research/validation.json base_rates) and the share of those positives the Cubs had signed.
+3. Write research/cubs_case.json (aggregates plus at most 5 short examples with person IDs and dates) and a "Cubs case (descriptive)" section appended to research/EXPERIMENT.md whose numbers all come from that JSON. Label every statement FACT/INFERENCE/UNKNOWN; state explicitly that the method failed its pre-registered test, so this case only illustrates the size of the opportunity and is not a recommendation; availability, contract terms and competing offers are UNKNOWN.
+4. Tests (offline, fixtures only, no tracked-file writes; flake8 -j1 clean; all existing tests pass, also in a clean clone without data/): the 2025 cohort is never loaded; the signing window per player; ID-only joins; every number in the new section appears in the JSON; primary and exploratory files unchanged.
+
+Integrity: never invent or alter values; report zero or small counts as they are.
+Status: COMPLETE
+Resumable: no
+Orchestrator: codex
+Implementer: codex
+Policy: PLAN + EXECUTE + INDEPENDENT AUDIT
+Constraints: The current HowlPlane session IS the orchestration workflow. Perform the assigned work in the target project. Do not launch howl/howlplane or another orchestration session merely to prove Howl was used. Do not copy internal orchestration state into the target project., Owner authorization 2026-10-09T07:10Z: local-only use of fetched MLB Stats API data is approved; publish aggregates and short attributed examples only; never request season 2026; never load the 2025 cohort., Never invent or alter statistics; label FACT, INFERENCE, UNKNOWN; descriptive only, no recommendation.
+Assignments: 9
+Reroutes: 0
+Repository head: ad3ce14c37ddb5b66743c867884ba290bd52c500
+Repository status: M cubs_edge_lab/exploratory_whole_pool.py
+ M research/EXPERIMENT.md
+ M tests/test_exploratory_whole_pool.py
+ M tests/test_publication.py
+?? cubs_edge_lab/cubs_case.py
+?? research/cubs_case.json
+?? tests/test_cubs_case.py
+Tests: [{"command": "git diff --check", "exit_code": 0, "output": ""}, {"command": ["sh", "-c", "python3 -m flake8 -j1 cubs_edge_lab tests && python3 -m pytest -q"], "rework_round": 0, "exit_code": 0, "output": "................................................................... [ 93%]\n.....                                                                    [100%]\n72 passed, 5 subtests passed in 48.63s\n"}, {"command": "git diff --check", "exit_code": 0, "output": ""}, {"command": ["sh", "-c", "python3 -m flake8 -j1 cubs_edge_lab tests && python3 -m pytest -q"], "rework_round": 1, "exit_code": 0, "output": "................................................................... [ 90%]\n.......                                                                  [100%]\n74 passed, 5 subtests passed in 47.27s\n"}, {"command": "git diff --check", "exit_code": 0, "output": ""}, {"command": ["sh", "-c", "python3 -m flake8 -j1 cubs_edge_lab tests && python3 -m pytest -q"], "rework_round": 2, "exit_code": 0, "output": "................................................................... [ 90%]\n.......                                                                  [100%]\n74 passed, 5 subtests passed in 55.56s\n"}]
+Independent audit: CLEAN
+Recovery: {}
+Rework rounds: 2 of 2
+Failures: [{"stage": "review", "agent": "cursor", "model": "UNKNOWN", "failure": "AUDIT_FINDINGS_OR_UNCONFIRMED"}, {"stage": "acceptance", "agent": "codex", "model": "UNKNOWN", "failure": "ACCEPTANCE_REJECTED_OR_UNCONFIRMED"}]
+Verdict from Cursor (review, AUDIT_FINDINGS_OR_UNCONFIRMED, rework round 0: sent back to implementation and re-judged):
+  The Cubs case matches the local cohort, transaction, and outcome rules, and the new section’s figures match `research/cubs_case.json`. One labeled statement in `research/EXPERIMENT.md` is now false.
+  
+  ## BLOCKING
+  
+  The frozen opening of `research/EXPERIMENT.md` still says player-level records are omitted and only aggregates are reported. The appended section publishes person IDs 643410 and 681799 with election and transaction dates, so that FACT is false. It sits in the primary prefix (`tests/test_exploratory_whole_pool.py` locks it with `PRIMARY_SHA256`), which this change left untouched.
+  
+  ```3:5:research/EXPERIMENT.md
+  FACT: This report is rendered only from `validation.json`. Outcomes use cached league-wide MLB season statistics. No 2025 cohort outcomes were evaluated.
+  
+  FACT: MLBAM data source: MLB Stats API. Short examples and player-level records are omitted; only aggregates are reported.
+  ```
+  
+  The same prefix already said the file is rendered only from `validation.json`, which the exploratory section had already gone beyond. This change is what adds player-level examples.
+  
+  ## NON-BLOCKING
+  
+  - The count table has nine header and body cells and eight delimiter cells (`|---:|` eight times in `cubs_case.render_section`). The numbers are still in order in the source; a strict Markdown parser will not treat it as a table.
+  - “The method failed its pre-registered test” is hardcoded. It matches the current early stop in `research/validation.json` (2024 primary positives 23, minimum 30, validation metrics null). It is not read from that file.
+  - The 2025-cohort test only records `Path.read_text`. Cohort JSON uses that path, so the current code is covered. A `read_bytes` load of `data/cohorts/2025.json` would not fail the test.
+  - Numeric consistency is checked on `render_section` output in a temp directory, by substring. It does not lock `research/EXPERIMENT.md` against `research/cubs_case.json`. Those two files do match on a direct read. Shares `0.071429` (1/14) and `0.045455` (1/22) are the six-decimal displays of the JSON ratios. League positives 14, 12, 22, and 23 match `base_rates` primary for 2021–2024.
+  
+  ## What checks out
+  
+  `cubs_case.calculate` uses cohorts 2021–2024 only, team 112, the full-window cached transactions (November 1 through March 31), the existing minor-contract and spring-invitation patterns, and an inclusive election-date-through-March-31 window. Joins are `person.id` to `person_id`. Outcomes use `outcome()` on sport-id 1 hitting and pitching for Y+1 (50 PA or 60 outs). Zeros are kept. Examples are two people, under the cap of five, with no names. No 2026 season is requested. `validation.json` and `exploratory_whole_pool.json` are not in the diff. The exploratory number check now stops at `EXPLORATORY WHOLE POOL END`, so the new section is not forced into that JSON.
+  
+  Files in this change: `cubs_edge_lab/cubs_case.py`, `research/cubs_case.json`, `tests/test_cubs_case.py`, the appended section of `research/EXPERIMENT.md`, `tests/test_exploratory_whole_pool.py`, and `tests/test_publication.py`.
+  
+  The harness reported `git diff --check` clean, `flake8 -j1` clean, and 72 tests passed. This review did not re-run them. Counts were not recomputed from the caches here; they are consistent with the implementation and with `base_rates`.
+  
+  AUDIT_STATUS: FINDINGS
+Review notes from Cursor (review, CLEAN):
+  The Cubs case matches the plan. The published counts, labels, and limits are consistent with the local inputs and with `research/cubs_case.json`. No blocking defect.
+  
+  The new case is `cubs_edge_lab/cubs_case.py`, `research/cubs_case.json`, `tests/test_cubs_case.py`, an appended section in `research/EXPERIMENT.md`, a disclosure sentence in `cubs_edge_lab/triage_report.py`, and test updates in `tests/test_exploratory_whole_pool.py` and `tests/test_publication.py`. `research/validation.json` and `research/exploratory_whole_pool.json` are not in the diff. This review did not re-run commands; the harness result is `git diff --check` clean, `flake8 -j1` clean, and 74 tests passed.
+  
+  What holds:
+  
+  - Cohorts are only 2021–2024. Outcomes use `data/stats/{Y+1}_1_{hitting,pitching}.json` (through 2025). `data/cohorts/2025.json` is never opened. There is no 2026 request.
+  - A signing counts only when person ID 112’s cached window matches the existing minor-contract or spring-invitation regex and the transaction date is from that player’s election date through March 31 of Y+1, inclusive. People are deduplicated by person ID. Outcomes use the existing rule: at least 50 MLB plate appearances or 60 outs (20 innings) in Y+1, any club.
+  - League denominators match `validation.json` primary positives: 14, 12, 22, and 23. Shares are the no-MLB-in-Y Cubs positives over those counts: 1/14, 0/12, 1/22, and 0/23, shown as `0.071429`, `0.000000`, `0.045455`, and `0.000000`. Zeros are kept.
+  - The two examples are the only no-MLB-in-Y signed positives. Cohort records confirm person 643410 (election 2021-11-07, no MLB in 2021) and person 681799 (election 2023-11-17, no MLB in 2023). The section has two examples, under the cap of five, and every digit in that section is in the JSON. Each new statement is marked FACT, INFERENCE, or UNKNOWN, including the failed pre-registered test, the non-recommendation, and unknown availability, terms, and competing offers.
+  - Fixture tests cover the 2025 read ban, inclusive election-date and March 31 boundaries, checksum failure, and generator output. They use temporary directories only.
+  
+  NON-BLOCKING:
+  
+  - The opening MLBAM sentence in `research/EXPERIMENT.md` was edited, and `PRIMARY_SHA256` in `tests/test_exploratory_whole_pool.py` was updated to that new prefix. Measured validation and exploratory results are unchanged. `PRIMARY_PREFIX_SHA256` in `cubs_edge_lab/exploratory_whole_pool.py` still records the old prefix.
+  - The unchanged header line still says the report is rendered only from `validation.json`. That was already untrue of the exploratory section. The Cubs section is rendered from `research/cubs_case.json`.
+  - Regenerating the exploratory section replaces the report from the exploratory start marker onward, which drops the Cubs section.
+  - The committed Markdown-to-JSON check is by inspection of this tree. The automated check covers the generator on fixtures, not `research/EXPERIMENT.md` itself. The day after March 31 is not a separate fixture. Joining on a name with a different person ID is not a separate fixture.
+  
+  AUDIT_STATUS: CLEAN
+Verdict from Codex (acceptance, ACCEPTANCE_REJECTED_OR_UNCONFIRMED, rework round 1: sent back to implementation and re-judged):
+  ACCEPTANCE_STATUS: REJECTED
+  
+  The case data and report section appear consistent with the supplied audit: the requested counts and shares are present, the examples stay under the limit, and the section labels its statements. The reported fixture tests and `flake8 -j1` also passed.
+  
+  Two issues keep this from acceptance:
+  
+  - The change edits the primary report renderer in [triage_report.py](/run/media/system/tallgeese/dev/cubs-edge-lab/cubs_edge_lab/triage_report.py) and changes the opening text of `EXPERIMENT.md`, beyond appending the requested section. That conflicts with the constraint to leave primary results and their files unchanged.
+  - The exploratory report generator replaces content from its start marker onward, so rerunning it drops the appended Cubs section. Its prefix hash also still contains the old value while the test hash was updated. The new report therefore is not preserved by the existing regeneration path.
+  
+  I did not edit files or run tests. The counts were not independently recomputed from the local caches; this decision relies on the implementation inspection and the supplied audit evidence.
+Review notes from Cursor (review, CLEAN):
+  The Cubs case matches the bounded plan. The new section is descriptive, its figures match `research/cubs_case.json`, and the primary and exploratory result files are unchanged.
+  
+  The case counts 2021–2024 only, joins on `person_id`, and keeps a signing when the cached Cubs description matches the existing minor-contract or spring-invitation rule and the date is from that player’s election date through March 31 of the next year, inclusive. League denominators are the primary no-MLB-in-Y positive counts in `research/validation.json`: 14, 12, 22, and 23. Shares are the Cubs no-MLB-in-Y positives over those counts, including the measured zeros. Both checked examples match the cohort file, the transaction cache, and the outcome-season stat line: person 643410 (election 2021-11-07, minor-league contract 2021-12-15, 67.2 MLB innings in 2022) and person 681799 (election 2023-11-17, minor-league contract 2023-12-02, 26.2 MLB innings in 2024). The section states that the method failed its pre-registered test, labels each statement FACT, INFERENCE, or UNKNOWN, and limits examples to two.
+  
+  Files changed: `cubs_edge_lab/cubs_case.py`, `research/cubs_case.json`, `tests/test_cubs_case.py`, the appended section in `research/EXPERIMENT.md`, `cubs_edge_lab/exploratory_whole_pool.py` (so a later exploratory rewrite keeps the text after its end marker), and the exploratory and publication tests. The harness run of `flake8 -j1` and `pytest -q` was 74 passed. This review did not re-execute that suite.
+  
+  NON-BLOCKING: `outcome()` is called with the outcome season. The study passes the cohort year only to select the 2019 shortened-season scale. For 2021–2024 that scale is 1, so these positive flags match the study rule.
+  
+  NON-BLOCKING: The markdown-to-JSON number check runs on the generator in a temporary directory. The checked-in section and `research/cubs_case.json` agree; no test re-reads that pair.
+  
+  NON-BLOCKING: The exploratory writer strips the trailing newline of the regenerated section before appending any following text. On the current report the following Cubs section still begins after a blank line.
+  
+  AUDIT_STATUS: CLEAN

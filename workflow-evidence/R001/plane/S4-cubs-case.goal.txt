@@ -1,0 +1,11 @@
+Add a dated, DESCRIPTIVE Chicago Cubs case to the MILBFA experiment in this repository, using only the local data already present (data/cohorts, data/stats, cached transactions). Do not change the primary or exploratory results or their files.
+
+OWNER AUTHORIZATION (verbatim decision of the repository owner, 2026-10-09T07:10Z): "Yes, local-only as described": local use of the MLB Stats API data for this personal, non-commercial research is approved; publish only aggregates and short attributed examples. Never request season-2026 data and never load the 2025 cohort (the untouched holdout).
+
+Content (cohorts 2021, 2022, 2023, 2024; Cubs team id 112; join on person IDs only):
+1. For each cohort Y: how many players in the November pool the Cubs signed to minor-league contracts or spring-training invitations between the player's election date and March 31 of Y+1 (reuse the existing Cubs matching rules), how many of those reached the outcome (>=50 MLB PA or >=20 MLB IP in Y+1, any club), and the same two counts restricted to the no-MLB-in-Y segment.
+2. Beside each row, the league-wide no-MLB-in-Y outcome-positive count for that cohort (already in research/validation.json base_rates) and the share of those positives the Cubs had signed.
+3. Write research/cubs_case.json (aggregates plus at most 5 short examples with person IDs and dates) and a "Cubs case (descriptive)" section appended to research/EXPERIMENT.md whose numbers all come from that JSON. Label every statement FACT/INFERENCE/UNKNOWN; state explicitly that the method failed its pre-registered test, so this case only illustrates the size of the opportunity and is not a recommendation; availability, contract terms and competing offers are UNKNOWN.
+4. Tests (offline, fixtures only, no tracked-file writes; flake8 -j1 clean; all existing tests pass, also in a clean clone without data/): the 2025 cohort is never loaded; the signing window per player; ID-only joins; every number in the new section appears in the JSON; primary and exploratory files unchanged.
+
+Integrity: never invent or alter values; report zero or small counts as they are.

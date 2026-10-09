@@ -1,0 +1,1458 @@
+{
+  "context_echo_ratio": 0.24489795918367346,
+  "evidence_echo_ratio": 0.10204081632653061,
+  "novel_concept_ratio": 0.7959183673469388,
+  "repeated_family_ratio": 0.4897959183673469,
+  "idea_count": 49,
+  "cluster_count": 25,
+  "units": [
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/1",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/0",
+      "text": "IDEA: Problem: draft boards may underweight players from neglected populations such as cold-weather high schools, small-conference colleges, and junior colleges, where public coverage is thin. Owner: amateur scouting director. Decision: area-scout coverage allocation and late-round board ordering each spring. Mechanism: coverage of neglected populations, plus correcting the bias toward players who were seen more often. Intervention: a coverage-gap map that compares public box-score and summer-league performance against logged scout looks, flagging high-signal players with few looks.",
+      "source_span": [
+        0,
+        589
+      ],
+      "source_hash": "0e78cb04d3c2cee5883fd4310c3f82874372d99132202246ef0f8f93eb4354ac",
+      "cluster": "cluster-1",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.3,
+      "context_token_overlap": 0.3333333333333333,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/2",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/0",
+      "text": "IDEA: Problem: draft-day decisions are made under time pressure, and bonus-pool slot math is error-prone. Owner: scouting director with front-office pool manager. Decision: in-draft pick selection and underslot/overslot sequencing each July. Mechanism: speed and error prevention rather than information. Intervention: a live pool-ledger simulator that shows the remaining pool, forfeiture thresholds, and signability-contingent pick sequences, then runs a pre-draft rehearsal against historical draft orders.",
+      "source_span": [
+        1027,
+        1536
+      ],
+      "source_hash": "0e78cb04d3c2cee5883fd4310c3f82874372d99132202246ef0f8f93eb4354ac",
+      "cluster": "cluster-1",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/1",
+      "similar_to": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.28846153846153844,
+      "context_token_overlap": 0.38461538461538464,
+      "evidence_family_echo": false,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/3",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/0",
+      "text": "IDEA: Problem: the non-tender deadline produces a league-wide supply shock of freed players, and clubs may evaluate them slowly or anchor on the prior club's judgment. Owner: GM and pro scouting director. Decision: which non-tendered players to pursue, and how fast, every offseason. Mechanism: speed, plus exploiting a market inefficiency in a league-wide process. Intervention: a pre-deadline model, built in October and November, that forecasts likely non-tenders from public salary projections and performance, then pre-ranks them and pre-drafts offer ranges so the club can act within hours.",
+      "source_span": [
+        1836,
+        2432
+      ],
+      "source_hash": "0e78cb04d3c2cee5883fd4310c3f82874372d99132202246ef0f8f93eb4354ac",
+      "cluster": "cluster-2",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.31746031746031744,
+      "context_token_overlap": 0.31746031746031744,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/4",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/0",
+      "text": "IDEA: Problem: the club's own non-tender and tender decisions may be biased by sunk cost or familiarity. Owner: GM. Decision: tender or non-tender of arbitration-eligible players each November. Mechanism: avoiding systematic human bias. Intervention: a blinded review in which tender candidates are mixed anonymously with comparable external non-tender candidates, and decision makers price each one without names before a decision journal records the final call.",
+      "source_span": [
+        2808,
+        3271
+      ],
+      "source_hash": "0e78cb04d3c2cee5883fd4310c3f82874372d99132202246ef0f8f93eb4354ac",
+      "cluster": "cluster-2",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/3",
+      "similar_to": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/3",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.32558139534883723,
+      "context_token_overlap": 0.3953488372093023,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/5",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/0",
+      "text": "IDEA: Problem: trade negotiations may focus on headline players while undervaluing low-minors throw-ins and players blocked by a full 40-man roster elsewhere. Owner: GM and pro scouting director. Decision: which secondary pieces to request in each trade, and which Rule 5-eligible players other clubs must protect or expose, every winter. Mechanism: market inefficiency in league-wide roster-crunch processes, plus combining signals. Intervention: a league-wide 40-man pressure map built from public transaction and roster data that flags clubs forced to shed players before Rule 5 protection and offseason deadlines, and suggests targeted asks.",
+      "source_span": [
+        3529,
+        4174
+      ],
+      "source_hash": "0e78cb04d3c2cee5883fd4310c3f82874372d99132202246ef0f8f93eb4354ac",
+      "cluster": "cluster-3",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/5",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.31343283582089554,
+      "context_token_overlap": 0.3283582089552239,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/6",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/0",
+      "text": "IDEA: Problem: free-agent contract valuations may misprice aging curves for specific skill profiles, such as speed-dependent or defense-first players. Owner: GM and front-office valuation group. Decision: offer years and dollars to free agents each winter. Mechanism: combining signals few weigh together, specifically public sprint speed trends, defensive metrics, and contract outcomes. Intervention: a skill-profile-specific aging model that is backtested only on public contracts and shows retrospective error bands against the generic aging assumption.",
+      "source_span": [
+        4601,
+        5158
+      ],
+      "source_hash": "0e78cb04d3c2cee5883fd4310c3f82874372d99132202246ef0f8f93eb4354ac",
+      "cluster": "cluster-4",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/6",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.32727272727272727,
+      "context_token_overlap": 0.32727272727272727,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/7",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/0",
+      "text": "IDEA: Problem: defensive alignment and positioning across the minor league system may be inconsistent with major league standards, so players arrive needing to relearn positioning. Owner: player development director and field coordinators. Decision: each season's standardized defensive positioning conventions and communication signs across affiliates. Mechanism: coordination and error prevention, not information. Intervention: a shared positioning-card generator plus a compliance check that compares affiliate conventions to major league conventions and flags divergences.",
+      "source_span": [
+        5487,
+        6064
+      ],
+      "source_hash": "0e78cb04d3c2cee5883fd4310c3f82874372d99132202246ef0f8f93eb4354ac",
+      "cluster": "cluster-5",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/7",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.2978723404255319,
+      "context_token_overlap": 0.3829787234042553,
+      "evidence_family_echo": false,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/8",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/0",
+      "text": "IDEA: Problem: the offseason strength and conditioning programs of remote players are hard to monitor and coordinate, especially across languages and locations. Owner: head of strength and conditioning. Decision: individualized offseason program assignment and check-ins each winter. Mechanism: coordination, plus catching non-adherence early. Intervention: a lightweight check-in and program-versioning tool with player consent and minimal data collection. It is not an information tool but a reminder and adherence ledger.",
+      "source_span": [
+        6340,
+        6864
+      ],
+      "source_hash": "0e78cb04d3c2cee5883fd4310c3f82874372d99132202246ef0f8f93eb4354ac",
+      "cluster": "cluster-6",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/8",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.3023255813953488,
+      "context_token_overlap": 0.3488372093023256,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/9",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/0",
+      "text": "IDEA: Problem: minor league free agency each November releases many upper-minors players, and evaluation is often cursory. Owner: pro scouting director and farm director. Decision: minor league free agent signings and spring invites every offseason. Mechanism: coverage of a neglected population, plus speed. Intervention: a prebuilt eligible-player list from public service-time and transaction data, ranked by public Triple-A and Double-A tracking metrics where available, with a one-page profile per player.",
+      "source_span": [
+        7199,
+        7709
+      ],
+      "source_hash": "0e78cb04d3c2cee5883fd4310c3f82874372d99132202246ef0f8f93eb4354ac",
+      "cluster": "cluster-5",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/7",
+      "similar_to": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/7",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.37735849056603776,
+      "context_token_overlap": 0.39622641509433965,
+      "evidence_family_echo": false,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/10",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/0",
+      "text": "IDEA: Problem: the club cannot tell whether its offseason decision processes beat the market. Owner: GM and front-office leadership. Decision: an annual process audit each October. Mechanism: retrospective evaluation on public history, which ties software to measurable decision changes. Intervention: a scorecard that compares each offseason's acquisitions, non-tenders, and passes against the counterfactual of players available but not chosen, using public outcomes.",
+      "source_span": [
+        7930,
+        8399
+      ],
+      "source_hash": "0e78cb04d3c2cee5883fd4310c3f82874372d99132202246ef0f8f93eb4354ac",
+      "cluster": "cluster-7",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/10",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.3181818181818182,
+      "context_token_overlap": 0.3181818181818182,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/11",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/0",
+      "text": "IDEA: Where software is unnecessary: relationship-driven decisions such as player recruitment pitches, clubhouse fit judgments, and agent rapport gain little from new software beyond basic notes.",
+      "source_span": [
+        8663,
+        8858
+      ],
+      "source_hash": "0e78cb04d3c2cee5883fd4310c3f82874372d99132202246ef0f8f93eb4354ac",
+      "cluster": "cluster-8",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/11",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.2,
+      "context_token_overlap": 0.2,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/12",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/0",
+      "text": "IDEA: Where software is unnecessary: one-off contract structure creativity, such as opt-outs and deferrals, mostly needs human negotiation. A simple present-value calculator already suffices.",
+      "source_span": [
+        8859,
+        9050
+      ],
+      "source_hash": "0e78cb04d3c2cee5883fd4310c3f82874372d99132202246ef0f8f93eb4354ac",
+      "cluster": "cluster-8",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/11",
+      "similar_to": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/11",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.2,
+      "context_token_overlap": 0.2,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/13",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/0",
+      "text": "IDEA: Where software is unnecessary: if a decision recurs rarely and the existing spreadsheet error rate is near zero, building a tool adds maintenance cost without an edge.",
+      "source_span": [
+        9051,
+        9224
+      ],
+      "source_hash": "0e78cb04d3c2cee5883fd4310c3f82874372d99132202246ef0f8f93eb4354ac",
+      "cluster": "cluster-8",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/11",
+      "similar_to": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/11",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.2777777777777778,
+      "context_token_overlap": 0.2777777777777778,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/1",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/1",
+      "text": "IDEA: Problem: minor-league free-agent pitchers released in November are signed late and with little attention. Owner: pro scouting director with farm director. Decision: which minor-league free agents get offers and non-roster invites each offseason. Mechanism: neglected population and speed. Public Triple-A pitch-tracking and swing-and-miss data could flag undervalued arms before other clubs make offers. Intervention: a ranked watchlist, refreshed as the free-agent list appears, that scores pitch-quality proxies against how much opportunity each pitcher was given.",
+      "source_span": [
+        0,
+        572
+      ],
+      "source_hash": "62c6c962d5a1d5e95db77fb7a8611feb0676c93ceb9a6ddfb09e3a0fa5fbec49",
+      "cluster": "cluster-4",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/6",
+      "similar_to": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/6",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.3333333333333333,
+      "context_token_overlap": 0.38333333333333336,
+      "evidence_family_echo": false,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/2",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/1",
+      "text": "IDEA: Problem: spring training statistics may sway roster battles despite tiny samples and uneven opponent quality. Owner: general manager and manager. Decision: final spots on the Opening Day bench and bullpen each spring. Mechanism: avoiding a systematic human bias. The tool is a commitment device, not an information source. Intervention: a pre-registered decision sheet that records the priors before camp, then shows how much each spring performance should shift them, given opponent quality and sample size.",
+      "source_span": [
+        1116,
+        1630
+      ],
+      "source_hash": "62c6c962d5a1d5e95db77fb7a8611feb0676c93ceb9a6ddfb09e3a0fa5fbec49",
+      "cluster": "cluster-9",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.23076923076923078,
+      "context_token_overlap": 0.3269230769230769,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/3",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/1",
+      "text": "IDEA: Problem: players returning from Japan, Korea or Taiwan, and released veterans in independent leagues, are a thinly covered population. Owner: pro scouting director. Decision: which overseas returnees or independent-league players get offseason contracts. Mechanism: coverage of a neglected population and combining unusual signals. Intervention: a translation layer that maps public overseas league statistics onto prior MLB stints, with explicit uncertainty bands and a list of past returnees to compare against.",
+      "source_span": [
+        1953,
+        2472
+      ],
+      "source_hash": "62c6c962d5a1d5e95db77fb7a8611feb0676c93ceb9a6ddfb09e3a0fa5fbec49",
+      "cluster": "cluster-10",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.3333333333333333,
+      "context_token_overlap": 0.3541666666666667,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/4",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/1",
+      "text": "IDEA: Problem: middle-infield defensive pairings are often evaluated one player at a time, while shift limits make range and arm combinations matter. Owner: manager with the defensive coordinator. Decision: which second base and shortstop pairing starts against ground-ball-heavy opposing lineups. Mechanism: combining signals few look at. Intervention: a pairing model built on public outs-above-average directional splits and arm data, which suggests lineups by opponent spray tendencies and the pitcher's ground-ball profile.",
+      "source_span": [
+        2847,
+        3375
+      ],
+      "source_hash": "62c6c962d5a1d5e95db77fb7a8611feb0676c93ceb9a6ddfb09e3a0fa5fbec49",
+      "cluster": "cluster-11",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/4",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.2727272727272727,
+      "context_token_overlap": 0.36363636363636365,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/5",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/1",
+      "text": "IDEA: Problem: coaching and coordinator hires carry long-term development consequences, yet they are rarely judged against a track record. Owner: president of baseball operations and farm director. Decision: offseason hiring of minor-league and major-league staff. Mechanism: market inefficiency in an under-measured process. Intervention: a public-history profile of each candidate's prior affiliates, showing changes in player development outcomes before and after their tenure, with strong confounding caveats.",
+      "source_span": [
+        3681,
+        4194
+      ],
+      "source_hash": "62c6c962d5a1d5e95db77fb7a8611feb0676c93ceb9a6ddfb09e3a0fa5fbec49",
+      "cluster": "cluster-12",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/5",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.23636363636363636,
+      "context_token_overlap": 0.2727272727272727,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/6",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/1",
+      "text": "IDEA: Problem: offseason transaction steps involve many deadlines and handoffs, and an error such as a missed tender or a lapsed option has asymmetric cost. Owner: assistant general manager for baseball operations administration. Decision: the sequence of offseason transaction filings. Mechanism: error prevention, not information. Intervention: a checklist with two-person sign-off, built on public rule calendars.",
+      "source_span": [
+        4577,
+        4993
+      ],
+      "source_hash": "62c6c962d5a1d5e95db77fb7a8611feb0676c93ceb9a6ddfb09e3a0fa5fbec49",
+      "cluster": "cluster-6",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/8",
+      "similar_to": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/8",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.3,
+      "context_token_overlap": 0.375,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/7",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/1",
+      "text": "IDEA: Where software is likely unnecessary: building rapport with players, delivering hard news such as releases, and individual coaching conversations. These depend on trust and judgment, and a tool could add friction without improving decisions.",
+      "source_span": [
+        5259,
+        5506
+      ],
+      "source_hash": "62c6c962d5a1d5e95db77fb7a8611feb0676c93ceb9a6ddfb09e3a0fa5fbec49",
+      "cluster": "cluster-13",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/7",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.13043478260869565,
+      "context_token_overlap": 0.17391304347826086,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/8",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/1",
+      "text": "IDEA: Where software is likely unnecessary: one-off decisions with no recurring structure, such as a single marquee free-agent negotiation. Disciplined human review with existing public valuation sources is probably enough, because a custom tool cannot be backtested on a sample of one.",
+      "source_span": [
+        5508,
+        5794
+      ],
+      "source_hash": "62c6c962d5a1d5e95db77fb7a8611feb0676c93ceb9a6ddfb09e3a0fa5fbec49",
+      "cluster": "cluster-13",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/7",
+      "similar_to": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/7",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.35714285714285715,
+      "context_token_overlap": 0.35714285714285715,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/1",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/2",
+      "text": "IDEA: Problem: hitters who reach minor league free agency each November are a large, low-attention pool. Owner: pro scouting director with the GM. Decision: which six-year minor league free agents get offers and non-roster invitations each offseason. Mechanism: coverage of a neglected population, where few clubs give each player a full look. Intervention: a screening queue that ranks every eligible player on public Triple-A and Double-A data, flags recent skill changes, and records the club's offer decisions so they can be scored after the season.",
+      "source_span": [
+        0,
+        553
+      ],
+      "source_hash": "1050cdd65012e09a6c22d35f4f6ee5ce9afc3d4c677974e047b84bf5b5f15902",
+      "cluster": "cluster-5",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/7",
+      "similar_to": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/7",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.4153846153846154,
+      "context_token_overlap": 0.46153846153846156,
+      "evidence_family_echo": false,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/2",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/2",
+      "text": "IDEA: Problem: players can tip pitches visibly, and opponents can read the tips from broadcast video. Owner: pitching coordinator and major league pitching coach. Decision: which Cubs pitchers get a delivery-consistency review before spring training and at midseason. Mechanism: error prevention, closing a leak opponents could exploit from public video. Intervention: an offline tool that compares a pitcher's set position, glove and timing features across pitch types in the club's own lawfully held video and flags separable patterns for coach review.",
+      "source_span": [
+        1087,
+        1641
+      ],
+      "source_hash": "1050cdd65012e09a6c22d35f4f6ee5ce9afc3d4c677974e047b84bf5b5f15902",
+      "cluster": "cluster-10",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/3",
+      "similar_to": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/3",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.22807017543859648,
+      "context_token_overlap": 0.2631578947368421,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/3",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/2",
+      "text": "IDEA: Problem: each fall, the postseason roster is built under time pressure, and the regular-season roster logic may carry over by default. Owner: GM with the manager. Decision: series-by-series roster composition, such as an extra reliever versus a bench specialist. Mechanism: avoiding status-quo bias in an off-schedule decision, since postseason off-days change pitcher usage. Intervention: a pre-built template the staff fills in during September that lays out each alternative roster against the likely opponent, plus a retrospective log of choices.",
+      "source_span": [
+        2153,
+        2709
+      ],
+      "source_hash": "1050cdd65012e09a6c22d35f4f6ee5ce9afc3d4c677974e047b84bf5b5f15902",
+      "cluster": "cluster-14",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.17857142857142858,
+      "context_token_overlap": 0.23214285714285715,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/4",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/2",
+      "text": "IDEA: Problem: veterans from top foreign leagues (NPB, KBO, CPBL, the Mexican League) are evaluated inconsistently. Owner: pro scouting and international scouting leads. Decision: which foreign-league veterans to pursue each offseason through posting or free agency. Mechanism: combining public foreign-league stats, past MLB transitions by league, and age into a consistent first-pass screen. Intervention: a translation model with uncertainty bands, scored against public history of players who moved to MLB.",
+      "source_span": [
+        3021,
+        3531
+      ],
+      "source_hash": "1050cdd65012e09a6c22d35f4f6ee5ce9afc3d4c677974e047b84bf5b5f15902",
+      "cluster": "cluster-15",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/4",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.34,
+      "context_token_overlap": 0.38,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/5",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/2",
+      "text": "IDEA: Problem: some players in the organization may have more value at a different position or role, such as a hitter converting to pitcher or the reverse. Owner: farm director. Decision: annual offseason review of conversion candidates. Mechanism: within-organization coverage of a neglected population, plus countering the anchoring of players to the role they were drafted for. Intervention: a review checklist that surfaces stalled players and pairs public performance data with the club's internal velocity or athleticism notes, so a human makes the conversion call.",
+      "source_span": [
+        3998,
+        4569
+      ],
+      "source_hash": "1050cdd65012e09a6c22d35f4f6ee5ce9afc3d4c677974e047b84bf5b5f15902",
+      "cluster": "cluster-16",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/5",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.2545454545454545,
+      "context_token_overlap": 0.2727272727272727,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/6",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/2",
+      "text": "IDEA: Problem: veterans with opt-out clauses in non-roster deals become available in late spring on predictable dates. Owner: GM and pro scouting. Decision: whether to claim or sign opt-out veterans to fill spring injury holes. Mechanism: speed, by acting in a narrow window others may treat ad hoc. Intervention: a calendar of reported opt-out dates with pre-ranked fallback targets by position, prepared during the winter.",
+      "source_span": [
+        4865,
+        5289
+      ],
+      "source_hash": "1050cdd65012e09a6c22d35f4f6ee5ce9afc3d4c677974e047b84bf5b5f15902",
+      "cluster": "cluster-15",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/4",
+      "similar_to": "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/4",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.2,
+      "context_token_overlap": 0.2222222222222222,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/7",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/2",
+      "text": "IDEA: Challenge alternative: the largest edge may come from changing staffing and incentives rather than building software, for example by funding more coverage scouts in neglected leagues.",
+      "source_span": [
+        5531,
+        5720
+      ],
+      "source_hash": "1050cdd65012e09a6c22d35f4f6ee5ce9afc3d4c677974e047b84bf5b5f15902",
+      "cluster": "cluster-17",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/7",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.2777777777777778,
+      "context_token_overlap": 0.3333333333333333,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/1",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/3",
+      "text": "IDEA: Problem: other clubs' private models are hidden, but their transactions reveal their preferences. Owner: GM and pro scouting director. Recurring decision: which clubs to approach first, and with which players, each offseason and at the deadline. Mechanism: market inefficiency. Public trades, claims, signings and releases from all 30 clubs show what each club pays for and what it discards, which helps identify partners who undervalue what the Cubs hold. Software: a model of each club's revealed preferences, refit every offseason, that ranks likely partners for a proposed trade package.",
+      "source_span": [
+        0,
+        597
+      ],
+      "source_hash": "66422c47e1f70f9c07c90d9f3b37d84b78dde36c2e72cc9ca254c6f76aeb9069",
+      "cluster": "cluster-18",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.3448275862068966,
+      "context_token_overlap": 0.3448275862068966,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/2",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/3",
+      "text": "IDEA: Problem: adverse selection when buying a player another club chose to sell or release. Owner: GM, with the pro scouting director as reviewer. Recurring decision: whether to finalize any trade acquisition, waiver claim or minor-league free-agent signing. Mechanism: avoiding a systematic bias. Buyers anchor on the visible case for the player and underweight why the seller let him go. Software: a pre-commit red-team checklist that asks for the strongest public-data case for the seller's view and logs a prediction to score later. This is an error-prevention tool, not an information tool.",
+      "source_span": [
+        1176,
+        1772
+      ],
+      "source_hash": "66422c47e1f70f9c07c90d9f3b37d84b78dde36c2e72cc9ca254c6f76aeb9069",
+      "cluster": "cluster-19",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.3114754098360656,
+      "context_token_overlap": 0.36065573770491804,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/3",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/3",
+      "text": "IDEA: Problem: development staff are retained, promoted or released each offseason with weak evidence of their effect. Owner: farm director and director of player development. Recurring decision: offseason staffing of minor league coaches and coordinators. Mechanism: combining signals few look at. Public staff assignments by affiliate and year can be joined to public player performance changes, so a coach's effect can be estimated across player cohorts and even across organizations. Software: a coach-effect estimator with uncertainty bands and adjustment for player selection. External coach-hiring candidates could be scored the same way.",
+      "source_span": [
+        2258,
+        2903
+      ],
+      "source_hash": "66422c47e1f70f9c07c90d9f3b37d84b78dde36c2e72cc9ca254c6f76aeb9069",
+      "cluster": "cluster-20",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.30357142857142855,
+      "context_token_overlap": 0.32142857142857145,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/4",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/3",
+      "text": "IDEA: Problem: rosters are built for a 162-game season, while postseason series reward a different roster shape. Owner: GM and manager. Recurring decision: offseason acquisitions at the margin, then the postseason roster each October. Mechanism: market inefficiency. The regular-season market may underprice traits that matter more in short series, such as top-heavy bullpen leverage, platoon-proof lineups and the value of four-man rotation depth. Software: a short-series simulator built on public data that reprices candidate players by their marginal postseason value, conditional on the club being a likely playoff team.",
+      "source_span": [
+        3334,
+        3959
+      ],
+      "source_hash": "66422c47e1f70f9c07c90d9f3b37d84b78dde36c2e72cc9ca254c6f76aeb9069",
+      "cluster": "cluster-21",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/4",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.22950819672131148,
+      "context_token_overlap": 0.29508196721311475,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/5",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/3",
+      "text": "IDEA: Problem: each club independently judges which of its own prospects need protecting from the Rule 5 draft. Owner: farm director and GM. Recurring decision: the November 40-man protection list, plus Rule 5 picks in December. Mechanism: speed and coverage. A league-wide model of which unprotected players other clubs are likely to take or leave can set protection priorities and pick targets before the human debate anchors. Software: a forecaster of selection probability per player, backtested on past Rule 5 drafts.",
+      "source_span": [
+        4336,
+        4858
+      ],
+      "source_hash": "66422c47e1f70f9c07c90d9f3b37d84b78dde36c2e72cc9ca254c6f76aeb9069",
+      "cluster": "cluster-14",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/3",
+      "similar_to": "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/3",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.2631578947368421,
+      "context_token_overlap": 0.2807017543859649,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/6",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/3",
+      "text": "IDEA: Problem: after each season, six-year minor league free agents and independent league players form a large, neglected population. Owner: pro scouting director and assistant GM. Recurring decision: November depth and non-roster invite signings. Mechanism: coverage of neglected players. Most clubs give this pool little attention, so a cheap screen that scores the full list could surface undervalued depth. Software: an automated screen ranking every eligible player within days of eligibility opening.",
+      "source_span": [
+        5070,
+        5577
+      ],
+      "source_hash": "66422c47e1f70f9c07c90d9f3b37d84b78dde36c2e72cc9ca254c6f76aeb9069",
+      "cluster": "cluster-5",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/7",
+      "similar_to": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/7",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.32727272727272727,
+      "context_token_overlap": 0.38181818181818183,
+      "evidence_family_echo": false,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/7",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/3",
+      "text": "IDEA: Software is unnecessary where the decision is rare, high-context and relationship-driven. Examples include managerial hiring, clubhouse leadership and final contract negotiation with agents. A disciplined human process and a written decision record likely capture most of the available value.",
+      "source_span": [
+        5892,
+        6190
+      ],
+      "source_hash": "66422c47e1f70f9c07c90d9f3b37d84b78dde36c2e72cc9ca254c6f76aeb9069",
+      "cluster": "cluster-8",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/11",
+      "similar_to": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/11",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.25,
+      "context_token_overlap": 0.25,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/8",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/3",
+      "text": "IDEA: Software is unnecessary for small fixed populations already fully covered by staff, such as the 26-man active roster's daily usage. Custom tooling there risks duplicating existing internal systems.",
+      "source_span": [
+        6191,
+        6394
+      ],
+      "source_hash": "66422c47e1f70f9c07c90d9f3b37d84b78dde36c2e72cc9ca254c6f76aeb9069",
+      "cluster": "cluster-22",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/8",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.08333333333333333,
+      "context_token_overlap": 0.125,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/4/idea/1",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/4",
+      "text": "IDEA: Problem: coaching staff hires are made with less structured evaluation than player acquisitions. Decision owner: the player development lead who hires minor league and major league coaches. Recurring decision: each offseason, which outside coaches to recruit and which internal coaches to promote. Mechanism: coaches are a neglected market where public tools barely exist, so even crude coverage could beat informal reputation networks. Software: link public minor league rosters, coaching assignments and public outcome changes to produce a coach-candidate shortlist with uncertainty bands, labeled as hypothesis-generating rather than proof of coaching skill.",
+      "source_span": [
+        0,
+        667
+      ],
+      "source_hash": "0f182e736b84861b24cdc23d5edeb3832116370df604e2716782ae44b2698150",
+      "cluster": "cluster-12",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/5",
+      "similar_to": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/5",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.29508196721311475,
+      "context_token_overlap": 0.32786885245901637,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/4/idea/2",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/4",
+      "text": "IDEA: Problem: a club's own players pitching or playing in winter leagues have workload and conditioning goals that may not be shared consistently with the winter clubs. Decision owner: the strength-and-conditioning and pitching coordinators who approve winter-ball participation. Recurring decision: every offseason, which 40-man and upper-minors players may play winter ball, with what limits, and when to pull them. Mechanism: this is an error-prevention and coordination tool, not an information edge, so private-data clubs cannot outspend it away. Software: a shared plan ledger that lists each player's agreed limits, scrapes public winter-league box scores, and flags overages to the named coordinator within a day.",
+      "source_span": [
+        1503,
+        2225
+      ],
+      "source_hash": "0f182e736b84861b24cdc23d5edeb3832116370df604e2716782ae44b2698150",
+      "cluster": "cluster-7",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/10",
+      "similar_to": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/10",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.3382352941176471,
+      "context_token_overlap": 0.39705882352941174,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/4/idea/3",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/4",
+      "text": "IDEA: Problem: players are rarely converted between positions or roles (for example position player to pitcher, infielder to catcher) until their careers stall, which may be too late. Decision owner: the farm director together with the minor league field coordinator. Recurring decision: each offseason, which stalled prospects to offer a role or position conversion. Mechanism: neglected population plus timing, since a systematic early screen could act before other clubs release or convert those players. Software: a screen that ranks stalled players by publicly visible proxies for conversion suitability (athletic indicators, age, level trajectory, any public tracked arm or velocity readings), producing a conversation list rather than a verdict.",
+      "source_span": [
+        2878,
+        3630
+      ],
+      "source_hash": "0f182e736b84861b24cdc23d5edeb3832116370df604e2716782ae44b2698150",
+      "cluster": "cluster-10",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/3",
+      "similar_to": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/3",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.21333333333333335,
+      "context_token_overlap": 0.24,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/4/idea/4",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/4",
+      "text": "IDEA: Problem: defensive assignment decisions, such as who backs up at which positions and which bench players get infield versus outfield reps in spring, may be made by habit rather than by tested fit. Decision owner: the manager and the infield and outfield coordinators. Recurring decision: each spring, which players are trained as multi-position backups and at which positions. Mechanism: avoiding a systematic bias, namely deferring to a player's listed primary position, plus combining public positional defensive metrics that few people use for depth planning. Software: a depth-chart stress tester that simulates injury scenarios from public historical injury frequencies and shows which positions lack a credible public-data backup, so coaches assign spring reps deliberately.",
+      "source_span": [
+        4379,
+        5165
+      ],
+      "source_hash": "0f182e736b84861b24cdc23d5edeb3832116370df604e2716782ae44b2698150",
+      "cluster": "cluster-5",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/7",
+      "similar_to": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/7",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.25,
+      "context_token_overlap": 0.3055555555555556,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/4/idea/5",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/4",
+      "text": "IDEA: Unconventional alternative: the edge may lie in removing decisions rather than informing them. Pre-committed default rules, for example automatic review triggers or automatic workload caps, could cut noise from fatigue and bias. Decision owner: the president or general manager of baseball operations, who sets policy. Recurring decision: which recurring calls become rule-based defaults that people can override only with a written reason. Software: a minimal override log, not an analytics tool.",
+      "source_span": [
+        5641,
+        6144
+      ],
+      "source_hash": "0f182e736b84861b24cdc23d5edeb3832116370df604e2716782ae44b2698150",
+      "cluster": "cluster-17",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/7",
+      "similar_to": "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/7",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.24489795918367346,
+      "context_token_overlap": 0.2857142857142857,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/4/idea/6",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/4",
+      "text": "IDEA: Software is likely unnecessary for: one-off franchise-level trades, where a phone call and judgment dominate; relationship building with agents and players; clubhouse culture; and any task where a spreadsheet the club already has fully answers the question.",
+      "source_span": [
+        6592,
+        6855
+      ],
+      "source_hash": "0f182e736b84861b24cdc23d5edeb3832116370df604e2716782ae44b2698150",
+      "cluster": "cluster-13",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/7",
+      "similar_to": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/7",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.07692307692307693,
+      "context_token_overlap": 0.11538461538461539,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/5/idea/1",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/5",
+      "text": "IDEA: Problem: postseason rosters may be built like regular-season rosters even though short series reward a different mix. Owner: GM with manager sign-off. Decision: the 26-man Wild Card and Division Series rosters, set every October the club qualifies. Mechanism: off days and short series shrink the need for starter depth and raise the value of high-leverage relievers, pinch-run speed and platoon bats, and committee habits may underweight this. Software: a roster simulator that replays public postseason schedules and off days, scores alternative roster compositions, and records the chosen roster against the strongest alternative for later review.",
+      "source_span": [
+        0,
+        656
+      ],
+      "source_hash": "3fc1203c9416f695d031ebbf1261c2d60b02538aa512464e844a37977a5c23d8",
+      "cluster": "cluster-23",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/5/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.1746031746031746,
+      "context_token_overlap": 0.20634920634920634,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/5/idea/2",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/5",
+      "text": "IDEA: Problem: the value of catcher defense may be repriced under robot-ump challenge systems, and the market may adjust slowly. Owner: GM and pro scouting director. Decision: catcher acquisitions, non-tenders and backup-catcher signings each offseason. Mechanism: a market inefficiency during a league-wide rule transition, where framing value shrinks and blocking, throwing, game-calling and durability matter relatively more. Software: a public-data model that recomputes catcher value under rule scenarios and flags catchers whose market price still reflects pre-rule framing value.",
+      "source_span": [
+        1185,
+        1771
+      ],
+      "source_hash": "3fc1203c9416f695d031ebbf1261c2d60b02538aa512464e844a37977a5c23d8",
+      "cluster": "cluster-24",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/5/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.2982456140350877,
+      "context_token_overlap": 0.3333333333333333,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/5/idea/3",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/5",
+      "text": "IDEA: Problem: coaching hires, especially minor league hitting and pitching coordinators, are often based on reputation and network rather than measured development results. Owner: President of Baseball Operations and the farm director. Decision: hiring and reassigning coaches, which happens every offseason. Mechanism: coaches are a neglected population, and public affiliate staff histories combined with year-over-year player stat changes might show which coaches are linked to player improvement, a signal few clubs measure systematically. Software: a database linking coach tenures to affiliate player changes, adjusted for age, level and roster turnover, used as one input in interviews rather than a ranking.",
+      "source_span": [
+        2255,
+        2971
+      ],
+      "source_hash": "3fc1203c9416f695d031ebbf1261c2d60b02538aa512464e844a37977a5c23d8",
+      "cluster": "cluster-5",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/7",
+      "similar_to": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/7",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.23880597014925373,
+      "context_token_overlap": 0.2835820895522388,
+      "evidence_family_echo": false,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/5/idea/4",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/5",
+      "text": "IDEA: Problem: trade value depends on which clubs have a positional need and a payroll situation that lets them act, and this changes every offseason. Owner: GM and assistant GMs. Decision: which clubs to call first about which surplus Cubs players. Mechanism: speed and coverage, by keeping all 29 counterparties' depth charts, payroll commitments and roster crunches mapped before the market moves. Software: a counterparty-need matrix refreshed from public transactions and payroll data, which logs every call made and its outcome so targeting can be judged afterward.",
+      "source_span": [
+        3460,
+        4031
+      ],
+      "source_hash": "3fc1203c9416f695d031ebbf1261c2d60b02538aa512464e844a37977a5c23d8",
+      "cluster": "cluster-3",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/5",
+      "similar_to": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/5",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.29310344827586204,
+      "context_token_overlap": 0.3275862068965517,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/5/idea/5",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/5",
+      "text": "IDEA: Problem: dead-roster-spot waste in lopsided games, where relievers are used in low-leverage innings that drain them for later games. Owner: manager and bench coach. Decision: when to use a position player to pitch, made dozens of times a season. Mechanism: avoiding loss-aversion bias, since managers may hesitate to concede a game publicly even when win probability is negligible. Software: an in-game threshold alert combining win probability with the next three days' schedule.",
+      "source_span": [
+        4364,
+        4850
+      ],
+      "source_hash": "3fc1203c9416f695d031ebbf1261c2d60b02538aa512464e844a37977a5c23d8",
+      "cluster": "cluster-25",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/5/idea/5",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.15384615384615385,
+      "context_token_overlap": 0.23076923076923078,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/5/idea/6",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/5",
+      "text": "IDEA: Software is likely unnecessary for lineup-card legality checks and double-switch bookkeeping, because errors are rare and a human checklist with a second reviewer already covers them cheaply.",
+      "source_span": [
+        5167,
+        5364
+      ],
+      "source_hash": "3fc1203c9416f695d031ebbf1261c2d60b02538aa512464e844a37977a5c23d8",
+      "cluster": "cluster-13",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/7",
+      "similar_to": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/7",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.2,
+      "context_token_overlap": 0.2,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/5/idea/7",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/5",
+      "text": "IDEA: Software is likely unnecessary for the final judgment in coaching hires, where the tool should only frame interviews, and interpersonal fit judged by people should dominate.",
+      "source_span": [
+        5365,
+        5544
+      ],
+      "source_hash": "3fc1203c9416f695d031ebbf1261c2d60b02538aa512464e844a37977a5c23d8",
+      "cluster": "cluster-13",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/7",
+      "similar_to": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/7",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.2,
+      "context_token_overlap": 0.26666666666666666,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    }
+  ],
+  "clusters": [
+    {
+      "id": "cluster-1",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/1",
+      "representative_text": "IDEA: Problem: draft boards may underweight players from neglected populations such as cold-weather high schools, small-conference colleges, and junior colleges, where public coverage is thin. Owner: amateur scouting director. Decision: area-scout coverage allocation and late-round board ordering each spring. Mechanism: coverage of neglected populations, plus correcting the bias toward players who were seen more often. Intervention: a coverage-gap map that compares public box-score and summer-league performance against logged scout looks, flagging high-signal players with few looks.",
+      "label": "against, allocation, amateur, area, bias, board, boards, box",
+      "members": [
+        "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/1",
+        "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-2",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/3",
+      "representative_text": "IDEA: Problem: the non-tender deadline produces a league-wide supply shock of freed players, and clubs may evaluate them slowly or anchor on the prior club's judgment. Owner: GM and pro scouting director. Decision: which non-tendered players to pursue, and how fast, every offseason. Mechanism: speed, plus exploiting a market inefficiency in a league-wide process. Intervention: a pre-deadline model, built in October and November, that forecasts likely non-tenders from public salary projections and performance, then pre-ranks them and pre-drafts offer ranges so the club can act within hours.",
+      "label": "act, anchor, built, can, club, clubs, deadline, decision",
+      "members": [
+        "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/3",
+        "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/4"
+      ]
+    },
+    {
+      "id": "cluster-3",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/5",
+      "representative_text": "IDEA: Problem: trade negotiations may focus on headline players while undervaluing low-minors throw-ins and players blocked by a full 40-man roster elsewhere. Owner: GM and pro scouting director. Decision: which secondary pieces to request in each trade, and which Rule 5-eligible players other clubs must protect or expose, every winter. Mechanism: market inefficiency in league-wide roster-crunch processes, plus combining signals. Intervention: a league-wide 40-man pressure map built from public transaction and roster data that flags clubs forced to shed players before Rule 5 protection and offseason deadlines, and suggests targeted asks.",
+      "label": "40, 5, asks, before, blocked, built, clubs, combining",
+      "members": [
+        "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/5",
+        "hd-20261008-144047-5e3c07475c85/candidates/0/5/idea/4"
+      ]
+    },
+    {
+      "id": "cluster-4",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/6",
+      "representative_text": "IDEA: Problem: free-agent contract valuations may misprice aging curves for specific skill profiles, such as speed-dependent or defense-first players. Owner: GM and front-office valuation group. Decision: offer years and dollars to free agents each winter. Mechanism: combining signals few weigh together, specifically public sprint speed trends, defensive metrics, and contract outcomes. Intervention: a skill-profile-specific aging model that is backtested only on public contracts and shows retrospective error bands against the generic aging assumption.",
+      "label": "against, agent, agents, aging, backtested, bands, combining, contract",
+      "members": [
+        "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/6",
+        "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/1"
+      ]
+    },
+    {
+      "id": "cluster-5",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/7",
+      "representative_text": "IDEA: Problem: defensive alignment and positioning across the minor league system may be inconsistent with major league standards, so players arrive needing to relearn positioning. Owner: player development director and field coordinators. Decision: each season's standardized defensive positioning conventions and communication signs across affiliates. Mechanism: coordination and error prevention, not information. Intervention: a shared positioning-card generator plus a compliance check that compares affiliate conventions to major league conventions and flags divergences.",
+      "label": "across, affiliate, affiliates, alignment, arrive, card, check, communication",
+      "members": [
+        "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/7",
+        "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/9",
+        "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/1",
+        "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/6",
+        "hd-20261008-144047-5e3c07475c85/candidates/0/4/idea/4",
+        "hd-20261008-144047-5e3c07475c85/candidates/0/5/idea/3"
+      ]
+    },
+    {
+      "id": "cluster-6",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/8",
+      "representative_text": "IDEA: Problem: the offseason strength and conditioning programs of remote players are hard to monitor and coordinate, especially across languages and locations. Owner: head of strength and conditioning. Decision: individualized offseason program assignment and check-ins each winter. Mechanism: coordination, plus catching non-adherence early. Intervention: a lightweight check-in and program-versioning tool with player consent and minimal data collection. It is not an information tool but a reminder and adherence ledger.",
+      "label": "across, adherence, assignment, but, catching, check, collection, conditioning",
+      "members": [
+        "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/8",
+        "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/6"
+      ]
+    },
+    {
+      "id": "cluster-7",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/10",
+      "representative_text": "IDEA: Problem: the club cannot tell whether its offseason decision processes beat the market. Owner: GM and front-office leadership. Decision: an annual process audit each October. Mechanism: retrospective evaluation on public history, which ties software to measurable decision changes. Intervention: a scorecard that compares each offseason's acquisitions, non-tenders, and passes against the counterfactual of players available but not chosen, using public outcomes.",
+      "label": "acquisitions, against, annual, audit, available, beat, but, cannot",
+      "members": [
+        "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/10",
+        "hd-20261008-144047-5e3c07475c85/candidates/0/4/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-8",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/11",
+      "representative_text": "IDEA: Where software is unnecessary: relationship-driven decisions such as player recruitment pitches, clubhouse fit judgments, and agent rapport gain little from new software beyond basic notes.",
+      "label": "agent, basic, beyond, clubhouse, decisions, driven, fit, gain",
+      "members": [
+        "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/11",
+        "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/12",
+        "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/13",
+        "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/7"
+      ]
+    },
+    {
+      "id": "cluster-9",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/2",
+      "representative_text": "IDEA: Problem: spring training statistics may sway roster battles despite tiny samples and uneven opponent quality. Owner: general manager and manager. Decision: final spots on the Opening Day bench and bullpen each spring. Mechanism: avoiding a systematic human bias. The tool is a commitment device, not an information source. Intervention: a pre-registered decision sheet that records the priors before camp, then shows how much each spring performance should shift them, given opponent quality and sample size.",
+      "label": "avoiding, battles, before, bench, bias, bullpen, camp, commitment",
+      "members": [
+        "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-10",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/3",
+      "representative_text": "IDEA: Problem: players returning from Japan, Korea or Taiwan, and released veterans in independent leagues, are a thinly covered population. Owner: pro scouting director. Decision: which overseas returnees or independent-league players get offseason contracts. Mechanism: coverage of a neglected population and combining unusual signals. Intervention: a translation layer that maps public overseas league statistics onto prior MLB stints, with explicit uncertainty bands and a list of past returnees to compare against.",
+      "label": "against, bands, combining, compare, contracts, coverage, covered, decision",
+      "members": [
+        "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/3",
+        "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/2",
+        "hd-20261008-144047-5e3c07475c85/candidates/0/4/idea/3"
+      ]
+    },
+    {
+      "id": "cluster-11",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/4",
+      "representative_text": "IDEA: Problem: middle-infield defensive pairings are often evaluated one player at a time, while shift limits make range and arm combinations matter. Owner: manager with the defensive coordinator. Decision: which second base and shortstop pairing starts against ground-ball-heavy opposing lineups. Mechanism: combining signals few look at. Intervention: a pairing model built on public outs-above-average directional splits and arm data, which suggests lineups by opponent spray tendencies and the pitcher's ground-ball profile.",
+      "label": "above, against, arm, at, average, ball, base, built",
+      "members": [
+        "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/4"
+      ]
+    },
+    {
+      "id": "cluster-12",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/5",
+      "representative_text": "IDEA: Problem: coaching and coordinator hires carry long-term development consequences, yet they are rarely judged against a track record. Owner: president of baseball operations and farm director. Decision: offseason hiring of minor-league and major-league staff. Mechanism: market inefficiency in an under-measured process. Intervention: a public-history profile of each candidate's prior affiliates, showing changes in player development outcomes before and after their tenure, with strong confounding caveats.",
+      "label": "affiliates, after, against, baseball, before, candidate, carry, caveats",
+      "members": [
+        "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/5",
+        "hd-20261008-144047-5e3c07475c85/candidates/0/4/idea/1"
+      ]
+    },
+    {
+      "id": "cluster-13",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/7",
+      "representative_text": "IDEA: Where software is likely unnecessary: building rapport with players, delivering hard news such as releases, and individual coaching conversations. These depend on trust and judgment, and a tool could add friction without improving decisions.",
+      "label": "add, building, coaching, conversations, decisions, delivering, depend, friction",
+      "members": [
+        "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/7",
+        "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/8",
+        "hd-20261008-144047-5e3c07475c85/candidates/0/4/idea/6",
+        "hd-20261008-144047-5e3c07475c85/candidates/0/5/idea/6",
+        "hd-20261008-144047-5e3c07475c85/candidates/0/5/idea/7"
+      ]
+    },
+    {
+      "id": "cluster-14",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/3",
+      "representative_text": "IDEA: Problem: each fall, the postseason roster is built under time pressure, and the regular-season roster logic may carry over by default. Owner: GM with the manager. Decision: series-by-series roster composition, such as an extra reliever versus a bench specialist. Mechanism: avoiding status-quo bias in an off-schedule decision, since postseason off-days change pitcher usage. Intervention: a pre-built template the staff fills in during September that lays out each alternative roster against the likely opponent, plus a retrospective log of choices.",
+      "label": "against, avoiding, bench, bias, built, carry, change, choices",
+      "members": [
+        "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/3",
+        "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/5"
+      ]
+    },
+    {
+      "id": "cluster-15",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/4",
+      "representative_text": "IDEA: Problem: veterans from top foreign leagues (NPB, KBO, CPBL, the Mexican League) are evaluated inconsistently. Owner: pro scouting and international scouting leads. Decision: which foreign-league veterans to pursue each offseason through posting or free agency. Mechanism: combining public foreign-league stats, past MLB transitions by league, and age into a consistent first-pass screen. Intervention: a translation model with uncertainty bands, scored against public history of players who moved to MLB.",
+      "label": "against, age, agency, bands, combining, consistent, cpbl, decision",
+      "members": [
+        "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/4",
+        "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/6"
+      ]
+    },
+    {
+      "id": "cluster-16",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/5",
+      "representative_text": "IDEA: Problem: some players in the organization may have more value at a different position or role, such as a hitter converting to pitcher or the reverse. Owner: farm director. Decision: annual offseason review of conversion candidates. Mechanism: within-organization coverage of a neglected population, plus countering the anchoring of players to the role they were drafted for. Intervention: a review checklist that surfaces stalled players and pairs public performance data with the club's internal velocity or athleticism notes, so a human makes the conversion call.",
+      "label": "anchoring, annual, at, athleticism, call, candidates, checklist, club",
+      "members": [
+        "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/5"
+      ]
+    },
+    {
+      "id": "cluster-17",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/7",
+      "representative_text": "IDEA: Challenge alternative: the largest edge may come from changing staffing and incentives rather than building software, for example by funding more coverage scouts in neglected leagues.",
+      "label": "building, challenge, changing, come, coverage, edge, example, funding",
+      "members": [
+        "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/7",
+        "hd-20261008-144047-5e3c07475c85/candidates/0/4/idea/5"
+      ]
+    },
+    {
+      "id": "cluster-18",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/1",
+      "representative_text": "IDEA: Problem: other clubs' private models are hidden, but their transactions reveal their preferences. Owner: GM and pro scouting director. Recurring decision: which clubs to approach first, and with which players, each offseason and at the deadline. Mechanism: market inefficiency. Public trades, claims, signings and releases from all 30 clubs show what each club pays for and what it discards, which helps identify partners who undervalue what the Cubs hold. Software: a model of each club's revealed preferences, refit every offseason, that ranks likely partners for a proposed trade package.",
+      "label": "30, all, approach, at, but, claims, club, clubs",
+      "members": [
+        "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/1"
+      ]
+    },
+    {
+      "id": "cluster-19",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/2",
+      "representative_text": "IDEA: Problem: adverse selection when buying a player another club chose to sell or release. Owner: GM, with the pro scouting director as reviewer. Recurring decision: whether to finalize any trade acquisition, waiver claim or minor-league free-agent signing. Mechanism: avoiding a systematic bias. Buyers anchor on the visible case for the player and underweight why the seller let him go. Software: a pre-commit red-team checklist that asks for the strongest public-data case for the seller's view and logs a prediction to score later. This is an error-prevention tool, not an information tool.",
+      "label": "acquisition, adverse, agent, anchor, any, asks, avoiding, bias",
+      "members": [
+        "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-20",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/3",
+      "representative_text": "IDEA: Problem: development staff are retained, promoted or released each offseason with weak evidence of their effect. Owner: farm director and director of player development. Recurring decision: offseason staffing of minor league coaches and coordinators. Mechanism: combining signals few look at. Public staff assignments by affiliate and year can be joined to public player performance changes, so a coach's effect can be estimated across player cohorts and even across organizations. Software: a coach-effect estimator with uncertainty bands and adjustment for player selection. External coach-hiring candidates could be scored the same way.",
+      "label": "across, adjustment, affiliate, assignments, at, bands, can, candidates",
+      "members": [
+        "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/3"
+      ]
+    },
+    {
+      "id": "cluster-21",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/4",
+      "representative_text": "IDEA: Problem: rosters are built for a 162-game season, while postseason series reward a different roster shape. Owner: GM and manager. Recurring decision: offseason acquisitions at the margin, then the postseason roster each October. Mechanism: market inefficiency. The regular-season market may underprice traits that matter more in short series, such as top-heavy bullpen leverage, platoon-proof lineups and the value of four-man rotation depth. Software: a short-series simulator built on public data that reprices candidate players by their marginal postseason value, conditional on the club being a likely playoff team.",
+      "label": "162, acquisitions, at, being, built, bullpen, candidate, club",
+      "members": [
+        "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/4"
+      ]
+    },
+    {
+      "id": "cluster-22",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/8",
+      "representative_text": "IDEA: Software is unnecessary for small fixed populations already fully covered by staff, such as the 26-man active roster's daily usage. Custom tooling there risks duplicating existing internal systems.",
+      "label": "26, active, already, covered, custom, daily, duplicating, existing",
+      "members": [
+        "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/8"
+      ]
+    },
+    {
+      "id": "cluster-23",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/5/idea/1",
+      "representative_text": "IDEA: Problem: postseason rosters may be built like regular-season rosters even though short series reward a different mix. Owner: GM with manager sign-off. Decision: the 26-man Wild Card and Division Series rosters, set every October the club qualifies. Mechanism: off days and short series shrink the need for starter depth and raise the value of high-leverage relievers, pinch-run speed and platoon bats, and committee habits may underweight this. Software: a roster simulator that replays public postseason schedules and off days, scores alternative roster compositions, and records the chosen roster against the strongest alternative for later review.",
+      "label": "26, against, bats, built, card, chosen, club, committee",
+      "members": [
+        "hd-20261008-144047-5e3c07475c85/candidates/0/5/idea/1"
+      ]
+    },
+    {
+      "id": "cluster-24",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/5/idea/2",
+      "representative_text": "IDEA: Problem: the value of catcher defense may be repriced under robot-ump challenge systems, and the market may adjust slowly. Owner: GM and pro scouting director. Decision: catcher acquisitions, non-tenders and backup-catcher signings each offseason. Mechanism: a market inefficiency during a league-wide rule transition, where framing value shrinks and blocking, throwing, game-calling and durability matter relatively more. Software: a public-data model that recomputes catcher value under rule scenarios and flags catchers whose market price still reflects pre-rule framing value.",
+      "label": "acquisitions, adjust, backup, blocking, calling, catcher, catchers, challenge",
+      "members": [
+        "hd-20261008-144047-5e3c07475c85/candidates/0/5/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-25",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/5/idea/5",
+      "representative_text": "IDEA: Problem: dead-roster-spot waste in lopsided games, where relievers are used in low-leverage innings that drain them for later games. Owner: manager and bench coach. Decision: when to use a position player to pitch, made dozens of times a season. Mechanism: avoiding loss-aversion bias, since managers may hesitate to concede a game publicly even when win probability is negligible. Software: an in-game threshold alert combining win probability with the next three days' schedule.",
+      "label": "alert, aversion, avoiding, bench, bias, coach, combining, concede",
+      "members": [
+        "hd-20261008-144047-5e3c07475c85/candidates/0/5/idea/5"
+      ]
+    }
+  ],
+  "ranking": [
+    {
+      "cluster": "cluster-18",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/1",
+      "score": 0.5315398091317823,
+      "criteria": {
+        "novelty": 0.9388560157790927,
+        "objective_fit": 0.12422360248447205
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-15",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/4",
+      "score": 0.5297347042396547,
+      "criteria": {
+        "novelty": 0.9504950495049505,
+        "objective_fit": 0.10897435897435898
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-10",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/3",
+      "score": 0.5288406259980837,
+      "criteria": {
+        "novelty": 0.9544554455445544,
+        "objective_fit": 0.1032258064516129
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-20",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/3",
+      "score": 0.5249100806843588,
+      "criteria": {
+        "novelty": 0.9448818897637795,
+        "objective_fit": 0.10493827160493827
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-3",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/5",
+      "score": 0.5232753717888216,
+      "criteria": {
+        "novelty": 0.9222903885480572,
+        "objective_fit": 0.1242603550295858
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-2",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/3",
+      "score": 0.5221751202340225,
+      "criteria": {
+        "novelty": 0.9238683127572016,
+        "objective_fit": 0.12048192771084337
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-19",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/2",
+      "score": 0.520462355513902,
+      "criteria": {
+        "novelty": 0.9257731958762887,
+        "objective_fit": 0.11515151515151516
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-4",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/6",
+      "score": 0.5197916666666667,
+      "criteria": {
+        "novelty": 0.9270833333333334,
+        "objective_fit": 0.1125
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-7",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/10",
+      "score": 0.5196556005840053,
+      "criteria": {
+        "novelty": 0.9478079331941545,
+        "objective_fit": 0.0915032679738562
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-24",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/5/idea/2",
+      "score": 0.5180563301728947,
+      "criteria": {
+        "novelty": 0.9318181818181819,
+        "objective_fit": 0.10429447852760736
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-11",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/4",
+      "score": 0.5178815984322982,
+      "criteria": {
+        "novelty": 0.9437386569872959,
+        "objective_fit": 0.09202453987730061
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-5",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/7",
+      "score": 0.5133903133903134,
+      "criteria": {
+        "novelty": 0.937037037037037,
+        "objective_fit": 0.08974358974358974
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-6",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/8",
+      "score": 0.5130099759201926,
+      "criteria": {
+        "novelty": 0.9410526315789474,
+        "objective_fit": 0.08496732026143791
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-16",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/5",
+      "score": 0.5117550917777219,
+      "criteria": {
+        "novelty": 0.9381443298969072,
+        "objective_fit": 0.08536585365853659
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-21",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/4",
+      "score": 0.5117049258727882,
+      "criteria": {
+        "novelty": 0.9410569105691057,
+        "objective_fit": 0.08235294117647059
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-17",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/7",
+      "score": 0.5098717146433042,
+      "criteria": {
+        "novelty": 0.9829787234042553,
+        "objective_fit": 0.03676470588235294
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-9",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/2",
+      "score": 0.5089747644045285,
+      "criteria": {
+        "novelty": 0.9443298969072165,
+        "objective_fit": 0.0736196319018405
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-12",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/5",
+      "score": 0.5083720415837204,
+      "criteria": {
+        "novelty": 0.9379562043795621,
+        "objective_fit": 0.07878787878787878
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-23",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/5/idea/1",
+      "score": 0.5020763447079237,
+      "criteria": {
+        "novelty": 0.9412955465587045,
+        "objective_fit": 0.06285714285714286
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-25",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/5/idea/5",
+      "score": 0.5003300485642888,
+      "criteria": {
+        "novelty": 0.952755905511811,
+        "objective_fit": 0.04790419161676647
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-13",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/1/idea/7",
+      "score": 0.4993106487008926,
+      "criteria": {
+        "novelty": 0.9776422764227642,
+        "objective_fit": 0.02097902097902098
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-8",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/11",
+      "score": 0.4982594569505686,
+      "criteria": {
+        "novelty": 0.967741935483871,
+        "objective_fit": 0.02877697841726619
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-14",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/2/idea/3",
+      "score": 0.49572125698389874,
+      "criteria": {
+        "novelty": 0.9322709163346614,
+        "objective_fit": 0.05917159763313609
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-22",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/3/idea/8",
+      "score": 0.4915591284112545,
+      "criteria": {
+        "novelty": 0.9693251533742331,
+        "objective_fit": 0.013793103448275862
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-1",
+      "representative": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/1",
+      "score": 0.30454545454545456,
+      "criteria": {
+        "novelty": 0.5,
+        "objective_fit": 0.10909090909090909
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    }
+  ],
+  "warnings": [],
+  "explored_families": [
+    "against, allocation, amateur, area, bias, board, boards, box",
+    "act, anchor, built, can, club, clubs, deadline, decision",
+    "40, 5, asks, before, blocked, built, clubs, combining",
+    "against, agent, agents, aging, backtested, bands, combining, contract",
+    "across, affiliate, affiliates, alignment, arrive, card, check, communication",
+    "across, adherence, assignment, but, catching, check, collection, conditioning",
+    "acquisitions, against, annual, audit, available, beat, but, cannot",
+    "agent, basic, beyond, clubhouse, decisions, driven, fit, gain",
+    "avoiding, battles, before, bench, bias, bullpen, camp, commitment",
+    "against, bands, combining, compare, contracts, coverage, covered, decision",
+    "above, against, arm, at, average, ball, base, built",
+    "affiliates, after, against, baseball, before, candidate, carry, caveats",
+    "add, building, coaching, conversations, decisions, delivering, depend, friction",
+    "against, avoiding, bench, bias, built, carry, change, choices",
+    "against, age, agency, bands, combining, consistent, cpbl, decision",
+    "anchoring, annual, at, athleticism, call, candidates, checklist, club",
+    "building, challenge, changing, come, coverage, edge, example, funding",
+    "30, all, approach, at, but, claims, club, clubs",
+    "acquisition, adverse, agent, anchor, any, asks, avoiding, bias",
+    "across, adjustment, affiliate, assignments, at, bands, can, candidates",
+    "162, acquisitions, at, being, built, bullpen, candidate, club",
+    "26, active, already, covered, custom, daily, duplicating, existing",
+    "26, against, bats, built, card, chosen, club, committee",
+    "acquisitions, adjust, backup, blocking, calling, catcher, catchers, challenge",
+    "alert, aversion, avoiding, bench, bias, coach, combining, concede"
+  ],
+  "method": "concept_tokens_and_leading_phrases/v3; Jaccard cluster threshold 0.5 or first-8-content-word phrase link; echo coverage 0.6 or first-16-word phrase link",
+  "measurement_type": "ADVISORY_HEURISTIC",
+  "limitations": "Not semantic equivalence, calibrated novelty, entailment or usefulness",
+  "participation": [
+    {
+      "operation": "GENERATED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": "claude",
+      "origin_model": "claude-opus-5-5",
+      "subject_count": 6,
+      "inference_occurred": true,
+      "note": "Dream prompted the provider; the provider authored the text."
+    },
+    {
+      "operation": "CLUSTERED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 49,
+      "inference_occurred": false,
+      "note": "Deterministic concept-token clustering; no inference."
+    },
+    {
+      "operation": "RANKED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 25,
+      "inference_occurred": false,
+      "note": "Advisory heuristic ranking; no execution authority."
+    }
+  ]
+}

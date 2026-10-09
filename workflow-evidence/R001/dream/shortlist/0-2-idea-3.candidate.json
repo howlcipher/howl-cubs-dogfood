@@ -1,0 +1,216 @@
+{
+  "schema_version": "howl.candidate/v1",
+  "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/3",
+  "source_run_id": "hd-20261008-143010-528e5330b08f",
+  "parent_request_id": "cubs-r001-p1-divergent",
+  "objective": "Where could software create a meaningful baseball advantage for the Chicago Cubs?\n\nDo not assume the product. Explore different opportunity classes: different users inside a baseball organization (front office, scouting, player development, coaching, medical/performance staff, analysts, game-day staff), different recurring decisions, and different mechanisms of value (better information, faster combination of signals, reduced costly uncertainty, process reliability, avoided errors). Include boring-but-useful interventions and non-obvious possibilities. Also name places where software is unnecessary because a spreadsheet, an existing public tool, or a manual process already suffices, and places where sophisticated clubs likely already have the advantage.\n\nOUTPUT GUIDANCE (format only): Each IDEA line names one distinct baseball problem, the intended user, the concrete repeated decision, and the software intervention. Follow each IDEA with ASSUMPTION lines for what must be true (including whether lawfully accessible public data could support it) and UNKNOWN lines for missing evidence. Do not invent statistics or private Cubs information (scouting, medical, biometric, contract, or proprietary tracking data).",
+  "text": "IDEA: Self-scouting of pitch-sequence predictability for the pitching coach and catchers; the repeated decision is pregame game-plan design; software would measure how predictable the club's own pitchers' next-pitch choices are from count, previous pitch, and batter handedness, which is the same model an opponent could build.",
+  "condition": "dream",
+  "trust": "UNVERIFIED",
+  "status": "UNRESOLVED",
+  "authority": {
+    "type": "ADVISORY",
+    "executable": false
+  },
+  "claims": [
+    {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/3/claim/1",
+      "candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/3",
+      "kind": "IDEA",
+      "text": "Self-scouting of pitch-sequence predictability for the pitching coach and catchers; the repeated decision is pregame game-plan design; software would measure how predictable the club's own pitchers' next-pitch choices are from count, previous pitch, and batter handedness, which is the same model an opponent could build.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    }
+  ],
+  "evidence_refs": [
+    "objective_context"
+  ],
+  "assumptions": [
+    "Public historical replay outcomes, such as Baseball Savant replay logs or retrosheet-style records, could support an overturn-rate prior by play type without any private Cubs data.",
+    "The current workflow is not already fast and accurate; the replay coordinator's judgment may already capture most of the value.",
+    "The challenge: overturns are rare and leverage-weighted, so the marginal win value may be too small to justify software.",
+    "Public play-by-play data is enough to estimate each manager's hook timing and pinch-hit triggers conditional on score, inning, pitch count, and times through the order.",
+    "Manager behavior is stable enough within a season to be predictive, even though front offices increasingly dictate usage.",
+    "The challenge: the three-batter minimum and roster-composition variability may make generic tendencies noisy.",
+    "Public pitch-by-pitch data, such as Statcast pitch type and count, is sufficient for an opponent to exploit predictability, so the club should audit it first.",
+    "Reduced predictability actually converts into worse hitter outcomes rather than merely changing pitch mix at the expense of pitch quality.",
+    "The challenge: sophisticated clubs likely already run this audit internally; the advantage may be parity rather than an edge.",
+    "Public pitch-timer or derivable timestamp data exists at sufficient resolution; if it is not public, the idea would need lawfully obtained broadcast-derived timing.",
+    "Tempo variation has a measurable effect independent of pitch quality; this is unproven and is speculation.",
+    "This is boring but useful; it reduces costly re-learning and contradictory advice after coaching or front-office turnover.",
+    "Staff would actually write entries; adoption, not technology, is the binding constraint.",
+    "The challenge: a shared document or existing wiki tool may suffice, so custom software may be unnecessary.",
+    "Public MiLB data and documented rule experiments by league are sufficient to estimate rule-regime effects.",
+    "The challenge: small samples and roster churn may swamp any adjustment, and public sites partly normalize already.",
+    "Scheduling conflicts currently cost meaningful preparation quality; this could be false, since a whiteboard or shared calendar may already work.",
+    "Public data can project opponent pitching usage in short series.",
+    "The challenge: large-market analytics departments likely already do this, so the edge is probably small.",
+    "The marginal gain from lineup ordering is small relative to the cost of building a tool; this is commonly argued publicly but should be verified.",
+    "Public data cannot match private capture resolution, so a public-data tool here would not create an edge."
+  ],
+  "unresolved_issues": [
+    "Public historical replay outcomes, such as Baseball Savant replay logs or retrosheet-style records, could support an overturn-rate prior by play type without any private Cubs data.",
+    "The current workflow is not already fast and accurate; the replay coordinator's judgment may already capture most of the value.",
+    "The challenge: overturns are rare and leverage-weighted, so the marginal win value may be too small to justify software.",
+    "Public play-by-play data is enough to estimate each manager's hook timing and pinch-hit triggers conditional on score, inning, pitch count, and times through the order.",
+    "Manager behavior is stable enough within a season to be predictive, even though front offices increasingly dictate usage.",
+    "The challenge: the three-batter minimum and roster-composition variability may make generic tendencies noisy.",
+    "Public pitch-by-pitch data, such as Statcast pitch type and count, is sufficient for an opponent to exploit predictability, so the club should audit it first.",
+    "Reduced predictability actually converts into worse hitter outcomes rather than merely changing pitch mix at the expense of pitch quality.",
+    "The challenge: sophisticated clubs likely already run this audit internally; the advantage may be parity rather than an edge.",
+    "Public pitch-timer or derivable timestamp data exists at sufficient resolution; if it is not public, the idea would need lawfully obtained broadcast-derived timing.",
+    "Tempo variation has a measurable effect independent of pitch quality; this is unproven and is speculation.",
+    "This is boring but useful; it reduces costly re-learning and contradictory advice after coaching or front-office turnover.",
+    "Staff would actually write entries; adoption, not technology, is the binding constraint.",
+    "The challenge: a shared document or existing wiki tool may suffice, so custom software may be unnecessary.",
+    "Public MiLB data and documented rule experiments by league are sufficient to estimate rule-regime effects.",
+    "The challenge: small samples and roster churn may swamp any adjustment, and public sites partly normalize already.",
+    "Scheduling conflicts currently cost meaningful preparation quality; this could be false, since a whiteboard or shared calendar may already work.",
+    "Public data can project opponent pitching usage in short series.",
+    "The challenge: large-market analytics departments likely already do this, so the edge is probably small.",
+    "The marginal gain from lineup ordering is small relative to the cost of building a tool; this is commonly argued publicly but should be verified.",
+    "Public data cannot match private capture resolution, so a public-data tool here would not create an edge.",
+    "Replay-challenge triage (non-ABS) for the manager and video-replay coordinator; the repeated decision is whether to challenge a close safe/out or fair/foul call within the time limit; software would cue the angles most predictive of overturns and show the remaining challenge inventory and game leverage.",
+    "cubs_current_replay_workflow",
+    "overturn_rate_by_play_type_public_coverage",
+    "Opponent-manager tendency profiles for the bench coach and advance scouts; the repeated decision is anticipating when the opposing manager pulls a starter, brings in a matchup reliever, or pinch-hits, so the Cubs can stage their own counter-moves an inning earlier.",
+    "manager_tendency_stability_across_seasons",
+    "whether_opposing_usage_is_manager_or_front_office_driven",
+    "Self-scouting of pitch-sequence predictability for the pitching coach and catchers; the repeated decision is pregame game-plan design; software would measure how predictable the club's own pitchers' next-pitch choices are from count, previous pitch, and batter handedness, which is the same model an opponent could build.",
+    "cubs_existing_sequence_audit",
+    "evidence_linking_sequence_entropy_to_run_prevention",
+    "Pitch-clock tempo self-scout for pitching coaches; the repeated decision is whether to coach a pitcher to vary tempo or use disengagements; software would relate each pitcher's time-between-pitches distribution to public outcomes and flag pitchers whose tempo is constant enough for hitters to time.",
+    "public_pitch_timer_data_availability",
+    "tempo_effect_size",
+    "Institutional-memory decision log for the front office and coaching staff; the repeated decision occurs when staff turnover leaves a newcomer re-deciding questions such as why a player's cue, role, or plan was chosen; software would provide a searchable, permissioned record of rationale linked to the outcome.",
+    "cubs_staff_turnover_rate",
+    "existing_knowledge_management_tools_in_use",
+    "Cross-league context normalization for minor league evaluators; the repeated decision is promotion timing and prospect comparison across affiliates whose leagues differ in rules, such as automated strike zones, pitch clocks, or experimental rules, and in parks; software would adjust public minor league stats for the rule regime and environment of each league-season.",
+    "minor_league_rule_regime_effect_sizes",
+    "public_milb_park_factor_quality",
+    "Hitting-cage and work-session scheduler for player development and game-day staff; the repeated decision is allocating limited cage, mound, and coach time pregame without conflicts; software would enforce priorities and capacity.",
+    "current_pregame_scheduling_friction",
+    "Postseason or short-series opponent-specific roster-construction simulator for the front office; the repeated decision is which 26 players to carry against a specific opponent; software would simulate matchup value under the opponent's likely starters and bullpen.",
+    "cubs_postseason_roster_process",
+    "An area where software is likely unnecessary: generic lineup-order optimization, because public research and spreadsheets show small run differences between reasonable orders.",
+    "An area where sophisticated clubs likely already hold the advantage: pitch-design and bat-tracking modeling, where proprietary high-speed capture and internal biomechanics teams exceed what public data supports.",
+    "cubs_relative_position_in_pitch_design_capability"
+  ],
+  "contradictions": [],
+  "verified_constraints": [],
+  "provenance": {
+    "run_id": "hd-20261008-143010-528e5330b08f",
+    "producer_component": "howldream",
+    "producer_version": "0.4.4",
+    "model_or_provider": "claude-opus-5-5",
+    "observation_kind": "EXTERNALLY_OBSERVED",
+    "created_at": "2026-10-08T14:35:18.091290+00:00",
+    "transformations": [
+      "generated",
+      "idea_unit_selection"
+    ],
+    "participation": [
+      {
+        "operation": "GENERATED",
+        "transforming_component": "howldream",
+        "origin_component": "howldream",
+        "origin_provider": "claude",
+        "origin_model": "claude-opus-5-5",
+        "subject_count": 1,
+        "inference_occurred": true,
+        "note": "Dream prompted the provider; the provider authored the text."
+      },
+      {
+        "operation": "CLUSTERED",
+        "transforming_component": "howldream",
+        "origin_component": "howldream",
+        "origin_provider": null,
+        "origin_model": null,
+        "subject_count": 45,
+        "inference_occurred": false,
+        "note": "Deterministic concept-token clustering; no inference."
+      },
+      {
+        "operation": "SELECTED",
+        "transforming_component": "howldream",
+        "origin_component": "howldream",
+        "origin_provider": "claude",
+        "origin_model": "claude-opus-5-5",
+        "subject_count": 1,
+        "inference_occurred": false,
+        "note": "Operator selected this idea unit through `howldream export`."
+      }
+    ],
+    "request_id": "cubs-r001-p1-divergent",
+    "originating_component": "operator",
+    "execution": {
+      "requested_provider": "command",
+      "selected_provider": "command",
+      "actual_provider": "claude",
+      "adapter": "claude-json",
+      "model": "claude-opus-5-5",
+      "requested_model": "claude-opus-5-5",
+      "deterministic": false,
+      "mocked": false,
+      "inference_occurred": true,
+      "remote": true,
+      "remote_observation": "OPERATOR_DECLARED",
+      "fallback_reason": null,
+      "elapsed_seconds": 39.44773431902286,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 2117,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 3272,
+        "output_tokens_details": {
+          "thinking_tokens": 991
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 2117,
+          "ephemeral_5m_input_tokens": 0
+        }
+      },
+      "cost": 0.08238399999999999,
+      "request_id": "55080666-6f9c-4e30-8bb8-b6af0f1099c2",
+      "raw_output_received": true,
+      "parse_status": "VALID",
+      "repair_attempted": false,
+      "sampling": null
+    },
+    "source_candidate_refs": [],
+    "source_candidates_location": "exploration_envelope.json#/provenance/source_candidates",
+    "hard_constraints": [
+      "Do not assume the problem or the solution.",
+      "Use only lawfully accessible public, historical, or clearly labeled synthetic data.",
+      "Do not invent private Chicago Cubs information or statistics.",
+      "Distinguish fact, assumption, hypothesis, and speculation."
+    ],
+    "constraint_scope": "UNVERIFIED_GENERATION_GUIDANCE",
+    "purpose": "discovery",
+    "candidate_index": 2,
+    "trial": 0,
+    "prompt_hash": "7de674b3de43dec3379886d0767de049fd41f6ee7425c91aed2d548b6e62590d",
+    "output_hash": "8f5550aed78f69b103871d9bdf6f809bd73cb87790ccc3caa6f9273d5547a974",
+    "selection": {
+      "selected_by": "operator",
+      "operation": "SELECTED",
+      "via": "howldream export"
+    },
+    "parent_candidate_id": "hd-20261008-143010-528e5330b08f/candidates/0/2",
+    "source_unit": {
+      "id": "hd-20261008-143010-528e5330b08f/candidates/0/2/idea/3",
+      "source_span": [
+        1695,
+        2022
+      ],
+      "source_hash": "8f5550aed78f69b103871d9bdf6f809bd73cb87790ccc3caa6f9273d5547a974",
+      "cluster": "cluster-16"
+    },
+    "parent_verification_ref": "verification.jsonl#candidate=hd-20261008-143010-528e5330b08f/candidates/0/2",
+    "unit_selection_scope": "Single IDEA line; batch assumptions/unresolved issues retained without claim-specific association. Parent rejection/contradiction gates retained."
+  }
+}

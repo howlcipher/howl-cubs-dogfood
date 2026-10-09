@@ -1,0 +1,49 @@
+HOWL ORCHESTRATION REPORT
+Session: 751c1ce8cd6b432a863242cfb23c0300
+Goal: Finalize and validate the existing uncommitted work in this repository: the fix for DOG-039 (see the DOG-039 entry in dogfood/findings/FINDINGS.md and its change_log.md entry). A Codex usage-limit stop line ("You've hit your usage limit. ... try again at 8:01 PM.") was classified AUTHENTICATION_REQUIRED because the transcript-wide fallback matched the bare word "unauthorized" in rules prose. The change adds an anchored SESSION_LIMIT pattern for that stop line in src/howlplane/control_plane/synthesis/provider_pool.py and replaces the fallback's bare "unauthorized" marker with "401 unauthorized"; tests are in tests/test_usage_limit_classification.py.
+
+If the existing change is correct and complete, report IMPLEMENTATION_STATUS: NO_CHANGE_REQUIRED with reasons; otherwise fix only what is wrong and add tests. HowlPlane runs `make test-full` itself and supplies the result, so run only targeted tests. Reviewers: try to falsify the fix: a genuine authentication failure (any CLI) that would now be missed, other providers whose usage-limit wording still falls through to the auth markers, whether the new pattern can match ordinary model prose given that only last lines are considered, and whether the readiness cache test proves the stated behavior.
+Status: COMPLETE
+Resumable: no
+Orchestrator: claude_code
+Implementer: codex
+Policy: PLAN + EXECUTE + INDEPENDENT AUDIT
+Constraints: The current HowlPlane session IS the orchestration workflow. Perform the assigned work in the target project. Do not launch howl/howlplane or another orchestration session merely to prove Howl was used. Do not copy internal orchestration state into the target project.
+Assignments: 4
+Reroutes: 0
+Repository head: 28511b4f0c9ec49e2a582f82b38372d2145e21cb
+Repository status: M change_log.md
+ M documentation/ORCHESTRATE.md
+ M dogfood/findings/FINDINGS.md
+ M src/howlplane/control_plane/synthesis/provider_pool.py
+?? tests/test_usage_limit_classification.py
+Tests: [{"command": "git diff --check", "exit_code": 0, "output": ""}, {"command": ["make", "test-full"], "rework_round": 0, "exit_code": 0, "output": "tests/test_ai_resource_pool.py::test_failure_taxonomy_is_normalized_without_conflation[authentication required-AUTHENTICATION_REQUIRED] PASSED [  6%]\ntests/test_ai_resource_pool.py::test_failure_taxonomy_is_normalized_without_conflation[Failed to authenticate: OAuth session expired and could not be refreshed-AUTHENTICATION_REQUIRED] PASSED [  6%]\ntests/test_ai_resource_pool.py::test_failure_taxonomy_is_normalized_without_conflation[provider service unavailable-PROVIDER_UNAVAILABLE] PASSED [  6%]\ntests/test_ai_resource_pool.py::test_failure_taxonomy_is_normalized_without_conflation[command not found-MISSING_EXECUTABLE] PASSED [  6%]\ntests/test_ai_resource_pool.py::test_failure_taxonomy_is_normalized_without_conflation[tests failed: assertion error-ENGINEERING_FAILURE] PASSED [  6%]\ntests/test_ai_resource_pool.py::test_failure_taxonomy_is_normalized_without_conflation[malformed yaml review-MALFORMED_OUTPUT] PASSED [  6%]\ntests/test_ai_resource_pool.py::test_capacity_state_persists_recovers_and_is_shared PASSED [  7%]\ntests/test_ai_resource_pool.py::test_oauth_expiration_persists_and_routes_to_another_worker PASSED [  7%]\ntests/test_ai_resource_pool.py::test_engineering_failure_does_not_exhaust_resource PASSED [  7%]\ntests/test_ai_resource_pool.py::test_independent_review_prefers_distinct_resource_and_reports_unavailability PASSED [  7%]\ntests/test_ai_resource_pool.py::test_legacy_settings_load_without_declaring_new_provider_authority PASSED [  7%]\ntests/test_authority_execution\n[... output trimmed by HowlPlane; tail follows ...]\nlaneBranding\n--- PASS: TestNewRootCommandUsesHowlPlaneBranding (0.00s)\n=== RUN   TestLegacyCommandHasProjectValidationParityAndWritesWarningToStderr\n--- PASS: TestLegacyCommandHasProjectValidationParityAndWritesWarningToStderr (0.00s)\n=== RUN   TestPlaneCommandComposesBeneathUmbrellaParent\n--- PASS: TestPlaneCommandComposesBeneathUmbrellaParent (0.00s)\n=== RUN   TestCommandConstructionDoesNotDependOnRootExecutableName\n--- PASS: TestCommandConstructionDoesNotDependOnRootExecutableName (0.00s)\n=== RUN   TestUnknownSubcommandDelegatesToEngineEntrypoint\n--- PASS: TestUnknownSubcommandDelegatesToEngineEntrypoint (0.00s)\n=== RUN   TestUnknownSubcommandPropagatesEngineExitCode\n--- PASS: TestUnknownSubcommandPropagatesEngineExitCode (0.00s)\n=== RUN   TestNoArgsPrintsNativeHelpWhenEngineMissing\n--- PASS: TestNoArgsPrintsNativeHelpWhenEngineMissing (0.00s)\n=== RUN   TestVersionFlagReportsGoBinaryVersionWithoutDelegating\n--- PASS: TestVersionFlagReportsGoBinaryVersionWithoutDelegating (0.00s)\n=== RUN   TestHelpFlagsShowNativeHelpWhenEngineMissing\n--- PASS: TestHelpFlagsShowNativeHelpWhenEngineMissing (0.00s)\n=== RUN   TestNoArgsHelpAndHelpSubcommandForwardToEngine\n--- PASS: TestNoArgsHelpAndHelpSubcommandForwardToEngine (0.00s)\n=== RUN   TestShortVersionAliasAndSignalExitCode\n--- PASS: TestShortVersionAliasAndSignalExitCode (0.00s)\n=== RUN   TestMissingEngineErrorIsActionable\n--- PASS: TestMissingEngineErrorIsActionable (0.00s)\nPASS\nok  \tgithub.com/howlcipher/howlplane/pkg/cli\t(cached)\n"}]
+Independent audit: CLEAN
+Recovery: {}
+Failures: []
+Review notes from Claude (review, CLEAN):
+  I found no blocking problems in the DOG-039 change. I only read the code and tests. I ran no tests, because this role has no shell. The harness reports `make test-full` and `git diff --check` both exit 0.
+  
+  **Checks against the review brief**
+  - **Real auth failures missed:** none that matter.
+    - A genuine `Unauthorized` or `error: unauthorized` stop line still matches the anchored pattern at `provider_pool.py:153`.
+    - A buried `401 Unauthorized` is still caught by the fallback marker at `:937`.
+    - `test_real_authentication_stops_are_still_recognized` covers both cases, plus `not authenticated` and `Login required`.
+  - **Other providers' usage-limit wording:** I found no leak. Claude, Cursor and Devin have their own patterns or `EXHAUSTION_PATTERNS` entries. The remaining bare fallback markers (`authentication required`, `not authenticated`, `login required`, `invalid api key`) have the same prose weakness, but nothing in DOG-039 shows them causing a misclassification.
+  - **New pattern matching ordinary prose:** unlikely. At `:200-203` the pattern is applied as an anchored full match against the last non-empty line. It must start with `you've hit your usage limit.` and may have an `error:` prefix. Both apostrophe forms are handled and tested.
+  - **Readiness cache test:** it proves the stated behavior.
+    - It classifies the real Codex transcript and asserts no `auth` key.
+    - It also asserts exactly one `SESSION_LIMIT` limit entry with an expiry.
+    - It calls `record_session_outcome` directly, so it does not prove the orchestrate wiring passes the classified value. That wiring was already there and is out of scope.
+  
+  **Non-blocking findings**
+  - A real auth failure with wording other than `401 unauthorized` (for example `401: Unauthorized`, `HTTP 401 - Unauthorized` or `unauthorized_client`) is no longer caught when it is buried mid-transcript and the last line doesn't match an anchored pattern. This is an accepted trade-off, and the code comment at `:933-935` explains it.
+  - Two optional tests would tighten coverage:
+    - a buried `401 Unauthorized` with an unrelated last line, asserting `AUTHENTICATION_REQUIRED`;
+    - a usage-limit sentence that is not the last line, asserting it does not match as `SESSION_LIMIT`.
+  - The other bare fallback markers could be logged as a follow-up.
+  
+  **Files changed:** none, since this was a review.
+  **Tests run:** none by me.
+  
+  AUDIT_STATUS: CLEAN

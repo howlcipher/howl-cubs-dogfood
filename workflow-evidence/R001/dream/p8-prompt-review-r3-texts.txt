@@ -1,0 +1,58 @@
+COMPLETE 3 ['claude-sonnet-5-5']
+=== CAND
+CITE: prompt-s18
+CITE: r001-journal
+
+ASSUMPTION: BLOCKING (new permission, unsupported number). Bullet 2 says the user approved "at most 5 per table" of short attributed examples. Nothing in r001-journal records that approval. The 04:45Z entry says only that bulk records must not be published. An invented cap would grant a new publication permission, which s18 forbids ("Grant new permissions") and which the bullet's own "never infer" rule bars.
+UNKNOWN: user_approval_of_five_examples_per_table
+IDEA: Replace "(R001: at most 5 per table)" with "only a number of examples the user has approved in a dated, journaled instruction; if none is journaled, the number is zero."
+
+ASSUMPTION: BLOCKING (new permission, protected state). Bullet 4 lets a controller run an unmerged, unreviewed engine candidate through the public CLI with PYTHONPATH and then "discard any scratch sessions it creates". No journal trigger supports this. The 17:45Z entry covers only the regression gate and the timeout. Running unmerged code on live campaign sessions is a new capability. Discarding sessions edits runtime state, which s18 protects, and it could hide consumed HowlPlane session counts (s18: "reset consumed budgets"). The "advisory only" caveat does not remove the permission.
+IDEA: Delete the PYTHONPATH sentence. Alternatively, limit it to a throwaway repo, state that session counts stay consumed and are recorded, and forbid discarding sessions.
+
+ASSUMPTION: BLOCKING (weakens pause-and-help, untestable). Bullet 5 lets the controller recover readiness and continue once a downgrade "counts as traced". "Identified from session or CLI evidence" is not testable. The journal shows the campaign went to PAUSED_NEEDS_HELP on the CUBS-P-002 and CUBS-P-007 Howl failures (17:45Z, 23:35Z). The bullet turns those pauses into self-recovery, which bypasses the s17 pause-and-help rule.
+IDEA: Say that a Howl-caused downgrade is still recorded as a help incident and paused under section 17. Only after that may the user-approved documented recovery command be run.
+
+ASSUMPTION: BLOCKING (unverified command, possible spending). The example `howlplane agents doctor --live --agent <agent> --repo <repo>` appears nowhere in the evidence. "--live" may make real agent calls that use quota or spend. That would be a spending or permission increase, and a quota-exhausted agent (CUBS-P-007) would simply fail again.
+UNKNOWN: howlplane_agents_doctor_live_semantics_and_cost
+
+ASSUMPTION: BLOCKING (untestable bound, possible budget evasion). Bullet 7 says to re-judge "within the existing rework bounds". The journal's recovery path (15:35Z) discards S3 and starts a new session. A new session restarts the "Rework rounds: n of 2" counter and consumes a session slot (14 of 16). So the bound cannot be checked, and the path can be used to get past an exhausted rework limit.
+IDEA: Add that a replacement session counts toward the session budget, that rework rounds carried over from the discarded session are recorded, and that the total rework budget is not reset.
+
+ASSUMPTION: Minor. Bullet 4's "at least twice its last observed runtime" gives 912 s from the observed 456 s. The journal says implementers time out at 600 s (CUBS-P-004). It is unknown whether --verify-timeout also governs those roles.
+ASSUMPTION: Minor. Bullet 3 embeds engine internals (the clamp formula) that will go stale. "Verify against the engine" is acceptable, but the formula should be marked as an example.
+ASSUMPTION: Minor. Bullet 6 says to discard a mission-owned session. It should say explicitly that the discard consumes no budget and that the preserved patch hash is recorded.
+ASSUMPTION: Minor. Bullet 1 is justified by 09:35Z. Its text "if it is not yet in the journal, record it there" is fine.
+ASSUMPTION: Minor. The 04:45Z journal entry has a stray timestamp ("== 2026-10-09T12:37:15Z"), so its ordering is ambiguous as a trigger.
+=== CAND
+CITE: prompt-s18
+CITE: r001-journal
+
+ASSUMPTION: BLOCKING (new permission, unsupported number). The bullet "Third-party data is checked before any public push" says "at most 5 per table" and calls it "the number of short attributed examples the user approved". The supplied journal entries contain no dated user approval of 5 examples. The 2026-10-09T04:45Z entry only records the terms incident and the lesson. Unless a dated user instruction exists elsewhere, this creates a publication allowance that section 18 says self-authored text cannot create.
+IDEA: Replace "(R001: at most 5 per table)" with "the number the user has approved in a dated instruction recorded in the journal; if none is recorded, zero raw records". This also fits the bullet's own default of no raw records.
+
+ASSUMPTION: BLOCKING (new procedure and permission, not justified by its trigger). The repair bullet allows exercising a committed candidate through the public `howl` CLI with PYTHONPATH pointing at a repair worktree. The cited trigger (2026-10-08T17:45Z) concerns the narrow --verify and the 300 s timeout, not pre-merge engine overrides. The sentence adds a new execution path in which unmerged code drives live sessions. That conflicts with the bullet's own "Never switch the shared engine checkout" and with the claim that 19A adds no authority.
+IDEA: Delete the PYTHONPATH sentence. If it is kept, move it to a separately triggered, user-authorized change.
+
+ASSUMPTION: BLOCKING (internal contradiction). The repair bullet says to "discard any scratch sessions it creates". The later worktree bullet says to discard only a mission-owned session, and only after preserving its work. The scratch-session rule has no preservation step and no mission-owned test. It also does not say whether scratch sessions count against the HowlPlane session bounds, such as the 8, 12 and 16 limits in the journal. Discarding must not reset consumed budgets (section 18).
+IDEA: Delete the scratch-session clause together with the PYTHONPATH sentence. Otherwise, say that scratch sessions count against the session bounds and fall under the same preservation rule.
+
+ASSUMPTION: BLOCKING (ambiguous or contradictory, so untestable). The owner-authorization bullet says to pass the authorization to workers verbatim, but it also says the authorization "never waives third-party terms". The S2 trigger (2026-10-09T09:35Z) was an owner authorization to fetch data that the repository README restricts. As written, a worker or reviewer cannot tell whether the quoted authorization is effective for fetching or is void. Also, "excerpt ... keeps the scope words" has no objective check.
+IDEA: Reword to "an authorization to fetch applies only within the scope the user stated, does not authorize publication, and is not a representation that the source's terms permit that use. Quote the scope words verbatim."
+
+ASSUMPTION: BLOCKING (possible bypass of the acceptance gate, recovery gap). The worktree bullet permits discarding an unfinished mission-owned session after preserving only "uncommitted work as a recorded patch or archive". The S3 session was HANDOFF REQUIRED with an acceptor's rejection. The bullet does not require preserving the ledger, verdicts and rejection reasons. Starting a fresh session while discarding the old verdict could read as erasing findings or shopping a rejection. "Otherwise" is also unclear about when discard is the permitted fallback.
+IDEA: Add "also preserve the session ledger, verdicts and rejection reasons, and quote them in the new goal. Discard only when --separate with a distinct worktree is impossible, and never discard a session whose verdict is unresolved without pausing under section 17."
+
+ASSUMPTION: BLOCKING (untestable or unsupported instruction with a possible spending side effect). The readiness bullet names `howlplane agents doctor --live --agent <agent> --repo <repo>` as a documented recovery. The supplied evidence only shows `howl agents doctor` and `codex login status`. A `--live` probe may invoke a provider and consume quota or spending. The Codex quota was exhausted in the 2026-10-08T23:35Z entry. "Counts as traced" is also undefined and has no consequence, so it cannot be tested. It does not say what to do when the cause is an external quota with a known reset.
+IDEA: Say "run only a recovery command documented in the CLI help, after confirming it makes no model call or that the call is within the approved budget. If the cause is an external quota or outage, record the reset time and do not clear the downgrade manually. Otherwise pause under section 17."
+
+ASSUMPTION: MINOR. The last bullet says to pause if the same acceptor is unavailable. HowlPlane's ORCHESTRATE.md allows a TAKEOVER when the orchestrator is disqualified for unrelated reasons. The bullet's "as HowlPlane's own contract requires" overstates that contract, though pausing is the stricter choice and is not a bypass.
+
+ASSUMPTION: MINOR. The journal order is inconsistent. The S3b COMPLETE entry is stamped 15:15Z, before the S3 handoff (15:20Z) and the lint attempt (15:35Z). The bullet's trigger citation is therefore only loosely checkable.
+CONFLICT: journal-timestamp-order-S3-S3b
+
+ASSUMPTION: MINOR. The Dream sizing bullet hardcodes the engine formula, though it says to verify against the engine. Its cited trigger (2026-10-08T14:58Z) supports it. The bullet is restrictive and grants nothing new.
+
+ASSUMPTION: MINOR. "At least twice its last observed runtime" is testable, since ~456 s gives ≥912 s. It extends compute time but not the approved spending, and it matches DOG-036.
+
+UNKNOWN: user-approval-of-5-examples-per-table

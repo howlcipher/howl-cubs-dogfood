@@ -1,0 +1,20 @@
+Implement and run the EVALUATION stage of the pre-registered MILBFA experiment in this repository, using the local cohort tables built by `cubs_edge_lab` (data/cohorts, data/stats) and the existing triage modules. Do NOT evaluate the final holdout cohort (2025, outcomes in season 2026) and never request season-2026 data.
+
+OWNER AUTHORIZATION (2026-10-09T07:10Z): local-only use of the already-fetched MLB Stats API data is approved; publish only aggregates and short attributed examples.
+
+Fixed definitions (do not change):
+- Outcome for cohort Y: at least 50 MLB plate appearances or at least 20 MLB innings pitched in season Y+1 (2019 cohort: thresholds scaled by 60/162 for 2020). Secondary: any MLB appearance in Y+1. Outcomes come from the cached league-wide MLB (sportId 1) season statistics; a player absent from them had no MLB playing time.
+- Primary segment: players with no MLB appearance in Y. Also report pitchers and hitters separately and the whole pool.
+- Rankings: B0 (MLB PA+IP in Y desc, then highest level in Y, then younger); B1 (highest level, then OPS for hitters or K-BB% for pitchers at that level, then younger); B2 (logistic regression on MLB PA+IP in Y, highest level, age); P (persistence: positive iff the player met the outcome threshold in season Y); M (logistic regression on all existing features, standardization fitted on training cohorts only, L2 strength chosen once on the validation cohort's primary segment from {0.01, 0.1, 1, 10}).
+- Training cohorts 2018, 2019, 2021, 2022, 2023; validation cohort 2024; rolling-origin test years 2021, 2022, 2023 (train on all earlier cohorts).
+- Primary metric: top-k outcome-positive counts in the primary segment, k = 50 primary (fixed, from Cubs signing volume), 25 and 100 secondary; plus precision@k, AUROC, and a calibration table for M. Paired bootstrap (2,000 resamples, fixed seed) for M minus each baseline.
+- Comparator for the later holdout: the best of B0/B1/B2/P on the validation cohort's primary-segment top-50 hits (ties broken in the order B2, B0, B1, P).
+- Early stop: if the validation cohort's primary segment has fewer than 30 outcome-positive players, record early_stop = true and stop after writing the outputs.
+
+Deliverables:
+1. A CLI command that builds outcomes for cohorts 2018-2024 only, runs training, rolling-origin and validation evaluation, and writes research/validation.json (aggregates: base rates per cohort and segment, all metrics with bootstrap intervals, chosen L2 strength, chosen comparator, early_stop) and research/EXPERIMENT.md (readable tables; FACT/INFERENCE/UNKNOWN labels; every number taken from validation.json).
+2. Run it in this session and commit-ready outputs must be exactly what the code produces.
+3. The existing `preregister` command must write research/preregistration.json with SHA-256 hashes of every evaluation-relevant code file (all cubs_edge_lab/triage*.py), the config, and research/validation.json; the holdout guard must refuse to build 2025-cohort outcomes unless those hashes match. Run `preregister` in this session after validation.json is final.
+4. Tests (offline, fixtures only, no tracked-file writes; all existing tests pass, also in a clean clone without data/): outcome thresholds including 2020 scaling; each ranking's order; comparator selection with ties; bootstrap determinism; early-stop path; every number in EXPERIMENT.md appears in validation.json; the guard refuses on a hash mismatch and on the 2025 cohort without preregistration; no code path requests season 2026.
+
+Integrity: never invent or alter values; label FACT/INFERENCE/UNKNOWN; report negative or null results as they are.

@@ -1,0 +1,22 @@
+# R001 closeout, then R002
+
+Operate under EXECUTION-PROMPT.md (canonical campaign prompt) in USER MODE. Read HOWL-CUBS-HANDOFF.md and the last entries of MISSION-JOURNAL.md first, reconcile them with Git and `howl orchestrate inspect`, and export HOWL_FORBID_LOCAL_INFERENCE=1 before any Howl or provider call. Standing authorizations from the user still apply: public repos under howlcipher; routine mission-owned merges after review and checks; local-only MLB Stats API use (2026-10-09T07:10Z), publishing aggregates and short attributed examples only; R001 HowlPlane session bound 16 (14 used).
+
+## Part A: close R001 (DISCOVERY_BUILD, proposed outcome COMPLETE_NEGATIVE)
+
+1. Dated Cubs case (HowlPlane session 15, cubs-edge-lab, existing data only, `--verify "python3 -m pytest -q"`): for the 2021-2024 November cohorts, list how many pool players the Cubs signed to minor-league contracts or spring invitations (public transactions, person-ID joins), how many of those reached the outcome threshold (>=50 MLB PA or >=20 IP next season) and how many reached it in the no-MLB-in-Y segment; set beside the league-wide segment ceiling (12-23 per year). Descriptive only; label it as illustrating the limitation; no recommendation; never load the 2025 cohort; aggregates and at most 5 short examples. State the owner authorization verbatim in the goal and as a --constraint. Audit the numbers independently from raw files, check for bulk content, test a clean clone, then PR and merge.
+2. Final assessment: write runs/R001/FINAL-ASSESSMENT.md covering every section 19 item (baseball, Howl, durability) with the outcome label, delivery state per repository, and missing items marked absent with reasons; update the campaign FINAL-ASSESSMENT.md index; refresh REPOSITORIES.json/.md with current SHAs.
+3. Prompt retrospective (section 18): draft EXECUTION-PROMPT.md v2 with only evidence-backed changes, e.g. (a) pass owner authorizations to workers verbatim in the goal and a --constraint; (b) scan every push for bulk third-party records and check source terms before the first public push of fetched data; (c) size Dream max_calls as baseline + candidates; (d) for Howl repairs, verify with the repository's required gate and an adequate --verify-timeout; (e) after each session, check `howl agents doctor` for readiness downgrades; (f) use a distinct worktree for --separate; (g) split large build goals into data and evaluation sessions. Record trigger evidence per change. Get an independent review of the diff through a supported Howl path (HowlDream verification-purpose exploration with the diff as the candidate); reconcile findings; validate section references.
+4. Closeout merges: open a PR from records/R001 to main in howl-cubs-dogfood (prompt v2, assessment, records), confirm checks (none configured: state so), merge, confirm the merge SHA, and record a receipt in the journal. Mark the run closed only when every changed repository is MERGED_VERIFIED.
+
+## Part B: start R002 (REGRESSION)
+
+Run contract: repair and publicly prove the open Howl findings from R001, with no baseball claim.
+- CUBS-P-002: a refused test or verification command during a validation-style implementation attempt with no repo change marks a proven agent interactive-only globally.
+- CUBS-P-003: acceptance is shown a superseded planner VERIFY_COMMAND as the session's verification command.
+- CUBS-P-008: an implementer's "IMPLEMENTATION_STATUS: INCOMPLETE" is recorded as SUCCEEDED and sent to review.
+- NOTE-008: a documented usage refusal (`--separate` without a distinct worktree) is reported as INTERNAL_ERROR.
+- Registry hygiene: mark DOG-037/038/039 FIXED in howlplane dogfood/findings/FINDINGS.md.
+Per finding: re-check the registry and allocate the next DOG ID, isolated worktree from origin/main, root cause, regression tests that fail without the fix, focused and full gates, PR, independent review through HowlPlane (existing-WIP mode, `--verify make test-full --verify-timeout 1500`), merge, fast-forward the shared engine checkout, post-merge public proof. Set finite bounds in the R002 contract (suggest 6 HowlPlane sessions, 2 attempts per root cause). Pause and ask on any unexpected Howl failure, exhausted rework, or authority boundary.
+
+After R002, choose the next run by evidence: a FOLLOW_UP on MILBFA only with a genuinely new feature hypothesis (pre-register it before using the untouched 2025 holdout), or a new DISCOVERY_BUILD using the remaining pivot. If no credible next experiment exists, ask the user rather than invent churn.
