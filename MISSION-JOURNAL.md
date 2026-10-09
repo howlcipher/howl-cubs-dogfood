@@ -212,3 +212,7 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - CUBS-P-008 (HOWL, capability gap / false-success risk): HowlPlane recorded each implementation that ended "IMPLEMENTATION_STATUS: INCOMPLETE" as SUCCEEDED and sent it to review; three review rounds were spent rediscovering a status the implementer had already declared. Only NO_CHANGE_REQUIRED is recognized.
 - Lesson (prompt candidate): when the owner authorizes an action a repository's own documentation restricts, state the authorization, its scope and date verbatim in the goal and as a --constraint.
 - HowlPlane sessions: 10 of 12 used.
+
+## 2026-10-09T09:45Z — User response (S2 block)
+- User chose "Raise to 16, split build (Recommended)". Bound amended in RUN-CONTRACT.md. CUBS-P-002/003/008 repairs deferred to a follow-up run. Campaign -> ACTIVE.
+- INTENT S2a: goal workflow-evidence/R001/plane/S2a-data.goal.txt (existing WIP), engine af9f40a, `--worker-network`, owner authorization also passed as --constraint. HowlPlane sessions: 11 of 16.
