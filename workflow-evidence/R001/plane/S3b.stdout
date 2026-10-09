@@ -1,0 +1,88 @@
+HOWL ORCHESTRATION REPORT
+Session: 338a259d79c844e78d1f6d0df3047cce
+Goal: Finalize and validate the existing uncommitted exploratory work in this repository (cubs_edge_lab/exploratory_whole_pool.py, tests/test_exploratory_whole_pool.py, research/exploratory_whole_pool.json, the appended "EXPLORATORY: whole pool" section of research/EXPERIMENT.md, and related test and README edits). An earlier HowlPlane session's independent review found it CLEAN; its acceptance was REJECTED for one remaining reason, quoted here: "The flake8 acceptance criterion remains unmet. ... Running flake8 serially completed, but reported numerous violations in other repository files. The new module and test file passed that serial check; the full repository did not."
+
+Do: make `python3 -m flake8 -j1 cubs_edge_lab tests` pass across the repository with formatting and dead-code fixes only (no configuration that disables checks or raises the line limit, no noqa). Do not change any file under research/, any computed value or any test expectation. Also fix the README sentence that still says the evaluation stage has not been run. Keep everything else; if the existing work is otherwise correct, say so with reasons.
+
+Acceptance criteria: the HowlPlane verification command (flake8 serially, then the full pytest suite) passes; research/validation.json and research/exploratory_whole_pool.json are byte-identical to the current files; the primary part of research/EXPERIMENT.md before the exploratory marker is byte-identical; the 2025 holdout cohort is never loaded; no season-2026 request.
+Status: COMPLETE
+Resumable: no
+Orchestrator: codex
+Implementer: codex
+Policy: PLAN + EXECUTE + INDEPENDENT AUDIT
+Constraints: The current HowlPlane session IS the orchestration workflow. Perform the assigned work in the target project. Do not launch howl/howlplane or another orchestration session merely to prove Howl was used. Do not copy internal orchestration state into the target project., Owner authorization 2026-10-09T07:10Z: local-only use of fetched MLB Stats API data; never request season 2026; never load the 2025 holdout cohort; do not change research/ files.
+Assignments: 7
+Reroutes: 0
+Repository head: c33a70af5dfe0e863884ea88ce00228cccc28b4e
+Repository status: M README.md
+ M cubs_edge_lab/probe/__main__.py
+ M cubs_edge_lab/probe/client.py
+ M cubs_edge_lab/probe/evidence.py
+ M cubs_edge_lab/probe/parse.py
+ M cubs_edge_lab/probe/probes.py
+ M cubs_edge_lab/probe/report.py
+ M cubs_edge_lab/probe/summary.py
+ M cubs_edge_lab/triage.py
+ M cubs_edge_lab/triage_cli.py
+ M cubs_edge_lab/triage_config.py
+ M cubs_edge_lab/triage_eval.py
+ M cubs_edge_lab/triage_experiment.py
+ M cubs_edge_lab/triage_report.py
+ M research/EXPERIMENT.md
+ M tests/conftest.py
+ M tests/test_probe.py
+ M tests/test_publication.py
+ M tests/test_report.py
+ M tests/test_triage.py
+ M tests/test_triage_data.py
+ M tests/test_triage_experiment.py
+?? cubs_edge_lab/exploratory_whole_pool.py
+?? research/exploratory_whole_pool.json
+?? tests/test_exploratory_whole_pool.py
+Tests: [{"command": "git diff --check", "exit_code": 0, "output": ""}, {"command": ["sh", "-c", "python3 -m flake8 -j1 cubs_edge_lab tests && python3 -m pytest -q"], "rework_round": 0, "exit_code": 0, "output": "................................................................... [ 97%]\n..                                                                       [100%]\n69 passed, 5 subtests passed in 48.70s\n"}, {"command": "git diff --check", "exit_code": 0, "output": ""}, {"command": ["sh", "-c", "python3 -m flake8 -j1 cubs_edge_lab tests && python3 -m pytest -q"], "rework_round": 1, "exit_code": 0, "output": "................................................................... [ 97%]\n..                                                                       [100%]\n69 passed, 5 subtests passed in 51.01s\n"}]
+Independent audit: CLEAN
+Recovery: {}
+Rework rounds: 1 of 2
+Failures: [{"stage": "acceptance", "agent": "codex", "model": "UNKNOWN", "failure": "ACCEPTANCE_REJECTED_OR_UNCONFIRMED"}]
+Review notes from Cursor (review, CLEAN):
+  The exploratory whole-pool path matches the acceptance criteria. Serial flake8 and the full pytest suite both passed on this tree, the 2025 holdout cohort is not loaded, and the README now states that the primary evaluation has already been run.
+  
+  The exploratory command reads only the configured cohorts 2018, 2019, and 2021–2024 (`YEARS` in `triage_experiment.py`). It never opens `data/cohorts/2025.json`, never constructs the HTTP client, and never sends a season-2026 stats request. Season 2025 statistics are read only as the following-season outcomes for the 2024 cohort, which is the same boundary the primary evaluation uses. A stats file labeled 2026 raises `ValueError` instead of being requested. `guard_outcome_build` is called with those cohort years, so the 2025 holdout lock is not entered.
+  
+  Published aggregates line up with the primary report. The 2024 whole pool is N=636 with 91 positives and base rate 0.143082, the same whole-pool row as in `research/EXPERIMENT.md`. The selected comparator is B0 because its top-50 hits (32) beat B2 (20), B1 (24), and P (25), which is the documented tie order B2, B0, B1, P. The inference line “M had 38 top-50 hits and B0 had 32” matches `research/exploratory_whole_pool.json`. That JSON has no `person_id` or name fields. Re-running `triage_cli evaluate` still replaces `EXPERIMENT.md` from `validation.json` alone, so the README warning about restoring the exploratory section is accurate.
+  
+  The README sentence that said the evaluation stage had not been run is gone. The replacement is consistent with `research/validation.json` and the primary report: evaluation ran, stopped on the preregistered rule (23 primary positives, minimum 30), and did not evaluate the 2025 holdout. There is no `noqa`, no flake8 config, and no raised line limit. Quote and wrapping edits in the probe and triage modules are formatting-only; the suite still asserts exact report rendering, holdout guards, and the season-2026 stats rejection.
+  
+  HowlPlane’s check on this tree was `python3 -m flake8 -j1 cubs_edge_lab tests && python3 -m pytest -q`, exit 0: 69 passed, 5 subtests passed. This review did not re-run that command or git. `research/validation.json` is not in the uncommitted diff. `research/EXPERIMENT.md` and `research/exploratory_whole_pool.json` were already dirty and were left untouched; the passing hash and “primary markdown equals `render(validation.json)`” tests lock the primary section.
+  
+  Uncommitted files covered by that tree: `README.md`, `cubs_edge_lab/exploratory_whole_pool.py`, the probe modules, `triage.py`, `triage_cli.py`, `triage_config.py`, `triage_eval.py`, `triage_experiment.py`, `triage_report.py`, `tests/conftest.py`, `tests/test_probe.py`, `tests/test_publication.py`, `tests/test_report.py`, `tests/test_triage.py`, `tests/test_triage_data.py`, `tests/test_triage_experiment.py`, and `tests/test_exploratory_whole_pool.py`.
+  
+  NON-BLOCKING: The 2025-cohort test patches `Path.read_text` and `open`, not `Path.read_bytes`. `evaluate` only uses `read_text` for cohorts. `write_outputs` appends a second exploratory section if the start marker is present and the end marker is not. `_MODEL_CACHE` is process-global; the key includes training rows, so identical inputs still share one fit. L2 strength is chosen on the same 2024 whole pool that is then reported; the section already labels that as exploratory and makes no usefulness claim. Transaction windows in `fetch` can use calendar dates in early 2026; those are not season-2026 stats requests and are not on the exploratory path.
+  
+  AUDIT_STATUS: CLEAN
+Verdict from Codex (acceptance, ACCEPTANCE_REJECTED_OR_UNCONFIRMED, rework round 0: sent back to implementation and re-judged):
+  ACCEPTANCE_STATUS: ACCEPTED
+  
+  The current worktree meets the acceptance criteria. No files were changed during this turn: serial flake8 passes, the README already says the primary evaluation ran, and the protected research files were only read.
+  
+  - `python3 -m flake8 -j1 cubs_edge_lab tests` — passed.
+  - `python3 -m pytest` — **69 passed**.
+  - The JSON files’ SHA-256 hashes remained `cb4ca78f…270247` (`research/validation.json`) and `26c32bb9…e936d35` (`research/exploratory_whole_pool.json`). The exploratory marker and primary section were unchanged during this turn.
+  - The exploratory tests check that the 2025 cohort is never loaded. No network request or season-2026 request was made.
+  - No lint suppressions or configuration changes were introduced.
+  
+  The earlier “evaluation stage has not been run” wording is already corrected in the current README. The exploratory work otherwise appears consistent with the stated constraints and the supplied independent clean review. Remaining risk: the byte-preservation check for the primary report was based on leaving it untouched during this turn and its hash, rather than a separately recorded before-and-after hash.
+Review notes from Cursor (review, CLEAN):
+  The exploratory whole-pool work meets the acceptance criteria. The 2025 holdout cohort is never loaded, nothing issues a season-2026 stats request, and the README now matches the evaluation that is already in the repository.
+  
+  `exploratory_whole_pool.evaluate` only reads cohort years `2018, 2019, 2021, 2022, 2023, 2024` from `triage_experiment.YEARS`. It never opens `data/cohorts/2025.json`. Outcome labels for those cohorts go through `build_outcomes` with the cohort year, so the holdout lock (`guard_outcome_build` for year `2025`) is not taken. Cached 2025 league stats are used only as the next-season outcomes for the 2024 cohort, which is the same rule as the primary evaluation. The path does not construct `Client`. `_stats` rejects any cached artifact whose season is `2026` or later. `tests/test_exploratory_whole_pool.py` covers the unread `2025.json` poison file, the unused client, the holdout guard, stable bootstrap output, agreement with `_rank_eval`, and the committed primary hashes.
+  
+  The published aggregates agree with that design. `research/validation.json` records an early stop (23 validation primary positives, minimum 30) and `holdout_excluded: 2025`. `research/EXPERIMENT.md` states that no 2025 cohort outcomes were evaluated, then the exploratory section reports the 2024 whole pool as N=636 and 91 positives, matching `research/exploratory_whole_pool.json` (`comparator` `B0`, L2 strength `0.01`). That JSON has no `person_id` or player-name fields. Re-running `triage_cli evaluate` replaces `EXPERIMENT.md` with `triage_report.render`, so the README note that this drops the exploratory section is accurate.
+  
+  The README sentence that the evaluation stage had not been run is updated. It now says the primary evaluation is in `research/validation.json` and `research/EXPERIMENT.md`, and that the 2025 holdout is still unevaluated. There is no `noqa`, no flake8 config, and no raised line limit under `cubs_edge_lab/` or `tests/`.
+  
+  HowlPlane’s verification on this tree completed with exit 0: `python3 -m flake8 -j1 cubs_edge_lab tests` and then `python3 -m pytest -q` (69 passed, 5 subtests passed). This review did not edit files.
+  
+  NON-BLOCKING: `_MODEL_CACHE` lives for the process lifetime. The cache key includes the training rows, the strength, and the feature names, so identical inputs reuse the same fit. The committed JSON’s privacy check is the synthetic test plus inspection of the file; `test_committed_primary_hashes_and_rendered_numbers` checks numeric tokens and the primary-report hash, not identifier keys. `fetch` can still request Cubs transaction dates in early 2026 (`range(2021, 2026)` with January–March of `year + 1`). Those are transaction dates, not a stats `season` of 2026, and the exploratory command does not call `fetch`.
+  
+  AUDIT_STATUS: CLEAN
