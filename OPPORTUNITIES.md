@@ -52,3 +52,16 @@ Convergence signal: minor-league free agency (six-year MiLB FA / November depth 
 | SPRING | p4 0/1/2 | GM/manager / final roster spots each spring | Commitment device against spring-stat bias | Effect of spring stats is widely studied publicly; a spreadsheet may suffice |
 
 Selection is deferred until a Howl research workflow measures public data availability for the top finalists (MILBFA, RULE5, CALLUP+XLEAGUE).
+
+## Selection (2026-10-09, controller decision on S1 evidence)
+
+Evidence: cubs-edge-lab research/FEASIBILITY.md (S1c/S1d, accepted, merged 35f803b).
+
+| Key | S1 verdict | Decision | Reason |
+| --- | --- | --- | --- |
+| MILBFA | PARTIAL | SELECTED | Every offseason pool is measurable (585-908 "elected free agency" events per Nov-Dec window, 2018-2025); outcomes (next-season MLB appearances) are public and arrive after the decision, so a temporal backtest is possible; the decision recurs every November with a named owner (pro scouting director). The PARTIAL part (minor-league vs MLB separation; methods disagree ~15%) is handled by design: the experiment does not depend on that separation (see design). |
+| RULE5 | PARTIAL | REJECTED | Explicit R5 codes only from 2024 (15 MLB-phase picks in Dec 2024): too few historical labels for any evaluation. |
+| CALLUP | PARTIAL | REJECTED (this run) | In-season decision (not usable before 2027), survivorship bias, strong public projection alternatives; S1 sample thin. |
+| OPPBULL, SPRING | not probed | PARKED | In-season or widely studied; no feasibility evidence gathered. |
+
+Pivot budget: unused (1 remaining).

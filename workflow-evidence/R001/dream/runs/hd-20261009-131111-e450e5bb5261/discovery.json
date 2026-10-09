@@ -1,0 +1,305 @@
+{
+  "context_echo_ratio": 0.7,
+  "evidence_echo_ratio": 0.7,
+  "novel_concept_ratio": 0.7,
+  "repeated_family_ratio": 0.2,
+  "idea_count": 10,
+  "cluster_count": 8,
+  "units": [
+    {
+      "id": "hd-20261009-131111-e450e5bb5261/candidates/0/0/idea/1",
+      "candidate_id": "hd-20261009-131111-e450e5bb5261/candidates/0/0",
+      "text": "IDEA: Replace the single +3 rule with a pre-registered threshold derived from a simulation of bootstrap variance on the validation cohort, and report effect sizes across all cohorts via rolling-origin evaluation instead of one holdout.",
+      "source_span": [
+        4447,
+        4682
+      ],
+      "source_hash": "eaf0521632babb868cf2e6893acd391ff9fc9c7cc856fb2b0a7a06a38d0db525",
+      "cluster": "cluster-1",
+      "representative": "hd-20261009-131111-e450e5bb5261/candidates/0/0/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.4583333333333333,
+      "context_token_overlap": 0.5,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-131111-e450e5bb5261/candidates/0/0/idea/2",
+      "candidate_id": "hd-20261009-131111-e450e5bb5261/candidates/0/0",
+      "text": "IDEA: Stratify the pool before ranking (prior MLB time vs. none, pitcher vs. hitter), evaluate top-k within the no-MLB stratum, and use a rate-based or above-replacement outcome alongside the playing-time threshold.",
+      "source_span": [
+        4683,
+        4898
+      ],
+      "source_hash": "eaf0521632babb868cf2e6893acd391ff9fc9c7cc856fb2b0a7a06a38d0db525",
+      "cluster": "cluster-2",
+      "representative": "hd-20261009-131111-e450e5bb5261/candidates/0/0/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.68,
+      "context_token_overlap": 0.68,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-131111-e450e5bb5261/candidates/0/0/idea/3",
+      "candidate_id": "hd-20261009-131111-e450e5bb5261/candidates/0/0",
+      "text": "IDEA: Add stronger baselines: B0+B1 combined, last-year-stats-only logistic, and a public projection system, plus a \"tops by age only\" null. Report an opportunity-adjusted outcome that conditions on the signing club's roster openings where public.",
+      "source_span": [
+        4899,
+        5146
+      ],
+      "source_hash": "eaf0521632babb868cf2e6893acd391ff9fc9c7cc856fb2b0a7a06a38d0db525",
+      "cluster": "cluster-3",
+      "representative": "hd-20261009-131111-e450e5bb5261/candidates/0/0/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.6428571428571429,
+      "context_token_overlap": 0.6428571428571429,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-131111-e450e5bb5261/candidates/0/0/idea/4",
+      "candidate_id": "hd-20261009-131111-e450e5bb5261/candidates/0/0",
+      "text": "IDEA: Choose k from measured public signing counts (Cubs and other clubs) before looking at any holdout outcomes, and show a sweep over k=25/50/100 with intervals.",
+      "source_span": [
+        5147,
+        5310
+      ],
+      "source_hash": "eaf0521632babb868cf2e6893acd391ff9fc9c7cc856fb2b0a7a06a38d0db525",
+      "cluster": "cluster-4",
+      "representative": "hd-20261009-131111-e450e5bb5261/candidates/0/0/idea/4",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.7272727272727273,
+      "context_token_overlap": 0.7272727272727273,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-131111-e450e5bb5261/candidates/0/1/idea/1",
+      "candidate_id": "hd-20261009-131111-e450e5bb5261/candidates/0/1",
+      "text": "IDEA: Add a value-conditioned secondary outcome (e.g., WAR or runs above replacement per PA/IP, with a minimum-opportunity gate) and a opportunity-adjusted outcome (e.g., stratify by signing club's depth-chart slot), and report both beside the binary threshold.",
+      "source_span": [
+        1523,
+        1784
+      ],
+      "source_hash": "8bfcb076e22559afa1b7ad97c93b318297559bf381db25afd1c5ff3b3505f61a",
+      "cluster": "cluster-5",
+      "representative": "hd-20261009-131111-e450e5bb5261/candidates/0/1/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.4,
+      "context_token_overlap": 0.5,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-131111-e450e5bb5261/candidates/0/1/idea/2",
+      "candidate_id": "hd-20261009-131111-e450e5bb5261/candidates/0/1",
+      "text": "IDEA: Rank and evaluate hitters and pitchers separately, or fix a quota (e.g., 25/25), and run a sensitivity analysis on thresholds fixed before the holdout.",
+      "source_span": [
+        2027,
+        2184
+      ],
+      "source_hash": "8bfcb076e22559afa1b7ad97c93b318297559bf381db25afd1c5ff3b3505f61a",
+      "cluster": "cluster-6",
+      "representative": "hd-20261009-131111-e450e5bb5261/candidates/0/1/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.5294117647058824,
+      "context_token_overlap": 0.5294117647058824,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-131111-e450e5bb5261/candidates/0/1/idea/3",
+      "candidate_id": "hd-20261009-131111-e450e5bb5261/candidates/0/1",
+      "text": "IDEA: Pre-register by hashing the frozen code and config before retrieving any 2026 outcomes, and prefer a purely historical blinded check (e.g., rerun on 2018 to 2024 with rolling-origin splits) so the conclusion does not rest on one cohort.",
+      "source_span": [
+        2560,
+        2802
+      ],
+      "source_hash": "8bfcb076e22559afa1b7ad97c93b318297559bf381db25afd1c5ff3b3505f61a",
+      "cluster": "cluster-7",
+      "representative": "hd-20261009-131111-e450e5bb5261/candidates/0/1/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.39285714285714285,
+      "context_token_overlap": 0.39285714285714285,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-131111-e450e5bb5261/candidates/0/1/idea/4",
+      "candidate_id": "hd-20261009-131111-e450e5bb5261/candidates/0/1",
+      "text": "IDEA: Replace the fixed +3 with a threshold derived from a decision model: value of an additional usable depth player in runs or dollars versus scout time, and report results for several k (25, 50, 100) with a fixed ordering of primary versus secondary before the holdout.",
+      "source_span": [
+        4969,
+        5241
+      ],
+      "source_hash": "8bfcb076e22559afa1b7ad97c93b318297559bf381db25afd1c5ff3b3505f61a",
+      "cluster": "cluster-1",
+      "representative": "hd-20261009-131111-e450e5bb5261/candidates/0/0/idea/1",
+      "similar_to": "hd-20261009-131111-e450e5bb5261/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.8214285714285714,
+      "context_token_overlap": 0.8571428571428571,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-131111-e450e5bb5261/candidates/0/1/idea/5",
+      "candidate_id": "hd-20261009-131111-e450e5bb5261/candidates/0/1",
+      "text": "IDEA: Add stronger comparators: persistence (Y+1 outcome equals Y outcome), a plain age-and-level-only model, and any public projection systems (e.g., public aggregated projections for MLB-experienced players), and test M against the best of these on the holdout.",
+      "source_span": [
+        5761,
+        6024
+      ],
+      "source_hash": "8bfcb076e22559afa1b7ad97c93b318297559bf381db25afd1c5ff3b3505f61a",
+      "cluster": "cluster-3",
+      "representative": "hd-20261009-131111-e450e5bb5261/candidates/0/0/idea/3",
+      "similar_to": "hd-20261009-131111-e450e5bb5261/candidates/0/0/idea/3",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.5333333333333333,
+      "context_token_overlap": 0.5333333333333333,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-131111-e450e5bb5261/candidates/0/1/idea/6",
+      "candidate_id": "hd-20261009-131111-e450e5bb5261/candidates/0/1",
+      "text": "IDEA: Report AUROC and precision restricted to the plausibly actionable segment (players with no MLB service-time lock, not already re-signed within a few days), plus a \"what did M add beyond B0 and public projections\" incremental-value test, and require the lift to survive in the \"no MLB in Y\" segment, where the claimed edge for neglected players should live.",
+      "source_span": [
+        7201,
+        7563
+      ],
+      "source_hash": "8bfcb076e22559afa1b7ad97c93b318297559bf381db25afd1c5ff3b3505f61a",
+      "cluster": "cluster-8",
+      "representative": "hd-20261009-131111-e450e5bb5261/candidates/0/1/idea/6",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.6,
+      "context_token_overlap": 0.625,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    }
+  ],
+  "clusters": [
+    {
+      "id": "cluster-1",
+      "representative": "hd-20261009-131111-e450e5bb5261/candidates/0/0/idea/1",
+      "representative_text": "IDEA: Replace the single +3 rule with a pre-registered threshold derived from a simulation of bootstrap variance on the validation cohort, and report effect sizes across all cohorts via rolling-origin evaluation instead of one holdout.",
+      "label": "3, across, all, bootstrap, cohort, cohorts, derived, effect",
+      "members": [
+        "hd-20261009-131111-e450e5bb5261/candidates/0/0/idea/1",
+        "hd-20261009-131111-e450e5bb5261/candidates/0/1/idea/4"
+      ]
+    },
+    {
+      "id": "cluster-2",
+      "representative": "hd-20261009-131111-e450e5bb5261/candidates/0/0/idea/2",
+      "representative_text": "IDEA: Stratify the pool before ranking (prior MLB time vs. none, pitcher vs. hitter), evaluate top-k within the no-MLB stratum, and use a rate-based or above-replacement outcome alongside the playing-time threshold.",
+      "label": "above, alongside, based, before, evaluate, hitter, k, mlb",
+      "members": [
+        "hd-20261009-131111-e450e5bb5261/candidates/0/0/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-3",
+      "representative": "hd-20261009-131111-e450e5bb5261/candidates/0/0/idea/3",
+      "representative_text": "IDEA: Add stronger baselines: B0+B1 combined, last-year-stats-only logistic, and a public projection system, plus a \"tops by age only\" null. Report an opportunity-adjusted outcome that conditions on the signing club's roster openings where public.",
+      "label": "add, adjusted, age, b0, b1, baselines, club, combined",
+      "members": [
+        "hd-20261009-131111-e450e5bb5261/candidates/0/0/idea/3",
+        "hd-20261009-131111-e450e5bb5261/candidates/0/1/idea/5"
+      ]
+    },
+    {
+      "id": "cluster-4",
+      "representative": "hd-20261009-131111-e450e5bb5261/candidates/0/0/idea/4",
+      "representative_text": "IDEA: Choose k from measured public signing counts (Cubs and other clubs) before looking at any holdout outcomes, and show a sweep over k=25/50/100 with intervals.",
+      "label": "100, 25, 50, any, at, before, choose, clubs",
+      "members": [
+        "hd-20261009-131111-e450e5bb5261/candidates/0/0/idea/4"
+      ]
+    },
+    {
+      "id": "cluster-5",
+      "representative": "hd-20261009-131111-e450e5bb5261/candidates/0/1/idea/1",
+      "representative_text": "IDEA: Add a value-conditioned secondary outcome (e.g., WAR or runs above replacement per PA/IP, with a minimum-opportunity gate) and a opportunity-adjusted outcome (e.g., stratify by signing club's depth-chart slot), and report both beside the binary threshold.",
+      "label": "above, add, adjusted, beside, binary, both, chart, club",
+      "members": [
+        "hd-20261009-131111-e450e5bb5261/candidates/0/1/idea/1"
+      ]
+    },
+    {
+      "id": "cluster-6",
+      "representative": "hd-20261009-131111-e450e5bb5261/candidates/0/1/idea/2",
+      "representative_text": "IDEA: Rank and evaluate hitters and pitchers separately, or fix a quota (e.g., 25/25), and run a sensitivity analysis on thresholds fixed before the holdout.",
+      "label": "25, analysis, before, e, evaluate, fix, fixed, g",
+      "members": [
+        "hd-20261009-131111-e450e5bb5261/candidates/0/1/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-7",
+      "representative": "hd-20261009-131111-e450e5bb5261/candidates/0/1/idea/3",
+      "representative_text": "IDEA: Pre-register by hashing the frozen code and config before retrieving any 2026 outcomes, and prefer a purely historical blinded check (e.g., rerun on 2018 to 2024 with rolling-origin splits) so the conclusion does not rest on one cohort.",
+      "label": "2018, 2024, 2026, any, before, blinded, check, code",
+      "members": [
+        "hd-20261009-131111-e450e5bb5261/candidates/0/1/idea/3"
+      ]
+    },
+    {
+      "id": "cluster-8",
+      "representative": "hd-20261009-131111-e450e5bb5261/candidates/0/1/idea/6",
+      "representative_text": "IDEA: Report AUROC and precision restricted to the plausibly actionable segment (players with no MLB service-time lock, not already re-signed within a few days), plus a \"what did M add beyond B0 and public projections\" incremental-value test, and require the lift to survive in the \"no MLB in Y\" segment, where the claimed edge for neglected players should live.",
+      "label": "actionable, add, already, auroc, b0, beyond, claimed, days",
+      "members": [
+        "hd-20261009-131111-e450e5bb5261/candidates/0/1/idea/6"
+      ]
+    }
+  ],
+  "ranking": [],
+  "warnings": [
+    "DISCOVERY_ANCHORING_HIGH"
+  ],
+  "explored_families": [
+    "3, across, all, bootstrap, cohort, cohorts, derived, effect",
+    "above, alongside, based, before, evaluate, hitter, k, mlb",
+    "add, adjusted, age, b0, b1, baselines, club, combined",
+    "100, 25, 50, any, at, before, choose, clubs",
+    "above, add, adjusted, beside, binary, both, chart, club",
+    "25, analysis, before, e, evaluate, fix, fixed, g",
+    "2018, 2024, 2026, any, before, blinded, check, code",
+    "actionable, add, already, auroc, b0, beyond, claimed, days"
+  ],
+  "method": "concept_tokens_and_leading_phrases/v3; Jaccard cluster threshold 0.5 or first-8-content-word phrase link; echo coverage 0.6 or first-16-word phrase link",
+  "measurement_type": "ADVISORY_HEURISTIC",
+  "limitations": "Not semantic equivalence, calibrated novelty, entailment or usefulness",
+  "participation": [
+    {
+      "operation": "GENERATED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": "claude",
+      "origin_model": "claude-sonnet-5-5",
+      "subject_count": 2,
+      "inference_occurred": true,
+      "note": "Dream prompted the provider; the provider authored the text."
+    },
+    {
+      "operation": "CLUSTERED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 10,
+      "inference_occurred": false,
+      "note": "Deterministic concept-token clustering; no inference."
+    }
+  ]
+}

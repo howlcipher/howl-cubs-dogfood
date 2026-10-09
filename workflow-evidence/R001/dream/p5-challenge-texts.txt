@@ -1,0 +1,71 @@
+COMPLETE 3 ['claude-sonnet-5-5'] []
+=== CAND claude-sonnet-5-5 False
+CITE: design-v1
+CITE: s1-feasibility
+FACT: milbfa_2018_events=585
+FACT: milbfa_2025_events=839
+FACT: method_disagreement_2018_minor=530 vs 417
+CALC: 530 - 417 = 113
+CONFLICT: method_disagreement_2018_minor
+ASSUMPTION: The November decision may not change with a ranking. Most of the several hundred electors are low-level minor leaguers a club would never pursue, and clubs likely already shortlist from internal reports, so a whole-pool ranking may only reorder players that staff would have reviewed anyway.
+ASSUMPTION: The outcome (>=50 PA or >=20 IP) mostly measures opportunity. It depends on the signing club's roster holes, injuries, and 40-man status, so it can reward models that predict who gets chances (age, MLB time in Y) rather than who is good. A rate-based or WAR-above-replacement-style outcome, or a regression on playing time, would separate the two.
+ASSUMPTION: Prior MLB playing time is both a feature and a near-proxy for the outcome, so M may beat B1 simply by rediscovering B0. B1 omits MLB playing time, which makes it a weakened comparator. The design says the better of B0/B1 is the benchmark, but a stronger baseline (B0 and B1 combined, or a logistic regression on only 2-3 features) is missing.
+ASSUMPTION: Public tools already cover parts of this: public projection systems, minor-league leaderboards, transaction trackers, and prospect-ranking sites. The design lists no comparison against them, so any win over weak baselines may say nothing about added value.
+ASSUMPTION: Leakage risk: the "elected free agency" event can embed selection (players the club chose not to retain), and the Dec 31 availability cutoff is hard to verify for stats that get revised or for retroactively corrected transaction records. Players repeating across cohorts also carry label-correlated history into training and holdout.
+ASSUMPTION: Hindsight risk: the 2025 holdout is described as uninspected, but the designers know the pool size and the 2026 season is finished. Cohort definitions, k, and the +3 threshold were set by people who may know aggregate base rates, so the pre-registration is only partially blind.
+ASSUMPTION: k=50 is justified only by a hypothesis about club signing volume that is unchecked. A club does not choose from a fixed 50, and the pool has a large share of already-ineligible or unreachable players. Top-50 hits could also be dominated by players with recent MLB time who were never gettable cheaply.
+ASSUMPTION: The +3 hits threshold has no derivation from variance, the base rate, or the value of a depth player. With a single holdout cohort and possibly 15-60 positives, bootstrap noise on top-50 counts may be about as large as 3. Passing could be luck, and failing could hide a real gain.
+ASSUMPTION: Cohort-level sample size is small: roughly six training cohorts and one holdout, with correlated players across years. The design's early-stop at <15 positives per cohort is low, since a top-50 comparison at that level is almost uninformative.
+ASSUMPTION: The pool is uncertain because the minor-league versus MLB election split is unresolved (113 players apart in 2018). Using the whole pool avoids that issue, but mixes populations with very different base rates, so AUROC may look strong from easy separation (MLB veterans vs. A-ball players) while top-50 within the relevant segment shows nothing.
+ASSUMPTION: The project would look useful but give little advantage if: AUROC is high due to easy cases; hits are driven by players who re-sign quickly with their own club; the headline metric counts players clubs could not acquire; the Cubs retrospective is read as validation; or the model is compared to nothing a real scout uses. Private club data would likely already cover the same ground.
+ASSUMPTION: Dropping 2020 and scaling the 2019 cohort's threshold by 60/162 introduces arbitrary choices that can be tuned after the fact. The 2021 cohort follows a disrupted minor-league return and may differ in structure.
+ASSUMPTION: Source terms limit use to individual, non-commercial, non-bulk, which may conflict with building multi-year cohort tables across hundreds of players per year.
+UNKNOWN: outcome_positive_base_rate_by_cohort
+UNKNOWN: share_of_pool_with_prior_MLB_time
+UNKNOWN: public_tool_comparison_results
+UNKNOWN: typical_club_minor_league_contract_and_NRI_volume
+UNKNOWN: bootstrap_variance_of_top50_hit_difference
+UNKNOWN: mlb_stats_api_terms_compatibility_with_cohort_building
+IDEA: Replace the single +3 rule with a pre-registered threshold derived from a simulation of bootstrap variance on the validation cohort, and report effect sizes across all cohorts via rolling-origin evaluation instead of one holdout.
+IDEA: Stratify the pool before ranking (prior MLB time vs. none, pitcher vs. hitter), evaluate top-k within the no-MLB stratum, and use a rate-based or above-replacement outcome alongside the playing-time threshold.
+IDEA: Add stronger baselines: B0+B1 combined, last-year-stats-only logistic, and a public projection system, plus a "tops by age only" null. Report an opportunity-adjusted outcome that conditions on the signing club's roster openings where public.
+IDEA: Choose k from measured public signing counts (Cubs and other clubs) before looking at any holdout outcomes, and show a sweep over k=25/50/100 with intervals.
+=== CAND claude-sonnet-5-5 False
+CITE: design-v1
+CITE: s1-feasibility
+FACT: milbfa_2018_events=585
+FACT: milbfa_2025_events=839
+FACT: method_disagreement_2018_minor=530 vs 417
+CALC: 530 - 417 = 113
+CONFLICT: milb_vs_mlb_separation_2018
+ASSUMPTION: The design avoids the S1 separation conflict by ranking the whole pool, but that makes the pool include players the decision-maker would never pursue (MLB-service-time veterans, 6-year minor-league free agents, players already agreed to re-sign). Top-50 hits may then be dominated by obvious MLB-experienced players, which B0 already ranks highly; M's lead over B0 could come from re-discovering "had MLB time in Y" rather than finding anything a scout would not already see.
+ASSUMPTION: The November decision may not change with a ranking. Clubs already have internal lists, and the best players sign within days, often with the club that holds their rights or on terms agreed before the pool opens. The design provides no evidence that a club's actual choice set at decision time resembles the full elected-free-agency list.
+UNKNOWN: fraction_of_pool_that_is_actually_signable_and_available_to_a_given_club
+ASSUMPTION: The outcome (>=50 PA or >=20 IP in Y+1) measures opportunity at least as much as value. A player who signs with a team lacking depth reaches 50 PA through roster need, and a good player blocked on a deep roster does not. The design admits this bias but proposes no correction. It would also reward predicting "who gets a 40-man spot", which can be learned from MLB time and level alone.
+IDEA: Add a value-conditioned secondary outcome (e.g., WAR or runs above replacement per PA/IP, with a minimum-opportunity gate) and a opportunity-adjusted outcome (e.g., stratify by signing club's depth-chart slot), and report both beside the binary threshold.
+ASSUMPTION: The 50 PA / 20 IP threshold is arbitrary and treats a 20 IP reliever and a 50 PA bench bat as equal. Pitchers and hitters likely have very different base rates, so a pooled top-50 may be mostly one group depending on the ranking.
+IDEA: Rank and evaluate hitters and pitchers separately, or fix a quota (e.g., 25/25), and run a sensitivity analysis on thresholds fixed before the holdout.
+ASSUMPTION: Hindsight risk in the 2025 holdout. The design was written 2026-10-09 after the 2026 season ended and after the 2025 cohort pool size was seen. Anyone who knows 2026 outcomes, including the authors from general baseball knowledge, could shape features, baselines, or k. The statement "not inspected for outcomes" is unverified and is not independently checkable.
+IDEA: Pre-register by hashing the frozen code and config before retrieving any 2026 outcomes, and prefer a purely historical blinded check (e.g., rerun on 2018 to 2024 with rolling-origin splits) so the conclusion does not rest on one cohort.
+ASSUMPTION: Leakage risk through "highest level reached in Y" and "MLB playing time in Y". Transactions dated through Dec 31 mean the feature window includes events after election (e.g., minor-league deals signed in December), and the elected free agency event type itself may leak information (e.g., players who elect after being outrighted have different histories than players released). Age at Dec 31 and as-of dates must be checked per event.
+UNKNOWN: availability_time_of_each_feature_relative_to_decision_date
+ASSUMPTION: The multi-cohort split is nearly a one-sample test. Only one holdout cohort of about 839 players exists, and the same players recur across cohorts (acknowledged, not quantified). The 2019 to 2020 cohort with a 60-game scaled threshold and the missing 2020 cohort leave only about five clean training years, with a COVID shift in roster behavior.
+UNKNOWN: outcome_positive_base_rate_per_cohort
+UNKNOWN: number_of_holdout_players_also_in_training_cohorts
+ASSUMPTION: Base rate risk cuts both ways. If the base rate is around 10 to 20 percent of about 800 players, the top-50 count has a standard error of a few players, so a +3 threshold is about one standard deviation of sampling noise from a single cohort. A bootstrap on one cohort captures player sampling but not season-to-season variation (injury luck, club needs), so the interval is too narrow for generalization.
+CALC: 839 * 0.15 = 125.85
+ASSUMPTION: The base rate of 0.15 in the CALC above is an illustrative placeholder, not a measured value. The stopping rule (<15 positives per cohort) is so lax that it will almost never trigger and does not guarantee the top-50 comparison is informative.
+ASSUMPTION: k=50 is justified only by an unchecked statement about club signing volume. Clubs sign minor-league deals for many reasons (org depth for affiliates) that don't aim at MLB contribution. The +3 hits threshold has a rationale ("scout-level noise") with no data. A top-50 hit gain of 3 on a base of maybe 20 hits is roughly 15 percent relative; on a base of 10 hits, 30 percent. Neither is tied to wins or cost.
+UNKNOWN: club_actual_minor_league_contract_and_NRI_volume_at_k
+IDEA: Replace the fixed +3 with a threshold derived from a decision model: value of an additional usable depth player in runs or dollars versus scout time, and report results for several k (25, 50, 100) with a fixed ordering of primary versus secondary before the holdout.
+ASSUMPTION: Baselines B0 and B1 may be weak or unfair in either direction. B0 uses MLB playing time and is a strong proxy for the outcome, since the same players tend to get MLB time again. B1 uses OPS and K-BB% across levels without park, league, or age-relative-to-level adjustments, so it is a straw man for hitters at Triple-A versus Double-A. M gets to learn age-by-level interactions via regression while the baselines have none. Choosing the better baseline on a single validation cohort (2024) is itself noisy.
+IDEA: Add stronger comparators: persistence (Y+1 outcome equals Y outcome), a plain age-and-level-only model, and any public projection systems (e.g., public aggregated projections for MLB-experienced players), and test M against the best of these on the holdout.
+UNKNOWN: existing_public_tools_covering_minor_league_free_agent_ranking
+ASSUMPTION: Existing public resources already approximate this: public transaction trackers and free-agent lists, prospect and minor-league leaderboards, public projection systems, and club-agnostic fan analyses of minor-league free agents. I have not verified which are current or how good they are. If these already give the same ranking, the project gives parity, not an edge, and clubs with private tracking data and scouting reports start from a better information set.
+ASSUMPTION: What would make this LOOK useful while providing little advantage: (1) M beats B0/B1 mainly because of MLB-time and level features that any scout reads off a transactions page; (2) the binary outcome rewards opportunity, not talent; (3) a clean-looking bootstrap interval from one cohort; (4) the Cubs retrospective compares to signings already made without knowing alternatives, offers, or competing bids; (5) high AUROC across a pool where most players are trivially low-probability; (6) retrospective examples of "players the Cubs missed" selected after outcomes are known; (7) no cost or availability constraint.
+IDEA: Report AUROC and precision restricted to the plausibly actionable segment (players with no MLB service-time lock, not already re-signed within a few days), plus a "what did M add beyond B0 and public projections" incremental-value test, and require the lift to survive in the "no MLB in Y" segment, where the claimed edge for neglected players should live.
+ASSUMPTION: The feasibility evidence covers only event counts and API availability. It does not show that features such as season-Y stats by level, Y+1 outcomes, or as-of timing are obtainable within the stated source terms (individual, non-commercial, non-bulk use) or the 3 remaining sessions. The design's reliance on bulk cohort construction may conflict with those terms.
+CONFLICT: source_terms_vs_bulk_cohort_construction
+UNKNOWN: data_acquisition_feasibility_within_source_terms_and_session_bound
+ASSUMPTION: Rule 5 codes appear only from 2024, and the design's own Cubs case requires comparing against public signings that are hard to link to the DFA-type events reliably. Name matching between transaction records and stats IDs is an untested error source.
+ASSUMPTION: The right verdict if only the headline holds: a positive result would show retrospective rankability, not an actionable advantage. A negative result is more informative and the design's COMPLETE_NEGATIVE rule is sound, but the design should state that a positive result alone does not justify a Cubs recommendation without availability, cost, and incremental-value tests.

@@ -190,3 +190,12 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - cubs-edge-lab PR #1 (research/S1-feasibility 3487460) merged as 35f803b (no CI configured; independent review = HowlPlane sessions 2027b3fe and 0bbd1442). Post-merge: 32 passed; bulk data still local-only.
 - S1 research status: ACCEPTED. Verdicts: MILBFA PARTIAL, RULE5 PARTIAL, CALLUP PARTIAL. HowlPlane sessions used: 9 of 12.
 - Next: opportunity selection (section 9) with this evidence, then the early independent challenge of selection and design through a Howl workflow.
+
+## 2026-10-09T06:40Z — Selection and design; INTENT Dream pass 5 (early independent challenge)
+- Selected MILBFA (OPPORTUNITIES.md "Selection"); RULE5 rejected (labels only from 2024), CALLUP rejected for this run, others parked. Design v1: experiments/R001-MILBFA-DESIGN.md, written before any outcome label was inspected; final holdout = 2025 cohort (2026 outcomes), untouched.
+- INTENT: `howldream explore --from-candidate workflow-evidence/R001/dream/shortlist/p4-0-0-idea-9.candidate.json --evidence workflow-evidence/R001/dream/p5-evidence.json --objective <challenge> --command-config config/dream-claude-sonnet.json --allow-remote --max-calls 3`. Dream calls: 22 -> up to 25 of 40.
+
+## 2026-10-09T07:00Z — Dream pass 5 challenge result; design v2; terms question
+- Run (latest under workflow-evidence/R001/dream/runs): COMPLETE, 3 calls, remote claude-sonnet-5-5, mocked=false. LOCAL_LLM_USED: NO. Text: p5-challenge-texts.txt. Dream calls 25 of 40; passes 4 of 5.
+- Reconciled (evidence-based, table in design v2): stronger baselines B2 + persistence; primary evaluation in the no-MLB-in-Y segment; bootstrap + rolling-origin success rule; k from measured Cubs signing volume; feature window ends at election date; hash pre-registration before 2026 outcomes; early stop at <30 positives; ID-only joins. Limitations: opportunity-confounded outcome; no projection-system comparison.
+- Open authority question: whether building multi-year cohort tables from the Stats API (local only, rate-limited, aggregate publication) is consistent with MLBAM's "individual, non-commercial, non-bulk use" terms. Campaign -> PAUSED_NEEDS_HELP until answered.

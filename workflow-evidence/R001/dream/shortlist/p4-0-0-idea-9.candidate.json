@@ -1,0 +1,226 @@
+{
+  "schema_version": "howl.candidate/v1",
+  "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/9",
+  "source_run_id": "hd-20261008-144047-5e3c07475c85",
+  "parent_request_id": "cubs-r001-p4-divergent2",
+  "objective": "Where could software create a meaningful baseball advantage for the Chicago Cubs? Second pass, informed by a critique of earlier ideas. The critique found: (a) most public-data analytics tools reach only parity with sophisticated clubs that hold private tracking, medical and scouting data; (b) earlier ideas were analyst-centric information tools with no named decision owner and no measurable change in decisions; (c) uncovered areas include amateur draft and scouting workflow, pro acquisition, trade and free-agent valuation, contract and non-tender decisions, defense, strength and conditioning, and coordination or error-prevention tools rather than information tools. The current date is in the Cubs' offseason (their 2026 season ended in the Wild Card Series), so prefer decisions that recur every offseason or every season and that can be evaluated retrospectively on public history. Seek mechanisms by which public data could still create an edge despite private-data clubs: speed, coverage of neglected populations, combining signals few look at, market inefficiencies in league-wide processes, or avoiding systematic human biases. Also name where software is unnecessary. OUTPUT GUIDANCE (format only): Each IDEA names one problem, the decision owner, the concrete recurring decision, the mechanism of advantage, and the software intervention. Follow with ASSUMPTION and UNKNOWN lines. Do not invent statistics or private Cubs information.",
+  "text": "IDEA: Problem: minor league free agency each November releases many upper-minors players, and evaluation is often cursory. Owner: pro scouting director and farm director. Decision: minor league free agent signings and spring invites every offseason. Mechanism: coverage of a neglected population, plus speed. Intervention: a prebuilt eligible-player list from public service-time and transaction data, ranked by public Triple-A and Double-A tracking metrics where available, with a one-page profile per player.",
+  "condition": "dream",
+  "trust": "UNVERIFIED",
+  "status": "UNRESOLVED",
+  "authority": {
+    "type": "ADVISORY",
+    "executable": false
+  },
+  "claims": [
+    {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/9/claim/1",
+      "candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/9",
+      "kind": "IDEA",
+      "text": "Problem: minor league free agency each November releases many upper-minors players, and evaluation is often cursory. Owner: pro scouting director and farm director. Decision: minor league free agent signings and spring invites every offseason. Mechanism: coverage of a neglected population, plus speed. Intervention: a prebuilt eligible-player list from public service-time and transaction data, ranked by public Triple-A and Double-A tracking metrics where available, with a one-page profile per player.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    }
+  ],
+  "evidence_refs": [
+    "objective_context"
+  ],
+  "assumptions": [
+    "Public small-conference and summer-league stats are standardized and accurate enough to rank players within those populations.",
+    "Rival clubs have not already closed this gap with their own private tracking at summer leagues.",
+    "Late-round and undrafted-free-agent outcomes add enough value to justify reallocating scout time.",
+    "Pool-rule errors or suboptimal sequencing actually occur often enough to matter, as opposed to being solved by spreadsheets.",
+    "Signability information exists in a structured form and can be entered quickly.",
+    "Non-tendered players are systematically undervalued, which needs testing against public signing history and subsequent performance.",
+    "Early contact materially improves signing odds, as opposed to players waiting for the market.",
+    "Anonymization is feasible with publicly known players. Decision makers may recognize statlines.",
+    "Sunk-cost bias exists in tender decisions and is measurable retrospectively.",
+    "Public roster and eligibility data are complete enough to reconstruct 40-man pressure for all 30 clubs.",
+    "Roster-pressured clubs actually accept lower returns, which needs testing on historical trades.",
+    "This differs from the explored waiver/DFA monitor because it targets the pre-emptive trade ask rather than the waiver claim.",
+    "Profile-specific aging differs enough from generic curves to change offer decisions.",
+    "Sample sizes per profile are large enough to avoid overfitting.",
+    "Private-data clubs have not already priced this in, which is the critique's parity risk.",
+    "Inconsistency actually exists and has measurable cost in defensive outcomes or adjustment time.",
+    "Affiliate positioning data is available. Public minor league defensive tracking may be limited.",
+    "Adherence is a meaningful bottleneck and is not already handled by existing vendor platforms.",
+    "Players and the union would accept the tool. Privacy, health-data, and collective bargaining constraints may apply.",
+    "Minor league free agents produce enough major league value retrospectively to justify the effort.",
+    "Public eligibility data is reliable.",
+    "Counterfactual availability can be reconstructed from public data without knowing private negotiation context.",
+    "Outcome noise is not so large that the scorecard just measures luck.",
+    "Low-tool areas really are low-value for software, which should be checked against observed errors before dismissing them."
+  ],
+  "unresolved_issues": [
+    "Public small-conference and summer-league stats are standardized and accurate enough to rank players within those populations.",
+    "Rival clubs have not already closed this gap with their own private tracking at summer leagues.",
+    "Late-round and undrafted-free-agent outcomes add enough value to justify reallocating scout time.",
+    "Pool-rule errors or suboptimal sequencing actually occur often enough to matter, as opposed to being solved by spreadsheets.",
+    "Signability information exists in a structured form and can be entered quickly.",
+    "Non-tendered players are systematically undervalued, which needs testing against public signing history and subsequent performance.",
+    "Early contact materially improves signing odds, as opposed to players waiting for the market.",
+    "Anonymization is feasible with publicly known players. Decision makers may recognize statlines.",
+    "Sunk-cost bias exists in tender decisions and is measurable retrospectively.",
+    "Public roster and eligibility data are complete enough to reconstruct 40-man pressure for all 30 clubs.",
+    "Roster-pressured clubs actually accept lower returns, which needs testing on historical trades.",
+    "This differs from the explored waiver/DFA monitor because it targets the pre-emptive trade ask rather than the waiver claim.",
+    "Profile-specific aging differs enough from generic curves to change offer decisions.",
+    "Sample sizes per profile are large enough to avoid overfitting.",
+    "Private-data clubs have not already priced this in, which is the critique's parity risk.",
+    "Inconsistency actually exists and has measurable cost in defensive outcomes or adjustment time.",
+    "Affiliate positioning data is available. Public minor league defensive tracking may be limited.",
+    "Adherence is a meaningful bottleneck and is not already handled by existing vendor platforms.",
+    "Players and the union would accept the tool. Privacy, health-data, and collective bargaining constraints may apply.",
+    "Minor league free agents produce enough major league value retrospectively to justify the effort.",
+    "Public eligibility data is reliable.",
+    "Counterfactual availability can be reconstructed from public data without knowing private negotiation context.",
+    "Outcome noise is not so large that the scorecard just measures luck.",
+    "Low-tool areas really are low-value for software, which should be checked against observed errors before dismissing them.",
+    "Problem: draft boards may underweight players from neglected populations such as cold-weather high schools, small-conference colleges, and junior colleges, where public coverage is thin. Owner: amateur scouting director. Decision: area-scout coverage allocation and late-round board ordering each spring. Mechanism: coverage of neglected populations, plus correcting the bias toward players who were seen more often. Intervention: a coverage-gap map that compares public box-score and summer-league performance against logged scout looks, flagging high-signal players with few looks.",
+    "club_scout_coverage_logs",
+    "public_small_conference_data_quality",
+    "Problem: draft-day decisions are made under time pressure, and bonus-pool slot math is error-prone. Owner: scouting director with front-office pool manager. Decision: in-draft pick selection and underslot/overslot sequencing each July. Mechanism: speed and error prevention rather than information. Intervention: a live pool-ledger simulator that shows the remaining pool, forfeiture thresholds, and signability-contingent pick sequences, then runs a pre-draft rehearsal against historical draft orders.",
+    "historical_frequency_of_pool_sequencing_mistakes_league_wide",
+    "Problem: the non-tender deadline produces a league-wide supply shock of freed players, and clubs may evaluate them slowly or anchor on the prior club's judgment. Owner: GM and pro scouting director. Decision: which non-tendered players to pursue, and how fast, every offseason. Mechanism: speed, plus exploiting a market inefficiency in a league-wide process. Intervention: a pre-deadline model, built in October and November, that forecasts likely non-tenders from public salary projections and performance, then pre-ranks them and pre-drafts offer ranges so the club can act within hours.",
+    "retrospective_value_of_nontendered_players_vs_contract_cost",
+    "typical_signing_speed_after_nontender_deadline",
+    "Problem: the club's own non-tender and tender decisions may be biased by sunk cost or familiarity. Owner: GM. Decision: tender or non-tender of arbitration-eligible players each November. Mechanism: avoiding systematic human bias. Intervention: a blinded review in which tender candidates are mixed anonymously with comparable external non-tender candidates, and decision makers price each one without names before a decision journal records the final call.",
+    "evidence_of_endowment_bias_in_mlb_tender_decisions",
+    "Problem: trade negotiations may focus on headline players while undervaluing low-minors throw-ins and players blocked by a full 40-man roster elsewhere. Owner: GM and pro scouting director. Decision: which secondary pieces to request in each trade, and which Rule 5-eligible players other clubs must protect or expose, every winter. Mechanism: market inefficiency in league-wide roster-crunch processes, plus combining signals. Intervention: a league-wide 40-man pressure map built from public transaction and roster data that flags clubs forced to shed players before Rule 5 protection and offseason deadlines, and suggests targeted asks.",
+    "historical_trade_return_vs_counterparty_roster_pressure",
+    "Problem: free-agent contract valuations may misprice aging curves for specific skill profiles, such as speed-dependent or defense-first players. Owner: GM and front-office valuation group. Decision: offer years and dollars to free agents each winter. Mechanism: combining signals few weigh together, specifically public sprint speed trends, defensive metrics, and contract outcomes. Intervention: a skill-profile-specific aging model that is backtested only on public contracts and shows retrospective error bands against the generic aging assumption.",
+    "public_contract_outcome_dataset_completeness",
+    "Problem: defensive alignment and positioning across the minor league system may be inconsistent with major league standards, so players arrive needing to relearn positioning. Owner: player development director and field coordinators. Decision: each season's standardized defensive positioning conventions and communication signs across affiliates. Mechanism: coordination and error prevention, not information. Intervention: a shared positioning-card generator plus a compliance check that compares affiliate conventions to major league conventions and flags divergences.",
+    "affiliate_defensive_positioning_data_availability",
+    "Problem: the offseason strength and conditioning programs of remote players are hard to monitor and coordinate, especially across languages and locations. Owner: head of strength and conditioning. Decision: individualized offseason program assignment and check-ins each winter. Mechanism: coordination, plus catching non-adherence early. Intervention: a lightweight check-in and program-versioning tool with player consent and minimal data collection. It is not an information tool but a reminder and adherence ledger.",
+    "existing_vendor_platform_adoption_by_club",
+    "cba_constraints_on_offseason_monitoring",
+    "Problem: minor league free agency each November releases many upper-minors players, and evaluation is often cursory. Owner: pro scouting director and farm director. Decision: minor league free agent signings and spring invites every offseason. Mechanism: coverage of a neglected population, plus speed. Intervention: a prebuilt eligible-player list from public service-time and transaction data, ranked by public Triple-A and Double-A tracking metrics where available, with a one-page profile per player.",
+    "retrospective_mlb_value_of_minor_league_free_agents",
+    "Problem: the club cannot tell whether its offseason decision processes beat the market. Owner: GM and front-office leadership. Decision: an annual process audit each October. Mechanism: retrospective evaluation on public history, which ties software to measurable decision changes. Intervention: a scorecard that compares each offseason's acquisitions, non-tenders, and passes against the counterfactual of players available but not chosen, using public outcomes.",
+    "club_decision_records_for_counterfactual_matching",
+    "Where software is unnecessary: relationship-driven decisions such as player recruitment pitches, clubhouse fit judgments, and agent rapport gain little from new software beyond basic notes.",
+    "Where software is unnecessary: one-off contract structure creativity, such as opt-outs and deferrals, mostly needs human negotiation. A simple present-value calculator already suffices.",
+    "Where software is unnecessary: if a decision recurs rarely and the existing spreadsheet error rate is near zero, building a tool adds maintenance cost without an edge.",
+    "cubs_2026_season_outcome",
+    "cubs_current_front_office_tooling",
+    "cubs_decision_owner_titles"
+  ],
+  "contradictions": [],
+  "verified_constraints": [],
+  "provenance": {
+    "run_id": "hd-20261008-144047-5e3c07475c85",
+    "producer_component": "howldream",
+    "producer_version": "0.4.4",
+    "model_or_provider": "claude-opus-5-5",
+    "observation_kind": "EXTERNALLY_OBSERVED",
+    "created_at": "2026-10-08T14:46:48.452426+00:00",
+    "transformations": [
+      "generated",
+      "idea_unit_selection"
+    ],
+    "participation": [
+      {
+        "operation": "GENERATED",
+        "transforming_component": "howldream",
+        "origin_component": "howldream",
+        "origin_provider": "claude",
+        "origin_model": "claude-opus-5-5",
+        "subject_count": 1,
+        "inference_occurred": true,
+        "note": "Dream prompted the provider; the provider authored the text."
+      },
+      {
+        "operation": "CLUSTERED",
+        "transforming_component": "howldream",
+        "origin_component": "howldream",
+        "origin_provider": null,
+        "origin_model": null,
+        "subject_count": 49,
+        "inference_occurred": false,
+        "note": "Deterministic concept-token clustering; no inference."
+      },
+      {
+        "operation": "SELECTED",
+        "transforming_component": "howldream",
+        "origin_component": "howldream",
+        "origin_provider": "claude",
+        "origin_model": "claude-opus-5-5",
+        "subject_count": 1,
+        "inference_occurred": false,
+        "note": "Operator selected this idea unit through `howldream export`."
+      }
+    ],
+    "request_id": "cubs-r001-p4-divergent2",
+    "originating_component": "operator",
+    "execution": {
+      "requested_provider": "command",
+      "selected_provider": "command",
+      "actual_provider": "claude",
+      "adapter": "claude-json",
+      "model": "claude-opus-5-5",
+      "requested_model": "claude-opus-5-5",
+      "deterministic": false,
+      "mocked": false,
+      "inference_occurred": true,
+      "remote": true,
+      "remote_observation": "OPERATOR_DECLARED",
+      "fallback_reason": null,
+      "elapsed_seconds": 41.34083835198544,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 1731,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 3542,
+        "output_tokens_details": {
+          "thinking_tokens": 257
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1731,
+          "ephemeral_5m_input_tokens": 0
+        }
+      },
+      "cost": 0.084696,
+      "request_id": "f76d2111-cf7d-423e-bd31-99d486908fa4",
+      "raw_output_received": true,
+      "parse_status": "VALID",
+      "repair_attempted": false,
+      "sampling": null
+    },
+    "source_candidate_refs": [],
+    "source_candidates_location": "exploration_envelope.json#/provenance/source_candidates",
+    "hard_constraints": [
+      "Do not assume the problem or the solution.",
+      "Lawfully accessible public, historical, or clearly labeled synthetic data only.",
+      "Do not invent private Chicago Cubs information or statistics.",
+      "Distinguish fact, assumption, hypothesis, and speculation."
+    ],
+    "constraint_scope": "UNVERIFIED_GENERATION_GUIDANCE",
+    "purpose": "discovery",
+    "candidate_index": 0,
+    "trial": 0,
+    "prompt_hash": "f96d0a9030d581fec228a0f7bd16739160c58d55ea7ed169f9f65970d6f1dacb",
+    "output_hash": "0e78cb04d3c2cee5883fd4310c3f82874372d99132202246ef0f8f93eb4354ac",
+    "selection": {
+      "selected_by": "operator",
+      "operation": "SELECTED",
+      "via": "howldream export"
+    },
+    "parent_candidate_id": "hd-20261008-144047-5e3c07475c85/candidates/0/0",
+    "source_unit": {
+      "id": "hd-20261008-144047-5e3c07475c85/candidates/0/0/idea/9",
+      "source_span": [
+        7199,
+        7709
+      ],
+      "source_hash": "0e78cb04d3c2cee5883fd4310c3f82874372d99132202246ef0f8f93eb4354ac",
+      "cluster": "cluster-5"
+    },
+    "parent_verification_ref": "verification.jsonl#candidate=hd-20261008-144047-5e3c07475c85/candidates/0/0",
+    "unit_selection_scope": "Single IDEA line; batch assumptions/unresolved issues retained without claim-specific association. Parent rejection/contradiction gates retained."
+  }
+}
