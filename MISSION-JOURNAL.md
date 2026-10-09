@@ -287,3 +287,7 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - Review session: COMPLETE, audit CLEAN; worker tightenings folded as 022d294; pre-push 2455 passed; CI green; PR #167 merged as 99d3aa4. Engine fast-forwarded to 99d3aa4.
 - Post-merge proof: CLI operator errors (DOG-043) on merged main; proof session 55b942cf on dogfood-missions/r002-proof reproduced the DOG-040 scenario live (session-scoped exclusion, Claude READY after); DOG-041 condition present without misattribution; DOG-042 contract-tested only.
 - Repair worktrees removed; proof session discarded. Outcome COMPLETE_REGRESSION (runs/R002/FINAL-ASSESSMENT.md). R002 HowlPlane sessions 2 of 6.
+
+## 2026-10-09T21:17:55Z — R002 closeout receipt; R003 started
+- Receipt: howl-cubs-dogfood PR #2 (records/R002 -> main) merged as 258a05b. Correction: the PR text said the bulk-data sweep found nothing before it was run; the sweep was run after merge on main 258a05b and found no file over the threshold (claim true, timing wrong).
+- R003 (DISCOVERY_BUILD) started under prompt v2 (snapshot runs/R003/PROMPT-SNAPSHOT.md, sha256 7fa1b0c151ef593e07a4d3a3c44d1626a1ceae7693ca615a1d756f83b59d75d5). Contract runs/R003/RUN-CONTRACT.md. Reason: no credible new MILBFA hypothesis; test a different offseason decision with a larger value ceiling.
