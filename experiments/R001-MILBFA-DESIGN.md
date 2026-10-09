@@ -79,3 +79,11 @@ HowlPlane sessions remaining for R001: 3 of 12 (user-raised bound). Data acquisi
 ## Pre-holdout decision: primary k (2026-10-09T10:05Z)
 
 Measured (cubs-edge-lab research/data_summary.json, merged 0e53744; live recount of 2025-26 = 66 agreed): Cubs minor-league contracts per offseason 2021-22..2025-26 = 41, 38, 41, 65, 66; median `k_basis` = 41. Rule fixed now, before any outcome label exists: primary k = the smallest of {25, 50, 100} that is at least k_basis, so **primary k = 50**. k = 25 and 100 remain secondary.
+
+## Exploratory addendum (2026-10-09T11:10Z, user-requested after the pre-registered early stop)
+
+The primary test stopped (validation primary-segment positives 23 < 30). At the user's request, an EXPLORATORY whole-pool analysis follows. Rules fixed before it runs:
+- Population: the whole November pool (MLB-experienced players included); pitchers and hitters also separately. The primary segment remains reported but is not tested.
+- Data: training cohorts 2018-2023, rolling-origin test years 2021-2023, validation cohort 2024 only. The 2025 holdout is NOT used, so a future confirmatory whole-pool test can be pre-registered on it.
+- Same rankings (B0, B1, B2, P, M), metrics (top-k for k in 25/50/100, AUROC, calibration, paired bootstrap) and comparator rule as v2.
+- Label: every result is EXPLORATORY and generates hypotheses; none supports a usefulness claim or a Cubs recommendation.

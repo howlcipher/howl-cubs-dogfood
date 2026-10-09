@@ -230,3 +230,7 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - cubs-edge-lab PR #3 merged c33a70a. Tests: 63 local, 60 + 3 skips clean clone.
 - Scientific reading: in the low-attention segment, only 12-23 players per year league-wide reach >=50 PA / >=20 IP next season (under one per club per year). The proposed mechanism (hidden value in the neglected November pool) has a small ceiling; a ranking tool cannot test or deliver a large advantage there at this data's power. Supported negative result for the primary hypothesis's premise.
 - HowlPlane sessions used: 12 of 16. Pivot: 1 unused.
+
+## 2026-10-09T11:10Z — User response (R001 finish)
+- User chose "Exploratory whole-pool look". Rules fixed in design addendum before running: whole pool, cohorts 2018-2024 only, 2025 holdout untouched, everything labeled EXPLORATORY.
+- INTENT S3 (exploratory): goal workflow-evidence/R001/plane/S3-explore.goal.txt on cubs-edge-lab main c33a70a, engine af9f40a. HowlPlane sessions: 13 of 16.
