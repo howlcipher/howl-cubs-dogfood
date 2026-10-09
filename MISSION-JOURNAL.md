@@ -251,3 +251,7 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - Controller checks: research/validation.json, exploratory_whole_pool.json, EXPERIMENT.md byte-identical to pre-session hashes; flake8 -j1 clean; tests 69 local, 66 + 3 skips clean clone.
 - cubs-edge-lab PR #4 merged ad3ce14. HowlPlane sessions: 14 of 16.
 - R001 baseball outcome (pending final assessment): primary hypothesis untestable at pre-registered power (early stop) and its premise weakened (12-23 next-season contributors per year league-wide in the low-attention segment); exploratory whole pool: model ties the prior-MLB-time rule. Proposed outcome label: COMPLETE_NEGATIVE.
+
+## 2026-10-09T15:45Z — Closeout plan; INTENT S4 (Cubs case)
+- User: "finish with the next steps and continue with what you would do next and keep the process rolling". CLOSEOUT-PROMPT.md written (R001 closeout + R002 regression run).
+- INTENT S4: goal workflow-evidence/R001/plane/S4-cubs-case.goal.txt on cubs-edge-lab main ad3ce14, `--verify "sh -c 'python3 -m flake8 -j1 cubs_edge_lab tests && python3 -m pytest -q'"`. HowlPlane sessions: 15 of 16.
