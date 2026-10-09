@@ -170,3 +170,7 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - DATA-TERMS INCIDENT: statsapi responses carry MLBAM copyright: "Only individual, non-commercial, non-bulk use ... is permitted". (1) cubs-edge-lab S1c deliverable embeds bulk responses (research/evidence.json 17 MB, observations.json 4 MB with per-transaction descriptions) -> NOT committed or pushed; must be reworked before publication. (2) My earlier pushes to public howl-cubs-dogfood branch records/R001 included S1-blocked-worktree.patch and S1-invalid-reviewer-outputs/probe_results.json (~8,600 transaction records each) and S1b-worktree.patch (61). Removed from branch tip in 49d8e17 (kept locally in ignored private/, hashes in BULK-DATA-REMOVED.sha256); still present in branch history (commits ef6d9a8, 1b7b308 and later). Never merged to main.
 - Lesson (prompt candidate): scan every evidence push for bulk third-party records (e.g. count of API record keys) and check source terms before the first public push of fetched data.
 - Campaign -> PAUSED_NEEDS_HELP (history rewrite is an authority decision).
+== 2026-10-09T12:37:15Z
+
+## 2026-10-09T05:00Z — User response (data history)
+- User chose "Rewrite branch history (Recommended)": rewrite records/R001 to drop the bulk-data files from every commit and force-push that mission-owned, never-merged branch; main untouched.
