@@ -52,6 +52,12 @@ Registry state at mission start (2026-10-08T14:27Z): highest allocated DOG-034; 
 ### NOTE-007: flaky hygiene test under session verification
 - `tests/test_hygiene_policy.py::test_verification_plan_executes_with_hygiene_integrity_checks` failed once in review session 80be26f2 round 0 and passed on rerun and directly. Possibly the unidentified flaky test noted by the prior campaign (DOG-024 era).
 
+### CUBS-P-008 (provisional): an implementer's "IMPLEMENTATION_STATUS: INCOMPLETE" is recorded as success
+- Category: CAPABILITY GAP (false-success risk, contained by review). Owner: howlplane orchestration.
+- Observed: S2 session 43b8a9e6; Codex ended three implementation attempts stating INCOMPLETE with reasons; each was recorded SUCCEEDED and reviewed; the session ended AUDIT BLOCKED after spending both rework rounds.
+- Expected: a declared INCOMPLETE status is surfaced as such (handoff with the stated reason, or rework with that reason) rather than forwarded to review as finished work.
+- Evidence: workflow-evidence/R001/plane/S2.stdout; Codex session log 2026-10-09T09:22 (local, not published).
+
 ## Capability notes and nonblocking friction
 
 | ID | Component | Note | Evidence |

@@ -205,3 +205,10 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 
 ## 2026-10-09T07:15Z — INTENT S2 (experiment build, no holdout)
 - Goal: workflow-evidence/R001/plane/S2-build.goal.txt; cubs-edge-lab main 35f803b; engine af9f40a; `--worker-network --verify "python3 -m pytest -q" --execution-budget implementation=1800 --execution-budget review=900`. HowlPlane sessions: 10 of 12.
+
+## 2026-10-09T09:35Z — S2 BLOCKED (review findings after 2 rework rounds) -> PAUSED_NEEDS_HELP
+- Session 43b8a9e6 (engine af9f40a): planning Claude; implementation Codex (model gpt-6-luna) x3 at ~2 min each; review Claude FINDINGS x3 -> AUDIT BLOCKED, resumable. Output: partial triage modules + 9 tests (41 pass); no data fetched; no validation.json/EXPERIMENT.md; no Cubs signing measurement; no end-to-end pipeline. Worktree archived locally (private/S2-worktree.patch, hash S2-worktree.sha256).
+- Root cause (operator): Codex declined to fetch league-wide stats because the repository README documents MLBAM's non-bulk restriction, and my goal did not state the owner's explicit authorization (user decision 07:10Z). Codex's final message: "IMPLEMENTATION_STATUS: INCOMPLETE ... Without authorized inputs, publishing counts or evaluation metrics would require inventing results." Honest behavior by the worker.
+- CUBS-P-008 (HOWL, capability gap / false-success risk): HowlPlane recorded each implementation that ended "IMPLEMENTATION_STATUS: INCOMPLETE" as SUCCEEDED and sent it to review; three review rounds were spent rediscovering a status the implementer had already declared. Only NO_CHANGE_REQUIRED is recognized.
+- Lesson (prompt candidate): when the owner authorizes an action a repository's own documentation restricts, state the authorization, its scope and date verbatim in the goal and as a --constraint.
+- HowlPlane sessions: 10 of 12 used.
