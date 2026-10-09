@@ -234,3 +234,9 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 ## 2026-10-09T11:10Z — User response (R001 finish)
 - User chose "Exploratory whole-pool look". Rules fixed in design addendum before running: whole pool, cohorts 2018-2024 only, 2025 holdout untouched, everything labeled EXPLORATORY.
 - INTENT S3 (exploratory): goal workflow-evidence/R001/plane/S3-explore.goal.txt on cubs-edge-lab main c33a70a, engine af9f40a. HowlPlane sessions: 13 of 16.
+
+## 2026-10-09T15:20Z — S3 (exploratory) HANDOFF REQUIRED; results
+- S3 session 59c7be4a: implementation Codex (22 min), 2 rework rounds; independent audit CLEAN (Cursor); acceptance (Codex) REJECTED only for repository-wide flake8 violations in pre-existing files (new module and tests pass flake8; flake8 was not a goal criterion; the acceptor's own earlier rework item). Status HANDOFF REQUIRED, resumable.
+- Controller checks: primary validation.json hash unchanged; EXPERIMENT.md primary prefix byte-identical to HEAD (only the exploratory section appended); 2025 cohort never opened (review); tests 69 passed.
+- EXPLORATORY results (whole pool, comparator B0 chosen on 2024): top-50 hits M vs B0: 2021 43 vs 41, 2022 48 vs 44, 2023 41 vs 43, 2024 38 vs 32. 2024 AUROC M 0.823 vs B0 0.839 (paired bootstrap M-B0 -0.016, 95% -0.049 to 0.014). Reading: the model roughly ties "prior-season MLB playing time"; edge small and inconsistent; matches the Dream challenge's prediction. Hypothesis only; no claim.
+- HowlPlane sessions: 13 of 16.
