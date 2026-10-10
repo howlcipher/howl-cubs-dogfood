@@ -404,3 +404,9 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - HowlPlane's configured validation passed at 12:38, 12:49 and 13:04 (R4S2.stderr). The acceptance prompt omits that evidence (orchestration.py, acceptance branch), so this is CUBS-P-010. agents doctor: all READY. LOCAL_LLM_USED: NO.
 - The tree content is as the goal asked: .gitignore is /data/, web/data is not ignored, and data/raw is still ignored (controller check).
 - Section 17: Howl failure plus exhausted rework, so I paused and asked the user. Sessions used: 3 of 6.
+
+## 2026-10-10T17:07:14Z — User decision: repair CUBS-P-010 as DOG-044, then resume
+- Verbatim choice: "Repair it, then resume (Recommended)": "Fix howlplane through a HowlPlane session (acceptance gets the recorded verification command, exit code and output tail, with a regression test), prove it live, merge, then resume R4-S2 with the same acceptor pinned. Same pattern as DOG-035 and DOG-040."
+- Registry on origin/main (99d3aa4): highest DOG-043, so CUBS-P-010 becomes DOG-044.
+- Repair worktree: ../howlplane-repair-dog044, branch dogfood/R004-dog044 from 99d3aa4. The shared engine checkout stays on main.
+- INTENT repair session: goal workflow-evidence/R004/R4-DOG044-repair.goal.txt; --verify "make test-full" --verify-timeout 1200 (more than twice the last observed ~456 s). This is a repair session, not an R004 product session; recorded in the R004 ledger.

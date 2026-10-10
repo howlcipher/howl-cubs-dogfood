@@ -1,0 +1,18 @@
+Repair DOG-044 in this HowlPlane repository: the acceptance stage never receives HowlPlane's own verification result, so a read-only acceptor rejects passing work for "missing test evidence".
+
+Observed (howl-cubs dogfood campaign, R004, session 8814b377): the configured validation passed three times. Each time the Claude acceptor, which had only Read, Grep and Glob, rejected with reasons like "I can't accept it because nobody has run the gate" and "HowlPlane did not run the verify command either". Both rework rounds were spent on a passing tree, and the session ended HANDOFF REQUIRED.
+
+Root cause: in src/howlplane/control_plane/orchestration.py, `execute_assignment` adds `verification_evidence_for_review(doc)` to review instructions only. Acceptance instructions get `audit_evidence_for_acceptance(doc)` and `session_diff_evidence(doc, repo)` but never the `doc["tests"]` results. DOG-014 fixed the same gap for review; DOG-041 tells acceptance which command verifies the session, but not whether it passed.
+
+Requirements:
+1. Give acceptance the same harness verification evidence that review gets: the latest result per command on the current tree, with command, exit code and output tail, labeled as HowlPlane harness evidence rather than implementer claims. Reuse the existing helper; rename or generalize it only if that is clearer, and keep review behavior unchanged. When no verification ran, say so explicitly instead of omitting the section, so an acceptor can tell "not run" from "not shown".
+2. Make sure the evidence describes the current tree. `doc["tests"]` is cleared when the repository changes outside the session (see the existing docstring). Confirm that acceptance always follows a verification on the same tree, or that stale results cannot be shown; test that.
+3. Tests:
+   - A contract test that the acceptance instructions contain the passing verification result.
+   - One for a failing result, if acceptance can be reached with one.
+   - One for the explicit "no verification ran" statement.
+   - A regression test reproducing the R004 scenario: explicit --verify passes, acceptance instructions include exit 0 for that command.
+4. Registry: add DOG-044 to dogfood/findings/FINDINGS.md in the existing format (status FIX IN REVIEW, with the observation, root cause, fix and test names). Mention it in CHANGELOG or release notes if the repository keeps them for fixes.
+5. Gate: `make test-full` passes.
+
+Do not change unrelated behavior.

@@ -79,7 +79,7 @@ Registry state at mission start (2026-10-08T14:27Z): highest allocated DOG-034; 
 - Expected: a way to allow loopback only (for local servers and browser tests) without opening outbound network access, or at least a failure classification that names the sandbox restriction.
 - Evidence: workflow-evidence/R004/R4S1.stdout and R4S1.stderr; codex-bind-false.txt and codex-bind-true.txt.
 
-### CUBS-P-010 (provisional): acceptance never receives HowlPlane's own verification result
+### DOG-044 (was CUBS-P-010): acceptance never receives HowlPlane's own verification result
 - Category: HOWL FAILURE (false rejection, wasted rework). Owner: howlplane orchestration prompts.
 - Observed: R4-S2 session 8814b377. Configured validation passed three times (12:38, 12:49 and 13:04). The Claude acceptor, holding only Read, Grep and Glob, rejected three times because "nobody has run the gate" and "HowlPlane did not run the verify command either". Both rework rounds were spent on a passing tree, and the session ended HANDOFF REQUIRED.
 - Root cause (howlplane 99d3aa4, src/howlplane/control_plane/orchestration.py, execute_assignment): review instructions include `verification_evidence_for_review(doc)`, but acceptance instructions include only `audit_evidence_for_acceptance(doc)` and the session diff. HowlPlane's `doc["tests"]` results are never shown to acceptance. DOG-041 says which command verifies the session; nothing says whether it passed.
