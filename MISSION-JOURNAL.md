@@ -505,3 +505,20 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - extra_allowed_bash would let Claude run the regeneration commands. It is a global operator config change, so I left it for the owner and rely on failover.
 - INTENT R4-S5 (6 of 6) on feat/explorer-hardening from 64c7def. Goal: R4S5-hardening.goal.txt (content digest for provenance, manifest coverage of quoted .md files, S3 follow-ups, accessibility tests). --verify 'sh scripts/gate.sh'.
 
+
+## 2026-10-10 21:40 UTC R004: R4-S5 accepted; PR #14; screenshots; final assessment
+
+- R4-S5 (fbe71810):
+  - Claude planned; Claude was refused the regeneration commands; Codex implemented.
+  - Claude review FINDINGS: export_data ignored its root. One rework round (Codex) fixed it.
+  - Review CLEAN; acceptance ACCEPTED. Gate: 327 passed, 0 skipped.
+- Commit 6cd4a15. Fresh clone: 321 passed, 6 data-dependent skips. PR #14 (stacked).
+- Controller screenshots of the final pages from the clean clone (r4-final-*.png).
+  - The fidelity guards hold.
+  - Readability defects that no test catches: per-number disclosures fragment intervals; Brier differences show as -0.00; the 375 px criteria table squeezes headers.
+  - Recorded in the final assessment as next-version items, not fixed: R004's 6 sessions are used.
+- runs/R004/FINAL-ASSESSMENT.md:
+  - Outcome COMPLETE_USEFUL (bounded fidelity claim); delivery PR_PENDING.
+  - Contract deviation disclosed: the R001 wording correction changed two research lines.
+  - Prompt v4 candidates listed, not Dream-reviewed (the one Dream pass was spent).
+
