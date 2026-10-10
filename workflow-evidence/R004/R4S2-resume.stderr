@@ -1,0 +1,11 @@
+[14:31:28] RESUME      Loading orchestration session 8814b377
+[14:31:28] RECONCILE   Checking repository and worker state
+[14:31:29] INTEGRATE   Orchestrator validating final result
+[14:31:29] ROUTE       Claude skipped: failed earlier this session (ACCEPTANCE_REJECTED_OR_UNCONFIRMED)
+[14:31:29] EXCLUDED    Claude: failed earlier this session (ACCEPTANCE_REJECTED_OR_UNCONFIRMED)
+[14:31:29] EXCLUDED    Codex: not the session orchestrator
+[14:31:29] EXCLUDED    Cursor: not the session orchestrator
+[14:31:29] EXCLUDED    AGY: its CLI does not enforce read-only operation
+[14:31:29] EXCLUDED    Devin: not the session orchestrator
+[14:31:29] HANDOFF REQUIRED CLEAN
+[14:31:29] RESUME      howlplane orchestrate resume --repo /run/media/system/tallgeese/dev/cubs-edge-lab

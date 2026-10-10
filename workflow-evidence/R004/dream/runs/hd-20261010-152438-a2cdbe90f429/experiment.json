@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "name": "exp-cubs-r004-explorer-spec-critique",
+  "objective": "Independently critique this specification for a read-only results explorer (candidate) before it is built. Evidence holds the published verdict summaries it will display. Check: ways a non-programmer analyst or coach could still be misled into using the failed send/hold model or over-reading a negative result; missing caveats; accessibility and small-screen gaps; whether the fidelity, guard and network tests would actually catch a misrepresentation; unnecessary scope for a first version. Use ASSUMPTION lines for problems, CITE evidence ids, UNKNOWN for what cannot be judged, and IDEA only for a concrete spec fix.",
+  "hypothesis": "",
+  "mode": "dream",
+  "purpose": "verification",
+  "constraints": [
+    "Review only; do not rewrite the whole spec.",
+    "Do not invent statistics."
+  ],
+  "explored_families": [],
+  "diversity_memory": false,
+  "ranking_criteria": [],
+  "provider": {
+    "kind": "command",
+    "model": "claude-sonnet-5-5",
+    "base_url": null,
+    "allow_remote": true,
+    "allow_local_inference": false,
+    "forbid_local_inference": true,
+    "timeout_seconds": 300,
+    "max_tokens": 4096
+  },
+  "baseline": {
+    "candidates": 1,
+    "temperature": 0.2
+  },
+  "generation": {
+    "candidates": 3,
+    "temperature": 1.1
+  },
+  "max_calls": 4,
+  "trials": 1,
+  "seed": 42,
+  "evidence": [
+    {
+      "id": "sendhold-verdict",
+      "text": "# SENDHOLD experiment (2026 holdout)\n\nFACT: Frozen design v3, sha256 a852b921c1c218f6f8bd525b4c1397923b8d12651dfc829b084b60e35b7b0a1a; the 2025 models were frozen before this file was produced.\nFACT: The v3 label definition is primary; the pre-registered v2 definition is reported as a separate analysis.\nINFERENCE: Primary verdict **NEGATIVE** (v3 labels). Pre-registered v2 definition verdict **NEGATIVE**.\nINFERENCE: Any positive estimate is upper-bound-style: sends are selected and the counterfactual for holds is extrapolated.\n\n## Analyses\n\n### v3_primary\n\nFACT: Labels v3; fallback rows dropped: false; 2025 SENT_OUT 67; rows 2025/2026 4331/4340; mode MODEL.\nFACT: Covariate set reduced (2025 SENT_OUT 67 against 140 required for the full set); support threshold 0.2529.\nFACT: 2026 sends 1927, holds 2329; Brier model 0.0354, constant 0.0355, outs-only 0.0355; difference to constant -0.0001 (interval [-0.0003, 0.0005]), to outs-only -0.0001 (interval [-0.0003, 0.0003]).\nFACT: Holds below the propensity support threshold: 199 of 2329 (share 0.0854); assessed holds 2130; flagged holds 1533.\nFACT: Bootstrap 1000 resamples (1000 usable), seed 20261010.\n\n| Criterion | Value | 95% interval | Passed |\n|---|---:|---|---|\n| Brier difference to constant | -0.0001 | [-0.0003, 0.0005] | false |\n| Calibration slope | 0.8420 | [-0.2065, 1.7621] | true |\n| Runs left (2026) | 326.6254 | [292.0959, 359.6092] | true |\n| Negative control (realized flagged-send success) | 0.9567 | [0.9559, 0.9748] | true |\n\nFACT: Cubs opportunities 2025 157 and 2026 159; flagged holds 2025 54 (in-sample), 2026 62; runs left 2025 11.6591, 2026 13.4059. Descriptive only, no significance claim.\nINFERENCE: Verdict **NEGATIVE**.\n\n",
+      "facts": {},
+      "provenance": {
+        "source_type": "EXTERNAL_OBSERVATION",
+        "produced_by": "cubs-edge-lab research/SENDHOLD_EXPERIMENT.md",
+        "source_ref": "cubs-edge-lab@eb6b01d",
+        "independent_of_implementation": false,
+        "represents_observed_reality": true
+      }
+    },
+    {
+      "id": "r001-assessment",
+      "text": "# R001 final assessment\n\n- Run: R001, DISCOVERY_BUILD. Prompt: EXECUTION-PROMPT v1 (sha256 e1b5ca33…a5439d6). Dates: 2026-10-08 to 2026-10-09.\n- **Outcome: COMPLETE_NEGATIVE.** Required discovery, research, build and evaluation were completed; the pre-registered test stopped at its early-stop rule and the evidence does not support the claimed usefulness.\n- Delivery: cubs-edge-lab MERGED_VERIFIED (main f7caca6); howlplane MERGED_VERIFIED (f39cf18, 28511b4, af9f40a); howl MERGED_VERIFIED (45478f4); howl-cubs-dogfood records: merged at closeout (see journal receipt). Campaign state: ACTIVE.\n\n## Baseball\n\n**Problem discovered.** HowlDream (passes 1, 2, 4; critique and blind-spot pass) moved discovery away from analyst dashboards toward offseason decisions. Minor-league free agency recurred in 4 of 6 second-pass trials: every November several hundred players elect free agency and clubs decide quickly, with limited scouting attention, whom to sign or invite.\n\n**Alternatives and selection.** S1 measured public-data feasibility for three finalists. Rule 5 was rejected (explicit codes only from 2024). Call-up translation was rejected for this run (in-season, survivorship bias, strong public projections). MILBFA was selected: measurable pools (585-908 per offseason), public next-season outcomes, a named decision owner. Prior Cubs experiments (repertoire alerts, Wrigley wind, ABS) were excluded as explored families.\n\n**Software built** (cubs-edge-lab, all through HowlPlane): a rate-limited Stats API probe with a content-free manifest; cohort construction with decision-time features (2018-2025 cohorts); outcome labels; baselines B0 (prior MLB time), B1 (level + rate stat), B2 (3-feature logistic), P (persistence) and model M; rolling-origin and validation evaluation with paired bootstrap; a pre-registration guard on the 2025 holdout; an exploratory whole-pool evaluation; a descriptive Cubs case. Bulk responses stay local under MLBAM's non-bulk terms.\n\n**Design and evaluation.** Design v1 was written before any outcome label; the HowlDream challenge (pass 5) led to v2: stronger baselines, primary test in the low-attention segment (no MLB appearance in season Y), bootstrap and rolling-origin success rule, k = 50 fixed from measured Cubs signing volume (median 41) before any outcome, and an early-stop rule.\n\n**Results.**\n- Primary (pre-registered): early stop. In the no-MLB-in-Y segment, players reaching >=50 MLB PA or >=20 IP the next season: 2018 20, 2019 12, 2021 14, 2022 12, 2023 22, 2024 (validation) 23, below the minimum of 30. No model was fitted for the primary test; the 2025 holdout is untouched. Independently recounted from raw season files.\n- Exploratory (whole pool, user-requested, no claim): model M roughly ties B0, the \"played in MLB last year\" ranking: top-50 hits 43/41, 48/44, 41/43, 38/32 (2021-2024); 2024 AUROC difference -0.016 (95% -0.049 to 0.014).\n- Practical significance: the low-attention pool holds about 12-23 next-season contributors per year league-wide, under one per club. A ranking tool has little hidden value to find there, and where value is larger (players with MLB time) the obvious rule already finds it.\n\n**Cubs application (dated, descriptive).** November-pool players the Cubs signed: 2021 14, 2022 12, 2023 10, 2024 8; of these, 3, 1, 6 and 0 reached the threshold next season. In the no-MLB-in-Y segment the Cubs had 1, 0, 1, 0 of 14, 12, 22, 23 league-wide positives. This establishes only the size of the opportunity: even perfect selection in that segment would have added roughly one player per year. It does not evaluate the Cubs' decisions (availability, terms, competing offers, roster needs are unknown).\n\n**Limitations.** The outcome measures playing time, which reflects opportunity as well as talent; no public value metric (WAR) in this source; no comparison with projection systems (not lawfully bulk-accessible); thin samples per segment; two methods to separate minor-league from MLB elections disagree (~15%), sidestepped by using the whole pool.\n\n**Repeated practical use:** unproven. **Rejected ideas** and evidence: OPPORTUNITIES.md. **Strongest next opportunity:** a FOLLOW_UP on MILBFA only with a genuinely new feature hypothesis (the 2025 holdout remains available for one pre-registered confirmatory test), or a new discovery using the unused pivot.\n\n## Howl\n\n**Components used.** HowlDream: 6 remote exploration passes (divergent, critique, second divergent, selection challenge, three prompt-review rounds; 34 of 40 calls; all remote Claude, mocked=false). HowlPlane: 15 orchestration sessions on cubs-edge-lab and on howlplane repair worktrees (planning, implementation, verification, independent review, rework, acceptance). Codex, Claude, Cursor and AGY all served as workers; Devin did not. HowlCreate, HowlWriter, HowlFrame, HowlProof, HowlForge: not used (no distinct role for them in this workload).\n\n**Integration strengths.** Falsifying reviews caught real defects every time (stale reports, unsupported claims, an incomplete pipeline, missing planning coverage); bounded rework and HANDOFF states stopped bad work from merging; failover handled timeouts, quota limits and permission denials.\n\n**Findings and repairs (all merged with regression tests, HowlPlane review and post-merge public proof).**\n- DOG-035: `--verify` rejected commands with flags, including howl's README example (howlplane #164, howl #16).\n- DOG-036: fixed, undocumented 300 s verification timeout (#164, `--verify-timeout`).\n- DOG-037: AGY's read-only roles were not enforced; a reviewer rewrote research files and a verified implementation was lost (#165).\n- DOG-038: no supported way to give workers network access for public data (#165, `--worker-network`).\n- DOG-039: a Codex usage limit was recorded as \"not authenticated\" (#166).\n\n**Open.** CUBS-P-002 (a refused test command marks a proven agent interactive-only everywhere); CUBS-P-003 (acceptance shown a superseded planner VERIFY_COMMAND); CUBS-P-008 ",
+      "facts": {},
+      "provenance": {
+        "source_type": "EXTERNAL_OBSERVATION",
+        "produced_by": "campaign records",
+        "source_ref": "runs/R001/FINAL-ASSESSMENT.md",
+        "independent_of_implementation": false,
+        "represents_observed_reality": true
+      }
+    }
+  ],
+  "context": [],
+  "speculative_candidates": [
+    {
+      "schema_version": "howl.candidate/v1",
+      "candidate_id": "explorer-spec-v1",
+      "source_run_id": "r004",
+      "parent_request_id": "r004",
+      "objective": "R004 explorer spec v1",
+      "text": "# R004 explorer spec (v1)\n\nStatus: v1, 2026-10-10. Written before any build and pending an independent critique. Changes after the critique are recorded as v2, with reasons.\n\n## Users and job\n\n- Primary user: a front-office analyst or coach who does not read JSON or code.\n- Job: see what each study found, how sure it is, and what it does **not** show, without being misled into using a failed model.\n\n## Hard rules (misrepresentation guards)\n\n1. **Exact values.** Every number shown is a value from cubs-edge-lab research/*.json. Display rounding is allowed only in the format stated next to the number, and the full value is available on hover or focus. No number is derived in the browser except those listed in this spec as computed, and each computed one is labeled \"computed\".\n2. **Verdict first.** Each study page opens with its verdict (NEGATIVE, PARTIAL or EXPLORATORY, as published) and a one-sentence plain-language meaning, before any table.\n3. **Failed model.** The send/hold model failed its pre-registered holdout. Model-based values (predicted P(safe), flagged holds, runs left) are never the default view, and each carries the label \"Model failed holdout; not for decisions\". The runs-left figure appears only inside the verdict criteria table, with the statement that it is not interpretable under the NEGATIVE verdict.\n4. **Sample size.** Each chart cell or rate shows n. Cells the source marks low_n are visibly de-emphasized and say so in text, not only in color.\n5. **Labels.** FACT, INFERENCE, UNKNOWN and EXPLORATORY labels from the source are kept verbatim.\n6. **Attribution.** Every page carries the MLB Advanced Media attribution and the usage-restriction quote already in the README.\n\n## Pages\n\n1. **Overview**: the campaign question, a card per study (name, decision, verdict, one-sentence finding), and a \"what this does not show\" list.\n2. **Send/hold (R003)**\n   - Verdict panel: v3 primary verdict and the v2 pre-registered verdict, followed by the criteria table for each of the four analyses (v3 primary, v2, AMBIGUOUS as SENT_SAFE, fallback dropped).\n   - Decision chart, from fit decision_chart cells:\n     - Default columns: zone group, hit type, outs, speed tercile, n, n_sent, observed send success and break-even p*.\n     - Filters: hit type, outs, zone, speed tercile.\n     - Model mean P(safe) appears only behind a \"show failed model values\" toggle, with the label from rule 3.\n   - Data: label counts per season under v3 and v2, the 2025 run-expectancy table with its counts, covariate coverage, and retrieval totals.\n   - Feasibility: the sample verdict, its reason, and the count reconciliation.\n   - Method notes: the design hash, the v1 to v3 history, and the fit and holdout hashes.\n3. **Free-agent triage (R001)**: the validation results with early-stop status, the exploratory whole-pool results with an EXPLORATORY banner, and the Cubs case (signings, positives, segment) with its unknowns.\n4. **About the data**: sources, terms, the request counts, and the statement \"no live data; all values are from the published research files at commit X\".\n\n## Technical (ADR R004-1, option A)\n\n- `python3 -m cubs_edge_lab.web_export` copies the needed research values into web/data/*.json, each with its source path and JSON pointer, and writes web/data/manifest.json with the cubs-edge-lab commit and SHA-256 of each source file. It never computes new statistics.\n- web/: index.html plus one HTML page per study, with shared style.css and ES-module JavaScript. There are no external fonts, scripts or requests.\n- Accessibility:\n  - Semantic headings and tables (`<th scope>`, captions).\n  - Labeled filter controls, keyboard operation, and visible focus.\n  - WCAG AA contrast.\n  - Verdict meaning carried by text, not color alone.\n  - Light and dark color schemes.\n- Responsive at 375 px (tables scroll inside their own container; the page itself never scrolls horizontally) and at 1280 px.\n- Tests:\n  - Export unit tests: exact copies, the pointer map, manifest hashes.\n  - Fidelity tests: Playwright reads every rendered number tagged with `data-src=\"file#pointer\"` and compares it with the source JSON under the stated rounding.\n  - Guard tests: no model values are visible by default, the runs-left caveat is present, and the verdict precedes any table.\n  - Keyboard test: the filters work without a mouse.\n  - Viewport tests: no horizontal page scroll at 375 px.\n  - Network test: no requests outside the local server.\n  - End-to-end tests skip with a reason when Chromium is unavailable.\n\n## Out of scope\n\nHosting or deployment, live data, new statistics, user accounts, and any write path.\n",
+      "condition": "dream",
+      "trust": "UNVERIFIED",
+      "status": "GENERATED",
+      "authority": {
+        "type": "ADVISORY",
+        "executable": false
+      },
+      "claims": [],
+      "evidence_refs": [],
+      "assumptions": [],
+      "unresolved_issues": [],
+      "contradictions": [],
+      "verified_constraints": [],
+      "provenance": {
+        "run_id": null,
+        "producer_component": null,
+        "producer_version": null,
+        "model_or_provider": null,
+        "observation_kind": null,
+        "created_at": "2026-10-10T15:24:38.461960+00:00",
+        "transformations": []
+      }
+    }
+  ],
+  "perturbations": [],
+  "retain_text": true
+}

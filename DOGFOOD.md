@@ -72,3 +72,38 @@ Registry state at mission start (2026-10-08T14:27Z): highest allocated DOG-034; 
 | NOTE-005 | howldream | `howldream validate` accepts an exploration request whose `budget.max_calls` cannot cover `baseline (clamp(max_candidates//2,1,3)) + max_candidates`; the run then ends PARTIAL/BUDGET_EXHAUSTED. Partial results were preserved correctly (documented). A validate-time warning would prevent it. Operator error + usability gap. | workflow-evidence/R001/dream/runs/hd-20261008-143010-528e5330b08f/manifest.json |
 | NOTE-006 | howldream | `export --candidate-id <unit>` keeps only the IDEA sentence but attaches batch-level assumptions/unresolved items from the whole response. A downstream critic (Dream pass 2) flagged `CONFLICT: pooled_assumption_attribution` because tipping/grounds-crew assumptions were attached to the bullpen idea. Documented as an "explicit association limit"; still degrades critique input. Candidate for a unit-scoped assumption association. | workflow-evidence/R001/dream/p2-critique-texts.txt lines 48, 111, 165 |
 | NOTE-009 | howlplane | `--execution-budget implementation` is capped at 1800 s, so a rate-limited public data pull longer than 30 minutes cannot run inside a worker. The refusal is clean (ORCHESTRATE_REQUEST_REFUSED). Workaround: build and review the retrieval tool in a session, run the merged tool outside, then process offline. | workflow-evidence/R003/R3S3-refused.stderr |
+
+### CUBS-P-009 (provisional): no localhost-only network grant; loopback-dependent tests fail as IMPLEMENTATION_INCOMPLETE
+- Category: CAPABILITY GAP (sandbox policy) with a classification aspect. Owner: howlplane worker sandbox options.
+- Observed: R4-S1 session 040f9990. Codex implementation (workspace-write, network off) could not create a localhost server socket for Playwright end-to-end tests and reported IMPLEMENTATION_INCOMPLETE. The session ended HANDOFF REQUIRED after every worker was excluded. A direct Codex check shows `socket.socket()` fails with network_access=false and binds with network_access=true.
+- Expected: a way to allow loopback only (for local servers and browser tests) without opening outbound network access, or at least a failure classification that names the sandbox restriction.
+- Evidence: workflow-evidence/R004/R4S1.stdout and R4S1.stderr; codex-bind-false.txt and codex-bind-true.txt.
+
+### DOG-044 (was CUBS-P-010): acceptance never receives HowlPlane's own verification result
+- Category: HOWL FAILURE (false rejection, wasted rework). Owner: howlplane orchestration prompts.
+- Observed: R4-S2 session 8814b377. Configured validation passed three times (12:38, 12:49 and 13:04). The Claude acceptor, holding only Read, Grep and Glob, rejected three times because "nobody has run the gate" and "HowlPlane did not run the verify command either". Both rework rounds were spent on a passing tree, and the session ended HANDOFF REQUIRED.
+- Root cause (howlplane 99d3aa4, src/howlplane/control_plane/orchestration.py, execute_assignment): review instructions include `verification_evidence_for_review(doc)`, but acceptance instructions include only `audit_evidence_for_acceptance(doc)` and the session diff. HowlPlane's `doc["tests"]` results are never shown to acceptance. DOG-041 says which command verifies the session; nothing says whether it passed.
+- Expected: acceptance sees HowlPlane's recorded verification command, exit code, duration and output tail for the current tree.
+- Evidence: workflow-evidence/R004/R4S2.stdout (acceptance verdicts) and R4S2.stderr (VERIFY lines).
+- Status: FIX IN REVIEW, howlplane PR #168 (branch dogfood/R004-dog044, commit 575067f), made by HowlPlane session 03d1d55e. The 9 new tests fail without the fix; make test-full: 2464 passed.
+- Live proof: cubs-edge-lab session fa728fa1, run through the public chain with PYTHONPATH pointing at the repair source. The same Claude acceptor cited the harness run (234 passed, 0 skipped) and ACCEPTED. Evidence: workflow-evidence/R004/R4S2b-acceptance-excerpt.txt.
+
+### CUBS-P-011 (provisional): Claude's --verify grant fails for long quoted shell gates
+- Category: HOWL FRICTION (failover cost). Owner: howlplane provider_execution_profile.
+- Observed: in R4-S2b and R4-S3, Claude was refused `sh -c '<gate>'`, the session's own --verify command. command_to_bash_specifier grants interpreter commands as an exact shell-quoted literal, so a long gate with nested quotes matches only when retyped byte for byte. Each refusal cost one implementation attempt and a failover.
+- Mitigation used: a short repository script as the gate (`sh scripts/gate.sh`, R4-S4 onward). Claude was not refused it.
+- Evidence: workflow-evidence/R004/R4S2b.stderr and R4S3.stderr (PERMISSION lines), and R4S4.stderr.
+
+### Controller-practice notes (R004)
+- A fresh `git clone` check catches what the working tree hides:
+  - R4-S1: a .gitignore rule hid web/data.
+  - R4-S4: the export's provenance commit made a combined research and web/data commit stale. The clone drift test failed, and the working tree passed.
+  Keep the clone check in prompt v4.
+- Cursor's shell was rejected in R4-S1, R4-S3 and R4-S4 (IMPLEMENTATION_INCOMPLETE each time), even for no-op commands. Its edits were kept and verified on resume.
+
+### NOTE-010: a harness-caused rejection cannot be re-judged on the same tree
+- Category: NOTE (documented behavior with a costly edge). Owner: howlplane resume.
+- Observed: after the DOG-044 fix, resuming 8814b377 on the unchanged tree kept Claude, the only session orchestrator, excluded for its earlier rejections. The session returned HANDOFF REQUIRED and printed the same resume command, which cannot progress. documentation/ORCHESTRATE.md says this is by design: a rejection judges one repository state.
+- Cost: the passing work had to move to a new session (discard, then fa728fa1).
+- Suggestion: when a rejection is followed by a HowlPlane version change, or the operator asserts the cause was a harness defect, offer a re-judge path. At minimum, a HANDOFF that cannot progress should say `discard` rather than repeat `resume`.
+- Evidence: workflow-evidence/R004/R4S2-resume.stderr.

@@ -1,0 +1,71 @@
+HOWL ORCHESTRATION REPORT
+Session: 82ec9cb8f4d641388282e0d472d7f406
+Goal: Three tasks in this repository's static explorer, following existing patterns (cubs_edge_lab/web_export.py, web/app.js, web/format.js, tests/test_explorer_e2e.py). Do the gate script first.
+
+Task 1: gate script. Add scripts/gate.sh (POSIX sh, set -eu) that runs, in order: CUBS_REQUIRE_E2E=1 python3 -m pytest -q; python3 -m flake8 -j1 cubs_edge_lab tests; node --check on every web/*.js file (find web -name "*.js" -exec node --check {} +); then fails if `git ls-files --others --ignored --exclude-standard --directory` lists any path other than data/, .pytest_cache/ or a __pycache__/ directory, printing the offending paths. Print one short line per completed step. HowlPlane's verification command for this session is `sh scripts/gate.sh`; run exactly that string to verify. Mention the script in README.md's test section.
+
+Task 2: R001 label correction (wording only). cubs_edge_lab/cubs_case.py `_method_status()` returns "failed its pre-registered test" when validation.json records an early stop. That is wrong: research/validation.json has early_stop true, validation null and early_stop_reason "validation primary positives below 30", so under the pre-registered rule the test was never run and no model was evaluated. Change the early-stop wording to "was not tested (pre-registered early stop)". Keep the other branch unchanged. Update tests/test_cubs_case.py. Regenerate research/cubs_case.json and the Cubs section of research/EXPERIMENT.md with the existing `cubs_case.write_artifacts(<repository root>)` from the local data/ (already present; no network). The resulting research/ diff must be exactly: the /method_status value in cubs_case.json and the "FACT: The method ..." line in EXPERIMENT.md. Revert and report if anything else in research/ changes. Regenerate web/data with `python3 -m cubs_edge_lab.web_export` so the export-drift test passes.
+
+Task 3: Free-agent triage page (web/milbfa.html, currently a stub). Same integrity rules as the existing pages: every number copied by the export from research/*.json by JSON pointer, tagged data-src, shared display format with a full-value <details>, the DOM scan, the allowlist test and the keyboard and viewport tests cover this page; text quoted from research/*.md is copied verbatim by exact line match with file and line as source, failing the export if it drifts; nothing is computed; research/ and data/ are not edited by this task.
+Content, in order:
+1. Status panel first: R001 method status (cubs_case.json /method_status) and, as distinct labels, "Test not run (early stop)" with validation.json /early_stop_reason, and "Holdout untouched" with exploratory_whole_pool.json /config/holdout_excluded. Use meanings.json for the "Test not run (early stop)" meaning, with the existing unmapped-key alert pattern.
+2. EXPLORATORY banner (role="note") quoting research/EXPERIMENT.md lines 46 and 47 verbatim ("... Only cohort aggregates are reported." and "This section supports no usefulness claim or recommendation."). Then the 2024 validation-year whole-pool table from exploratory_whole_pool.json /validation/whole_pool: n, positives, base rate, and for each ranking (B0, B1, B2, P, M) top-25/50/100 hits and precision and AUROC, plus the paired-bootstrap M-minus-baseline mean difference with its 95% interval and resample count. Show n and positives with every rate. No calibration table in this version. Caption names the comparator (/comparator) and the validation year (/config/validation_year).
+3. Cubs case: cubs_case.json /interpretation (the source's statement of what it does not evaluate) directly under the heading, then the cohort counts the source records (cohort years, thresholds, signing window) and the /unknowns list verbatim. Do not show /examples or any player-level row.
+4. Limits of this result (mandatory, tested present): research/EXPERIMENT.md lines 39 and 40 verbatim (UNKNOWN and INFERENCE after early stop), and the cubs_case.json /unknowns.
+5. The existing provenance footer.
+Tests: export tests for the new selections and verbatim lines; status panel precedes the first table (DOM order and bounding box at 375 px); the three distinct labels are present with their source values; the EXPLORATORY banner precedes the exploratory table; no /examples value or player name appears; limits block present; the page is in the DOM scan, allowlist, keyboard and viewport (320, 375, 1280 px) tests.
+
+Gate: sh scripts/gate.sh passes (0 skipped end-to-end tests, flake8 clean, node --check, no ignored paths outside data/ and caches).
+Status: HANDOFF REQUIRED
+Resumable: yes
+Orchestrator: claude_code
+Implementer: none
+Policy: PLAN + EXECUTE + INDEPENDENT AUDIT
+Constraints: The current HowlPlane session IS the orchestration workflow. Perform the assigned work in the target project. Do not launch howl/howlplane or another orchestration session merely to prove Howl was used. Do not copy internal orchestration state into the target project.
+Assignments: 6
+Reroutes: 5
+Repository head: 0d3a6001174183ad1994b85a319c149059acfb18
+Repository status: M README.md
+ M cubs_edge_lab/cubs_case.py
+ M cubs_edge_lab/web_export.py
+ M research/EXPERIMENT.md
+ M research/cubs_case.json
+ M tests/test_cubs_case.py
+ M tests/test_explorer_e2e.py
+ M tests/test_web_export.py
+ M web/app.js
+ M web/data/manifest.json
+ M web/data/overview.json
+ M web/milbfa.html
+ M web/style.css
+?? scripts/gate.sh
+?? web/data/milbfa.json
+Tests: []
+Independent audit: not requested or incomplete
+Recovery: {"at": "2026-10-10T20:20:54.914168+00:00", "needs_validation": true, "from": "claude_code", "stage": "implementation"}
+Excluded implementation workers: [{"agent": "claude_code", "reason": "failed earlier this session (EXECUTION_PERMISSION_REQUIRED)"}, {"agent": "codex", "reason": "failed earlier this session (NO_REPOSITORY_CHANGE)"}, {"agent": "cursor", "reason": "failed earlier this session (IMPLEMENTATION_INCOMPLETE)"}, {"agent": "agy", "reason": "failed earlier this session (NO_REPOSITORY_CHANGE)"}, {"agent": "devin_cli", "reason": "failed earlier this session (NO_REPOSITORY_CHANGE)"}]
+Failures: [{"stage": "implementation", "agent": "claude_code", "model": "UNKNOWN", "failure": "EXECUTION_PERMISSION_REQUIRED"}, {"stage": "implementation", "agent": "codex", "model": "UNKNOWN", "failure": "NO_REPOSITORY_CHANGE"}, {"stage": "implementation", "agent": "cursor", "model": "UNKNOWN", "failure": "IMPLEMENTATION_INCOMPLETE"}, {"stage": "implementation", "agent": "agy", "model": "gemini-3.8-flash-high", "failure": "NO_REPOSITORY_CHANGE"}, {"stage": "implementation", "agent": "devin_cli", "model": "adaptive", "failure": "NO_REPOSITORY_CHANGE"}]
+Verdict from Cursor (implementation, IMPLEMENTATION_INCOMPLETE):
+  The three tasks are already in the working tree and match the existing explorer patterns. The verification command could not be executed in this session: every attempt to run `sh scripts/gate.sh` was rejected before the process started, so there is no exit code.
+  
+  **Task 1.** `scripts/gate.sh` is POSIX `sh` with `set -eu`. It runs pytest with `CUBS_REQUIRE_E2E=1`, then `flake8 -j1`, then `node --check` on `web/*.js`, then fails if `git ls-files --others --ignored --exclude-standard --directory` lists anything other than `data/`, `.pytest_cache/`, or a `__pycache__/` directory. It prints one `ok:` line per completed step. `README.md` names that command in the verification section.
+  
+  **Task 2.** `_method_status()` returns `"was not tested (pre-registered early stop)"` when validation records an early stop with a null validation and the reason `"validation primary positives below 30"`. The other branch is unchanged. `research/cubs_case.json` `/method_status` and the `FACT: The method ...` line in `research/EXPERIMENT.md` use that wording, and `web/data` includes it. A `git diff` of `research/` could not be run here, so an extra research change cannot be ruled out from this session.
+  
+  **Task 3.** `web/milbfa.html` is wired through `renderMilbfa`. The page order is the status panel, the exploratory section (banner, then the ranking table, then the paired-bootstrap table), the Cubs case, the limits block, and the existing footer. Numbers come from JSON pointers with `data-src` and the shared display format. The four research Markdown lines are copied by exact line match. Nothing under `/examples` is selected. The early-stop status line is shown only when `/early_stop` is true, so a later run that is not an early stop does not keep the "Test not run" label. That is a deliberate departure from an unconditional label.
+  
+  **Tests in the tree.** Export tests cover the verbatim lines, drift, hidden pointers, the allowlist, and an omitted `milbfa.json` selection. End-to-end tests cover section order, the status panel before the first table, the three labels, a missing-meaning alert, the banner, table pointers, no player rows, the limits block, and horizontal scroll at 320, 375, and 1280 px. `/milbfa.html` is registered as `Page("/milbfa.html", details=True)`.
+  
+  | Item | Detail |
+  |---|---|
+  | Behaviour changed | R001 status wording, free-agent triage page and export, gate script. |
+  | Existing tests that cover it | `test_cubs_case.py`, `test_web_export.py`, registry-driven end-to-end suite. |
+  | Still expressing intent | R001 assertions match the research JSON (the test never ran). |
+  | Gaps added | Happy path, drift, missing meaning, omitted examples, allowlist. |
+  | Obsolete tests | `stub=True` for `/milbfa.html` is gone. |
+  | Tiers | Unit tests for export and wording; end-to-end tests for the page. |
+  | Run order | Gate was not run. |
+  
+  **Remaining risks.** The gate was not executed, so pytest, flake8, `node --check`, and the ignored-path check are unverified for this tree. Ignored directories such as `.howlplane/` or `.control_plane/` would fail that last check if they appear. The browser flow was not exercised.
+  
+  IMPLEMENTATION_STATUS: INCOMPLETE — `sh scripts/gate.sh` never started; the shell rejected the command, so the required exit code is unknown.

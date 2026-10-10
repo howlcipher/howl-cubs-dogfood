@@ -1,0 +1,47 @@
+HOWL ORCHESTRATION REPORT
+Session: 03d1d55e57d54324adbe1a681899c42a
+Goal: Repair DOG-044 in this HowlPlane repository: the acceptance stage never receives HowlPlane's own verification result, so a read-only acceptor rejects passing work for "missing test evidence".
+
+Observed (howl-cubs dogfood campaign, R004, session 8814b377): the configured validation passed three times. Each time the Claude acceptor, which had only Read, Grep and Glob, rejected with reasons like "I can't accept it because nobody has run the gate" and "HowlPlane did not run the verify command either". Both rework rounds were spent on a passing tree, and the session ended HANDOFF REQUIRED.
+
+Root cause: in src/howlplane/control_plane/orchestration.py, `execute_assignment` adds `verification_evidence_for_review(doc)` to review instructions only. Acceptance instructions get `audit_evidence_for_acceptance(doc)` and `session_diff_evidence(doc, repo)` but never the `doc["tests"]` results. DOG-014 fixed the same gap for review; DOG-041 tells acceptance which command verifies the session, but not whether it passed.
+
+Requirements:
+1. Give acceptance the same harness verification evidence that review gets: the latest result per command on the current tree, with command, exit code and output tail, labeled as HowlPlane harness evidence rather than implementer claims. Reuse the existing helper; rename or generalize it only if that is clearer, and keep review behavior unchanged. When no verification ran, say so explicitly instead of omitting the section, so an acceptor can tell "not run" from "not shown".
+2. Make sure the evidence describes the current tree. `doc["tests"]` is cleared when the repository changes outside the session (see the existing docstring). Confirm that acceptance always follows a verification on the same tree, or that stale results cannot be shown; test that.
+3. Tests:
+   - A contract test that the acceptance instructions contain the passing verification result.
+   - One for a failing result, if acceptance can be reached with one.
+   - One for the explicit "no verification ran" statement.
+   - A regression test reproducing the R004 scenario: explicit --verify passes, acceptance instructions include exit 0 for that command.
+4. Registry: add DOG-044 to dogfood/findings/FINDINGS.md in the existing format (status FIX IN REVIEW, with the observation, root cause, fix and test names). Mention it in CHANGELOG or release notes if the repository keeps them for fixes.
+5. Gate: `make test-full` passes.
+
+Do not change unrelated behavior.
+Status: COMPLETE WITH WARNINGS
+Resumable: no
+Orchestrator: claude_code
+Implementer: claude_code
+Policy: PLAN + EXECUTE + INDEPENDENT AUDIT
+Constraints: The current HowlPlane session IS the orchestration workflow. Perform the assigned work in the target project. Do not launch howl/howlplane or another orchestration session merely to prove Howl was used. Do not copy internal orchestration state into the target project.
+Assignments: 5
+Reroutes: 1
+Repository head: 99d3aa466249abacb46db4ea0c033a2df9bf3881
+Repository status: M change_log.md
+ M documentation/ORCHESTRATE.md
+ M dogfood/findings/FINDINGS.md
+ M src/howlplane/control_plane/orchestration.py
+?? tests/test_orchestration_acceptance_verification_evidence.py
+Tests: [{"command": "git diff --check", "exit_code": 0, "output": ""}, {"command": ["make", "test-full"], "rework_round": 0, "exit_code": 0, "output": "tests/test_ai_resource_pool.py::test_failure_taxonomy_is_normalized_without_conflation[authentication required-AUTHENTICATION_REQUIRED] PASSED [  6%]\ntests/test_ai_resource_pool.py::test_failure_taxonomy_is_normalized_without_conflation[Failed to authenticate: OAuth session expired and could not be refreshed-AUTHENTICATION_REQUIRED] PASSED [  6%]\ntests/test_ai_resource_pool.py::test_failure_taxonomy_is_normalized_without_conflation[provider service unavailable-PROVIDER_UNAVAILABLE] PASSED [  6%]\ntests/test_ai_resource_pool.py::test_failure_taxonomy_is_normalized_without_conflation[command not found-MISSING_EXECUTABLE] PASSED [  6%]\ntests/test_ai_resource_pool.py::test_failure_taxonomy_is_normalized_without_conflation[tests failed: assertion error-ENGINEERING_FAILURE] PASSED [  6%]\ntests/test_ai_resource_pool.py::test_failure_taxonomy_is_normalized_without_conflation[malformed yaml review-MALFORMED_OUTPUT] PASSED [  6%]\ntests/test_ai_resource_pool.py::test_capacity_state_persists_recovers_and_is_shared PASSED [  6%]\ntests/test_ai_resource_pool.py::test_oauth_expiration_persists_and_routes_to_another_worker PASSED [  6%]\ntests/test_ai_resource_pool.py::test_engineering_failure_does_not_exhaust_resource PASSED [  7%]\ntests/test_ai_resource_pool.py::test_independent_review_prefers_distinct_resource_and_reports_unavailability PASSED [  7%]\ntests/test_ai_resource_pool.py::test_legacy_settings_load_without_declaring_new_provider_authority PASSED [  7%]\ntests/test_authority_execution\n[... output trimmed by HowlPlane; tail follows ...]\nlaneBranding\n--- PASS: TestNewRootCommandUsesHowlPlaneBranding (0.00s)\n=== RUN   TestLegacyCommandHasProjectValidationParityAndWritesWarningToStderr\n--- PASS: TestLegacyCommandHasProjectValidationParityAndWritesWarningToStderr (0.00s)\n=== RUN   TestPlaneCommandComposesBeneathUmbrellaParent\n--- PASS: TestPlaneCommandComposesBeneathUmbrellaParent (0.00s)\n=== RUN   TestCommandConstructionDoesNotDependOnRootExecutableName\n--- PASS: TestCommandConstructionDoesNotDependOnRootExecutableName (0.00s)\n=== RUN   TestUnknownSubcommandDelegatesToEngineEntrypoint\n--- PASS: TestUnknownSubcommandDelegatesToEngineEntrypoint (0.00s)\n=== RUN   TestUnknownSubcommandPropagatesEngineExitCode\n--- PASS: TestUnknownSubcommandPropagatesEngineExitCode (0.00s)\n=== RUN   TestNoArgsPrintsNativeHelpWhenEngineMissing\n--- PASS: TestNoArgsPrintsNativeHelpWhenEngineMissing (0.00s)\n=== RUN   TestVersionFlagReportsGoBinaryVersionWithoutDelegating\n--- PASS: TestVersionFlagReportsGoBinaryVersionWithoutDelegating (0.00s)\n=== RUN   TestHelpFlagsShowNativeHelpWhenEngineMissing\n--- PASS: TestHelpFlagsShowNativeHelpWhenEngineMissing (0.00s)\n=== RUN   TestNoArgsHelpAndHelpSubcommandForwardToEngine\n--- PASS: TestNoArgsHelpAndHelpSubcommandForwardToEngine (0.01s)\n=== RUN   TestShortVersionAliasAndSignalExitCode\n--- PASS: TestShortVersionAliasAndSignalExitCode (0.00s)\n=== RUN   TestMissingEngineErrorIsActionable\n--- PASS: TestMissingEngineErrorIsActionable (0.00s)\nPASS\nok  \tgithub.com/howlcipher/howlplane/pkg/cli\t(cached)\n"}]
+Independent audit: CLEAN
+Recovery: {"at": "2026-10-10T17:37:55.175980+00:00", "needs_validation": false, "from": "codex", "stage": "implementation"}
+Timed-out assignments: [{"stage": "implementation", "agent": "codex", "model": "UNKNOWN", "execution_budget_seconds": 1800}]
+Failures: [{"stage": "implementation", "agent": "codex", "model": "UNKNOWN", "failure": "EXECUTION_BUDGET_EXCEEDED"}]
+Review notes from Codex (review, CLEAN):
+  No blocking findings. Acceptance now receives HowlPlane’s verification evidence, explicitly distinguishes a missing test run from a diff check, and labels the configured command. Review evidence formatting remains unchanged. Reconciliation clears verification results when repository evidence changes, and the orchestration flow returns to implementation for validation before acceptance.
+  
+  The new contracts cover passing and failing results, no verification, latest results per command, review parity, reconciliation freshness, and the R004 explicit-`--verify` path. Registry, changelog, and orchestration documentation include DOG-044.
+  
+  I did not run tests. The supplied current-tree harness evidence reports `make test-full` and `git diff --check` passing. Remaining risk: those results were not independently rerun during this read-only review.
+  
+  AUDIT_STATUS: CLEAN

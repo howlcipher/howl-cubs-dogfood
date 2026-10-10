@@ -1,0 +1,92 @@
+{
+  "schema": "howldream.run/v1",
+  "run_id": "hd-20261010-152438-a2cdbe90f429",
+  "experiment_id": "4937b677afb0820406aad5d37f2170e74fa4f2239fb0a640af4ae41e03067e7c",
+  "version": "0.4.4",
+  "git_commit": "f1cc5ca1f9e1d120da6cbf18bbc192ab6ef23abe",
+  "implementation_hash": "4146772cb46f4e4a159f89881dc87831680ca5d5527763163c20294427d2469c",
+  "mode": "dream",
+  "started_at": "2026-10-10T15:24:38.471740+00:00",
+  "provider": {
+    "kind": "command",
+    "model": "claude-sonnet-5-5",
+    "base_url": null,
+    "allow_remote": true,
+    "allow_local_inference": false,
+    "forbid_local_inference": true,
+    "timeout_seconds": 300,
+    "max_tokens": 4096
+  },
+  "capabilities": {
+    "supports_seed": false,
+    "supports_temperature": false,
+    "supports_top_p": false,
+    "supports_logprobs": false,
+    "supports_tool_calls": false,
+    "supports_structured_output": false,
+    "supports_token_usage": false,
+    "supports_local_instrumentation": false
+  },
+  "authority": "NONE",
+  "parent_run": null,
+  "status": "COMPLETE",
+  "errors": [],
+  "template_version": "line_experiment/v2",
+  "template_hash": "8096777d16cf15dcd68f34f709eeb4f81e1b983ba58fdda00c8008f2aa7add7b",
+  "source_hashes": {
+    "sendhold-verdict": "c254cedf079e37c5bf770407583df7e67238f16384f68e792ca574fcee2190da",
+    "r001-assessment": "1756984089bbdf023c78fe6162ff75d05403ddce5b2dad39e6e8f73bd600bad8"
+  },
+  "replay": "CONFIGURATION_REPLAY_NOT_GUARANTEED",
+  "replay_available": true,
+  "warnings": [
+    "Verification is scoped to supplied evidence; generated text has no authority.",
+    "EXPERIMENT_CONTROL_NOT_APPLIED: inspect sampling requested/supported/applied; condition differences are confounded"
+  ],
+  "call_count": 4,
+  "analysis": {
+    "version": "0.4.4",
+    "implementation_hash": "4146772cb46f4e4a159f89881dc87831680ca5d5527763163c20294427d2469c",
+    "analyzed_at": "2026-10-10T15:26:18.262765+00:00",
+    "git_commit": "f1cc5ca1f9e1d120da6cbf18bbc192ab6ef23abe"
+  },
+  "participation": [
+    {
+      "operation": "GENERATED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": "claude",
+      "origin_model": "claude-sonnet-5-5",
+      "subject_count": 3,
+      "inference_occurred": true,
+      "note": "Dream prompted the provider; the provider authored the text."
+    },
+    {
+      "operation": "CLUSTERED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 35,
+      "inference_occurred": false,
+      "note": "Deterministic concept-token clustering; no inference."
+    }
+  ],
+  "observed_models": [
+    "claude-sonnet-5-5"
+  ],
+  "completed_at": "2026-10-10T15:26:18.713284+00:00",
+  "file_hashes": {
+    "baseline.jsonl": "ff33868d3117a950cdcac4b691be0e55b741fcab135e0539d07984c897ca73d8",
+    "candidates.jsonl": "a16acf66651e03e6022e544f4c4a68aad0783a661178aa3e66c20bdd137942bc",
+    "claims.jsonl": "da5aeaa32d7d04f025db1ce6e2d63967c2dda64c3a26e7fc14559dfee1fbe65c",
+    "discovery.json": "c6ccd8196119a768c1afed7a34547b7152062e39b72bd33990b03d0ec868b912",
+    "experiment.json": "361d0b9b58c8ebf65edaae8da154ea76a49b8e826f7ef4dfb3f5c81fd7638de5",
+    "handoff.json": "26659af0fb22f226a6f87ad0418cfce99002dd9ce72ddc639e8bd0d2401fc39c",
+    "metrics.json": "375fdba8e33a03454539ed5eea792d0c5e25f6e221ab0e10facab784be106015",
+    "report.md": "251564ea4c4e6d27b8867739c98d78c598c2197da841d15b15b8808ad705edbd",
+    "scores.json": "16b1d900199ff5bb3a73885a3fa5ef1c4abf7592b75e855dd82ef6afda9ed31b",
+    "verification.jsonl": "4016f2afc775bdd1643a40f6d5d82998a090821944f81f0dc18c7f47a0588c13",
+    "exploration_envelope.json": "5555dd8d573881076c32ccfd6cd4eef4b033601572fe7aec38a930996832391a"
+  }
+}

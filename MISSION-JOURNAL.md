@@ -357,3 +357,168 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - Holdout: the reviewed EVALUATE (cubs-edge-lab, research/sendhold-analysis) ran once, 11m40s, fit hash unchanged before and after (b463af22...). Verdict NEGATIVE under v3 (primary), the pre-registered v2 definition, and both sensitivity analyses. Brier difference to constant -0.0001 [-0.0003, 0.0005]. The runs-left figure is not interpretable with a flat model (selection). PR #9 opened, stacked on #8 and #7.
 - R003 outcome: COMPLETE_NEGATIVE; delivery PR_OPEN pending user merges. Assessment runs/R003/FINAL-ASSESSMENT.md. HowlPlane sessions 5 of 10; Dream calls 33 of 40 (design challenge 3, prompt review 3; one invalid request rejected by validate before any call). LOCAL_LLM_USED: NO.
 - Prompt v3: HowlDream review (3 calls, remote Sonnet, COMPLETE) of the 4-lesson diff. Adopted: provenance and kept history for recount targets; structure-only label check, record untested rules, owner decides confirmatory status, pause if found after a fit; tool runs only of accepted code with commit recorded, public interface, within written limits, live proof counts; late entries carry write and event time. Rejected: "post-freeze change always EXPLORATORY" (would override the section 17 owner decision just exercised); "recount gets its own independent review" (it is a controller check; Howl review still decides). EXECUTION-PROMPT v3 sha256 2a958c2cf77ec82a75bec4b2ce3eb39c2310852db3ea2c0cfaa6b3859a65960b; takes effect at the R004 boundary; R003 assessed under v2.
+
+## 2026-10-10T15:23:53Z — R003 merge check; R004 start (FOLLOW_UP: results explorer)
+- The user merged #7, #8, #9 and records #3. The stacked bases were not retargeted: #8 and #9 merged into feat/sendhold-retrieve and research/sendhold-data, so cubs-edge-lab main (0d50ae5) lacks the table, fit and holdout. Opened cubs-edge-lab PR #10 (research/sendhold-data -> main, the same reviewed commits, research/sendhold_experiment.json identical to the evaluated output). R003 delivery stays PR_PENDING until #10 merges. Lesson: stacked PRs need explicit retargeting or a single PR to main.
+- User asked my opinion. I recommended changing the workload rather than the question (R004 explorer), then a synthesis closeout; the user said "Do what you suggest".
+- R004 started under prompt v3 (sha256 2a958c2cf77ec82a75bec4b2ce3eb39c2310852db3ea2c0cfaa6b3859a65960b). Contract runs/R004/RUN-CONTRACT.md; ADR experiments/R004-EXPLORER-ADR.md (option A, static + Python, pros/cons recorded).
+- R004 builds on main after #10 merges, because the explorer needs the R003 research files on main.
+
+## 2026-10-10T15:27:02Z — R004 spec critique and v2
+- HowlDream critique of spec v1: 4 calls, remote Sonnet, COMPLETE. R004 Dream calls: 4 of 6. LOCAL_LLM_USED: NO. Reconciled into spec v2 (table in experiments/R004-EXPLORER-SPEC.md). The only critique point not adopted is the user comprehension check: no users are available, so it limits the usability claim.
+
+## 2026-10-10T15:27:31Z — INTENT R4-S1 (explorer foundation)
+- Goal workflow-evidence/R004/R4S1-explorer-foundation.goal.txt on cubs-edge-lab feat/explorer (from research/sendhold-data 8ff9148, which PR #10 brings to main). Gate: CUBS_REQUIRE_E2E=1 pytest + flake8 + node --check. Sessions 1 of 6.
+
+## 2026-10-10T15:47:20Z — R003 delivery MERGED
+- cubs-edge-lab PR #10 merged at the user's explicit request ("gh pr merge 10 --merge"); main 91f06c5 now has the R003 table, fit and holdout. R003 delivery: MERGED_VERIFIED for cubs-edge-lab (research/SENDHOLD_EXPERIMENT.md present on origin/main).
+
+## 2026-10-10T16:17:35Z — R4-S1 HANDOFF REQUIRED; root cause; resume with --worker-network
+- R4-S1 session 040f9990: HANDOFF REQUIRED (exit 2, resumable). Attempts:
+  - Codex: IMPLEMENTATION_INCOMPLETE. 173 passed and 10 E2E setup errors; "the sandbox denied binding the fixture's localhost server socket".
+  - Claude: EXECUTION_PERMISSION_REQUIRED. Refused `env CUBS_REQUIRE_E2E=1 python3 -m pytest ...` and `python3 -m pytest -q tests/test_web_export.py`; excluded for this session only.
+  - Cursor: IMPLEMENTATION_INCOMPLETE. "every shell command in this session was rejected".
+  - AGY and Devin: NO_REPOSITORY_CHANGE on the kept partial work.
+  - agents doctor afterwards: all READY. LOCAL_LLM_USED: NO.
+- Controller gate on the kept work (outside any sandbox): `CUBS_REQUIRE_E2E=1 pytest -q` 212 passed, 0 skipped; flake8 clean; node --check clean on every web JS file; the export reproduces web/data. So the implementation is complete but not independently reviewed or accepted.
+- Root-cause check (direct Codex CLI, scratch dir): with workspace-write and network_access=false, `socket.socket()` raises (the evidence shows the traceback); with network_access=true, BIND_OK. Evidence: workflow-evidence/R004/codex-bind-{false,true}.txt.
+- CUBS-P-009 (provisional, capability gap): HowlPlane offers no localhost-only network grant. Browser or server tests that need a loopback socket fail in Codex implementation unless `--worker-network` opens full network access. The failure surfaced as IMPLEMENTATION_INCOMPLETE rather than an environment or permission classification.
+- Observations, not yet findings: Cursor rejected every shell command in this session (it ran commands in R003); NO_REPOSITORY_CHANGE was counted as failure for AGY and Devin even though the kept partial work may already have been complete.
+- MY GATE ERROR: the R4-S1 --verify ended `node --check ... || true`, so a syntax failure could not fail that gate. Corrected for the resume.
+- Resolution (supported option, no new authority): `howlplane orchestrate resume --worker-network` with the corrected gate; the goal constraint still forbids network use beyond localhost. Counts as session 2 of 6 for budgeting.
+
+## 2026-10-10T16:26:38Z — R4-S1 resumed: COMPLETE; controller found a blocker; INTENT R4-S2
+- Resume of 040f9990 (--worker-network): every implementer was still excluded, so HowlPlane verified the kept work directly ("Implementer: external"). The gate passed, the Claude review was CLEAN with 5 non-blocking notes, and Claude accepted: COMPLETE WITH WARNINGS. Note that --worker-network was not exercised, because no implementer ran. CUBS-P-009 stays provisional.
+- Controller audit: a clean copy failed (14 failed, 26 errors). The root cause is the .gitignore `data/` rule, which also ignores web/data/ (`git check-ignore`: .gitignore:1:data/). A commit would ship the site without data. Neither the review nor the acceptance caught it, because both ran in the working tree. A root-anchored `/data/` would expose only web/data (checked against the full ignored-file list).
+- INTENT R4-S2: fix session (workflow-evidence/R004/R4S2-explorer-fixes.goal.txt), covering the blocker plus review notes 2 and 4. Sessions: 3 of 6.
+- Prompt candidate (v4): the controller's clean-clone check must use a real `git clone` of a commit, not a working-tree copy, and must check `git check-ignore` for new output directories.
+
+## 2026-10-10T16:27:03Z — Source label error in R001 output, surfaced by the explorer
+- The Overview screenshot (workflow-evidence/R004/r4-index-1280.png) shows the free-agent card saying both "Published verdict: failed its pre-registered test" and "Test not run (early stop)".
+- Source: research/cubs_case.json method_status = "failed its pre-registered test". But research/validation.json has early_stop = true ("validation primary positives below 30"), and runs/R001/FINAL-ASSESSMENT.md says "No model was fitted for the primary test; the 2025 holdout is untouched".
+- So the R001 published label misstates a non-run test as a failed one. The explorer copied it faithfully.
+- The correction goes through HowlPlane in the free-agent page session, with this evidence quoted. It changes the label only; no statistic changes. It will be recorded as a correction to R001's published output.
+
+## 2026-10-10T17:06:15Z — R4-S2 HANDOFF; Howl failure CUBS-P-010; PAUSE (section 17)
+- R4-S2 session 8814b377: HANDOFF REQUIRED (resumable). Codex implementation; the Claude review was CLEAN; Claude acceptance rejected 3 times, spending 2 of 2 rework rounds. Every rejection rested only on "gate never run".
+- HowlPlane's configured validation passed at 12:38, 12:49 and 13:04 (R4S2.stderr). The acceptance prompt omits that evidence (orchestration.py, acceptance branch), so this is CUBS-P-010. agents doctor: all READY. LOCAL_LLM_USED: NO.
+- The tree content is as the goal asked: .gitignore is /data/, web/data is not ignored, and data/raw is still ignored (controller check).
+- Section 17: Howl failure plus exhausted rework, so I paused and asked the user. Sessions used: 3 of 6.
+
+## 2026-10-10T17:07:14Z — User decision: repair CUBS-P-010 as DOG-044, then resume
+- Verbatim choice: "Repair it, then resume (Recommended)": "Fix howlplane through a HowlPlane session (acceptance gets the recorded verification command, exit code and output tail, with a regression test), prove it live, merge, then resume R4-S2 with the same acceptor pinned. Same pattern as DOG-035 and DOG-040."
+- Registry on origin/main (99d3aa4): highest DOG-043, so CUBS-P-010 becomes DOG-044.
+- Repair worktree: ../howlplane-repair-dog044, branch dogfood/R004-dog044 from 99d3aa4. The shared engine checkout stays on main.
+- INTENT repair session: goal workflow-evidence/R004/R4-DOG044-repair.goal.txt; --verify "make test-full" --verify-timeout 1200 (more than twice the last observed ~456 s). This is a repair session, not an R004 product session; recorded in the R004 ledger.
+
+## 2026-10-10 18:28 UTC R004: DOG-044 repair accepted; R4-S2 resume as live proof
+
+- HowlPlane session 03d1d55e (repair worktree, branch dogfood/R004-dog044): Codex implementation hit the 1800 s budget (EXECUTION_BUDGET_EXCEEDED, work kept); Claude finished; Codex review CLEAN; Claude acceptance ACCEPTED. COMPLETE WITH WARNINGS.
+- Controller audit: diff read; the 9 new tests fail on the unfixed source and pass with the fix; make test-full in the worktree: 2464 passed, Go ok. Commit 575067f (SSH-signed).
+- Review note: for a session whose only recorded check is git diff --check, review now gets the 'no verification command ran' line instead of the diff-check exit line. A small change to review wording; the goal said review behavior unchanged. Recorded for the PR, not reworked.
+- Test smell: test_r004_explicit_verify_pass_is_in_acceptance_prompt asserts the absence of a string the code never emits (vacuous line). Recorded for the PR.
+- Live proof: resume R4-S2 (session 8814b377) through the public chain with PYTHONPATH=<repair worktree>/src (checked: the engine venv python imports orchestration from the worktree). Same acceptor pinned (--orchestrator claude_code). Gate now also asserts that only data/ and caches are ignored, which the last rejection asked to see.
+
+
+## 2026-10-10 18:32 UTC R004: R4-S2 resume cannot progress; discard and R4-S2b
+
+- First resume attempt was refused by argparse (my error: '--verify sh -c ...' passed as several arguments; '-c' read as a flag). Evidence: R4S2-resume.argerror.txt. The relaunch used one quoted string.
+- Resume of 8814b377: RECONCILE found no repository change, so Claude, the session orchestrator, stays excluded for its earlier ACCEPTANCE_REJECTED_OR_UNCONFIRMED verdicts and the session returns HANDOFF REQUIRED with a resume command that cannot progress. This matches documentation/ORCHESTRATE.md line 53: a rejection judges one repository state and only a change or a discard moves on.
+- NOTE-010 (candidate): when a rejection was caused by a harness defect (DOG-044), fixing the harness does not reopen the session; the only paths are a repository change or discard. The HANDOFF report repeats a resume command that cannot help. Recorded for DOGFOOD.md.
+- DECISION: discard 8814b377 (checked in source: discard only deletes the session record; the working tree is untouched). Start R4-S2b with the real residual defect the last acceptor named (secondary verdict shown without a meaning-mapping check) plus the spec's verdict-then-meaning order. Same orchestrator pinned (claude_code), repaired engine via PYTHONPATH: this is the DOG-044 live proof. R004 HowlPlane product sessions: 3 of 6 (S1, S2, S2b) plus the repair session.
+
+
+## 2026-10-10 18:47 UTC R004: R4-S2b accepted; DOG-044 proven live; PRs opened
+
+- R4-S2b (fa728fa1), repaired engine through PYTHONPATH:
+  - Claude implemented the guard, then was refused its pytest commands (EXECUTION_PERMISSION_REQUIRED, session-only exclusion). The refused commands included the exact --verify string, so the granted form did not match how Claude called it. Recorded; not chased in this run.
+  - Codex verified the kept work (NO_CHANGE_REQUIRED). Gate passed: 234 tests, 0 skipped.
+  - Claude review CLEAN; Claude acceptance ACCEPTED, citing the harness gate. This is the DOG-044 live proof (R4S2b-acceptance-excerpt.txt).
+- Controller audit: read the guard and tests in web/app.js and tests/test_explorer_e2e.py; staged diff has no data/ or research/ paths; largest file 21 KB.
+- Commit c68d31d (signed) on feat/explorer. A real git clone ran the gate: 228 passed, 6 skipped. All 6 skips are older data-dependent tests (local data/ absent); 0 end-to-end skips.
+- PRs: cubs-edge-lab #11 (explorer foundation) and howlplane #168 (DOG-044). Merges wait for the owner (the self-merge classifier rule).
+- Registry: DOG-044 is FIX IN REVIEW (#168); NOTE-010 added.
+- Next: R4-S3 send/hold page, stacked on feat/explorer (retarget to main once #11 merges). R004 product sessions: 3 of 6.
+
+
+## 2026-10-10 18:48 UTC R004: INTENT R4-S3 send/hold page
+
+- Branch feat/explorer-sendhold from c68d31d (stacked on #11; retarget to main after #11 merges).
+- Goal: workflow-evidence/R004/R4S3-sendhold-page.goal.txt. Source check before writing it: the selection INFERENCE that spec rule 5 requires exists only in research/SENDHOLD_EXPERIMENT.md line 6, not in JSON, so the goal makes the export copy markdown lines verbatim, tested. Criterion roles are fixed display copy (Brier and calibration gating, negative control control, runs left effect), per the design's success rules.
+- Engine: repaired source through PYTHONPATH (DOG-044 fix, PR #168, not yet merged). --orchestrator claude_code, --worker-network (loopback for Playwright, CUBS-P-009), --execution-budget implementation=1800, --verify-timeout 900. R004 product sessions: 4 of 6.
+
+
+## 2026-10-10 19:49 UTC R004: R4-S3 HANDOFF; controller check; resume
+
+- R4-S3 (98385d60):
+  - Claude planning was refused (EXECUTION_PERMISSION_REQUIRED); Codex planned.
+  - Implementation attempts:
+    - Codex hit the 1800 s cap (work kept).
+    - Claude was refused its pytest commands, including the exact --verify string.
+    - Cursor wrote the page, but every shell call was rejected (IMPLEMENTATION_INCOMPLETE).
+    - AGY and Devin: NO_REPOSITORY_CHANGE.
+  - Result: HANDOFF REQUIRED.
+- CUBS-P-011 (provisional): Claude's --verify grant is an exact shell-quoted literal (provider_execution_profile.command_to_bash_specifier). A long sh -c gate with nested quotes is refused unless typed byte for byte. Mitigation for later sessions: a short repository gate script (sh scripts/gate.sh) as the --verify command.
+- Controller check on the kept tree:
+  - Gate passed: 255 passed, 0 skipped, flake8 clean, node ok, no ignored paths outside data/.
+  - web/data/sendhold.json has no mean_p_safe, p_safe, flagged or cubs values.
+  - runs-left values are exported, and tests assert they are hidden until the 'Failed-model value' disclosure is opened.
+  - Naming point for the PR: manifest 'default_visible' lists every exported pointer, including disclosed-only ones.
+- Resume with the repaired engine: all implementers are excluded, so HowlPlane verifies the kept work directly, then review and acceptance.
+
+
+## 2026-10-10 20:03 UTC R004: R4-S3 accepted; PR #12; INTENT R4-S4
+
+- R4-S3 resume: HowlPlane verified the kept work (255 passed). Claude review CLEAN with 4 non-blocking points (carried to R4-S5). Acceptance ACCEPTED.
+- Commit 0d3a600 (signed). Fresh-clone gate: 249 passed, 6 skipped (all data-dependent; 0 end-to-end skips). PR #12, stacked on #11, with merge-order instructions.
+- INTENT R4-S4 (5 of 6) on feat/explorer-milbfa from 0d3a600. Goal: R4S4-milbfa-page.goal.txt.
+  - Gate script first (CUBS-P-011 mitigation; --verify 'sh scripts/gate.sh').
+  - R001 label correction in the generator: _method_status() wording for the early stop, evidence quoted from validation.json; the research/ diff must be exactly two lines.
+  - Free-agent page.
+- R4-S5 (6 of 6) planned: S3 review follow-ups and an accessibility pass.
+
+
+## 2026-10-10 20:39 UTC R004: R4-S4 HANDOFF; controller check; resume
+
+- R4-S4 (82ec9cb8):
+  - Claude planned, implemented most of the work, then was refused the regeneration commands (python3 -c write_artifacts, web_export).
+  - Codex: NO_REPOSITORY_CHANGE.
+  - Cursor: IMPLEMENTATION_INCOMPLETE, because its shell rejected 'sh scripts/gate.sh'.
+  - AGY and Devin: NO_REPOSITORY_CHANGE.
+  - Result: HANDOFF REQUIRED.
+- CUBS-P-011 mitigation: Claude was not refused 'sh scripts/gate.sh'; its refusals were the regeneration commands, which were never granted. Cursor's shell rejection is unrelated to quoting; it is the same as in R4-S1 and R4-S3.
+- Controller check on the kept tree:
+  - research/ diff is exactly the two lines (method_status in JSON; the FACT line in EXPERIMENT.md).
+  - sh scripts/gate.sh: 275 passed, 0 skipped, flake8 ok, node ok, no stray ignored paths.
+  - web/data/milbfa.json has no examples, person_id or names.
+- Resume: HowlPlane verifies the kept work, then review and acceptance.
+
+
+## 2026-10-10 20:54 UTC R004: R4-S4 accepted; provenance defect; PR #13; INTENT R4-S5
+
+- R4-S4 resume: HowlPlane verified the kept work. Claude review CLEAN (3 minor non-blocking points); acceptance ACCEPTED.
+- My fresh-clone check caught a provenance defect that the working tree hid. The manifest 'commit' is the last commit touching research/, so one commit changing research/ and web/data made its own export stale, and the drift test failed in the clone (1 failed).
+  - Workaround: split the local, unpushed commit with git reset --soft (my own commit; nothing pushed, no human work). Research correction 913b3f7 first, then web/data regenerated by the accepted exporter in 64c7def.
+  - Fresh clone: 269 passed, 6 data-dependent skips.
+  - Caveat: 913b3f7 alone fails the drift test.
+- PR #13, stacked on #12 and #11.
+- extra_allowed_bash would let Claude run the regeneration commands. It is a global operator config change, so I left it for the owner and rely on failover.
+- INTENT R4-S5 (6 of 6) on feat/explorer-hardening from 64c7def. Goal: R4S5-hardening.goal.txt (content digest for provenance, manifest coverage of quoted .md files, S3 follow-ups, accessibility tests). --verify 'sh scripts/gate.sh'.
+
+
+## 2026-10-10 21:40 UTC R004: R4-S5 accepted; PR #14; screenshots; final assessment
+
+- R4-S5 (fbe71810):
+  - Claude planned; Claude was refused the regeneration commands; Codex implemented.
+  - Claude review FINDINGS: export_data ignored its root. One rework round (Codex) fixed it.
+  - Review CLEAN; acceptance ACCEPTED. Gate: 327 passed, 0 skipped.
+- Commit 6cd4a15. Fresh clone: 321 passed, 6 data-dependent skips. PR #14 (stacked).
+- Controller screenshots of the final pages from the clean clone (r4-final-*.png).
+  - The fidelity guards hold.
+  - Readability defects that no test catches: per-number disclosures fragment intervals; Brier differences show as -0.00; the 375 px criteria table squeezes headers.
+  - Recorded in the final assessment as next-version items, not fixed: R004's 6 sessions are used.
+- runs/R004/FINAL-ASSESSMENT.md:
+  - Outcome COMPLETE_USEFUL (bounded fidelity claim); delivery PR_PENDING.
+  - Contract deviation disclosed: the R001 wording correction changed two research lines.
+  - Prompt v4 candidates listed, not Dream-reviewed (the one Dream pass was spent).
+

@@ -1,0 +1,4 @@
+usage: howlplane [-h] [--control-plane-dir CONTROL_PLANE_DIR] [--repo REPO]
+                 [--version] [--color MODE] [--debug]
+                 <command> ...
+howlplane: error: unrecognized arguments: -c CUBS_REQUIRE_E2E=1 python3 -m pytest -q && python3 -m flake8 -j1 cubs_edge_lab tests && find web -name "*.js" -exec node --check {} + && echo "node --check: ok" && echo "ignored paths outside data/ and caches (must be none):" && ! git ls-files --others --ignored --exclude-standard --directory | grep -vE '^(data/|\.pytest_cache/|(.*/)?__pycache__/)$' && echo "none"; quote a verification command that has options, for example --verify "python3 -m pytest -q"

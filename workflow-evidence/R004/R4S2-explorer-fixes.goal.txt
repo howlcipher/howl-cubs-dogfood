@@ -1,0 +1,9 @@
+Fix three defects in the uncommitted explorer foundation in this repository (web/, cubs_edge_lab/web_export.py, tests/test_web_export.py, tests/test_explorer_e2e.py). Make no other changes.
+
+1. BLOCKER: the committed site would ship without its data. .gitignore line 1 is `data/`, which also ignores web/data/ (proof: `git check-ignore -v web/data/manifest.json` prints `.gitignore:1:data/`). Anchor the rule to the repository root (`/data/`), so the bulk local data under data/ stays ignored and web/data/ becomes committable. Add a test that fails if any file under web/data/ is ignored by git, and a test that confirms data/raw/ and the other data/ paths are still ignored (use `git check-ignore`). Before finishing, list `git ls-files --others --ignored --exclude-standard` and confirm that only paths under data/ remain ignored.
+2. The NEGATIVE plain-language meaning is a constant in web/app.js, not tied to the source verdict. Put the meaning strings into the export as a mapping keyed by verdict value (NEGATIVE, PARTIAL, EXPLORATORY, plus a "Test not run (early stop)" key), select the meaning by the exported verdict value, and fail visibly, with a rendered error rather than a silent default, when a verdict has no mapping. Test both behaviours.
+3. scan_numbers compares rendered text with json.dumps of the source value, which will diverge for formatted floats. Define one shared display format: integers as is; floats with a fixed number of decimals stated in the page next to the value; probabilities and rates to 3 decimals; full precision available in the `<details>` element. Use it in both app.js and the test, with unit tests for integer, float, negative and interval values.
+
+Gate: `CUBS_REQUIRE_E2E=1 python3 -m pytest -q` (0 skipped), flake8 -j1 clean, and `node --check` on every web/*.js file.
+
+Integrity: never invent or alter values.

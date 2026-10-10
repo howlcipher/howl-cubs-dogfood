@@ -1,0 +1,18 @@
+The secondary-verdict guard is in place and matches the plan. The harness gate passed on the current tree.
+
+- **Guard:** `web/app.js:132-144` looks the secondary value up in `meanings.json` with `typeof ... === "string"`. A mapped value renders as before, now tagged `data-secondary-verdict`. An unmapped value renders a `role="alert"` element with `data-error="missing-meaning"` and the text "No plain-language meaning is defined for verdict X." It is not shown as a verdict.
+- **Order:** `section.append(heading, verdict, meaning)` at line 131 comes before the secondary block, so the meaning directly follows the primary verdict. The earlier-definition verdict or its alert comes after the meaning.
+- **Scope:** the primary-verdict logic and the early-stop guard are unchanged. The existing `[data-verdict]` count per card is preserved because the secondary uses its own attribute. I could not run `git status` here, so I could not confirm directly that only `web/app.js` and `tests/test_explorer_e2e.py` changed this session. The harness's changed-file list shows no `data/` or `research/` files.
+- **Tests:** `tests/test_explorer_e2e.py:446-496` adds the three required tests.
+  - **Mapped case:** the secondary text is present and there are no alerts.
+  - **Unmapped case:** one alert names `UNMAPPED2`, there is no `[data-secondary-verdict]`, the primary meaning is intact, and no alert sits inside `[data-meaning]`.
+  - **Adjacency:** `nextElementSibling === meaning` is checked on every card, and the first card's secondary verdict follows the meaning in DOM order.
+- **Gate:** HowlPlane's run passed 234 tests with 0 skipped. flake8 was clean, `node --check` passed on every `web/*.js` file, no ignored paths turned up outside `data/` and caches, and `git diff --check` exited 0.
+- **Independent audit:** it came back clean, and it matches what I read.
+
+Remaining risks:
+- The gate result holds only if nothing is edited after it.
+- The Playwright tests need Chromium installed.
+- The alert text is duplicated rather than shared with the primary alert, which is a style point only.
+
+ACCEPTANCE_STATUS: ACCEPTED

@@ -1,0 +1,36 @@
+COMPLETE 4 ['claude-sonnet-5-5']
+- IDEA: Add a visible banner on the decision chart stating that observed success rates are selected sends only and say nothing about what holds would have done, and that p* comparisons are not a recommendation.
+- IDEA: Carry the INFERENCE about selected sends and extrapolated hold counterfactuals into the chart header verbatim, not only on the verdict page.
+- IDEA: Render Passed as text ("Met" / "Not met") with a one-line note that the verdict is decided by the pre-registered rule, not by counting passes.
+- IDEA: Require every point estimate to display its published interval adjacent, and flag intervals that include zero or span implausible ranges.
+- IDEA: Surface "reduced covariate set; 67 of 140 required" in the verdict panel.
+- IDEA: Put a one-line note under the verdict panel linking to the label-definition history.
+- IDEA: Add a glossary with hover/focus definitions for flagged, assessed, support threshold and runs left.
+- IDEA: Exclude Cubs flagged-hold and runs-left values from the Overview and show them only with the in-sample caveat and the failed-model label.
+- IDEA: Show runs-left as "not interpretable" with the value hidden behind the same toggle as other model values, since rule 1 permits hover-only full values.
+- IDEA: State on the page "No pre-registered test was run; the 2025 holdout is untouched," and phrase the exploratory finding as no evidence of added value.
+- IDEA: Put that sentence directly above the Cubs table, and avoid per-year signing-versus-positive ratios as a chart.
+- IDEA: Make the "what this does not show" list pull limitations from the source records, not hand-written text.
+- IDEA: Add a test that fails if any digit sequence in rendered text lacks a data-src tag or an allowlist entry, and a test that checks each label-to-pointer mapping.
+- IDEA: Derive the model-value set from export-time tags (data-class="model") and fail the build if any untagged numeric appears on the send/hold page.
+- IDEA: Forbid CSS order/position reordering of verdict panels, or assert bounding-box order at 375 px.
+- IDEA: Make skipped end-to-end tests fail CI for release builds and report the skip count visibly.
+- IDEA: Provide full values via a tap-accessible disclosure or an expandable detail row, and add a 320 px reflow check.
+- IDEA: Reset the toggle on every page load and keep the label attached to each revealed value, not to the toggle.
+- IDEA: Show commit hash and "as of" date in each page footer, plus a note that later studies may supersede these results.
+- IDEA: For v1, ship Overview, verdict panels, and a static non-filterable decision table; defer filters, the dark scheme, retrieval totals and the run-expectancy table.
+- IDEA: Add a short comprehension check with two or three target users before release, asking what they would do with the page, and treat any "use the model" answer as a blocker.
+- IDEA: Next to observed send success, add a fixed caveat: "Sends were selected by the club; this is not the success rate of holds or of a different policy." Gate p* behind the same "not for decisions" label unless the source marks it model-free.
+- IDEA: Make the one-sentence verdict meaning a source-keyed, test-checked string: "No measurable improvement over a simple baseline was shown. This does not show the opposite."
+- IDEA: Show each criterion's role (gating, diagnostic, control) and state that the verdict follows the failing gating criteria. Render a passed=true row under a failed verdict with a text note rather than a green mark.
+- IDEA: Add a mandatory "Limits of this result" block on the send/hold page, populated from the source fields.
+- IDEA: Provide a tap-accessible "show exact values" control, or an expandable details element, in place of hover.
+- IDEA: Add a test that fails if any numeric text node lacks data-src. Add golden-snapshot checks on label-to-pointer pairs, reviewed by a person. Add a check that the interval accompanies every difference shown.
+- IDEA: Maintain an allowlist of default-visible pointers, and fail the test on anything outside it. Check the list against the pointers tagged model-derived.
+- IDEA: Require a distinct label for "test not run (early stop)" that differs from a failed test, and attach the source's sentence about not evaluating Cubs decisions to every Cubs table.
+- IDEA: Version 1 could ship the Overview, the verdict panels, the limits blocks and the About page. Defer the decision-chart filters and the failed-model toggle until the guard tests pass.
+- IDEA: Drop the toggle in v1, or watermark the revealed values.
+- IDEA: Make the skip fail in CI, or record a visible "tests not run" status in the build output.
+- IDEA: Drop the decision-chart filters and the model-values toggle from v1. Show a static verdict page with the criteria table, a "what a negative result means" paragraph, and a limitations block. Defer interactive exploration until a user shows a need.
+- IDEA: Add a plain-language line next to the Brier row: "The model did not beat a constant guess; the interval includes zero, so this is no evidence of benefit, not evidence of harm." Add that the passed secondary criteria do not rescue the verdict.
+- IDEA: Make a limitations block mandatory per study and test its presence, and add a DOM scan test that flags any untagged number.

@@ -1,0 +1,81 @@
+HOWL ORCHESTRATION REPORT
+Session: fa728fa157904671bcd83fb4fd7019b7
+Goal: Finish the uncommitted explorer work in this repository (web/, cubs_edge_lab/web_export.py, tests/test_web_export.py, tests/test_explorer_e2e.py, tests/conftest.py, README.md, .gitignore). It is already reviewed. A previous session's acceptor named one remaining defect, fix it here, and change nothing else.
+
+Defect: in web/app.js renderOverview, the secondary verdict (data.sendhold_v2_verdict, "Verdict under the earlier pre-registered definition") is rendered without checking it against web/data/meanings.json. The primary verdict's value is looked up and an unmapped value shows a role="alert" element with data-error="missing-meaning". The secondary verdict gets no such check, so an unexpected value would be published silently.
+
+Required:
+1. Apply the same guard to the secondary verdict: when its value has no entry in meanings.json, render the same kind of alert (role="alert", data-error="missing-meaning", naming the value). When it is mapped, render it as now.
+2. Order: the primary verdict must be followed directly by its plain-language meaning (spec rule 2: verdict first, then its fixed meaning). Place the earlier-definition verdict after the meaning, not between them.
+3. Tests (pytest + Playwright, matching the existing style in tests/test_explorer_e2e.py):
+   - the mapped case renders the earlier-definition verdict with no alert;
+   - an unmapped secondary value (override the served JSON, as existing tests do) renders the alert;
+   - the meaning element directly follows the primary verdict element in DOM order.
+4. Never invent or alter published values. Do not touch data/ or research/.
+
+Gate (HowlPlane runs it): CUBS_REQUIRE_E2E=1 python3 -m pytest -q with 0 skipped, flake8 -j1 clean, node --check on every web/*.js file, and no ignored paths outside data/ and caches.
+Status: COMPLETE WITH WARNINGS
+Resumable: no
+Orchestrator: claude_code
+Implementer: codex
+Policy: PLAN + EXECUTE + INDEPENDENT AUDIT
+Constraints: The current HowlPlane session IS the orchestration workflow. Perform the assigned work in the target project. Do not launch howl/howlplane or another orchestration session merely to prove Howl was used. Do not copy internal orchestration state into the target project.
+Assignments: 5
+Reroutes: 1
+Repository head: 8ff9148f6e2e33572163c272df00793bd7912df7
+Repository status: M .gitignore
+ M README.md
+ M tests/conftest.py
+?? cubs_edge_lab/web_export.py
+?? tests/test_explorer_e2e.py
+?? tests/test_web_export.py
+?? web/about.html
+?? web/app.js
+?? web/data/about.json
+?? web/data/manifest.json
+?? web/data/meanings.json
+?? web/data/overview.json
+?? web/format.js
+?? web/index.html
+?? web/milbfa.html
+?? web/sendhold.html
+?? web/style.css
+Tests: [{"command": "git diff --check", "exit_code": 0, "output": ""}, {"command": ["sh", "-c", "CUBS_REQUIRE_E2E=1 python3 -m pytest -q && python3 -m flake8 -j1 cubs_edge_lab tests && find web -name \"*.js\" -exec node --check {} + && echo \"node --check: ok\" && echo \"ignored paths outside data/ and caches (must be none):\" && ! git ls-files --others --ignored --exclude-standard --directory | grep -vE '^(data/|\\.pytest_cache/|(.*/)?__pycache__/)$' && echo \"none\""], "rework_round": 0, "exit_code": 0, "output": "................................................................... [ 28%]\n...................................................................... [ 58%]\n........................................................................ [ 89%]\n.........................                                                [100%]\nSkipped tests: 0\n\n234 passed, 7 subtests passed in 155.67s (0:02:35)\nnode --check: ok\nignored paths outside data/ and caches (must be none):\nnone\n"}]
+Independent audit: CLEAN
+Recovery: {"at": "2026-10-10T18:33:30.353482+00:00", "needs_validation": false, "from": "claude_code", "stage": "implementation"}
+Failures: [{"stage": "implementation", "agent": "claude_code", "model": "UNKNOWN", "failure": "EXECUTION_PERMISSION_REQUIRED"}]
+Review notes from Claude (review, CLEAN):
+  The change is correct and meets every requirement. I found no blocking defects. I only read the files and the gate evidence; I did not run anything.
+  
+  **Requirement 1: guard on the secondary verdict.** `web/app.js:132-144` applies the guard.
+  - A mapped value renders the `<p>` with "Verdict under the earlier pre-registered definition: " plus the sourced value, tagged `data-secondary-verdict`.
+  - An unmapped value renders `role="alert"` with `data-error="missing-meaning"` and the text "No plain-language meaning is defined for verdict X.", where X is the value.
+  - The unmapped value is not shown as a verdict.
+  - The lookup uses `typeof ... === "string"`, so inherited keys like `constructor` are rejected.
+  - The primary-verdict and early-stop logic are untouched.
+  
+  **Requirement 2: order.** `section.append(heading, verdict, meaning)` at line 131 now comes before the secondary block, so the meaning directly follows the primary verdict. The earlier-definition verdict or its alert comes after the meaning.
+  
+  **Requirement 3: tests.** `tests/test_explorer_e2e.py:446-496` adds the three tests, in the existing style.
+  - The mapped case checks the secondary text and that no `.card [role="alert"]` exists.
+  - The unmapped case overrides `overview.json`. It checks for exactly one alert naming `UNMAPPED2`, no `[data-secondary-verdict]`, the primary meaning unchanged, and no alert inside `[data-meaning]`.
+  - The adjacency test checks `nextElementSibling === meaning` on every card, and that the secondary verdict follows the meaning in DOM order.
+  
+  **Existing tests.** The unmapped-primary and missing-early-stop tests each still expect exactly one alert, and they still get one because the secondary is mapped there. `test_verdict_and_meaning_precede_tables` still sees a single `[data-verdict]` per card, because the secondary uses a separate data attribute.
+  
+  **Requirement 4: data.** I saw no edits to `data/` or `research/`, and no new published values.
+  
+  **Gate.** The harness run passed on the current tree:
+  - 234 tests passed with 0 skipped.
+  - flake8 was clean.
+  - `node --check` passed on every `web/*.js` file.
+  - No ignored paths outside `data/` and caches.
+  - `git diff --check` exited 0.
+  
+  **Non-blocking.**
+  - The adjacency test only covers the first card for the secondary-after-meaning check, which is fine because only that card has a secondary verdict.
+  - The alert text is duplicated rather than shared with the primary alert helper. That is a style point only.
+  
+  **Residual risk.** The gate result is valid only if no edits follow it. The Playwright tests need Chromium installed.
+  
+  AUDIT_STATUS: CLEAN

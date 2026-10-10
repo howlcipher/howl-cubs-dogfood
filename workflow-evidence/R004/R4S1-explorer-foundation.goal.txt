@@ -1,0 +1,115 @@
+Build the foundation of a static, read-only results explorer in this repository, following the spec reproduced at the end (v2). This session delivers the export, the site skeleton, the full test harness, and the Overview and About pages. The Send/hold and Free-agent pages are later sessions, so only their navigation stubs are built here, each stating "coming in a later version".
+
+Requirements:
+1. cubs_edge_lab/web_export.py, run as `python3 -m cubs_edge_lab.web_export`:
+   - Writes web/data/*.json holding only the values the Overview and About pages need, each with its source "file#json-pointer".
+   - Writes web/data/manifest.json with the repository commit, the SHA-256 of each source file, and the default-visible pointer allowlist.
+   - Deterministic, and computes nothing new.
+   - The data comes from the committed research/*.json files only; never from data/.
+2. web/:
+   - index.html (Overview) and about.html, plus stubs for sendhold.html and milbfa.html.
+   - A shared style.css and ES-module JavaScript with JSDoc types. No external requests, fonts or scripts.
+   - Every page meets rule 9 (footer provenance and attribution), and every rendered number meets rule 1.
+   - The Overview shows the verdict and plain meaning for each study, taken from the source.
+   - The About page shows sources, terms, request counts, the source manifest, and the glossary in `<details>` elements.
+   - The site must work when opened from a simple local static server. Pages fetch their web/data JSON with relative paths.
+3. Test harness under tests/:
+   - A pytest fixture that starts a local static server on a free port for web/.
+   - Playwright (Python) in headless Chromium.
+   - The spec's tests that apply to these pages:
+     - Export unit and drift tests.
+     - The DOM scan for untagged numbers, source equality and the allowlist.
+     - Verdict-before-table order by DOM position and by bounding box at 375 px.
+     - Keyboard opening of every `<details>`.
+     - No horizontal scroll at 320, 375 and 1280 px.
+     - The network guard.
+   - Make the scan, guard and viewport tests reusable, for example parameterized over a page list, so later pages only register themselves.
+   - End-to-end tests skip with a reason when Chromium is missing, unless CUBS_REQUIRE_E2E=1 is set, in which case a skip is a failure. Print the skip count.
+4. README: how to export, serve and test the explorer locally.
+5. Gate: `CUBS_REQUIRE_E2E=1 python3 -m pytest -q` passes, flake8 -j1 is clean, `node --check` passes on every web/*.js file, the existing tests still pass, and the suite also passes in a clean clone without data/.
+
+Integrity: never invent or alter values; every displayed number comes from research/*.json through the export. Build on this checkout (branch feat/explorer).
+
+--- SPEC v2 ---
+# R004 explorer spec (v2)
+
+Status: v2, 2026-10-10. v1 (R004-EXPLORER-SPEC.v1.md) was critiqued by HowlDream (workflow-evidence/R004/dream/p1-spec-critique-texts.txt). The reconciliation table is at the end.
+
+## Users and job
+
+- Primary user: a front-office analyst or coach who does not read JSON or code.
+- Job: see what each study found, how sure it is, and what it does **not** show, without being misled into using a failed model.
+- Limitation: no target users are available for a comprehension check, so the usability claim is limited to fidelity and guard tests.
+
+## Hard rules (misrepresentation guards)
+
+1. **Exact, traceable values.** Every number rendered is tagged `data-src="file#json-pointer"` and equals that source value under the display format stated next to it. Version 1 shows no computed numbers. The full value is available through a tap- and keyboard-accessible `<details>` element, never by hover alone. A test fails on any numeric text that has no `data-src` and is not on a short allowlist (for example years in prose and section numbers).
+2. **Verdict first.** Each study page opens with its published verdict, followed by a fixed, test-checked plain-language meaning. For NEGATIVE: "No measurable improvement over a simple baseline was shown. This does not show the opposite."
+3. **No model values by default.** Version 1 has no toggle. The send/hold model's predicted P(safe), its flagged-hold counts and its Cubs values are not shown.
+   - Runs left appears only as a criteria-table row reading "Not interpretable under the NEGATIVE verdict".
+   - Its published value and interval sit inside a `<details>` element labeled "Failed-model value (not for decisions)".
+   - A default-visible pointer allowlist is enforced by a test.
+4. **Intervals and roles.**
+   - Each estimate shows its published interval beside it.
+   - Criteria rows read "Met" or "Not met", in text, with their role: gating, diagnostic or control.
+   - A note states that the verdict follows the pre-registered gating rule, not a count of passes.
+   - The Brier row carries this line: "The model did not beat a constant guess; the interval includes zero, so this is no evidence of benefit, not evidence of harm. Passing diagnostic rows do not change the verdict."
+5. **Selection caveat.** The decision table's header carries, verbatim, the source INFERENCE about selected sends, plus the line "Sends were selected by the coaches; observed success is not the success rate of held runners or of a different policy. Break-even p* is not a recommendation." p* is labeled as derived from the 2025 run expectancy.
+6. **Sample size.** Each rate shows n. Cells the source marks low_n are marked in text.
+7. **Limits block.** Each study page has a mandatory "Limits of this result" block, built from the source's UNKNOWN and INFERENCE fields and design notes (for send/hold: the reduced covariate set, "67 of 140 required", and the label history v1 to v3, linked). A test checks it is present.
+8. **Distinct non-results.** "Test not run (early stop)", "holdout untouched" and "EXPLORATORY" each get a distinct label and wording, taken from source fields. R001's Cubs table carries the source's statement about what it does not evaluate.
+9. **Provenance.** Each page footer shows the cubs-edge-lab commit, the as-of date, the line "later studies may supersede these results", and the MLB Advanced Media attribution with its usage-restriction quote.
+
+## Pages (version 1)
+
+1. **Overview**: the campaign question, and a card per study (decision, verdict, plain meaning). No Cubs model values.
+2. **Send/hold (R003)**
+   - Verdict panel: v3 primary and the v2 pre-registered verdict, then the criteria tables for the four analyses.
+   - A static decision table from the fit cells: zone group, hit type, outs, speed tercile, n, n_sent, observed send success and p*. It has no filters.
+   - Label counts per season under v3 and v2.
+   - The feasibility summary.
+   - The limits block.
+3. **Free-agent triage (R001)**: validation status with early-stop status, the exploratory whole-pool results under an EXPLORATORY banner, the Cubs case with its unknowns, and the limits block.
+4. **About the data**: sources, terms, request counts, the source manifest, and a glossary of flagged, assessed, support threshold, runs left, p*, Brier and calibration slope. The glossary uses `<details>` elements.
+
+Deferred to later versions: filters, any model-value toggle, the dark scheme, the run-expectancy and retrieval-totals tables, and hosting.
+
+## Technical (ADR R004-1, option A)
+
+- `python3 -m cubs_edge_lab.web_export` writes web/data/*.json, holding only the selected values with their source pointers, plus web/data/manifest.json, which records the commit, the SHA-256 of each source file, and the allowlist of default-visible pointers. It never computes statistics. The export is deterministic, and a test fails if the committed web/data differs from a fresh export.
+- web/: static HTML, one stylesheet, ES-module JavaScript with JSDoc types, and no external requests. `node --check` runs where Node is available.
+- Accessibility:
+  - Semantic headings and tables (captions, `th scope`), a skip link, and visible focus.
+  - WCAG AA contrast.
+  - Meaning carried by text, never by color alone.
+- Responsive: no horizontal page scroll at 320, 375 and 1280 px; tables scroll inside their own container.
+- Tests (pytest; end-to-end with Python Playwright in headless Chromium against a fixture-started local server):
+  - Export unit tests and an export-drift test.
+  - A DOM scan: every number is tagged, matches its source, and is on the default-visible allowlist.
+  - Guard tests: verdict text and plain meaning appear before the first table (by DOM order and by bounding box at 375 px), the runs-left row text is present, the limits block exists, and no model pointer is visible by default.
+  - Keyboard: every `<details>` element can be reached and opened.
+  - Viewport: no horizontal scroll at 320, 375 and 1280 px.
+  - Network: no request outside the local server.
+- Skips: end-to-end tests skip with a reason when Chromium is missing, except when `CUBS_REQUIRE_E2E=1`, in which case a skip is a failure. The session gate sets it. The skip count is printed.
+
+## Reconciliation (v1 -> v2)
+
+| Critique | Decision |
+| --- | --- |
+| Selection caveat on the chart header, verbatim INFERENCE, p* not a recommendation | ADOPTED (rule 5) |
+| Met/Not met text, criterion roles, verdict follows gating rule, Brier plain-language line | ADOPTED (rule 4) |
+| Intervals beside estimates | ADOPTED (rule 4) |
+| Reduced covariates and label history surfaced | ADOPTED (rule 7) |
+| Glossary with accessible definitions | ADOPTED (About page, `<details>`) |
+| Cubs model values off the Overview | ADOPTED; all model values are hidden in version 1 (rule 3) |
+| Runs left as "not interpretable", value hidden | ADOPTED (rule 3) |
+| R001 "test not run" or "holdout untouched" wording from the source | ADOPTED (rule 8) |
+| Limits from source fields; mandatory and tested | ADOPTED (rule 7) |
+| Untagged-number DOM scan, pointer allowlist, golden pointer checks | ADOPTED (rule 1, tests). Golden-pair human review is done by the independent HowlPlane review |
+| Bounding-box order at 375 px; 320 px reflow | ADOPTED |
+| Skipped end-to-end tests must fail the gate; skip count visible | ADOPTED (`CUBS_REQUIRE_E2E=1`) |
+| Tap-accessible full values, not hover | ADOPTED |
+| Footer commit, as-of date, supersede note | ADOPTED (rule 9) |
+| Trim version 1: no filters or toggle, defer the dark scheme and secondary tables | ADOPTED |
+| Comprehension check with target users before release | NOT POSSIBLE (no users available); recorded as a limit on the usability claim |
+| Watermark revealed values | MOOT (no toggle in version 1) |

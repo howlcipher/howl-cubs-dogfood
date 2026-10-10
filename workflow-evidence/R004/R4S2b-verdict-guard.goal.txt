@@ -1,0 +1,14 @@
+Finish the uncommitted explorer work in this repository (web/, cubs_edge_lab/web_export.py, tests/test_web_export.py, tests/test_explorer_e2e.py, tests/conftest.py, README.md, .gitignore). It is already reviewed. A previous session's acceptor named one remaining defect, fix it here, and change nothing else.
+
+Defect: in web/app.js renderOverview, the secondary verdict (data.sendhold_v2_verdict, "Verdict under the earlier pre-registered definition") is rendered without checking it against web/data/meanings.json. The primary verdict's value is looked up and an unmapped value shows a role="alert" element with data-error="missing-meaning". The secondary verdict gets no such check, so an unexpected value would be published silently.
+
+Required:
+1. Apply the same guard to the secondary verdict: when its value has no entry in meanings.json, render the same kind of alert (role="alert", data-error="missing-meaning", naming the value). When it is mapped, render it as now.
+2. Order: the primary verdict must be followed directly by its plain-language meaning (spec rule 2: verdict first, then its fixed meaning). Place the earlier-definition verdict after the meaning, not between them.
+3. Tests (pytest + Playwright, matching the existing style in tests/test_explorer_e2e.py):
+   - the mapped case renders the earlier-definition verdict with no alert;
+   - an unmapped secondary value (override the served JSON, as existing tests do) renders the alert;
+   - the meaning element directly follows the primary verdict element in DOM order.
+4. Never invent or alter published values. Do not touch data/ or research/.
+
+Gate (HowlPlane runs it): CUBS_REQUIRE_E2E=1 python3 -m pytest -q with 0 skipped, flake8 -j1 clean, node --check on every web/*.js file, and no ignored paths outside data/ and caches.
