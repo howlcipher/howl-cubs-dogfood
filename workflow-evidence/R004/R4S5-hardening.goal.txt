@@ -1,0 +1,30 @@
+Harden the static explorer in this repository. Four tasks; change nothing else. Verify with exactly `sh scripts/gate.sh`. The web/data regeneration command is `python3 -m cubs_edge_lab.web_export`.
+
+Task 1: provenance that does not go stale on commit (defect found at R004 PR #13). manifest.json "commit" is the last commit touching research/, so any commit that changes research/ and web/data together makes its own export stale, and the drift test fails on a fresh clone. Replace it with a content digest. "research_digest" is the SHA-256 over the sorted lines "<relative path> <sha256 of file bytes>\n" for every file under research/ (tracked or not, excluding nothing), computed from the working tree. Drop "commit" from the manifest. The footer shows "Research digest: <first 12 hex>", with the full value in the existing full-value <details> pattern, and keeps the as-of date, the supersede line and the attribution. Update the Manifest typedef. Tests:
+- the digest is deterministic;
+- it changes when any research file's bytes change;
+- it does not depend on git (the export works outside a git checkout);
+- the drift test passes after a commit that changes research/ and web/data together. Simulate this in a temporary git repository fixture.
+
+Task 2: manifest source coverage. "sources" must also hash every research/*.md file that verbatim lines are copied from (today research/SENDHOLD_EXPERIMENT.md and research/EXPERIMENT.md), so any edit to those files shows in the manifest. Test it.
+
+Task 3: S3 review follow-ups.
+- (a) Split the manifest pointer list. "default_visible" lists only pointers rendered visibly by default. A new "disclosed_only" lists pointers rendered only inside a closed <details>: today the runs-left estimates, intervals and Met/Not met under a NEGATIVE verdict, plus the full-value disclosures if they are pointer-tagged separately. Tests:
+  - every visible numeric node's data-src is in default_visible;
+  - every node whose data-src is in disclosed_only is not visible on load, on every page;
+  - the two lists are disjoint.
+- (b) Replace the `.first`-only runs-left visibility test with one that checks every runs-left node.
+- (c) add_sendhold_selections() (and any other selection builder) must read from the root passed to export_data, not the module-level RESEARCH. Add a test with a temporary root.
+
+Task 4: accessibility checks as tests (Playwright, all four pages):
+- html lang is set;
+- exactly one h1;
+- the skip link target exists and receives focus;
+- every table has a caption and every th has scope;
+- every <details> has a <summary> and can be opened by keyboard;
+- every role="alert" has text;
+- focus is visible (computed outline or box-shadow on focused links and summaries is not none);
+- text contrast is at least 4.5:1 for body text, links, verdict text and table text, computed from getComputedStyle colors against the effective background.
+Fix any failures found in web/style.css or the HTML without changing published values or wording.
+
+Gate: sh scripts/gate.sh passes (0 skipped end-to-end tests).

@@ -440,3 +440,68 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - Registry: DOG-044 is FIX IN REVIEW (#168); NOTE-010 added.
 - Next: R4-S3 send/hold page, stacked on feat/explorer (retarget to main once #11 merges). R004 product sessions: 3 of 6.
 
+
+## 2026-10-10 18:48 UTC R004: INTENT R4-S3 send/hold page
+
+- Branch feat/explorer-sendhold from c68d31d (stacked on #11; retarget to main after #11 merges).
+- Goal: workflow-evidence/R004/R4S3-sendhold-page.goal.txt. Source check before writing it: the selection INFERENCE that spec rule 5 requires exists only in research/SENDHOLD_EXPERIMENT.md line 6, not in JSON, so the goal makes the export copy markdown lines verbatim, tested. Criterion roles are fixed display copy (Brier and calibration gating, negative control control, runs left effect), per the design's success rules.
+- Engine: repaired source through PYTHONPATH (DOG-044 fix, PR #168, not yet merged). --orchestrator claude_code, --worker-network (loopback for Playwright, CUBS-P-009), --execution-budget implementation=1800, --verify-timeout 900. R004 product sessions: 4 of 6.
+
+
+## 2026-10-10 19:49 UTC R004: R4-S3 HANDOFF; controller check; resume
+
+- R4-S3 (98385d60):
+  - Claude planning was refused (EXECUTION_PERMISSION_REQUIRED); Codex planned.
+  - Implementation attempts:
+    - Codex hit the 1800 s cap (work kept).
+    - Claude was refused its pytest commands, including the exact --verify string.
+    - Cursor wrote the page, but every shell call was rejected (IMPLEMENTATION_INCOMPLETE).
+    - AGY and Devin: NO_REPOSITORY_CHANGE.
+  - Result: HANDOFF REQUIRED.
+- CUBS-P-011 (provisional): Claude's --verify grant is an exact shell-quoted literal (provider_execution_profile.command_to_bash_specifier). A long sh -c gate with nested quotes is refused unless typed byte for byte. Mitigation for later sessions: a short repository gate script (sh scripts/gate.sh) as the --verify command.
+- Controller check on the kept tree:
+  - Gate passed: 255 passed, 0 skipped, flake8 clean, node ok, no ignored paths outside data/.
+  - web/data/sendhold.json has no mean_p_safe, p_safe, flagged or cubs values.
+  - runs-left values are exported, and tests assert they are hidden until the 'Failed-model value' disclosure is opened.
+  - Naming point for the PR: manifest 'default_visible' lists every exported pointer, including disclosed-only ones.
+- Resume with the repaired engine: all implementers are excluded, so HowlPlane verifies the kept work directly, then review and acceptance.
+
+
+## 2026-10-10 20:03 UTC R004: R4-S3 accepted; PR #12; INTENT R4-S4
+
+- R4-S3 resume: HowlPlane verified the kept work (255 passed). Claude review CLEAN with 4 non-blocking points (carried to R4-S5). Acceptance ACCEPTED.
+- Commit 0d3a600 (signed). Fresh-clone gate: 249 passed, 6 skipped (all data-dependent; 0 end-to-end skips). PR #12, stacked on #11, with merge-order instructions.
+- INTENT R4-S4 (5 of 6) on feat/explorer-milbfa from 0d3a600. Goal: R4S4-milbfa-page.goal.txt.
+  - Gate script first (CUBS-P-011 mitigation; --verify 'sh scripts/gate.sh').
+  - R001 label correction in the generator: _method_status() wording for the early stop, evidence quoted from validation.json; the research/ diff must be exactly two lines.
+  - Free-agent page.
+- R4-S5 (6 of 6) planned: S3 review follow-ups and an accessibility pass.
+
+
+## 2026-10-10 20:39 UTC R004: R4-S4 HANDOFF; controller check; resume
+
+- R4-S4 (82ec9cb8):
+  - Claude planned, implemented most of the work, then was refused the regeneration commands (python3 -c write_artifacts, web_export).
+  - Codex: NO_REPOSITORY_CHANGE.
+  - Cursor: IMPLEMENTATION_INCOMPLETE, because its shell rejected 'sh scripts/gate.sh'.
+  - AGY and Devin: NO_REPOSITORY_CHANGE.
+  - Result: HANDOFF REQUIRED.
+- CUBS-P-011 mitigation: Claude was not refused 'sh scripts/gate.sh'; its refusals were the regeneration commands, which were never granted. Cursor's shell rejection is unrelated to quoting; it is the same as in R4-S1 and R4-S3.
+- Controller check on the kept tree:
+  - research/ diff is exactly the two lines (method_status in JSON; the FACT line in EXPERIMENT.md).
+  - sh scripts/gate.sh: 275 passed, 0 skipped, flake8 ok, node ok, no stray ignored paths.
+  - web/data/milbfa.json has no examples, person_id or names.
+- Resume: HowlPlane verifies the kept work, then review and acceptance.
+
+
+## 2026-10-10 20:54 UTC R004: R4-S4 accepted; provenance defect; PR #13; INTENT R4-S5
+
+- R4-S4 resume: HowlPlane verified the kept work. Claude review CLEAN (3 minor non-blocking points); acceptance ACCEPTED.
+- My fresh-clone check caught a provenance defect that the working tree hid. The manifest 'commit' is the last commit touching research/, so one commit changing research/ and web/data made its own export stale, and the drift test failed in the clone (1 failed).
+  - Workaround: split the local, unpushed commit with git reset --soft (my own commit; nothing pushed, no human work). Research correction 913b3f7 first, then web/data regenerated by the accepted exporter in 64c7def.
+  - Fresh clone: 269 passed, 6 data-dependent skips.
+  - Caveat: 913b3f7 alone fails the drift test.
+- PR #13, stacked on #12 and #11.
+- extra_allowed_bash would let Claude run the regeneration commands. It is a global operator config change, so I left it for the owner and rely on failover.
+- INTENT R4-S5 (6 of 6) on feat/explorer-hardening from 64c7def. Goal: R4S5-hardening.goal.txt (content digest for provenance, manifest coverage of quoted .md files, S3 follow-ups, accessibility tests). --verify 'sh scripts/gate.sh'.
+
