@@ -392,3 +392,9 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - Controller audit: a clean copy failed (14 failed, 26 errors). The root cause is the .gitignore `data/` rule, which also ignores web/data/ (`git check-ignore`: .gitignore:1:data/). A commit would ship the site without data. Neither the review nor the acceptance caught it, because both ran in the working tree. A root-anchored `/data/` would expose only web/data (checked against the full ignored-file list).
 - INTENT R4-S2: fix session (workflow-evidence/R004/R4S2-explorer-fixes.goal.txt), covering the blocker plus review notes 2 and 4. Sessions: 3 of 6.
 - Prompt candidate (v4): the controller's clean-clone check must use a real `git clone` of a commit, not a working-tree copy, and must check `git check-ignore` for new output directories.
+
+## 2026-10-10T16:27:03Z — Source label error in R001 output, surfaced by the explorer
+- The Overview screenshot (workflow-evidence/R004/r4-index-1280.png) shows the free-agent card saying both "Published verdict: failed its pre-registered test" and "Test not run (early stop)".
+- Source: research/cubs_case.json method_status = "failed its pre-registered test". But research/validation.json has early_stop = true ("validation primary positives below 30"), and runs/R001/FINAL-ASSESSMENT.md says "No model was fitted for the primary test; the 2025 holdout is untouched".
+- So the R001 published label misstates a non-run test as a failed one. The explorer copied it faithfully.
+- The correction goes through HowlPlane in the free-agent page session, with this evidence quoted. It changes the label only; no statistic changes. It will be recorded as a correction to R001's published output.
