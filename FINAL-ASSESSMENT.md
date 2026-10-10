@@ -5,7 +5,7 @@
 | R001 | DISCOVERY_BUILD (MILBFA) | COMPLETE_NEGATIVE | MERGED_VERIFIED (cubs-edge-lab f7caca6; howlplane af9f40a; howl 45478f4; records merged at closeout) | v1 | [runs/R001/FINAL-ASSESSMENT.md](runs/R001/FINAL-ASSESSMENT.md) |
 
 | R002 | REGRESSION (DOG-040..043) | COMPLETE_REGRESSION | MERGED_VERIFIED (howlplane 99d3aa4) | v2 | [runs/R002/FINAL-ASSESSMENT.md](runs/R002/FINAL-ASSESSMENT.md) |
-| R003 | DISCOVERY_BUILD (SENDHOLD) | COMPLETE_NEGATIVE | PR_OPEN (cubs-edge-lab #7-#9 stacked, awaiting user merge; #6 merged 537af76) | v2 | [runs/R003/FINAL-ASSESSMENT.md](runs/R003/FINAL-ASSESSMENT.md) |
+| R003 | DISCOVERY_BUILD (SENDHOLD) | COMPLETE_NEGATIVE | MERGED_VERIFIED (cubs-edge-lab 91f06c5 via #6, #7, #10) | v2 | [runs/R003/FINAL-ASSESSMENT.md](runs/R003/FINAL-ASSESSMENT.md) |
 
 Campaign state: ACTIVE. Next run: R004, chosen by evidence (see journal); prompt v3 takes effect there.
 

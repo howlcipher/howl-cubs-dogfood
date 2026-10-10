@@ -369,3 +369,6 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 
 ## 2026-10-10T15:27:31Z — INTENT R4-S1 (explorer foundation)
 - Goal workflow-evidence/R004/R4S1-explorer-foundation.goal.txt on cubs-edge-lab feat/explorer (from research/sendhold-data 8ff9148, which PR #10 brings to main). Gate: CUBS_REQUIRE_E2E=1 pytest + flake8 + node --check. Sessions 1 of 6.
+
+## 2026-10-10T15:47:20Z — R003 delivery MERGED
+- cubs-edge-lab PR #10 merged at the user's explicit request ("gh pr merge 10 --merge"); main 91f06c5 now has the R003 table, fit and holdout. R003 delivery: MERGED_VERIFIED for cubs-edge-lab (research/SENDHOLD_EXPERIMENT.md present on origin/main).
