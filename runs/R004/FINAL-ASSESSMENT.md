@@ -4,7 +4,8 @@
 - **Outcome: COMPLETE_USEFUL, for the bounded claim only.** The explorer shows the published numbers exactly and states every verdict and caveat beside the numbers it qualifies. That is proven by tests, and on a fresh clone. It makes no claim of real user value, and readability defects are documented below.
 - **Delivery:**
   - cubs-edge-lab: MERGED_VERIFIED. #11, then #15 (which carried #12, #13 and #14, after they merged into their stacked parents). A fresh GitHub clone of main 5fc04e9 passes sh scripts/gate.sh: 321 passed, 6 data-dependent skips.
-  - howlplane: PR_PENDING. #168 has all CI green after the hermetic-test fix 2eba9dc.
+  - howlplane: MERGED_VERIFIED. #168 merged as 5253f3f with all CI green. The shared engine checkout was fast-forwarded, and the engine venv imports the fixed execute_assignment.
+  - Run delivery: MERGED_VERIFIED.
   - howl-cubs-dogfood: records on records/R004.
   - howl and howldream: NOT_APPLICABLE.
 

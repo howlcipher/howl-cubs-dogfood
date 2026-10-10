@@ -547,3 +547,10 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - Commit 2eba9dc pushed to #168. CI: all checks pass (Fast Python 3.11-3.14, Full regression 3.12, Go, lint, CodeQL). Merge state CLEAN; waiting for the owner's merge.
 - Assessment updated: cubs-edge-lab MERGED_VERIFIED; howlplane PR_PENDING; prompt v4 candidates 6 and 7 added.
 
+
+## 2026-10-10 23:41 UTC R004 closed: MERGED_VERIFIED
+
+- howlplane #168 merged as 5253f3f. Shared checkout fast-forwarded from main (clean, already on main). The engine venv imports the fixed execute_assignment. howl agents doctor ran.
+- The repair worktree was removed after its branch merged (clean tree).
+- R004 delivery: MERGED_VERIFIED. Index and DOG-044 (FIXED) updated.
+
