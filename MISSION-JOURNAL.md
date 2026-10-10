@@ -386,3 +386,9 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - Observations, not yet findings: Cursor rejected every shell command in this session (it ran commands in R003); NO_REPOSITORY_CHANGE was counted as failure for AGY and Devin even though the kept partial work may already have been complete.
 - MY GATE ERROR: the R4-S1 --verify ended `node --check ... || true`, so a syntax failure could not fail that gate. Corrected for the resume.
 - Resolution (supported option, no new authority): `howlplane orchestrate resume --worker-network` with the corrected gate; the goal constraint still forbids network use beyond localhost. Counts as session 2 of 6 for budgeting.
+
+## 2026-10-10T16:26:38Z — R4-S1 resumed: COMPLETE; controller found a blocker; INTENT R4-S2
+- Resume of 040f9990 (--worker-network): every implementer was still excluded, so HowlPlane verified the kept work directly ("Implementer: external"). The gate passed, the Claude review was CLEAN with 5 non-blocking notes, and Claude accepted: COMPLETE WITH WARNINGS. Note that --worker-network was not exercised, because no implementer ran. CUBS-P-009 stays provisional.
+- Controller audit: a clean copy failed (14 failed, 26 errors). The root cause is the .gitignore `data/` rule, which also ignores web/data/ (`git check-ignore`: .gitignore:1:data/). A commit would ship the site without data. Neither the review nor the acceptance caught it, because both ran in the working tree. A root-anchored `/data/` would expose only web/data (checked against the full ignored-file list).
+- INTENT R4-S2: fix session (workflow-evidence/R004/R4S2-explorer-fixes.goal.txt), covering the blocker plus review notes 2 and 4. Sessions: 3 of 6.
+- Prompt candidate (v4): the controller's clean-clone check must use a real `git clone` of a commit, not a working-tree copy, and must check `git check-ignore` for new output directories.
