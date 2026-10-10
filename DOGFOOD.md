@@ -78,3 +78,10 @@ Registry state at mission start (2026-10-08T14:27Z): highest allocated DOG-034; 
 - Observed: R4-S1 session 040f9990. Codex implementation (workspace-write, network off) could not create a localhost server socket for Playwright end-to-end tests and reported IMPLEMENTATION_INCOMPLETE. The session ended HANDOFF REQUIRED after every worker was excluded. A direct Codex check shows `socket.socket()` fails with network_access=false and binds with network_access=true.
 - Expected: a way to allow loopback only (for local servers and browser tests) without opening outbound network access, or at least a failure classification that names the sandbox restriction.
 - Evidence: workflow-evidence/R004/R4S1.stdout and R4S1.stderr; codex-bind-false.txt and codex-bind-true.txt.
+
+### CUBS-P-010 (provisional): acceptance never receives HowlPlane's own verification result
+- Category: HOWL FAILURE (false rejection, wasted rework). Owner: howlplane orchestration prompts.
+- Observed: R4-S2 session 8814b377. Configured validation passed three times (12:38, 12:49 and 13:04). The Claude acceptor, holding only Read, Grep and Glob, rejected three times because "nobody has run the gate" and "HowlPlane did not run the verify command either". Both rework rounds were spent on a passing tree, and the session ended HANDOFF REQUIRED.
+- Root cause (howlplane 99d3aa4, src/howlplane/control_plane/orchestration.py, execute_assignment): review instructions include `verification_evidence_for_review(doc)`, but acceptance instructions include only `audit_evidence_for_acceptance(doc)` and the session diff. HowlPlane's `doc["tests"]` results are never shown to acceptance. DOG-041 says which command verifies the session; nothing says whether it passed.
+- Expected: acceptance sees HowlPlane's recorded verification command, exit code, duration and output tail for the current tree.
+- Evidence: workflow-evidence/R004/R4S2.stdout (acceptance verdicts) and R4S2.stderr (VERIFY lines).

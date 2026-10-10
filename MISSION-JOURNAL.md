@@ -398,3 +398,9 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - Source: research/cubs_case.json method_status = "failed its pre-registered test". But research/validation.json has early_stop = true ("validation primary positives below 30"), and runs/R001/FINAL-ASSESSMENT.md says "No model was fitted for the primary test; the 2025 holdout is untouched".
 - So the R001 published label misstates a non-run test as a failed one. The explorer copied it faithfully.
 - The correction goes through HowlPlane in the free-agent page session, with this evidence quoted. It changes the label only; no statistic changes. It will be recorded as a correction to R001's published output.
+
+## 2026-10-10T17:06:15Z — R4-S2 HANDOFF; Howl failure CUBS-P-010; PAUSE (section 17)
+- R4-S2 session 8814b377: HANDOFF REQUIRED (resumable). Codex implementation; the Claude review was CLEAN; Claude acceptance rejected 3 times, spending 2 of 2 rework rounds. Every rejection rested only on "gate never run".
+- HowlPlane's configured validation passed at 12:38, 12:49 and 13:04 (R4S2.stderr). The acceptance prompt omits that evidence (orchestration.py, acceptance branch), so this is CUBS-P-010. agents doctor: all READY. LOCAL_LLM_USED: NO.
+- The tree content is as the goal asked: .gitignore is /data/, web/data is not ignored, and data/raw is still ignored (controller check).
+- Section 17: Howl failure plus exhausted rework, so I paused and asked the user. Sessions used: 3 of 6.
