@@ -345,3 +345,10 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - Verbatim choice: "Amend to v3, keep confirmatory (Recommended)": "Before fitting anything, redefine the label by the later segment's event: Single or Double = SENT_SAFE; Error, Runner Out or other = AMBIGUOUS. Record v3 with its reason and hash. Also report the v2 primary result as pre-registered, and say the correction came from the feed's structure, not from outcomes."
 - Design v3 FROZEN: experiments/R003-SENDHOLD-DESIGN.md sha256 a852b921c1c218f6f8bd525b4c1397923b8d12651dfc829b084b60e35b7b0a1a (v2 kept as R003-SENDHOLD-DESIGN.v2.md, sha256 8bbd08a1... matches the earlier freeze).
 - INTENT R3-S5: analysis implementation; FIT on 2025 only; EVALUATE implemented but not run. The controller records the hash of data/sendhold_fit.json before running EVALUATE with the reviewed code. Sessions: 5 of 10.
+
+## 2026-10-10T14:45:47Z — R3-S5 result; FIT FROZEN before holdout
+- R3-S5 session 16cb9bab: COMPLETE WITH WARNINGS, audit CLEAN, accepted. Attempts: Codex (budget), Claude EXECUTION_PERMISSION_REQUIRED (this session only), Cursor IMPLEMENTATION_INCOMPLETE, AGY completed; Claude review and acceptance. agents doctor all READY. LOCAL_LLM_USED: NO. EVALUATE not run (no research/SENDHOLD_EXPERIMENT.md existed after the session).
+- Code committed cubs-edge-lab 72e59cd (branch research/sendhold-analysis). flake8 clean; 165 passed.
+- FIT FROZEN: data/sendhold_fit.json sha256 b463af2239b70c0b516d4e4eaea405cdad7d0df58feb726e1928c6609b30f5ea; research/sendhold_fit.json sha256 cf0703fe6b1804c1dc26e5871dd57b52944014bd5c3b10a2ce2cc5df16696a85; design v3 sha256 a852b921...; seed 20261010.
+- Controller spot check: p*(single, 0 outs) = (1.8274-0.5118)/(0.8828+1-0.5118) = 0.9596, as in the fit. 2025 v3: 1,840 sends, 67 out at home (3.6%); v2: 622 sends, 10.8%.
+- Next: controller runs the reviewed EVALUATE command on the 2026 holdout.
