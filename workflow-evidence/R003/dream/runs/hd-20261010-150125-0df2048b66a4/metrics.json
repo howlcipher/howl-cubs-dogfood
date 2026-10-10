@@ -1,0 +1,105 @@
+{
+  "baseline": {
+    "candidates": 1,
+    "lexical_diversity": 0.0,
+    "exact_unique": 1,
+    "claims": 27,
+    "unresolved_claims": 22,
+    "supported_claims": 5,
+    "measurement_version": 2,
+    "supported_count": 5,
+    "echo_count": 0,
+    "contradicted_count": 0,
+    "uncertain_count": 22,
+    "false_premise_rejection_count": 0,
+    "false_premise_acceptance_count": 0,
+    "failure_candidates": 0,
+    "failure_rate": 0.0,
+    "scorer_type": "deterministic",
+    "scope": "lexical distance and known-check failures only"
+  },
+  "experimental": {
+    "candidates": 2,
+    "lexical_diversity": 0.5584415584415585,
+    "exact_unique": 2,
+    "claims": 73,
+    "unresolved_claims": 50,
+    "supported_claims": 22,
+    "measurement_version": 2,
+    "supported_count": 22,
+    "echo_count": 0,
+    "contradicted_count": 0,
+    "uncertain_count": 51,
+    "false_premise_rejection_count": 0,
+    "false_premise_acceptance_count": 0,
+    "failure_candidates": 1,
+    "failure_rate": 0.5,
+    "scorer_type": "deterministic",
+    "scope": "lexical distance and known-check failures only"
+  },
+  "trials": [
+    {
+      "trial": 0,
+      "baseline": {
+        "candidates": 1,
+        "lexical_diversity": 0.0,
+        "exact_unique": 1,
+        "claims": 27,
+        "unresolved_claims": 22,
+        "supported_claims": 5,
+        "measurement_version": 2,
+        "supported_count": 5,
+        "echo_count": 0,
+        "contradicted_count": 0,
+        "uncertain_count": 22,
+        "false_premise_rejection_count": 0,
+        "false_premise_acceptance_count": 0,
+        "failure_candidates": 0,
+        "failure_rate": 0.0,
+        "scorer_type": "deterministic",
+        "scope": "lexical distance and known-check failures only"
+      },
+      "experimental": {
+        "candidates": 2,
+        "lexical_diversity": 0.5584415584415585,
+        "exact_unique": 2,
+        "claims": 73,
+        "unresolved_claims": 50,
+        "supported_claims": 22,
+        "measurement_version": 2,
+        "supported_count": 22,
+        "echo_count": 0,
+        "contradicted_count": 0,
+        "uncertain_count": 51,
+        "false_premise_rejection_count": 0,
+        "false_premise_acceptance_count": 0,
+        "failure_candidates": 1,
+        "failure_rate": 0.5,
+        "scorer_type": "deterministic",
+        "scope": "lexical distance and known-check failures only"
+      }
+    }
+  ],
+  "discovery": {
+    "context_echo_ratio": 0.8571428571428571,
+    "evidence_echo_ratio": 0.8571428571428571,
+    "novel_concept_ratio": 0.8571428571428571,
+    "repeated_family_ratio": 0.5714285714285714,
+    "idea_count": 7,
+    "cluster_count": 3,
+    "warnings": [
+      "DISCOVERY_ANCHORING_HIGH"
+    ],
+    "method": "concept_tokens_and_leading_phrases/v3; Jaccard cluster threshold 0.5 or first-8-content-word phrase link; echo coverage 0.6 or first-16-word phrase link",
+    "measurement_type": "ADVISORY_HEURISTIC",
+    "limitations": "Not semantic equivalence, calibrated novelty, entailment or usefulness"
+  },
+  "report_claim_audit": {
+    "findings": [],
+    "audit_type": "ADVISORY_HEURISTIC",
+    "limitations": [
+      "Exact scope bindings required",
+      "No external authentication or entailment"
+    ]
+  }
+}

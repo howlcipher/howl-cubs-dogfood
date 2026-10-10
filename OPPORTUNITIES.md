@@ -80,3 +80,7 @@ Pivot budget: unused (1 remaining).
 | COACH | Coaching hires, Oct-Dec (now) | Coach moves across clubs: few dozen | Persistence of player-level change under the same coach at a new club | Public coach rosters per team-season, player season stats (cached) | Low n; confounding (movers selected); null likely |
 | MILBPROMO | Level-to-level promotions | Thousands | Next-level performance, MLB arrival | Season stats; game logs for timing | Promotion is selected on performance (counterfactual unobserved) |
 | REPLAY, STARTER, IBB | In-game | Thousands | Public | Decision-time info private (video) or well studied | Parity likely |
+
+### R003 result
+
+- SENDHOLD: COMPLETE_NEGATIVE (cubs-edge-lab research/SENDHOLD_EXPERIMENT.md). Remaining finalists (COACH persistence, MILBPROMO, REPLAY/STARTER/IBB) stay open; see the R003 assessment for why play-level tracking, not public play-by-play, is the limiting input for in-game decisions.

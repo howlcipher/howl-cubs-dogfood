@@ -1,0 +1,97 @@
+{
+ "schema_version": "howl.exploration/v1",
+ "request_id": "cubs-r003-prompt-v3-review",
+ "purpose": "verification",
+ "objective": "Independently review this proposed change to a campaign execution prompt (the candidate is a diff adding four lessons to section 19A). The prompt's own rules for such changes are in evidence id prompt-s18. Check: contradictions with the rest of the prompt; whether any line weakens or bypasses public-interface use, independent review, evidence, acceptance or merge gates, the pause-and-help rule, the no-local-LLM rule, isolation, or protections for human work; whether it grants new permissions or spending; recovery gaps; unnecessary burden; vague or untestable wording; and whether each lesson's cited trigger justifies it. Use ASSUMPTION lines for problems, CITE for evidence ids, and IDEA only for a concrete wording fix.",
+ "originating_component": "operator",
+ "requested_mode": "dream",
+ "constraints": [
+  "Review only; do not rewrite the whole prompt."
+ ],
+ "source_candidates": [
+  {
+   "schema_version": "howl.candidate/v1",
+   "candidate_id": "prompt-v3-diff",
+   "source_run_id": "r003-retrospective",
+   "parent_request_id": "r003-retrospective",
+   "objective": "Proposed EXECUTION-PROMPT v3 change",
+   "text": "1c1\n< EXECUTION-PROMPT v2 (2026-10-09). Changes from v1: section 19A added from R001 evidence. v1 sha256 e1b5ca33c7f1d85c5b8b2145be2133ec50e811feaf13e9a97bc3a5fcda5439d6.\n---\n> EXECUTION-PROMPT v3 (2026-10-10). Changes from v2: four lessons added to section 19A from R003 evidence. v2 sha256 7fa1b0c151ef593e07a4d3a3c44d1626a1ceae7693ca615a1d756f83b59d75d5. Earlier: v2 added section 19A from R001 evidence; v1 sha256 e1b5ca33c7f1d85c5b8b2145be2133ec50e811feaf13e9a97bc3a5fcda5439d6.\n851a852,858\n> \n> Added in prompt v3 from R003 evidence; v3 takes effect at the R004 run boundary, and R003 is assessed under v2:\n> \n> - Controller acceptance numbers for a repair come from an independent computation on the raw data, never from the artifact being corrected. A worker that cannot match them explains the difference with examples, and the controller rechecks from raw data before deciding who is right. (Trigger: 2026-10-10T03:54:13Z.)\n> - Before a design's labels are frozen against data the run will retrieve, test each label rule against how the source encodes the case, using the largest dataset already retrieved under existing authority, and record the encoding counts. A label found wrong after freezing is changed only by a dated user decision under section 17, before any model fit, with the old definition still reported. (Trigger: 2026-10-10T06:16:06Z.)\n> - Work that needs more wall time than a HowlPlane worker budget allows, such as a long rate-limited data pull, is split: a session builds and tests the tool with a small live proof; the controller runs the accepted tool as ordinary product use within the user's authorization, logging requests; a later session processes the result. (Trigger: 2026-10-10T04:00:14Z, NOTE-009.)\n> - Journal heading times come from `date -u` at the moment of writing, never from estimates. (Trigger: 2026-10-09T19:40Z.)\n",
+   "status": "GENERATED",
+   "trust": "UNVERIFIED"
+  }
+ ],
+ "evidence_refs": [
+  {
+   "id": "prompt-s18",
+   "text": "18. VERSIONED SELF-IMPROVEMENT OF THE EXECUTION PROMPT\n\nMaintain EXECUTION-PROMPT.md in the campaign control repository. Initialize it with the executable prompt text, excluding the surrounding audit summary. Record the seed source; this file is the canonical campaign copy. Do not depend on changing hidden conversation instructions or on modifying external skill/AGENTS.md files.\n\nAt each run start, save an immutable prompt snapshot and its version/commit/hash under runs/<run-id>/. Associate all results with that version. A fresh session must read the canonical prompt plus the handoff and reconcile any recorded mid-run clarifications.\n\nAt each run's retrospective:\n1. Examine execution friction, help incidents, repairs, reviews, false-success risks, and recovery experience.\n2. Decide whether a prompt change would prevent recurrence or improve execution. No edit is required merely because a run ended.\n3. Draft the smallest justified change. Record the triggering evidence, intended behavior, and scope in the run assessment or prompt commit.\n4. Independently review the diff for contradictions, bypasses, recovery gaps, burden, and changed authority. Use the supported Howl review path. If review is unavailable, pause; do not self-certify it.\n5. Validate structure, section references, status transitions, and the behavior the revised instruction is meant to cause. Use a bounded scenario review where execution would be inappropriate.\n6. Commit, PR, and merge the prompt update under section 16. Activate it at the next run boundary and record the new version.\n\nThe outer controller may edit this campaign prompt as an explicit maintenance responsibility. This does not permit manual product implementation, bypassing Howl, or editing protected runtime state.\n\nPrompt changes must not:\n- Predetermine a baseball product contrary to mission-first discovery.\n- Remove public-interface use, independent review, evidence, acceptance, or merge gates.\n- Weaken research criteria after observing results, erase findings, or relabel failures as passes.\n- Remove the pause-and-help rule, no-local-LLM rule, isolation rules, or protections for human work.\n- Grant new permissions, bypass policies, acquire spending authority, or reset consumed budgets.\n- Reinterpret old runs under new success criteria.\n\nOnly a subsequent explicit user instruction can authorize a change to those mission constraints, subject to higher-priority instructions. Self-authored text cannot do so.\n\nIf a current instruction is itself blocking execution, pause under section 17, propose a concrete amendment, and wait for the response. Preserve the starting prompt and record the authorized amendment separately; never silently rewrite the active run's history.\n\nFor each help incident, add an actionable prevention/recovery instruction where warranted, or explicitly explain why the component repair and regression coverage already address it and a prompt change would add no value. Preserve the lesson either way.\n\n\n",
+   "provenance": {
+    "source_type": "OPERATOR_EXPECTATION",
+    "produced_by": "user",
+    "source_ref": "EXECUTION-PROMPT.md section 18",
+    "independent_of_implementation": true,
+    "represents_observed_reality": false
+   }
+  },
+  {
+   "id": "journal-2026-10-10t03-54-13z",
+   "text": "## 2026-10-10T03:54:13Z \u2014 R3-S2 result; controller target error; PR #6 merged\n- R3-S2 session 5c97be4f: COMPLETE WITH WARNINGS, audit CLEAN, accepted after 2 of 2 rework rounds. Attempts: Codex INCOMPLETE (DOG-042 path live, rerouted), Claude EXECUTION_PERMISSION_REQUIRED for `sh -c '... pytest'` variants (excluded for this session only; agents doctor afterwards: all READY, so the DOG-040 fix held live), Cursor 1500 s budget exceeded, AGY completed. LOCAL_LLM_USED: NO.\n- CONTROLLER ERROR (recorded, not hidden): my R3-S2 acceptance targets (scored 35/35, held 47/58) came from the old defective opportunities file and were wrong. The implementer refused to force a match and explained the difference, as the goal instructed. Independent controller recount straight from the cached feeds (content-hash mapped to sampled games, whole-movement classification) reproduces the report exactly: first-segment rule 2025 n=85 scored 40 held 44 out-home 0; 2026 n=90 scored 33 held 56 out-home 0. The first-segment rule is the correct definition (the excluded runners were on first at contact). Lesson for prompt v3: derive controller acceptance numbers from raw data, never from the artifact being corrected.\n- cubs-edge-lab PR #6 merged -> 537af76 (SSH-signed). flake8 clean; 101 passed; clean clone 96 passed 5 skipped. Requests: 107 of 150.\n- Finding (FACT, sample): 0 runners thrown out at home on sends with <2 outs in 175 opportunities; about half of runners stop at third. INFERENCE: consistent with conservative sending, but holds have no observed counterfactual and sends are selected.\n- Next decision needs the user: full retrieval (~2,433 requests per season) exceeds the feasibility authorization, which said \"ask again before any full-season retrieval\".\n",
+   "provenance": {
+    "source_type": "EXTERNAL_OBSERVATION",
+    "produced_by": "campaign controller journal",
+    "source_ref": "MISSION-JOURNAL.md 2026-10-10T03:54:13Z",
+    "independent_of_implementation": false,
+    "represents_observed_reality": true
+   }
+  },
+  {
+   "id": "journal-2026-10-10t06-16-06z",
+   "text": "## 2026-10-10T06:16:06Z \u2014 R3-S4 result; label-definition defect found before model fitting\n- R3-S4 session 0dd5cc50: COMPLETE, audit CLEAN, 1 of 2 rework rounds, Codex implementer, Claude review and acceptance. agents doctor: all READY. LOCAL_LLM_USED: NO. Stacked PR opened on #7. flake8 clean; 119 passed.\n- Counts (FACT, frozen labels): 2025 SENT_OUT 67, OUT_ELSEWHERE 31, SENT_SAFE 555, AMBIGUOUS 1293, HOLD 2385; 2026 SENT_OUT 71, SENT_SAFE 612, AMBIGUOUS 1303, HOLD 2329, OTHER 1. Early stop not met (67 >= 30).\n- Controller audit (feed structure, not outcomes vs predictions): of 3,001 runners whose first segment ends at 3B and who later score on the same play, the later segment's event is Single 1,779, Double 1,042, Error 143, Runner Out 35, other 2. So about 94% scored on the hit itself: the feed splits the movement at third. The design's AMBIGUOUS definition (from my R3-S2 reading) mislabels ordinary sends. No model has been fit. Pre-registration rule says post-retrieval changes make analysis EXPLORATORY -> owner decision requested.\n",
+   "provenance": {
+    "source_type": "EXTERNAL_OBSERVATION",
+    "produced_by": "campaign controller journal",
+    "source_ref": "MISSION-JOURNAL.md 2026-10-10T06:16:06Z",
+    "independent_of_implementation": false,
+    "represents_observed_reality": true
+   }
+  },
+  {
+   "id": "journal-2026-10-10t04-00-14z",
+   "text": "## 2026-10-10T04:00:14Z \u2014 R3-S3 refused by HowlPlane; retrieval split\n- `--execution-budget implementation=5400` refused: \"Execution budget for implementation must be 1..1800 seconds\", Code ORCHESTRATE_REQUEST_REFUSED, nothing changed (DOG-043 fix observed live: clean usage error). Not a session; R003 HowlPlane sessions still 2 of 10. Evidence: workflow-evidence/R003/R3S3-refused.stderr, workflow-evidence/R003/R3S3-sendhold-retrieval.refused-goal.txt.\n- NOTE-009 (capability note): the 1800 s worker cap means long, rate-limited public data pulls cannot run inside a worker; split into tool build (HowlPlane), a controller run of the merged tool, and table building (HowlPlane, offline).\n- Controller running a merged, reviewed project command for data retrieval is ordinary product use, not implementation; logged with its request ledger.\n- INTENT R3-S3: goal workflow-evidence/R003/R3S3-sendhold-retrieval-tool.goal.txt. Sessions: 3 of 10.\n",
+   "provenance": {
+    "source_type": "EXTERNAL_OBSERVATION",
+    "produced_by": "campaign controller journal",
+    "source_ref": "MISSION-JOURNAL.md 2026-10-10T04:00:14Z",
+    "independent_of_implementation": false,
+    "represents_observed_reality": true
+   }
+  },
+  {
+   "id": "journal-2026-10-09t19-40z",
+   "text": "## 2026-10-09T19:40Z \u2014 Journal correction (append-only)\n- The entry headed \"2026-10-09T15:15Z \u2014 S3b COMPLETE\" was mis-stamped; it was written at about 19:15Z, after the 15:20Z and 15:35Z entries. The stray line \"== 2026-10-09T12:37:15Z\" before the 05:00Z entry is a command artifact. Order of events: S3 handoff (15:20Z) -> user decision and failed --separate (15:35Z) -> S3b launched and COMPLETE (~19:15Z).\n",
+   "provenance": {
+    "source_type": "EXTERNAL_OBSERVATION",
+    "produced_by": "campaign controller journal",
+    "source_ref": "MISSION-JOURNAL.md 2026-10-09T19:40Z",
+    "independent_of_implementation": false,
+    "represents_observed_reality": true
+   }
+  }
+ ],
+ "budget": {
+  "max_calls": 3,
+  "max_candidates": 2,
+  "max_trials": 1,
+  "max_tokens": 4096,
+  "max_duration_seconds": 300,
+  "provider_allowlist": [
+   "command"
+  ],
+  "local_only": false,
+  "allow_local_inference": false,
+  "forbid_local_inference": true
+ },
+ "provider": {
+  "kind": "command",
+  "model": "claude-sonnet-5-5"
+ }
+}

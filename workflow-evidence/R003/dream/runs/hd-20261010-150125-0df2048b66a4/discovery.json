@@ -1,0 +1,203 @@
+{
+  "context_echo_ratio": 0.8571428571428571,
+  "evidence_echo_ratio": 0.8571428571428571,
+  "novel_concept_ratio": 0.8571428571428571,
+  "repeated_family_ratio": 0.5714285714285714,
+  "idea_count": 7,
+  "cluster_count": 3,
+  "units": [
+    {
+      "id": "hd-20261010-150125-0df2048b66a4/candidates/0/0/idea/1",
+      "candidate_id": "hd-20261010-150125-0df2048b66a4/candidates/0/0",
+      "text": "IDEA: Lesson 1 fix: append \"The recount is a logged, reviewed project command or bounded reproducible check. The original acceptance target and the reason for any revision stay on record. Independent Howl review and acceptance still decide the repair; if raw data is unavailable or the sources still disagree, pause under section 17.\"",
+      "source_span": [
+        6012,
+        6346
+      ],
+      "source_hash": "d90dca3a3f376661664db47f4ace3707ac5b52042339ed08b534d34ad89de35b",
+      "cluster": "cluster-1",
+      "representative": "hd-20261010-150125-0df2048b66a4/candidates/0/0/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.7777777777777778,
+      "context_token_overlap": 0.8055555555555556,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261010-150125-0df2048b66a4/candidates/0/0/idea/2",
+      "candidate_id": "hd-20261010-150125-0df2048b66a4/candidates/0/0",
+      "text": "IDEA: Lesson 2 fix: replace the first sentence with \"Before freezing labels, run a structure-only check (no outcome-versus-prediction comparisons) of each label rule against the largest dataset already retrieved under existing authority, and record the counts per source encoding. If none exists, record that and flag the rule as untested. A label defect found after freezing makes the analysis EXPLORATORY and requires a dated user decision under section 17. If it is found after a model fit, pause, keep both results, and report the old definition.\"",
+      "source_span": [
+        6347,
+        6898
+      ],
+      "source_hash": "d90dca3a3f376661664db47f4ace3707ac5b52042339ed08b534d34ad89de35b",
+      "cluster": "cluster-2",
+      "representative": "hd-20261010-150125-0df2048b66a4/candidates/0/0/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.6271186440677966,
+      "context_token_overlap": 0.6440677966101694,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-150125-0df2048b66a4/candidates/0/0/idea/3",
+      "candidate_id": "hd-20261010-150125-0df2048b66a4/candidates/0/0",
+      "text": "IDEA: Lesson 3 fix: insert \"only after the tool has passed review, acceptance and merge, through its public interface, and only within the remaining request, time and spending limits. Any need beyond the authorization, such as full-season retrieval, requires asking the user again. Log requests, make the pull resumable with integrity hashes, and pause under section 17 on failure. The live proof counts against budgets.\"",
+      "source_span": [
+        6899,
+        7320
+      ],
+      "source_hash": "d90dca3a3f376661664db47f4ace3707ac5b52042339ed08b534d34ad89de35b",
+      "cluster": "cluster-3",
+      "representative": "hd-20261010-150125-0df2048b66a4/candidates/0/0/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.6041666666666666,
+      "context_token_overlap": 0.625,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261010-150125-0df2048b66a4/candidates/0/0/idea/4",
+      "candidate_id": "hd-20261010-150125-0df2048b66a4/candidates/0/0",
+      "text": "IDEA: Lesson 4 fix: append \"A late or backfilled entry states both the write time (date -u) and the event time, and corrections are appended, never edited.\"",
+      "source_span": [
+        7321,
+        7477
+      ],
+      "source_hash": "d90dca3a3f376661664db47f4ace3707ac5b52042339ed08b534d34ad89de35b",
+      "cluster": "cluster-1",
+      "representative": "hd-20261010-150125-0df2048b66a4/candidates/0/0/idea/1",
+      "similar_to": "hd-20261010-150125-0df2048b66a4/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.3888888888888889,
+      "context_token_overlap": 0.3888888888888889,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-150125-0df2048b66a4/candidates/0/1/idea/1",
+      "candidate_id": "hd-20261010-150125-0df2048b66a4/candidates/0/1",
+      "text": "IDEA: Lesson 1 wording fix: append \"The controller records the raw-data source (feed hash or snapshot id) and the recount command or script path, and the recount is itself submitted for independent review before it sets an acceptance target.\"",
+      "source_span": [
+        347,
+        589
+      ],
+      "source_hash": "bf467e610b6f8e4f9dce0c75b82bd8de82de68f88000098cf64193b256737355",
+      "cluster": "cluster-1",
+      "representative": "hd-20261010-150125-0df2048b66a4/candidates/0/0/idea/1",
+      "similar_to": "hd-20261010-150125-0df2048b66a4/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.8076923076923077,
+      "context_token_overlap": 0.8461538461538461,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261010-150125-0df2048b66a4/candidates/0/1/idea/2",
+      "candidate_id": "hd-20261010-150125-0df2048b66a4/candidates/0/1",
+      "text": "IDEA: Lesson 2 wording fix: add \"A change after retrieval marks the affected analysis EXPLORATORY, and the lesson also applies if a defect is found after a model fit, in which case the prior fit results stay reported unchanged.\"",
+      "source_span": [
+        2912,
+        3140
+      ],
+      "source_hash": "bf467e610b6f8e4f9dce0c75b82bd8de82de68f88000098cf64193b256737355",
+      "cluster": "cluster-2",
+      "representative": "hd-20261010-150125-0df2048b66a4/candidates/0/0/idea/2",
+      "similar_to": "hd-20261010-150125-0df2048b66a4/candidates/0/0/idea/2",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.6153846153846154,
+      "context_token_overlap": 0.6538461538461539,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261010-150125-0df2048b66a4/candidates/0/1/idea/3",
+      "candidate_id": "hd-20261010-150125-0df2048b66a4/candidates/0/1",
+      "text": "IDEA: Lesson 3 wording fix: replace \"within the user's authorization\" with \"within the user's written authorization and request limits; if the planned pull exceeds them, pause under section 17 and ask.\"",
+      "source_span": [
+        4515,
+        4717
+      ],
+      "source_hash": "bf467e610b6f8e4f9dce0c75b82bd8de82de68f88000098cf64193b256737355",
+      "cluster": "cluster-3",
+      "representative": "hd-20261010-150125-0df2048b66a4/candidates/0/0/idea/3",
+      "similar_to": "hd-20261010-150125-0df2048b66a4/candidates/0/0/idea/3",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.7142857142857143,
+      "context_token_overlap": 0.7619047619047619,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    }
+  ],
+  "clusters": [
+    {
+      "id": "cluster-1",
+      "representative": "hd-20261010-150125-0df2048b66a4/candidates/0/0/idea/1",
+      "representative_text": "IDEA: Lesson 1 fix: append \"The recount is a logged, reviewed project command or bounded reproducible check. The original acceptance target and the reason for any revision stay on record. Independent Howl review and acceptance still decide the repair; if raw data is unavailable or the sources still disagree, pause under section 17.\"",
+      "label": "1, 17, acceptance, any, append, bounded, check, command",
+      "members": [
+        "hd-20261010-150125-0df2048b66a4/candidates/0/0/idea/1",
+        "hd-20261010-150125-0df2048b66a4/candidates/0/0/idea/4",
+        "hd-20261010-150125-0df2048b66a4/candidates/0/1/idea/1"
+      ]
+    },
+    {
+      "id": "cluster-2",
+      "representative": "hd-20261010-150125-0df2048b66a4/candidates/0/0/idea/2",
+      "representative_text": "IDEA: Lesson 2 fix: replace the first sentence with \"Before freezing labels, run a structure-only check (no outcome-versus-prediction comparisons) of each label rule against the largest dataset already retrieved under existing authority, and record the counts per source encoding. If none exists, record that and flag the rule as untested. A label defect found after freezing makes the analysis EXPLORATORY and requires a dated user decision under section 17. If it is found after a model fit, pause, keep both results, and report the old definition.\"",
+      "label": "17, 2, after, against, already, analysis, authority, before",
+      "members": [
+        "hd-20261010-150125-0df2048b66a4/candidates/0/0/idea/2",
+        "hd-20261010-150125-0df2048b66a4/candidates/0/1/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-3",
+      "representative": "hd-20261010-150125-0df2048b66a4/candidates/0/0/idea/3",
+      "representative_text": "IDEA: Lesson 3 fix: insert \"only after the tool has passed review, acceptance and merge, through its public interface, and only within the remaining request, time and spending limits. Any need beyond the authorization, such as full-season retrieval, requires asking the user again. Log requests, make the pull resumable with integrity hashes, and pause under section 17 on failure. The live proof counts against budgets.\"",
+      "label": "17, 3, acceptance, after, again, against, any, asking",
+      "members": [
+        "hd-20261010-150125-0df2048b66a4/candidates/0/0/idea/3",
+        "hd-20261010-150125-0df2048b66a4/candidates/0/1/idea/3"
+      ]
+    }
+  ],
+  "ranking": [],
+  "warnings": [
+    "DISCOVERY_ANCHORING_HIGH"
+  ],
+  "explored_families": [
+    "1, 17, acceptance, any, append, bounded, check, command",
+    "17, 2, after, against, already, analysis, authority, before",
+    "17, 3, acceptance, after, again, against, any, asking"
+  ],
+  "method": "concept_tokens_and_leading_phrases/v3; Jaccard cluster threshold 0.5 or first-8-content-word phrase link; echo coverage 0.6 or first-16-word phrase link",
+  "measurement_type": "ADVISORY_HEURISTIC",
+  "limitations": "Not semantic equivalence, calibrated novelty, entailment or usefulness",
+  "participation": [
+    {
+      "operation": "GENERATED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": "claude",
+      "origin_model": "claude-sonnet-5-5",
+      "subject_count": 2,
+      "inference_occurred": true,
+      "note": "Dream prompted the provider; the provider authored the text."
+    },
+    {
+      "operation": "CLUSTERED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 7,
+      "inference_occurred": false,
+      "note": "Deterministic concept-token clustering; no inference."
+    }
+  ]
+}
