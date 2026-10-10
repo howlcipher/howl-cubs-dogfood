@@ -522,3 +522,28 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
   - Contract deviation disclosed: the R001 wording correction changed two research lines.
   - Prompt v4 candidates listed, not Dream-reviewed (the one Dream pass was spent).
 
+
+## 2026-10-10 22:30 UTC R004 closeout: merge verification; #168 CI failure
+
+- cubs-edge-lab:
+  - #11 merged to main. #12, #13 and #14 merged into their stacked parent branches, not main (the #8 and #9 problem again).
+  - PR #15 landed feat/explorer-milbfa on main. Its tree is identical to verified 6cd4a15.
+  - Fresh GitHub clone of main 5fc04e9: sh scripts/gate.sh passed (321 passed, 6 data-dependent skips). cubs-edge-lab is MERGED_VERIFIED.
+- howlplane #168:
+  - It was closed unmerged; I reopened it at the owner's request.
+  - CI (run 38077160672 on 575067f) fails test_reconciliation_clears_results_before_acceptance in all Python jobs: 'The selected orchestrator codex is not available'.
+  - Cause: the test calls setup() without install_all, so it depends on a real codex CLI. Reproduced locally by hiding the agent CLIs from PATH (1 failed, 8 passed).
+  - My local make test-full could not catch it: this machine has the CLIs. The HowlPlane session's verify and review could not catch it either.
+- Lesson (prompt v4 candidate 6): read the PR's CI checks before handing a PR to the owner; local gates can depend on the machine.
+- Fix: HowlPlane session in the repair worktree, goal R4-DOG044-ci-fix.goal.txt, recorded as part of the repair, not a product session.
+
+
+## 2026-10-10 23:35 UTC R004 closeout: #168 CI green
+
+- HowlPlane session d516f2a9 (CI fix):
+  - Codex wrote the fix and reported INCOMPLETE. Claude: NO_REPOSITORY_CHANGE. Cursor: SESSION_LIMIT. AGY and Devin: no change. Result: HANDOFF.
+  - Resume: HowlPlane verified make test-full; review CLEAN; acceptance ACCEPTED.
+- My check: the reproduction with agent CLIs hidden passes 9 of 9.
+- Commit 2eba9dc pushed to #168. CI: all checks pass (Fast Python 3.11-3.14, Full regression 3.12, Go, lint, CodeQL). Merge state CLEAN; waiting for the owner's merge.
+- Assessment updated: cubs-edge-lab MERGED_VERIFIED; howlplane PR_PENDING; prompt v4 candidates 6 and 7 added.
+

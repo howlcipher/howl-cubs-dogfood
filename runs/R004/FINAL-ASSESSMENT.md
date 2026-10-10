@@ -2,9 +2,9 @@
 
 - Run: R004, FOLLOW_UP (a results explorer for R001 and R003). Prompt: EXECUTION-PROMPT v3.
 - **Outcome: COMPLETE_USEFUL, for the bounded claim only.** The explorer shows the published numbers exactly and states every verdict and caveat beside the numbers it qualifies. That is proven by tests, and on a fresh clone. It makes no claim of real user value, and readability defects are documented below.
-- **Delivery: PR_PENDING.**
-  - cubs-edge-lab: stacked PRs #11, #12, #13 and #14. Merge in order, retargeting each to main first.
-  - howlplane: PR #168 (DOG-044).
+- **Delivery:**
+  - cubs-edge-lab: MERGED_VERIFIED. #11, then #15 (which carried #12, #13 and #14, after they merged into their stacked parents). A fresh GitHub clone of main 5fc04e9 passes sh scripts/gate.sh: 321 passed, 6 data-dependent skips.
+  - howlplane: PR_PENDING. #168 has all CI green after the hermetic-test fix 2eba9dc.
   - howl-cubs-dogfood: records on records/R004.
   - howl and howldream: NOT_APPLICABLE.
 
@@ -78,3 +78,5 @@ The R004 Dream budget (one pass) went to the spec critique, so these candidates 
 3. For stacked PRs, write the merge order and the retarget-to-main step in each PR body.
 4. Before acceptance of any UI work, the controller looks at screenshots at each tested viewport. Fidelity tests do not measure readability.
 5. Record any change to inputs the contract calls "unchanged" as a contract amendment before the session that makes it.
+6. Read the PR's CI checks before handing a PR to the owner. Local gates, and HowlPlane's verify on this machine, cannot catch tests that depend on installed agent CLIs (#168).
+7. Stacked PRs merged into their parents twice (R003, R004). Prefer one PR per run to main, or make the merge order and retargeting a controller step before handing PRs over.
