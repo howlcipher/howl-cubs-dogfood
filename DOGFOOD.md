@@ -85,3 +85,12 @@ Registry state at mission start (2026-10-08T14:27Z): highest allocated DOG-034; 
 - Root cause (howlplane 99d3aa4, src/howlplane/control_plane/orchestration.py, execute_assignment): review instructions include `verification_evidence_for_review(doc)`, but acceptance instructions include only `audit_evidence_for_acceptance(doc)` and the session diff. HowlPlane's `doc["tests"]` results are never shown to acceptance. DOG-041 says which command verifies the session; nothing says whether it passed.
 - Expected: acceptance sees HowlPlane's recorded verification command, exit code, duration and output tail for the current tree.
 - Evidence: workflow-evidence/R004/R4S2.stdout (acceptance verdicts) and R4S2.stderr (VERIFY lines).
+- Status: FIX IN REVIEW, howlplane PR #168 (branch dogfood/R004-dog044, commit 575067f), made by HowlPlane session 03d1d55e. The 9 new tests fail without the fix; make test-full: 2464 passed.
+- Live proof: cubs-edge-lab session fa728fa1, run through the public chain with PYTHONPATH pointing at the repair source. The same Claude acceptor cited the harness run (234 passed, 0 skipped) and ACCEPTED. Evidence: workflow-evidence/R004/R4S2b-acceptance-excerpt.txt.
+
+### NOTE-010: a harness-caused rejection cannot be re-judged on the same tree
+- Category: NOTE (documented behavior with a costly edge). Owner: howlplane resume.
+- Observed: after the DOG-044 fix, resuming 8814b377 on the unchanged tree kept Claude, the only session orchestrator, excluded for its earlier rejections. The session returned HANDOFF REQUIRED and printed the same resume command, which cannot progress. documentation/ORCHESTRATE.md says this is by design: a rejection judges one repository state.
+- Cost: the passing work had to move to a new session (discard, then fa728fa1).
+- Suggestion: when a rejection is followed by a HowlPlane version change, or the operator asserts the cause was a harness defect, offer a re-judge path. At minimum, a HANDOFF that cannot progress should say `discard` rather than repeat `resume`.
+- Evidence: workflow-evidence/R004/R4S2-resume.stderr.

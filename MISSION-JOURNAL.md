@@ -410,3 +410,33 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - Registry on origin/main (99d3aa4): highest DOG-043, so CUBS-P-010 becomes DOG-044.
 - Repair worktree: ../howlplane-repair-dog044, branch dogfood/R004-dog044 from 99d3aa4. The shared engine checkout stays on main.
 - INTENT repair session: goal workflow-evidence/R004/R4-DOG044-repair.goal.txt; --verify "make test-full" --verify-timeout 1200 (more than twice the last observed ~456 s). This is a repair session, not an R004 product session; recorded in the R004 ledger.
+
+## 2026-10-10 18:28 UTC R004: DOG-044 repair accepted; R4-S2 resume as live proof
+
+- HowlPlane session 03d1d55e (repair worktree, branch dogfood/R004-dog044): Codex implementation hit the 1800 s budget (EXECUTION_BUDGET_EXCEEDED, work kept); Claude finished; Codex review CLEAN; Claude acceptance ACCEPTED. COMPLETE WITH WARNINGS.
+- Controller audit: diff read; the 9 new tests fail on the unfixed source and pass with the fix; make test-full in the worktree: 2464 passed, Go ok. Commit 575067f (SSH-signed).
+- Review note: for a session whose only recorded check is git diff --check, review now gets the 'no verification command ran' line instead of the diff-check exit line. A small change to review wording; the goal said review behavior unchanged. Recorded for the PR, not reworked.
+- Test smell: test_r004_explicit_verify_pass_is_in_acceptance_prompt asserts the absence of a string the code never emits (vacuous line). Recorded for the PR.
+- Live proof: resume R4-S2 (session 8814b377) through the public chain with PYTHONPATH=<repair worktree>/src (checked: the engine venv python imports orchestration from the worktree). Same acceptor pinned (--orchestrator claude_code). Gate now also asserts that only data/ and caches are ignored, which the last rejection asked to see.
+
+
+## 2026-10-10 18:32 UTC R004: R4-S2 resume cannot progress; discard and R4-S2b
+
+- First resume attempt was refused by argparse (my error: '--verify sh -c ...' passed as several arguments; '-c' read as a flag). Evidence: R4S2-resume.argerror.txt. The relaunch used one quoted string.
+- Resume of 8814b377: RECONCILE found no repository change, so Claude, the session orchestrator, stays excluded for its earlier ACCEPTANCE_REJECTED_OR_UNCONFIRMED verdicts and the session returns HANDOFF REQUIRED with a resume command that cannot progress. This matches documentation/ORCHESTRATE.md line 53: a rejection judges one repository state and only a change or a discard moves on.
+- NOTE-010 (candidate): when a rejection was caused by a harness defect (DOG-044), fixing the harness does not reopen the session; the only paths are a repository change or discard. The HANDOFF report repeats a resume command that cannot help. Recorded for DOGFOOD.md.
+- DECISION: discard 8814b377 (checked in source: discard only deletes the session record; the working tree is untouched). Start R4-S2b with the real residual defect the last acceptor named (secondary verdict shown without a meaning-mapping check) plus the spec's verdict-then-meaning order. Same orchestrator pinned (claude_code), repaired engine via PYTHONPATH: this is the DOG-044 live proof. R004 HowlPlane product sessions: 3 of 6 (S1, S2, S2b) plus the repair session.
+
+
+## 2026-10-10 18:47 UTC R004: R4-S2b accepted; DOG-044 proven live; PRs opened
+
+- R4-S2b (fa728fa1), repaired engine through PYTHONPATH:
+  - Claude implemented the guard, then was refused its pytest commands (EXECUTION_PERMISSION_REQUIRED, session-only exclusion). The refused commands included the exact --verify string, so the granted form did not match how Claude called it. Recorded; not chased in this run.
+  - Codex verified the kept work (NO_CHANGE_REQUIRED). Gate passed: 234 tests, 0 skipped.
+  - Claude review CLEAN; Claude acceptance ACCEPTED, citing the harness gate. This is the DOG-044 live proof (R4S2b-acceptance-excerpt.txt).
+- Controller audit: read the guard and tests in web/app.js and tests/test_explorer_e2e.py; staged diff has no data/ or research/ paths; largest file 21 KB.
+- Commit c68d31d (signed) on feat/explorer. A real git clone ran the gate: 228 passed, 6 skipped. All 6 skips are older data-dependent tests (local data/ absent); 0 end-to-end skips.
+- PRs: cubs-edge-lab #11 (explorer foundation) and howlplane #168 (DOG-044). Merges wait for the owner (the self-merge classifier rule).
+- Registry: DOG-044 is FIX IN REVIEW (#168); NOTE-010 added.
+- Next: R4-S3 send/hold page, stacked on feat/explorer (retarget to main once #11 merges). R004 product sessions: 3 of 6.
+
