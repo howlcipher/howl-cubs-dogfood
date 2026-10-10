@@ -320,3 +320,9 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - Design v1 written before retrieval; HowlDream challenge (3 calls, remote Sonnet, COMPLETE; Dream calls 27 of 40; LOCAL_LLM_USED: NO) -> v2 reconciliation table in the design. FROZEN: experiments/R003-SENDHOLD-DESIGN.md sha256 8bbd08a1e6066f8ac5f7743453d13d8dbebca1ba025a5077e79d0625ec112444. No changes after retrieval; any later analysis is EXPLORATORY.
 - Scope note: prior-season (2024) sprint-speed and arm leaderboards are 2 extra requests, inside the approved ~4,900 count and the same data kind.
 - INTENT R3-S3: retrieval + labeled opportunity table only (no model), goal workflow-evidence/R003/R3S3-sendhold-retrieval.goal.txt. R003 HowlPlane sessions: 3 of 10.
+
+## 2026-10-10T04:00:14Z — R3-S3 refused by HowlPlane; retrieval split
+- `--execution-budget implementation=5400` refused: "Execution budget for implementation must be 1..1800 seconds", Code ORCHESTRATE_REQUEST_REFUSED, nothing changed (DOG-043 fix observed live: clean usage error). Not a session; R003 HowlPlane sessions still 2 of 10. Evidence: workflow-evidence/R003/R3S3-refused.stderr, workflow-evidence/R003/R3S3-sendhold-retrieval.refused-goal.txt.
+- NOTE-009 (capability note): the 1800 s worker cap means long, rate-limited public data pulls cannot run inside a worker; split into tool build (HowlPlane), a controller run of the merged tool, and table building (HowlPlane, offline).
+- Controller running a merged, reviewed project command for data retrieval is ordinary product use, not implementation; logged with its request ledger.
+- INTENT R3-S3: goal workflow-evidence/R003/R3S3-sendhold-retrieval-tool.goal.txt. Sessions: 3 of 10.
