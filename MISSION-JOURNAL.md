@@ -314,3 +314,9 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - cubs-edge-lab PR #6 merged -> 537af76 (SSH-signed). flake8 clean; 101 passed; clean clone 96 passed 5 skipped. Requests: 107 of 150.
 - Finding (FACT, sample): 0 runners thrown out at home on sends with <2 outs in 175 opportunities; about half of runners stop at third. INFERENCE: consistent with conservative sending, but holds have no observed counterfactual and sends are selected.
 - Next decision needs the user: full retrieval (~2,433 requests per season) exceeds the feasibility authorization, which said "ask again before any full-season retrieval".
+
+## 2026-10-10T03:59:15Z — User decision (two seasons); design v2 frozen
+- Verbatim choice: "Two seasons, 2025-2026": "Approve ~4,900 requests. More power, and lets 2026 be a holdout for the model fit on 2025." Data local; aggregates only.
+- Design v1 written before retrieval; HowlDream challenge (3 calls, remote Sonnet, COMPLETE; Dream calls 27 of 40; LOCAL_LLM_USED: NO) -> v2 reconciliation table in the design. FROZEN: experiments/R003-SENDHOLD-DESIGN.md sha256 8bbd08a1e6066f8ac5f7743453d13d8dbebca1ba025a5077e79d0625ec112444. No changes after retrieval; any later analysis is EXPLORATORY.
+- Scope note: prior-season (2024) sprint-speed and arm leaderboards are 2 extra requests, inside the approved ~4,900 count and the same data kind.
+- INTENT R3-S3: retrieval + labeled opportunity table only (no model), goal workflow-evidence/R003/R3S3-sendhold-retrieval.goal.txt. R003 HowlPlane sessions: 3 of 10.
