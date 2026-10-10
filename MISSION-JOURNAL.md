@@ -372,3 +372,17 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 
 ## 2026-10-10T15:47:20Z — R003 delivery MERGED
 - cubs-edge-lab PR #10 merged at the user's explicit request ("gh pr merge 10 --merge"); main 91f06c5 now has the R003 table, fit and holdout. R003 delivery: MERGED_VERIFIED for cubs-edge-lab (research/SENDHOLD_EXPERIMENT.md present on origin/main).
+
+## 2026-10-10T16:17:35Z — R4-S1 HANDOFF REQUIRED; root cause; resume with --worker-network
+- R4-S1 session 040f9990: HANDOFF REQUIRED (exit 2, resumable). Attempts:
+  - Codex: IMPLEMENTATION_INCOMPLETE. 173 passed and 10 E2E setup errors; "the sandbox denied binding the fixture's localhost server socket".
+  - Claude: EXECUTION_PERMISSION_REQUIRED. Refused `env CUBS_REQUIRE_E2E=1 python3 -m pytest ...` and `python3 -m pytest -q tests/test_web_export.py`; excluded for this session only.
+  - Cursor: IMPLEMENTATION_INCOMPLETE. "every shell command in this session was rejected".
+  - AGY and Devin: NO_REPOSITORY_CHANGE on the kept partial work.
+  - agents doctor afterwards: all READY. LOCAL_LLM_USED: NO.
+- Controller gate on the kept work (outside any sandbox): `CUBS_REQUIRE_E2E=1 pytest -q` 212 passed, 0 skipped; flake8 clean; node --check clean on every web JS file; the export reproduces web/data. So the implementation is complete but not independently reviewed or accepted.
+- Root-cause check (direct Codex CLI, scratch dir): with workspace-write and network_access=false, `socket.socket()` raises (the evidence shows the traceback); with network_access=true, BIND_OK. Evidence: workflow-evidence/R004/codex-bind-{false,true}.txt.
+- CUBS-P-009 (provisional, capability gap): HowlPlane offers no localhost-only network grant. Browser or server tests that need a loopback socket fail in Codex implementation unless `--worker-network` opens full network access. The failure surfaced as IMPLEMENTATION_INCOMPLETE rather than an environment or permission classification.
+- Observations, not yet findings: Cursor rejected every shell command in this session (it ran commands in R003); NO_REPOSITORY_CHANGE was counted as failure for AGY and Devin even though the kept partial work may already have been complete.
+- MY GATE ERROR: the R4-S1 --verify ended `node --check ... || true`, so a syntax failure could not fail that gate. Corrected for the resume.
+- Resolution (supported option, no new authority): `howlplane orchestrate resume --worker-network` with the corrected gate; the goal constraint still forbids network use beyond localhost. Counts as session 2 of 6 for budgeting.
