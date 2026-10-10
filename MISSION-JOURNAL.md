@@ -366,3 +366,6 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 
 ## 2026-10-10T15:27:02Z — R004 spec critique and v2
 - HowlDream critique of spec v1: 4 calls, remote Sonnet, COMPLETE. R004 Dream calls: 4 of 6. LOCAL_LLM_USED: NO. Reconciled into spec v2 (table in experiments/R004-EXPLORER-SPEC.md). The only critique point not adopted is the user comprehension check: no users are available, so it limits the usability claim.
+
+## 2026-10-10T15:27:31Z — INTENT R4-S1 (explorer foundation)
+- Goal workflow-evidence/R004/R4S1-explorer-foundation.goal.txt on cubs-edge-lab feat/explorer (from research/sendhold-data 8ff9148, which PR #10 brings to main). Gate: CUBS_REQUIRE_E2E=1 pytest + flake8 + node --check. Sessions 1 of 6.
