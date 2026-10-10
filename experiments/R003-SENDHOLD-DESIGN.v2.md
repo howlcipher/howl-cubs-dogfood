@@ -1,6 +1,6 @@
 # R003 experiment design: third-base send/hold (SENDHOLD)
 
-Status: v3 (FROZEN before any model fit), 2026-10-10. v2 (R003-SENDHOLD-DESIGN.v2.md, frozen before retrieval) was amended once, by owner decision on 2026-10-10 ("Amend to v3, keep confirmatory"), to correct the SENT_SAFE/AMBIGUOUS definition; the reason is in the v2 -> v3 section at the end. The correction rests on the feed's movement structure, not on outcomes or model results; no model had been fit. v1 (R003-SENDHOLD-DESIGN.v1.md) was challenged by HowlDream (workflow-evidence/R003/dream/p5-design-challenge-texts.txt).
+Status: v2 (FROZEN before retrieval), 2026-10-10. v1 (R003-SENDHOLD-DESIGN.v1.md) was written before any full-season data was retrieved and challenged by HowlDream (workflow-evidence/R003/dream/p5-design-challenge-texts.txt). The only outcomes seen so far are the 100-game feasibility sample (cubs-edge-lab research/SENDHOLD_FEASIBILITY.md). The changes and their reasons are in the reconciliation table at the end.
 
 ## Decision and user
 
@@ -15,8 +15,8 @@ Status: v3 (FROZEN before any model fit), 2026-10-10. v2 (R003-SENDHOLD-DESIGN.v
 - Labels, one per runner, assigned in this order:
   1. SENT_OUT: any movement segment is an out at home.
   2. OUT_ELSEWHERE: any other out (excluded, counted).
-  3. SENT_SAFE: the runner scores, and every movement segment after the first carries the same event as the play's result (Single or Double). The feed often splits one continuous advance at third base (for example 2B>3B and 3B>score, both with event "Single").
-  4. AMBIGUOUS: the runner scores, but a later segment carries a different event (for example Error, Runner Out, Other Advance), so the advance home may have come from a misplay or a throw elsewhere. Excluded from the primary analysis; a sensitivity analysis counts these as SENT_SAFE.
+  3. SENT_SAFE: the first segment ends in a score.
+  4. AMBIGUOUS: the runner stops at third, then scores later on the same play ("advanced later"). Excluded from the primary analysis; a sensitivity analysis counts these as SENT_SAFE.
   5. HOLD: the runner ends at third without scoring.
   6. OTHER: excluded, counted.
 - SEND means SENT_SAFE or SENT_OUT.
@@ -74,12 +74,3 @@ Status: v3 (FROZEN before any model fit), 2026-10-10. v2 (R003-SENDHOLD-DESIGN.v
 | Tune the 0.05 margin on held-out data | REJECTED: margin stays fixed at 0.05 | Tuning on the holdout would invalidate it |
 | Decision chart for coaches | ADOPTED as descriptive output | Usable form for the decision owner |
 | Reconcile controller recount before the pull | ALREADY DONE: controller recount from raw feeds reproduced the report (journal, R3-S2) | n/a |
-
-## v2 -> v3 amendment (owner decision 2026-10-10, before any model fit)
-
-| Point | v2 | v3 | Evidence |
-| --- | --- | --- | --- |
-| Runners whose first segment ends at third and who score later on the same play | AMBIGUOUS (excluded) | SENT_SAFE when every later segment's event equals the play's event; otherwise AMBIGUOUS | Controller audit of the feed structure: of 3,001 such runners, the later segment's event was Single 1,779, Double 1,042, Error 143, Runner Out 35, other 2 (journal, R3-S4) |
-| Reporting | v2 primary | v3 primary; the v2-definition primary result is also reported, labeled as the pre-registered v2 definition | Transparency about the amendment |
-
-Nothing else changes: covariates, split, holdout, thresholds, margin 0.05, stop rules and success criteria are as in v2.

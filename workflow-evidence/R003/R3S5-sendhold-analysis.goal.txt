@@ -1,3 +1,43 @@
+Implement the analysis for the pre-registered send/hold study (frozen design v3, sha256 a852b921c1c218f6f8bd525b4c1397923b8d12651dfc829b084b60e35b7b0a1a, reproduced at the end), using only data already cached under data/. Make no network requests.
+
+Two stages, as separate commands:
+- FIT (run it in this session): uses 2025 rows only.
+- EVALUATE (implement and test it on fixtures, but do NOT run it on the real data in this session): opens the 2026 holdout. The campaign controller runs it only after recording the hash of the FIT output. Do not read, print or summarize any 2026 label, outcome or prediction in this session.
+
+Requirements:
+1. Labels: implement the v3 SENT_SAFE/AMBIGUOUS rule (later segments must carry the play's own event to count as SENT_SAFE) alongside the existing v2 labels. Both label versions are produced, and v3 is primary. Update research/SENDHOLD_DATA.md and sendhold_data.json to report label counts under both versions per season.
+2. FIT command, writing data/sendhold_fit.json (models, thresholds, chosen covariate set, seeds) and a published research/sendhold_fit.json (2025 aggregates only):
+   - The 2025 SENT_OUT count and the events-per-parameter rule deciding full versus reduced covariates.
+   - The logistic send-success model on 2025 SEND runners, with coefficients and standard errors.
+   - The 2025 send-versus-hold propensity model and the support threshold (the 2.5th percentile of sends' propensity).
+   - The break-even p* computed per hold state from the 2025 run-expectancy table, using the design's formula. Treat the "run scored" state as the batter-runner's resulting base-out state.
+   - Document every state-mapping choice. Where the design leaves a mapping open, choose the simplest defensible rule, state it, and do not tune it on outcomes.
+   - The descriptive decision chart from the 2025 model.
+   - The same outputs under the v2 labels.
+3. EVALUATE command (not run here). On 2026 it must compute:
+   - Brier score versus the constant and outs-only baselines, with a game-bootstrap 95% interval of the difference (1,000 resamples, fixed seed, both models refit inside each resample on 2025 data).
+   - The calibration slope.
+   - The negative control.
+   - The overlap share.
+   - Flagged holds (P(safe) >= p* + 0.05).
+   - The runs-left estimate with its interval.
+   - The verdict per the design's rules (DESCRIPTIVE ONLY / NEGATIVE / POSITIVE / INCONCLUSIVE when criteria are mixed). Each criterion is shown separately.
+   - Cubs descriptive counts for 2025 and 2026.
+   - The AMBIGUOUS-as-SENT_SAFE and fallback-dropped sensitivity analyses.
+   - The v2-label primary result.
+   It writes research/SENDHOLD_EXPERIMENT.md and research/sendhold_experiment.json (aggregates only; at most 5 short examples; FACT/INFERENCE/UNKNOWN labels).
+4. Tests (offline, fixtures only, flake8 -j1 clean, no tracked-file writes, all existing tests pass, also in a clean clone without data/):
+   - The v3 label rule, using fixtures with Single/Single, Single/Error and Double/Runner Out segments.
+   - The break-even formula against a hand-computed example.
+   - The events-per-parameter switch.
+   - The propensity support filter.
+   - A bootstrap that is deterministic under its seed.
+   - EVALUATE on a synthetic fixture, giving a known verdict.
+   - A test that FIT never reads 2026 rows.
+
+Integrity: never invent or alter values, never tune anything on 2026, and do not commit row-level data.
+
+--- FROZEN DESIGN v3 (sha256 a852b921c1c218f6f8bd525b4c1397923b8d12651dfc829b084b60e35b7b0a1a) ---
 # R003 experiment design: third-base send/hold (SENDHOLD)
 
 Status: v3 (FROZEN before any model fit), 2026-10-10. v2 (R003-SENDHOLD-DESIGN.v2.md, frozen before retrieval) was amended once, by owner decision on 2026-10-10 ("Amend to v3, keep confirmatory"), to correct the SENT_SAFE/AMBIGUOUS definition; the reason is in the v2 -> v3 section at the end. The correction rests on the feed's movement structure, not on outcomes or model results; no model had been fit. v1 (R003-SENDHOLD-DESIGN.v1.md) was challenged by HowlDream (workflow-evidence/R003/dream/p5-design-challenge-texts.txt).
