@@ -335,3 +335,8 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 ## 2026-10-10T05:43:10Z — Full retrieval complete; INTENT R3-S4
 - Retrieval 04:54Z-05:42Z, 24 chunks, final ledger 4,868 of 4,900, failed 0, complete true (code b05c7fa). PR #7 still open (awaiting user merge); R3-S4 runs on top of feat/sendhold-retrieve and its PR will stack on #7.
 - INTENT R3-S4: offline table + data report, goal workflow-evidence/R003/R3S4-sendhold-table.goal.txt. Sessions: 4 of 10.
+
+## 2026-10-10T06:16:06Z — R3-S4 result; label-definition defect found before model fitting
+- R3-S4 session 0dd5cc50: COMPLETE, audit CLEAN, 1 of 2 rework rounds, Codex implementer, Claude review and acceptance. agents doctor: all READY. LOCAL_LLM_USED: NO. Stacked PR opened on #7. flake8 clean; 119 passed.
+- Counts (FACT, frozen labels): 2025 SENT_OUT 67, OUT_ELSEWHERE 31, SENT_SAFE 555, AMBIGUOUS 1293, HOLD 2385; 2026 SENT_OUT 71, SENT_SAFE 612, AMBIGUOUS 1303, HOLD 2329, OTHER 1. Early stop not met (67 >= 30).
+- Controller audit (feed structure, not outcomes vs predictions): of 3,001 runners whose first segment ends at 3B and who later score on the same play, the later segment's event is Single 1,779, Double 1,042, Error 143, Runner Out 35, other 2. So about 94% scored on the hit itself: the feed splits the movement at third. The design's AMBIGUOUS definition (from my R3-S2 reading) mislabels ordinary sends. No model has been fit. Pre-registration rule says post-retrieval changes make analysis EXPLORATORY -> owner decision requested.
