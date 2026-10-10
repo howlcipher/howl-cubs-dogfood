@@ -1,0 +1,949 @@
+{
+  "context_echo_ratio": 0.3142857142857143,
+  "evidence_echo_ratio": 0.2857142857142857,
+  "novel_concept_ratio": 0.8285714285714286,
+  "repeated_family_ratio": 0.22857142857142856,
+  "idea_count": 35,
+  "cluster_count": 27,
+  "units": [
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/1",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0",
+      "text": "IDEA: Add a visible banner on the decision chart stating that observed success rates are selected sends only and say nothing about what holds would have done, and that p* comparisons are not a recommendation.",
+      "source_span": [
+        412,
+        620
+      ],
+      "source_hash": "3533b252af9077ec994a853caf2e2bff69bb64e826ed6bb9d5eb136d1f1394fe",
+      "cluster": "cluster-1",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.4090909090909091,
+      "context_token_overlap": 0.45454545454545453,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/2",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0",
+      "text": "IDEA: Carry the INFERENCE about selected sends and extrapolated hold counterfactuals into the chart header verbatim, not only on the verdict page.",
+      "source_span": [
+        925,
+        1071
+      ],
+      "source_hash": "3533b252af9077ec994a853caf2e2bff69bb64e826ed6bb9d5eb136d1f1394fe",
+      "cluster": "cluster-2",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.4666666666666667,
+      "context_token_overlap": 0.6,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/3",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0",
+      "text": "IDEA: Render Passed as text (\"Met\" / \"Not met\") with a one-line note that the verdict is decided by the pre-registered rule, not by counting passes.",
+      "source_span": [
+        1463,
+        1611
+      ],
+      "source_hash": "3533b252af9077ec994a853caf2e2bff69bb64e826ed6bb9d5eb136d1f1394fe",
+      "cluster": "cluster-3",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.46153846153846156,
+      "context_token_overlap": 0.46153846153846156,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/4",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0",
+      "text": "IDEA: Require every point estimate to display its published interval adjacent, and flag intervals that include zero or span implausible ranges.",
+      "source_span": [
+        1873,
+        2016
+      ],
+      "source_hash": "3533b252af9077ec994a853caf2e2bff69bb64e826ed6bb9d5eb136d1f1394fe",
+      "cluster": "cluster-4",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/4",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.2,
+      "context_token_overlap": 0.3333333333333333,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/5",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0",
+      "text": "IDEA: Surface \"reduced covariate set; 67 of 140 required\" in the verdict panel.",
+      "source_span": [
+        2773,
+        2852
+      ],
+      "source_hash": "3533b252af9077ec994a853caf2e2bff69bb64e826ed6bb9d5eb136d1f1394fe",
+      "cluster": "cluster-5",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/5",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.7777777777777778,
+      "context_token_overlap": 0.7777777777777778,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/6",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0",
+      "text": "IDEA: Put a one-line note under the verdict panel linking to the label-definition history.",
+      "source_span": [
+        3206,
+        3296
+      ],
+      "source_hash": "3533b252af9077ec994a853caf2e2bff69bb64e826ed6bb9d5eb136d1f1394fe",
+      "cluster": "cluster-3",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/3",
+      "similar_to": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/3",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.4,
+      "context_token_overlap": 0.4,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/7",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0",
+      "text": "IDEA: Add a glossary with hover/focus definitions for flagged, assessed, support threshold and runs left.",
+      "source_span": [
+        3620,
+        3725
+      ],
+      "source_hash": "3533b252af9077ec994a853caf2e2bff69bb64e826ed6bb9d5eb136d1f1394fe",
+      "cluster": "cluster-6",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/7",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.5454545454545454,
+      "context_token_overlap": 0.5454545454545454,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/8",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0",
+      "text": "IDEA: Exclude Cubs flagged-hold and runs-left values from the Overview and show them only with the in-sample caveat and the failed-model label.",
+      "source_span": [
+        4120,
+        4263
+      ],
+      "source_hash": "3533b252af9077ec994a853caf2e2bff69bb64e826ed6bb9d5eb136d1f1394fe",
+      "cluster": "cluster-7",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/8",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.5625,
+      "context_token_overlap": 0.6875,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/9",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0",
+      "text": "IDEA: Show runs-left as \"not interpretable\" with the value hidden behind the same toggle as other model values, since rule 1 permits hover-only full values.",
+      "source_span": [
+        4524,
+        4680
+      ],
+      "source_hash": "3533b252af9077ec994a853caf2e2bff69bb64e826ed6bb9d5eb136d1f1394fe",
+      "cluster": "cluster-7",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/8",
+      "similar_to": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/8",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.47368421052631576,
+      "context_token_overlap": 0.47368421052631576,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/10",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0",
+      "text": "IDEA: State on the page \"No pre-registered test was run; the 2025 holdout is untouched,\" and phrase the exploratory finding as no evidence of added value.",
+      "source_span": [
+        5101,
+        5255
+      ],
+      "source_hash": "3533b252af9077ec994a853caf2e2bff69bb64e826ed6bb9d5eb136d1f1394fe",
+      "cluster": "cluster-8",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/10",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.8235294117647058,
+      "context_token_overlap": 0.8235294117647058,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/11",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0",
+      "text": "IDEA: Put that sentence directly above the Cubs table, and avoid per-year signing-versus-positive ratios as a chart.",
+      "source_span": [
+        5485,
+        5601
+      ],
+      "source_hash": "3533b252af9077ec994a853caf2e2bff69bb64e826ed6bb9d5eb136d1f1394fe",
+      "cluster": "cluster-9",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/11",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.35714285714285715,
+      "context_token_overlap": 0.35714285714285715,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/12",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0",
+      "text": "IDEA: Make the \"what this does not show\" list pull limitations from the source records, not hand-written text.",
+      "source_span": [
+        5916,
+        6026
+      ],
+      "source_hash": "3533b252af9077ec994a853caf2e2bff69bb64e826ed6bb9d5eb136d1f1394fe",
+      "cluster": "cluster-10",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/12",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.4,
+      "context_token_overlap": 0.5,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/13",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0",
+      "text": "IDEA: Add a test that fails if any digit sequence in rendered text lacks a data-src tag or an allowlist entry, and a test that checks each label-to-pointer mapping.",
+      "source_span": [
+        6863,
+        7027
+      ],
+      "source_hash": "3533b252af9077ec994a853caf2e2bff69bb64e826ed6bb9d5eb136d1f1394fe",
+      "cluster": "cluster-11",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/13",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.2,
+      "context_token_overlap": 0.2,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/14",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0",
+      "text": "IDEA: Derive the model-value set from export-time tags (data-class=\"model\") and fail the build if any untagged numeric appears on the send/hold page.",
+      "source_span": [
+        7346,
+        7495
+      ],
+      "source_hash": "3533b252af9077ec994a853caf2e2bff69bb64e826ed6bb9d5eb136d1f1394fe",
+      "cluster": "cluster-12",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/14",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.3888888888888889,
+      "context_token_overlap": 0.4444444444444444,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/15",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0",
+      "text": "IDEA: Forbid CSS order/position reordering of verdict panels, or assert bounding-box order at 375 px.",
+      "source_span": [
+        7691,
+        7792
+      ],
+      "source_hash": "3533b252af9077ec994a853caf2e2bff69bb64e826ed6bb9d5eb136d1f1394fe",
+      "cluster": "cluster-13",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/15",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.15384615384615385,
+      "context_token_overlap": 0.15384615384615385,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/16",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0",
+      "text": "IDEA: Make skipped end-to-end tests fail CI for release builds and report the skip count visibly.",
+      "source_span": [
+        8093,
+        8190
+      ],
+      "source_hash": "3533b252af9077ec994a853caf2e2bff69bb64e826ed6bb9d5eb136d1f1394fe",
+      "cluster": "cluster-14",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/16",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.09090909090909091,
+      "context_token_overlap": 0.09090909090909091,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/17",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0",
+      "text": "IDEA: Provide full values via a tap-accessible disclosure or an expandable detail row, and add a 320 px reflow check.",
+      "source_span": [
+        8546,
+        8663
+      ],
+      "source_hash": "3533b252af9077ec994a853caf2e2bff69bb64e826ed6bb9d5eb136d1f1394fe",
+      "cluster": "cluster-15",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/17",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.13333333333333333,
+      "context_token_overlap": 0.2,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/18",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0",
+      "text": "IDEA: Reset the toggle on every page load and keep the label attached to each revealed value, not to the toggle.",
+      "source_span": [
+        8866,
+        8978
+      ],
+      "source_hash": "3533b252af9077ec994a853caf2e2bff69bb64e826ed6bb9d5eb136d1f1394fe",
+      "cluster": "cluster-16",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/18",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.2727272727272727,
+      "context_token_overlap": 0.2727272727272727,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/19",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0",
+      "text": "IDEA: Show commit hash and \"as of\" date in each page footer, plus a note that later studies may supersede these results.",
+      "source_span": [
+        9302,
+        9422
+      ],
+      "source_hash": "3533b252af9077ec994a853caf2e2bff69bb64e826ed6bb9d5eb136d1f1394fe",
+      "cluster": "cluster-17",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/19",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.13333333333333333,
+      "context_token_overlap": 0.13333333333333333,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/20",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0",
+      "text": "IDEA: For v1, ship Overview, verdict panels, and a static non-filterable decision table; defer filters, the dark scheme, retrieval totals and the run-expectancy table.",
+      "source_span": [
+        9754,
+        9921
+      ],
+      "source_hash": "3533b252af9077ec994a853caf2e2bff69bb64e826ed6bb9d5eb136d1f1394fe",
+      "cluster": "cluster-13",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/15",
+      "similar_to": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/15",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.2777777777777778,
+      "context_token_overlap": 0.2777777777777778,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/21",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/0",
+      "text": "IDEA: Add a short comprehension check with two or three target users before release, asking what they would do with the page, and treat any \"use the model\" answer as a blocker.",
+      "source_span": [
+        10066,
+        10242
+      ],
+      "source_hash": "3533b252af9077ec994a853caf2e2bff69bb64e826ed6bb9d5eb136d1f1394fe",
+      "cluster": "cluster-18",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/21",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.2777777777777778,
+      "context_token_overlap": 0.3888888888888889,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/1",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/1",
+      "text": "IDEA: Next to observed send success, add a fixed caveat: \"Sends were selected by the club; this is not the success rate of holds or of a different policy.\" Gate p* behind the same \"not for decisions\" label unless the source marks it model-free.",
+      "source_span": [
+        335,
+        579
+      ],
+      "source_hash": "db3da7503c5174472357f02cef2e8da89304075fba038382ef6144e094a7d1d7",
+      "cluster": "cluster-19",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.6538461538461539,
+      "context_token_overlap": 0.6538461538461539,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/2",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/1",
+      "text": "IDEA: Make the one-sentence verdict meaning a source-keyed, test-checked string: \"No measurable improvement over a simple baseline was shown. This does not show the opposite.\"",
+      "source_span": [
+        1001,
+        1176
+      ],
+      "source_hash": "db3da7503c5174472357f02cef2e8da89304075fba038382ef6144e094a7d1d7",
+      "cluster": "cluster-20",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.3888888888888889,
+      "context_token_overlap": 0.4444444444444444,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/3",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/1",
+      "text": "IDEA: Show each criterion's role (gating, diagnostic, control) and state that the verdict follows the failing gating criteria. Render a passed=true row under a failed verdict with a text note rather than a green mark.",
+      "source_span": [
+        1650,
+        1867
+      ],
+      "source_hash": "db3da7503c5174472357f02cef2e8da89304075fba038382ef6144e094a7d1d7",
+      "cluster": "cluster-21",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.36,
+      "context_token_overlap": 0.4,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/4",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/1",
+      "text": "IDEA: Add a mandatory \"Limits of this result\" block on the send/hold page, populated from the source fields.",
+      "source_span": [
+        2283,
+        2391
+      ],
+      "source_hash": "db3da7503c5174472357f02cef2e8da89304075fba038382ef6144e094a7d1d7",
+      "cluster": "cluster-22",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/4",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.2727272727272727,
+      "context_token_overlap": 0.45454545454545453,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/5",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/1",
+      "text": "IDEA: Provide a tap-accessible \"show exact values\" control, or an expandable details element, in place of hover.",
+      "source_span": [
+        3110,
+        3222
+      ],
+      "source_hash": "db3da7503c5174472357f02cef2e8da89304075fba038382ef6144e094a7d1d7",
+      "cluster": "cluster-15",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/17",
+      "similar_to": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/17",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.16666666666666666,
+      "context_token_overlap": 0.16666666666666666,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/6",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/1",
+      "text": "IDEA: Add a test that fails if any numeric text node lacks data-src. Add golden-snapshot checks on label-to-pointer pairs, reviewed by a person. Add a check that the interval accompanies every difference shown.",
+      "source_span": [
+        3681,
+        3891
+      ],
+      "source_hash": "db3da7503c5174472357f02cef2e8da89304075fba038382ef6144e094a7d1d7",
+      "cluster": "cluster-11",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/13",
+      "similar_to": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/13",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.32,
+      "context_token_overlap": 0.36,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/7",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/1",
+      "text": "IDEA: Maintain an allowlist of default-visible pointers, and fail the test on anything outside it. Check the list against the pointers tagged model-derived.",
+      "source_span": [
+        4198,
+        4354
+      ],
+      "source_hash": "db3da7503c5174472357f02cef2e8da89304075fba038382ef6144e094a7d1d7",
+      "cluster": "cluster-23",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/7",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.2,
+      "context_token_overlap": 0.26666666666666666,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/8",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/1",
+      "text": "IDEA: Require a distinct label for \"test not run (early stop)\" that differs from a failed test, and attach the source's sentence about not evaluating Cubs decisions to every Cubs table.",
+      "source_span": [
+        5172,
+        5357
+      ],
+      "source_hash": "db3da7503c5174472357f02cef2e8da89304075fba038382ef6144e094a7d1d7",
+      "cluster": "cluster-24",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/8",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.631578947368421,
+      "context_token_overlap": 0.6842105263157895,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/9",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/1",
+      "text": "IDEA: Version 1 could ship the Overview, the verdict panels, the limits blocks and the About page. Defer the decision-chart filters and the failed-model toggle until the guard tests pass.",
+      "source_span": [
+        5968,
+        6155
+      ],
+      "source_hash": "db3da7503c5174472357f02cef2e8da89304075fba038382ef6144e094a7d1d7",
+      "cluster": "cluster-13",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/15",
+      "similar_to": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/15",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.42857142857142855,
+      "context_token_overlap": 0.5238095238095238,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/10",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/1",
+      "text": "IDEA: Drop the toggle in v1, or watermark the revealed values.",
+      "source_span": [
+        6369,
+        6431
+      ],
+      "source_hash": "db3da7503c5174472357f02cef2e8da89304075fba038382ef6144e094a7d1d7",
+      "cluster": "cluster-25",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/10",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.16666666666666666,
+      "context_token_overlap": 0.16666666666666666,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/11",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/1",
+      "text": "IDEA: Make the skip fail in CI, or record a visible \"tests not run\" status in the build output.",
+      "source_span": [
+        6877,
+        6972
+      ],
+      "source_hash": "db3da7503c5174472357f02cef2e8da89304075fba038382ef6144e094a7d1d7",
+      "cluster": "cluster-14",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/16",
+      "similar_to": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/16",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.2222222222222222,
+      "context_token_overlap": 0.2222222222222222,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/2/idea/1",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/2",
+      "text": "IDEA: Drop the decision-chart filters and the model-values toggle from v1. Show a static verdict page with the criteria table, a \"what a negative result means\" paragraph, and a limitations block. Defer interactive exploration until a user shows a need.",
+      "source_span": [
+        6533,
+        6785
+      ],
+      "source_hash": "d2d32922914683390535e19fa8867ecb4d429797f05bee2b7ea9a9e02e197c83",
+      "cluster": "cluster-1",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/1",
+      "similar_to": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.32142857142857145,
+      "context_token_overlap": 0.39285714285714285,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/2/idea/2",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/2",
+      "text": "IDEA: Add a plain-language line next to the Brier row: \"The model did not beat a constant guess; the interval includes zero, so this is no evidence of benefit, not evidence of harm.\" Add that the passed secondary criteria do not rescue the verdict.",
+      "source_span": [
+        6786,
+        7034
+      ],
+      "source_hash": "d2d32922914683390535e19fa8867ecb4d429797f05bee2b7ea9a9e02e197c83",
+      "cluster": "cluster-26",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/2/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.4,
+      "context_token_overlap": 0.4,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-152438-a2cdbe90f429/candidates/0/2/idea/3",
+      "candidate_id": "hd-20261010-152438-a2cdbe90f429/candidates/0/2",
+      "text": "IDEA: Make a limitations block mandatory per study and test its presence, and add a DOM scan test that flags any untagged number.",
+      "source_span": [
+        7035,
+        7164
+      ],
+      "source_hash": "d2d32922914683390535e19fa8867ecb4d429797f05bee2b7ea9a9e02e197c83",
+      "cluster": "cluster-27",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/2/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.35714285714285715,
+      "context_token_overlap": 0.35714285714285715,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    }
+  ],
+  "clusters": [
+    {
+      "id": "cluster-1",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/1",
+      "representative_text": "IDEA: Add a visible banner on the decision chart stating that observed success rates are selected sends only and say nothing about what holds would have done, and that p* comparisons are not a recommendation.",
+      "label": "about, add, banner, chart, comparisons, decision, done, have",
+      "members": [
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/1",
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/2/idea/1"
+      ]
+    },
+    {
+      "id": "cluster-2",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/2",
+      "representative_text": "IDEA: Carry the INFERENCE about selected sends and extrapolated hold counterfactuals into the chart header verbatim, not only on the verdict page.",
+      "label": "about, carry, chart, counterfactuals, extrapolated, header, hold, inference",
+      "members": [
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-3",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/3",
+      "representative_text": "IDEA: Render Passed as text (\"Met\" / \"Not met\") with a one-line note that the verdict is decided by the pre-registered rule, not by counting passes.",
+      "label": "counting, decided, line, met, note, passed, passes, pre",
+      "members": [
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/3",
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/6"
+      ]
+    },
+    {
+      "id": "cluster-4",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/4",
+      "representative_text": "IDEA: Require every point estimate to display its published interval adjacent, and flag intervals that include zero or span implausible ranges.",
+      "label": "adjacent, display, estimate, every, flag, implausible, include, interval",
+      "members": [
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/4"
+      ]
+    },
+    {
+      "id": "cluster-5",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/5",
+      "representative_text": "IDEA: Surface \"reduced covariate set; 67 of 140 required\" in the verdict panel.",
+      "label": "140, 67, covariate, panel, reduced, required, set, surface",
+      "members": [
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/5"
+      ]
+    },
+    {
+      "id": "cluster-6",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/7",
+      "representative_text": "IDEA: Add a glossary with hover/focus definitions for flagged, assessed, support threshold and runs left.",
+      "label": "add, assessed, definitions, flagged, focus, glossary, hover, left",
+      "members": [
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/7"
+      ]
+    },
+    {
+      "id": "cluster-7",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/8",
+      "representative_text": "IDEA: Exclude Cubs flagged-hold and runs-left values from the Overview and show them only with the in-sample caveat and the failed-model label.",
+      "label": "caveat, cubs, exclude, failed, flagged, hold, label, left",
+      "members": [
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/8",
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/9"
+      ]
+    },
+    {
+      "id": "cluster-8",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/10",
+      "representative_text": "IDEA: State on the page \"No pre-registered test was run; the 2025 holdout is untouched,\" and phrase the exploratory finding as no evidence of added value.",
+      "label": "2025, added, evidence, exploratory, finding, holdout, no, page",
+      "members": [
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/10"
+      ]
+    },
+    {
+      "id": "cluster-9",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/11",
+      "representative_text": "IDEA: Put that sentence directly above the Cubs table, and avoid per-year signing-versus-positive ratios as a chart.",
+      "label": "above, avoid, chart, cubs, directly, per, positive, put",
+      "members": [
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/11"
+      ]
+    },
+    {
+      "id": "cluster-10",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/12",
+      "representative_text": "IDEA: Make the \"what this does not show\" list pull limitations from the source records, not hand-written text.",
+      "label": "hand, limitations, list, pull, records, show, source, text",
+      "members": [
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/12"
+      ]
+    },
+    {
+      "id": "cluster-11",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/13",
+      "representative_text": "IDEA: Add a test that fails if any digit sequence in rendered text lacks a data-src tag or an allowlist entry, and a test that checks each label-to-pointer mapping.",
+      "label": "add, allowlist, any, checks, data, digit, each, entry",
+      "members": [
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/13",
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/6"
+      ]
+    },
+    {
+      "id": "cluster-12",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/14",
+      "representative_text": "IDEA: Derive the model-value set from export-time tags (data-class=\"model\") and fail the build if any untagged numeric appears on the send/hold page.",
+      "label": "any, appears, class, data, derive, export, fail, hold",
+      "members": [
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/14"
+      ]
+    },
+    {
+      "id": "cluster-13",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/15",
+      "representative_text": "IDEA: Forbid CSS order/position reordering of verdict panels, or assert bounding-box order at 375 px.",
+      "label": "375, assert, at, bounding, box, css, forbid, order",
+      "members": [
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/15",
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/20",
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/9"
+      ]
+    },
+    {
+      "id": "cluster-14",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/16",
+      "representative_text": "IDEA: Make skipped end-to-end tests fail CI for release builds and report the skip count visibly.",
+      "label": "builds, ci, count, end, fail, release, report, skip",
+      "members": [
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/16",
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/11"
+      ]
+    },
+    {
+      "id": "cluster-15",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/17",
+      "representative_text": "IDEA: Provide full values via a tap-accessible disclosure or an expandable detail row, and add a 320 px reflow check.",
+      "label": "320, accessible, add, check, detail, disclosure, expandable, full",
+      "members": [
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/17",
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/5"
+      ]
+    },
+    {
+      "id": "cluster-16",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/18",
+      "representative_text": "IDEA: Reset the toggle on every page load and keep the label attached to each revealed value, not to the toggle.",
+      "label": "attached, each, every, keep, label, load, page, reset",
+      "members": [
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/18"
+      ]
+    },
+    {
+      "id": "cluster-17",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/19",
+      "representative_text": "IDEA: Show commit hash and \"as of\" date in each page footer, plus a note that later studies may supersede these results.",
+      "label": "commit, date, each, footer, hash, later, may, note",
+      "members": [
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/19"
+      ]
+    },
+    {
+      "id": "cluster-18",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/21",
+      "representative_text": "IDEA: Add a short comprehension check with two or three target users before release, asking what they would do with the page, and treat any \"use the model\" answer as a blocker.",
+      "label": "add, answer, any, asking, before, blocker, check, comprehension",
+      "members": [
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/0/idea/21"
+      ]
+    },
+    {
+      "id": "cluster-19",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/1",
+      "representative_text": "IDEA: Next to observed send success, add a fixed caveat: \"Sends were selected by the club; this is not the success rate of holds or of a different policy.\" Gate p* behind the same \"not for decisions\" label unless the source marks it model-free.",
+      "label": "add, behind, caveat, club, decisions, different, fixed, free",
+      "members": [
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/1"
+      ]
+    },
+    {
+      "id": "cluster-20",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/2",
+      "representative_text": "IDEA: Make the one-sentence verdict meaning a source-keyed, test-checked string: \"No measurable improvement over a simple baseline was shown. This does not show the opposite.\"",
+      "label": "baseline, checked, improvement, keyed, meaning, measurable, no, opposite",
+      "members": [
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-21",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/3",
+      "representative_text": "IDEA: Show each criterion's role (gating, diagnostic, control) and state that the verdict follows the failing gating criteria. Render a passed=true row under a failed verdict with a text note rather than a green mark.",
+      "label": "control, criteria, criterion, diagnostic, each, failed, failing, follows",
+      "members": [
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/3"
+      ]
+    },
+    {
+      "id": "cluster-22",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/4",
+      "representative_text": "IDEA: Add a mandatory \"Limits of this result\" block on the send/hold page, populated from the source fields.",
+      "label": "add, block, fields, hold, limits, mandatory, page, populated",
+      "members": [
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/4"
+      ]
+    },
+    {
+      "id": "cluster-23",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/7",
+      "representative_text": "IDEA: Maintain an allowlist of default-visible pointers, and fail the test on anything outside it. Check the list against the pointers tagged model-derived.",
+      "label": "against, allowlist, anything, check, default, derived, fail, list",
+      "members": [
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/7"
+      ]
+    },
+    {
+      "id": "cluster-24",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/8",
+      "representative_text": "IDEA: Require a distinct label for \"test not run (early stop)\" that differs from a failed test, and attach the source's sentence about not evaluating Cubs decisions to every Cubs table.",
+      "label": "about, attach, cubs, decisions, differs, distinct, early, evaluating",
+      "members": [
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/8"
+      ]
+    },
+    {
+      "id": "cluster-25",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/10",
+      "representative_text": "IDEA: Drop the toggle in v1, or watermark the revealed values.",
+      "label": "drop, revealed, toggle, v1, values, watermark",
+      "members": [
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/1/idea/10"
+      ]
+    },
+    {
+      "id": "cluster-26",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/2/idea/2",
+      "representative_text": "IDEA: Add a plain-language line next to the Brier row: \"The model did not beat a constant guess; the interval includes zero, so this is no evidence of benefit, not evidence of harm.\" Add that the passed secondary criteria do not rescue the verdict.",
+      "label": "add, beat, benefit, brier, constant, criteria, did, evidence",
+      "members": [
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/2/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-27",
+      "representative": "hd-20261010-152438-a2cdbe90f429/candidates/0/2/idea/3",
+      "representative_text": "IDEA: Make a limitations block mandatory per study and test its presence, and add a DOM scan test that flags any untagged number.",
+      "label": "add, any, block, dom, flags, limitations, mandatory, number",
+      "members": [
+        "hd-20261010-152438-a2cdbe90f429/candidates/0/2/idea/3"
+      ]
+    }
+  ],
+  "ranking": [],
+  "warnings": [],
+  "explored_families": [
+    "about, add, banner, chart, comparisons, decision, done, have",
+    "about, carry, chart, counterfactuals, extrapolated, header, hold, inference",
+    "counting, decided, line, met, note, passed, passes, pre",
+    "adjacent, display, estimate, every, flag, implausible, include, interval",
+    "140, 67, covariate, panel, reduced, required, set, surface",
+    "add, assessed, definitions, flagged, focus, glossary, hover, left",
+    "caveat, cubs, exclude, failed, flagged, hold, label, left",
+    "2025, added, evidence, exploratory, finding, holdout, no, page",
+    "above, avoid, chart, cubs, directly, per, positive, put",
+    "hand, limitations, list, pull, records, show, source, text",
+    "add, allowlist, any, checks, data, digit, each, entry",
+    "any, appears, class, data, derive, export, fail, hold",
+    "375, assert, at, bounding, box, css, forbid, order",
+    "builds, ci, count, end, fail, release, report, skip",
+    "320, accessible, add, check, detail, disclosure, expandable, full",
+    "attached, each, every, keep, label, load, page, reset",
+    "commit, date, each, footer, hash, later, may, note",
+    "add, answer, any, asking, before, blocker, check, comprehension",
+    "add, behind, caveat, club, decisions, different, fixed, free",
+    "baseline, checked, improvement, keyed, meaning, measurable, no, opposite",
+    "control, criteria, criterion, diagnostic, each, failed, failing, follows",
+    "add, block, fields, hold, limits, mandatory, page, populated",
+    "against, allowlist, anything, check, default, derived, fail, list",
+    "about, attach, cubs, decisions, differs, distinct, early, evaluating",
+    "drop, revealed, toggle, v1, values, watermark",
+    "add, beat, benefit, brier, constant, criteria, did, evidence",
+    "add, any, block, dom, flags, limitations, mandatory, number"
+  ],
+  "method": "concept_tokens_and_leading_phrases/v3; Jaccard cluster threshold 0.5 or first-8-content-word phrase link; echo coverage 0.6 or first-16-word phrase link",
+  "measurement_type": "ADVISORY_HEURISTIC",
+  "limitations": "Not semantic equivalence, calibrated novelty, entailment or usefulness",
+  "participation": [
+    {
+      "operation": "GENERATED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": "claude",
+      "origin_model": "claude-sonnet-5-5",
+      "subject_count": 3,
+      "inference_occurred": true,
+      "note": "Dream prompted the provider; the provider authored the text."
+    },
+    {
+      "operation": "CLUSTERED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 35,
+      "inference_occurred": false,
+      "note": "Deterministic concept-token clustering; no inference."
+    }
+  ]
+}

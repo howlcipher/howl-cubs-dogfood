@@ -363,3 +363,6 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - User asked my opinion. I recommended changing the workload rather than the question (R004 explorer), then a synthesis closeout; the user said "Do what you suggest".
 - R004 started under prompt v3 (sha256 2a958c2cf77ec82a75bec4b2ce3eb39c2310852db3ea2c0cfaa6b3859a65960b). Contract runs/R004/RUN-CONTRACT.md; ADR experiments/R004-EXPLORER-ADR.md (option A, static + Python, pros/cons recorded).
 - R004 builds on main after #10 merges, because the explorer needs the R003 research files on main.
+
+## 2026-10-10T15:27:02Z — R004 spec critique and v2
+- HowlDream critique of spec v1: 4 calls, remote Sonnet, COMPLETE. R004 Dream calls: 4 of 6. LOCAL_LLM_USED: NO. Reconciled into spec v2 (table in experiments/R004-EXPLORER-SPEC.md). The only critique point not adopted is the user comprehension check: no users are available, so it limits the usability claim.
