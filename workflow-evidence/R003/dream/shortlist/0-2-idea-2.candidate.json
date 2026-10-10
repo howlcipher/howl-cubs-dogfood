@@ -1,0 +1,189 @@
+{
+  "schema_version": "howl.candidate/v1",
+  "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/2/idea/2",
+  "source_run_id": "hd-20261009-211812-efe1740f0c77",
+  "parent_request_id": "cubs-r003-p1-divergent",
+  "objective": "Where could software create a meaningful baseball advantage for the Chicago Cubs? The current date is early October 2026, in the Cubs' offseason (their 2026 season ended in the Wild Card Series). A prior experiment found that triaging the November minor-league free-agent pool offers little: the low-attention pool holds under one next-season contributor per club per year, and a simple 'played in MLB last year' rule already finds most value. Prefer recurring decisions where the value at stake is large enough to matter, where public information available at decision time could plausibly beat a simple rule, and where a retrospective test on public history is possible. Consider front office, player development, scouting, coaching and business-of-baseball decisions, and name where software is unnecessary or clubs are already ahead. OUTPUT GUIDANCE (format only): Each IDEA names one problem, the decision owner, the concrete recurring decision and its timing, the size of value at stake, the mechanism of advantage, the simple baseline a club already uses, and the software intervention. Follow with ASSUMPTION and UNKNOWN lines. Do not invent statistics or private Cubs information.",
+  "text": "IDEA: Problem=pricing players posted from NPB and KBO and signed internationally as free agents; owner=GM, international scouting director and pro scouting director; decision=whether to bid on posted players and how much, during posting windows that usually run November to January; value at stake=potentially large per signing, since these are multi-year major-league contracts, but the number of events per year is small; mechanism=translation models that use public foreign-league stats, including pitch-tracking where it is published, along with age and league-environment adjustments, calibrated on the MLB outcomes of previously posted players; baseline=scouting reports combined with simple ratios of foreign-league stats to MLB stats and agent-driven market comparables; software=a probabilistic translation tool with explicit uncertainty that is updated as each new posting cohort produces MLB results.",
+  "condition": "dream",
+  "trust": "UNVERIFIED",
+  "status": "UNRESOLVED",
+  "authority": {
+    "type": "ADVISORY",
+    "executable": false
+  },
+  "claims": [
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/2/idea/2/claim/1",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/2/idea/2",
+      "kind": "IDEA",
+      "text": "Problem=pricing players posted from NPB and KBO and signed internationally as free agents; owner=GM, international scouting director and pro scouting director; decision=whether to bid on posted players and how much, during posting windows that usually run November to January; value at stake=potentially large per signing, since these are multi-year major-league contracts, but the number of events per year is small; mechanism=translation models that use public foreign-league stats, including pitch-tracking where it is published, along with age and league-environment adjustments, calibrated on the MLB outcomes of previously posted players; baseline=scouting reports combined with simple ratios of foreign-league stats to MLB stats and agent-driven market comparables; software=a probabilistic translation tool with explicit uncertainty that is updated as each new posting cohort produces MLB results.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    }
+  ],
+  "evidence_refs": [
+    "objective_context"
+  ],
+  "assumptions": [
+    "Public records of coach tenure, including assistant and minor-league roles, are complete and dated accurately enough to link coaches to players.",
+    "Coach effects can be separated from organizational infrastructure, playing time, park, injury and selection effects, given that teams acquire players they already expect to improve.",
+    "Sample sizes per coach are large enough that intervals are not too wide to change a hiring decision; this is a major challenge, because most coaches touch few players.",
+    "A retrospective test is possible by asking whether coach ratings built on seasons up to year T predict player changes under the same coach in year T+1 better than a reputation proxy such as prior big-league coaching tenure.",
+    "Clubs may already do this privately, so the edge could be zero; this cannot be verified from public information.",
+    "Enough historical posted players with MLB outcomes exist to calibrate a model that beats simple ratios; the small number of cases is the main threat.",
+    "Public foreign-league data at decision time is detailed enough, and changes in league environment, such as the ball or rules, can be adjusted for.",
+    "Market prices for posted players are set by bidding among several clubs, so any edge in accuracy must also overcome the winner's curse.",
+    "This differs from the already-explored minor-league call-up translation because the source leagues and market mechanics differ; reviewers should check for overlap.",
+    "Historical game-delay times and forecasts as issued at the time can be reconstructed from public sources for a retrospective test.",
+    "Decisions about delays and postponements are partly controlled by the league and umpires, which limits how much the club can act on the forecast.",
+    "The value may be too small to matter, which challenges the idea itself.",
+    "Clubs are already at or near the frontier on decisions that use public stats and occur daily, so marginal software adds little."
+  ],
+  "unresolved_issues": [
+    "Public records of coach tenure, including assistant and minor-league roles, are complete and dated accurately enough to link coaches to players.",
+    "Coach effects can be separated from organizational infrastructure, playing time, park, injury and selection effects, given that teams acquire players they already expect to improve.",
+    "Sample sizes per coach are large enough that intervals are not too wide to change a hiring decision; this is a major challenge, because most coaches touch few players.",
+    "A retrospective test is possible by asking whether coach ratings built on seasons up to year T predict player changes under the same coach in year T+1 better than a reputation proxy such as prior big-league coaching tenure.",
+    "Clubs may already do this privately, so the edge could be zero; this cannot be verified from public information.",
+    "Enough historical posted players with MLB outcomes exist to calibrate a model that beats simple ratios; the small number of cases is the main threat.",
+    "Public foreign-league data at decision time is detailed enough, and changes in league environment, such as the ball or rules, can be adjusted for.",
+    "Market prices for posted players are set by bidding among several clubs, so any edge in accuracy must also overcome the winner's curse.",
+    "This differs from the already-explored minor-league call-up translation because the source leagues and market mechanics differ; reviewers should check for overlap.",
+    "Historical game-delay times and forecasts as issued at the time can be reconstructed from public sources for a retrospective test.",
+    "Decisions about delays and postponements are partly controlled by the league and umpires, which limits how much the club can act on the forecast.",
+    "The value may be too small to matter, which challenges the idea itself.",
+    "Clubs are already at or near the frontier on decisions that use public stats and occur daily, so marginal software adds little.",
+    "Problem=coaching-staff hiring is decided by reputation and interviews rather than evidence of player improvement; owner=President of Baseball Operations, GM and manager; decision=hiring or retaining MLB and upper-minors hitting, pitching and catching coaches each October to December, with this offseason's window open now; value at stake=hypothesized as large and recurring because one coach touches many players' outcomes for several seasons, size unknown; mechanism=build a public coach-tenure ledger from press releases and media guides, then estimate each coach's effect on players who changed organizations, comparing the year before arrival with the year after and against matched players who did not move; baseline=network referrals, reputation from players, and interview impressions; software=a coach-attribution tool that ranks candidates with uncertainty intervals and flags coaches whose apparent effect is just regression to the mean.",
+    "public_coach_tenure_dataset_completeness",
+    "persistence_of_coach_effects_year_over_year",
+    "cubs_current_coaching_vacancies_2026_offseason",
+    "whether_rival_clubs_use_coach_attribution_models",
+    "Problem=pricing players posted from NPB and KBO and signed internationally as free agents; owner=GM, international scouting director and pro scouting director; decision=whether to bid on posted players and how much, during posting windows that usually run November to January; value at stake=potentially large per signing, since these are multi-year major-league contracts, but the number of events per year is small; mechanism=translation models that use public foreign-league stats, including pitch-tracking where it is published, along with age and league-environment adjustments, calibrated on the MLB outcomes of previously posted players; baseline=scouting reports combined with simple ratios of foreign-league stats to MLB stats and agent-driven market comparables; software=a probabilistic translation tool with explicit uncertainty that is updated as each new posting cohort produces MLB results.",
+    "count_of_posted_players_with_mlb_outcomes",
+    "public_availability_of_npb_kbo_pitch_tracking",
+    "cubs_international_budget_2027",
+    "Problem=managing starters around expected rain delays at a home park without a roof; owner=manager, pitching coach and head of game operations; decision=on game days with uncertain weather, whether to start the scheduled starter, use an opener or delay the start, decided in the hours before first pitch; value at stake=hypothesized as modest per event but recurring, through avoided wasted starts and short outings that tax the bullpen; mechanism=combine public precipitation forecasts with historical delay records to estimate the probability of a delay longer than a starter can wait out; baseline=staff judgment plus the umpire crew and league's consultation on weather; software=a delay-risk forecast linked to a rule for choosing the starter.",
+    "wrigley_historical_rain_delay_frequency",
+    "archived_hourly_forecast_availability",
+    "Problem=where software is likely unnecessary: routine decisions such as setting the order of everyday lineups, or a dashboard of public leaderboards; owner=manager and analysts; decision=daily; value at stake=likely small, based on the earlier exploration finding a domain gap in lineup optimization; mechanism=none beyond existing tools; baseline=current practice is probably close to optimal; software=recommend not building, and redirect the effort toward coach attribution or the translation of posted foreign-league players.",
+    "magnitude_of_remaining_edge_in_daily_tactical_decisions"
+  ],
+  "contradictions": [],
+  "verified_constraints": [],
+  "provenance": {
+    "run_id": "hd-20261009-211812-efe1740f0c77",
+    "producer_component": "howldream",
+    "producer_version": "0.4.4",
+    "model_or_provider": "claude-opus-5-5",
+    "observation_kind": "EXTERNALLY_OBSERVED",
+    "created_at": "2026-10-09T21:24:32.107738+00:00",
+    "transformations": [
+      "generated",
+      "idea_unit_selection"
+    ],
+    "participation": [
+      {
+        "operation": "GENERATED",
+        "transforming_component": "howldream",
+        "origin_component": "howldream",
+        "origin_provider": "claude",
+        "origin_model": "claude-opus-5-5",
+        "subject_count": 1,
+        "inference_occurred": true,
+        "note": "Dream prompted the provider; the provider authored the text."
+      },
+      {
+        "operation": "CLUSTERED",
+        "transforming_component": "howldream",
+        "origin_component": "howldream",
+        "origin_provider": null,
+        "origin_model": null,
+        "subject_count": 53,
+        "inference_occurred": false,
+        "note": "Deterministic concept-token clustering; no inference."
+      },
+      {
+        "operation": "SELECTED",
+        "transforming_component": "howldream",
+        "origin_component": "howldream",
+        "origin_provider": "claude",
+        "origin_model": "claude-opus-5-5",
+        "subject_count": 1,
+        "inference_occurred": false,
+        "note": "Operator selected this idea unit through `howldream export`."
+      }
+    ],
+    "request_id": "cubs-r003-p1-divergent",
+    "originating_component": "operator",
+    "execution": {
+      "requested_provider": "command",
+      "selected_provider": "command",
+      "actual_provider": "claude",
+      "adapter": "claude-json",
+      "model": "claude-opus-5-5",
+      "requested_model": "claude-opus-5-5",
+      "deterministic": false,
+      "mocked": false,
+      "inference_occurred": true,
+      "remote": true,
+      "remote_observation": "OPERATOR_DECLARED",
+      "fallback_reason": null,
+      "elapsed_seconds": 39.509880242000236,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 2195,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 3213,
+        "output_tokens_details": {
+          "thinking_tokens": 1307
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 2195,
+          "ephemeral_5m_input_tokens": 0
+        }
+      },
+      "cost": 0.08182799999999998,
+      "request_id": "09db2d7d-7a91-441d-9278-4f0282cec8c0",
+      "raw_output_received": true,
+      "parse_status": "VALID",
+      "repair_attempted": false,
+      "sampling": null
+    },
+    "source_candidate_refs": [],
+    "source_candidates_location": "exploration_envelope.json#/provenance/source_candidates",
+    "hard_constraints": [
+      "Do not assume the problem or the solution.",
+      "Lawfully accessible public, historical, or clearly labeled synthetic data only.",
+      "Do not invent private Chicago Cubs information or statistics.",
+      "Distinguish fact, assumption, hypothesis, and speculation."
+    ],
+    "constraint_scope": "UNVERIFIED_GENERATION_GUIDANCE",
+    "purpose": "discovery",
+    "candidate_index": 2,
+    "trial": 0,
+    "prompt_hash": "701967656eb754c804aa588be31c6cfc40ca44d8faf56474ffa65f5bc96867b7",
+    "output_hash": "a4011c051e891f06466e4319c6b163c79272455ee27933df82d01ce66a0cb216",
+    "selection": {
+      "selected_by": "operator",
+      "operation": "SELECTED",
+      "via": "howldream export"
+    },
+    "parent_candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/2",
+    "source_unit": {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/2/idea/2",
+      "source_span": [
+        2064,
+        2975
+      ],
+      "source_hash": "a4011c051e891f06466e4319c6b163c79272455ee27933df82d01ce66a0cb216",
+      "cluster": "cluster-14"
+    },
+    "parent_verification_ref": "verification.jsonl#candidate=hd-20261009-211812-efe1740f0c77/candidates/0/2",
+    "unit_selection_scope": "Single IDEA line; batch assumptions/unresolved issues retained without claim-specific association. Parent rejection/contradiction gates retained."
+  }
+}

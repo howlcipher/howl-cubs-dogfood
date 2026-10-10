@@ -1,0 +1,323 @@
+{
+  "context_echo_ratio": 0.6,
+  "evidence_echo_ratio": 0.6,
+  "novel_concept_ratio": 0.7,
+  "repeated_family_ratio": 0.0,
+  "idea_count": 10,
+  "cluster_count": 10,
+  "units": [
+    {
+      "id": "hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/1",
+      "candidate_id": "hd-20261010-035642-9bb3951eebe6/candidates/0/0",
+      "text": "IDEA: Replace the marginal overlap check with a send-vs-hold propensity model and report only holds with propensity within the support of sends. Require a minimum count of sends in the neighborhood, and report the share of holds dropped.",
+      "source_span": [
+        5489,
+        5726
+      ],
+      "source_hash": "e9534aeaf621dc98e91fd93ac8002842366e810d67592274e27e7f26d29f82ae",
+      "cluster": "cluster-1",
+      "representative": "hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.15,
+      "context_token_overlap": 0.4,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/2",
+      "candidate_id": "hd-20261010-035642-9bb3951eebe6/candidates/0/0",
+      "text": "IDEA: Add a pre-registered decision chart: P(safe) bands by hit location, hit type, outs, and runner speed tercile, with the break-even p* for each cell, so a coach gets a usable lookup instead of a season-level runs total.",
+      "source_span": [
+        8418,
+        8641
+      ],
+      "source_hash": "e9534aeaf621dc98e91fd93ac8002842366e810d67592274e27e7f26d29f82ae",
+      "cluster": "cluster-2",
+      "representative": "hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.41379310344827586,
+      "context_token_overlap": 0.5517241379310345,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/3",
+      "candidate_id": "hd-20261010-035642-9bb3951eebe6/candidates/0/0",
+      "text": "IDEA: Use a negative-control check. Apply the same flagging procedure to a placebo where the label is shuffled within game-season strata, or to sends only (cross-fitted), and require the real runs-left estimate to exceed the placebo distribution.",
+      "source_span": [
+        8642,
+        8888
+      ],
+      "source_hash": "e9534aeaf621dc98e91fd93ac8002842366e810d67592274e27e7f26d29f82ae",
+      "cluster": "cluster-3",
+      "representative": "hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.11538461538461539,
+      "context_token_overlap": 0.2692307692307692,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/4",
+      "candidate_id": "hd-20261010-035642-9bb3951eebe6/candidates/0/0",
+      "text": "IDEA: Make the 30-out-at-home early stop a count-based rule on the 2025 data with explicit fallback, and add a minimum failures-per-covariate rule (for example, events-per-variable) so the logistic model is not fit on near-zero failures. If unmet, penalize the model or reduce covariates.",
+      "source_span": [
+        8889,
+        9177
+      ],
+      "source_hash": "e9534aeaf621dc98e91fd93ac8002842366e810d67592274e27e7f26d29f82ae",
+      "cluster": "cluster-4",
+      "representative": "hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/4",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.25,
+      "context_token_overlap": 0.3125,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/5",
+      "candidate_id": "hd-20261010-035642-9bb3951eebe6/candidates/0/0",
+      "text": "IDEA: Define label precedence explicitly. Order by final outcome: out at home, then scored in the same segment as the batted-ball play (SEND), then stopped at third (HOLD), with \"advanced later\" as its own excluded class in the primary analysis.",
+      "source_span": [
+        9178,
+        9423
+      ],
+      "source_hash": "e9534aeaf621dc98e91fd93ac8002842366e810d67592274e27e7f26d29f82ae",
+      "cluster": "cluster-5",
+      "representative": "hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/5",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.5714285714285714,
+      "context_token_overlap": 0.6071428571428571,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/6",
+      "candidate_id": "hd-20261010-035642-9bb3951eebe6/candidates/0/0",
+      "text": "IDEA: Put the first-segment base rule, exclusions, 0.05 margin, and the label precedence into the frozen hash before the full 2025 data is opened, and reconcile the controller recount before the full pull.",
+      "source_span": [
+        9424,
+        9629
+      ],
+      "source_hash": "e9534aeaf621dc98e91fd93ac8002842366e810d67592274e27e7f26d29f82ae",
+      "cluster": "cluster-6",
+      "representative": "hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/6",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.43478260869565216,
+      "context_token_overlap": 0.5217391304347826,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261010-035642-9bb3951eebe6/candidates/0/1/idea/1",
+      "candidate_id": "hd-20261010-035642-9bb3951eebe6/candidates/0/1",
+      "text": "IDEA: Freeze one mutually exclusive label hierarchy (coach-held, sent-safe, sent-out, ambiguous-advanced-later) and the base-at-contact definition before retrieval. Resolve the controller-versus-report discrepancy on the cached sample first, and make ambiguous runners a third class instead of folding them into SEND.",
+      "source_span": [
+        8817,
+        9134
+      ],
+      "source_hash": "9b3fc1df54bbb20bafbf57b55e2cab81f4618704cc189dad56bdf316b1ab0525",
+      "cluster": "cluster-7",
+      "representative": "hd-20261010-035642-9bb3951eebe6/candidates/0/1/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.5714285714285714,
+      "context_token_overlap": 0.6,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261010-035642-9bb3951eebe6/candidates/0/1/idea/2",
+      "candidate_id": "hd-20261010-035642-9bb3951eebe6/candidates/0/1",
+      "text": "IDEA: Replace the stop rule with a precomputed power rule. Require a minimum number of out-at-home events in the pooled 2025 and 2026 data, and state in advance that a likely outcome is DESCRIPTIVE ONLY. Report the observed out rate with an exact upper bound.",
+      "source_span": [
+        9135,
+        9394
+      ],
+      "source_hash": "9b3fc1df54bbb20bafbf57b55e2cab81f4618704cc189dad56bdf316b1ab0525",
+      "cluster": "cluster-8",
+      "representative": "hd-20261010-035642-9bb3951eebe6/candidates/0/1/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.3333333333333333,
+      "context_token_overlap": 0.48148148148148145,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261010-035642-9bb3951eebe6/candidates/0/1/idea/3",
+      "candidate_id": "hd-20261010-035642-9bb3951eebe6/candidates/0/1",
+      "text": "IDEA: Make the positive criterion falsifiable by refitting the model inside each bootstrap, replacing the 0.05 margin with a pre-set value tested on the held-out data, and adding a negative control (for example, applying the flag rule to sends and checking if realized outcomes match predicted success).",
+      "source_span": [
+        9395,
+        9698
+      ],
+      "source_hash": "9b3fc1df54bbb20bafbf57b55e2cab81f4618704cc189dad56bdf316b1ab0525",
+      "cluster": "cluster-9",
+      "representative": "hd-20261010-035642-9bb3951eebe6/candidates/0/1/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.20588235294117646,
+      "context_token_overlap": 0.38235294117647056,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261010-035642-9bb3951eebe6/candidates/0/1/idea/4",
+      "candidate_id": "hd-20261010-035642-9bb3951eebe6/candidates/0/1",
+      "text": "IDEA: Use a joint overlap measure and decision-time covariates (prior-season speed and arm values) so the model does not use the same-season information.",
+      "source_span": [
+        9699,
+        9852
+      ],
+      "source_hash": "9b3fc1df54bbb20bafbf57b55e2cab81f4618704cc189dad56bdf316b1ab0525",
+      "cluster": "cluster-10",
+      "representative": "hd-20261010-035642-9bb3951eebe6/candidates/0/1/idea/4",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.3333333333333333,
+      "context_token_overlap": 0.4,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    }
+  ],
+  "clusters": [
+    {
+      "id": "cluster-1",
+      "representative": "hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/1",
+      "representative_text": "IDEA: Replace the marginal overlap check with a send-vs-hold propensity model and report only holds with propensity within the support of sends. Require a minimum count of sends in the neighborhood, and report the share of holds dropped.",
+      "label": "check, count, dropped, hold, holds, marginal, minimum, model",
+      "members": [
+        "hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/1"
+      ]
+    },
+    {
+      "id": "cluster-2",
+      "representative": "hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/2",
+      "representative_text": "IDEA: Add a pre-registered decision chart: P(safe) bands by hit location, hit type, outs, and runner speed tercile, with the break-even p* for each cell, so a coach gets a usable lookup instead of a season-level runs total.",
+      "label": "add, bands, break, cell, chart, coach, decision, each",
+      "members": [
+        "hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-3",
+      "representative": "hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/3",
+      "representative_text": "IDEA: Use a negative-control check. Apply the same flagging procedure to a placebo where the label is shuffled within game-season strata, or to sends only (cross-fitted), and require the real runs-left estimate to exceed the placebo distribution.",
+      "label": "apply, check, control, cross, distribution, estimate, exceed, fitted",
+      "members": [
+        "hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/3"
+      ]
+    },
+    {
+      "id": "cluster-4",
+      "representative": "hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/4",
+      "representative_text": "IDEA: Make the 30-out-at-home early stop a count-based rule on the 2025 data with explicit fallback, and add a minimum failures-per-covariate rule (for example, events-per-variable) so the logistic model is not fit on near-zero failures. If unmet, penalize the model or reduce covariates.",
+      "label": "2025, 30, add, at, based, count, covariate, covariates",
+      "members": [
+        "hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/4"
+      ]
+    },
+    {
+      "id": "cluster-5",
+      "representative": "hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/5",
+      "representative_text": "IDEA: Define label precedence explicitly. Order by final outcome: out at home, then scored in the same segment as the batted-ball play (SEND), then stopped at third (HOLD), with \"advanced later\" as its own excluded class in the primary analysis.",
+      "label": "advanced, analysis, at, ball, batted, class, define, excluded",
+      "members": [
+        "hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/5"
+      ]
+    },
+    {
+      "id": "cluster-6",
+      "representative": "hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/6",
+      "representative_text": "IDEA: Put the first-segment base rule, exclusions, 0.05 margin, and the label precedence into the frozen hash before the full 2025 data is opened, and reconcile the controller recount before the full pull.",
+      "label": "0, 05, 2025, base, before, controller, data, exclusions",
+      "members": [
+        "hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/6"
+      ]
+    },
+    {
+      "id": "cluster-7",
+      "representative": "hd-20261010-035642-9bb3951eebe6/candidates/0/1/idea/1",
+      "representative_text": "IDEA: Freeze one mutually exclusive label hierarchy (coach-held, sent-safe, sent-out, ambiguous-advanced-later) and the base-at-contact definition before retrieval. Resolve the controller-versus-report discrepancy on the cached sample first, and make ambiguous runners a third class instead of folding them into SEND.",
+      "label": "advanced, ambiguous, at, base, before, cached, class, coach",
+      "members": [
+        "hd-20261010-035642-9bb3951eebe6/candidates/0/1/idea/1"
+      ]
+    },
+    {
+      "id": "cluster-8",
+      "representative": "hd-20261010-035642-9bb3951eebe6/candidates/0/1/idea/2",
+      "representative_text": "IDEA: Replace the stop rule with a precomputed power rule. Require a minimum number of out-at-home events in the pooled 2025 and 2026 data, and state in advance that a likely outcome is DESCRIPTIVE ONLY. Report the observed out rate with an exact upper bound.",
+      "label": "2025, 2026, advance, at, bound, data, descriptive, events",
+      "members": [
+        "hd-20261010-035642-9bb3951eebe6/candidates/0/1/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-9",
+      "representative": "hd-20261010-035642-9bb3951eebe6/candidates/0/1/idea/3",
+      "representative_text": "IDEA: Make the positive criterion falsifiable by refitting the model inside each bootstrap, replacing the 0.05 margin with a pre-set value tested on the held-out data, and adding a negative control (for example, applying the flag rule to sends and checking if realized outcomes match predicted success).",
+      "label": "0, 05, adding, applying, bootstrap, checking, control, criterion",
+      "members": [
+        "hd-20261010-035642-9bb3951eebe6/candidates/0/1/idea/3"
+      ]
+    },
+    {
+      "id": "cluster-10",
+      "representative": "hd-20261010-035642-9bb3951eebe6/candidates/0/1/idea/4",
+      "representative_text": "IDEA: Use a joint overlap measure and decision-time covariates (prior-season speed and arm values) so the model does not use the same-season information.",
+      "label": "arm, covariates, decision, information, joint, measure, model, overlap",
+      "members": [
+        "hd-20261010-035642-9bb3951eebe6/candidates/0/1/idea/4"
+      ]
+    }
+  ],
+  "ranking": [],
+  "warnings": [
+    "DISCOVERY_ANCHORING_HIGH"
+  ],
+  "explored_families": [
+    "check, count, dropped, hold, holds, marginal, minimum, model",
+    "add, bands, break, cell, chart, coach, decision, each",
+    "apply, check, control, cross, distribution, estimate, exceed, fitted",
+    "2025, 30, add, at, based, count, covariate, covariates",
+    "advanced, analysis, at, ball, batted, class, define, excluded",
+    "0, 05, 2025, base, before, controller, data, exclusions",
+    "advanced, ambiguous, at, base, before, cached, class, coach",
+    "2025, 2026, advance, at, bound, data, descriptive, events",
+    "0, 05, adding, applying, bootstrap, checking, control, criterion",
+    "arm, covariates, decision, information, joint, measure, model, overlap"
+  ],
+  "method": "concept_tokens_and_leading_phrases/v3; Jaccard cluster threshold 0.5 or first-8-content-word phrase link; echo coverage 0.6 or first-16-word phrase link",
+  "measurement_type": "ADVISORY_HEURISTIC",
+  "limitations": "Not semantic equivalence, calibrated novelty, entailment or usefulness",
+  "participation": [
+    {
+      "operation": "GENERATED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": "claude",
+      "origin_model": "claude-sonnet-5-5",
+      "subject_count": 2,
+      "inference_occurred": true,
+      "note": "Dream prompted the provider; the provider authored the text."
+    },
+    {
+      "operation": "CLUSTERED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 10,
+      "inference_occurred": false,
+      "note": "Deterministic concept-token clustering; no inference."
+    }
+  ]
+}

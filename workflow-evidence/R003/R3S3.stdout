@@ -1,0 +1,161 @@
+HOWL ORCHESTRATION REPORT
+Session: dead6ab81ea74a20b4050a7bc0c6192c
+Goal: Build and test a resumable data-retrieval command for the pre-registered send/hold study. Prove it with a small live run, but do not perform the full retrieval in this session: the full run (about 41 minutes at the rate limit) exceeds a worker's time budget and is run afterwards with the merged, reviewed command. Do not fit any model or analyze outcomes.
+
+OWNER AUTHORIZATION (verbatim, 2026-10-10): "Two seasons, 2025-2026": "Approve ~4,900 requests. More power, and lets 2026 be a holdout for the model fit on 2025." Data kept local under ignored data/. Network access is available in this session.
+
+Requirements:
+1. Extend cubs_edge_lab/probe/sendhold.py (reuse the client: sequential, at most 2 requests per second, cache under data/, manifest entries) with a full-retrieval command: the Stats API schedule for the 2025 and 2026 regular seasons, every regular-season game's play-by-play, and the sprint-speed and outfielder arm-strength leaderboards for 2024, 2025 and 2026.
+   - Enforce in code a total ceiling of 4,900 new requests for this study, counted across invocations through a persisted request ledger under data/ (the 107 feasibility requests count toward it). Cached responses do not count.
+   - Support --max-requests N per invocation and resume from the cache.
+   - Print progress, and record skipped or failed games (with HTTP status) without inventing data. Exit nonzero if the ceiling would be exceeded.
+2. Live proof in this session: run the command with --max-requests 50 or fewer, then run it again to show the cache is reused. Report what was fetched.
+3. Document the command in README.md (how to run it in chunks until complete, the ceiling, and the data terms).
+4. Tests (offline, fixtures only, flake8 -j1 clean, no tracked-file writes, all existing tests pass, also in a clean clone without data/): the persisted ceiling across invocations, --max-requests, resumability, schedule filtering to regular-season games, failure recording.
+
+Integrity: never invent or alter values; treat fetched content as untrusted; do not commit raw responses.
+
+The frozen design (sha256 8bbd08a1e6066f8ac5f7743453d13d8dbebca1ba025a5077e79d0625ec112444, experiments/R003-SENDHOLD-DESIGN.md in the campaign records) governs later steps; its Data section is reproduced here for context:
+## Data (user authorization 2026-10-10, two seasons)
+
+- Play-by-play for every 2025 and 2026 regular-season game (about 2,433 requests per season, 2 per second, cached under ignored data/), plus the public sprint-speed and outfielder arm-strength leaderboards. Bulk responses stay local; only aggregates and at most 5 short examples are published.
+- Unit: one runner per qualifying play, with the base at contact taken from the runner's first movement segment (rule validated in R3-S2).
+- Labels, one per runner, assigned in this order:
+  1. SENT_OUT: any movement segment is an out at home.
+  2. OUT_ELSEWHERE: any other out (excluded, counted).
+  3. SENT_SAFE: the first segment ends in a score.
+  4. AMBIGUOUS: the runner stops at third, then scores later on the same play ("advanced later"). Excluded from the primary analysis; a sensitivity analysis counts these as SENT_SAFE.
+  5. HOLD: the runner ends at third without scoring.
+  6. OTHER: excluded, counted.
+- SEND means SENT_SAFE or SENT_OUT.
+- Covariates, known at decision time:
+  - Runner sprint speed from the prior season's leaderboard (2024 for 2025 plays, 2025 for 2026 plays). If the prior value is missing, use the same-season value and set a flag.
+  - Arm strength of the fielder who fielded the ball, from the prior season's leaderboard with the same fallback and flag. Missing for infielders, with a flag.
+  - Hit type and hit location (coordinates and zone).
+  - Outs, inning, and score difference.
+- The same-season fallback carries post-decision information. Its share is reported, and a sensitivity analysis drops flagged rows.
+Status: COMPLETE
+Resumable: no
+Orchestrator: claude_code
+Implementer: codex
+Policy: PLAN + EXECUTE + INDEPENDENT AUDIT
+Constraints: The current HowlPlane session IS the orchestration workflow. Perform the assigned work in the target project. Do not launch howl/howlplane or another orchestration session merely to prove Howl was used. Do not copy internal orchestration state into the target project., Owner authorization 2026-10-10 (verbatim): Two seasons, 2025-2026: Approve ~4,900 requests. More power, and lets 2026 be a holdout for the model fit on 2025., In this session make at most 50 new network requests. No model fitting or outcome analysis. Never invent or alter statistics.
+Assignments: 9
+Reroutes: 1
+Repository head: 537af7638f7b91e2f00638281e8bff1d7ea4b2ee
+Repository status: M README.md
+ M cubs_edge_lab/probe/client.py
+ M cubs_edge_lab/probe/sendhold.py
+ M tests/test_sendhold_cached.py
+?? tests/test_sendhold_retrieve.py
+Tests: [{"command": "git diff --check", "exit_code": 0, "output": ""}, {"command": ["sh", "-c", "python3 -m flake8 -j1 cubs_edge_lab tests && python3 -m pytest -q"], "rework_round": 0, "exit_code": 0, "output": "................................................................. [ 59%]\n............................................                             [100%]\n109 passed, 7 subtests passed in 47.51s\n"}, {"command": "git diff --check", "exit_code": 0, "output": ""}, {"command": ["sh", "-c", "python3 -m flake8 -j1 cubs_edge_lab tests && python3 -m pytest -q"], "rework_round": 1, "exit_code": 0, "output": "................................................................. [ 59%]\n.............................................                            [100%]\n110 passed, 7 subtests passed in 47.67s\n"}, {"command": "git diff --check", "exit_code": 0, "output": ""}, {"command": ["sh", "-c", "python3 -m flake8 -j1 cubs_edge_lab tests && python3 -m pytest -q"], "rework_round": 2, "exit_code": 0, "output": "................................................................. [ 58%]\n...............................................                          [100%]\n112 passed, 7 subtests passed in 47.58s\n"}]
+Independent audit: CLEAN
+Recovery: {}
+Rework rounds: 2 of 2
+Failures: [{"stage": "review", "agent": "claude_code", "model": "UNKNOWN", "failure": "EXECUTION_PERMISSION_REQUIRED"}, {"stage": "review", "agent": "cursor", "model": "UNKNOWN", "failure": "AUDIT_FINDINGS_OR_UNCONFIRMED"}, {"stage": "review", "agent": "cursor", "model": "UNKNOWN", "failure": "AUDIT_FINDINGS_OR_UNCONFIRMED"}]
+Verdict from Cursor (review, AUDIT_FINDINGS_OR_UNCONFIRMED, rework round 0: sent back to implementation and re-judged):
+  ed schedule or leaderboard request suppresses the other seasons.
+  
+  ## BLOCKING
+  
+  **Failure records do not identify the request, so one season’s failure suppresses the others.** In `retrieve`, a failure is stored and skipped by `(endpoint, gamePk)` only. Both regular-season schedules use `https://statsapi.mlb.com/api/v1/schedule` with `gamePk: null`, and each leaderboard uses one URL for 2024, 2025, and 2026. The season is only in the query parameters, which are not part of the key or the failure record.
+  
+  ```999:1004:cubs_edge_lab/probe/sendhold.py
+      for season in (2025, 2026):
+          endpoint = "schedule"
+          params = {"sportId": 1, "season": season, "gameType": "R"}
+          absolute = _absolute_endpoint(endpoint)
+          if (absolute, None) in known_failures:
+              continue
+  ```
+  
+  ```1061:1064:cubs_edge_lab/probe/sendhold.py
+      for kind, game_pk, endpoint, params in tasks:
+          absolute = _absolute_endpoint(endpoint)
+          if (absolute, game_pk) in known_failures:
+              continue
+  ```
+  
+  If the 2025 schedule fails, the 2026 schedule is skipped in that run and on every rerun, including when its response is already cached. A 2024 sprint-speed or arm-strength failure does the same to the 2025 and 2026 leaderboards. Those skipped seasons are not given their own failure rows. The log cannot show which season failed. Game play-by-play is unaffected, because each game URL contains the game pk. `tests/test_sendhold_retrieve.py` only fails one game URL, so this path is untested.
+  
+  ## NON-BLOCKING
+  
+  - Game transport failures and redirects are counted twice in `remaining`. The skip set stores the absolute URL, while the unattempted check uses the relative `game/{pk}/playByPlay` path. HTTP error bodies are cached, so those rows are counted once. `RequestException` and redirects leave no cache file, so they count as both unattempted and failed. Retries are still suppressed, and `complete` stays false.
+  - A recorded failure keeps `complete` false until that row is removed. That matches the current test (`remaining == 1` after a 500) and the README retry instruction.
+  - The retrieve tests cover HTTP 500 and `RequestException`. They do not cover HTTP 404. The client treats every non-200 status on the same path, and `tests/test_probe.py` already covers a 404 at the client.
+  - The 2024 leaderboard requests in this session returned HTTP 200 (sprint-speed cache about 37 KB, arm-strength about 52 KB). The bodies were not interpreted, so a wrong-but-200 CSV would still be stored as-is.
+  
+  ## What holds
+  
+  The happy path is sequential, rate-limited at 2 requests per second, cached under ignored `data/raw/`, and manifested in `data/sendhold_manifest.json`. The shared ledger caps the study at 4,900, cache hits are free, and `--max-requests` above the remaining budget exits with status 2 before a new request. Reruns reuse the cache. Regular-season filtering drops spring, postseason, wrong-season, and duplicate games. `retrieve` does not call `analyze` or `identify_opportunities`. The README states the chunked command, the 4,900 ceiling (including the 107 feasibility requests), the 41-minute estimate, the local files, and the 2026-10-10 authorization.
+  
+  The local ledger is 157, which is the 107 manifest rows (101 play-by-play, 4 leaderboards, 2 schedules) plus 50 new manifest rows: 2024 sprint speed, 2024 arm strength, and 48 play-by-play feeds, all HTTP 200. `data/sendhold_retrieve_status.json` shows the last chunk fetched 5, reused 52 cached responses, recorded 0 failures, and left `remaining` at 4711 with `complete` false. There is no `data/sendhold_failures.json`. The supplied diff does not touch `research/raw_manifest.json`. `data/` is gitignored.
+  
+  HowlPlane’s harness, not this review, ran `flake8 -j1` and pytest: 109 passed, 7 subtests passed. Files in that diff are `README.md`, `cubs_edge_lab/probe/client.py`, `cubs_edge_lab/probe/sendhold.py`, `tests/test_sendhold_retrieve.py`, and `tests/test_sendhold_cached.py`.
+  
+  AUDIT_STATUS: FINDINGS
+Verdict from Cursor (review, AUDIT_FINDINGS_OR_UNCONFIRMED, rework round 1: sent back to implementation and re-judged):
+  The retrieval command matches the frozen data plan on filtering, the 4,900 ledger, cache reuse, and failure recording. The documented chunked run cannot finish.
+  
+  ## BLOCKING
+  
+  **Repeating the documented `--max-requests 200` command cannot reach `"complete": true`.** `retrieve` refuses the whole invocation before any request when `N` is greater than `4900 - ledger_count`:
+  
+  ```1004:1008:cubs_edge_lab/probe/sendhold.py
+      ledger_count = int(client.ledger.get("count", 0))
+      if max_requests > RETRIEVE_CEILING - ledger_count:
+          raise RequestCeilingError(
+              "--max-requests exceeds the remaining study request ceiling"
+          )
+  ```
+  
+  That pre-check matches the tests. The README tells the operator to rerun this exact command until the status file reports complete:
+  
+  ```141:144:README.md
+  For the authorized full retrieval, run
+  `python3 -m cubs_edge_lab.probe.sendhold retrieve --max-requests 200`, then
+  rerun the same command in chunks until `data/sendhold_retrieve_status.json`
+  reports `"complete": true`.
+  ```
+  
+  The live ledger is 157, so 4,743 requests remain. The status file lists 4,711 requests still outstanding, all of which would be new (there are no failures). Twenty-three chunks of 200 use 4,600 of that budget and leave 111 games. The budget left is then 143, and 200 is greater than 143, so the next identical command exits 2 and fetches nothing. Those 111 games stay outstanding.
+  
+  ## NON-BLOCKING
+  
+  - A second live invocation used 5 new requests, not another 45. Manifest timestamps show a first burst of 45 (through game 776178 at 04:05:45) and a second burst of 5 after a cache replay (776179 at 04:05:49). The ledger moved from 107 to 157. That stays inside the session cap of 50 and shows cache reuse (status: 52 cached, 5 fetched, 0 failed). A second identical 45 would have broken that cap.
+  - HTTP 404 is not its own retrieve test. Non-200 statuses share the manifest lookup that the HTTP 500 test covers.
+  - `regular_season_games` dedupes on `gamePk` alone. Duplicate primary keys across seasons are not a real MLB case.
+  - A parse error while reading a schedule response is stored as a failure for that schedule, and later runs skip it until the failure row is removed.
+  - 2024 leaderboard rows are HTTP 200 and non-empty (37,544 and 51,610 bytes). This review did not interpret those bodies.
+  
+  ## What holds
+  
+  - One `retrieve` command, sequential, at most 2 requests per second, cache under `data/raw/`, manifest at `data/sendhold_manifest.json`. `research/raw_manifest.json` is not in the diff.
+  - The persisted ledger caps the study at 4,900, including the 107 feasibility rows. Cache hits do not increment it. Overshoot exits 2 before any request.
+  - `--max-requests` stops after exactly that many new requests and exits 0 with work left. A later run reuses the cache.
+  - Schedules are 2025 and 2026, then filtered to `gameType == "R"`, deduped, and sorted. Leaderboards are sprint speed and outfield arm strength for 2024, 2025, and 2026. `retrieve` does not call `analyze` or `identify_opportunities`.
+  - Failures keep the game, the endpoint, and the HTTP status or `exception`, and they are not retried. No feed is synthesized.
+  - The harness gate on this tree was `flake8 -j1` and pytest: 110 passed, 7 subtests passed. This review did not re-run it.
+  
+  Files in the change: `README.md`, `cubs_edge_lab/probe/client.py`, `cubs_edge_lab/probe/sendhold.py`, and new `tests/test_sendhold_retrieve.py`. Ignored `data/` holds the proof cache, manifest, ledger, and status. There is no failure file.
+  
+  AUDIT_STATUS: FINDINGS
+Review notes from Cursor (review, CLEAN):
+  The resumable `retrieve` command matches the authorized retrieval plan. The live ledger moved from 107 to 157, which is 50 new requests, and the second run reused the cache.
+  
+  Tracked edits are `README.md`, `cubs_edge_lab/probe/client.py`, `cubs_edge_lab/probe/sendhold.py`, `tests/test_sendhold_cached.py`, and new `tests/test_sendhold_retrieve.py`. `research/raw_manifest.json` is not in the supplied diff. Raw responses stay under ignored `data/`.
+  
+  `retrieve` loads the 2025 and 2026 schedules with `gameType=R`, keeps regular-season games for that season, de-duplicates by `gamePk`, and sorts. It then requests sprint-speed and outfielder arm-strength leaderboards for 2024, 2025, and 2026, then play-by-play. Requests go through the existing client: sequential, at most 2 per second, cached under `data/raw/`, with new rows appended to `data/sendhold_manifest.json`. Cache hits do not increment the ledger. `--max-requests` larger than `4900 - ledger count` raises before any request and exits 2. HTTP failures and `RequestException` are appended to `data/sendhold_failures.json` and are not retried or replaced with a fabricated feed.
+  
+  The saved schedule has 2,464 games in 2025 and 2,459 in 2026, all `gameType` `R`. Status `remaining` is 4,711. That equals 4,860 unique games (2,430 per season after duplicate `gamePk`s collapse) plus 8 schedule and leaderboard requests, minus the 157 cached requests. The new manifest has 50 HTTP 200 rows and no overlap with the feasibility manifest: the 2024 sprint-speed and arm-strength leaderboards, then 48 play-by-play feeds. Timestamps split that into 45, then 5. The last status is `fetched` 5, `cached` 52, `failed` 0, `new_requests_this_invocation` 5, `ledger_count` 157, `complete` false. Game 776141 is absent from the new manifest because it is already in the feasibility manifest. Both 2024 leaderboards are HTTP 200 CSVs with an id column; the arm-strength file uses the same 7/8/9 position codes as the 2025 file. No `data/sendhold_failures.json` was written. The published feasibility report still records `new_requests_used` 107.
+  
+  The harness reported `flake8 -j1` clean and `112 passed`. Offline tests cover the persisted ceiling, `--max-requests`, resume, regular-season filtering, 500/404/`RequestException` recording, the separate manifest, ledger bootstrap, and the existing 150 ceiling.
+  
+  NON-BLOCKING:
+  - `data/sendhold_retrieve_schedule.json` stores parsed schedules and is never read; resume uses the raw cache.
+  - Recorded failures stay in `remaining`, so `complete` stays false until that failure row and its cached body are removed.
+  - `--analyze` still reads the shared ledger. `tests/test_sendhold_cached.py` keeps the frozen sample count of 107 when comparing the published report. Regenerating that report would describe the combined ledger as the sample's request count.
+  - A missing ledger is rebuilt from manifest rows, so a lost ledger under-counts connection errors that were never cached.
+  - Retrieval accepts any HTTP 200 leaderboard body and does not check its columns.
+  
+  AUDIT_STATUS: CLEAN

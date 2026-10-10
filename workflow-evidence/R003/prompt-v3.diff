@@ -1,0 +1,12 @@
+1c1
+< EXECUTION-PROMPT v2 (2026-10-09). Changes from v1: section 19A added from R001 evidence. v1 sha256 e1b5ca33c7f1d85c5b8b2145be2133ec50e811feaf13e9a97bc3a5fcda5439d6.
+---
+> EXECUTION-PROMPT v3 (2026-10-10). Changes from v2: four lessons added to section 19A from R003 evidence. v2 sha256 7fa1b0c151ef593e07a4d3a3c44d1626a1ceae7693ca615a1d756f83b59d75d5. Earlier: v2 added section 19A from R001 evidence; v1 sha256 e1b5ca33c7f1d85c5b8b2145be2133ec50e811feaf13e9a97bc3a5fcda5439d6.
+851a852,858
+> 
+> Added in prompt v3 from R003 evidence; v3 takes effect at the R004 run boundary, and R003 is assessed under v2:
+> 
+> - Controller acceptance numbers for a repair come from an independent computation on the raw data, never from the artifact being corrected. A worker that cannot match them explains the difference with examples, and the controller rechecks from raw data before deciding who is right. (Trigger: 2026-10-10T03:54:13Z.)
+> - Before a design's labels are frozen against data the run will retrieve, test each label rule against how the source encodes the case, using the largest dataset already retrieved under existing authority, and record the encoding counts. A label found wrong after freezing is changed only by a dated user decision under section 17, before any model fit, with the old definition still reported. (Trigger: 2026-10-10T06:16:06Z.)
+> - Work that needs more wall time than a HowlPlane worker budget allows, such as a long rate-limited data pull, is split: a session builds and tests the tool with a small live proof; the controller runs the accepted tool as ordinary product use within the user's authorization, logging requests; a later session processes the result. (Trigger: 2026-10-10T04:00:14Z, NOTE-009.)
+> - Journal heading times come from `date -u` at the moment of writing, never from estimates. (Trigger: 2026-10-09T19:40Z.)

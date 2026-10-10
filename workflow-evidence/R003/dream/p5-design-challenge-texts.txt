@@ -1,0 +1,21 @@
+COMPLETE 3 ['claude-sonnet-5-5']
+### hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/1
+IDEA: Replace the marginal overlap check with a send-vs-hold propensity model and report only holds with propensity within the support of sends. Require a minimum count of sends in the neighborhood, and report the share of holds dropped.
+### hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/2
+IDEA: Add a pre-registered decision chart: P(safe) bands by hit location, hit type, outs, and runner speed tercile, with the break-even p* for each cell, so a coach gets a usable lookup instead of a season-level runs total.
+### hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/3
+IDEA: Use a negative-control check. Apply the same flagging procedure to a placebo where the label is shuffled within game-season strata, or to sends only (cross-fitted), and require the real runs-left estimate to exceed the placebo distribution.
+### hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/4
+IDEA: Make the 30-out-at-home early stop a count-based rule on the 2025 data with explicit fallback, and add a minimum failures-per-covariate rule (for example, events-per-variable) so the logistic model is not fit on near-zero failures. If unmet, penalize the model or reduce covariates.
+### hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/5
+IDEA: Define label precedence explicitly. Order by final outcome: out at home, then scored in the same segment as the batted-ball play (SEND), then stopped at third (HOLD), with "advanced later" as its own excluded class in the primary analysis.
+### hd-20261010-035642-9bb3951eebe6/candidates/0/0/idea/6
+IDEA: Put the first-segment base rule, exclusions, 0.05 margin, and the label precedence into the frozen hash before the full 2025 data is opened, and reconcile the controller recount before the full pull.
+### hd-20261010-035642-9bb3951eebe6/candidates/0/1/idea/1
+IDEA: Freeze one mutually exclusive label hierarchy (coach-held, sent-safe, sent-out, ambiguous-advanced-later) and the base-at-contact definition before retrieval. Resolve the controller-versus-report discrepancy on the cached sample first, and make ambiguous runners a third class instead of folding them into SEND.
+### hd-20261010-035642-9bb3951eebe6/candidates/0/1/idea/2
+IDEA: Replace the stop rule with a precomputed power rule. Require a minimum number of out-at-home events in the pooled 2025 and 2026 data, and state in advance that a likely outcome is DESCRIPTIVE ONLY. Report the observed out rate with an exact upper bound.
+### hd-20261010-035642-9bb3951eebe6/candidates/0/1/idea/3
+IDEA: Make the positive criterion falsifiable by refitting the model inside each bootstrap, replacing the 0.05 margin with a pre-set value tested on the held-out data, and adding a negative control (for example, applying the flag rule to sends and checking if realized outcomes match predicted success).
+### hd-20261010-035642-9bb3951eebe6/candidates/0/1/idea/4
+IDEA: Use a joint overlap measure and decision-time covariates (prior-season speed and arm values) so the model does not use the same-season information.

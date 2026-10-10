@@ -1,0 +1,85 @@
+# R003 experiment design: third-base send/hold (SENDHOLD)
+
+Status: v3 (FROZEN before any model fit), 2026-10-10. v2 (R003-SENDHOLD-DESIGN.v2.md, frozen before retrieval) was amended once, by owner decision on 2026-10-10 ("Amend to v3, keep confirmatory"), to correct the SENT_SAFE/AMBIGUOUS definition; the reason is in the v2 -> v3 section at the end. The correction rests on the feed's movement structure, not on outcomes or model results; no model had been fit. v1 (R003-SENDHOLD-DESIGN.v1.md) was challenged by HowlDream (workflow-evidence/R003/dream/p5-design-challenge-texts.txt).
+
+## Decision and user
+
+- User: a club's third-base coach and the advance/analytics staff who prepare send/hold guidance.
+- Decision: with a runner on second at a single, or on first at a double, and fewer than two outs before the play, send the runner home or hold at third.
+- Question: do major-league coaches hold runners whom public decision-time information says would score often enough to make a send worth it? If so, how many runs per season does that leave, league-wide and for the Cubs?
+
+## Data (user authorization 2026-10-10, two seasons)
+
+- Play-by-play for every 2025 and 2026 regular-season game (about 2,433 requests per season, 2 per second, cached under ignored data/), plus the public sprint-speed and outfielder arm-strength leaderboards. Bulk responses stay local; only aggregates and at most 5 short examples are published.
+- Unit: one runner per qualifying play, with the base at contact taken from the runner's first movement segment (rule validated in R3-S2).
+- Labels, one per runner, assigned in this order:
+  1. SENT_OUT: any movement segment is an out at home.
+  2. OUT_ELSEWHERE: any other out (excluded, counted).
+  3. SENT_SAFE: the runner scores, and every movement segment after the first carries the same event as the play's result (Single or Double). The feed often splits one continuous advance at third base (for example 2B>3B and 3B>score, both with event "Single").
+  4. AMBIGUOUS: the runner scores, but a later segment carries a different event (for example Error, Runner Out, Other Advance), so the advance home may have come from a misplay or a throw elsewhere. Excluded from the primary analysis; a sensitivity analysis counts these as SENT_SAFE.
+  5. HOLD: the runner ends at third without scoring.
+  6. OTHER: excluded, counted.
+- SEND means SENT_SAFE or SENT_OUT.
+- Covariates, known at decision time:
+  - Runner sprint speed from the prior season's leaderboard (2024 for 2025 plays, 2025 for 2026 plays). If the prior value is missing, use the same-season value and set a flag.
+  - Arm strength of the fielder who fielded the ball, from the prior season's leaderboard with the same fallback and flag. Missing for infielders, with a flag.
+  - Hit type and hit location (coordinates and zone).
+  - Outs, inning, and score difference.
+- The same-season fallback carries post-decision information. Its share is reported, and a sensitivity analysis drops flagged rows.
+
+## Split and holdout
+
+- Fit season: 2025. Holdout season: 2026, untouched until the model and thresholds are frozen and their hash is recorded in the journal.
+- Run expectancy comes from the 2025 feeds only: average runs scored from each base-out state to the end of the inning, computed by the code. No outside run-expectancy numbers are used.
+
+## Analysis
+
+1. Send-success model: logistic regression of P(safe | SEND) on the covariates, fit on 2025 SEND runners. This is a deliberately simple, inspectable model. The full covariate set is used only if 2025 has at least 10 SENT_OUT runners per model parameter. Otherwise a reduced set is used: speed, hit-location zone grouped into left/center/right field, and outs.
+2. Baseline for comparison: a constant (the 2025 SEND success rate), and an outs-only rate.
+3. Break-even for each hold, from the 2025 run-expectancy table: p* = (RE[hold state] - RE[out-at-home state]) / (RE[run scored state] + 1 - RE[out-at-home state]). Trailing runners are ignored in this first version, as a stated simplification.
+4. Flag a HOLD as a "missed send" when the predicted P(safe) is at least p* + 0.05.
+5. Estimate the runs left per season as the sum, over flagged holds, of p·(RE_scored + 1) + (1 - p)·RE_out - RE_hold.
+6. Overlap: fit a send-versus-hold propensity model (logistic regression on the same covariates, 2025). Assess only holds whose propensity is at or above the 2.5th percentile of the sends' propensity, and report the share of holds dropped.
+7. Negative control: on 2026 SEND runners with predicted P(safe) >= p* + 0.05, the realized success rate must fall inside the 95% bootstrap interval of their mean predicted P(safe).
+8. Uncertainty: a game-level bootstrap (1,000 resamples, seed fixed in code) that refits both models inside each resample.
+9. Coach-facing output (descriptive): a decision chart of 2025-model P(safe) by hit-location zone, hit type, outs and runner-speed tercile, with p* per cell and the count of observations behind each cell.
+
+## Pre-registered success and stop rules
+
+- Early stop: if 2025 has fewer than 30 SENT_OUT runners, the success model is not fit. The result is reported as DESCRIPTIVE ONLY: rates, counts, and the out-at-home rate per season with an exact (Clopper-Pearson) 95% interval. This outcome is likely: the 100-game sample had 0 SENT_OUT runners among 175 opportunities.
+- Holdout validity: on 2026 SEND runners, the model must beat the constant baseline on Brier score (bootstrap over games, 95% interval of the difference excluding zero) and have a calibration slope between 0.7 and 1.3. If it fails, the result is NEGATIVE (the model cannot judge holds).
+- Effect: a POSITIVE result requires the 2026 league-wide runs-left estimate to have a 95% game-bootstrap interval excluding zero, and the negative control to pass. It is reported as an upper-bound-style estimate, because sends are selected and the counterfactual for holds is extrapolated.
+- Cubs: count of Cubs flagged holds and their runs-left estimate in 2025 and 2026, descriptive only, with no significance claim.
+- No re-tuning after the 2026 holdout is opened. Any later analysis is labeled EXPLORATORY.
+
+## Known threats
+
+- Selection: coaches send the runners they expect to be safe, so the model fit on sends is optimistic for holds. The overlap check and the upper-bound framing address this partly, not fully.
+- Unobserved factors: the runner's jump, the outfielder's charge and exchange, the throw's accuracy, the coach's view of the play, and pitcher or batter context after the play.
+- Missing defender arm values for infield-fielded balls.
+- Trailing runners and later events are ignored in the run-value accounting.
+- Season-level speed and arm values carry post-decision information.
+
+## Reconciliation of the v1 challenge (v1 -> v2)
+
+| Challenge point | Decision | Reason |
+| --- | --- | --- |
+| Label precedence ambiguous; "advanced later" folded into SEND | ADOPTED: ordered labels; AMBIGUOUS is its own excluded class | Mutually exclusive labels; ambiguous runners do not bias either class |
+| Marginal overlap check is inadequate | ADOPTED: send-vs-hold propensity support | Joint, not per-covariate, overlap |
+| Power: 30 outs may still be too few for the covariate count | ADOPTED: events-per-parameter rule with a fixed reduced model; exact interval if stopped | Prevents fitting on near-zero failures |
+| Pool 2025 and 2026 for power | REJECTED for the model; pooled rates are reported descriptively | Pooling would consume the holdout |
+| Same-season speed/arm leak | ADOPTED: prior-season values (2 extra leaderboard requests, inside the approved request count), same-season fallback flagged | Decision-time information |
+| Bootstrap must refit the model | ADOPTED | Interval reflects model uncertainty |
+| Negative control | ADOPTED: calibration of sends in the flagged region | Guards against flagging artifacts |
+| Tune the 0.05 margin on held-out data | REJECTED: margin stays fixed at 0.05 | Tuning on the holdout would invalidate it |
+| Decision chart for coaches | ADOPTED as descriptive output | Usable form for the decision owner |
+| Reconcile controller recount before the pull | ALREADY DONE: controller recount from raw feeds reproduced the report (journal, R3-S2) | n/a |
+
+## v2 -> v3 amendment (owner decision 2026-10-10, before any model fit)
+
+| Point | v2 | v3 | Evidence |
+| --- | --- | --- | --- |
+| Runners whose first segment ends at third and who score later on the same play | AMBIGUOUS (excluded) | SENT_SAFE when every later segment's event equals the play's event; otherwise AMBIGUOUS | Controller audit of the feed structure: of 3,001 such runners, the later segment's event was Single 1,779, Double 1,042, Error 143, Runner Out 35, other 2 (journal, R3-S4) |
+| Reporting | v2 primary | v3 primary; the v2-definition primary result is also reported, labeled as the pre-registered v2 definition | Transparency about the amendment |
+
+Nothing else changes: covariates, split, holdout, thresholds, margin 0.05, stop rules and success criteria are as in v2.

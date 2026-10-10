@@ -1,0 +1,1629 @@
+{
+  "context_echo_ratio": 0.2830188679245283,
+  "evidence_echo_ratio": 0.2641509433962264,
+  "novel_concept_ratio": 0.7924528301886793,
+  "repeated_family_ratio": 0.4339622641509434,
+  "idea_count": 53,
+  "cluster_count": 30,
+  "units": [
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/1",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/0",
+      "text": "IDEA: Problem=pre-arbitration extension timing; owner=GM and baseball operations contract staff; decision=whether, when, and at what price to offer long-term extensions to players with under three years of service, recurring each spring and offseason; value at stake=multi-year salary commitments plus surplus value if the player outperforms the deal; mechanism=model a player's arbitration salary path and free-agent value under uncertainty using public performance, service time and past extension terms, then price the option value of waiting one more season; baseline=negotiate from recent comparable extensions and agent anchors; intervention=a retrospective simulator that replays past public extensions against \"wait one year\" counterfactuals.",
+      "source_span": [
+        0,
+        750
+      ],
+      "source_hash": "ad5190e40727b83f287bf3d71b7f778f334bc4104316d257973ffdc7537c2016",
+      "cluster": "cluster-1",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.32857142857142857,
+      "context_token_overlap": 0.35714285714285715,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/2",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/0",
+      "text": "IDEA: Problem=salary arbitration filing and hearing strategy; owner=baseball operations and legal or contract staff; decision=the filing number and whether to go \"file-and-trial\" or settle, made each January; value at stake=individual awards across the arbitration-eligible roster, plus effects on later raises because arbitration salaries compound; mechanism=predict the panel outcome from the public history of hearings, filing midpoints and the platform statistics panels historically reward, and quantify the expected value of settling versus a hearing; baseline=midpoint settlement using comparables chosen by staff; intervention=a hearing-outcome predictor tested on public hearing records.",
+      "source_span": [
+        1215,
+        1911
+      ],
+      "source_hash": "ad5190e40727b83f287bf3d71b7f778f334bc4104316d257973ffdc7537c2016",
+      "cluster": "cluster-2",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.22580645161290322,
+      "context_token_overlap": 0.3064516129032258,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/3",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/0",
+      "text": "IDEA: Problem=non-tender and tender decisions; owner=GM; decision=tender or non-tender arbitration-eligible players at the late-November or early-December deadline; value at stake=projected arbitration salary versus the cost of replacing the player on the open market; mechanism=pair projected arbitration salaries with a forecast of comparable non-tendered and free-agent replacements available that winter at known prices; baseline=tender if projected WAR per dollar beats a club threshold; intervention=a replacement-market forecaster backtested on which past non-tendered players signed, at what price and with what next-season output.",
+      "source_span": [
+        2326,
+        2965
+      ],
+      "source_hash": "ad5190e40727b83f287bf3d71b7f778f334bc4104316d257973ffdc7537c2016",
+      "cluster": "cluster-1",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/1",
+      "similar_to": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.3559322033898305,
+      "context_token_overlap": 0.3728813559322034,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/4",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/0",
+      "text": "IDEA: Problem=amateur draft bonus pool allocation; owner=amateur scouting director; decision=draft order and bonus allocation across the first ten rounds, made each July; value at stake=pool dollars, the risk of exceeding the pool, and value from later rounds; mechanism=model signability and likely bonus relative to slot from public signals such as college eligibility year, prior draft status and public commitments, so the club can spend under slot early and redirect money to later high-ceiling picks; baseline=board ranking plus area scout signability notes; intervention=a signability and bonus predictor backtested on public draft bonus data.",
+      "source_span": [
+        3259,
+        3909
+      ],
+      "source_hash": "ad5190e40727b83f287bf3d71b7f778f334bc4104316d257973ffdc7537c2016",
+      "cluster": "cluster-3",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/4",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.2903225806451613,
+      "context_token_overlap": 0.3387096774193548,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/5",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/0",
+      "text": "IDEA: Problem=college hitter evaluation across uneven competition; owner=amateur scouting director; decision=pre-draft board ranking each spring; value at stake=early-round picks with high expected surplus; mechanism=adjust public college statistics for opponent strength, park and conference, then test which adjustments best predicted later professional outcomes for past draft classes; baseline=raw college statistics plus scout grades; intervention=a strength-of-schedule adjustment layer with retrospective validation against minor-league outcomes.",
+      "source_span": [
+        4391,
+        4944
+      ],
+      "source_hash": "ad5190e40727b83f287bf3d71b7f778f334bc4104316d257973ffdc7537c2016",
+      "cluster": "cluster-4",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/5",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.3,
+      "context_token_overlap": 0.3333333333333333,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/6",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/0",
+      "text": "IDEA: Problem=waiver claim and designated-for-assignment pickup decisions; owner=pro scouting and GM; decision=whether to claim or trade for players designated for assignment, happening throughout the year in a recurring stream; value at stake=low acquisition cost per player but high frequency, with occasional breakout players; mechanism=rank DFA players at the time of designation using only public data available then, such as underlying contact quality, velocity trends and option status, and target players whose skills are undervalued by their surface results; baseline=claim if the player fits a 40-man need and has recent MLB time; intervention=a dated-snapshot ranker backtested on public transaction logs.",
+      "source_span": [
+        5246,
+        5962
+      ],
+      "source_hash": "ad5190e40727b83f287bf3d71b7f778f334bc4104316d257973ffdc7537c2016",
+      "cluster": "cluster-5",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/6",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.2972972972972973,
+      "context_token_overlap": 0.3108108108108108,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/7",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/0",
+      "text": "IDEA: Problem=the trade-deadline buy, sell or hold posture; owner=president of baseball operations; decision=posture and the price of rentals in late July; value at stake=prospect capital spent versus a change in playoff probability; mechanism=translate marginal WAR into change in playoff and series-win probability under the current playoff format, using public projection systems, and price acquisitions per point of playoff odds; baseline=a judgment of standings position plus playoff-odds websites; intervention=a marginal playoff-value calculator backtested on public deadline trades.",
+      "source_span": [
+        6253,
+        6843
+      ],
+      "source_hash": "ad5190e40727b83f287bf3d71b7f778f334bc4104316d257973ffdc7537c2016",
+      "cluster": "cluster-6",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/7",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.3018867924528302,
+      "context_token_overlap": 0.32075471698113206,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/8",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/0",
+      "text": "IDEA: Problem=day-game-heavy home scheduling effects on player performance; owner=manager and performance staff; decision=rest days and lineup choices around day games after night games, made weekly in season; value at stake=small per game but recurring across the season; mechanism=estimate from public game logs whether performance drops in day-after-night games and whether rest timing reduces the drop; baseline=veteran rest by feel and fixed rest rotations; intervention=a rest-scheduling recommender tested on public game-level history.",
+      "source_span": [
+        7138,
+        7680
+      ],
+      "source_hash": "ad5190e40727b83f287bf3d71b7f778f334bc4104316d257973ffdc7537c2016",
+      "cluster": "cluster-7",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/8",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.3137254901960784,
+      "context_token_overlap": 0.35294117647058826,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/9",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/0",
+      "text": "IDEA: Problem=places where software is likely unnecessary or clubs and vendors are already ahead; owner=business operations; decision=dynamic ticket pricing, concessions demand forecasting and lineup batting order; value at stake=real for ticketing, small for batting order; mechanism=none clearly available to a new public-data tool, since ticketing vendors already run dynamic pricing and batting-order gains are known to be small; baseline=existing vendor platforms and conventional lineup heuristics; intervention=deprioritize these.",
+      "source_span": [
+        7950,
+        8487
+      ],
+      "source_hash": "ad5190e40727b83f287bf3d71b7f778f334bc4104316d257973ffdc7537c2016",
+      "cluster": "cluster-8",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/9",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.3541666666666667,
+      "context_token_overlap": 0.3541666666666667,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/10",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/0",
+      "text": "IDEA: Problem=a rules-transition scenario engine; owner=president of baseball operations; decision=contract structures, arbitration and draft strategy across an expected collective bargaining transition, at a one-time but high-stakes moment this offseason; value at stake=multiple contract and roster decisions made under rule uncertainty; mechanism=simulate outcomes under several plausible rule scenarios so commitments made now are robust to rule changes; baseline=wait for the new agreement or rely on legal staff judgment; intervention=a scenario model that reprices extensions, qualifying offers and pool strategy under each rule set.",
+      "source_span": [
+        8753,
+        9393
+      ],
+      "source_hash": "ad5190e40727b83f287bf3d71b7f778f334bc4104316d257973ffdc7537c2016",
+      "cluster": "cluster-9",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/10",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.2857142857142857,
+      "context_token_overlap": 0.3492063492063492,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/1",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/1",
+      "text": "IDEA: Qualifying offer decisions; owner: GM/president of baseball operations; decision: whether to extend a qualifying offer to each eligible departing free agent, made yearly in the days after the World Series; value at stake: a one-year salary at the QO amount if accepted versus a compensation draft pick if declined; mechanism: estimate acceptance probability and market AAV from public signals at decision time (age, recent WAR, injury history, agent, market depth at the position) instead of a binary rule; baseline: offer when expected market AAV clearly exceeds the QO amount; software: a calibrated acceptance and market-value model backtested on public QO outcomes since the system began.",
+      "source_span": [
+        0,
+        698
+      ],
+      "source_hash": "8b2e84e118a2d0e562ffeca33eb7db0f42198d4c348521d463f4d16f2ab4c8d8",
+      "cluster": "cluster-1",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/1",
+      "similar_to": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.27692307692307694,
+      "context_token_overlap": 0.2923076923076923,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/2",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/1",
+      "text": "IDEA: Postseason series roster construction; owner: baseball operations plus manager; decision: choosing the 26-man roster for each playoff round, made in the days before each series; value at stake: elimination games where a single roster slot such as a pinch runner, an extra reliever, or a platoon bat can swing leverage; mechanism: simulate the series using the opponent's projected starters, bullpen depth, and handedness mix to value marginal slots; baseline: carry the regular-season active roster with minor swaps based on health and intuition; software: a series-specific roster optimizer, backtested by replaying public postseason rosters against their alternatives.",
+      "source_span": [
+        1257,
+        1933
+      ],
+      "source_hash": "8b2e84e118a2d0e562ffeca33eb7db0f42198d4c348521d463f4d16f2ab4c8d8",
+      "cluster": "cluster-2",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/2",
+      "similar_to": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/2",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.22058823529411764,
+      "context_token_overlap": 0.2647058823529412,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/3",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/1",
+      "text": "IDEA: Coaching hire evaluation; owner: president of baseball operations and manager; decision: hiring or retaining major-league and upper-minors hitting, pitching, and assistant coaches, made mainly in October and November; value at stake: staff who may influence many players at once across multiple seasons; mechanism: estimate a coach-associated change in player outcomes (for example plate discipline or pitch-mix shifts) from public data across all clubs when coaches move between organizations; baseline: reputation, referrals, and interviews; software: a coach-movement panel built from public staff announcements linked to player-level Statcast changes, with controls for aging and regression.",
+      "source_span": [
+        2460,
+        3161
+      ],
+      "source_hash": "8b2e84e118a2d0e562ffeca33eb7db0f42198d4c348521d463f4d16f2ab4c8d8",
+      "cluster": "cluster-9",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/10",
+      "similar_to": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/10",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.20833333333333334,
+      "context_token_overlap": 0.2361111111111111,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/4",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/1",
+      "text": "IDEA: Stolen-base attempt policy under pitch-clock and disengagement limits; owner: manager and first-base and third-base coaches; decision: green-light or hold calls by runner, pitcher, catcher, count, and disengagement state, made every game; value at stake: run expectancy from many attempts over a season; mechanism: combine public sprint speed, catcher pop time, pitcher pickoff and disengagement history, and count to estimate break-even success probability in each situation; baseline: give fast runners a standing green light and hold everyone else; software: a situational attempt chart, backtested on public play-by-play and Statcast baserunning data since the 2023 rule changes.",
+      "source_span": [
+        3705,
+        4394
+      ],
+      "source_hash": "8b2e84e118a2d0e562ffeca33eb7db0f42198d4c348521d463f4d16f2ab4c8d8",
+      "cluster": "cluster-10",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/4",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.2,
+      "context_token_overlap": 0.22857142857142856,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/5",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/1",
+      "text": "IDEA: Rotation sequencing around off-days; owner: manager and pitching coach; decision: whether to keep a strict rotation order, skip a starter, or insert a sixth starter around scheduled off-days, made weekly during the season; value at stake: allocation of starts among starters of different quality, plus fatigue costs; mechanism: model the quality gained by giving the best starters more starts against public evidence of rest-day effects on velocity and results; baseline: a fixed five-man order, with skips only for injury; software: a schedule-aware start allocator, backtested on public game logs and Statcast velocity by days of rest.",
+      "source_span": [
+        4778,
+        5421
+      ],
+      "source_hash": "8b2e84e118a2d0e562ffeca33eb7db0f42198d4c348521d463f4d16f2ab4c8d8",
+      "cluster": "cluster-11",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/5",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.15625,
+      "context_token_overlap": 0.1875,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/6",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/1",
+      "text": "IDEA: Pinch-hitting and defensive substitution timing; owner: manager; decision: when to use a bench bat or defensive replacement in late innings, made daily; value at stake: win probability added in high-leverage situations; mechanism: compare the leverage-weighted value of using a bench player now against keeping him for a likely later spot; baseline: platoon-advantage substitutions plus routine late-inning defensive swaps; software: an in-game bench-usage model, backtested on public play-by-play by replaying substitution decisions.",
+      "source_span": [
+        5697,
+        6237
+      ],
+      "source_hash": "8b2e84e118a2d0e562ffeca33eb7db0f42198d4c348521d463f4d16f2ab4c8d8",
+      "cluster": "cluster-1",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/1",
+      "similar_to": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.23076923076923078,
+      "context_token_overlap": 0.2692307692307692,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/7",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/1",
+      "text": "IDEA: Lineup batting-order optimization; this is likely a domain where software is unnecessary, because public research suggests the gap between a sensible order and an optimal one is small.",
+      "source_span": [
+        6370,
+        6560
+      ],
+      "source_hash": "8b2e84e118a2d0e562ffeca33eb7db0f42198d4c348521d463f4d16f2ab4c8d8",
+      "cluster": "cluster-12",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/7",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.17647058823529413,
+      "context_token_overlap": 0.17647058823529413,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/8",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/1",
+      "text": "IDEA: Spring training statistics; this is likely a domain where software is unnecessary, because samples are small and opponent quality varies, so the simple baseline of largely ignoring spring results is hard to beat.",
+      "source_span": [
+        6561,
+        6779
+      ],
+      "source_hash": "8b2e84e118a2d0e562ffeca33eb7db0f42198d4c348521d463f4d16f2ab4c8d8",
+      "cluster": "cluster-12",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/7",
+      "similar_to": "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/7",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.2857142857142857,
+      "context_token_overlap": 0.3333333333333333,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/2/idea/1",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/2",
+      "text": "IDEA: Problem=coaching-staff hiring is decided by reputation and interviews rather than evidence of player improvement; owner=President of Baseball Operations, GM and manager; decision=hiring or retaining MLB and upper-minors hitting, pitching and catching coaches each October to December, with this offseason's window open now; value at stake=hypothesized as large and recurring because one coach touches many players' outcomes for several seasons, size unknown; mechanism=build a public coach-tenure ledger from press releases and media guides, then estimate each coach's effect on players who changed organizations, comparing the year before arrival with the year after and against matched players who did not move; baseline=network referrals, reputation from players, and interview impressions; software=a coach-attribution tool that ranks candidates with uncertainty intervals and flags coaches whose apparent effect is just regression to the mean.",
+      "source_span": [
+        0,
+        954
+      ],
+      "source_hash": "a4011c051e891f06466e4319c6b163c79272455ee27933df82d01ce66a0cb216",
+      "cluster": "cluster-13",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/2/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.23333333333333334,
+      "context_token_overlap": 0.24444444444444444,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/2/idea/2",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/2",
+      "text": "IDEA: Problem=pricing players posted from NPB and KBO and signed internationally as free agents; owner=GM, international scouting director and pro scouting director; decision=whether to bid on posted players and how much, during posting windows that usually run November to January; value at stake=potentially large per signing, since these are multi-year major-league contracts, but the number of events per year is small; mechanism=translation models that use public foreign-league stats, including pitch-tracking where it is published, along with age and league-environment adjustments, calibrated on the MLB outcomes of previously posted players; baseline=scouting reports combined with simple ratios of foreign-league stats to MLB stats and agent-driven market comparables; software=a probabilistic translation tool with explicit uncertainty that is updated as each new posting cohort produces MLB results.",
+      "source_span": [
+        2064,
+        2975
+      ],
+      "source_hash": "a4011c051e891f06466e4319c6b163c79272455ee27933df82d01ce66a0cb216",
+      "cluster": "cluster-14",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/2/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.25301204819277107,
+      "context_token_overlap": 0.2891566265060241,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/2/idea/3",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/2",
+      "text": "IDEA: Problem=managing starters around expected rain delays at a home park without a roof; owner=manager, pitching coach and head of game operations; decision=on game days with uncertain weather, whether to start the scheduled starter, use an opener or delay the start, decided in the hours before first pitch; value at stake=hypothesized as modest per event but recurring, through avoided wasted starts and short outings that tax the bullpen; mechanism=combine public precipitation forecasts with historical delay records to estimate the probability of a delay longer than a starter can wait out; baseline=staff judgment plus the umpire crew and league's consultation on weather; software=a delay-risk forecast linked to a rule for choosing the starter.",
+      "source_span": [
+        3767,
+        4521
+      ],
+      "source_hash": "a4011c051e891f06466e4319c6b163c79272455ee27933df82d01ce66a0cb216",
+      "cluster": "cluster-15",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/2/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.16666666666666666,
+      "context_token_overlap": 0.20512820512820512,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/2/idea/4",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/2",
+      "text": "IDEA: Problem=where software is likely unnecessary: routine decisions such as setting the order of everyday lineups, or a dashboard of public leaderboards; owner=manager and analysts; decision=daily; value at stake=likely small, based on the earlier exploration finding a domain gap in lineup optimization; mechanism=none beyond existing tools; baseline=current practice is probably close to optimal; software=recommend not building, and redirect the effort toward coach attribution or the translation of posted foreign-league players.",
+      "source_span": [
+        5003,
+        5538
+      ],
+      "source_hash": "a4011c051e891f06466e4319c6b163c79272455ee27933df82d01ce66a0cb216",
+      "cluster": "cluster-8",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/9",
+      "similar_to": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/9",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.25925925925925924,
+      "context_token_overlap": 0.2962962962962963,
+      "evidence_family_echo": false,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/3/idea/1",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/3",
+      "text": "IDEA: Problem=spring-training signal underuse; owner=GM and manager; decision=final Opening Day roster spots and early-season role assignments each late March; value=a few marginal roster slots and leverage roles over the first weeks; mechanism=spring Statcast-tracked velocity, spin and exit-velocity changes may carry real signal even though spring outcome stats are noise; baseline=ignore spring stats and rely on prior-season performance plus contract status; intervention=a model that combines spring physical-tracking deltas with prior-season projections, backtested on public spring tracking against regular-season results.",
+      "source_span": [
+        0,
+        630
+      ],
+      "source_hash": "dbedb25f7450aa362f5e6321626b04a6e00b6e182b033c3af587e3b8a2b3c420",
+      "cluster": "cluster-1",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/1",
+      "similar_to": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.18461538461538463,
+      "context_token_overlap": 0.2153846153846154,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/3/idea/2",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/3",
+      "text": "IDEA: Problem=postseason roster construction for short series; owner=manager, GM and analytics staff; decision=choosing the 26-man roster per round in October, including the count of pitchers versus position players and specialist slots such as pinch runner or third catcher; value=high-leverage innings concentrated in very few games; mechanism=simulating series-specific opponent handedness, off days and starter usage may reveal that the marginal 13th pitcher is worth less than a bench bat or runner; baseline=carry the regular-season structure with the top pitchers; intervention=a series simulator that scores roster variants using public schedules, opponent splits and historical postseason usage.",
+      "source_span": [
+        1094,
+        1798
+      ],
+      "source_hash": "dbedb25f7450aa362f5e6321626b04a6e00b6e182b033c3af587e3b8a2b3c420",
+      "cluster": "cluster-11",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/5",
+      "similar_to": "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/5",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.16666666666666666,
+      "context_token_overlap": 0.20833333333333334,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/3/idea/3",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/3",
+      "text": "IDEA: Problem=international amateur bonus-pool allocation; owner=international scouting director; decision=distributing the annual signing pool across prospects at the January signing period, with verbal agreements made years earlier; value=the full annual pool plus long-tail prospect value; mechanism=public prospect rankings and published bonuses could show whether value per dollar is higher in concentrated top signings or in spread mid-tier signings; baseline=commit to a few top-ranked players early; intervention=a portfolio model trained on public signing-class bonuses and eventual prospect-list or MLB outcomes.",
+      "source_span": [
+        2303,
+        2925
+      ],
+      "source_hash": "dbedb25f7450aa362f5e6321626b04a6e00b6e182b033c3af587e3b8a2b3c420",
+      "cluster": "cluster-3",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/4",
+      "similar_to": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/4",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.23333333333333334,
+      "context_token_overlap": 0.25,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/3/idea/4",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/3",
+      "text": "IDEA: Problem=coaching-staff hiring evaluation; owner=president of baseball operations and GM; decision=filling hitting, pitching and bench coach vacancies, typically in October and November; value=staff influence on many players at once, though hard to isolate; mechanism=public player-level changes before and after a coach's arrival at prior stops, adjusted for aging and regression, could separate coaches with repeatable effects from those who benefited from roster churn; baseline=reputation, interviews and network referrals; intervention=a coach-attribution model on public staff histories and player performance deltas.",
+      "source_span": [
+        3378,
+        4006
+      ],
+      "source_hash": "dbedb25f7450aa362f5e6321626b04a6e00b6e182b033c3af587e3b8a2b3c420",
+      "cluster": "cluster-9",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/10",
+      "similar_to": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/10",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.23809523809523808,
+      "context_token_overlap": 0.2698412698412698,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/3/idea/5",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/3",
+      "text": "IDEA: Problem=early-season weather and postponement exposure at Wrigley; owner=business operations together with the league; decision=managing April and May home-date risk, including ticket and promotion plans and pitcher scheduling around likely postponements; value=lost gate revenue, doubleheader workload and staff-planning costs; mechanism=public historical weather and postponement records could quantify risk by date to inform promotion placement and rotation contingency planning; baseline=static calendar planning; intervention=a date-risk calendar and contingency planner.",
+      "source_span": [
+        4429,
+        5011
+      ],
+      "source_hash": "dbedb25f7450aa362f5e6321626b04a6e00b6e182b033c3af587e3b8a2b3c420",
+      "cluster": "cluster-16",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/3/idea/5",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.2692307692307692,
+      "context_token_overlap": 0.3076923076923077,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/3/idea/6",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/3",
+      "text": "IDEA: Problem=where software is unnecessary; owner=analytics leadership; decision=annual triage of which tooling to build; value=staff time saved; mechanism=explicitly drop areas where clubs are already ahead or rules already dominate, such as concession demand forecasting, dynamic ticket pricing done by vendors, and minor-league free-agent triage; baseline=build tools by request; intervention=a short scoring rubric rating each candidate on value size, public-signal edge and backtestability.",
+      "source_span": [
+        5333,
+        5829
+      ],
+      "source_hash": "dbedb25f7450aa362f5e6321626b04a6e00b6e182b033c3af587e3b8a2b3c420",
+      "cluster": "cluster-12",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/7",
+      "similar_to": "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/7",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.38461538461538464,
+      "context_token_overlap": 0.4230769230769231,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/1",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/4",
+      "text": "IDEA: Problem family: estimating the marginal value of coaching and player-development staff hires. This is a decision family not covered by the explored list.",
+      "source_span": [
+        0,
+        159
+      ],
+      "source_hash": "1b24107e67c420a6bf447196bbee89d5ba9eba5a1944d3e991754930f04e1b09",
+      "cluster": "cluster-17",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.42857142857142855,
+      "context_token_overlap": 0.42857142857142855,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/2",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/4",
+      "text": "IDEA: Decision owner: the President of Baseball Operations and GM, with input from the farm director for minor-league staff.",
+      "source_span": [
+        160,
+        284
+      ],
+      "source_hash": "1b24107e67c420a6bf447196bbee89d5ba9eba5a1944d3e991754930f04e1b09",
+      "cluster": "cluster-9",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/10",
+      "similar_to": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/10",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.4166666666666667,
+      "context_token_overlap": 0.4166666666666667,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/3",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/4",
+      "text": "IDEA: Recurring decision: hiring, retaining or replacing MLB coaches, such as hitting, pitching, catching and bench coaches.",
+      "source_span": [
+        285,
+        409
+      ],
+      "source_hash": "1b24107e67c420a6bf447196bbee89d5ba9eba5a1944d3e991754930f04e1b09",
+      "cluster": "cluster-18",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.25,
+      "context_token_overlap": 0.25,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/4",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/4",
+      "text": "IDEA: Timing: each October through December, and staff turnover across MLB clusters in the weeks after clubs are eliminated. Early October 2026 is inside this window for the Cubs.",
+      "source_span": [
+        410,
+        589
+      ],
+      "source_hash": "1b24107e67c420a6bf447196bbee89d5ba9eba5a1944d3e991754930f04e1b09",
+      "cluster": "cluster-19",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/4",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.42105263157894735,
+      "context_token_overlap": 0.42105263157894735,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/5",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/4",
+      "text": "IDEA: Recurring decision: filling minor-league coordinator and affiliate coach roles each winter. These hires shape many player-seasons at once.",
+      "source_span": [
+        590,
+        734
+      ],
+      "source_hash": "1b24107e67c420a6bf447196bbee89d5ba9eba5a1944d3e991754930f04e1b09",
+      "cluster": "cluster-18",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/3",
+      "similar_to": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/3",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.3684210526315789,
+      "context_token_overlap": 0.3684210526315789,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/6",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/4",
+      "text": "IDEA: Value at stake (hypothesis): a coach touches every player on the staff or lineup for multiple seasons. A real coach effect would therefore compound across far more player-seasons than any single roster move.",
+      "source_span": [
+        735,
+        948
+      ],
+      "source_hash": "1b24107e67c420a6bf447196bbee89d5ba9eba5a1944d3e991754930f04e1b09",
+      "cluster": "cluster-20",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/6",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.16666666666666666,
+      "context_token_overlap": 0.20833333333333334,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/7",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/4",
+      "text": "IDEA: Value at stake (hypothesis): coaching salaries are small compared with player payroll, so a good evaluation could have high leverage per dollar if true coach effects exist.",
+      "source_span": [
+        949,
+        1127
+      ],
+      "source_hash": "1b24107e67c420a6bf447196bbee89d5ba9eba5a1944d3e991754930f04e1b09",
+      "cluster": "cluster-20",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/6",
+      "similar_to": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/6",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.2608695652173913,
+      "context_token_overlap": 0.2608695652173913,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/8",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/4",
+      "text": "IDEA: Simple baseline a club already uses: hire by reputation, playing career, network referrals, interviews, and the outcomes of the coach's prior team.",
+      "source_span": [
+        1128,
+        1281
+      ],
+      "source_hash": "1b24107e67c420a6bf447196bbee89d5ba9eba5a1944d3e991754930f04e1b09",
+      "cluster": "cluster-21",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/8",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.375,
+      "context_token_overlap": 0.375,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/9",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/4",
+      "text": "IDEA: Mechanism of advantage: public team and staff directories, media transaction reports and Baseball-Reference coaching records can be joined to player-level public metrics. This builds a coach-player linkage panel.",
+      "source_span": [
+        1282,
+        1500
+      ],
+      "source_hash": "1b24107e67c420a6bf447196bbee89d5ba9eba5a1944d3e991754930f04e1b09",
+      "cluster": "cluster-22",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/9",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.2857142857142857,
+      "context_token_overlap": 0.2857142857142857,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/10",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/4",
+      "text": "IDEA: Mechanism of advantage: use movement-based identification. Track the same players under different coaches, and the same coaches with different players. This separates coach effects from player aging and talent.",
+      "source_span": [
+        1501,
+        1717
+      ],
+      "source_hash": "1b24107e67c420a6bf447196bbee89d5ba9eba5a1944d3e991754930f04e1b09",
+      "cluster": "cluster-22",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/9",
+      "similar_to": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/9",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.23529411764705882,
+      "context_token_overlap": 0.23529411764705882,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/11",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/4",
+      "text": "IDEA: Mechanism of advantage: the model would estimate within-player changes after a coaching change, compared against matched players whose coaches did not change. It would use public outcome metrics such as chase rate, zone contact, pitch-mix shifts and walk rate.",
+      "source_span": [
+        1718,
+        1984
+      ],
+      "source_hash": "1b24107e67c420a6bf447196bbee89d5ba9eba5a1944d3e991754930f04e1b09",
+      "cluster": "cluster-22",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/9",
+      "similar_to": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/9",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.1724137931034483,
+      "context_token_overlap": 0.27586206896551724,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/12",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/4",
+      "text": "IDEA: Software intervention: a coach-candidate dossier generator. For each candidate it would report the before/after trajectories of players they coached, with uncertainty intervals, matched controls and sample-size warnings.",
+      "source_span": [
+        1985,
+        2211
+      ],
+      "source_hash": "1b24107e67c420a6bf447196bbee89d5ba9eba5a1944d3e991754930f04e1b09",
+      "cluster": "cluster-23",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/12",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.15,
+      "context_token_overlap": 0.15,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/13",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/4",
+      "text": "IDEA: Software intervention: a retrospective test. Freeze data as of each past offseason, rank the coaching hires made that winter, and check whether the rankings predicted the next one to two seasons of player-change metrics better than the prior-team-outcome baseline.",
+      "source_span": [
+        2212,
+        2482
+      ],
+      "source_hash": "1b24107e67c420a6bf447196bbee89d5ba9eba5a1944d3e991754930f04e1b09",
+      "cluster": "cluster-24",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/13",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.35714285714285715,
+      "context_token_overlap": 0.39285714285714285,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/14",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/4",
+      "text": "IDEA: Unconventional extension: treat staff as a scarce market. Flag undervalued coaches whose players improved but whose teams lost, since a team-record baseline would systematically overlook them.",
+      "source_span": [
+        2483,
+        2681
+      ],
+      "source_hash": "1b24107e67c420a6bf447196bbee89d5ba9eba5a1944d3e991754930f04e1b09",
+      "cluster": "cluster-25",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/14",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.05555555555555555,
+      "context_token_overlap": 0.05555555555555555,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/1",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/5",
+      "text": "IDEA: Problem: building the postseason roster. Owner: GM and manager, with input from the analytics and pitching staff. Decision: who fills the 26 spots for each round, set before each series and reset between rounds, about 1 to 4 times per year when the club qualifies.",
+      "source_span": [
+        0,
+        270
+      ],
+      "source_hash": "d3932a1a2a4726ca4fcb6cfc6d900112a484a1c85d2dd221fc8ffd77084b782a",
+      "cluster": "cluster-1",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/1",
+      "similar_to": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.24242424242424243,
+      "context_token_overlap": 0.2727272727272727,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/2",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/5",
+      "text": "IDEA: Value at stake: in October one marginal win carries far more championship probability and revenue than a regular-season win, so small roster gains may be worth more than their run value suggests.",
+      "source_span": [
+        271,
+        472
+      ],
+      "source_hash": "d3932a1a2a4726ca4fcb6cfc6d900112a484a1c85d2dd221fc8ffd77084b782a",
+      "cluster": "cluster-20",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/6",
+      "similar_to": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/6",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.25,
+      "context_token_overlap": 0.2916666666666667,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/3",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/5",
+      "text": "IDEA: Mechanism: short series with off-days need fewer starters and favor high-leverage relief depth, platoon bats against a known small set of opposing pitchers, and specialists such as a pinch runner or defensive replacement whose regular-season value was low.",
+      "source_span": [
+        473,
+        735
+      ],
+      "source_hash": "d3932a1a2a4726ca4fcb6cfc6d900112a484a1c85d2dd221fc8ffd77084b782a",
+      "cluster": "cluster-11",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/5",
+      "similar_to": "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/5",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.15151515151515152,
+      "context_token_overlap": 0.18181818181818182,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/4",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/5",
+      "text": "IDEA: Baseline: carry the top 26 players by regular-season value, then adjust by staff judgment for health and matchups.",
+      "source_span": [
+        736,
+        856
+      ],
+      "source_hash": "d3932a1a2a4726ca4fcb6cfc6d900112a484a1c85d2dd221fc8ffd77084b782a",
+      "cluster": "cluster-26",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/4",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.21428571428571427,
+      "context_token_overlap": 0.21428571428571427,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/5",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/5",
+      "text": "IDEA: Intervention: a series-specific simulator. Inputs are the public opponent rotation and bullpen, the off-day schedule, and public platoon and pitch-type splits. Output is the expected series win probability for each candidate roster compared with the baseline roster.",
+      "source_span": [
+        857,
+        1129
+      ],
+      "source_hash": "d3932a1a2a4726ca4fcb6cfc6d900112a484a1c85d2dd221fc8ffd77084b782a",
+      "cluster": "cluster-27",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/5",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.24,
+      "context_token_overlap": 0.44,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/6",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/5",
+      "text": "IDEA: Retrospective test: rebuild past postseason rosters league-wide from public transaction records and box scores, then score the alternatives a simulator would have recommended against the rosters actually used.",
+      "source_span": [
+        1130,
+        1345
+      ],
+      "source_hash": "d3932a1a2a4726ca4fcb6cfc6d900112a484a1c85d2dd221fc8ffd77084b782a",
+      "cluster": "cluster-24",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/13",
+      "similar_to": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/13",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.18181818181818182,
+      "context_token_overlap": 0.18181818181818182,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/7",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/5",
+      "text": "IDEA: Problem: setting up the late-season pitching rotation for the playoffs. Owner: manager and pitching coach, with front office input. Decision: in roughly the final 10 to 14 days, whether to keep using top starters to chase seeding or a bye, or to line them up for Game 1 of the Wild Card Series.",
+      "source_span": [
+        2236,
+        2536
+      ],
+      "source_hash": "d3932a1a2a4726ca4fcb6cfc6d900112a484a1c85d2dd221fc8ffd77084b782a",
+      "cluster": "cluster-28",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/7",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.2647058823529412,
+      "context_token_overlap": 0.29411764705882354,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/8",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/5",
+      "text": "IDEA: Mechanism: weigh the change in odds of securing a bye or home field against the series win probability gained by starting the best pitcher in an elimination game. Feed live public standings and remaining schedules into a seeding simulation.",
+      "source_span": [
+        2537,
+        2783
+      ],
+      "source_hash": "d3932a1a2a4726ca4fcb6cfc6d900112a484a1c85d2dd221fc8ffd77084b782a",
+      "cluster": "cluster-29",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/8",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.1111111111111111,
+      "context_token_overlap": 0.14814814814814814,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/9",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/5",
+      "text": "IDEA: Baseline: chase the best seed until it is clinched or out of reach, then line up the ace. Alternatively, rest regulars once the club has clinched.",
+      "source_span": [
+        2784,
+        2936
+      ],
+      "source_hash": "d3932a1a2a4726ca4fcb6cfc6d900112a484a1c85d2dd221fc8ffd77084b782a",
+      "cluster": "cluster-30",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/9",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.1111111111111111,
+      "context_token_overlap": 0.2222222222222222,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/10",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/5",
+      "text": "IDEA: Retrospective test: from public game logs, reconstruct each contender's rotation choices in the final two weeks. Simulate alternative alignments using projected seeding odds as of each date, and compare.",
+      "source_span": [
+        2937,
+        3146
+      ],
+      "source_hash": "d3932a1a2a4726ca4fcb6cfc6d900112a484a1c85d2dd221fc8ffd77084b782a",
+      "cluster": "cluster-24",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/13",
+      "similar_to": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/13",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.23809523809523808,
+      "context_token_overlap": 0.23809523809523808,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/11",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/5",
+      "text": "IDEA: Where software is likely unnecessary: legal roster eligibility and deadline rules for the postseason. Checklists and league office review already cover this, and the value is avoiding errors, not gaining an edge.",
+      "source_span": [
+        3760,
+        3978
+      ],
+      "source_hash": "d3932a1a2a4726ca4fcb6cfc6d900112a484a1c85d2dd221fc8ffd77084b782a",
+      "cluster": "cluster-8",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/9",
+      "similar_to": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/9",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.3,
+      "context_token_overlap": 0.4,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    }
+  ],
+  "clusters": [
+    {
+      "id": "cluster-1",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/1",
+      "representative_text": "IDEA: Problem=pre-arbitration extension timing; owner=GM and baseball operations contract staff; decision=whether, when, and at what price to offer long-term extensions to players with under three years of service, recurring each spring and offseason; value at stake=multi-year salary commitments plus surplus value if the player outperforms the deal; mechanism=model a player's arbitration salary path and free-agent value under uncertainty using public performance, service time and past extension terms, then price the option value of waiting one more season; baseline=negotiate from recent comparable extensions and agent anchors; intervention=a retrospective simulator that replays past public extensions against \"wait one year\" counterfactuals.",
+      "label": "against, agent, anchors, arbitration, at, baseball, baseline, commitments",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/1",
+        "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/3",
+        "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/1",
+        "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/6",
+        "hd-20261009-211812-efe1740f0c77/candidates/0/3/idea/1",
+        "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/1"
+      ]
+    },
+    {
+      "id": "cluster-2",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/2",
+      "representative_text": "IDEA: Problem=salary arbitration filing and hearing strategy; owner=baseball operations and legal or contract staff; decision=the filing number and whether to go \"file-and-trial\" or settle, made each January; value at stake=individual awards across the arbitration-eligible roster, plus effects on later raises because arbitration salaries compound; mechanism=predict the panel outcome from the public history of hearings, filing midpoints and the platform statistics panels historically reward, and quantify the expected value of settling versus a hearing; baseline=midpoint settlement using comparables chosen by staff; intervention=a hearing-outcome predictor tested on public hearing records.",
+      "label": "across, arbitration, at, awards, baseball, baseline, because, chosen",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/2",
+        "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-3",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/4",
+      "representative_text": "IDEA: Problem=amateur draft bonus pool allocation; owner=amateur scouting director; decision=draft order and bonus allocation across the first ten rounds, made each July; value at stake=pool dollars, the risk of exceeding the pool, and value from later rounds; mechanism=model signability and likely bonus relative to slot from public signals such as college eligibility year, prior draft status and public commitments, so the club can spend under slot early and redirect money to later high-ceiling picks; baseline=board ranking plus area scout signability notes; intervention=a signability and bonus predictor backtested on public draft bonus data.",
+      "label": "across, allocation, amateur, area, at, backtested, baseline, board",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/4",
+        "hd-20261009-211812-efe1740f0c77/candidates/0/3/idea/3"
+      ]
+    },
+    {
+      "id": "cluster-4",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/5",
+      "representative_text": "IDEA: Problem=college hitter evaluation across uneven competition; owner=amateur scouting director; decision=pre-draft board ranking each spring; value at stake=early-round picks with high expected surplus; mechanism=adjust public college statistics for opponent strength, park and conference, then test which adjustments best predicted later professional outcomes for past draft classes; baseline=raw college statistics plus scout grades; intervention=a strength-of-schedule adjustment layer with retrospective validation against minor-league outcomes.",
+      "label": "across, adjust, adjustment, adjustments, against, amateur, at, baseline",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/5"
+      ]
+    },
+    {
+      "id": "cluster-5",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/6",
+      "representative_text": "IDEA: Problem=waiver claim and designated-for-assignment pickup decisions; owner=pro scouting and GM; decision=whether to claim or trade for players designated for assignment, happening throughout the year in a recurring stream; value at stake=low acquisition cost per player but high frequency, with occasional breakout players; mechanism=rank DFA players at the time of designation using only public data available then, such as underlying contact quality, velocity trends and option status, and target players whose skills are undervalued by their surface results; baseline=claim if the player fits a 40-man need and has recent MLB time; intervention=a dated-snapshot ranker backtested on public transaction logs.",
+      "label": "40, acquisition, assignment, at, available, backtested, baseline, breakout",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/6"
+      ]
+    },
+    {
+      "id": "cluster-6",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/7",
+      "representative_text": "IDEA: Problem=the trade-deadline buy, sell or hold posture; owner=president of baseball operations; decision=posture and the price of rentals in late July; value at stake=prospect capital spent versus a change in playoff probability; mechanism=translate marginal WAR into change in playoff and series-win probability under the current playoff format, using public projection systems, and price acquisitions per point of playoff odds; baseline=a judgment of standings position plus playoff-odds websites; intervention=a marginal playoff-value calculator backtested on public deadline trades.",
+      "label": "acquisitions, at, backtested, baseball, baseline, buy, calculator, capital",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/7"
+      ]
+    },
+    {
+      "id": "cluster-7",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/8",
+      "representative_text": "IDEA: Problem=day-game-heavy home scheduling effects on player performance; owner=manager and performance staff; decision=rest days and lineup choices around day games after night games, made weekly in season; value at stake=small per game but recurring across the season; mechanism=estimate from public game logs whether performance drops in day-after-night games and whether rest timing reduces the drop; baseline=veteran rest by feel and fixed rest rotations; intervention=a rest-scheduling recommender tested on public game-level history.",
+      "label": "across, after, around, at, baseline, but, choices, day",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/8"
+      ]
+    },
+    {
+      "id": "cluster-8",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/9",
+      "representative_text": "IDEA: Problem=places where software is likely unnecessary or clubs and vendors are already ahead; owner=business operations; decision=dynamic ticket pricing, concessions demand forecasting and lineup batting order; value at stake=real for ticketing, small for batting order; mechanism=none clearly available to a new public-data tool, since ticketing vendors already run dynamic pricing and batting-order gains are known to be small; baseline=existing vendor platforms and conventional lineup heuristics; intervention=deprioritize these.",
+      "label": "ahead, already, at, available, baseline, batting, business, clearly",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/9",
+        "hd-20261009-211812-efe1740f0c77/candidates/0/2/idea/4",
+        "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/11"
+      ]
+    },
+    {
+      "id": "cluster-9",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/10",
+      "representative_text": "IDEA: Problem=a rules-transition scenario engine; owner=president of baseball operations; decision=contract structures, arbitration and draft strategy across an expected collective bargaining transition, at a one-time but high-stakes moment this offseason; value at stake=multiple contract and roster decisions made under rule uncertainty; mechanism=simulate outcomes under several plausible rule scenarios so commitments made now are robust to rule changes; baseline=wait for the new agreement or rely on legal staff judgment; intervention=a scenario model that reprices extensions, qualifying offers and pool strategy under each rule set.",
+      "label": "across, agreement, arbitration, at, bargaining, baseball, baseline, but",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/10",
+        "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/3",
+        "hd-20261009-211812-efe1740f0c77/candidates/0/3/idea/4",
+        "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-10",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/4",
+      "representative_text": "IDEA: Stolen-base attempt policy under pitch-clock and disengagement limits; owner: manager and first-base and third-base coaches; decision: green-light or hold calls by runner, pitcher, catcher, count, and disengagement state, made every game; value at stake: run expectancy from many attempts over a season; mechanism: combine public sprint speed, catcher pop time, pitcher pickoff and disengagement history, and count to estimate break-even success probability in each situation; baseline: give fast runners a standing green light and hold everyone else; software: a situational attempt chart, backtested on public play-by-play and Statcast baserunning data since the 2023 rule changes.",
+      "label": "2023, at, attempt, attempts, backtested, base, baseline, baserunning",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/4"
+      ]
+    },
+    {
+      "id": "cluster-11",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/5",
+      "representative_text": "IDEA: Rotation sequencing around off-days; owner: manager and pitching coach; decision: whether to keep a strict rotation order, skip a starter, or insert a sixth starter around scheduled off-days, made weekly during the season; value at stake: allocation of starts among starters of different quality, plus fatigue costs; mechanism: model the quality gained by giving the best starters more starts against public evidence of rest-day effects on velocity and results; baseline: a fixed five-man order, with skips only for injury; software: a schedule-aware start allocator, backtested on public game logs and Statcast velocity by days of rest.",
+      "label": "against, allocation, allocator, among, around, at, aware, backtested",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/5",
+        "hd-20261009-211812-efe1740f0c77/candidates/0/3/idea/2",
+        "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/3"
+      ]
+    },
+    {
+      "id": "cluster-12",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/7",
+      "representative_text": "IDEA: Lineup batting-order optimization; this is likely a domain where software is unnecessary, because public research suggests the gap between a sensible order and an optimal one is small.",
+      "label": "batting, because, between, domain, gap, likely, lineup, optimal",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/7",
+        "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/8",
+        "hd-20261009-211812-efe1740f0c77/candidates/0/3/idea/6"
+      ]
+    },
+    {
+      "id": "cluster-13",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/2/idea/1",
+      "representative_text": "IDEA: Problem=coaching-staff hiring is decided by reputation and interviews rather than evidence of player improvement; owner=President of Baseball Operations, GM and manager; decision=hiring or retaining MLB and upper-minors hitting, pitching and catching coaches each October to December, with this offseason's window open now; value at stake=hypothesized as large and recurring because one coach touches many players' outcomes for several seasons, size unknown; mechanism=build a public coach-tenure ledger from press releases and media guides, then estimate each coach's effect on players who changed organizations, comparing the year before arrival with the year after and against matched players who did not move; baseline=network referrals, reputation from players, and interview impressions; software=a coach-attribution tool that ranks candidates with uncertainty intervals and flags coaches whose apparent effect is just regression to the mean.",
+      "label": "after, against, apparent, arrival, at, attribution, baseball, baseline",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/2/idea/1"
+      ]
+    },
+    {
+      "id": "cluster-14",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/2/idea/2",
+      "representative_text": "IDEA: Problem=pricing players posted from NPB and KBO and signed internationally as free agents; owner=GM, international scouting director and pro scouting director; decision=whether to bid on posted players and how much, during posting windows that usually run November to January; value at stake=potentially large per signing, since these are multi-year major-league contracts, but the number of events per year is small; mechanism=translation models that use public foreign-league stats, including pitch-tracking where it is published, along with age and league-environment adjustments, calibrated on the MLB outcomes of previously posted players; baseline=scouting reports combined with simple ratios of foreign-league stats to MLB stats and agent-driven market comparables; software=a probabilistic translation tool with explicit uncertainty that is updated as each new posting cohort produces MLB results.",
+      "label": "adjustments, age, agent, agents, along, at, baseline, bid",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/2/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-15",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/2/idea/3",
+      "representative_text": "IDEA: Problem=managing starters around expected rain delays at a home park without a roof; owner=manager, pitching coach and head of game operations; decision=on game days with uncertain weather, whether to start the scheduled starter, use an opener or delay the start, decided in the hours before first pitch; value at stake=hypothesized as modest per event but recurring, through avoided wasted starts and short outings that tax the bullpen; mechanism=combine public precipitation forecasts with historical delay records to estimate the probability of a delay longer than a starter can wait out; baseline=staff judgment plus the umpire crew and league's consultation on weather; software=a delay-risk forecast linked to a rule for choosing the starter.",
+      "label": "around, at, avoided, baseline, before, bullpen, but, can",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/2/idea/3"
+      ]
+    },
+    {
+      "id": "cluster-16",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/3/idea/5",
+      "representative_text": "IDEA: Problem=early-season weather and postponement exposure at Wrigley; owner=business operations together with the league; decision=managing April and May home-date risk, including ticket and promotion plans and pitcher scheduling around likely postponements; value=lost gate revenue, doubleheader workload and staff-planning costs; mechanism=public historical weather and postponement records could quantify risk by date to inform promotion placement and rotation contingency planning; baseline=static calendar planning; intervention=a date-risk calendar and contingency planner.",
+      "label": "april, around, at, baseline, business, calendar, contingency, cost",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/3/idea/5"
+      ]
+    },
+    {
+      "id": "cluster-17",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/1",
+      "representative_text": "IDEA: Problem family: estimating the marginal value of coaching and player-development staff hires. This is a decision family not covered by the explored list.",
+      "label": "coaching, covered, decision, development, estimating, explored, family, hires",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/1"
+      ]
+    },
+    {
+      "id": "cluster-18",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/3",
+      "representative_text": "IDEA: Recurring decision: hiring, retaining or replacing MLB coaches, such as hitting, pitching, catching and bench coaches.",
+      "label": "bench, catching, coaches, decision, hiring, hitting, mlb, pitching",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/3",
+        "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/5"
+      ]
+    },
+    {
+      "id": "cluster-19",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/4",
+      "representative_text": "IDEA: Timing: each October through December, and staff turnover across MLB clusters in the weeks after clubs are eliminated. Early October 2026 is inside this window for the Cubs.",
+      "label": "2026, across, after, clubs, clusters, cubs, december, each",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/4"
+      ]
+    },
+    {
+      "id": "cluster-20",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/6",
+      "representative_text": "IDEA: Value at stake (hypothesis): a coach touches every player on the staff or lineup for multiple seasons. A real coach effect would therefore compound across far more player-seasons than any single roster move.",
+      "label": "across, any, at, coach, compound, effect, every, far",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/6",
+        "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/7",
+        "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-21",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/8",
+      "representative_text": "IDEA: Simple baseline a club already uses: hire by reputation, playing career, network referrals, interviews, and the outcomes of the coach's prior team.",
+      "label": "already, baseline, career, club, coach, hire, interviews, network",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/8"
+      ]
+    },
+    {
+      "id": "cluster-22",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/9",
+      "representative_text": "IDEA: Mechanism of advantage: public team and staff directories, media transaction reports and Baseball-Reference coaching records can be joined to player-level public metrics. This builds a coach-player linkage panel.",
+      "label": "advantage, baseball, builds, can, coach, coaching, directories, joined",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/9",
+        "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/10",
+        "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/11"
+      ]
+    },
+    {
+      "id": "cluster-23",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/12",
+      "representative_text": "IDEA: Software intervention: a coach-candidate dossier generator. For each candidate it would report the before/after trajectories of players they coached, with uncertainty intervals, matched controls and sample-size warnings.",
+      "label": "after, before, candidate, coach, coached, controls, dossier, each",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/12"
+      ]
+    },
+    {
+      "id": "cluster-24",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/13",
+      "representative_text": "IDEA: Software intervention: a retrospective test. Freeze data as of each past offseason, rank the coaching hires made that winter, and check whether the rankings predicted the next one to two seasons of player-change metrics better than the prior-team-outcome baseline.",
+      "label": "baseline, better, change, check, coaching, data, each, freeze",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/13",
+        "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/6",
+        "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/10"
+      ]
+    },
+    {
+      "id": "cluster-25",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/14",
+      "representative_text": "IDEA: Unconventional extension: treat staff as a scarce market. Flag undervalued coaches whose players improved but whose teams lost, since a team-record baseline would systematically overlook them.",
+      "label": "baseline, but, coaches, extension, flag, improved, lost, market",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/14"
+      ]
+    },
+    {
+      "id": "cluster-26",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/4",
+      "representative_text": "IDEA: Baseline: carry the top 26 players by regular-season value, then adjust by staff judgment for health and matchups.",
+      "label": "26, adjust, baseline, carry, health, judgment, matchups, players",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/4"
+      ]
+    },
+    {
+      "id": "cluster-27",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/5",
+      "representative_text": "IDEA: Intervention: a series-specific simulator. Inputs are the public opponent rotation and bullpen, the off-day schedule, and public platoon and pitch-type splits. Output is the expected series win probability for each candidate roster compared with the baseline roster.",
+      "label": "baseline, bullpen, candidate, compared, day, each, expected, inputs",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/5"
+      ]
+    },
+    {
+      "id": "cluster-28",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/7",
+      "representative_text": "IDEA: Problem: setting up the late-season pitching rotation for the playoffs. Owner: manager and pitching coach, with front office input. Decision: in roughly the final 10 to 14 days, whether to keep using top starters to chase seeding or a bye, or to line them up for Game 1 of the Wild Card Series.",
+      "label": "1, 10, 14, bye, card, chase, coach, days",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/7"
+      ]
+    },
+    {
+      "id": "cluster-29",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/8",
+      "representative_text": "IDEA: Mechanism: weigh the change in odds of securing a bye or home field against the series win probability gained by starting the best pitcher in an elimination game. Feed live public standings and remaining schedules into a seeding simulation.",
+      "label": "against, best, bye, change, elimination, feed, field, gained",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/8"
+      ]
+    },
+    {
+      "id": "cluster-30",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/9",
+      "representative_text": "IDEA: Baseline: chase the best seed until it is clinched or out of reach, then line up the ace. Alternatively, rest regulars once the club has clinched.",
+      "label": "ace, alternatively, baseline, best, chase, clinched, club, has",
+      "members": [
+        "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/9"
+      ]
+    }
+  ],
+  "ranking": [
+    {
+      "cluster": "cluster-8",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/9",
+      "score": 0.5302440531356194,
+      "criteria": {
+        "novelty": 0.929718875502008,
+        "objective_fit": 0.13076923076923078
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-5",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/6",
+      "score": 0.5298476821192053,
+      "criteria": {
+        "novelty": 0.914,
+        "objective_fit": 0.1456953642384106
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-7",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/8",
+      "score": 0.5290084232303827,
+      "criteria": {
+        "novelty": 0.9386138613861386,
+        "objective_fit": 0.11940298507462686
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-4",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/5",
+      "score": 0.5274124643993969,
+      "criteria": {
+        "novelty": 0.9271653543307087,
+        "objective_fit": 0.1276595744680851
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-13",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/2/idea/1",
+      "score": 0.5239643545279383,
+      "criteria": {
+        "novelty": 0.9229287090558767,
+        "objective_fit": 0.125
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-24",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/13",
+      "score": 0.5239458986849383,
+      "criteria": {
+        "novelty": 0.9624217118997912,
+        "objective_fit": 0.08547008547008547
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-19",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/4",
+      "score": 0.5237585943468296,
+      "criteria": {
+        "novelty": 0.9747899159663865,
+        "objective_fit": 0.07272727272727272
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-16",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/3/idea/5",
+      "score": 0.5235899789195934,
+      "criteria": {
+        "novelty": 0.9449901768172888,
+        "objective_fit": 0.10218978102189781
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-28",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/7",
+      "score": 0.5234444727782737,
+      "criteria": {
+        "novelty": 0.974308300395257,
+        "objective_fit": 0.07258064516129033
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-3",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/4",
+      "score": 0.5199922776609893,
+      "criteria": {
+        "novelty": 0.9141104294478528,
+        "objective_fit": 0.1258741258741259
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-17",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/1",
+      "score": 0.5196163305459911,
+      "criteria": {
+        "novelty": 0.9831578947368421,
+        "objective_fit": 0.056074766355140186
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-21",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/8",
+      "score": 0.5189576252873112,
+      "criteria": {
+        "novelty": 0.9828693790149893,
+        "objective_fit": 0.05504587155963303
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-14",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/2/idea/2",
+      "score": 0.5169548430417995,
+      "criteria": {
+        "novelty": 0.9034749034749034,
+        "objective_fit": 0.13043478260869565
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-10",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/4",
+      "score": 0.5165898617511521,
+      "criteria": {
+        "novelty": 0.9428571428571428,
+        "objective_fit": 0.09032258064516129
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-22",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/9",
+      "score": 0.5158991228070176,
+      "criteria": {
+        "novelty": 0.9791666666666666,
+        "objective_fit": 0.05263157894736842
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-6",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/7",
+      "score": 0.5153891859774212,
+      "criteria": {
+        "novelty": 0.9131313131313131,
+        "objective_fit": 0.11764705882352941
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-9",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/10",
+      "score": 0.5153301886792453,
+      "criteria": {
+        "novelty": 0.9056603773584906,
+        "objective_fit": 0.125
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-27",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/5",
+      "score": 0.5102722136620442,
+      "criteria": {
+        "novelty": 0.9696969696969697,
+        "objective_fit": 0.05084745762711865
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-18",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/3",
+      "score": 0.5088075880758808,
+      "criteria": {
+        "novelty": 0.9898373983739838,
+        "objective_fit": 0.027777777777777776
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-23",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/12",
+      "score": 0.5076567728793832,
+      "criteria": {
+        "novelty": 0.989451476793249,
+        "objective_fit": 0.02586206896551724
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-26",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/4",
+      "score": 0.5050342130987292,
+      "criteria": {
+        "novelty": 0.9827956989247312,
+        "objective_fit": 0.02727272727272727
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-20",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/6",
+      "score": 0.5043327102150632,
+      "criteria": {
+        "novelty": 0.975051975051975,
+        "objective_fit": 0.03361344537815126
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-15",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/2/idea/3",
+      "score": 0.5034436701509872,
+      "criteria": {
+        "novelty": 0.9276190476190476,
+        "objective_fit": 0.07926829268292683
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-12",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/7",
+      "score": 0.5031117346571696,
+      "criteria": {
+        "novelty": 0.9796747967479675,
+        "objective_fit": 0.02654867256637168
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-11",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/1/idea/5",
+      "score": 0.5027569586393116,
+      "criteria": {
+        "novelty": 0.9401544401544402,
+        "objective_fit": 0.06535947712418301
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-30",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/9",
+      "score": 0.5023262254223206,
+      "criteria": {
+        "novelty": 0.9872611464968153,
+        "objective_fit": 0.017391304347826087
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-29",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/5/idea/8",
+      "score": 0.49767230037445603,
+      "criteria": {
+        "novelty": 0.970954356846473,
+        "objective_fit": 0.024390243902439025
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-25",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/4/idea/14",
+      "score": 0.4938281645340851,
+      "criteria": {
+        "novelty": 0.9790356394129979,
+        "objective_fit": 0.008620689655172414
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-1",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/1",
+      "score": 0.3287671232876712,
+      "criteria": {
+        "novelty": 0.5,
+        "objective_fit": 0.15753424657534246
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    },
+    {
+      "cluster": "cluster-2",
+      "representative": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/2",
+      "score": 0.2976190476190476,
+      "criteria": {
+        "novelty": 0.5,
+        "objective_fit": 0.09523809523809523
+      },
+      "rationale": "Equal-weight concept-token overlap/distance; no execution authority"
+    }
+  ],
+  "warnings": [],
+  "explored_families": [
+    "against, agent, anchors, arbitration, at, baseball, baseline, commitments",
+    "across, arbitration, at, awards, baseball, baseline, because, chosen",
+    "across, allocation, amateur, area, at, backtested, baseline, board",
+    "across, adjust, adjustment, adjustments, against, amateur, at, baseline",
+    "40, acquisition, assignment, at, available, backtested, baseline, breakout",
+    "acquisitions, at, backtested, baseball, baseline, buy, calculator, capital",
+    "across, after, around, at, baseline, but, choices, day",
+    "ahead, already, at, available, baseline, batting, business, clearly",
+    "across, agreement, arbitration, at, bargaining, baseball, baseline, but",
+    "2023, at, attempt, attempts, backtested, base, baseline, baserunning",
+    "against, allocation, allocator, among, around, at, aware, backtested",
+    "batting, because, between, domain, gap, likely, lineup, optimal",
+    "after, against, apparent, arrival, at, attribution, baseball, baseline",
+    "adjustments, age, agent, agents, along, at, baseline, bid",
+    "around, at, avoided, baseline, before, bullpen, but, can",
+    "april, around, at, baseline, business, calendar, contingency, cost",
+    "coaching, covered, decision, development, estimating, explored, family, hires",
+    "bench, catching, coaches, decision, hiring, hitting, mlb, pitching",
+    "2026, across, after, clubs, clusters, cubs, december, each",
+    "across, any, at, coach, compound, effect, every, far",
+    "already, baseline, career, club, coach, hire, interviews, network",
+    "advantage, baseball, builds, can, coach, coaching, directories, joined",
+    "after, before, candidate, coach, coached, controls, dossier, each",
+    "baseline, better, change, check, coaching, data, each, freeze",
+    "baseline, but, coaches, extension, flag, improved, lost, market",
+    "26, adjust, baseline, carry, health, judgment, matchups, players",
+    "baseline, bullpen, candidate, compared, day, each, expected, inputs",
+    "1, 10, 14, bye, card, chase, coach, days",
+    "against, best, bye, change, elimination, feed, field, gained",
+    "ace, alternatively, baseline, best, chase, clinched, club, has"
+  ],
+  "method": "concept_tokens_and_leading_phrases/v3; Jaccard cluster threshold 0.5 or first-8-content-word phrase link; echo coverage 0.6 or first-16-word phrase link",
+  "measurement_type": "ADVISORY_HEURISTIC",
+  "limitations": "Not semantic equivalence, calibrated novelty, entailment or usefulness",
+  "participation": [
+    {
+      "operation": "GENERATED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": "claude",
+      "origin_model": "claude-opus-5-5",
+      "subject_count": 6,
+      "inference_occurred": true,
+      "note": "Dream prompted the provider; the provider authored the text."
+    },
+    {
+      "operation": "CLUSTERED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 53,
+      "inference_occurred": false,
+      "note": "Deterministic concept-token clustering; no inference."
+    },
+    {
+      "operation": "RANKED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 30,
+      "inference_occurred": false,
+      "note": "Advisory heuristic ranking; no execution authority."
+    }
+  ]
+}

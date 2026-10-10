@@ -1,0 +1,220 @@
+{
+  "schema_version": "howl.candidate/v1",
+  "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/2",
+  "source_run_id": "hd-20261009-211812-efe1740f0c77",
+  "parent_request_id": "cubs-r003-p1-divergent",
+  "objective": "Where could software create a meaningful baseball advantage for the Chicago Cubs? The current date is early October 2026, in the Cubs' offseason (their 2026 season ended in the Wild Card Series). A prior experiment found that triaging the November minor-league free-agent pool offers little: the low-attention pool holds under one next-season contributor per club per year, and a simple 'played in MLB last year' rule already finds most value. Prefer recurring decisions where the value at stake is large enough to matter, where public information available at decision time could plausibly beat a simple rule, and where a retrospective test on public history is possible. Consider front office, player development, scouting, coaching and business-of-baseball decisions, and name where software is unnecessary or clubs are already ahead. OUTPUT GUIDANCE (format only): Each IDEA names one problem, the decision owner, the concrete recurring decision and its timing, the size of value at stake, the mechanism of advantage, the simple baseline a club already uses, and the software intervention. Follow with ASSUMPTION and UNKNOWN lines. Do not invent statistics or private Cubs information.",
+  "text": "IDEA: Problem=salary arbitration filing and hearing strategy; owner=baseball operations and legal or contract staff; decision=the filing number and whether to go \"file-and-trial\" or settle, made each January; value at stake=individual awards across the arbitration-eligible roster, plus effects on later raises because arbitration salaries compound; mechanism=predict the panel outcome from the public history of hearings, filing midpoints and the platform statistics panels historically reward, and quantify the expected value of settling versus a hearing; baseline=midpoint settlement using comparables chosen by staff; intervention=a hearing-outcome predictor tested on public hearing records.",
+  "condition": "dream",
+  "trust": "UNVERIFIED",
+  "status": "UNRESOLVED",
+  "authority": {
+    "type": "ADVISORY",
+    "executable": false
+  },
+  "claims": [
+    {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/2/claim/1",
+      "candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/2",
+      "kind": "IDEA",
+      "text": "Problem=salary arbitration filing and hearing strategy; owner=baseball operations and legal or contract staff; decision=the filing number and whether to go \"file-and-trial\" or settle, made each January; value at stake=individual awards across the arbitration-eligible roster, plus effects on later raises because arbitration salaries compound; mechanism=predict the panel outcome from the public history of hearings, filing midpoints and the platform statistics panels historically reward, and quantify the expected value of settling versus a hearing; baseline=midpoint settlement using comparables chosen by staff; intervention=a hearing-outcome predictor tested on public hearing records.",
+      "status": "UNVERIFIED",
+      "extractor": "line_grammar/v1"
+    }
+  ],
+  "evidence_refs": [
+    "objective_context"
+  ],
+  "assumptions": [
+    "Public extension terms such as guarantees, option years and buyouts are reported completely and accurately enough to reconstruct contract value.",
+    "The edge comes from timing and price, but the player's willingness to sign may dominate any club-side model.",
+    "Clubs likely already run contract surplus models, so the marginal edge may be small.",
+    "Public hearing outcomes, filing figures and settlements are recorded consistently across years.",
+    "The number of hearings per year may be too small for a reliable model, which caps the edge.",
+    "Specialized arbitration staff and outside firms likely already hold this knowledge, so clubs may be ahead.",
+    "The non-tender market is predictable enough in size and quality from public information available in late November.",
+    "This overlaps the roster-rules family, so it must show a distinct valuation edge to count as new.",
+    "Public slot values and signed bonuses are available historically, but true asking prices are private, which limits the training labels.",
+    "Career value from the draft takes years to observe, so a retrospective test may only validate bonus prediction, not talent selection.",
+    "Most clubs already use pool-manipulation strategies, so the remaining edge may be thin.",
+    "Public box-score-level college data covers enough games and opponents to estimate strength of schedule.",
+    "Clubs with private college tracking data are likely already ahead, so this may matter only for low-coverage conferences.",
+    "Like the minor-league free agent result, a \"recent MLB time\" rule may already capture most value, which would make this low-ceiling.",
+    "Waiver priority and other clubs' claims limit the club's access to the top-ranked players.",
+    "Public playoff-odds models are close enough to private ones that the edge lies in pricing discipline rather than better forecasts.",
+    "Prospect value at trade time is hard to label retrospectively without hindsight bias.",
+    "This may overlap the travel and rest planning family and must be framed specifically around day-night sequencing to be distinct.",
+    "The effect may be too small or too noisy to detect in public data.",
+    "Dynamic ticket pricing vendors already capture most of the available revenue edge for MLB clubs.",
+    "Lineup-order optimization yields a marginal gain that is unlikely to justify new software.",
+    "The current collective bargaining agreement expires around this offseason; this is unverified and must be confirmed.",
+    "A retrospective test is only partly possible, by replaying past agreement transitions, which may be too few to validate."
+  ],
+  "unresolved_issues": [
+    "Public extension terms such as guarantees, option years and buyouts are reported completely and accurately enough to reconstruct contract value.",
+    "The edge comes from timing and price, but the player's willingness to sign may dominate any club-side model.",
+    "Clubs likely already run contract surplus models, so the marginal edge may be small.",
+    "Public hearing outcomes, filing figures and settlements are recorded consistently across years.",
+    "The number of hearings per year may be too small for a reliable model, which caps the edge.",
+    "Specialized arbitration staff and outside firms likely already hold this knowledge, so clubs may be ahead.",
+    "The non-tender market is predictable enough in size and quality from public information available in late November.",
+    "This overlaps the roster-rules family, so it must show a distinct valuation edge to count as new.",
+    "Public slot values and signed bonuses are available historically, but true asking prices are private, which limits the training labels.",
+    "Career value from the draft takes years to observe, so a retrospective test may only validate bonus prediction, not talent selection.",
+    "Most clubs already use pool-manipulation strategies, so the remaining edge may be thin.",
+    "Public box-score-level college data covers enough games and opponents to estimate strength of schedule.",
+    "Clubs with private college tracking data are likely already ahead, so this may matter only for low-coverage conferences.",
+    "Like the minor-league free agent result, a \"recent MLB time\" rule may already capture most value, which would make this low-ceiling.",
+    "Waiver priority and other clubs' claims limit the club's access to the top-ranked players.",
+    "Public playoff-odds models are close enough to private ones that the edge lies in pricing discipline rather than better forecasts.",
+    "Prospect value at trade time is hard to label retrospectively without hindsight bias.",
+    "This may overlap the travel and rest planning family and must be framed specifically around day-night sequencing to be distinct.",
+    "The effect may be too small or too noisy to detect in public data.",
+    "Dynamic ticket pricing vendors already capture most of the available revenue edge for MLB clubs.",
+    "Lineup-order optimization yields a marginal gain that is unlikely to justify new software.",
+    "The current collective bargaining agreement expires around this offseason; this is unverified and must be confirmed.",
+    "A retrospective test is only partly possible, by replaying past agreement transitions, which may be too few to validate.",
+    "Problem=pre-arbitration extension timing; owner=GM and baseball operations contract staff; decision=whether, when, and at what price to offer long-term extensions to players with under three years of service, recurring each spring and offseason; value at stake=multi-year salary commitments plus surplus value if the player outperforms the deal; mechanism=model a player's arbitration salary path and free-agent value under uncertainty using public performance, service time and past extension terms, then price the option value of waiting one more season; baseline=negotiate from recent comparable extensions and agent anchors; intervention=a retrospective simulator that replays past public extensions against \"wait one year\" counterfactuals.",
+    "public_extension_dataset_completeness",
+    "post_2026_cba_service_time_rules",
+    "Problem=salary arbitration filing and hearing strategy; owner=baseball operations and legal or contract staff; decision=the filing number and whether to go \"file-and-trial\" or settle, made each January; value at stake=individual awards across the arbitration-eligible roster, plus effects on later raises because arbitration salaries compound; mechanism=predict the panel outcome from the public history of hearings, filing midpoints and the platform statistics panels historically reward, and quantify the expected value of settling versus a hearing; baseline=midpoint settlement using comparables chosen by staff; intervention=a hearing-outcome predictor tested on public hearing records.",
+    "annual_hearing_count_sample_size",
+    "post_2026_cba_arbitration_rules",
+    "Problem=non-tender and tender decisions; owner=GM; decision=tender or non-tender arbitration-eligible players at the late-November or early-December deadline; value at stake=projected arbitration salary versus the cost of replacing the player on the open market; mechanism=pair projected arbitration salaries with a forecast of comparable non-tendered and free-agent replacements available that winter at known prices; baseline=tender if projected WAR per dollar beats a club threshold; intervention=a replacement-market forecaster backtested on which past non-tendered players signed, at what price and with what next-season output.",
+    "historical_nontender_signing_outcomes_dataset",
+    "Problem=amateur draft bonus pool allocation; owner=amateur scouting director; decision=draft order and bonus allocation across the first ten rounds, made each July; value at stake=pool dollars, the risk of exceeding the pool, and value from later rounds; mechanism=model signability and likely bonus relative to slot from public signals such as college eligibility year, prior draft status and public commitments, so the club can spend under slot early and redirect money to later high-ceiling picks; baseline=board ranking plus area scout signability notes; intervention=a signability and bonus predictor backtested on public draft bonus data.",
+    "post_2026_cba_draft_and_pool_rules",
+    "public_signability_signal_quality",
+    "Problem=college hitter evaluation across uneven competition; owner=amateur scouting director; decision=pre-draft board ranking each spring; value at stake=early-round picks with high expected surplus; mechanism=adjust public college statistics for opponent strength, park and conference, then test which adjustments best predicted later professional outcomes for past draft classes; baseline=raw college statistics plus scout grades; intervention=a strength-of-schedule adjustment layer with retrospective validation against minor-league outcomes.",
+    "public_college_data_coverage_by_conference",
+    "Problem=waiver claim and designated-for-assignment pickup decisions; owner=pro scouting and GM; decision=whether to claim or trade for players designated for assignment, happening throughout the year in a recurring stream; value at stake=low acquisition cost per player but high frequency, with occasional breakout players; mechanism=rank DFA players at the time of designation using only public data available then, such as underlying contact quality, velocity trends and option status, and target players whose skills are undervalued by their surface results; baseline=claim if the player fits a 40-man need and has recent MLB time; intervention=a dated-snapshot ranker backtested on public transaction logs.",
+    "historical_dfa_outcome_base_rate",
+    "Problem=the trade-deadline buy, sell or hold posture; owner=president of baseball operations; decision=posture and the price of rentals in late July; value at stake=prospect capital spent versus a change in playoff probability; mechanism=translate marginal WAR into change in playoff and series-win probability under the current playoff format, using public projection systems, and price acquisitions per point of playoff odds; baseline=a judgment of standings position plus playoff-odds websites; intervention=a marginal playoff-value calculator backtested on public deadline trades.",
+    "public_prospect_value_at_trade_time_dataset",
+    "Problem=day-game-heavy home scheduling effects on player performance; owner=manager and performance staff; decision=rest days and lineup choices around day games after night games, made weekly in season; value at stake=small per game but recurring across the season; mechanism=estimate from public game logs whether performance drops in day-after-night games and whether rest timing reduces the drop; baseline=veteran rest by feel and fixed rest rotations; intervention=a rest-scheduling recommender tested on public game-level history.",
+    "day_after_night_performance_effect_size",
+    "Problem=places where software is likely unnecessary or clubs and vendors are already ahead; owner=business operations; decision=dynamic ticket pricing, concessions demand forecasting and lineup batting order; value at stake=real for ticketing, small for batting order; mechanism=none clearly available to a new public-data tool, since ticketing vendors already run dynamic pricing and batting-order gains are known to be small; baseline=existing vendor platforms and conventional lineup heuristics; intervention=deprioritize these.",
+    "club_specific_ticketing_vendor_capabilities",
+    "Problem=a rules-transition scenario engine; owner=president of baseball operations; decision=contract structures, arbitration and draft strategy across an expected collective bargaining transition, at a one-time but high-stakes moment this offseason; value at stake=multiple contract and roster decisions made under rule uncertainty; mechanism=simulate outcomes under several plausible rule scenarios so commitments made now are robust to rule changes; baseline=wait for the new agreement or rely on legal staff judgment; intervention=a scenario model that reprices extensions, qualifying offers and pool strategy under each rule set.",
+    "none_identified_no_evidence_supplied",
+    "cba_expiration_date_verification",
+    "cubs_private_models_and_practices"
+  ],
+  "contradictions": [],
+  "verified_constraints": [],
+  "provenance": {
+    "run_id": "hd-20261009-211812-efe1740f0c77",
+    "producer_component": "howldream",
+    "producer_version": "0.4.4",
+    "model_or_provider": "claude-opus-5-5",
+    "observation_kind": "EXTERNALLY_OBSERVED",
+    "created_at": "2026-10-09T21:24:32.107168+00:00",
+    "transformations": [
+      "generated",
+      "idea_unit_selection"
+    ],
+    "participation": [
+      {
+        "operation": "GENERATED",
+        "transforming_component": "howldream",
+        "origin_component": "howldream",
+        "origin_provider": "claude",
+        "origin_model": "claude-opus-5-5",
+        "subject_count": 1,
+        "inference_occurred": true,
+        "note": "Dream prompted the provider; the provider authored the text."
+      },
+      {
+        "operation": "CLUSTERED",
+        "transforming_component": "howldream",
+        "origin_component": "howldream",
+        "origin_provider": null,
+        "origin_model": null,
+        "subject_count": 53,
+        "inference_occurred": false,
+        "note": "Deterministic concept-token clustering; no inference."
+      },
+      {
+        "operation": "SELECTED",
+        "transforming_component": "howldream",
+        "origin_component": "howldream",
+        "origin_provider": "claude",
+        "origin_model": "claude-opus-5-5",
+        "subject_count": 1,
+        "inference_occurred": false,
+        "note": "Operator selected this idea unit through `howldream export`."
+      }
+    ],
+    "request_id": "cubs-r003-p1-divergent",
+    "originating_component": "operator",
+    "execution": {
+      "requested_provider": "command",
+      "selected_provider": "command",
+      "actual_provider": "claude",
+      "adapter": "claude-json",
+      "model": "claude-opus-5-5",
+      "requested_model": "claude-opus-5-5",
+      "deterministic": false,
+      "mocked": false,
+      "inference_occurred": true,
+      "remote": true,
+      "remote_observation": "OPERATOR_DECLARED",
+      "fallback_reason": null,
+      "elapsed_seconds": 56.089120525,
+      "usage": {
+        "input_tokens": 2,
+        "cache_creation_input_tokens": 1721,
+        "cache_read_input_tokens": 0,
+        "output_tokens": 4239,
+        "output_tokens_details": {
+          "thinking_tokens": 959
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 1721,
+          "ephemeral_5m_input_tokens": 0
+        }
+      },
+      "cost": 0.09855599999999999,
+      "request_id": "ecad0590-99c8-4b02-8f76-f4c1999075d7",
+      "raw_output_received": true,
+      "parse_status": "VALID",
+      "repair_attempted": false,
+      "sampling": null
+    },
+    "source_candidate_refs": [],
+    "source_candidates_location": "exploration_envelope.json#/provenance/source_candidates",
+    "hard_constraints": [
+      "Do not assume the problem or the solution.",
+      "Lawfully accessible public, historical, or clearly labeled synthetic data only.",
+      "Do not invent private Chicago Cubs information or statistics.",
+      "Distinguish fact, assumption, hypothesis, and speculation."
+    ],
+    "constraint_scope": "UNVERIFIED_GENERATION_GUIDANCE",
+    "purpose": "discovery",
+    "candidate_index": 0,
+    "trial": 0,
+    "prompt_hash": "ca62b50a13d8024f61fb1769f5609e36f7058d8d53a04379b45f97e1a96c4d57",
+    "output_hash": "ad5190e40727b83f287bf3d71b7f778f334bc4104316d257973ffdc7537c2016",
+    "selection": {
+      "selected_by": "operator",
+      "operation": "SELECTED",
+      "via": "howldream export"
+    },
+    "parent_candidate_id": "hd-20261009-211812-efe1740f0c77/candidates/0/0",
+    "source_unit": {
+      "id": "hd-20261009-211812-efe1740f0c77/candidates/0/0/idea/2",
+      "source_span": [
+        1215,
+        1911
+      ],
+      "source_hash": "ad5190e40727b83f287bf3d71b7f778f334bc4104316d257973ffdc7537c2016",
+      "cluster": "cluster-2"
+    },
+    "parent_verification_ref": "verification.jsonl#candidate=hd-20261009-211812-efe1740f0c77/candidates/0/0",
+    "unit_selection_scope": "Single IDEA line; batch assumptions/unresolved issues retained without claim-specific association. Parent rejection/contradiction gates retained."
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "name": "exp-cubs-r003-sendhold-design-challenge",
+  "objective": "Independently challenge this pre-registered experiment design (candidate) before any full-season data is retrieved. Evidence holds the measured feasibility sample. Check: label definitions and leakage; whether the split, holdout and stop rules can be gamed or are ambiguous; whether the break-even formula and run-value accounting are correct and what they omit; how selection of sends biases the hold assessment and whether the overlap check is adequate; statistical power given the sample counts; whether success criteria could produce a false positive; anything that would make the result useless to a third-base coach. Use ASSUMPTION lines for problems, CITE evidence ids, UNKNOWN for what cannot be judged, and IDEA only for a concrete design fix. Do not invent statistics.",
+  "hypothesis": "",
+  "mode": "dream",
+  "purpose": "verification",
+  "constraints": [
+    "Review only; do not rewrite the whole design.",
+    "Do not invent statistics or private club information."
+  ],
+  "explored_families": [],
+  "diversity_memory": false,
+  "ranking_criteria": [],
+  "provider": {
+    "kind": "command",
+    "model": "claude-sonnet-5-5",
+    "base_url": null,
+    "allow_remote": true,
+    "allow_local_inference": false,
+    "forbid_local_inference": true,
+    "timeout_seconds": 300,
+    "max_tokens": 4096
+  },
+  "baseline": {
+    "candidates": 1,
+    "temperature": 0.2
+  },
+  "generation": {
+    "candidates": 2,
+    "temperature": 1.1
+  },
+  "max_calls": 3,
+  "trials": 1,
+  "seed": 42,
+  "evidence": [
+    {
+      "id": "feasibility-sample",
+      "text": "# Third-base send/hold feasibility\n\nINFERENCE: Study verdict: **PARTIAL**\n\nFACT: Measurements use cached game feeds and public leaderboards.\nFACT: Source: [MLB Stats API](https://statsapi.mlb.com/api/v1/) and [Baseball Savant sprint speed](https://baseballsavant.mlb.com/leaderboard/sprint_speed) and [arm strength](https://baseballsavant.mlb.com/leaderboard/arm-strength) CSV leaderboards; retrieved 2026-10-09.\n\nFACT: Per-season counts from the deduplicated cached sample.\n\n| season | sample games | opportunities | scored (any) | advanced later | sent safe | sent out | ended at 3B, no score | out elsewhere | other |\n|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|\n| 2025 | 50 | 85 | 40 | 26 | 14 | 0 | 44 | 1 | 0 |\n| 2026 | 50 | 90 | 33 | 21 | 12 | 0 | 56 | 1 | 0 |\n\nFACT: 'Scored (any)' and 'ended at 3B, no score' are movement views; they are not partitions. A runner who reached third before a later scoring event appears in both views. 'Advanced on a later event' means the send decision is ambiguous. Held means the feed records the runner ending at third. The play-by-play does not establish the coach's sign or the runner's base at the exact batted-ball moment; treat these as candidate opportunities.\n\n## Reconciliation with the controller's recount\n\nFACT: Season 2025: this report (first segment sets the base at contact) 85 opportunities, 40 scored (any), 44 ended at 3B without scoring; diagnostic any-segment rule 88 opportunities, 41 scored (any), 46 ended at 3B without scoring; controller recount target 88 opportunities, 35 scored (any), 47 ended at 3B without scoring.\nFACT: Season 2025 segment end sequences, this report: {'2B>3B>score': 6, '3B': 44, '3B>score': 20, 'none': 1, 'score': 14}; any-segment rule: {'2B>3B': 2, '2B>3B>score': 6, '2B>score': 1, '3B': 44, '3B>score': 20, 'none': 1, 'score': 14}.\nFACT: Season 2026: this report (first segment sets the base at contact) 90 opportunities, 33 scored (any), 56 ended at 3B without scoring; diagnostic any-segment rule 95 opportunities, 38 scored (any), 56 ended at 3B without scoring; controller recount target 95 opportunities, 35 scored (any), 58 ended at 3B without scoring.\nFACT: Season 2026 segment end sequences, this report: {'2B>3B>score': 1, '3B': 56, '3B>score': 20, 'none': 1, 'score': 12}; any-segment rule: {'2B>3B>score': 2, '2B>score': 4, '3B': 56, '3B>score': 20, 'none': 1, 'score': 12}.\nINFERENCE: The controller's qualifying totals equal the diagnostic any-segment rule totals, which admit runners whose later segment started on the threshold base. This report identifies 85 (2025) and 90 (2026) qualifying opportunities (175 total) because the spec takes the base from the runner's first segment. Examples of runners excluded under the first-segment rule (at most 5): season 2025 game 778182 runner 691718 single contact bases 1B>2B; season 2025 game 778553 runner 596115 single contact bases 1B>2B; season 2025 game 776474 runner 608070 single contact bases 1B>2B; season 2026 game 824168 runner 702616 single contact bases 1B>2B; season 2026 game 823894 runner 669392 single contact bases 1B>2B>3B.\nUNKNOWN: Scored (any) and ended-at-3B counts differ from the controller's recount targets (this report: 2025 40 scored, 44 ended at 3B, 2026 33 scored, 56 ended at 3B; controller targets: 2025 35 scored, 47 ended at 3B, 2026 35 scored, 58 ended at 3B). Whole-movement evaluation classifies each runner across all segments on the play, whereas the controller's recount method for movement views is unverified from the cache; out at home is 0 in all counts.\nUNKNOWN: Cases outside the spec: 0 runner segments without a person ID (not counted), and 0 runners who both scored and were out on the same play.\n\n## 2025\n\nFACT: Identification rates: runner ID 100.0%; fielder ID 91.8%; hit type 100.0%; location 100.0%; outs 100.0%; score 100.0%\nFACT: Leaderboard ID matches: sprint speed 73/73 (100.0%); arm strength 50/54 (92.6%)\nFACT: Outcome rates (safe, advanced later, out at home, held, out elsewhere, other): 16.5%, 30.6%, 0.0%, 51.8%, 1.2%, 0.0%\nINFERENCE: League-wide opportunities 4131 (95% interval [3257, 5005]); estimated full-season requests 2433.\n\n## 2026\n\nFACT: Identification rates: runner ID 100.0%; fielder ID 86.7%; hit type 100.0%; location 100.0%; outs 100.0%; score 100.0%\nFACT: Leaderboard ID matches: sprint speed 71/72 (98.6%); arm strength 47/52 (90.4%)\nFACT: Outcome rates (safe, advanced later, out at home, held, out elsewhere, other): 13.3%, 23.3%, 0.0%, 62.2%, 1.1%, 0.0%\nINFERENCE: League-wide opportunities 4374 (95% interval [3157, 5591]); estimated full-season requests 2433.\n\nINFERENCE: Per-game sample mean scaled by the full schedule; the interval uses a normal 95% interval from across-game sample standard error. It does not adjust for schedule-date effects.\nINFERENCE: Sample selection uses fixed seed 20261009; schedule SHA-256 0679a9296b7c4773b471a7c5c497173e8ca7191d604f0a1700bd43ae6b85a4c4.\nINFERENCE: Estimated requests to retrieve the full two-season schedule and feeds plus four leaderboard CSVs: 4866.\nFACT: New network requests used for this sample: 107 of 150; cache hits are free.\n\nUNKNOWN: The feed does not establish coach sign, runner jump, or the counterfactual outcome for held runners.\nFACT: Hit location was present on 100.0%, 100.0% of 2025 and 2026 opportunities.\nINFERENCE: Verdict reason: The feed supports counts of candidate situations, recorded safe, out, and held outcomes, and person-ID joins to public sprint-speed and arm-strength leaderboards. It does not record the coach's sign, the runner's jump, or what a held runner would have done if sent. Base at contact is inferred from originBase.\n",
+      "facts": {},
+      "provenance": {
+        "source_type": "EXTERNAL_OBSERVATION",
+        "produced_by": "cubs-edge-lab research/SENDHOLD_FEASIBILITY.md (HowlPlane sessions bede6ab6, 5c97be4f; controller recount reproduced)",
+        "source_ref": "cubs-edge-lab@537af76",
+        "independent_of_implementation": false,
+        "represents_observed_reality": true
+      }
+    }
+  ],
+  "context": [],
+  "speculative_candidates": [
+    {
+      "schema_version": "howl.candidate/v1",
+      "candidate_id": "sendhold-design-v1",
+      "source_run_id": "r003",
+      "parent_request_id": "r003",
+      "objective": "R003 SENDHOLD design v1",
+      "text": "# R003 experiment design: third-base send/hold (SENDHOLD)\n\nStatus: DRAFT v1, written 2026-10-10 before any full-season data was retrieved. The only outcomes seen so far are the 100-game feasibility sample (cubs-edge-lab research/SENDHOLD_FEASIBILITY.md). Changes after the independent challenge are recorded as v2 with reasons; this v1 stays as written.\n\n## Decision and user\n\n- User: a club's third-base coach and the advance/analytics staff who prepare send/hold guidance.\n- Decision: with a runner on second at a single, or on first at a double, and fewer than two outs before the play, send the runner home or hold at third.\n- Question: do major-league coaches hold runners whom public decision-time information says would score often enough to make a send worth it? If so, how many runs per season does that leave, league-wide and for the Cubs?\n\n## Data (user authorization 2026-10-10, two seasons)\n\n- Play-by-play for every 2025 and 2026 regular-season game (about 2,433 requests per season, 2 per second, cached under ignored data/), plus the public sprint-speed and outfielder arm-strength leaderboards. Bulk responses stay local; only aggregates and at most 5 short examples are published.\n- Unit: one runner per qualifying play, with the base at contact taken from the runner's first movement segment (rule validated in R3-S2).\n- Labels:\n  - SEND: the runner's movement on the play ends in scoring or in an out at home.\n  - HOLD: the runner ends at third and is not out.\n  - Outs elsewhere, and other endings, are excluded and counted.\n  - Runners who stop at third and then score later in the same play (the \"advanced later\" class in R3-S2) are ambiguous. They count as SEND in the primary analysis; a sensitivity analysis drops them.\n- Covariates, all known at decision time or fixed per season:\n  - Runner sprint speed (season leaderboard).\n  - Arm strength of the fielder who fielded the ball (season leaderboard; missing for infielders, with a flag).\n  - Hit type and hit location (coordinates and zone).\n  - Outs, inning, and score difference.\n- Season-level speed and arm values are known only after the season. This is a stated leakage limitation, and it is identical for sends and holds.\n\n## Split and holdout\n\n- Fit season: 2025. Holdout season: 2026, untouched until the model and thresholds are frozen and their hash is recorded in the journal.\n- Run expectancy comes from the 2025 feeds only: average runs scored from each base-out state to the end of the inning, computed by the code. No outside run-expectancy numbers are used.\n\n## Analysis\n\n1. Send-success model: logistic regression of P(safe | SEND) on the covariates, fit on 2025 SEND runners. This is a deliberately simple, inspectable model.\n2. Baseline for comparison: a constant (the 2025 SEND success rate), and an outs-only rate.\n3. Break-even for each hold, from the 2025 run-expectancy table: p* = (RE[hold state] - RE[out-at-home state]) / (RE[run scored state] + 1 - RE[out-at-home state]). Trailing runners are ignored in this first version, as a stated simplification.\n4. Flag a HOLD as a \"missed send\" when the predicted P(safe) is at least p* + 0.05.\n5. Estimate the runs left per season as the sum, over flagged holds, of p·(RE_scored + 1) + (1 - p)·RE_out - RE_hold.\n6. Overlap check: report the share of holds whose covariates lie inside the range covered by the sends (per covariate, within the 2.5th to 97.5th percentiles). Report results for the inside-range holds only.\n\n## Pre-registered success and stop rules\n\n- Early stop: if 2025 has fewer than 30 SEND runners thrown out at home, the success model is not fit. The result is reported as DESCRIPTIVE ONLY: rates, counts, and the observed out-at-home rate with its interval.\n- Holdout validity: on 2026 SEND runners, the model must beat the constant baseline on Brier score (bootstrap over games, 95% interval of the difference excluding zero) and have a calibration slope between 0.7 and 1.3. If it fails, the result is NEGATIVE (the model cannot judge holds).\n- Effect: a POSITIVE result requires the 2026 league-wide runs-left estimate to have a 95% game-bootstrap interval excluding zero. It is reported as an upper-bound-style estimate, because sends are selected and the counterfactual for holds is extrapolated.\n- Cubs: count of Cubs flagged holds and their runs-left estimate in 2025 and 2026, descriptive only, with no significance claim.\n- No re-tuning after the 2026 holdout is opened. Any later analysis is labeled EXPLORATORY.\n\n## Known threats\n\n- Selection: coaches send the runners they expect to be safe, so the model fit on sends is optimistic for holds. The overlap check and the upper-bound framing address this partly, not fully.\n- Unobserved factors: the runner's jump, the outfielder's charge and exchange, the throw's accuracy, the coach's view of the play, and pitcher or batter context after the play.\n- Missing defender arm values for infield-fielded balls.\n- Trailing runners and later events are ignored in the run-value accounting.\n- Season-level speed and arm values carry post-decision information.\n",
+      "condition": "dream",
+      "trust": "UNVERIFIED",
+      "status": "GENERATED",
+      "authority": {
+        "type": "ADVISORY",
+        "executable": false
+      },
+      "claims": [],
+      "evidence_refs": [],
+      "assumptions": [],
+      "unresolved_issues": [],
+      "contradictions": [],
+      "verified_constraints": [],
+      "provenance": {
+        "run_id": null,
+        "producer_component": null,
+        "producer_version": null,
+        "model_or_provider": null,
+        "observation_kind": null,
+        "created_at": "2026-10-10T03:56:42.627037+00:00",
+        "transformations": []
+      }
+    }
+  ],
+  "perturbations": [],
+  "retain_text": true
+}

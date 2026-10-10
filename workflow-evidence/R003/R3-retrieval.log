@@ -1,0 +1,132 @@
+start 2026-10-10T04:54:06Z code=b05c7fa ledger={
+  "count": 157
+}
+Fetched game 776389; new requests 200/200
+{"cached": 63, "complete": false, "failed": 0, "fetched": 200, "ledger_count": 357, "new_requests_this_invocation": 200, "remaining": 4511}
+chunk 1 rc=0 ledger={
+  "count": 357
+}
+Fetched game 776595; new requests 200/200
+{"cached": 269, "complete": false, "failed": 0, "fetched": 200, "ledger_count": 557, "new_requests_this_invocation": 200, "remaining": 4311}
+chunk 2 rc=0 ledger={
+  "count": 557
+}
+Fetched game 776798; new requests 200/200
+{"cached": 472, "complete": false, "failed": 0, "fetched": 200, "ledger_count": 757, "new_requests_this_invocation": 200, "remaining": 4111}
+chunk 3 rc=0 ledger={
+  "count": 757
+}
+Fetched game 777001; new requests 200/200
+{"cached": 675, "complete": false, "failed": 0, "fetched": 200, "ledger_count": 957, "new_requests_this_invocation": 200, "remaining": 3911}
+chunk 4 rc=0 ledger={
+  "count": 957
+}
+Fetched game 777203; new requests 200/200
+{"cached": 877, "complete": false, "failed": 0, "fetched": 200, "ledger_count": 1157, "new_requests_this_invocation": 200, "remaining": 3711}
+chunk 5 rc=0 ledger={
+  "count": 1157
+}
+Fetched game 777408; new requests 200/200
+{"cached": 1082, "complete": false, "failed": 0, "fetched": 200, "ledger_count": 1357, "new_requests_this_invocation": 200, "remaining": 3511}
+chunk 6 rc=0 ledger={
+  "count": 1357
+}
+Fetched game 777613; new requests 200/200
+{"cached": 1287, "complete": false, "failed": 0, "fetched": 200, "ledger_count": 1557, "new_requests_this_invocation": 200, "remaining": 3311}
+chunk 7 rc=0 ledger={
+  "count": 1557
+}
+Fetched game 777821; new requests 200/200
+{"cached": 1495, "complete": false, "failed": 0, "fetched": 200, "ledger_count": 1757, "new_requests_this_invocation": 200, "remaining": 3111}
+chunk 8 rc=0 ledger={
+  "count": 1757
+}
+Fetched game 778023; new requests 200/200
+{"cached": 1697, "complete": false, "failed": 0, "fetched": 200, "ledger_count": 1957, "new_requests_this_invocation": 200, "remaining": 2911}
+chunk 9 rc=0 ledger={
+  "count": 1957
+}
+Fetched game 778227; new requests 200/200
+{"cached": 1901, "complete": false, "failed": 0, "fetched": 200, "ledger_count": 2157, "new_requests_this_invocation": 200, "remaining": 2711}
+chunk 10 rc=0 ledger={
+  "count": 2157
+}
+Fetched game 778429; new requests 200/200
+{"cached": 2103, "complete": false, "failed": 0, "fetched": 200, "ledger_count": 2357, "new_requests_this_invocation": 200, "remaining": 2511}
+chunk 11 rc=0 ledger={
+  "count": 2357
+}
+Fetched game 822746; new requests 200/200
+{"cached": 2307, "complete": false, "failed": 0, "fetched": 200, "ledger_count": 2557, "new_requests_this_invocation": 200, "remaining": 2311}
+chunk 12 rc=0 ledger={
+  "count": 2557
+}
+Fetched game 822950; new requests 200/200
+{"cached": 2511, "complete": false, "failed": 0, "fetched": 200, "ledger_count": 2757, "new_requests_this_invocation": 200, "remaining": 2111}
+chunk 13 rc=0 ledger={
+  "count": 2757
+}
+Fetched game 823152; new requests 200/200
+{"cached": 2713, "complete": false, "failed": 0, "fetched": 200, "ledger_count": 2957, "new_requests_this_invocation": 200, "remaining": 1911}
+chunk 14 rc=0 ledger={
+  "count": 2957
+}
+Fetched game 823353; new requests 200/200
+{"cached": 2914, "complete": false, "failed": 0, "fetched": 200, "ledger_count": 3157, "new_requests_this_invocation": 200, "remaining": 1711}
+chunk 15 rc=0 ledger={
+  "count": 3157
+}
+Fetched game 823560; new requests 200/200
+{"cached": 3120, "complete": false, "failed": 0, "fetched": 200, "ledger_count": 3357, "new_requests_this_invocation": 200, "remaining": 1511}
+chunk 16 rc=0 ledger={
+  "count": 3357
+}
+Fetched game 823762; new requests 200/200
+{"cached": 3322, "complete": false, "failed": 0, "fetched": 200, "ledger_count": 3557, "new_requests_this_invocation": 200, "remaining": 1311}
+chunk 17 rc=0 ledger={
+  "count": 3557
+}
+Fetched game 823966; new requests 200/200
+{"cached": 3526, "complete": false, "failed": 0, "fetched": 200, "ledger_count": 3757, "new_requests_this_invocation": 200, "remaining": 1111}
+chunk 18 rc=0 ledger={
+  "count": 3757
+}
+Fetched game 824169; new requests 200/200
+{"cached": 3729, "complete": false, "failed": 0, "fetched": 200, "ledger_count": 3957, "new_requests_this_invocation": 200, "remaining": 911}
+chunk 19 rc=0 ledger={
+  "count": 3957
+}
+Fetched game 824373; new requests 200/200
+{"cached": 3933, "complete": false, "failed": 0, "fetched": 200, "ledger_count": 4157, "new_requests_this_invocation": 200, "remaining": 711}
+chunk 20 rc=0 ledger={
+  "count": 4157
+}
+Fetched game 824579; new requests 200/200
+{"cached": 4139, "complete": false, "failed": 0, "fetched": 200, "ledger_count": 4357, "new_requests_this_invocation": 200, "remaining": 511}
+chunk 21 rc=0 ledger={
+  "count": 4357
+}
+Fetched game 824788; new requests 200/200
+{"cached": 4348, "complete": false, "failed": 0, "fetched": 200, "ledger_count": 4557, "new_requests_this_invocation": 200, "remaining": 311}
+chunk 22 rc=0 ledger={
+  "count": 4557
+}
+Fetched game 824996; new requests 200/200
+{"cached": 4556, "complete": false, "failed": 0, "fetched": 200, "ledger_count": 4757, "new_requests_this_invocation": 200, "remaining": 111}
+chunk 23 rc=0 ledger={
+  "count": 4757
+}
+Fetched game 825108; new requests 111/143
+{"cached": 4757, "complete": true, "failed": 0, "fetched": 111, "ledger_count": 4868, "new_requests_this_invocation": 111, "remaining": 0}
+chunk 24 rc=0 ledger={
+  "count": 4868
+}
+end 2026-10-10T05:42:45Z status={
+  "fetched": 111,
+  "cached": 4757,
+  "failed": 0,
+  "remaining": 0,
+  "new_requests_this_invocation": 111,
+  "ledger_count": 4868,
+  "complete": true
+}

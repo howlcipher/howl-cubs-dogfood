@@ -1,0 +1,258 @@
+COMPLETE 6 ['claude-sonnet-5-5']
+=== CAND
+UNKNOWN: supplied_facts_for_any_claim (the evidence list holds only the objective text, with no data, counts, dollar values or Cubs records)
+CITE: objective_context
+ASSUMPTION: Every critique below is judgment from general baseball-operations structure. None is verified, and no figure is quoted because none was supplied.
+ASSUMPTION: The attached assumptions are pooled across many ideas, and many (rain delays, stolen bases, draft pools, ticketing) are irrelevant to these six. Only those matching each IDEA text are used.
+
+ASSUMPTION: [1 Coaching hire] The decision recurs only a few times a year, and each hire is a single, unrepeatable choice. The value at stake is unquantified, and the ledger's sign is unknown.
+ASSUMPTION: [1] Public staff data is not point-in-time clean. Titles, assistant and minor-league roles and start dates in press releases and media guides are incomplete and revised after the fact.
+ASSUMPTION: [1] Few players move organizations alongside a given coach. Movers are selected (acquired because the club expects improvement) and coach credit is shared among several staff. Playing time, health and the player's own regression to the mean are further confounders.
+ASSUMPTION: [1] A retrospective test is possible if ratings built through year T predict player change under the same coach in T+1 better than a tenure-and-reputation proxy. The number of coaches with enough movers may be too small for intervals narrow enough to change a hire.
+ASSUMPTION: [1] Outcome observability is weak because the counterfactual is missing. Clubs with private tracking and biomechanics data probably evaluate coaches better than any public panel can.
+ASSUMPTION: [1] It would look useful by ranking coaches whose past-year gains are mostly regression to the mean. The ranking would look reasonable with no persistence, so year-over-year persistence is the key falsification test.
+
+ASSUMPTION: [2 Non-tender] This recurs annually with a hard early-December deadline (unverified; the CBA may change it). The value at stake is each eligible player's projected arbitration salary minus replacement cost, which is real but unquantified.
+ASSUMPTION: [2] Salary projections are public-ish and available at decision time. The replacement market (who will be non-tendered league-wide, and at what price) is not known when the Cubs decide, so the forecaster must predict other clubs' choices.
+ASSUMPTION: [2] A backtest has many player-years, but price and next-season output are observed only for players who signed. Players who retired, went abroad or signed minor-league deals create survivorship bias.
+ASSUMPTION: [2] The baseline (tender if WAR per dollar beats a threshold) is the same quantity the forecaster uses, so gains may be only a threshold re-tune. The prior finding that a simple rule captures most of the value in the low-attention pool suggests a ceiling here too.
+ASSUMPTION: [2] It would look useful from post-hoc selection of bargain non-tendered players, where single-season WAR noise is large and winners are remembered. Sophisticated clubs already carry internal projection and arbitration models.
+
+ASSUMPTION: [3 Qualifying offer] The decision is annual but applies only to the Cubs' own pending free agents who meet eligibility rules. The Cubs' eligible list is unknown, so expected value may be near zero in many years.
+ASSUMPTION: [3] The QO amount, acceptances and signings are public, but the number of cases per year is small. The accepted and declined classes are lopsided, so calibration is weak and one executive's judgment may match it.
+ASSUMPTION: [3] The idea's baseline ("offer when market AAV clearly exceeds the QO") already needs a market AAV estimate. The model replaces that estimate, so the claimed edge reduces to forecast accuracy on a handful of players.
+ASSUMPTION: [3] The compensation-pick value depends on CBA terms that may change at expiration (unverified). Counterfactual value cannot be observed, and acceptance is driven by player preference, health and agent strategy that public signals miss.
+ASSUMPTION: [3] It would look useful through rare, memorable accepted-QO cases and high accuracy on obvious calls such as a star who is declined.
+
+ASSUMPTION: [4 NPB/KBO posting] This is a handful of events per year across the league, and the Cubs only matter when they pursue a given player. Per-signing value is plausibly large but unquantified.
+ASSUMPTION: [4] The posting window is largely public. Ownership of NPB pitch-tracking and detailed batted-ball data is limited, and what is public may lag decision time.
+ASSUMPTION: [4] Previously posted players with MLB outcomes are few, so the translation model has high variance and heterogeneous eras and league environments. Outcomes are observable but censored, because players who were not signed leave no MLB data.
+ASSUMPTION: [4] The winner's curse means a more accurate public model still does not give an edge unless the Cubs bid below the consensus. Clubs with international scouting, video and private data are likely ahead, and the idea overlaps minor-league translation work.
+ASSUMPTION: [4] It would look useful by fitting the few posted stars in hindsight, with overfit coefficients and nothing out of sample.
+
+ASSUMPTION: [5 Postseason roster] The decision recurs only in years the Cubs qualify, one to four times a year by the candidate's own text. Expected annual value is discounted by qualification probability (unknown).
+ASSUMPTION: [5] Rosters, opposing starters and platoon splits are public at the decision time. Injury status at the roster deadline may be incompletely public.
+ASSUMPTION: [5] Pooled league-wide postseason rosters give a modest number of series, but each series outcome is dominated by noise. A series-win-probability difference from the 25th and 26th roster spots may be too small to detect with any realistic sample.
+ASSUMPTION: [5] Alternatives are not observed, so the backtest is a simulation scored by its own model and can embed the biases it tests. Clubs likely already run internal series simulators.
+ASSUMPTION: [5] It would look useful by retrofitting a few memorable pinch-runner or reliever moments in a winning run, which is outcome bias.
+
+ASSUMPTION: [6 Arbitration filing] This recurs every January across the arbitration-eligible roster, and awards compound into later raises, so it is among the more regular decisions. The value is capped by the gap between the two filed numbers, since the panel picks one.
+ASSUMPTION: [6] Filed numbers, results and the comparable-player rules are largely public. The exact arguments and the panel's reasoning are not, and hearings are rare because most cases settle. Settlements are not hearing outcomes, so the training labels come from a selected subset.
+ASSUMPTION: [6] The count of historical hearings may be too small and shifts with CBA rule changes (expiration date and new rules unverified). Whether to settle or go to hearing is a strategic choice also tied to club policy and player relations, not just EV.
+ASSUMPTION: [6] The baseline (midpoint settlement) is a hearing-free outcome, so the EV comparison needs an assumed hearing probability and a model of player willingness. Specialized staff and outside counsel probably already hold this knowledge.
+ASSUMPTION: [6] It would look useful through a predictor tuned to hearing outcomes in which the filing midpoint alone already predicts the winner, and through ignoring that club-won and player-won cases are selected by who chose to go to hearing.
+
+ASSUMPTION: [Blind spot] Dollar and win value at stake is unquantified for all six. Rank the candidates by value times decision count times the maximum plausible edge before building anything.
+ASSUMPTION: [Blind spot] Sample size is the shared weakness (QO, posting, postseason, hearings, coach movers). Pooling league-wide raises n but strips Cubs-specific context, and no tool can beat a simple baseline with only a few dozen noisy labels.
+ASSUMPTION: [Blind spot] Many of these decisions are driven by counterparties (agents, player preference, rival bidders, the league). A club-side prediction model does not control the outcome, and the rules may change at the CBA expiration (unverified).
+ASSUMPTION: [Blind spot] Dated snapshots are a precondition. Any backtest must freeze the data as of the decision day (projections, injury status, staff titles), or hindsight leaks into every candidate.
+ASSUMPTION: [Blind spot] Testing many candidates and many specifications without a pre-registered baseline comparison produces false positives. Any claimed edge needs out-of-sample results against the simple rule.
+ASSUMPTION: [Blind spot] Non-tender, QO, arbitration and posting all draw on one payroll and 40-man budget, so evaluating them separately misses interactions. Private Cubs practice is unknown, and public-data parity with sophisticated clubs is plausible for every candidate.
+UNKNOWN: cubs_private_models_and_practices
+UNKNOWN: cubs_qo_eligible_players_2026
+UNKNOWN: annual_hearing_count_sample_size
+UNKNOWN: count_of_posted_players_with_mlb_outcomes
+UNKNOWN: detectable_coach_effect_size
+UNKNOWN: post_2026_cba_arbitration_rules
+UNKNOWN: measured_win_probability_value_of_marginal_postseason_slot
+
+IDEA: Build a single pre-registered, dated-snapshot backtest harness for the offseason decisions (non-tender, QO, arbitration, posting). It would freeze public inputs as of each decision date, score each simple club baseline against a candidate model out of sample, and report n and interval width, so any candidate whose interval includes zero edge is dropped before software is built.
+IDEA: Replace the coaching-ledger build with a persistence-first test: check on public data whether apparent coach effects in year T repeat in T+1 for coaches who moved clubs. Proceed to a hiring tool only if they persist beyond regression to the mean, and treat a null result as the useful output.
+IDEA: Sharpen arbitration to settle-versus-hearing selection: estimate, from public filed-number gaps and past outcomes, the filing-gap threshold above which hearings favor the club. State the result as a decision table with explicit uncertainty rather than a point predictor.
+=== CAND
+UNKNOWN: supplied_facts_for_any_candidate
+ASSUMPTION: All evidence is UNVERIFIED and the facts map is empty, so every judgment below is a falsifiable critique drawn from general baseball knowledge, not a supported finding. CITE lines are omitted because no source supports any specific claim.
+
+ASSUMPTION: Coaching-hire evaluation (1) The decision recurs every offseason but only a few hires per year, and the value per coach is unknown. UNKNOWN: detectable_coach_effect_size
+ASSUMPTION: Coaching (2) Staff announcements are public, but assistant and minor-league tenure is patchy and inconsistently dated, so linking coaches to players at decision time may fail.
+ASSUMPTION: Coaching (3) Coach moves between organizations are few, and most coaches touch few players, so a retrospective test has wide intervals. Outcomes are observable only as player stat changes, not as coach causation.
+ASSUMPTION: Coaching (4,5) Hiring is driven by relationships, scheme fit and player buy-in that a panel cannot see. Rival clubs probably run private attribution with proprietary biomechanics and tracking data, so a public-data tool is likely behind.
+ASSUMPTION: Coaching (6) It will look useful through regression to the mean, since players hired-for-after-a-bad-year improve anyway. Selection (teams acquire players they expect to improve), playing time, injuries and org infrastructure confound it. Post-hoc coach rankings that do not persist year over year would look good in-sample and fail out of sample.
+UNKNOWN: persistence_of_coach_effects_year_over_year
+
+ASSUMPTION: Non-tender (1) The decision recurs annually for roughly a handful of borderline players, so stakes are modest, bounded by the salary gap on a few roster spots. UNKNOWN: cubs_non_tender_candidates_2026
+ASSUMPTION: Non-tender (2) Service time, projected arbitration salaries (public estimates exist) and the non-tender list are public, but the replacement pool is revealed only after the deadline. A forecast of who will be available must be made without hindsight, and that is the hard part.
+ASSUMPTION: Non-tender (3) Roughly two decades of non-tender classes exist, but the CBA has changed salary and service rules, so older cases may not be comparable. Next-season output of non-tendered players is observable, but the output of the counterfactual tendered player is not, and survivorship in who signs where biases the comparison.
+ASSUMPTION: Non-tender (4,5) It is actionable, since the club decides by the deadline. Clubs already use WAR-per-dollar thresholds, and public arbitration projection tools exist, so the marginal edge is likely small.
+ASSUMPTION: Non-tender (6) A backtest looks good when it credits signed non-tendered players' production without netting out the many who flopped or were never signed, or when it uses the final arbitration salary instead of the projection known in November.
+
+ASSUMPTION: Qualifying offers (1) The Cubs face the decision only for their own eligible free agents, which may be zero to a few per year. The stake is a one-year QO salary against a draft-pick change, so the value is moderate and lumpy. UNKNOWN: cubs_qo_eligible_players_2026
+ASSUMPTION: Qualifying offers (2) Performance, age and the QO amount are public. Acceptance depends on private player preferences and agent strategy.
+ASSUMPTION: Qualifying offers (3) The number of historical QOs is a few dozen per year at most, with an early period of nearly zero acceptances and a later period with some, so the pooled model is small and non-stationary. Acceptance is observable, but the counterfactual of not offering is not. UNKNOWN: historical_qo_acceptance_count_by_year
+ASSUMPTION: Qualifying offers (4,5) It is actionable in a short window after the World Series. Clubs reason about this with simple market-versus-QO logic, and a sharper model probably adds little over an experienced executive.
+ASSUMPTION: Qualifying offers (6) A high AUC in-sample may come from a few features (large AAV expectation means decline) that the baseline already uses. Rule changes to compensation across CBAs also confound the pooled history.
+
+ASSUMPTION: NPB/KBO posting bids (1) Few relevant events per year, so recurrence is low, but the per-signing value can be large. Cubs interest in a given year is unknown. UNKNOWN: cubs_international_budget_2027
+ASSUMPTION: NPB/KBO (2) Basic stats are public, but detailed pitch tracking is mostly proprietary or inconsistently published, so the translation tool may only have stats the baseline ratios already use. UNKNOWN: public_availability_of_npb_kbo_pitch_tracking
+ASSUMPTION: NPB/KBO (3) The number of posted players with several MLB seasons is small, probably tens, split across hitters and pitchers and across ball and rule eras. A model with many parameters will overfit. Outcomes are observable but heterogeneous by role and injury. UNKNOWN: count_of_posted_players_with_mlb_outcomes
+ASSUMPTION: NPB/KBO (4,5) Bids are actionable only in a short, rule-bound window and posting fees and caps depend on current agreements. Clubs with international scouts and data staff already model translation, and the price is set by multi-club competition, so the winner's curse may erase any accuracy edge.
+ASSUMPTION: NPB/KBO (6) It looks useful through survivorship (only successes recalled), a few outlier stars driving fit, and comparing to the weakest ratio baseline instead of scouting-informed pricing.
+
+ASSUMPTION: Postseason roster construction (1) It recurs only when the club qualifies, 1 to 4 times a year, so expected value is discounted by playoff probability. A marginal win may be worth more in October, but the number of slots that actually change outcomes is small. UNKNOWN: measured_win_probability_value_of_marginal_postseason_slot
+ASSUMPTION: Postseason (2) Rosters, platoon and pitch-type splits are public, but injury status at the roster deadline is often incomplete or vague, which limits reconstruction of the true option set. UNKNOWN: public_injury_status_completeness_at_roster_deadline
+ASSUMPTION: Postseason (3) Postseason rosters from many series exist league-wide, but the per-series sample is tiny and series outcomes are very noisy. A test would need to score recommendations by simulated expected win probability, and the simulation embeds the same assumptions it tests, so it is not an observed-outcome validation.
+ASSUMPTION: Postseason (4,5) It is actionable and contenders already do this internally with staff judgment, so a public tool likely only matches.
+ASSUMPTION: Postseason (6) It looks useful through hindsight-chosen anecdotes (a pinch runner who scored), unmeasurable gains of well under a percentage point of series win probability, and ignoring that managers concentrate innings on top pitchers whatever the 26th slot is. Note the candidate text supplied for this item lists only the decision, and the problem is narrower than its attached assumptions suggest.
+
+ASSUMPTION: Arbitration filing (1) The Cubs file for each arbitration-eligible player every winter, which is several per year, with award differences per player in the range between filing numbers. Most cases settle, and hearings are rare for any one club.
+ASSUMPTION: Arbitration (2) Hearing outcomes and filing figures are publicly reported, but the panel's reasoning is confidential, and settlement terms are inconsistently recorded. Comparable-player selection rules are set by the CBA, which may change after this offseason. UNKNOWN: post_2026_cba_arbitration_rules
+ASSUMPTION: Arbitration (3) League-wide hearings are only a handful per year, so a predictor trained on hearings suffers from small samples and a selection effect: cases that reach hearing are those where the parties disagree, not a random draw. Outcome (win or loss against the two filed numbers) is observable. UNKNOWN: annual_hearing_count_sample_size
+ASSUMPTION: Arbitration (4,5) Actionable by choosing the filing figure and deciding whether to settle. Clubs already employ specialized staff and outside counsel, and public salary-projection tools exist. A club-policy of avoiding hearings (a "file and trial" posture) also carries relationship costs a model does not capture.
+ASSUMPTION: Arbitration (6) It looks useful through high accuracy that merely reflects the filing midpoint, hindsight about which stats panels reward, and treating the all-case outcome rate as if it applied to the cases a club would actually take to hearing.
+
+ASSUMPTION: BLIND SPOT (a) All six are low-frequency, small-sample decisions. The set concentrates on offseason transactions and leaves out high-frequency decisions with larger samples, which the objective preferred.
+ASSUMPTION: BLIND SPOT (b) Five of six depend on CBA rules that may change this offseason. The expiration timing is unverified. UNKNOWN: cba_expiration_date_verification
+ASSUMPTION: BLIND SPOT (c) Every candidate's retrospective test measures outcomes of decisions made, not outcomes of the unchosen option. Counterfactuals are unobserved, and models validated on simulation inherit simulation bias.
+ASSUMPTION: BLIND SPOT (d) No candidate states a baseline hit rate or dollar scale from supplied evidence, so the value-at-stake comparison is unsupported. UNKNOWN: cubs_private_models_and_practices
+ASSUMPTION: BLIND SPOT (e) Software cost, adoption by decision-makers and the chance that clubs already run equivalent tools are not weighed against the possible edge. A null result is itself informative and cheap to get, so testing before building is the reasonable default.
+IDEA: Sharpened replacement: one pooled "decision-quality audit" that, for non-tender, QO and arbitration decisions, uses only timestamped public data (projections and prices known on decision day) and reports the gap versus the simple baseline with bootstrap intervals. Build more only for the decision where the interval excludes zero by a margin larger than the dollar noise, and report a null for the others.
+=== CAND
+ASSUMPTION: No numeric evidence was supplied (facts is empty), so everything below is critique to be checked, not established fact.
+UNKNOWN: supplied_numeric_evidence_for_any_candidate
+ASSUMPTION: The pooled assumptions attached to the candidates include many that belong to other ideas (rain delays, draft pools, stolen bases). I judged each candidate on its own IDEA text only.
+ASSUMPTION: The postseason roster IDEA text (candidates/0/5/idea/1) states only owner, decision and frequency. Value, mechanism and baseline appear only in the unresolved-issues list, so that candidate is under-specified as written.
+CITE: objective_context
+
+ASSUMPTION: [Coaching 1] The hire or retain decision recurs yearly, but only a handful of coaching slots turn over per club. Value per decision is plausibly large, yet no supplied evidence sizes it.
+UNKNOWN: detectable_coach_effect_size
+ASSUMPTION: [Coaching 2] Public inputs are Statcast, staff announcements and media guides. Assistant and minor-league role titles and dates are likely inconsistent, so the link from coach to player may be mislabeled.
+UNKNOWN: public_coach_tenure_dataset_completeness
+ASSUMPTION: [Coaching 3] The number of coach-movement events with enough players per coach is probably small, and the outcome (player change) is observable but very noisy. Intervals may be too wide to change any hiring decision.
+ASSUMPTION: [Coaching 4] Actionability is limited because the Cubs can hire only from available candidates, and coach quality is hard to separate from the hiring club's infrastructure.
+ASSUMPTION: [Coaching 5] Sophisticated clubs probably already track player development outcomes by staff internally. Public sources give mostly anecdote and press narrative, not rigorous attribution.
+ASSUMPTION: [Coaching 6] It would look useful through regression to the mean, survivorship (coaches get poached after good years), and teams acquiring players they already expect to improve. Pitch-mix changes may be driven by front-office strategy and not by the coach.
+UNKNOWN: persistence_of_coach_effects_year_over_year
+
+ASSUMPTION: [Non-tender 1] The decision recurs every November or December, but the Cubs' marginal cases (borderline tender candidates) are probably few per year. Stake per case is the gap between arbitration salary and replacement cost.
+ASSUMPTION: [Non-tender 2] Public arbitration salary projections and the prior-year non-tender lists are public. The set of players other clubs will non-tender is not known when the Cubs decide, so any replacement-pool label built from the final list leaks hindsight unless it is forecast as of a dated snapshot.
+ASSUMPTION: [Non-tender 3] Past decisions are many league-wide, and signing price and next-season output are observable. Players signed after non-tender are a selected sample, because injured or declining players are overrepresented.
+ASSUMPTION: [Non-tender 4] Actionability is high and cheap to reverse. A club can tender, then trade or release, with partial cost, which weakens the need for a precise model.
+ASSUMPTION: [Non-tender 5] Clubs already apply WAR-per-dollar thresholds with internal projections, and public arbitration projections are widely available.
+ASSUMPTION: [Non-tender 6] It would look useful through hindsight-labeled replacement pools, and through backtests that count only the non-tendered players who succeeded. A comparison against a strawman threshold also flatters it.
+UNKNOWN: historical_nontender_signing_outcomes_dataset
+
+ASSUMPTION: [QO 1] The decision recurs yearly only for players who are QO-eligible, so per-year count may be zero to a few. Stake is a compensation pick versus a one-year salary, and the pick's value depends on CBA terms I could not verify.
+UNKNOWN: cubs_qo_eligible_players_2026
+UNKNOWN: current_qo_amount_2026
+ASSUMPTION: [QO 2] Public data on age, WAR, and market depth is available at decision time. Agent intent and private willingness to accept are not public, and they dominate the acceptance outcome.
+ASSUMPTION: [QO 3] Public history since the system began is only on the order of a hundred or so offers in total. That is too small for a calibrated model with many features, and each outcome is binary, which makes calibration weak.
+UNKNOWN: historical_qo_acceptance_count_by_year
+ASSUMPTION: [QO 4] The CBA expires around December 2026 (unverified), so QO rules may change right when the model would be used, and backtests may not transfer.
+UNKNOWN: cba_expiration_date_verification
+ASSUMPTION: [QO 5] Clubs and public analysts already compare projected market AAV to the QO amount, so the mechanism is largely the baseline stated in the IDEA.
+ASSUMPTION: [QO 6] It would look useful by overfitting a few dozen cases and by crediting hindsight on acceptance outcomes that were driven by market shocks.
+
+ASSUMPTION: [Posting 1] Posting events per year are few, and the Cubs bid on a small fraction. Stake per signing is large, but the recurrence is thin.
+UNKNOWN: count_of_posted_players_with_mlb_outcomes
+ASSUMPTION: [Posting 2] Public NPB and KBO stats exist, but pitch-tracking and bat-tracking granularity may not be public or licensed. Whether posting timing and the player's availability are known at decision time varies by year.
+UNKNOWN: public_availability_of_npb_kbo_pitch_tracking
+ASSUMPTION: [Posting 3] The retrospective sample is small and heterogeneous across pitchers and hitters, ages, and ball and rule eras. MLB outcomes are observable but strongly censored by injury and playing time.
+ASSUMPTION: [Posting 4] Actionability depends on posting fees, bid rules, and competition from other clubs. Any accuracy edge must also beat the winner's curse.
+ASSUMPTION: [Posting 5] Clubs with international scouting and data feeds already run translation models. Public analysts publish translation factors, so the baseline "simple ratios" is probably weaker than actual club practice.
+ASSUMPTION: [Posting 6] It would look useful through a handful of memorable hits and misses, and through fitting a model on survivors who were posted because they looked good. Narrow intervals from few cases would be false precision.
+
+ASSUMPTION: [Postseason 1] The decision occurs only when the Cubs qualify, so expected annual value is discounted by playoff probability, and the number of roster slots that matter is small.
+UNKNOWN: measured_win_probability_value_of_marginal_postseason_slot
+ASSUMPTION: [Postseason 2] Opponent and roster information is public only close to the decision time. Injury status at the roster deadline is often incomplete.
+UNKNOWN: public_injury_status_completeness_at_roster_deadline
+ASSUMPTION: [Postseason 3] Public postseason series number only in the dozens each year, and outcomes are dominated by luck. A series win-probability difference of a fraction of a percentage point cannot be detected.
+ASSUMPTION: [Postseason 4] Actionable, but constrained by health and by who is actually on the 40-man roster, which leaves few real choices.
+ASSUMPTION: [Postseason 5] Contending clubs likely simulate matchups internally and have far better injury information than public sources.
+ASSUMPTION: [Postseason 6] It would look useful by scoring simulator-recommended rosters against actual rosters on the same simulator, which only validates the model against itself. Post-hoc stories about a pinch runner are also misleading.
+
+ASSUMPTION: [Arbitration 1] The decision recurs each January for every arbitration-eligible player, so many decisions per year, though hearings are a small subset. The stake is raise levels that compound, and the total is plausibly meaningful but unsized here.
+UNKNOWN: annual_hearing_count_sample_size
+ASSUMPTION: [Arbitration 2] Exchanged figures and hearing results are public. Panel reasoning, comparables admitted and club-specific hearing policy are less visible, and rules may change under a new CBA.
+UNKNOWN: post_2026_cba_arbitration_rules
+ASSUMPTION: [Arbitration 3] Hearings per year are few, so a panel-outcome predictor trained on public hearings has small n, and the outcome is binary (the panel picks one of two numbers), which carries little information per case.
+ASSUMPTION: [Arbitration 4] Actionability is real for the file-and-trial and settlement choice, but a club policy choice (such as whether to go to hearings at all) can matter more than case-by-case prediction.
+ASSUMPTION: [Arbitration 5] Clubs and outside counsel have studied hearings for decades, and settlement at midpoint is a well-known baseline. Public databases of arbitration results already exist.
+ASSUMPTION: [Arbitration 6] It would look useful by fitting hearing results with too many features, and from selection: hearings are cases the sides could not settle, so they differ from the cases the model would need to price.
+
+ASSUMPTION: [Blind spot 1] No candidate states expected dollars or wins per decision with a source, so ranking by size of stake is currently unsupported.
+ASSUMPTION: [Blind spot 2] Every backtest compares against a simple rule, whereas the real competitor is internal staff with private data. Beating the strawman does not show an advantage.
+ASSUMPTION: [Blind spot 3] Hindsight risk is shared by all six. Backtests need dated snapshots of what was public at the decision date (projections, rosters, rumors), and many public sources are overwritten.
+ASSUMPTION: [Blind spot 4] Small n and multiple testing across features, years and subgroups will produce spurious wins for the QO, posting, postseason, and hearing candidates unless the test is pre-registered.
+ASSUMPTION: [Blind spot 5] A CBA expiration around this offseason (unverified) could change arbitration, QO, draft and service rules, and could cause a lockout. Backtests before that date may not carry over.
+ASSUMPTION: [Blind spot 6] Winner's curse and counterparty behavior (agents, other clubs) are common to QO, non-tender and posting, and a forecasting model alone does not solve them.
+ASSUMPTION: [Blind spot 7] The set ignores organizational adoption: a tool matters only if decision owners would change their decisions, which is not tested by a backtest.
+ASSUMPTION: [Blind spot 8] Terms of use for scraped public data (Statcast, transaction logs, foreign-league sites) were not checked, and public is not necessarily lawful to redistribute.
+UNKNOWN: cubs_private_models_and_practices
+
+IDEA: Replace the six with one pre-registered "dated-snapshot decision audit" on league-wide winter market decisions (non-tender, QO, posting), scoring forecast calibration against realized prices and outcomes. Cubs-specific tooling would be built only where it beats staff-style baselines out of sample.
+IDEA: Narrow the arbitration idea to a settle-versus-hearing expected-value calculator that uses exchanged figures and public award history, reported with intervals. Stop if annual hearing counts are too low to bound the error.
+IDEA: Run the coaching idea as a null-result test: check whether year-T coach ratings predict year-T+1 changes better than a tenure or reputation proxy, with matched controls. Fund it only if intervals are narrow enough to change a hire.
+IDEA: Defer the postseason roster optimizer, and instead build a reusable matchup simulator only if the series win-probability gain from marginal slots is shown to exceed what noise could hide.
+=== CAND
+IDEA: Replace the six-candidate portfolio with one narrow, falsifiable pilot: a dated-snapshot backtest of tender/non-tender and qualifying-offer decisions pooled league-wide, scored against the "projected WAR per dollar vs club threshold" and "offer if market AAV clearly exceeds QO" baselines, with every input timestamped to the decision date.
+ASSUMPTION: The supplied evidence contains no facts, so every size, count, and rate below is unverified; no statistic is asserted here.
+UNKNOWN: cubs_private_models_and_practices
+UNKNOWN: supplied_evidence_for_any_claim
+
+IDEA: Candidate 1, coaching-hire evaluation. Keep only as a null-result study, not a decision tool: a coach-movement panel with matched non-moving controls and a pre-registered test of year-over-year persistence of coach effects.
+ASSUMPTION: Recurrence is real but small (a handful of hires per offseason), and the value per hire is unknown; "large and recurring" is a hypothesis, not evidence.
+ASSUMPTION: Staff tenure records (assistant and minor-league roles) are incomplete or inconsistently dated, which makes the linkage to players the weakest point.
+ASSUMPTION: Confounds include selection (clubs hire coaches after improvements), regression to the mean, roster turnover, playing time, park, injury, and organizational infrastructure; a coach touching few players gives wide intervals.
+ASSUMPTION: Outcomes are observable only with a lag and with heavy noise; a hindsight-free test must build ratings on seasons up to T and predict T+1 against a reputation proxy.
+ASSUMPTION: Clubs likely already run private attribution, and public sources (Statcast leaderboards, media reporting) give partial versions.
+ASSUMPTION: It will look useful through anecdotal success stories and in-sample rankings that vanish out of sample.
+UNKNOWN: detectable_coach_effect_size
+UNKNOWN: public_coach_tenure_dataset_completeness
+
+IDEA: Candidate 2, non-tender decisions. This is the strongest candidate: it recurs every year, the decision date is fixed, and tender decisions, projected salaries, and later signings are public, so a pooled backtest across all clubs is possible.
+ASSUMPTION: Value per club is plausibly material only for a few borderline players a year; the number of those is unknown.
+ASSUMPTION: Projected arbitration salaries are public only as third-party estimates, whose vintage as of the deadline must be preserved to avoid hindsight.
+ASSUMPTION: The outcome is only partially observable: you see what non-tendered players did elsewhere, but not what the tendered player would have done, so the counterfactual is asymmetric.
+ASSUMPTION: Clubs already apply cost-per-WAR thresholds and public projections (e.g., projection systems, public salary estimators), so the edge over the baseline may be zero.
+ASSUMPTION: Replacement-market forecasting depends on who is available only after the deadline, so the forecast may be no better than a generic replacement-level price.
+ASSUMPTION: It will look useful by showing that non-tendered players sometimes produce well; that is survivorship, and the correct test compares against tendered peers at equal price.
+UNKNOWN: historical_nontender_signing_outcomes_dataset
+
+IDEA: Candidate 3, qualifying offers. Treat as a small-n calibration exercise embedded in the tender pilot, not a standalone product.
+ASSUMPTION: The decision applies to only a few players in a given year and only when the club has eligible free agents, and the number of historical acceptances is small, so calibration is weak.
+ASSUMPTION: Compensation value depends on CBA terms, which must be verified, and which may change at the next agreement.
+ASSUMPTION: Acceptance depends on player preference and the market, which are not public at the decision time.
+ASSUMPTION: Experienced executives and agents already use "market AAV vs QO" heuristics, and acceptance has historically been rare, so a rule of "offer when market exceeds the QO" is difficult to beat.
+ASSUMPTION: It will look useful through a high accuracy score driven by the base rate of declined offers.
+UNKNOWN: current_qo_amount_2026
+UNKNOWN: historical_qo_acceptance_count_by_year
+UNKNOWN: cubs_qo_eligible_players_2026
+
+IDEA: Candidate 4, NPB/KBO posting bids. Use as a Bayesian translation with wide intervals, reporting where the model cannot separate itself from simple ratios plus scouting.
+ASSUMPTION: Events are rare (a few relevant players per winter), so the value per signing may be large, but the annual aggregate for one club is small.
+ASSUMPTION: Calibration cases are few, and the league environments (ball, rules, park) change, so out-of-sample error likely dominates.
+ASSUMPTION: Pitch-tracking from foreign leagues is partially public at best, and scouting video is private to clubs.
+ASSUMPTION: Prices come from competitive bidding and posting rules, so a more accurate forecast must still overcome the winner's curse and the cap/fee structure.
+ASSUMPTION: The outcome is observable (MLB production), but only for those who were posted and signed, which creates selection bias.
+ASSUMPTION: It will look useful by fitting a handful of famous players well.
+UNKNOWN: count_of_posted_players_with_mlb_outcomes
+UNKNOWN: public_availability_of_npb_kbo_pitch_tracking
+
+IDEA: Candidate 5, postseason roster construction. Reframe as a one-time sensitivity analysis to bound the value of the 25th and 26th roster slots, and build nothing until that bound exceeds measurement noise.
+ASSUMPTION: The decision recurs only when the club qualifies (zero to four times a year), so expected value per year is discounted by qualification probability.
+ASSUMPTION: Marginal slots may see little playing time, and series-win-probability differences are likely small relative to noise.
+ASSUMPTION: A retrospective test has few rounds per club and relies on league-wide pooling, which removes health and context; counterfactual rosters are not observed.
+ASSUMPTION: Postseason rosters and transaction logs are public, but injury status at the deadline may not be.
+ASSUMPTION: Sophisticated clubs already simulate this privately, and public playoff-odds tools cover the seeding part.
+ASSUMPTION: It will look useful through vivid after-the-fact stories (a pinch runner who scored), which reflect hindsight.
+UNKNOWN: measured_win_probability_value_of_marginal_postseason_slot
+UNKNOWN: public_postseason_roster_archive_completeness
+
+IDEA: Candidate 6, arbitration filing. Restrict to a settle-vs-hearing expected-value calculator built on public hearing results, and report the sample size before any modeling.
+ASSUMPTION: The decision recurs every January across the eligible roster, so volume is the highest of the six, but contested hearings are few league-wide each year and typically few or none for one club.
+ASSUMPTION: Many clubs follow a file-and-trial policy that is itself known to agents, so the strategy is a policy choice, not a prediction problem.
+ASSUMPTION: Panels decide on a restricted set of criteria and comparables, so the filing midpoint plus comparables are strong baselines; the public record of the arguments and the outcomes may be too thin to beat them.
+ASSUMPTION: The outcome is observable (a win or loss at the hearing), but settlements before the hearing hide the counterfactual, and selection into hearings biases the sample.
+ASSUMPTION: Specialized staff and outside counsel already hold this knowledge, so the clubs are probably ahead.
+ASSUMPTION: It will look useful through high in-sample fit with few observations and many predictors.
+UNKNOWN: annual_hearing_count_sample_size
+UNKNOWN: post_2026_cba_arbitration_rules
+
+IDEA: Blind spot analysis across the set: add a shared evaluation protocol, with decision-date snapshots, a pooled league-wide test, a pre-registered simple baseline, and a reported minimum detectable effect, before any build decision.
+ASSUMPTION: Blind spot 1 is that five of six candidates are rare, small-n decisions, so none is likely to show a statistically detectable edge in a retrospective test.
+ASSUMPTION: Blind spot 2 is that the club-specific value is dominated by private information (medical, makeup, player preference, negotiation positions) that public data cannot capture.
+ASSUMPTION: Blind spot 3 is that the CBA expiration and rule changes may invalidate the historical records; the dates and the terms are unverified.
+ASSUMPTION: Blind spot 4 is that all six are one-off decisions, and the evidence suggests that recurring, high-volume, in-season decisions were not weighed at equal depth.
+ASSUMPTION: Blind spot 5 is that the candidate assumptions are pooled from a larger batch, so many (draft, ticketing, rain delays) do not apply, and counting them as evidence would inflate the criticism.
+ASSUMPTION: Blind spot 6 is that none of the six identifies the cost of building and maintaining the software against a likely modest gain, or whether the front office would act on a recommendation.
+CONFLICT: none_identified_no_evidence_supplied
