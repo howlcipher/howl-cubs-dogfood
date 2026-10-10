@@ -331,3 +331,7 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - R3-S3 session dead6ab8: COMPLETE, audit CLEAN, 2 of 2 rework rounds (Cursor reviewer findings), Codex implementer, Claude acceptance. Claude skipped once as reviewer for this session only (earlier EXECUTION_PERMISSION_REQUIRED); agents doctor afterwards all READY. LOCAL_LLM_USED: NO. Live proof: ledger 107 -> 157 (cap 50 held).
 - cubs-edge-lab PR #7 opened (SSH-signed b05c7fa). My merge was blocked by the Claude Code permission classifier ([Self-Approval]); the merge waits for the user. flake8 clean; 112 passed; clean clone 107 passed 5 skipped.
 - Full retrieval started 04:54Z from the PR head b05c7fa (the HowlPlane-accepted code), chunks of 200, ceiling 4,900 enforced in code. Chunk 1: 200 fetched, 0 failed, remaining 4,511 (projected total 4,868). Log: workflow-evidence/R003/R3-retrieval.log.
+
+## 2026-10-10T05:43:10Z — Full retrieval complete; INTENT R3-S4
+- Retrieval 04:54Z-05:42Z, 24 chunks, final ledger 4,868 of 4,900, failed 0, complete true (code b05c7fa). PR #7 still open (awaiting user merge); R3-S4 runs on top of feat/sendhold-retrieve and its PR will stack on #7.
+- INTENT R3-S4: offline table + data report, goal workflow-evidence/R003/R3S4-sendhold-table.goal.txt. Sessions: 4 of 10.
