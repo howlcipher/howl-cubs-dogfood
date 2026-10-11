@@ -122,7 +122,7 @@ INFERENCE: each of these either lacks a ready hypothesis, needs non-public data 
 | DOG-043 | Correctable refusals reported as INTERNAL_ERROR | #167 | Live CLI on merged main (R002) |
 | DOG-044 | Acceptance never saw HowlPlane's own verification result | #168 | Live: the same acceptor accepted, citing the harness (R004, fa728fa1) |
 
-Review: each fix went through a HowlPlane session. The DOG-037/038 review ended COMPLETE WITH WARNINGS with audit CLEAN. The DOG-044 fix was made by session 03d1d55e, and its CI-only test was made hermetic by session d516f2a9. This synthesis also corrects the howlplane registry status lines for DOG-040 to 044, which still said FIX IN REVIEW. That was HowlPlane session 745c5055: review CLEAN on round 2, ACCEPTED, make test-full passed; howlplane PR #169. Its DOG-042 line keeps the R002 scope ("not observed live"), as the goal specified; the R003 live reroute is noted in the PR.
+Review: each fix went through a HowlPlane session. The DOG-037/038 review ended COMPLETE WITH WARNINGS with audit CLEAN. The DOG-044 fix was made by session 03d1d55e, and its CI-only test was made hermetic by session d516f2a9. This synthesis also corrects the howlplane registry status lines for DOG-040 to 044, which still said FIX IN REVIEW. That was HowlPlane session 745c5055: review CLEAN on round 2, ACCEPTED, make test-full passed; howlplane PR #169, merged as 04b5269 with all CI checks green. Its DOG-042 line keeps the R002 scope ("not observed live"), as the goal specified; the R003 live reroute is noted in the PR.
 
 ### Open items (not repaired)
 
@@ -220,7 +220,7 @@ Recommendation (INFERENCE: further public-data work has low expected value): opt
   | Repository | State |
   | --- | --- |
   | cubs-edge-lab | Public, 97901d2 |
-  | howlplane | 5253f3f, plus PR #169 (registry status, branch dogfood/registry-status-r006, 85ad73d) |
+  | howlplane | 04b5269 (#169 merged: registry status; CI all green; registry on main checked) |
   | howl | 45478f4 |
   | howldream | f1cc5ca, unchanged |
   | howl-cubs-dogfood | Public; synthesis on records/synthesis |

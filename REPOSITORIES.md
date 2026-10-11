@@ -6,7 +6,7 @@ Refreshed at the campaign synthesis (2026-10-11). All listed checkouts were clea
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | howl-cubs-dogfood (control) | dev/howl-cubs-dogfood | records/synthesis -> main | 5d9235d | main 64e7969 (#1-#6 merged) | YES | YES, public | Campaign records and prompt |
 | cubs-edge-lab | dev/cubs-edge-lab | main | 7c715c8 | 97901d2 | YES | YES, public (PRs #1-#16) | Bulk data local only; no CI; clone gate 402 passed |
-| howlplane | dev/howlplane | main | 4b7fe81 | 5253f3f | YES | YES (#164-#168 merged; registry-status PR pending) | Live engine (editable, via managed component) |
+| howlplane | dev/howlplane | main | 4b7fe81 | 04b5269 | YES | YES (#164-#169 merged) | Live engine (editable, via managed component) |
 | howldream | dev/howldream | main | f1cc5ca | f1cc5ca | NO | n/a | `howldream` runs its editable venv |
 | howl | dev/howl | main | c9d37d5 | 45478f4 | YES | YES (#16 merged) | Go CLI; forwards orchestrate/agents/factory |
 | howlcreate | dev/howlcreate | main | bab145a | bab145a | NO | n/a | |

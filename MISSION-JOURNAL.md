@@ -638,3 +638,12 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - Record corrections from review: R004 assessment repair-session count (1 -> 2, noted in place); DOGFOOD.md DOG-035 registry note; CUBS-P-007 heading -> DOG-039 FIXED.
 - Newly disclosed deviation: R004 started (15:27Z) before R003 was MERGED_VERIFIED (15:47Z).
 - REPOSITORIES.json/.md refreshed; HOWL-CUBS-HANDOFF.md rewritten; index campaign state -> PAUSED_NEEDS_HELP pending the owner's decision (CAMPAIGN-SYNTHESIS.md section 5).
+
+
+## 2026-10-11 05:35 UTC howlplane #169 MERGED_VERIFIED
+
+- CI on 85ad73d: all checks pass (Analyze, CodeQL, Fast Python 3.11 to 3.14, Full regression 3.12, lint, SlopsLint, test-go, test-python).
+- Merged by me at the reviewed head under the standing authorization for routine mission-owned merges (CLOSEOUT-PROMPT.md), as 04b5269.
+- Shared checkout dev/howlplane (clean, main) fast-forwarded to 04b5269. Registry on main: DOG-040 to DOG-044 FIXED, no FIX IN REVIEW lines. Engine venv imports dev/howlplane/src.
+- Worktree dev/howlplane-registry-status removed; local branch deleted (merged).
+- Next: merge howl-cubs-dogfood #7 (records/synthesis) after this records update.

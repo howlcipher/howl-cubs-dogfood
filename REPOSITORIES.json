@@ -72,17 +72,17 @@
         "verified_by": "read-only: enginepath.go resolution order, wrapper script, venv python import path, direct_url.json",
         "warning": "Engine follows whatever branch the shared howlplane checkout has checked out. Other campaigns use this checkout; re-verify HEAD before each orchestrate."
       },
-      "current_sha": "5253f3f",
+      "current_sha": "04b5269",
       "merged_prs": [
         "#164 f39cf18 (DOG-035/036)",
         "#165 28511b4 (DOG-037/038)",
         "#166 af9f40a (DOG-039)",
         "#167 99d3aa4 (DOG-040..043)",
-        "#168 5253f3f (DOG-044)"
+        "#168 5253f3f (DOG-044)",
+        "#169 04b5269 (registry status DOG-040..044)"
       ],
       "pushed": "YES (branches merged and deleted)",
-      "pending": "dogfood/registry-status-r006 (worktree dev/howlplane-registry-status): FINDINGS.md status lines for DOG-040..044",
-      "execution_provenance_note": "engine venv imports the shared checkout on main 5253f3f (verified at R004 close)"
+      "execution_provenance_note": "engine venv imports the shared checkout on main 04b5269 (verified at synthesis)"
     },
     {
       "name": "howldream",

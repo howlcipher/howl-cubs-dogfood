@@ -22,7 +22,7 @@ See FINAL-ASSESSMENT.md (index) and runs/R00N/FINAL-ASSESSMENT.md.
 | Repository | State |
 | --- | --- |
 | cubs-edge-lab | main 97901d2 (public; no CI) |
-| howlplane | main 5253f3f; the engine venv imports the shared checkout |
+| howlplane | main 04b5269; the engine venv imports the shared checkout |
 | howl | main 45478f4 |
 | howldream | main f1cc5ca (unchanged) |
 | howl-cubs-dogfood | main 64e7969; synthesis on records/synthesis |
@@ -31,7 +31,7 @@ See FINAL-ASSESSMENT.md (index) and runs/R00N/FINAL-ASSESSMENT.md.
 
 | Repository | Change | State |
 | --- | --- | --- |
-| howlplane | dogfood/findings/FINDINGS.md status lines for DOG-040 to DOG-044 (FIX IN REVIEW, now FIXED). Session 745c5055 COMPLETE; PR #169 (85ad73d); worktree dev/howlplane-registry-status | See the journal for the merge state |
+| howlplane | dogfood/findings/FINDINGS.md status lines for DOG-040 to DOG-044 (FIX IN REVIEW, now FIXED). Session 745c5055 COMPLETE; PR #169 merged as 04b5269 (CI green); shared checkout fast-forwarded; worktree removed | MERGED_VERIFIED |
 | howl-cubs-dogfood | records/synthesis: CAMPAIGN-SYNTHESIS.md, R005 MERGED_VERIFIED, record corrections, CUBS-P-012, manifest refresh, this handoff | See the journal for the PR and merge state |
 
 ## Open findings (DOGFOOD.md)
@@ -57,6 +57,6 @@ See FINAL-ASSESSMENT.md (index) and runs/R00N/FINAL-ASSESSMENT.md.
 - R001 data incident: orphaned commits with bulk records may still be served by SHA until the owner asks GitHub Support to purge them.
 
 ## Active processes
-- See the journal: the registry session runs to completion before the synthesis PRs.
+- None.
 
 LOCAL_LLM_USED: NO (every run and the synthesis).
