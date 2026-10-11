@@ -7,8 +7,9 @@
 | R002 | REGRESSION (DOG-040..043) | COMPLETE_REGRESSION | MERGED_VERIFIED (howlplane 99d3aa4) | v2 | [runs/R002/FINAL-ASSESSMENT.md](runs/R002/FINAL-ASSESSMENT.md) |
 | R003 | DISCOVERY_BUILD (SENDHOLD) | COMPLETE_NEGATIVE | MERGED_VERIFIED (cubs-edge-lab 91f06c5 via #6, #7, #10) | v2 | [runs/R003/FINAL-ASSESSMENT.md](runs/R003/FINAL-ASSESSMENT.md) |
 | R004 | FOLLOW_UP (results explorer) | COMPLETE_USEFUL (bounded: fidelity of displayed results; readability defects documented) | MERGED_VERIFIED (cubs-edge-lab 5fc04e9 via #11, #15; howlplane 5253f3f via #168) | v3 | [runs/R004/FINAL-ASSESSMENT.md](runs/R004/FINAL-ASSESSMENT.md) |
+| R005 | FOLLOW_UP (explorer readability) | COMPLETE_USEFUL (bounded: readability fixed without weakening fidelity guards) | PR_PENDING (cubs-edge-lab #16) | v4 | [runs/R005/FINAL-ASSESSMENT.md](runs/R005/FINAL-ASSESSMENT.md) |
 
-Campaign state: ACTIVE. R004 closed (MERGED_VERIFIED). Next: review and adopt the prompt v4 candidates, an optional explorer readability follow-up, then the campaign synthesis closeout run.
+Campaign state: ACTIVE. R005 analysis complete; delivery PR_PENDING (cubs-edge-lab #16). Next: the campaign synthesis closeout run.
 
 Summary so far: public-data software for November minor-league free agency does not show a meaningful advantage. The low-attention pool holds under one next-season contributor per club per year, and a model only ties the "played in MLB last year" rule. Five Howl defects were found and fixed (DOG-035 to DOG-039); three are open for R002.
 

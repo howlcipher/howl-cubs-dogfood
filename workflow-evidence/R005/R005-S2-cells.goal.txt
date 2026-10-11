@@ -1,0 +1,13 @@
+Finish the explorer readability work in this repository. Commit 2496596 is accepted and committed. Screenshots of a fresh clone at 375 px show three remaining defects. Fix them and change nothing else. Do not edit research/, data/ or scripts/gate.sh. Verify with exactly `sh scripts/gate.sh`.
+
+1. Data cells still break inside numbers and words. On web/milbfa.html at 375 px, the whole-pool ranking table's N column renders "636" one digit per line. The existing word-break test only checks header cells. Fix: no table cell, header or data, may break inside a single word or number at 320, 375 or 1280 px. Numeric cells do not wrap at all. The table's minimum width comes from its content, and it scrolls inside its container instead of squeezing columns.
+2. At narrow widths the table caption is clipped together with the scrolling table (for example "v3 primary analysis, verdict: NEGATIVE" is cut off at 375 px). Fix: the caption, or an equivalent visible heading tied to the table with aria-labelledby or caption semantics, stays fully visible at the card's width while only the table body scrolls. Keep table captions or equivalent accessible names, so the accessibility tests still hold.
+3. Nothing tells a phone user that a table scrolls sideways. Fix: when a table's container overflows horizontally, show a short visible text cue near the table (for example "Scroll sideways for more columns"). The scroll container is keyboard-focusable (tabindex="0", with an accessible name), so keyboard users can scroll it too. Show no cue when the table fits.
+
+Tests to add or extend (existing style), on all four pages:
+- at 320, 375 and 1280 px, no word or number in any th or td is split across lines. Measure per word, for example with Range.getClientRects on each whitespace-separated token: each token must have one line box;
+- captions or table names are fully visible (not clipped by the scroll container) at 375 px;
+- the cue is present and visible exactly when the container overflows, and the container is focusable with an accessible name;
+- every existing guard still passes with its intent.
+
+Gate: sh scripts/gate.sh passes (0 skipped end-to-end tests).

@@ -575,3 +575,38 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - experiments/R004-EXPLORER-SPEC.md is now v3 (display rules only); v2 is kept.
 - Section 18 step 6: prompt v4 activates at the run boundary after its PR (#5) merges. R005 starts after that merge.
 
+
+## 2026-10-11 01:11 UTC R005 start under prompt v4; INTENT R5-S1
+
+- Prompt v4 merged: howl-cubs-dogfood #5, merged by me at the owner's explicit request ('You can merge it'). origin/main EXECUTION-PROMPT.md sha256 048f2f5bcd32259298d625139e326da54ca45da9aed58d96719b395e3dff63b0. Snapshot: runs/R005/PROMPT-SNAPSHOT.md.
+- Contract: runs/R005/RUN-CONTRACT.md. Spec: experiments/R004-EXPLORER-SPEC.md v3.
+- cubs-edge-lab: branch feat/explorer-readability from main 5fc04e9.
+- Gate command: sh scripts/gate.sh. Content hash before the session: b20458f5978d6b32ac46e147dcdc94b3b9ebbd9034c475fda25fb9961d1869f1 (v4 lesson 2).
+- INTENT R5-S1: goal workflow-evidence/R005-S1-readability.goal.txt. --orchestrator claude_code, --worker-network, --execution-budget implementation=1800, --verify-timeout 900. R005 HowlPlane sessions: 1 of 3 (repairs count).
+
+
+## 2026-10-11 01:45 UTC R5-S1 accepted; screenshot finding; INTENT R5-S2
+
+- R5-S1 (7e3f20eb): Claude planned; Claude was refused a targeted pytest command (not granted); Codex implemented. Claude review CLEAN (3 non-blocking notes); acceptance ACCEPTED.
+- v4 checks:
+  - scripts/gate.sh hash unchanged (b20458f5…).
+  - research/ and data/ untouched.
+  - Commit 2496596 (signed). Fresh clone at that commit: 367 passed, 6 skips, all in README-documented data-dependent tests.
+- Screenshots of the fresh clone (workflow-evidence/R005/r5-*.png):
+  - Desktop is fixed: one disclosure per row, inline intervals, -0.000053 instead of -0.00.
+  - FINDING: on free-agent at 375 px, 'N' data cells break per digit ('636'). The new test checks headers only.
+  - Minor: table captions clip with the scroll container; no cue that the table scrolls sideways.
+- INTENT R5-S2 (2 of 3): goal workflow-evidence/R005/R005-S2-cells.goal.txt. Gate hash before: b20458f5….
+
+
+## 2026-10-11 02:24 UTC R5-S2 accepted; R005 assessment; PR #16
+
+- File move: the R5-S1 files were moved from workflow-evidence/ to workflow-evidence/R005/ (the earlier entry names the old path).
+- R5-S2 (ba91faa1): Claude implemented, then was refused a targeted pytest command; Codex completed. Review CLEAN (non-blocking notes); acceptance ACCEPTED.
+- v4 checks:
+  - gate.sh hash unchanged; research/ and data/ untouched.
+  - Commit 0cc6bdc; fresh clone: 402 passed, 6 documented skips.
+  - Screenshots r5b-*.png: digit splitting is fixed, captions are visible, the scroll cue shows. Minor open item: tall prose rows at 375 px.
+- cubs-edge-lab PR #16, one PR to main. CI is absent in the repository, and the PR states that.
+- runs/R005/FINAL-ASSESSMENT.md: COMPLETE_USEFUL (bounded); PR_PENDING. 2 of 3 sessions used.
+

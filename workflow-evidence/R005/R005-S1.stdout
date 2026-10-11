@@ -1,0 +1,62 @@
+HOWL ORCHESTRATION REPORT
+Session: 7e3f20ebe5c047c0837588428777a7c8
+Goal: Improve the readability of the static explorer in this repository (web/, the display mirror in tests/test_explorer_e2e.py, and web/data only through the exporter) without weakening any existing guard. Do not edit research/, data/ or scripts/gate.sh. Verify with exactly `sh scripts/gate.sh`. The regeneration command, if needed, is `python3 -m cubs_edge_lab.web_export`.
+
+Three defects, seen in screenshots of the current pages:
+1. Every number has its own block-level "Full published value" <details>, so an interval reads "(95% interval: -0.00 [box] to 0.00 [box] )" and each criteria row holds several boxes. Fix: at most one full-value <details> per table row (or per value group outside tables), listing each number's full value with its source pointer. Every rendered number keeps its data-src tag. Intervals render inline as "lo to hi".
+2. Small values read as zero. Brier differences of about -0.00005 render as "-0.00". Fix: keep 2 decimals for floats and 3 for probabilities and rates, unless the formatted text would read as zero while the source value is not zero (abs(x) < 0.005 at 2 decimals, or abs(x) < 0.0005 at 3). Show those to 2 significant figures in plain decimal form (for example -0.000053), never scientific notation. "-0" text never appears. web/format.js and the Python display mirror implement the same rule, and the existing parity test covers the new cases. Each page that shows such a value states "small values shown to 2 significant figures" next to the existing decimal note.
+3. At 375 px the criteria tables squeeze their columns and headers break mid-word ("Cr/it/er/io/n"). Fix: give tables a minimum width so no header breaks inside a word, and let them scroll inside their own container at narrow widths. The page itself must still have no horizontal scroll.
+
+Tests to add (existing style):
+- no rendered number text equals a zero form ("0.00", "-0.00", "0.000", "-0.000", "-0") while its source value is non-zero, on all four pages;
+- no "-0" text anywhere;
+- each table row has at most one full-value <details>, and that <details> lists every data-src in the row;
+- at 320, 375 and 1280 px, no table header's rendered text breaks inside a word (compare each header cell's rendered line count with its word count, or an equivalent measurable check), tables scroll inside their containers, and the page has no horizontal scroll;
+- format parity for the small-value rule (JS and Python).
+
+Every existing guard test must keep its intent: exact source values (DOM scan), verdict and meaning first, runs left hidden by default (disclosed_only), Met/Not met in text, limits blocks, keyboard, the accessibility tests, and no runtime network. Update a guard test only where the markup moved, never to weaken it.
+
+Gate: sh scripts/gate.sh passes (0 skipped end-to-end tests).
+Status: COMPLETE WITH WARNINGS
+Resumable: no
+Orchestrator: claude_code
+Implementer: codex
+Policy: PLAN + EXECUTE + INDEPENDENT AUDIT
+Constraints: The current HowlPlane session IS the orchestration workflow. Perform the assigned work in the target project. Do not launch howl/howlplane or another orchestration session merely to prove Howl was used. Do not copy internal orchestration state into the target project.
+Assignments: 5
+Reroutes: 1
+Repository head: 5fc04e9ceb09b769fae501741e98aa285b29b8cf
+Repository status: M tests/test_explorer_e2e.py
+ M web/app.js
+ M web/format.js
+ M web/style.css
+Tests: [{"command": "git diff --check", "exit_code": 0, "output": ""}, {"command": ["sh", "scripts/gate.sh"], "rework_round": 0, "exit_code": 0, "output": "........................................................................ [ 19%]\n........................................................................ [ 38%]\n................................................................... [ 56%]\n...................................................................... [ 75%]\n........................................................................ [ 94%]\n....................                                                     [100%]\nSkipped tests: 0\n\n373 passed, 7 subtests passed in 252.75s (0:04:12)\nok: pytest (end-to-end tests required)\nok: flake8\nok: node --check\nok: no stray ignored paths\n"}]
+Independent audit: CLEAN
+Recovery: {"at": "2026-10-11T01:26:27.359602+00:00", "needs_validation": false, "from": "claude_code", "stage": "implementation"}
+Failures: [{"stage": "implementation", "agent": "claude_code", "model": "UNKNOWN", "failure": "EXECUTION_PERMISSION_REQUIRED"}]
+Review notes from Claude (review, CLEAN):
+  I found no blocking defects. I couldn't run anything myself, since I only had Read, Grep and Glob. The gate result (373 passed, 0 skipped, flake8 and `node --check` ok, `git diff --check` clean) is HowlPlane's harness evidence, not something I re-ran.
+  
+  I read `web/format.js`, `web/app.js`, the `web/style.css` rules and the added tests, and checked them against the three defects:
+  
+  1. **One full-value `<details>` per row or group.** `fullValues()` builds a single "Full published value" `<details>` listing each number's full value with its own `data-src`, with digit-free labels.
+     - **Tables:** the criteria, decision, label-count, ranking and bootstrap tables each get one per row. In a criteria row for a NEGATIVE verdict, it nests inside the failed-model `<details>`, so those values stay hidden by default.
+     - **Outside tables:** the decision metadata, limits covariate pair, milbfa thresholds and holdout line each get one. `line()` also gets one. The holdout one is a sibling after its paragraph.
+     - **Intervals:** they render inline as "lo to hi", and the bootstrap test now checks for exactly that text.
+  2. **Small values.**
+     - **Rule:** `isSmall` and `readsAsZero` in `web/format.js` give 2 significant figures when fixed decimals would read as zero (below 0.005 at 2 decimals, below 0.0005 at 3), so `-0.000053` and `0.00010` come out as specified. `toPlain` rewrites exponent notation, so `formatFull` stays in plain decimal. Python's `two_significant` uses `Decimal` with `ROUND_HALF_UP` and the 9.96e-5 carry case.
+     - **Boundaries:** 0.005 gives `0.01` and 0.0005 gives `0.001` in both languages.
+     - **Tests:** the Python vectors, the JS-vs-Python parity list, the zero-form scan, the "-0" scan and their self-tests are present.
+     - **Notes:** `line()` appends "; small values shown to 2 significant figures" only when a small value is present. `addSmallValueNotes()` adds a `format-note` paragraph to any `.panel` or `.card` that holds a small value but no note, falling back to `main`. `format-note` joined `PROVENANCE_KINDS` with an exact-text check.
+  3. **Headers and scrolling.** In `web/style.css`, `th` no longer breaks inside words, `td` keeps `overflow-wrap: anywhere`, and `table` has `min-width: 40rem` (ranking 56rem, decision 62rem). The wraps are `overflow-x: auto`. The new header test checks each word with a `Range` at 320, 375 and 1280 px, that the wraps are `overflow-x: auto` and inside the viewport, that tables scroll at the narrow widths, and that the page has no horizontal scroll. A negative control shows the check fires when the CSS is removed.
+  
+  The existing guards were only edited where markup moved: ranking details count, the bootstrap newline check and the provenance list. The decision metadata test now checks the single sibling group, with each source once in the paragraph and once in the group.
+  
+  NON-BLOCKING:
+  - The word-break check splits on hyphens, so a break inside a hyphenated word counts as acceptable. That fits normal wrapping.
+  - The "tables scroll inside their containers" assertion only runs below 900 px, which matches the goal's narrow-width intent.
+  - `data-small` is set only by `numberSpan`. The remaining raw `sourced(formatValue(...))` calls handle integers, years and strings, so they can't read as zero. A future float added that way would skip the note.
+  
+  **Files changed:** `web/format.js`, `web/app.js`, `web/style.css`, `tests/test_explorer_e2e.py`. `web/data` and the exporter were not touched.
+  
+  AUDIT_STATUS: CLEAN
