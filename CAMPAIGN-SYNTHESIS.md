@@ -6,7 +6,7 @@
 - Sources: numbers come from the run assessments (runs/R00N/FINAL-ASSESSMENT.md) or from the files they cite: OPPORTUNITIES.md, MISSION-JOURNAL.md, DOGFOOD.md and EXECUTION-PROMPT.md. Where a number comes from one of those files, the file is named.
 - Labels: FACT means measured in a run. INFERENCE means reasoned from evidence. SPECULATIVE means untested.
 - Review: HowlDream reviewed two drafts (section 6). This version reconciles both rounds.
-- **Campaign state: PAUSED_NEEDS_HELP.** No next experiment with a ready hypothesis and more than small expected value was identified, so the owner chooses the next direction (section 5).
+- **Campaign state: STOPPED_BY_USER** (2026-10-11). No next experiment with a ready hypothesis and more than small expected value was identified. Asked to choose from section 5, the owner chose "Stop the campaign".
 
 ## 1. Runs at a glance
 
@@ -202,7 +202,7 @@ The controller wrote goals, constraints and audits, and ran fresh-clone and scre
 - R005 was the first run under v4. Its screenshot lesson caught the run's only escaped defect, and no further change was proposed.
 - No prompt change is proposed from this synthesis. CUBS-P-012 was an operator typo, which a prompt rule would not prevent.
 
-## 5. Decision needed (PAUSED_NEEDS_HELP)
+## 5. Decision (asked under PAUSED_NEEDS_HELP; answered: stop)
 
 No experiment with a ready hypothesis and more than small expected value was identified. The owner's options:
 1. **Stop the campaign** (STOPPED_BY_USER).

@@ -8,7 +8,7 @@
 | R004 | FOLLOW_UP (results explorer) | COMPLETE_USEFUL (bounded: fidelity of displayed results; readability defects documented) | MERGED_VERIFIED (cubs-edge-lab 5fc04e9 via #11, #15; howlplane 5253f3f via #168) | v3 | [runs/R004/FINAL-ASSESSMENT.md](runs/R004/FINAL-ASSESSMENT.md) |
 | R005 | FOLLOW_UP (explorer readability) | COMPLETE_USEFUL (bounded: readability fixed without weakening fidelity guards) | MERGED_VERIFIED (cubs-edge-lab 97901d2 via #16) | v4 | [runs/R005/FINAL-ASSESSMENT.md](runs/R005/FINAL-ASSESSMENT.md) |
 
-Campaign state: PAUSED_NEEDS_HELP. R001 to R005 are closed and MERGED_VERIFIED. The campaign synthesis is in [CAMPAIGN-SYNTHESIS.md](CAMPAIGN-SYNTHESIS.md); the owner's decision on the next direction is in its section 5.
+Campaign state: STOPPED_BY_USER (2026-10-11; the owner chose "Stop the campaign" from the options in [CAMPAIGN-SYNTHESIS.md](CAMPAIGN-SYNTHESIS.md) section 5). R001 to R005 are closed and MERGED_VERIFIED, and so are the synthesis changes (howlplane #169, howl-cubs-dogfood #7).
 
 Summary so far: public-data software for November minor-league free agency does not show a meaningful advantage. The low-attention pool holds under one next-season contributor per club per year, and a model only ties the "played in MLB last year" rule. Five Howl defects were found and fixed (DOG-035 to DOG-039); three are open for R002.
 
