@@ -565,3 +565,13 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
   3. Two repair sessions beyond the six-session bound.
 - EXECUTION-PROMPT v4 sha256 048f2f5bcd32259298d625139e326da54ca45da9aed58d96719b395e3dff63b0. Final diff: workflow-evidence/R004/prompt-v4.final.diff. Structure checked: section numbering is unchanged, and the new lines' references (sections 16, 17 and 18, the --verify-timeout rule, the third-party-data rule, the repair-session rule) resolve.
 
+
+## 2026-10-11 00:23 UTC R005 drafted; waiting for the prompt v4 merge
+
+- runs/R005/RUN-CONTRACT.md drafted:
+  - FOLLOW_UP on explorer readability.
+  - Bounds: 3 HowlPlane sessions (repairs included), no Dream, no data.
+  - research/ is unchanged.
+- experiments/R004-EXPLORER-SPEC.md is now v3 (display rules only); v2 is kept.
+- Section 18 step 6: prompt v4 activates at the run boundary after its PR (#5) merges. R005 starts after that merge.
+
