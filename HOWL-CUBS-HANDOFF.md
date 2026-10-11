@@ -4,9 +4,9 @@ Updated: 2026-10-11 (campaign synthesis)
 
 ## Mission and state
 - Mission: discover and test where software could create a meaningful baseball advantage for the Chicago Cubs, while dogfooding the Howl ecosystem (HowlDream for discovery and critique, HowlPlane for the build lifecycle).
-- **Campaign status: PAUSED_NEEDS_HELP.** Mode: USER MODE.
-  - R001 to R005 are closed and MERGED_VERIFIED.
-  - The campaign synthesis is written (CAMPAIGN-SYNTHESIS.md). The question for the owner is in its section 5: stop, allow non-public data, run a MILBFA confirmatory test, run a COACH feasibility check, or do Howl-only regression work.
+- **Campaign status: STOPPED_BY_USER** (2026-10-11). Mode: USER MODE.
+  - R001 to R005 are closed and MERGED_VERIFIED, and so are the synthesis changes (howlplane #169, howl-cubs-dogfood #7).
+  - The owner chose "Stop the campaign" from CAMPAIGN-SYNTHESIS.md section 5. Launch no new runs without a new instruction.
 - Prompt: EXECUTION-PROMPT.md v4, sha256 048f2f5bcd32259298d625139e326da54ca45da9aed58d96719b395e3dff63b0. No change is proposed from the synthesis.
 
 ## Run index
@@ -47,7 +47,7 @@ See FINAL-ASSESSMENT.md (index) and runs/R00N/FINAL-ASSESSMENT.md.
 1. Read this file, then the last entries of MISSION-JOURNAL.md.
 2. Reconcile with Git (all five repositories) and `howl orchestrate inspect --json`.
 3. Export HOWL_FORBID_LOCAL_INFERENCE=1 before any Howl or provider call.
-4. Act on the owner's answer to CAMPAIGN-SYNTHESIS.md section 5. Do not start a run without it.
+4. The campaign is stopped. A restart needs a new owner instruction. CAMPAIGN-SYNTHESIS.md sections 3 and 5 list the options that were considered.
 
 ## Warnings
 - Shared engine: the dev/howlplane checkout is used by other campaigns. Re-verify HEAD and branch before every orchestrate.

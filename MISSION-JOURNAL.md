@@ -647,3 +647,12 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - Shared checkout dev/howlplane (clean, main) fast-forwarded to 04b5269. Registry on main: DOG-040 to DOG-044 FIXED, no FIX IN REVIEW lines. Engine venv imports dev/howlplane/src.
 - Worktree dev/howlplane-registry-status removed; local branch deleted (merged).
 - Next: merge howl-cubs-dogfood #7 (records/synthesis) after this records update.
+
+
+## 2026-10-11 15:27 UTC Campaign STOPPED_BY_USER
+
+- howl-cubs-dogfood #7 (records/synthesis) merged at its reviewed head as 61915c2, under the standing authorization. Local main fast-forwarded; branch deleted.
+- Asked the section 5 question (PAUSED_NEEDS_HELP). Owner's verbatim choice: "Stop the campaign (Recommended)".
+- Campaign state: STOPPED_BY_USER. No workers running (howl orchestrate inspect: no unfinished sessions). No further runs launched.
+- Final handoff: HOWL-CUBS-HANDOFF.md. Index: FINAL-ASSESSMENT.md. Synthesis: CAMPAIGN-SYNTHESIS.md.
+- LOCAL_LLM_USED: NO.
