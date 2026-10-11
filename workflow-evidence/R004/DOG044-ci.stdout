@@ -1,0 +1,36 @@
+HOWL ORCHESTRATION REPORT
+Session: d516f2a967af467baadaf6724a22e443
+Goal: Fix one environment-dependent test in this HowlPlane repository (branch dogfood/R004-dog044, PR #168). Change nothing else.
+
+tests/test_orchestration_acceptance_verification_evidence.py::test_reconciliation_clears_results_before_acceptance calls module.setup(...) without first installing the fake agent CLIs, unlike the other tests in the file (acceptance_prompt calls install_all(tmp_path, monkeypatch, models=("m1",))). On a machine with a real codex CLI it passes. On GitHub Actions it fails in every Fast Python job and the Full regression job (run 38077160672) with:
+OperatorFailure: The selected orchestrator codex is not available (CLI metadata does not confirm unattended execution).
+Local reproduction: with the agent CLIs absent from PATH (only python3, git and /usr/bin, /bin), this test fails and the other 8 pass.
+
+Fix: make the test hermetic, the same way the other tests in the file are: install the fake CLIs before setup, or reuse the acceptance_prompt helper's setup. Keep the test's assertions: reconcile() clears doc["tests"] when repository evidence changed, the stale result is absent from the acceptance prompt, and the "no verification command ran on the current tree" line is present.
+
+Gate: make test-full passes.
+Status: HANDOFF REQUIRED
+Resumable: yes
+Orchestrator: claude_code
+Implementer: none
+Policy: PLAN + EXECUTE + INDEPENDENT AUDIT
+Constraints: The current HowlPlane session IS the orchestration workflow. Perform the assigned work in the target project. Do not launch howl/howlplane or another orchestration session merely to prove Howl was used. Do not copy internal orchestration state into the target project.
+Assignments: 6
+Reroutes: 5
+Repository head: 575067f7cc74d4e42bcb32047b2728f5cfedb20e
+Repository status: M tests/test_orchestration_acceptance_verification_evidence.py
+Tests: []
+Independent audit: not requested or incomplete
+Recovery: {"at": "2026-10-10T22:37:47.783218+00:00", "needs_validation": true, "from": "codex", "stage": "implementation"}
+Excluded implementation workers: [{"agent": "claude_code", "reason": "failed earlier this session (NO_REPOSITORY_CHANGE)"}, {"agent": "codex", "reason": "failed earlier this session (IMPLEMENTATION_INCOMPLETE)"}, {"agent": "cursor", "reason": "session limit reached"}, {"agent": "agy", "reason": "failed earlier this session (NO_REPOSITORY_CHANGE)"}, {"agent": "devin_cli", "reason": "failed earlier this session (NO_REPOSITORY_CHANGE)"}]
+Failures: [{"stage": "implementation", "agent": "codex", "model": "UNKNOWN", "failure": "IMPLEMENTATION_INCOMPLETE"}, {"stage": "implementation", "agent": "claude_code", "model": "UNKNOWN", "failure": "NO_REPOSITORY_CHANGE"}, {"stage": "implementation", "agent": "cursor", "model": "UNKNOWN", "failure": "SESSION_LIMIT"}, {"stage": "implementation", "agent": "agy", "model": "gemini-3.8-flash-high", "failure": "NO_REPOSITORY_CHANGE"}, {"stage": "implementation", "agent": "devin_cli", "model": "adaptive", "failure": "NO_REPOSITORY_CHANGE"}]
+Verdict from Codex (implementation, IMPLEMENTATION_INCOMPLETE):
+  **IMPLEMENTATION_STATUS: INCOMPLETE** — the test fix is in place, but the required full gate did not complete successfully.
+  
+  Changed one line in [tests/test_orchestration_acceptance_verification_evidence.py](/run/media/system/tallgeese/dev/howlplane-repair-dog044/tests/test_orchestration_acceptance_verification_evidence.py:95) to install fake agent CLIs before `setup()`. The test’s existing assertions remain unchanged.
+  
+  - `env PATH=/usr/bin:/bin python3 -m pytest -q tests/test_orchestration_acceptance_verification_evidence.py`: **9 passed**.
+  - `make test-full`: started, but reported failures in unrelated clean-environment, decision-resolver, and dogfood-hardening tests, then stalled without producing a final summary. I interrupted it; Go tests were not confirmed to have run.
+  - `git diff --check`: passed. Only the requested test file is modified.
+  
+  The changed behavior is test hermeticity; its existing contract assertions still cover reconciliation clearing stale results and the acceptance prompt. No coverage was added or removed. Tier: contract; the affected-file run and requested full gate were attempted. Remaining risk: the full regression gate is unresolved. The test-and-verify skill calls for `howlplane tia` bookkeeping, which I did not run because you explicitly prohibited HowlPlane commands.

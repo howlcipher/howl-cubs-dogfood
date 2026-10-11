@@ -85,8 +85,9 @@ Registry state at mission start (2026-10-08T14:27Z): highest allocated DOG-034; 
 - Root cause (howlplane 99d3aa4, src/howlplane/control_plane/orchestration.py, execute_assignment): review instructions include `verification_evidence_for_review(doc)`, but acceptance instructions include only `audit_evidence_for_acceptance(doc)` and the session diff. HowlPlane's `doc["tests"]` results are never shown to acceptance. DOG-041 says which command verifies the session; nothing says whether it passed.
 - Expected: acceptance sees HowlPlane's recorded verification command, exit code, duration and output tail for the current tree.
 - Evidence: workflow-evidence/R004/R4S2.stdout (acceptance verdicts) and R4S2.stderr (VERIFY lines).
-- Status: FIX IN REVIEW, howlplane PR #168 (branch dogfood/R004-dog044, commit 575067f), made by HowlPlane session 03d1d55e. The 9 new tests fail without the fix; make test-full: 2464 passed.
+- Status: FIXED, howlplane 5253f3f (PR #168, merged and verified live; first proposed as PR #168 (branch dogfood/R004-dog044, commit 575067f), made by HowlPlane session 03d1d55e). The 9 new tests fail without the fix; make test-full: 2464 passed.
 - Live proof: cubs-edge-lab session fa728fa1, run through the public chain with PYTHONPATH pointing at the repair source. The same Claude acceptor cited the harness run (234 passed, 0 skipped) and ACCEPTED. Evidence: workflow-evidence/R004/R4S2b-acceptance-excerpt.txt.
+- CI follow-up: #168's first CI run failed test_reconciliation_clears_results_before_acceptance in every Python job. The test called setup() without the fake agent CLIs, so it passed only where a real codex CLI is installed (this machine, and therefore the HowlPlane session's verify). It was made hermetic in 2eba9dc (HowlPlane session d516f2a9). All PR checks are green.
 
 ### CUBS-P-011 (provisional): Claude's --verify grant fails for long quoted shell gates
 - Category: HOWL FRICTION (failover cost). Owner: howlplane provider_execution_profile.

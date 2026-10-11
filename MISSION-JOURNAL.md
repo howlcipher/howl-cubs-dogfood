@@ -522,3 +522,56 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
   - Contract deviation disclosed: the R001 wording correction changed two research lines.
   - Prompt v4 candidates listed, not Dream-reviewed (the one Dream pass was spent).
 
+
+## 2026-10-10 22:30 UTC R004 closeout: merge verification; #168 CI failure
+
+- cubs-edge-lab:
+  - #11 merged to main. #12, #13 and #14 merged into their stacked parent branches, not main (the #8 and #9 problem again).
+  - PR #15 landed feat/explorer-milbfa on main. Its tree is identical to verified 6cd4a15.
+  - Fresh GitHub clone of main 5fc04e9: sh scripts/gate.sh passed (321 passed, 6 data-dependent skips). cubs-edge-lab is MERGED_VERIFIED.
+- howlplane #168:
+  - It was closed unmerged; I reopened it at the owner's request.
+  - CI (run 38077160672 on 575067f) fails test_reconciliation_clears_results_before_acceptance in all Python jobs: 'The selected orchestrator codex is not available'.
+  - Cause: the test calls setup() without install_all, so it depends on a real codex CLI. Reproduced locally by hiding the agent CLIs from PATH (1 failed, 8 passed).
+  - My local make test-full could not catch it: this machine has the CLIs. The HowlPlane session's verify and review could not catch it either.
+- Lesson (prompt v4 candidate 6): read the PR's CI checks before handing a PR to the owner; local gates can depend on the machine.
+- Fix: HowlPlane session in the repair worktree, goal R4-DOG044-ci-fix.goal.txt, recorded as part of the repair, not a product session.
+
+
+## 2026-10-10 23:35 UTC R004 closeout: #168 CI green
+
+- HowlPlane session d516f2a9 (CI fix):
+  - Codex wrote the fix and reported INCOMPLETE. Claude: NO_REPOSITORY_CHANGE. Cursor: SESSION_LIMIT. AGY and Devin: no change. Result: HANDOFF.
+  - Resume: HowlPlane verified make test-full; review CLEAN; acceptance ACCEPTED.
+- My check: the reproduction with agent CLIs hidden passes 9 of 9.
+- Commit 2eba9dc pushed to #168. CI: all checks pass (Fast Python 3.11-3.14, Full regression 3.12, Go, lint, CodeQL). Merge state CLEAN; waiting for the owner's merge.
+- Assessment updated: cubs-edge-lab MERGED_VERIFIED; howlplane PR_PENDING; prompt v4 candidates 6 and 7 added.
+
+
+## 2026-10-10 23:41 UTC R004 closed: MERGED_VERIFIED
+
+- howlplane #168 merged as 5253f3f. Shared checkout fast-forwarded from main (clean, already on main). The engine venv imports the fixed execute_assignment. howl agents doctor ran.
+- The repair worktree was removed after its branch merged (clean tree).
+- R004 delivery: MERGED_VERIFIED. Index and DOG-044 (FIXED) updated.
+
+
+## 2026-10-11 00:23 UTC Prompt v4 reviewed and adopted (effective at R005)
+
+- Owner instruction: 'Do what you suggest' (review and adopt the v4 candidates, then the explorer readability follow-up, then campaign synthesis).
+- HowlDream verification review: round 1 (p2), then revision, then round 2 (p3). 6 calls, remote claude-sonnet-5-5, LOCAL_LLM_USED: NO. Reconciliation: workflow-evidence/R004/prompt-v4-reconciliation.md.
+- The review surfaced three R004 deviations under v3, now disclosed in runs/R004/FINAL-ASSESSMENT.md:
+  1. The 8814b377 discard without a user decision.
+  2. My web/data regeneration outside Howl.
+  3. Two repair sessions beyond the six-session bound.
+- EXECUTION-PROMPT v4 sha256 048f2f5bcd32259298d625139e326da54ca45da9aed58d96719b395e3dff63b0. Final diff: workflow-evidence/R004/prompt-v4.final.diff. Structure checked: section numbering is unchanged, and the new lines' references (sections 16, 17 and 18, the --verify-timeout rule, the third-party-data rule, the repair-session rule) resolve.
+
+
+## 2026-10-11 00:23 UTC R005 drafted; waiting for the prompt v4 merge
+
+- runs/R005/RUN-CONTRACT.md drafted:
+  - FOLLOW_UP on explorer readability.
+  - Bounds: 3 HowlPlane sessions (repairs included), no Dream, no data.
+  - research/ is unchanged.
+- experiments/R004-EXPLORER-SPEC.md is now v3 (display rules only); v2 is kept.
+- Section 18 step 6: prompt v4 activates at the run boundary after its PR (#5) merges. R005 starts after that merge.
+

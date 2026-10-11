@@ -1,0 +1,464 @@
+{
+  "context_echo_ratio": 1.0,
+  "evidence_echo_ratio": 1.0,
+  "novel_concept_ratio": 0.25,
+  "repeated_family_ratio": 0.1875,
+  "idea_count": 16,
+  "cluster_count": 13,
+  "units": [
+    {
+      "id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/1",
+      "candidate_id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0",
+      "text": "IDEA: In L2, replace the hash sentence with \"Record its content hash in the journal before each session and again after it; a difference not shown by the independent review is a finding.\"",
+      "source_span": [
+        2827,
+        3014
+      ],
+      "source_hash": "aed315daf718f5de6137d8d5f5e7bcbe3c8717fc5d33d02b48f6f39fe5fbcab7",
+      "cluster": "cluster-1",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 1.0,
+      "context_token_overlap": 1.0,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/2",
+      "candidate_id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0",
+      "text": "IDEA: In L3, add \"Merging remains under section 16 and the user's instruction; this line grants no merge authority.\"",
+      "source_span": [
+        3951,
+        4067
+      ],
+      "source_hash": "aed315daf718f5de6137d8d5f5e7bcbe3c8717fc5d33d02b48f6f39fe5fbcab7",
+      "cluster": "cluster-2",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.9333333333333333,
+      "context_token_overlap": 0.9333333333333333,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/3",
+      "candidate_id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0",
+      "text": "IDEA: In L4, add \"If a check is still pending after a bounded wait recorded in the handoff, hand off stating it is pending; do not call the PR ready.\"",
+      "source_span": [
+        4427,
+        4577
+      ],
+      "source_hash": "aed315daf718f5de6137d8d5f5e7bcbe3c8717fc5d33d02b48f6f39fe5fbcab7",
+      "cluster": "cluster-3",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.9411764705882353,
+      "context_token_overlap": 0.9411764705882353,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/4",
+      "candidate_id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0",
+      "text": "IDEA: In L5, add \"Screenshots committed to a public branch are subject to the third-party-data allowance.\"",
+      "source_span": [
+        5383,
+        5489
+      ],
+      "source_hash": "aed315daf718f5de6137d8d5f5e7bcbe3c8717fc5d33d02b48f6f39fe5fbcab7",
+      "cluster": "cluster-4",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/4",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 1.0,
+      "context_token_overlap": 1.0,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/5",
+      "candidate_id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0",
+      "text": "IDEA: In L6, add \"If such a change becomes necessary mid-session, stop the session and pause under section 17.\"",
+      "source_span": [
+        6547,
+        6658
+      ],
+      "source_hash": "aed315daf718f5de6137d8d5f5e7bcbe3c8717fc5d33d02b48f6f39fe5fbcab7",
+      "cluster": "cluster-3",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/3",
+      "similar_to": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/3",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.8571428571428571,
+      "context_token_overlap": 0.8571428571428571,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/6",
+      "candidate_id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0",
+      "text": "IDEA: In L7, change the trigger note to \"R004 ran a repair session recorded as 'not a product session' (22:30 UTC)\" unless the second repair session is cited by heading.",
+      "source_span": [
+        7090,
+        7259
+      ],
+      "source_hash": "aed315daf718f5de6137d8d5f5e7bcbe3c8717fc5d33d02b48f6f39fe5fbcab7",
+      "cluster": "cluster-5",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/6",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.9411764705882353,
+      "context_token_overlap": 0.9411764705882353,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/1",
+      "candidate_id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1",
+      "text": "IDEA: Make the header say \"six lessons\", or restore the missing seventh lesson.",
+      "source_span": [
+        857,
+        936
+      ],
+      "source_hash": "c4f38462630b17b91b46d2a7f406ae97219b1af0dab5b703620b7c9cc1c2705b",
+      "cluster": "cluster-6",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.625,
+      "context_token_overlap": 0.625,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/2",
+      "candidate_id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1",
+      "text": "IDEA: Add \"Restructuring unpushed commits is allowed only if the tree is unchanged and the change is recorded.\"",
+      "source_span": [
+        1812,
+        1923
+      ],
+      "source_hash": "c4f38462630b17b91b46d2a7f406ae97219b1af0dab5b703620b7c9cc1c2705b",
+      "cluster": "cluster-7",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 1.0,
+      "context_token_overlap": 1.0,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/3",
+      "candidate_id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1",
+      "text": "IDEA: Add \"also run git check-ignore on new output directories\" or record why it is omitted.",
+      "source_span": [
+        2096,
+        2188
+      ],
+      "source_hash": "c4f38462630b17b91b46d2a7f406ae97219b1af0dab5b703620b7c9cc1c2705b",
+      "cluster": "cluster-8",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.9166666666666666,
+      "context_token_overlap": 0.9166666666666666,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/4",
+      "candidate_id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1",
+      "text": "IDEA: Replace the hash clause with \"Record the command and the content hash of every file it invokes, and re-record after any session edit.\"",
+      "source_span": [
+        3227,
+        3367
+      ],
+      "source_hash": "c4f38462630b17b91b46d2a7f406ae97219b1af0dab5b703620b7c9cc1c2705b",
+      "cluster": "cluster-1",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/1",
+      "similar_to": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.8461538461538461,
+      "context_token_overlap": 0.8461538461538461,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/5",
+      "candidate_id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1",
+      "text": "IDEA: Add \"The user performs all merges; the controller may open the replacement PR.\"",
+      "source_span": [
+        4385,
+        4470
+      ],
+      "source_hash": "c4f38462630b17b91b46d2a7f406ae97219b1af0dab5b703620b7c9cc1c2705b",
+      "cluster": "cluster-9",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/5",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 1.0,
+      "context_token_overlap": 1.0,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/6",
+      "candidate_id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1",
+      "text": "IDEA: Add \"An external CI outage is recorded with its reset time and the PR is handed off as not verified by CI.\"",
+      "source_span": [
+        4994,
+        5107
+      ],
+      "source_hash": "c4f38462630b17b91b46d2a7f406ae97219b1af0dab5b703620b7c9cc1c2705b",
+      "cluster": "cluster-10",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/6",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 1.0,
+      "context_token_overlap": 1.0,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/7",
+      "candidate_id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1",
+      "text": "IDEA: Add \"Committed screenshots show only aggregates or the examples the journaled user instruction allows.\"",
+      "source_span": [
+        6293,
+        6402
+      ],
+      "source_hash": "c4f38462630b17b91b46d2a7f406ae97219b1af0dab5b703620b7c9cc1c2705b",
+      "cluster": "cluster-11",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/7",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 1.0,
+      "context_token_overlap": 1.0,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/8",
+      "candidate_id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1",
+      "text": "IDEA: Add \"If a needed change to such an input is found during a session, stop further sessions that touch it and pause under section 17.\"",
+      "source_span": [
+        7011,
+        7149
+      ],
+      "source_hash": "c4f38462630b17b91b46d2a7f406ae97219b1af0dab5b703620b7c9cc1c2705b",
+      "cluster": "cluster-3",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/3",
+      "similar_to": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/3",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.9411764705882353,
+      "context_token_overlap": 0.9411764705882353,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/9",
+      "candidate_id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1",
+      "text": "IDEA: Add 2026-10-10 21:40 UTC to this lesson's triggers.",
+      "source_span": [
+        7773,
+        7830
+      ],
+      "source_hash": "c4f38462630b17b91b46d2a7f406ae97219b1af0dab5b703620b7c9cc1c2705b",
+      "cluster": "cluster-12",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/9",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 1.0,
+      "context_token_overlap": 1.0,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/10",
+      "candidate_id": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1",
+      "text": "IDEA: Say \"only a dated user instruction can exempt it\".",
+      "source_span": [
+        8513,
+        8569
+      ],
+      "source_hash": "c4f38462630b17b91b46d2a7f406ae97219b1af0dab5b703620b7c9cc1c2705b",
+      "cluster": "cluster-13",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/10",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.8571428571428571,
+      "context_token_overlap": 0.8571428571428571,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    }
+  ],
+  "clusters": [
+    {
+      "id": "cluster-1",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/1",
+      "representative_text": "IDEA: In L2, replace the hash sentence with \"Record its content hash in the journal before each session and again after it; a difference not shown by the independent review is a finding.\"",
+      "label": "after, again, before, content, difference, each, finding, hash",
+      "members": [
+        "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/1",
+        "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/4"
+      ]
+    },
+    {
+      "id": "cluster-2",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/2",
+      "representative_text": "IDEA: In L3, add \"Merging remains under section 16 and the user's instruction; this line grants no merge authority.\"",
+      "label": "16, add, authority, grants, instruction, l3, line, merge",
+      "members": [
+        "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-3",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/3",
+      "representative_text": "IDEA: In L4, add \"If a check is still pending after a bounded wait recorded in the handoff, hand off stating it is pending; do not call the PR ready.\"",
+      "label": "add, after, bounded, call, check, hand, handoff, if",
+      "members": [
+        "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/3",
+        "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/5",
+        "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/8"
+      ]
+    },
+    {
+      "id": "cluster-4",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/4",
+      "representative_text": "IDEA: In L5, add \"Screenshots committed to a public branch are subject to the third-party-data allowance.\"",
+      "label": "add, allowance, branch, committed, data, l5, party, public",
+      "members": [
+        "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/4"
+      ]
+    },
+    {
+      "id": "cluster-5",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/6",
+      "representative_text": "IDEA: In L7, change the trigger note to \"R004 ran a repair session recorded as 'not a product session' (22:30 UTC)\" unless the second repair session is cited by heading.",
+      "label": "22, 30, change, cited, heading, l7, note, product",
+      "members": [
+        "hd-20261011-001943-4f5150f8a8c7/candidates/0/0/idea/6"
+      ]
+    },
+    {
+      "id": "cluster-6",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/1",
+      "representative_text": "IDEA: Make the header say \"six lessons\", or restore the missing seventh lesson.",
+      "label": "header, lesson, lessons, missing, restore, say, seventh, six",
+      "members": [
+        "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/1"
+      ]
+    },
+    {
+      "id": "cluster-7",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/2",
+      "representative_text": "IDEA: Add \"Restructuring unpushed commits is allowed only if the tree is unchanged and the change is recorded.\"",
+      "label": "add, allowed, change, commits, if, only, recorded, restructuring",
+      "members": [
+        "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-8",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/3",
+      "representative_text": "IDEA: Add \"also run git check-ignore on new output directories\" or record why it is omitted.",
+      "label": "add, also, check, directories, git, ignore, new, omitted",
+      "members": [
+        "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/3"
+      ]
+    },
+    {
+      "id": "cluster-9",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/5",
+      "representative_text": "IDEA: Add \"The user performs all merges; the controller may open the replacement PR.\"",
+      "label": "add, all, controller, may, merges, open, performs, pr",
+      "members": [
+        "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/5"
+      ]
+    },
+    {
+      "id": "cluster-10",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/6",
+      "representative_text": "IDEA: Add \"An external CI outage is recorded with its reset time and the PR is handed off as not verified by CI.\"",
+      "label": "add, ci, external, handed, off, outage, pr, recorded",
+      "members": [
+        "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/6"
+      ]
+    },
+    {
+      "id": "cluster-11",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/7",
+      "representative_text": "IDEA: Add \"Committed screenshots show only aggregates or the examples the journaled user instruction allows.\"",
+      "label": "add, aggregates, allows, committed, examples, instruction, journaled, only",
+      "members": [
+        "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/7"
+      ]
+    },
+    {
+      "id": "cluster-12",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/9",
+      "representative_text": "IDEA: Add 2026-10-10 21:40 UTC to this lesson's triggers.",
+      "label": "10, 2026, 21, 40, add, lesson, s, triggers",
+      "members": [
+        "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/9"
+      ]
+    },
+    {
+      "id": "cluster-13",
+      "representative": "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/10",
+      "representative_text": "IDEA: Say \"only a dated user instruction can exempt it\".",
+      "label": "can, dated, exempt, instruction, only, say, user",
+      "members": [
+        "hd-20261011-001943-4f5150f8a8c7/candidates/0/1/idea/10"
+      ]
+    }
+  ],
+  "ranking": [],
+  "warnings": [
+    "DISCOVERY_ANCHORING_HIGH"
+  ],
+  "explored_families": [
+    "after, again, before, content, difference, each, finding, hash",
+    "16, add, authority, grants, instruction, l3, line, merge",
+    "add, after, bounded, call, check, hand, handoff, if",
+    "add, allowance, branch, committed, data, l5, party, public",
+    "22, 30, change, cited, heading, l7, note, product",
+    "header, lesson, lessons, missing, restore, say, seventh, six",
+    "add, allowed, change, commits, if, only, recorded, restructuring",
+    "add, also, check, directories, git, ignore, new, omitted",
+    "add, all, controller, may, merges, open, performs, pr",
+    "add, ci, external, handed, off, outage, pr, recorded",
+    "add, aggregates, allows, committed, examples, instruction, journaled, only",
+    "10, 2026, 21, 40, add, lesson, s, triggers",
+    "can, dated, exempt, instruction, only, say, user"
+  ],
+  "method": "concept_tokens_and_leading_phrases/v3; Jaccard cluster threshold 0.5 or first-8-content-word phrase link; echo coverage 0.6 or first-16-word phrase link",
+  "measurement_type": "ADVISORY_HEURISTIC",
+  "limitations": "Not semantic equivalence, calibrated novelty, entailment or usefulness",
+  "participation": [
+    {
+      "operation": "GENERATED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": "claude",
+      "origin_model": "claude-sonnet-5-5",
+      "subject_count": 2,
+      "inference_occurred": true,
+      "note": "Dream prompted the provider; the provider authored the text."
+    },
+    {
+      "operation": "CLUSTERED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 16,
+      "inference_occurred": false,
+      "note": "Deterministic concept-token clustering; no inference."
+    }
+  ]
+}

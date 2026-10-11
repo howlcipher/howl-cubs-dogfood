@@ -1,6 +1,6 @@
-# R004 explorer spec (v2)
+# Explorer spec (v3)
 
-Status: v2, 2026-10-10. v1 (R004-EXPLORER-SPEC.v1.md) was critiqued by HowlDream (workflow-evidence/R004/dream/p1-spec-critique-texts.txt). The reconciliation table is at the end.
+Status: v3, 2026-10-11, for R005. v2 (R004-EXPLORER-SPEC.v2.md) was built in R004; v3 changes only the display rules below, from the R004 readability findings. Earlier: v2, 2026-10-10. v1 (R004-EXPLORER-SPEC.v1.md) was critiqued by HowlDream (workflow-evidence/R004/dream/p1-spec-critique-texts.txt). The reconciliation table is at the end.
 
 ## Users and job
 
@@ -80,3 +80,11 @@ Deferred to later versions: filters, any model-value toggle, the dark scheme, th
 | Trim version 1: no filters or toggle, defer the dark scheme and secondary tables | ADOPTED |
 | Comprehension check with target users before release | NOT POSSIBLE (no users available); recorded as a limit on the usability claim |
 | Watermark revealed values | MOOT (no toggle in version 1) |
+
+## v2 -> v3 (R005 readability)
+
+| Rule | v2 | v3 |
+| --- | --- | --- |
+| Full values (rule 1) | One `<details>` per number | One `<details>` per table row or value group, listing each number's full value with its source pointer. Numbers keep `data-src`. |
+| Display format | Floats to 2 decimals; probabilities and rates to 3 | Floats to 2 decimals and rates to 3, unless the formatted text would read as zero while the source is not zero. Such values (abs(x) < 0.005 at 2 decimals, or abs(x) < 0.0005 at 3) show 2 significant figures in scientific-free decimal form, for example -0.000053. The page states "small values shown to 2 significant figures". "-0" never appears. JS and the Python mirror implement the same rule. |
+| Tables | Scroll inside a container | Each table has a minimum width set so that no header breaks mid-word, and it scrolls inside its own container at narrow widths. Intervals render inline as "lo to hi". |

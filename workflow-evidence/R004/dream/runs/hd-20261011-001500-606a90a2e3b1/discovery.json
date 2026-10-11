@@ -1,0 +1,212 @@
+{
+  "context_echo_ratio": 1.0,
+  "evidence_echo_ratio": 1.0,
+  "novel_concept_ratio": 0.42857142857142855,
+  "repeated_family_ratio": 0.42857142857142855,
+  "idea_count": 7,
+  "cluster_count": 4,
+  "units": [
+    {
+      "id": "hd-20261011-001500-606a90a2e3b1/candidates/0/0/idea/1",
+      "candidate_id": "hd-20261011-001500-606a90a2e3b1/candidates/0/0",
+      "text": "IDEA: Reword lesson 1 as \"run the repository's required regression gate, as in the --verify bullet, in a fresh clone checked out at the exact commit. Record the commit, the result, and the skip count with the reason for each skip. On failure, record a finding and fix it through Howl with review and acceptance; do not edit the product by hand.\"",
+      "source_span": [
+        1662,
+        2007
+      ],
+      "source_hash": "dbeef9f9a343b9e2ab18f1b1723eb36e2cc5fa837281cac32ce06215a831af1c",
+      "cluster": "cluster-1",
+      "representative": "hd-20261011-001500-606a90a2e3b1/candidates/0/0/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.8823529411764706,
+      "context_token_overlap": 0.8823529411764706,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-001500-606a90a2e3b1/candidates/0/0/idea/2",
+      "candidate_id": "hd-20261011-001500-606a90a2e3b1/candidates/0/0",
+      "text": "IDEA: Add to lesson 2 \"The script must run the repository's required gate unchanged. Record its commit and hash, and the independent review must confirm it is not narrower. Any in-session edit to it is a finding.\"",
+      "source_span": [
+        3106,
+        3319
+      ],
+      "source_hash": "dbeef9f9a343b9e2ab18f1b1723eb36e2cc5fa837281cac32ce06215a831af1c",
+      "cluster": "cluster-1",
+      "representative": "hd-20261011-001500-606a90a2e3b1/candidates/0/0/idea/1",
+      "similar_to": "hd-20261011-001500-606a90a2e3b1/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.9090909090909091,
+      "context_token_overlap": 0.9090909090909091,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-001500-606a90a2e3b1/candidates/0/0/idea/3",
+      "candidate_id": "hd-20261011-001500-606a90a2e3b1/candidates/0/0",
+      "text": "IDEA: Add to lesson 3 \"If a change landed in a non-default branch, open a PR to the default branch with an identical tree and verify it from a fresh clone before MERGED_VERIFIED. The user performs all merges.\"",
+      "source_span": [
+        4454,
+        4663
+      ],
+      "source_hash": "dbeef9f9a343b9e2ab18f1b1723eb36e2cc5fa837281cac32ce06215a831af1c",
+      "cluster": "cluster-2",
+      "representative": "hd-20261011-001500-606a90a2e3b1/candidates/0/0/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.9565217391304348,
+      "context_token_overlap": 0.9565217391304348,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-001500-606a90a2e3b1/candidates/0/0/idea/4",
+      "candidate_id": "hd-20261011-001500-606a90a2e3b1/candidates/0/0",
+      "text": "IDEA: Reword lesson 4 as \"Read the PR's CI checks before handoff. A failing or pending check is a finding. Fix it through Howl within the existing session budget, or list it as open in the handoff message to the user and do not call the PR passing. If CI is absent or unavailable, record that.\"",
+      "source_span": [
+        5454,
+        5748
+      ],
+      "source_hash": "dbeef9f9a343b9e2ab18f1b1723eb36e2cc5fa837281cac32ce06215a831af1c",
+      "cluster": "cluster-1",
+      "representative": "hd-20261011-001500-606a90a2e3b1/candidates/0/0/idea/1",
+      "similar_to": "hd-20261011-001500-606a90a2e3b1/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.8709677419354839,
+      "context_token_overlap": 0.8709677419354839,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-001500-606a90a2e3b1/candidates/0/0/idea/5",
+      "candidate_id": "hd-20261011-001500-606a90a2e3b1/candidates/0/0",
+      "text": "IDEA: Reword lesson 6 as \"Before the session that would change an input the run contract calls unchanged, pause under section 17 and obtain a dated user decision, then record the amendment and quote the decision. Keep the original text and wording on record and report the change as a deviation.\"",
+      "source_span": [
+        7898,
+        8194
+      ],
+      "source_hash": "dbeef9f9a343b9e2ab18f1b1723eb36e2cc5fa837281cac32ce06215a831af1c",
+      "cluster": "cluster-1",
+      "representative": "hd-20261011-001500-606a90a2e3b1/candidates/0/0/idea/1",
+      "similar_to": "hd-20261011-001500-606a90a2e3b1/candidates/0/0/idea/1",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.896551724137931,
+      "context_token_overlap": 0.896551724137931,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-001500-606a90a2e3b1/candidates/0/1/idea/1",
+      "candidate_id": "hd-20261011-001500-606a90a2e3b1/candidates/0/1",
+      "text": "IDEA: Reword L2 to: \"Use a short existing or committed gate command (for example `sh scripts/gate.sh` or `make test-full`) that runs the repository's required gate unchanged. Record its content hash. A script created in the same session is reviewed against the required gate by Howl review, and any session diff to it is a finding.\"",
+      "source_span": [
+        3486,
+        3818
+      ],
+      "source_hash": "9f6edda70c64996401194847054b29f71ae26bbf17749d14e75ba6ea3d02dfd6",
+      "cluster": "cluster-3",
+      "representative": "hd-20261011-001500-606a90a2e3b1/candidates/0/1/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.9354838709677419,
+      "context_token_overlap": 0.9354838709677419,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-001500-606a90a2e3b1/candidates/0/1/idea/2",
+      "candidate_id": "hd-20261011-001500-606a90a2e3b1/candidates/0/1",
+      "text": "IDEA: Reword the L3 PR rule to: \"Target every PR at the default branch. A stacked PR needs a stated reason in its body, and before handoff it must be retargeted or replaced when its parent merges. Record MERGED_VERIFIED only after the change is on the default branch and the gate passes on a fresh clone of it, with skip counts recorded.\"",
+      "source_span": [
+        5068,
+        5406
+      ],
+      "source_hash": "9f6edda70c64996401194847054b29f71ae26bbf17749d14e75ba6ea3d02dfd6",
+      "cluster": "cluster-4",
+      "representative": "hd-20261011-001500-606a90a2e3b1/candidates/0/1/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.8571428571428571,
+      "context_token_overlap": 0.8571428571428571,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    }
+  ],
+  "clusters": [
+    {
+      "id": "cluster-1",
+      "representative": "hd-20261011-001500-606a90a2e3b1/candidates/0/0/idea/1",
+      "representative_text": "IDEA: Reword lesson 1 as \"run the repository's required regression gate, as in the --verify bullet, in a fresh clone checked out at the exact commit. Record the commit, the result, and the skip count with the reason for each skip. On failure, record a finding and fix it through Howl with review and acceptance; do not edit the product by hand.\"",
+      "label": "1, acceptance, at, bullet, checked, clone, commit, count",
+      "members": [
+        "hd-20261011-001500-606a90a2e3b1/candidates/0/0/idea/1",
+        "hd-20261011-001500-606a90a2e3b1/candidates/0/0/idea/2",
+        "hd-20261011-001500-606a90a2e3b1/candidates/0/0/idea/4",
+        "hd-20261011-001500-606a90a2e3b1/candidates/0/0/idea/5"
+      ]
+    },
+    {
+      "id": "cluster-2",
+      "representative": "hd-20261011-001500-606a90a2e3b1/candidates/0/0/idea/3",
+      "representative_text": "IDEA: Add to lesson 3 \"If a change landed in a non-default branch, open a PR to the default branch with an identical tree and verify it from a fresh clone before MERGED_VERIFIED. The user performs all merges.\"",
+      "label": "3, add, all, before, branch, change, clone, default",
+      "members": [
+        "hd-20261011-001500-606a90a2e3b1/candidates/0/0/idea/3"
+      ]
+    },
+    {
+      "id": "cluster-3",
+      "representative": "hd-20261011-001500-606a90a2e3b1/candidates/0/1/idea/1",
+      "representative_text": "IDEA: Reword L2 to: \"Use a short existing or committed gate command (for example `sh scripts/gate.sh` or `make test-full`) that runs the repository's required gate unchanged. Record its content hash. A script created in the same session is reviewed against the required gate by Howl review, and any session diff to it is a finding.\"",
+      "label": "against, any, command, committed, content, created, diff, example",
+      "members": [
+        "hd-20261011-001500-606a90a2e3b1/candidates/0/1/idea/1"
+      ]
+    },
+    {
+      "id": "cluster-4",
+      "representative": "hd-20261011-001500-606a90a2e3b1/candidates/0/1/idea/2",
+      "representative_text": "IDEA: Reword the L3 PR rule to: \"Target every PR at the default branch. A stacked PR needs a stated reason in its body, and before handoff it must be retargeted or replaced when its parent merges. Record MERGED_VERIFIED only after the change is on the default branch and the gate passes on a fresh clone of it, with skip counts recorded.\"",
+      "label": "after, at, before, body, branch, change, clone, counts",
+      "members": [
+        "hd-20261011-001500-606a90a2e3b1/candidates/0/1/idea/2"
+      ]
+    }
+  ],
+  "ranking": [],
+  "warnings": [
+    "DISCOVERY_ANCHORING_HIGH"
+  ],
+  "explored_families": [
+    "1, acceptance, at, bullet, checked, clone, commit, count",
+    "3, add, all, before, branch, change, clone, default",
+    "against, any, command, committed, content, created, diff, example",
+    "after, at, before, body, branch, change, clone, counts"
+  ],
+  "method": "concept_tokens_and_leading_phrases/v3; Jaccard cluster threshold 0.5 or first-8-content-word phrase link; echo coverage 0.6 or first-16-word phrase link",
+  "measurement_type": "ADVISORY_HEURISTIC",
+  "limitations": "Not semantic equivalence, calibrated novelty, entailment or usefulness",
+  "participation": [
+    {
+      "operation": "GENERATED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": "claude",
+      "origin_model": "claude-sonnet-5-5",
+      "subject_count": 2,
+      "inference_occurred": true,
+      "note": "Dream prompted the provider; the provider authored the text."
+    },
+    {
+      "operation": "CLUSTERED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 7,
+      "inference_occurred": false,
+      "note": "Deterministic concept-token clustering; no inference."
+    }
+  ]
+}

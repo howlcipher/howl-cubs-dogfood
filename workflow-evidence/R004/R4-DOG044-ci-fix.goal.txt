@@ -1,0 +1,9 @@
+Fix one environment-dependent test in this HowlPlane repository (branch dogfood/R004-dog044, PR #168). Change nothing else.
+
+tests/test_orchestration_acceptance_verification_evidence.py::test_reconciliation_clears_results_before_acceptance calls module.setup(...) without first installing the fake agent CLIs, unlike the other tests in the file (acceptance_prompt calls install_all(tmp_path, monkeypatch, models=("m1",))). On a machine with a real codex CLI it passes. On GitHub Actions it fails in every Fast Python job and the Full regression job (run 38077160672) with:
+OperatorFailure: The selected orchestrator codex is not available (CLI metadata does not confirm unattended execution).
+Local reproduction: with the agent CLIs absent from PATH (only python3, git and /usr/bin, /bin), this test fails and the other 8 pass.
+
+Fix: make the test hermetic, the same way the other tests in the file are: install the fake CLIs before setup, or reuse the acceptance_prompt helper's setup. Keep the test's assertions: reconcile() clears doc["tests"] when repository evidence changed, the stale result is absent from the acceptance prompt, and the "no verification command ran on the current tree" line is present.
+
+Gate: make test-full passes.
