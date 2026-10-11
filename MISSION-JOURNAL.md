@@ -656,3 +656,16 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - Campaign state: STOPPED_BY_USER. No workers running (howl orchestrate inspect: no unfinished sessions). No further runs launched.
 - Final handoff: HOWL-CUBS-HANDOFF.md. Index: FINAL-ASSESSMENT.md. Synthesis: CAMPAIGN-SYNTHESIS.md.
 - LOCAL_LLM_USED: NO.
+
+
+## 2026-10-11 15:30 UTC Post-stop follow-ups requested by the owner ('Do both')
+
+- extra_allowed_bash: ~/.config/howlplane/config.toml (private; not committed) gained [ai_resources.providers.claude_code.execution_profile] with python3 -m pytest:*, pytest:*, CUBS_REQUIRE_E2E=1 python3 -m pytest:*, env CUBS_REQUIRE_E2E=1 python3 -m pytest:*, python3 -m flake8:*, node --check:*. It excludes arbitrary interpreters (python3 -c, sh -c).
+  - Backup: config.toml.bak-20261011 in the same directory.
+  - howlplane providers --json loads the config (Claude READY, unattended_mutation_capable true).
+  - A deeper check through the engine's permission module was blocked by the Claude Code safety classifier ([Self-Modification]). Not worked around. Live proof is pending the next HowlPlane session.
+  - Applies to every repository on this machine.
+- GitHub purge: GitHub has no API for it; the owner must submit the request. Prepared workflow-evidence/SYNTHESIS/github-support-purge-request.md.
+  - All 11 orphaned pre-rewrite commits still return HTTP 200 (checked today). 4 contain the removed files (about 12 MB).
+  - No forks. PR #1 holds only rewritten commits.
+  - The local-only backup branch backup/records-R001-pre-rewrite still holds the files on this machine (never pushed).

@@ -41,7 +41,7 @@ See FINAL-ASSESSMENT.md (index) and runs/R00N/FINAL-ASSESSMENT.md.
 - CUBS-P-013: a CLEAN review whose status line is not last is treated as findings.
 - NOTE-005, 006, 007, 009 and 010.
 - Acceptance applied criteria outside the goal (R001).
-- Optional owner configuration: `extra_allowed_bash` for Claude.
+- `extra_allowed_bash` for Claude: configured 2026-10-11 (see Warnings).
 
 ## Resume procedure
 1. Read this file, then the last entries of MISSION-JOURNAL.md.
@@ -54,7 +54,8 @@ See FINAL-ASSESSMENT.md (index) and runs/R00N/FINAL-ASSESSMENT.md.
 - Other Claude and Codex sessions run on this host. Do not touch their worktrees.
 - Use absolute paths for `--repo` (CUBS-P-012 came from a relative-path typo).
 - MLB data: bulk data stays in ignored data/ directories. Publish aggregates and at most 5 short examples, and sweep before every push.
-- R001 data incident: orphaned commits with bulk records may still be served by SHA until the owner asks GitHub Support to purge them.
+- R001 data incident: 11 orphaned commits (4 with bulk records) were still served by SHA on 2026-10-11. A ready-to-submit GitHub Support request is in workflow-evidence/SYNTHESIS/github-support-purge-request.md; only the owner can submit it.
+- Claude grant: ~/.config/howlplane/config.toml has extra_allowed_bash for targeted pytest, flake8 and node --check (2026-10-11; backup config.toml.bak-20261011). Not yet proven in a live session.
 
 ## Active processes
 - None.
