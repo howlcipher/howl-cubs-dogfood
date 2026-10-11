@@ -56,7 +56,7 @@ These are disclosed here and not reinterpreted:
 
 ## Howl observations
 
-- HowlPlane sessions: 6 of 6 product sessions (S1, S2, S2b, S3, S4, S5) and 1 repair session (03d1d55e). The DOG-044 fix was proven live: the same Claude acceptor that rejected a passing tree three times cited the harness gate and accepted (fa728fa1).
+- HowlPlane sessions: 6 of 6 product sessions (S1, S2, S2b, S3, S4, S5) and 2 repair sessions (03d1d55e for DOG-044; d516f2a9 for the #168 CI fix). Corrected during the campaign synthesis: this line first said 1 repair session, which contradicted the deviations section. The DOG-044 fix was proven live: the same Claude acceptor that rejected a passing tree three times cited the harness gate and accepted (fa728fa1).
 - Failover worked in every session. Implementation was nonetheless rarely first-try:
 
   | Agent | What happened | Sessions |

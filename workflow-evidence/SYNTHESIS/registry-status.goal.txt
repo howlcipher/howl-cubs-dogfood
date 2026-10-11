@@ -1,0 +1,9 @@
+Documentation-only change in this HowlPlane repository: correct the status lines of five findings in dogfood/findings/FINDINGS.md. Change nothing else in any file.
+
+The fixes for these findings are merged on main, but their entries still say "FIX IN REVIEW":
+- DOG-040, DOG-041, DOG-042, DOG-043: fixed by PR #167, merged as 99d3aa4 (branch dogfood/R002-orchestration-fixes). Review session: HowlPlane existing-WIP session on af9f40a with make test-full, COMPLETE, audit CLEAN. Live proof for DOG-040 in session 55b942cf and for DOG-043 on the merged CLI; DOG-041 and DOG-042 are proven by contract tests (DOG-042 was not observed live). Record proof in howl-cubs-dogfood runs/R002/FINAL-ASSESSMENT.md.
+- DOG-044: fixed by PR #168, merged as 5253f3f (branch dogfood/R004-dog044). Made by session 03d1d55e; its CI-only test was made hermetic in 2eba9dc (session d516f2a9). Live proof: cubs-edge-lab session fa728fa1, where the acceptor cited the harness verification and accepted. Record in howl-cubs-dogfood runs/R004/FINAL-ASSESSMENT.md.
+
+For each of the five entries, replace only its "Status:" line, following the style of existing FIXED entries in the same file, for example "Status: FIXED (merged #164, f39cf18; HowlPlane review session 889142d7 COMPLETE, audit CLEAN; post-merge public proof recorded in howl-cubs-dogfood)". Keep each line accurate to the facts above: do not claim live proof for DOG-041 or DOG-042. Do not reorder, rewrite or add entries.
+
+Gate: make test-full passes.

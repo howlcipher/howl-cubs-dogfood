@@ -610,3 +610,40 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - cubs-edge-lab PR #16, one PR to main. CI is absent in the repository, and the PR states that.
 - runs/R005/FINAL-ASSESSMENT.md: COMPLETE_USEFUL (bounded); PR_PENDING. 2 of 3 sessions used.
 
+
+
+## 2026-10-11 04:26 UTC R005 MERGED_VERIFIED; campaign synthesis start; INTENT registry status session
+
+- Owner: 'You can merge them all including this one'. Merged at the reviewed heads: cubs-edge-lab #16 (0cc6bdc) as 97901d2; howl-cubs-dogfood #6 (cef5f74) as 64e7969.
+- Fresh GitHub clone of cubs-edge-lab main 97901d2: sh scripts/gate.sh (hash b20458f5…, unchanged) passed: 402 passed, 6 README-documented skips. R005 delivery: MERGED_VERIFIED.
+- Campaign synthesis (closeout, not a numbered run; no new baseball claim): branch records/synthesis.
+- Finding continuity: the howlplane registry on origin/main (5253f3f) still lists DOG-040 to DOG-044 as FIX IN REVIEW, although #167 and #168 are merged.
+- INTENT: one HowlPlane session, documentation only, in worktree dev/howlplane-registry-status (branch dogfood/registry-status-r006 from origin/main 5253f3f). Goal: workflow-evidence/SYNTHESIS/registry-status.goal.txt. --verify "make test-full" --verify-timeout 1500 --orchestrator claude_code. Synthesis HowlPlane bound: 2 sessions (repairs count).
+- 04:28Z INTENT HowlDream review of the synthesis draft: howldream explore workflow-evidence/SYNTHESIS/d1-synthesis-review.request.json --command-config config/dream-claude-sonnet.json --allow-remote --output workflow-evidence/SYNTHESIS/dream/runs (3 calls; synthesis Dream bound 6 calls).
+- 04:32Z INTENT HowlDream round 2 on the reconciled synthesis (d2-synthesis-review-r2.request.json, 3 calls; synthesis Dream calls 3 -> 6 of 6).
+
+
+## 2026-10-11 05:25 UTC Synthesis: registry session COMPLETE; two HowlDream rounds; PR #169
+
+- First launch: operator typo, relative --repo resolved to dev/dev/…, reported as INTERNAL_ERROR, no session created -> CUBS-P-012. Relaunched with an absolute path.
+- HowlPlane session 745c5055: Claude implemented the five Status lines; make test-full passed (00:36 to 00:45 local).
+  - Codex review round 0: verdict text 'AUDIT_STATUS: CLEAN' (first line, bold), recorded AUDIT_FINDINGS_OR_UNCONFIRMED. Rework round 1: Claude NO_CHANGE_REQUIRED, suite again, Codex CLEAN, Claude ACCEPTED. Final status COMPLETE.
+  - Root cause read-only: orchestration.py:1671 requires stdout to end with 'AUDIT_STATUS: CLEAN' -> CUBS-P-013 (provisional).
+  - Synthesis HowlPlane sessions: 1 of 2.
+- Commit 85ad73d (SSH-signed; diff only the five Status lines), pre-push hook passed, howlplane PR #169.
+- HowlDream (remote claude-sonnet-5-5, 3 calls per round, synthesis Dream calls 6 of 6, LOCAL_LLM_USED: NO):
+  - round 1 hd-20261011-042812-3332507fffe7;
+  - round 2 hd-20261011-043219-eaa237904514.
+  - Reconciliation in CAMPAIGN-SYNTHESIS.md section 6.
+- Record corrections from review: R004 assessment repair-session count (1 -> 2, noted in place); DOGFOOD.md DOG-035 registry note; CUBS-P-007 heading -> DOG-039 FIXED.
+- Newly disclosed deviation: R004 started (15:27Z) before R003 was MERGED_VERIFIED (15:47Z).
+- REPOSITORIES.json/.md refreshed; HOWL-CUBS-HANDOFF.md rewritten; index campaign state -> PAUSED_NEEDS_HELP pending the owner's decision (CAMPAIGN-SYNTHESIS.md section 5).
+
+
+## 2026-10-11 05:35 UTC howlplane #169 MERGED_VERIFIED
+
+- CI on 85ad73d: all checks pass (Analyze, CodeQL, Fast Python 3.11 to 3.14, Full regression 3.12, lint, SlopsLint, test-go, test-python).
+- Merged by me at the reviewed head under the standing authorization for routine mission-owned merges (CLOSEOUT-PROMPT.md), as 04b5269.
+- Shared checkout dev/howlplane (clean, main) fast-forwarded to 04b5269. Registry on main: DOG-040 to DOG-044 FIXED, no FIX IN REVIEW lines. Engine venv imports dev/howlplane/src.
+- Worktree dev/howlplane-registry-status removed; local branch deleted (merged).
+- Next: merge howl-cubs-dogfood #7 (records/synthesis) after this records update.
