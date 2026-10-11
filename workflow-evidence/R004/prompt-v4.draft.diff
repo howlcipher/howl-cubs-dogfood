@@ -1,0 +1,14 @@
+1c1
+< EXECUTION-PROMPT v3 (2026-10-10). Changes from v2: four lessons added to section 19A from R003 evidence. v2 sha256 7fa1b0c151ef593e07a4d3a3c44d1626a1ceae7693ca615a1d756f83b59d75d5. Earlier: v2 added section 19A from R001 evidence; v1 sha256 e1b5ca33c7f1d85c5b8b2145be2133ec50e811feaf13e9a97bc3a5fcda5439d6.
+---
+> EXECUTION-PROMPT v4 (2026-10-11). Changes from v3: six lessons added to section 19A from R004 evidence. v3 sha256 2a958c2cf77ec82a75bec4b2ce3eb39c2310852db3ea2c0cfaa6b3859a65960b. Earlier: v3 added four lessons from R003; v2 added section 19A from R001 evidence (v2 sha256 7fa1b0c151ef593e07a4d3a3c44d1626a1ceae7693ca615a1d756f83b59d75d5; v1 sha256 e1b5ca33c7f1d85c5b8b2145be2133ec50e811feaf13e9a97bc3a5fcda5439d6).
+858a859,867
+> 
+> Added in prompt v4 from R004 evidence; v4 takes effect at the R005 run boundary, and R004 is assessed under v3:
+> 
+> - Before opening a PR, run the full gate on a fresh `git clone` of the exact commit, not on the working tree. Record the commit and the result in the PR body. (Trigger: 2026-10-10T16:26:38Z, 2026-10-10 20:54 UTC.)
+> - Make the session verification command a short script committed in the target repository (for example `sh scripts/gate.sh`), not an inline shell chain. When the script does not exist yet, the first task of the session's goal creates it. (Trigger: 2026-10-10 19:49 UTC, CUBS-P-011.)
+> - Open one PR per repository per run against the default branch. Stack PRs only when a later change cannot be reviewed without an earlier unmerged one. After the user reports merges, check that each change is on the default branch, and run the gate on a fresh clone of it before recording MERGED_VERIFIED. (Trigger: 2026-10-10T15:47:20Z, 2026-10-10 22:30 UTC.)
+> - Before handing a PR to the user, read its CI checks. A failing check is a finding: fix it through Howl, or record it in the PR with a reason, before handoff. Local gates cannot catch dependencies on this machine. (Trigger: 2026-10-10 22:30 UTC.)
+> - Before accepting user-interface work, the controller inspects screenshots at each tested viewport. Readability problems that tests do not catch are recorded as findings, and either fixed within the run's bounds or listed as open in the assessment. They never count as passed. (Trigger: 2026-10-10 21:40 UTC.)
+> - Before the session that would change an input the run contract calls unchanged, record a contract amendment. A change to published research results or their wording also needs a user decision under section 17. (Trigger: 2026-10-10T16:27:03Z, 2026-10-10 20:39 UTC.)

@@ -1,0 +1,162 @@
+=== ?
+ASSUMPTION: Overall, the six candidate lines add no permissions, spending or gate removals, and none weakens the no-local-LLM, isolation or human-work rules. Lessons 2, 4 and 6 contain wording that could weaken a gate or conflict with earlier 19A text, listed below.
+
+CITE: prompt-s18
+CITE: prompt-s19a-v4
+
+ASSUMPTION: Lesson 1 (fresh clone before PR) is justified. The 20:54 entry shows a fresh clone catching a manifest-commit drift defect that the working tree hid. The 16:26:38Z entry shows a clean copy catching the ignored `web/data/` problem.
+CITE: journal-2026-10-10-20-54-utc
+CITE: journal-2026-10-10t16-26-38z
+
+ASSUMPTION: The 16:26:38Z entry describes a "clean copy", not a `git clone`. The trigger for specifically requiring `git clone` of a commit rests on 20:54, so the trigger note should say so.
+ASSUMPTION: "Full gate" in lesson 1 is undefined. The working tree gate showed 0 skipped, but the fresh clone showed 6 data-dependent skips, so skips can hide failures. A clean clone with unexplained skips could be read as a pass.
+IDEA: Lesson 1 wording fix: "...run the repository's required gate on a fresh `git clone` of the exact commit into a new empty directory; record the commit, pass/fail/skip counts and the reason for any skip. A failure is a finding: no PR until fixed through Howl or paused under section 17."
+ASSUMPTION: Lesson 1 omits the journal's own candidate check of `git check-ignore` for new output directories. A clone gate only catches this if the gate exercises those files, so the omission is a small coverage gap.
+
+ASSUMPTION: Lesson 2 (committed gate script) could weaken the gate. The script is authored in the same session whose work it verifies, so a worker could narrow the script. That conflicts in spirit with the existing 19A rule "rather than narrowing --verify" and with the independent-review gate.
+IDEA: Lesson 2 wording fix: "The script must run the repository's full required regression gate and nothing narrower. Any creation or edit of it is shown to the independent reviewer as a gate change, and the --verify-timeout rule above still applies."
+ASSUMPTION: Lesson 2's trigger is provisional. CUBS-P-011 is marked provisional, and Claude's exact-literal refusal is supported by the 19:49 entry.
+CITE: journal-2026-10-10-19-49-utc
+CONFLICT: cubs-p-011-mitigation-effect. The 20:39 entry says Claude was not refused `sh scripts/gate.sh` and Cursor's rejection was unrelated to quoting, so a short script did not fix Cursor's failure.
+CITE: journal-2026-10-10-20-39-utc
+ASSUMPTION: Lesson 2 says "not an inline shell chain" as a blanket rule, but the evidence only shows a quoting problem for one provider. Whether the script prevents refusals across providers is untested.
+UNKNOWN: scripts-gate-sh-prevents-refusals-across-providers
+
+ASSUMPTION: Lesson 3 (one PR per repo per run) is only partly justified by its triggers. The 15:47:20Z entry shows a normal single merge and no stacking problem. Only the 22:30 entry shows stacked PRs landing in parent branches.
+CITE: journal-2026-10-10t15-47-20z
+CITE: journal-2026-10-10-22-30-utc
+UNKNOWN: evidence-for-earlier-pr-8-and-9-stacking-problem
+ASSUMPTION: "Cannot be reviewed without an earlier unmerged one" is subjective and untestable. A single large PR spanning up to 6 sessions may also be harder to review than stacked ones.
+ASSUMPTION: Lesson 3 has a recovery gap. It does not say what to do when a stacked PR has already been merged into a non-default branch, as happened with #12 to #14. Such a merge should not count as MERGED or MERGED_VERIFIED.
+IDEA: Lesson 3 wording fix: "If a PR was merged into a non-default branch, record it as not delivered, and open or request a PR from that branch to the default branch. When stacking, state each PR's base and merge order in the PR body."
+ASSUMPTION: Lesson 3 does not address separate repair PRs, such as the howlplane repair worktree PR, so it is unclear whether "per repository per run" covers them.
+
+ASSUMPTION: Lesson 4 (read CI before handoff) is clearly justified by the #168 CI failure that local gates and Howl review missed.
+CITE: journal-2026-10-10-22-30-utc
+ASSUMPTION: "Or record it in the PR with a reason" lets a failing check be handed off with only a note, which could be read as weakening the merge gate. It also does not cover pending or absent CI.
+ASSUMPTION: Lesson 4 does not say whether a Howl fix for a CI failure counts against the session budget. The journal treated one as a repair, "not a product session". This is ambiguous, and a reader could infer new spending or exemption.
+IDEA: Lesson 4 wording fix: "A failing check is a finding: fix it through Howl within existing session and request budgets, or pause under section 17. Hand off with an unresolved failing check only if the PR body states the failure and that the PR is not ready to merge. If checks are pending or absent, record that state."
+
+ASSUMPTION: Lesson 5 (screenshots) is justified by the 21:40 entry, where the screenshots exposed defects that no test caught.
+CITE: journal-2026-10-10-21-40-utc
+ASSUMPTION: In lesson 5, "readability problems" and "each tested viewport" are subjective and unverifiable as written. "Before accepting" does not say whether the controller or the Howl acceptor accepts, so it could be read as giving the controller acceptance authority.
+ASSUMPTION: In R004 the screenshots were taken after acceptance and from a clean clone, so the lesson changes the order of events. It also assumes a screenshot tool exists without saying how it is run or whether it needs new permissions.
+IDEA: Lesson 5 wording fix: "Controller screenshots are in addition to, not instead of, Howl review and acceptance. Record the file names, viewports and findings in the run assessment; an undone item is listed as open, never as passed."
+
+ASSUMPTION: Lesson 6 (contract amendment) has two problems. "The run contract" and its "unchanged inputs" are not defined in the supplied evidence, so the lesson is untestable. A self-recorded amendment must not be read as authorization to change mission constraints, which section 18 reserves for a later explicit user instruction.
+UNKNOWN: run-contract-definition
+CITE: journal-2026-10-10t16-27-03z
+CONFLICT: label-change-authority. The v3 line says a label found wrong after freezing changes only by a dated user decision, while v4 lesson 6 requires only a recorded amendment for non-published unchanged inputs. The scopes overlap.
+IDEA: Lesson 6 wording fix: "This does not relax the v3 label-freeze rule or section 18; an amendment is a record, and any change that alters a mission constraint or a published result needs a dated user decision under section 17."
+ASSUMPTION: The journal does not show whether the user approved the R001 label correction before the session. It shows only that the correction was disclosed afterwards. So the user-decision clause adds a new requirement, which is a stricter gate and is acceptable.
+UNKNOWN: user-approval-of-r001-label-correction
+
+ASSUMPTION: Trigger citations in v4 mix ISO timestamps and "YYYY-MM-DD HH:MM UTC" forms, and lesson 6 cites 20:39 without the 21:40 deviation disclosure. Citing the unique heading text would make the triggers easier to check.
+UNKNOWN: v3-sha256-correctness
+
+=== ?
+ASSUMPTION: No lesson appears to remove a gate, grant a permission, add spending, or touch the no-local-LLM rule, isolation, or human-work protections, so the problems below concern wording, triggers, and recovery gaps. Whether section 16, section 17 and the "run contract" say what the lessons assume is unverified, because those texts were not supplied.
+UNKNOWN: section-16-and-17-text
+UNKNOWN: run-contract-definition
+
+CITE: journal-2026-10-10t16-26-38z
+CITE: journal-2026-10-10-20-54-utc
+ASSUMPTION: Lesson 1 (fresh-clone gate before PR) has a sound trigger. The clean copy failed (14 failed, 26 errors) while review and acceptance passed in the working tree, and the fresh clone caught manifest-commit drift.
+ASSUMPTION: Lesson 1 says "the full gate", but the existing 19A repair bullet says "the repository's required regression gate". Two terms invite a narrower reading.
+CALC: 327 - 321 = 6
+ASSUMPTION: R4-S5's working-tree gate had 327 passed and 0 skipped, while its fresh clone had 321 passed and 6 data-dependent skips. Lesson 1 does not say whether skips are acceptable or must be explained, so a clone could "pass" with less coverage.
+ASSUMPTION: Lesson 1 has a recovery gap. If the clone gate fails after Howl acceptance, nothing says the fix must go back through Howl review and acceptance. The 20:54 entry shows the controller restructuring commits itself with `git reset --soft`, and section 18 forbids manual product implementation.
+ASSUMPTION: "git clone of the exact commit" is not literal, since a clone needs a checkout of that commit. It also does not say whether to clone from the local repository (unpushed commits) or from the remote.
+IDEA: Reword lesson 1 as "run the repository's required regression gate, as in the --verify bullet, in a fresh clone checked out at the exact commit. Record the commit, the result, and the skip count with the reason for each skip. On failure, record a finding and fix it through Howl with review and acceptance; do not edit the product by hand."
+
+CITE: journal-2026-10-10-19-49-utc
+CITE: journal-2026-10-10-20-39-utc
+CONFLICT: cubs-p-011-mitigation. The 19:49 entry proposes `sh scripts/gate.sh` as the mitigation for quoting refusals. The 20:39 entry says Cursor's rejection of that same command was unrelated to quoting and that Claude's refusals were the regeneration commands, so the evidence for the lesson is mixed.
+ASSUMPTION: Lesson 2 rests on a finding labelled provisional (CUBS-P-011) from one session (R4-S3). Its later evidence partly undercuts the cause, so the lesson overstates how well a script fixes refusals.
+ASSUMPTION: Lesson 2 lets the worker create the verification script in its own first task. That risks a weakened gate, which contradicts the 19A rule against narrowing --verify, and the worker would be writing the check on its own work.
+ASSUMPTION: Lesson 2 has no requirement that the script run exactly the required regression gate, that the script content or hash be recorded, or that reviewers treat later edits to it as a finding. It also does not say how the --verify-timeout bullet applies to a wrapped gate.
+IDEA: Add to lesson 2 "The script must run the repository's required gate unchanged. Record its commit and hash, and the independent review must confirm it is not narrower. Any in-session edit to it is a finding."
+ASSUMPTION: Creating the script inside the session's goal spends part of a worker budget (the 1800 s cap appeared in R4-S3). Whether that counts against the session is not stated.
+
+CITE: journal-2026-10-10t15-47-20z
+CITE: journal-2026-10-10-22-30-utc
+CONFLICT: lesson-3-trigger. The 15:47:20Z entry records a clean MERGED_VERIFIED with no stacking problem, so it does not support the lesson. Only the 22:30 entry shows stacked PRs landing in parent branches, and it refers to #8/#9 without supplied evidence.
+ASSUMPTION: Lesson 3 bundles three rules (one PR per run, stacking limits, post-merge verification) under a trigger that supports only the last two.
+ASSUMPTION: "Cannot be reviewed without an earlier unmerged one" is vague and hard to test. A single PR per run may also make independent review and user review coarser, and R004 used five sessions that produced stacked PRs.
+ASSUMPTION: Lesson 3 does not say what to do when the user reports a merge that landed in a parent branch. The 22:30 entry shows the recovery (a new PR to main, tree-identical to the verified commit, then a fresh-clone gate), but the prompt omits it.
+IDEA: Add to lesson 3 "If a change landed in a non-default branch, open a PR to the default branch with an identical tree and verify it from a fresh clone before MERGED_VERIFIED. The user performs all merges."
+
+ASSUMPTION: Lesson 4 (read CI before handoff) is justified by the 22:30 entry, where local gates and the Howl session's verify and review missed a machine-dependent test failure.
+ASSUMPTION: Lesson 4 allows "record it in the PR with a reason" and then handoff, so the controller could hand over a red PR on its own judgment. This weakens the pause-and-help and merge-gate intent unless the user is explicitly told and the check is never counted as passed.
+ASSUMPTION: Lesson 4 does not say whether a Howl fix session counts against the session budget. The 22:30 entry labels such a fix "part of the repair, not a product session", which could be read as bypassing the budget.
+ASSUMPTION: Lesson 4 is silent on pending checks, a repository with no CI, flaky checks, or external CI outages.
+IDEA: Reword lesson 4 as "Read the PR's CI checks before handoff. A failing or pending check is a finding. Fix it through Howl within the existing session budget, or list it as open in the handoff message to the user and do not call the PR passing. If CI is absent or unavailable, record that."
+
+CITE: journal-2026-10-10-21-40-utc
+ASSUMPTION: The 21:40 entry shows screenshot inspection finding readability defects that tests missed, which supports the lesson in substance. It also shows the controller already doing this and recording the defects without calling them passed, so it is a codification more than a response to a failure.
+CONFLICT: lesson-5-sequence. Lesson 5 says "before accepting", but in R4-S5 Howl acceptance occurred first and the controller screenshots came afterward. The Howl acceptor, not the controller, accepts.
+ASSUMPTION: "Accepting" in lesson 5 is ambiguous and could be read as the controller accepting work, which would change authority. It should refer to recording the run outcome or the final assessment, with Howl acceptance unchanged.
+ASSUMPTION: "Each tested viewport" and "readability problems" are loosely defined and hard to test, and the lesson sets no minimum evidence such as stored screenshot paths. If image review used a local model, it would hit the no-local-LLM rule, which the lesson does not address.
+
+CITE: journal-2026-10-10t16-27-03z
+ASSUMPTION: Lesson 6 has a justified trigger. The R001 label correction changed two research lines under a "contract" that called them unchanged, and the 21:40 entry disclosed the deviation afterward.
+ASSUMPTION: "Record a contract amendment" does not say who authorizes it. Under section 18 only a user instruction can change mission constraints, so a controller-recorded amendment could be read as self-authorization of changes to inputs the contract calls unchanged.
+ASSUMPTION: Lesson 6 requires a user decision only for published research results or wording. A label correction that moves a result from "failed" to "not run" sits near the line against relabeling outcomes, and the evidence shows no user decision before the R001 correction.
+ASSUMPTION: Lesson 6 lacks a rule to keep the original wording on record. The v3 label bullet requires that "the old definition's result is still reported", and lesson 6 does not repeat it.
+ASSUMPTION: "Before the session" leaves a recovery gap for a defect found mid-session, as the explorer's screenshot did.
+IDEA: Reword lesson 6 as "Before the session that would change an input the run contract calls unchanged, pause under section 17 and obtain a dated user decision, then record the amendment and quote the decision. Keep the original text and wording on record and report the change as a deviation."
+
+ASSUMPTION: The trigger citations mix ISO `T…Z` timestamps and "YYYY-MM-DD HH:MM UTC" forms, while the v3 journal bullet requires times from `date -u`. Citation format should be consistent so each trigger can be found by exact heading.
+ASSUMPTION: The header and the "v4 takes effect at R005" statement are consistent with section 18, since they activate at a run boundary and add no authority. The v4 diff's hash chain lists the v3 sha256 but gives none for v4, so the new version is not yet recorded as section 18 step 6 requires.
+UNKNOWN: v4-sha256
+
+=== ?
+ASSUMPTION: Overall, no line expressly removes a gate, grants a permission, or adds spending, and the intro of 19A ("add no authority, remove no gate") still holds in form. Each of L1 to L6 below still has a wording or recovery gap. The v4 diff should not be committed until those are addressed and it has passed the supported Howl review path (prompt-s18 step 4). This harness output is not that review.
+CITE: prompt-s18
+CITE: prompt-s19a-v4
+ASSUMPTION: L1 (fresh-clone gate before PR) is justified as to trigger. The 16:26:38Z entry shows a clean copy failing (14 failed, 26 errors) while Howl verify, review and acceptance all passed in the working tree, and the 20:54 entry shows a fresh clone exposing a provenance drift failure.
+CITE: journal-2026-10-10t16-26-38z
+CITE: journal-2026-10-10-20-54-utc
+CALC: 321 + 6 = 327
+ASSUMPTION: L1 calls the clone run "the full gate", but the clone ran 321 passed with 6 data-dependent skips, while the working-tree gate ran 327 passed with 0 skipped. The clone is therefore a different and partly narrower gate, which sits uneasily with the v2 rule against narrowing --verify. The lesson should require recording pass and skip counts and treating an unexpected skip count as a finding.
+CONFLICT: l1_full_gate_vs_clone_skips
+ASSUMPTION: L1 has a recovery gap. It says nothing about what to do when the clone gate fails after Howl has already accepted. In the 20:54 entry the controller worked around it by splitting its own commit with git reset --soft. Without text requiring a finding and a fix through Howl review and acceptance, a controller could hand-patch product code to get a green clone, which section 18 forbids as manual product implementation.
+ASSUMPTION: L1 does not say where the clone comes from (a local path for an unpushed commit, or the remote). It also does not say that a clone made on this machine still shares the machine's installed CLIs, which is the gap the 22:30 CI failure exposed.
+ASSUMPTION: The 16:26:38Z journal candidate also asked for a git check-ignore check on new output directories, and the diff drops it. This is probably covered by the repository gate (the 19:49 and 20:39 entries show a "no ignored paths" check), but that should be stated.
+CONFLICT: l1_journal_candidate_vs_diff_check_ignore
+ASSUMPTION: L2 (short committed gate script) has a trigger that is only provisional and partly contradicted. CUBS-P-011 is labelled provisional. The 19:49 entry attributes the refusals to exact-literal quoting, but the 20:39 entry says Cursor's shell rejection of "sh scripts/gate.sh" is unrelated to quoting and recurred in R4-S1 and R4-S3. Claude was not refused the script in only one observed session.
+CITE: journal-2026-10-10-19-49-utc
+CITE: journal-2026-10-10-20-39-utc
+CONFLICT: cursor_shell_rejection_cause_quoting_vs_unrelated
+ASSUMPTION: L2 can weaken the verification gate. The script lives in the repository the worker edits, and "the first task of the session's goal creates it" makes the worker write its own check. A worker could then narrow the gate or have the script defined by the work it verifies. This conflicts with the v2 rule that the repair is reviewed against the repository's required regression gate and that --verify is never narrowed.
+ASSUMPTION: L2 also forces a new file into every target repository, including ones with an existing short gate command such as make test-full, which is unnecessary burden and a human-work-protection question for non-mission-owned repositories.
+IDEA: Reword L2 to: "Use a short existing or committed gate command (for example `sh scripts/gate.sh` or `make test-full`) that runs the repository's required gate unchanged. Record its content hash. A script created in the same session is reviewed against the required gate by Howl review, and any session diff to it is a finding."
+ASSUMPTION: L3 (one PR per repo, default branch, verify merges) is well supported for its check half. The 22:30 entry shows #12, #13 and #14 merged into stacked parent branches rather than main, and says "the #8 and #9 problem again".
+CITE: journal-2026-10-10-22-30-utc
+ASSUMPTION: The 15:47:20Z trigger cited in L3 shows PR #10 merged normally with MERGED_VERIFIED based on file presence on origin/main. It does not show stacking, so it only supports the "run the gate on a fresh clone before MERGED_VERIFIED" tightening and not the one-PR rule.
+CITE: journal-2026-10-10t15-47-20z
+ASSUMPTION: "One PR per repository per run" may conflict with per-session isolation and independent review, because each R004 session produced its own reviewed branch. One large PR raises the human review burden. "Cannot be reviewed without an earlier unmerged one" is subjective and hard to test. How section 16 treats PR granularity is not in the supplied evidence.
+ASSUMPTION: L3 does not say what to do when a change is found on a non-default branch. It names no status other than MERGED_VERIFIED, and no retarget or follow-up PR step, so there is a recovery gap. In 22:30 the controller landed PR #15 on main, but the lesson does not authorize or describe that.
+IDEA: Reword the L3 PR rule to: "Target every PR at the default branch. A stacked PR needs a stated reason in its body, and before handoff it must be retargeted or replaced when its parent merges. Record MERGED_VERIFIED only after the change is on the default branch and the gate passes on a fresh clone of it, with skip counts recorded."
+ASSUMPTION: L4 (read CI checks before handoff) is justified by the 22:30 failure: CI failed on 575067f with "The selected orchestrator codex is not available", while local make test-full, Howl verify and Howl review could not catch it.
+ASSUMPTION: L4 says nothing about CI that is pending, absent, or unreadable. It does not say the checks must be for the PR head commit. The "record it in the PR with a reason" option lets the controller waive a failing check on its own say-so, and the PR body is not a handoff the user is guaranteed to read. The waiver should be limited to failures shown unrelated to the change, with the check named in the handoff message.
+ASSUMPTION: L4 could consume Howl sessions. R4-S5 was "6 of 6", and the 22:30 fix was recorded as repair, not a product session. The lesson does not say whether a CI-fix session counts against the session budget, and the 19A intro says budgets do not change, so the lesson should say to pause when no budget remains and never raise it.
+CALC: 6 - 6 = 0
+CITE: journal-2026-10-10-21-40-utc
+ASSUMPTION: L4 and L3 assume the controller can read GitHub PR checks and clone from GitHub. The 22:30 entry shows a fresh GitHub clone and CI inspection already happened, so no new permission appears to be needed.
+ASSUMPTION: L5 (screenshots at each viewport) is justified by the 21:40 entry, where readability defects that tests missed were found: interval fragmentation, -0.00 Brier differences, and squeezed headers at 375 px.
+ASSUMPTION: L5 says "before accepting", but in 21:40 the screenshots were taken after Howl acceptance, from the clean clone, during final assessment. "Accepting" is ambiguous between the Howl acceptance and the controller's run-level acceptance. As written, a finding does not block anything because it may be "listed as open", so the lesson is a recording duty and not a gate.
+ASSUMPTION: "Readability problems" is subjective, and "inspects" is untestable. The lesson should require recording the viewport list, the screenshot paths and the findings. It should say the inspection is done by the controller itself and not by a local model, in line with the no-local-LLM rule.
+ASSUMPTION: Committed screenshots are images, so the L2 record-count check for third-party records cannot count source records in them. Whether screenshots can carry source examples beyond the journaled allowance is a gap.
+ASSUMPTION: L6 (contract amendment before changing a contract-unchanged input) is justified by the 16:27:03Z and 20:39 entries. A published R001 label ("failed its pre-registered test") misstated an early-stop non-run, and the correction changed two research lines. The 21:40 entry shows the deviation was only disclosed afterward.
+CITE: journal-2026-10-10t16-27-03z
+ASSUMPTION: "The run contract" is not defined anywhere in the supplied evidence, so "an input the run contract calls unchanged" is untestable as written. The lesson also does not say who authorizes the amendment. A controller-authored amendment could change protected research inputs on self-authored text, which section 18 forbids for anything touching research criteria, results or run history.
+ASSUMPTION: L6 has a detection gap. It is a pre-session rule, but the R001 label problem was found after the fact from a screenshot, and the 20:39 controller check of "research/ diff is exactly two lines" worked as a post-session diff check. There should be a post-session diff of protected paths, pausing under section 17 if anything is outside the amendment.
+ASSUMPTION: The second sentence of L6 (published results or wording need a user decision) is stricter than what the journal shows was done in R004. Whether the user decided before the correction is not recorded in the supplied entries. It should also say the old wording and its result stay on record, so that a correction does not "erase findings" or "relabel failures" under section 18.
+UNKNOWN: r4_label_correction_user_decision
+UNKNOWN: run_contract_definition_and_location
+UNKNOWN: section16_pr_granularity_policy
+UNKNOWN: v3_sha256_correctness
+UNKNOWN: ci_pending_or_absent_handling
+ASSUMPTION: Trigger citations in the v4 lines mix the ISO style (2026-10-10T16:26:38Z) with the "2026-10-10 20:54 UTC" style, which matches the journal headings. The v3 rule that heading times come from date -u makes it worth confirming that the minute-resolution headings were generated that way. This is not a defect of the candidate itself.
+ASSUMPTION: None of the six lines weakens the pause-and-help rule, the no-local-LLM rule, isolation, or public-interface use as written. L1 and L2 could each weaken independent verification through the gaps above, and L1 could invite controller hand-fixes.

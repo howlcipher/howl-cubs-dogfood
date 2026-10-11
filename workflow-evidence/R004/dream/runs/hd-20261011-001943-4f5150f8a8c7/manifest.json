@@ -1,0 +1,102 @@
+{
+  "schema": "howldream.run/v1",
+  "run_id": "hd-20261011-001943-4f5150f8a8c7",
+  "experiment_id": "3805a3a15c7d06015b69b936b747729b5e40ba24cc3b143fd2c353dfe9888a37",
+  "version": "0.4.4",
+  "git_commit": "f1cc5ca1f9e1d120da6cbf18bbc192ab6ef23abe",
+  "implementation_hash": "4146772cb46f4e4a159f89881dc87831680ca5d5527763163c20294427d2469c",
+  "mode": "dream",
+  "started_at": "2026-10-11T00:19:43.660314+00:00",
+  "provider": {
+    "kind": "command",
+    "model": "claude-sonnet-5-5",
+    "base_url": null,
+    "allow_remote": true,
+    "allow_local_inference": false,
+    "forbid_local_inference": true,
+    "timeout_seconds": 300,
+    "max_tokens": 4096
+  },
+  "capabilities": {
+    "supports_seed": false,
+    "supports_temperature": false,
+    "supports_top_p": false,
+    "supports_logprobs": false,
+    "supports_tool_calls": false,
+    "supports_structured_output": false,
+    "supports_token_usage": false,
+    "supports_local_instrumentation": false
+  },
+  "authority": "NONE",
+  "parent_run": null,
+  "status": "COMPLETE",
+  "errors": [],
+  "template_version": "line_experiment/v2",
+  "template_hash": "8096777d16cf15dcd68f34f709eeb4f81e1b983ba58fdda00c8008f2aa7add7b",
+  "source_hashes": {
+    "prompt-s18": "dc4044b255f169381b1e0c606c927502bd15e53c2481d05daf177e79e9fc611e",
+    "prompt-s19a-v4": "b64556a5a9feec58400f7c23ed1f25ccd86a700d3677abd6c35bb6620488d551",
+    "journal-2026-10-10t15-47-20z": "f9181f4d2d47c9fc336d9bb938efdf068292af37635daeb386c74f5e50e81b44",
+    "journal-2026-10-10t16-26-38z": "b116f26dba7bec65e8969c658764402120b90f23f6a54e1533115de98140d8e1",
+    "journal-2026-10-10t16-27-03z": "ab10f7da20e005758f2efe9f069efc649a12250f9e380ddfbece8651721a6cb7",
+    "journal-2026-10-10-19-49-utc": "e16bce9d7d1830d910c8c9bb361c7e5100bd1cd6222769f45461c4eb08cb1d35",
+    "journal-2026-10-10-20-39-utc": "5e59353759edf25078ddac4f504a8afea320d999f72dda88a71e0df27dff344a",
+    "journal-2026-10-10-20-54-utc": "50da892b7a149dcc5b57a9a442777c5f811c5bee7f53181093ebc1b51c5a130a",
+    "journal-2026-10-10-21-40-utc": "0b9d7b4a3b7f56fe91261d26c7a98a230af7a644a51ea3048b49f41d0ff69825",
+    "journal-2026-10-10-22-30-utc": "7309517093602fdbb1d68ac975b9d6e0b4e8c262ddb9b7048a1d1182eaa1a6ff",
+    "review-round1": "2ed54cd3d602d9cd886d5f718217611a7f8cbdbc9a05158881ac1285a62ae496"
+  },
+  "replay": "CONFIGURATION_REPLAY_NOT_GUARANTEED",
+  "replay_available": true,
+  "warnings": [
+    "Verification is scoped to supplied evidence; generated text has no authority.",
+    "EXPERIMENT_CONTROL_NOT_APPLIED: inspect sampling requested/supported/applied; condition differences are confounded",
+    "DISCOVERY_ANCHORING_HIGH"
+  ],
+  "call_count": 3,
+  "analysis": {
+    "version": "0.4.4",
+    "implementation_hash": "4146772cb46f4e4a159f89881dc87831680ca5d5527763163c20294427d2469c",
+    "analyzed_at": "2026-10-11T00:21:53.067603+00:00",
+    "git_commit": "f1cc5ca1f9e1d120da6cbf18bbc192ab6ef23abe"
+  },
+  "participation": [
+    {
+      "operation": "GENERATED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": "claude",
+      "origin_model": "claude-sonnet-5-5",
+      "subject_count": 2,
+      "inference_occurred": true,
+      "note": "Dream prompted the provider; the provider authored the text."
+    },
+    {
+      "operation": "CLUSTERED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 16,
+      "inference_occurred": false,
+      "note": "Deterministic concept-token clustering; no inference."
+    }
+  ],
+  "observed_models": [
+    "claude-sonnet-5-5"
+  ],
+  "completed_at": "2026-10-11T00:21:54.927134+00:00",
+  "file_hashes": {
+    "baseline.jsonl": "5fed18144b4691cef0564004263ac45e5bddbfa45de3bf47c2966ec6750195e4",
+    "candidates.jsonl": "4d662ee05c248b1f014d9d765d46cd04f3eb07daf72952b020be249127a75934",
+    "claims.jsonl": "74a8985a6d4456919d61a08c8c93befcd1bd0cfa1a6f69205134a7aa3360c8f0",
+    "discovery.json": "25c84d987f29541536a33f7fa0553e068373dab09293878b07cf15a96e63e8f5",
+    "experiment.json": "6b61f1513a92f09b3a33b88dc85b2d7b0e93fdb1e4e0d8b623bb557b47369261",
+    "handoff.json": "b8fc51f13b8e65d9750a170fc194b9e9ad5e5cc5b595ea273ae9d3fffb230d77",
+    "metrics.json": "6e118313f2a1f04e11d936c5f8652f08a03dd9e86aefd1d83953012bbd2a55a1",
+    "report.md": "dfe39d867cf2eb922343f5c42e052590a4ef76353bb9dab4db24b2512c90616d",
+    "scores.json": "4312fa1e45d646030dd7a6ed406281ff164be405797d2bdf80cc55051c95c25c",
+    "verification.jsonl": "e44d40ba1f557c45b2c6a221bdefc063f70a16bb84bce5ebe5bed1b064e22c39",
+    "exploration_envelope.json": "e2ce65088d6e1a4d21f5311b04ebf01c541811fd3be73f281936df9724518fbe"
+  }
+}

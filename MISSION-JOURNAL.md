@@ -554,3 +554,14 @@ Times are UTC. Each entry: event, decision or checkpoint, evidence link.
 - The repair worktree was removed after its branch merged (clean tree).
 - R004 delivery: MERGED_VERIFIED. Index and DOG-044 (FIXED) updated.
 
+
+## 2026-10-11 00:23 UTC Prompt v4 reviewed and adopted (effective at R005)
+
+- Owner instruction: 'Do what you suggest' (review and adopt the v4 candidates, then the explorer readability follow-up, then campaign synthesis).
+- HowlDream verification review: round 1 (p2), then revision, then round 2 (p3). 6 calls, remote claude-sonnet-5-5, LOCAL_LLM_USED: NO. Reconciliation: workflow-evidence/R004/prompt-v4-reconciliation.md.
+- The review surfaced three R004 deviations under v3, now disclosed in runs/R004/FINAL-ASSESSMENT.md:
+  1. The 8814b377 discard without a user decision.
+  2. My web/data regeneration outside Howl.
+  3. Two repair sessions beyond the six-session bound.
+- EXECUTION-PROMPT v4 sha256 048f2f5bcd32259298d625139e326da54ca45da9aed58d96719b395e3dff63b0. Final diff: workflow-evidence/R004/prompt-v4.final.diff. Structure checked: section numbering is unchanged, and the new lines' references (sections 16, 17 and 18, the --verify-timeout rule, the third-party-data rule, the repair-session rule) resolve.
+

@@ -47,6 +47,13 @@ The contract said research/*.json would be reused unchanged. R4-S4 corrected one
 
 The old text, "failed its pre-registered test", contradicted validation.json (early_stop true, validation null, "validation primary positives below 30"). No value changed. It is a separate commit (913b3f7) in PR #13 for the owner to review.
 
+## Further deviations from v3, found during the v4 review
+
+These are disclosed here and not reinterpreted:
+1. **Session discard.** I discarded session 8814b377 (R4-S2) on my own judgment after its resume could not progress. v3 section 19A says never to discard a session with an unresolved verdict without the user's decision. The owner had chosen "Repair it, then resume", and resume proved impossible (NOTE-010). I should have paused.
+2. **Product file regeneration.** After splitting my unpushed commit at PR #13, I regenerated web/data myself with the accepted exporter. That is a product-file change made outside Howl after acceptance. The content was later superseded and re-verified in R4-S5 (content-digest provenance).
+3. **Session bound exceeded.** R004's contract bound was 6 HowlPlane sessions. Two repair sessions ran beyond it: 03d1d55e (DOG-044, under the owner's "Repair it" decision) and d516f2a9 (the #168 CI fix, after the owner asked to merge #168). I recorded both as "not product sessions". Prompt v4 lesson 7 now makes this explicit.
+
 ## Howl observations
 
 - HowlPlane sessions: 6 of 6 product sessions (S1, S2, S2b, S3, S4, S5) and 1 repair session (03d1d55e). The DOG-044 fix was proven live: the same Claude acceptor that rejected a passing tree three times cited the harness gate and accepted (fa728fa1).
@@ -70,9 +77,9 @@ The old text, "failed its pre-registered test", contradicted validation.json (ea
   - The readability defects escaped every gate.
 - LOCAL_LLM_USED: NO (HOWL_FORBID_LOCAL_INFERENCE=1 on every invocation).
 
-## Prompt retrospective (v4 candidates, not yet adopted)
+## Prompt retrospective (adopted as prompt v4 for R005)
 
-The R004 Dream budget (one pass) went to the spec critique, so these candidates are not Dream-reviewed. Adopting them is the first step of the next run.
+The candidates below were reviewed by HowlDream in two rounds and revised into seven lessons. The reconciliation is in workflow-evidence/R004/prompt-v4-reconciliation.md and the final diff in workflow-evidence/R004/prompt-v4.final.diff. Prompt v4 sha256 is 048f2f5bcd32259298d625139e326da54ca45da9aed58d96719b395e3dff63b0.
 
 1. Before any PR, run the gate in a real `git clone` of the commit. It caught two defects in R004 that the working tree hid.
 2. Make the verification command a short repository script (`sh scripts/gate.sh`) rather than an inline `sh -c` chain.
