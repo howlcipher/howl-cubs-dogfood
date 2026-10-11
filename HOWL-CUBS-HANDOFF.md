@@ -32,7 +32,7 @@ See FINAL-ASSESSMENT.md (index) and runs/R00N/FINAL-ASSESSMENT.md.
 | Repository | Change | State |
 | --- | --- | --- |
 | howlplane | dogfood/findings/FINDINGS.md status lines for DOG-040 to DOG-044 (FIX IN REVIEW, now FIXED). Session 745c5055 COMPLETE; PR #169 merged as 04b5269 (CI green); shared checkout fast-forwarded; worktree removed | MERGED_VERIFIED |
-| howl-cubs-dogfood | records/synthesis: CAMPAIGN-SYNTHESIS.md, R005 MERGED_VERIFIED, record corrections, CUBS-P-012, manifest refresh, this handoff | See the journal for the PR and merge state |
+| howl-cubs-dogfood | records/synthesis: CAMPAIGN-SYNTHESIS.md, R005 MERGED_VERIFIED, record corrections, CUBS-P-012, manifest refresh, this handoff | PR #7 to main. The merge commit on main is the delivery receipt; there is no CI, and the sweep for bulk data and secrets was clean |
 
 ## Open findings (DOGFOOD.md)
 - CUBS-P-009: no loopback-only network grant.
