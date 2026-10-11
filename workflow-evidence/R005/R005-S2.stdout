@@ -1,0 +1,60 @@
+HOWL ORCHESTRATION REPORT
+Session: ba91faa15c98452fb7804698ebee0c1e
+Goal: Finish the explorer readability work in this repository. Commit 2496596 is accepted and committed. Screenshots of a fresh clone at 375 px show three remaining defects. Fix them and change nothing else. Do not edit research/, data/ or scripts/gate.sh. Verify with exactly `sh scripts/gate.sh`.
+
+1. Data cells still break inside numbers and words. On web/milbfa.html at 375 px, the whole-pool ranking table's N column renders "636" one digit per line. The existing word-break test only checks header cells. Fix: no table cell, header or data, may break inside a single word or number at 320, 375 or 1280 px. Numeric cells do not wrap at all. The table's minimum width comes from its content, and it scrolls inside its container instead of squeezing columns.
+2. At narrow widths the table caption is clipped together with the scrolling table (for example "v3 primary analysis, verdict: NEGATIVE" is cut off at 375 px). Fix: the caption, or an equivalent visible heading tied to the table with aria-labelledby or caption semantics, stays fully visible at the card's width while only the table body scrolls. Keep table captions or equivalent accessible names, so the accessibility tests still hold.
+3. Nothing tells a phone user that a table scrolls sideways. Fix: when a table's container overflows horizontally, show a short visible text cue near the table (for example "Scroll sideways for more columns"). The scroll container is keyboard-focusable (tabindex="0", with an accessible name), so keyboard users can scroll it too. Show no cue when the table fits.
+
+Tests to add or extend (existing style), on all four pages:
+- at 320, 375 and 1280 px, no word or number in any th or td is split across lines. Measure per word, for example with Range.getClientRects on each whitespace-separated token: each token must have one line box;
+- captions or table names are fully visible (not clipped by the scroll container) at 375 px;
+- the cue is present and visible exactly when the container overflows, and the container is focusable with an accessible name;
+- every existing guard still passes with its intent.
+
+Gate: sh scripts/gate.sh passes (0 skipped end-to-end tests).
+Status: COMPLETE WITH WARNINGS
+Resumable: no
+Orchestrator: claude_code
+Implementer: codex
+Policy: PLAN + EXECUTE + INDEPENDENT AUDIT
+Constraints: The current HowlPlane session IS the orchestration workflow. Perform the assigned work in the target project. Do not launch howl/howlplane or another orchestration session merely to prove Howl was used. Do not copy internal orchestration state into the target project.
+Assignments: 5
+Reroutes: 1
+Repository head: 24965962d0e13e8b6194352a8f91060dab2b9521
+Repository status: M tests/test_explorer_e2e.py
+ M web/app.js
+ M web/style.css
+Tests: [{"command": "git diff --check", "exit_code": 0, "output": ""}, {"command": ["sh", "scripts/gate.sh"], "rework_round": 0, "exit_code": 0, "output": "........................................................................ [ 17%]\n........................................................................ [ 35%]\n......................................................................................................................................... [ 68%]\n........................................................................ [ 86%]\n.......................................................                  [100%]\nSkipped tests: 0\n\n408 passed, 7 subtests passed in 279.27s (0:04:39)\nok: pytest (end-to-end tests required)\nok: flake8\nok: node --check\nok: no stray ignored paths\n"}]
+Independent audit: CLEAN
+Recovery: {"at": "2026-10-11T02:07:31.965001+00:00", "needs_validation": false, "from": "claude_code", "stage": "implementation"}
+Failures: [{"stage": "implementation", "agent": "claude_code", "model": "UNKNOWN", "failure": "EXECUTION_PERMISSION_REQUIRED"}]
+Review notes from Claude (review, CLEAN):
+  I found no blocking defects. I couldn't run anything in this role, so I judged the diff by reading it, plus the gate result you supplied (`sh scripts/gate.sh` exit 0: 408 passed, 0 skipped, flake8 and `node --check` clean).
+  
+  **Against the three goal items:**
+  1. **Token breaking.** The CSS now sets `overflow-wrap: normal`, `word-break: normal` and `hyphens: manual` on `th`, `td` and their descendants. The old `td { overflow-wrap: anywhere }` rule is gone. Every value built with `numberSpan` or `sourced` carries `data-format`, and those spans are `nowrap`. The fixed table `min-width` values are removed, so only `.ranking-table` uses `min-width: max-content`. `keepHyphenatedWordsWhole` wraps hyphenated tokens in `.no-wrap` spans without changing `textContent`.
+  2. **Caption.** The caption is still a `<caption>`. It is `position: sticky; left: 0; width: 100cqw`, and `.table-wrap` has `container-type: inline-size`. The new test checks it stays inside the wrap at `scrollLeft` 0 and at the far end, that it isn't clipped, and that its text is non-empty.
+  3. **Cue.** `scrollWrap` returns a fragment holding the hidden-by-default cue and the wrap. The wrap keeps `tabindex="0"`, `role="region"`, `aria-label`, and now `aria-describedby` pointing at the cue. A ResizeObserver, a window `resize` listener, `fonts.ready` and a `requestAnimationFrame` toggle `cue.hidden` from the overflow state.
+  
+  **Tests.**
+  - They cover all four pages at 320, 375 and 1280 px:
+    - the per-token line-box scan;
+    - a negative control that injects broken wrapping on `/milbfa.html`;
+    - the milbfa N cells on one line;
+    - caption visibility;
+    - the cue shown exactly when the wrap overflows;
+    - the cue visible on `/milbfa.html` at 320 and 375;
+    - a resize test from 375 to 1280.
+  - The obsolete "table wider than container below 900 px" assertion was replaced with the cue-follows-overflow check. The page-level no-horizontal-scroll and `overflow-x: auto` guards are kept.
+  - The line-length limit is respected, since flake8 passed in the gate. The gate result is for this tree and the diff shows no edits after it.
+  
+  **Scope.** The diff touches only `web/style.css`, `web/app.js` and `tests/test_explorer_e2e.py`.
+  
+  **Non-blocking:**
+  - Each `scrollWrap` call adds a window `resize` listener and two ResizeObservers that are never removed. This only matters if the sections are re-rendered, and it's harmless for a one-shot render.
+  - The caption scan only looks at `th` and `td`, as the goal asked. Caption text isn't token-checked, though the caption is not clipped.
+  - The resize test's `wait_for_function` is a loose wait, but `assert_cues_follow_overflow` right after it enforces the real condition.
+  - `.scroll-cue` sits outside the wrap and is linked only through `aria-describedby`. That is fine, but the cue is not inside the region.
+  
+  AUDIT_STATUS: CLEAN

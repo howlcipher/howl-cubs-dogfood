@@ -1,0 +1,17 @@
+Improve the readability of the static explorer in this repository (web/, the display mirror in tests/test_explorer_e2e.py, and web/data only through the exporter) without weakening any existing guard. Do not edit research/, data/ or scripts/gate.sh. Verify with exactly `sh scripts/gate.sh`. The regeneration command, if needed, is `python3 -m cubs_edge_lab.web_export`.
+
+Three defects, seen in screenshots of the current pages:
+1. Every number has its own block-level "Full published value" <details>, so an interval reads "(95% interval: -0.00 [box] to 0.00 [box] )" and each criteria row holds several boxes. Fix: at most one full-value <details> per table row (or per value group outside tables), listing each number's full value with its source pointer. Every rendered number keeps its data-src tag. Intervals render inline as "lo to hi".
+2. Small values read as zero. Brier differences of about -0.00005 render as "-0.00". Fix: keep 2 decimals for floats and 3 for probabilities and rates, unless the formatted text would read as zero while the source value is not zero (abs(x) < 0.005 at 2 decimals, or abs(x) < 0.0005 at 3). Show those to 2 significant figures in plain decimal form (for example -0.000053), never scientific notation. "-0" text never appears. web/format.js and the Python display mirror implement the same rule, and the existing parity test covers the new cases. Each page that shows such a value states "small values shown to 2 significant figures" next to the existing decimal note.
+3. At 375 px the criteria tables squeeze their columns and headers break mid-word ("Cr/it/er/io/n"). Fix: give tables a minimum width so no header breaks inside a word, and let them scroll inside their own container at narrow widths. The page itself must still have no horizontal scroll.
+
+Tests to add (existing style):
+- no rendered number text equals a zero form ("0.00", "-0.00", "0.000", "-0.000", "-0") while its source value is non-zero, on all four pages;
+- no "-0" text anywhere;
+- each table row has at most one full-value <details>, and that <details> lists every data-src in the row;
+- at 320, 375 and 1280 px, no table header's rendered text breaks inside a word (compare each header cell's rendered line count with its word count, or an equivalent measurable check), tables scroll inside their containers, and the page has no horizontal scroll;
+- format parity for the small-value rule (JS and Python).
+
+Every existing guard test must keep its intent: exact source values (DOM scan), verdict and meaning first, runs left hidden by default (disclosed_only), Met/Not met in text, limits blocks, keyboard, the accessibility tests, and no runtime network. Update a guard test only where the markup moved, never to weaken it.
+
+Gate: sh scripts/gate.sh passes (0 skipped end-to-end tests).

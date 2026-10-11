@@ -1,4 +1,4 @@
-# R005 run contract (draft; starts when prompt v4 is merged)
+# R005 run contract
 
 - Run ID: R005. Type: FOLLOW_UP (readability of the R004 explorer). Prompt: EXECUTION-PROMPT v4 (sha256 048f2f5bcd32259298d625139e326da54ca45da9aed58d96719b395e3dff63b0), snapshotted at run start.
 - Question: can the explorer be made readable on a phone and a desktop without weakening any R004 fidelity guard?
