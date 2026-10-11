@@ -1,0 +1,101 @@
+{
+  "schema": "howldream.run/v1",
+  "run_id": "hd-20261011-043219-eaa237904514",
+  "experiment_id": "05f4b6bda64b848b69998ab2018b370d189648136caa87fb43e0bd9cef2d59ce",
+  "version": "0.4.4",
+  "git_commit": "f1cc5ca1f9e1d120da6cbf18bbc192ab6ef23abe",
+  "implementation_hash": "4146772cb46f4e4a159f89881dc87831680ca5d5527763163c20294427d2469c",
+  "mode": "dream",
+  "started_at": "2026-10-11T04:32:19.258627+00:00",
+  "provider": {
+    "kind": "command",
+    "model": "claude-sonnet-5-5",
+    "base_url": null,
+    "allow_remote": true,
+    "allow_local_inference": false,
+    "forbid_local_inference": true,
+    "timeout_seconds": 300,
+    "max_tokens": 4096
+  },
+  "capabilities": {
+    "supports_seed": false,
+    "supports_temperature": false,
+    "supports_top_p": false,
+    "supports_logprobs": false,
+    "supports_tool_calls": false,
+    "supports_structured_output": false,
+    "supports_token_usage": false,
+    "supports_local_instrumentation": false
+  },
+  "authority": "NONE",
+  "parent_run": null,
+  "status": "COMPLETE",
+  "errors": [],
+  "template_version": "line_experiment/v2",
+  "template_hash": "8096777d16cf15dcd68f34f709eeb4f81e1b983ba58fdda00c8008f2aa7add7b",
+  "source_hashes": {
+    "prompt-s19": "78299cc5448eec2937a67e386bcc9568ab7cfe2952d30cf9dcf1eb5e54f69196",
+    "assessment-r001": "d5fbe081d83fde016b386a7c4183f992ce820bfef9f10655ba11d4396b433ab5",
+    "assessment-r002": "f62e923e65fc1a610fd90a321247cc4982d8d0eb9870a0478253998e77c70fc3",
+    "assessment-r003": "a0f597923989ae0853448254b44185805e02bb0bfb391a59ea3e0c7c0b6a956c",
+    "assessment-r004": "2ecb4d7667bab4fda00c3ac6d13bbd0a1764dd2a7f5218ec6fb4bb944361d9bb",
+    "assessment-r005": "9bb887313cee04916b09aa0a427b706b77aa2848ea90fc3145b3d3e799650884",
+    "findings-index": "4e7bea80511888848ba502ebc851f0cd590b209a5784572503b32ab0de08e841",
+    "review-round1": "9defecb08c3850114d3f8a0527b0aa0adefc793121e81d3629cfc6711332ba97",
+    "opportunities-excerpt": "7e1bee8682ff82de7a3a9fababe49c61097bab788a75cb7485b64db2d7da8a7f",
+    "prompt-s19a": "48da75a9f89799b42927bae03df2a12dd1c3a8ab4090482023ce8914d0b64b6e"
+  },
+  "replay": "CONFIGURATION_REPLAY_NOT_GUARANTEED",
+  "replay_available": true,
+  "warnings": [
+    "Verification is scoped to supplied evidence; generated text has no authority.",
+    "EXPERIMENT_CONTROL_NOT_APPLIED: inspect sampling requested/supported/applied; condition differences are confounded",
+    "DISCOVERY_ANCHORING_HIGH"
+  ],
+  "call_count": 3,
+  "analysis": {
+    "version": "0.4.4",
+    "implementation_hash": "4146772cb46f4e4a159f89881dc87831680ca5d5527763163c20294427d2469c",
+    "analyzed_at": "2026-10-11T04:36:19.683171+00:00",
+    "git_commit": "f1cc5ca1f9e1d120da6cbf18bbc192ab6ef23abe"
+  },
+  "participation": [
+    {
+      "operation": "GENERATED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": "claude",
+      "origin_model": "claude-sonnet-5-5",
+      "subject_count": 2,
+      "inference_occurred": true,
+      "note": "Dream prompted the provider; the provider authored the text."
+    },
+    {
+      "operation": "CLUSTERED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 10,
+      "inference_occurred": false,
+      "note": "Deterministic concept-token clustering; no inference."
+    }
+  ],
+  "observed_models": [
+    "claude-sonnet-5-5"
+  ],
+  "completed_at": "2026-10-11T04:36:24.235348+00:00",
+  "file_hashes": {
+    "baseline.jsonl": "5a6bcd0ef83a53140e7c2de860cab4862fddb4b303ff2440d50411dcc67693e3",
+    "candidates.jsonl": "b0c08065771247a57859feaa1a24783b1e8a7cde9e8b5533f1d0d795b72d8ca9",
+    "claims.jsonl": "c3c2f079e1760019ea1309d3022afe21850763cf49c902cfa9ba000379f82c69",
+    "discovery.json": "b36501b919c5eef396b87384c2d33b43f2a26cc2b43ec4a245a3b177a25329d2",
+    "experiment.json": "2171688a23add41e9a939cd77b519020e7085899aed57f84b40af20728b67c53",
+    "handoff.json": "5280e853c0d429cf015dd988615e38fddb0caba365b11f94f20471e7bb053c06",
+    "metrics.json": "2cc832abfaa54de5b5f2fb2989b316765c74d5598c30e3770136ea7a4d4f7318",
+    "report.md": "7f40e7fa90f7006718647cd7f519047fbe53fbe4ec6e78b7bdc476c945610d70",
+    "scores.json": "da8ee08167dc58eeca56ec880fbf0558dfcb5219dee8dd01e0733ad35f5d8ac4",
+    "verification.jsonl": "8b8069c56229cfc139161182db78ad8b287539c3fc36308e307acc3faab5a092",
+    "exploration_envelope.json": "15f3967ed63c1b7c3b51ed16c77f435335849d8c2d6d8d59bc47684a587c8492"
+  }
+}

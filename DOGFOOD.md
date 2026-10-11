@@ -12,7 +12,7 @@ Registry state at mission start (2026-10-08T14:27Z): highest allocated DOG-034; 
 - Observed: exit 2, `howlplane: error: unrecognized arguments: -m unittest`; no session created.
 - Root cause: `--verify` uses argparse `nargs="+"` (src/howlplane/control_plane/orchestration.py:2003), which treats dash-prefixed command tokens as options. No CLI-level test covers it.
 - Evidence: workflow-evidence/R001/plane/CUBS-P-001-repro.txt, S1.stderr.
-- Status: FIXED and MERGED: howlplane #164 -> f39cf18, howl #16 -> 45478f4. HowlPlane review session 889142d7 COMPLETE (audit CLEAN, accepted, make test-full exit 0). Post-merge public proof: workflow-evidence/R001/repair-DOG-035/10-postmerge-proof.txt. Registry text on main still says FIX IN REVIEW (update pending).
+- Status: FIXED and MERGED: howlplane #164 -> f39cf18, howl #16 -> 45478f4. HowlPlane review session 889142d7 COMPLETE (audit CLEAN, accepted, make test-full exit 0). Post-merge public proof: workflow-evidence/R001/repair-DOG-035/10-postmerge-proof.txt. Registry text on main now says FIXED (checked at the campaign synthesis).
 
 ### DOG-040 (was CUBS-P-002; FIXED in howlplane 99d3aa4): denial of an equivalent test command marks a proven agent interactive-only everywhere
 - Category: HOWL FAILURE (false capability evidence, persisted). Owner: howlplane routing/readiness cache.
@@ -43,7 +43,7 @@ Registry state at mission start (2026-10-08T14:27Z): highest allocated DOG-034; 
 
 - DOG-037/038 status: FIXED and MERGED (howlplane #165 -> 28511b4); review session 80be26f2 COMPLETE WITH WARNINGS (audit CLEAN). Verified live in S1 rerun 6713a592: AGY skipped for read-only roles; Codex fetched public data with --worker-network.
 
-### CUBS-P-007 (provisional): a provider usage limit is recorded as "not authenticated"
+### DOG-039 (was CUBS-P-007; FIXED in howlplane #166, af9f40a): a provider usage limit is recorded as "not authenticated"
 - Category: HOWL FAILURE (failure classification / capacity evidence). Owner: howlplane failure taxonomy + readiness cache.
 - Observed: S1 rerun 6713a592; Codex ended with `usage_limit_exceeded` ("try again at 8:01 PM"); HowlPlane recorded AUTHENTICATION_REQUIRED and the readiness cache now says "Codex UNAVAILABLE not authenticated"; `codex login status` says logged in.
 - Expected: QUOTA/SESSION_LIMIT with the stated reset time, expiring on its own (ORCHESTRATE.md capacity table).
@@ -108,3 +108,16 @@ Registry state at mission start (2026-10-08T14:27Z): highest allocated DOG-034; 
 - Cost: the passing work had to move to a new session (discard, then fa728fa1).
 - Suggestion: when a rejection is followed by a HowlPlane version change, or the operator asserts the cause was a harness defect, offer a re-judge path. At minimum, a HANDOFF that cannot progress should say `discard` rather than repeat `resume`.
 - Evidence: workflow-evidence/R004/R4S2-resume.stderr.
+
+### CUBS-P-012 (provisional): a nonexistent --repo path is reported as a suspected HowlPlane bug
+- Category: HOWL FRICTION (failure classification; same class as DOG-043). Owner: howlplane orchestrate CLI / presentation.
+- Observed (synthesis, 2026-10-11): an operator typo, `--repo dev/howlplane-registry-status` run from dev/ so it resolved to dev/dev/…, printed "Something unexpected failed: Git inspection failed: fatal: cannot change to '…/dev/dev/howlplane-registry-status' … likely a HowlPlane bug … Code: INTERNAL_ERROR". No session was created (inspect --json: []), which is correct.
+- Expected: ORCHESTRATE_REQUEST_REFUSED naming the missing path. DOG-043 deliberately kept "git inspection" failures as internal. A nonexistent path, however, is user-correctable and could be checked before any Git call.
+- Evidence: workflow-evidence/SYNTHESIS/registry-badpath.stderr (diagnostic HP-20261011-002604-bf72, kept locally).
+
+### CUBS-P-013 (provisional): a CLEAN review whose status line is not the last line is treated as findings
+- Category: HOWL FRICTION (verdict parsing; fails safe, costs a rework round). Owner: howlplane orchestration (review verdict check).
+- Observed (synthesis session 745c5055, 2026-10-11): Codex's review opened with "**AUDIT_STATUS: CLEAN**" (bold, first line), said "BLOCKING findings: None", and ended with a completion sentence. HowlPlane recorded AUDIT_FINDINGS_OR_UNCONFIRMED and spent rework round 1. Claude answered NO_CHANGE_REQUIRED, and the suite ran again (about 9 minutes). The second review ended with a plain "AUDIT_STATUS: CLEAN" and passed. Cost: about 27 minutes and one of two rework rounds.
+- Root cause (read-only): src/howlplane/control_plane/orchestration.py:1671 accepts a review only if `stdout.strip().endswith("AUDIT_STATUS: CLEAN")`. The review prompt (line 1232) asks agents to end with exactly that line, so this is a provider format deviation that the parser does not tolerate. DOG-042 made the implementation status line tolerant of Codex's bold form; the review status line is not.
+- Expected: either tolerate a single unambiguous status line (bold, or not last) when no FINDINGS status appears, or report "status line missing or misplaced" rather than findings. As it stands, the report shows a CLEAN verdict under a findings label.
+- Evidence: workflow-evidence/SYNTHESIS/registry.stdout (the "Verdict from Codex" block) and registry.stderr (00:45:22 FINDINGS).

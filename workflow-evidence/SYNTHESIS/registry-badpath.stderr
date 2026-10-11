@@ -1,0 +1,5 @@
+Something unexpected failed: Git inspection failed: fatal: cannot change to '/run/media/system/tallgeese/dev/dev/howlplane-registry-status': No such file or directory
+Why: This is likely a HowlPlane bug or an unhandled condition (ValueError). Traceback saved to /home/howlcipher/.local/state/howlplane/diagnostics/HP-20261011-002604-bf72.txt.
+Next: Re-run with --debug to print the traceback, and include the diagnostic ID in a bug report.
+Diagnostic ID: HP-20261011-002604-bf72
+Code: INTERNAL_ERROR

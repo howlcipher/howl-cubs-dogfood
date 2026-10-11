@@ -1,0 +1,323 @@
+{
+  "context_echo_ratio": 1.0,
+  "evidence_echo_ratio": 1.0,
+  "novel_concept_ratio": 0.3,
+  "repeated_family_ratio": 0.0,
+  "idea_count": 10,
+  "cluster_count": 10,
+  "units": [
+    {
+      "id": "hd-20261011-043219-eaa237904514/candidates/0/0/idea/1",
+      "candidate_id": "hd-20261011-043219-eaa237904514/candidates/0/0",
+      "text": "IDEA: Replace section 5's first sentence with \"No experiment with a stated hypothesis and more than small expected value was identified; a feasibility-only check of MiLB promotion timing or COACH persistence on public data was not run and is available.\" Replace \"Recommendation: option 1\" with \"Owner's choice; options 3 and 4 are the only public-data baseball experiments, both low expected value.\"",
+      "source_span": [
+        14067,
+        14466
+      ],
+      "source_hash": "8d33d76ac45d1b69bfeb77e4c840bcc0bb174466587af30e8d0e5b8971e8d03a",
+      "cluster": "cluster-1",
+      "representative": "hd-20261011-043219-eaa237904514/candidates/0/0/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 1.0,
+      "context_token_overlap": 1.0,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-043219-eaa237904514/candidates/0/0/idea/2",
+      "candidate_id": "hd-20261011-043219-eaa237904514/candidates/0/0",
+      "text": "IDEA: In the R003 HowlDream cell, write \"R003: 27 of 40 (assessment-r003); journal total 33 not verified\".",
+      "source_span": [
+        14468,
+        14574
+      ],
+      "source_hash": "8d33d76ac45d1b69bfeb77e4c840bcc0bb174466587af30e8d0e5b8971e8d03a",
+      "cluster": "cluster-2",
+      "representative": "hd-20261011-043219-eaa237904514/candidates/0/0/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 1.0,
+      "context_token_overlap": 1.0,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-043219-eaa237904514/candidates/0/1/idea/1",
+      "candidate_id": "hd-20261011-043219-eaa237904514/candidates/0/1",
+      "text": "IDEA: Replace with \"used in R002 (`--verify-timeout 1000`)\".",
+      "source_span": [
+        3833,
+        3893
+      ],
+      "source_hash": "19d016df65509d0002819430c57aa401379f5d0922c513520fcfa61098506ac1",
+      "cluster": "cluster-3",
+      "representative": "hd-20261011-043219-eaa237904514/candidates/0/1/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 1.0,
+      "context_token_overlap": 1.0,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-043219-eaa237904514/candidates/0/1/idea/2",
+      "candidate_id": "hd-20261011-043219-eaa237904514/candidates/0/1",
+      "text": "IDEA: Add \"Synthesis delivery: howlplane registry PR_PENDING; howl-cubs-dogfood records/synthesis PR_PENDING\" or the actual state.",
+      "source_span": [
+        4496,
+        4626
+      ],
+      "source_hash": "19d016df65509d0002819430c57aa401379f5d0922c513520fcfa61098506ac1",
+      "cluster": "cluster-4",
+      "representative": "hd-20261011-043219-eaa237904514/candidates/0/1/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 1.0,
+      "context_token_overlap": 1.0,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-043219-eaa237904514/candidates/0/1/idea/3",
+      "candidate_id": "hd-20261011-043219-eaa237904514/candidates/0/1",
+      "text": "IDEA: Replace with \"v2 followed the challenge and added stronger baselines, the low-attention primary test and the early-stop rule (INFERENCE: this shaped the early stop)\".",
+      "source_span": [
+        5484,
+        5656
+      ],
+      "source_hash": "19d016df65509d0002819430c57aa401379f5d0922c513520fcfa61098506ac1",
+      "cluster": "cluster-5",
+      "representative": "hd-20261011-043219-eaa237904514/candidates/0/1/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.9333333333333333,
+      "context_token_overlap": 0.9333333333333333,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-043219-eaa237904514/candidates/0/1/idea/4",
+      "candidate_id": "hd-20261011-043219-eaa237904514/candidates/0/1",
+      "text": "IDEA: Use \"No usefulness shown\".",
+      "source_span": [
+        6749,
+        6781
+      ],
+      "source_hash": "19d016df65509d0002819430c57aa401379f5d0922c513520fcfa61098506ac1",
+      "cluster": "cluster-6",
+      "representative": "hd-20261011-043219-eaa237904514/candidates/0/1/idea/4",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 1.0,
+      "context_token_overlap": 1.0,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261011-043219-eaa237904514/candidates/0/1/idea/5",
+      "candidate_id": "hd-20261011-043219-eaa237904514/candidates/0/1",
+      "text": "IDEA: \"Neither produced evidence of an advantage\" instead of \"over a simple baseline\".",
+      "source_span": [
+        7036,
+        7122
+      ],
+      "source_hash": "19d016df65509d0002819430c57aa401379f5d0922c513520fcfa61098506ac1",
+      "cluster": "cluster-7",
+      "representative": "hd-20261011-043219-eaa237904514/candidates/0/1/idea/5",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 1.0,
+      "context_token_overlap": 1.0,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-043219-eaa237904514/candidates/0/1/idea/6",
+      "candidate_id": "hd-20261011-043219-eaa237904514/candidates/0/1",
+      "text": "IDEA: Use \"play-level tracking is not in the Stats API feed and is the likely missing input (INFERENCE, untested)\".",
+      "source_span": [
+        8940,
+        9055
+      ],
+      "source_hash": "19d016df65509d0002819430c57aa401379f5d0922c513520fcfa61098506ac1",
+      "cluster": "cluster-8",
+      "representative": "hd-20261011-043219-eaa237904514/candidates/0/1/idea/6",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 1.0,
+      "context_token_overlap": 1.0,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-043219-eaa237904514/candidates/0/1/idea/7",
+      "candidate_id": "hd-20261011-043219-eaa237904514/candidates/0/1",
+      "text": "IDEA: Add \"Hold-side counterfactual unobservable; the test cannot show coaches were right to hold\".",
+      "source_span": [
+        9371,
+        9470
+      ],
+      "source_hash": "19d016df65509d0002819430c57aa401379f5d0922c513520fcfa61098506ac1",
+      "cluster": "cluster-9",
+      "representative": "hd-20261011-043219-eaa237904514/candidates/0/1/idea/7",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 1.0,
+      "context_token_overlap": 1.0,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-043219-eaa237904514/candidates/0/1/idea/8",
+      "candidate_id": "hd-20261011-043219-eaa237904514/candidates/0/1",
+      "text": "IDEA: Replace \"Recommendation: option 1\" with \"Recommendation (INFERENCE, low expected value of further public-data work): option 1, or a feasibility-only COACH check if the owner wants one more bounded run. Option 5 requires a repair authorization.\"",
+      "source_span": [
+        12662,
+        12912
+      ],
+      "source_hash": "19d016df65509d0002819430c57aa401379f5d0922c513520fcfa61098506ac1",
+      "cluster": "cluster-10",
+      "representative": "hd-20261011-043219-eaa237904514/candidates/0/1/idea/8",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.96,
+      "context_token_overlap": 0.96,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    }
+  ],
+  "clusters": [
+    {
+      "id": "cluster-1",
+      "representative": "hd-20261011-043219-eaa237904514/candidates/0/0/idea/1",
+      "representative_text": "IDEA: Replace section 5's first sentence with \"No experiment with a stated hypothesis and more than small expected value was identified; a feasibility-only check of MiLB promotion timing or COACH persistence on public data was not run and is available.\" Replace \"Recommendation: option 1\" with \"Owner's choice; options 3 and 4 are the only public-data baseball experiments, both low expected value.\"",
+      "label": "1, 3, 4, 5, available, baseball, both, check",
+      "members": [
+        "hd-20261011-043219-eaa237904514/candidates/0/0/idea/1"
+      ]
+    },
+    {
+      "id": "cluster-2",
+      "representative": "hd-20261011-043219-eaa237904514/candidates/0/0/idea/2",
+      "representative_text": "IDEA: In the R003 HowlDream cell, write \"R003: 27 of 40 (assessment-r003); journal total 33 not verified\".",
+      "label": "27, 33, 40, assessment, cell, howldream, journal, r003",
+      "members": [
+        "hd-20261011-043219-eaa237904514/candidates/0/0/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-3",
+      "representative": "hd-20261011-043219-eaa237904514/candidates/0/1/idea/1",
+      "representative_text": "IDEA: Replace with \"used in R002 (`--verify-timeout 1000`)\".",
+      "label": "1000, r002, timeout, used, verify",
+      "members": [
+        "hd-20261011-043219-eaa237904514/candidates/0/1/idea/1"
+      ]
+    },
+    {
+      "id": "cluster-4",
+      "representative": "hd-20261011-043219-eaa237904514/candidates/0/1/idea/2",
+      "representative_text": "IDEA: Add \"Synthesis delivery: howlplane registry PR_PENDING; howl-cubs-dogfood records/synthesis PR_PENDING\" or the actual state.",
+      "label": "actual, add, cubs, delivery, dogfood, howl, howlplane, pending",
+      "members": [
+        "hd-20261011-043219-eaa237904514/candidates/0/1/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-5",
+      "representative": "hd-20261011-043219-eaa237904514/candidates/0/1/idea/3",
+      "representative_text": "IDEA: Replace with \"v2 followed the challenge and added stronger baselines, the low-attention primary test and the early-stop rule (INFERENCE: this shaped the early stop)\".",
+      "label": "added, attention, baselines, challenge, early, followed, inference, low",
+      "members": [
+        "hd-20261011-043219-eaa237904514/candidates/0/1/idea/3"
+      ]
+    },
+    {
+      "id": "cluster-6",
+      "representative": "hd-20261011-043219-eaa237904514/candidates/0/1/idea/4",
+      "representative_text": "IDEA: Use \"No usefulness shown\".",
+      "label": "no, shown, usefulness",
+      "members": [
+        "hd-20261011-043219-eaa237904514/candidates/0/1/idea/4"
+      ]
+    },
+    {
+      "id": "cluster-7",
+      "representative": "hd-20261011-043219-eaa237904514/candidates/0/1/idea/5",
+      "representative_text": "IDEA: \"Neither produced evidence of an advantage\" instead of \"over a simple baseline\".",
+      "label": "advantage, baseline, evidence, instead, neither, over, produced, simple",
+      "members": [
+        "hd-20261011-043219-eaa237904514/candidates/0/1/idea/5"
+      ]
+    },
+    {
+      "id": "cluster-8",
+      "representative": "hd-20261011-043219-eaa237904514/candidates/0/1/idea/6",
+      "representative_text": "IDEA: Use \"play-level tracking is not in the Stats API feed and is the likely missing input (INFERENCE, untested)\".",
+      "label": "api, feed, inference, input, level, likely, missing, play",
+      "members": [
+        "hd-20261011-043219-eaa237904514/candidates/0/1/idea/6"
+      ]
+    },
+    {
+      "id": "cluster-9",
+      "representative": "hd-20261011-043219-eaa237904514/candidates/0/1/idea/7",
+      "representative_text": "IDEA: Add \"Hold-side counterfactual unobservable; the test cannot show coaches were right to hold\".",
+      "label": "add, cannot, coaches, counterfactual, hold, right, show, side",
+      "members": [
+        "hd-20261011-043219-eaa237904514/candidates/0/1/idea/7"
+      ]
+    },
+    {
+      "id": "cluster-10",
+      "representative": "hd-20261011-043219-eaa237904514/candidates/0/1/idea/8",
+      "representative_text": "IDEA: Replace \"Recommendation: option 1\" with \"Recommendation (INFERENCE, low expected value of further public-data work): option 1, or a feasibility-only COACH check if the owner wants one more bounded run. Option 5 requires a repair authorization.\"",
+      "label": "1, 5, authorization, bounded, check, coach, data, expected",
+      "members": [
+        "hd-20261011-043219-eaa237904514/candidates/0/1/idea/8"
+      ]
+    }
+  ],
+  "ranking": [],
+  "warnings": [
+    "DISCOVERY_ANCHORING_HIGH"
+  ],
+  "explored_families": [
+    "1, 3, 4, 5, available, baseball, both, check",
+    "27, 33, 40, assessment, cell, howldream, journal, r003",
+    "1000, r002, timeout, used, verify",
+    "actual, add, cubs, delivery, dogfood, howl, howlplane, pending",
+    "added, attention, baselines, challenge, early, followed, inference, low",
+    "no, shown, usefulness",
+    "advantage, baseline, evidence, instead, neither, over, produced, simple",
+    "api, feed, inference, input, level, likely, missing, play",
+    "add, cannot, coaches, counterfactual, hold, right, show, side",
+    "1, 5, authorization, bounded, check, coach, data, expected"
+  ],
+  "method": "concept_tokens_and_leading_phrases/v3; Jaccard cluster threshold 0.5 or first-8-content-word phrase link; echo coverage 0.6 or first-16-word phrase link",
+  "measurement_type": "ADVISORY_HEURISTIC",
+  "limitations": "Not semantic equivalence, calibrated novelty, entailment or usefulness",
+  "participation": [
+    {
+      "operation": "GENERATED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": "claude",
+      "origin_model": "claude-sonnet-5-5",
+      "subject_count": 2,
+      "inference_occurred": true,
+      "note": "Dream prompted the provider; the provider authored the text."
+    },
+    {
+      "operation": "CLUSTERED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 10,
+      "inference_occurred": false,
+      "note": "Deterministic concept-token clustering; no inference."
+    }
+  ]
+}

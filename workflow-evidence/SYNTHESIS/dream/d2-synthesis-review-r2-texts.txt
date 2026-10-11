@@ -1,0 +1,265 @@
+===== baseline.jsonl hd-20261011-043219-eaa237904514/baseline/0/0 
+ASSUMPTION: The "18 lesson bullets" claim in section 4 is wrong or unverifiable against the supplied prompt-s19a. Counting its bullets gives 7 (v2), 4 (v3) and 5 (v4), which is 16 and not 18. The "v3 added four lessons and v4 seven" line also conflicts: v4 has 5 bullets in the supplied text, while assessment-r004 says seven v4 lessons. The synthesis lists the 18 as "Not adopted... supported by files", but the supplied file does not show it. CITE: prompt-s19a, assessment-r004
+CONFLICT: prompt_lessons_count
+IDEA: Replace "18 lesson bullets" with the counts actually shown in prompt-s19a, or mark the total UNKNOWN until recounted.
+
+ASSUMPTION: The synthesis says "Section 19A now holds 18 lesson bullets" and also that v2 "added section 19A". Round 1 said prompt-s19 has no 19A; prompt-s19a is now supplied and supports the v2 introduction. This round-1 point is resolved, but the numbers remain inconsistent. CITE: prompt-s19a
+
+ASSUMPTION: The R003 delivery row says "MERGED_VERIFIED (cubs-edge-lab 91f06c5; stacked PRs #7 to #9 were landed on main by #10)". assessment-r003 says PR_OPEN, and the #10 landing and SHA 91f06c5 are supported only by the journal and index, which are not supplied. Also, prompt-s19a v4 says a change merged into a non-default branch is not delivered. The synthesis rightly cites #10, but MERGED_VERIFIED for R003 needs a recorded fresh-clone gate on main, which is not evidenced. Round 1's UNKNOWN is not resolved by evidence. UNKNOWN: r003_merge_and_clone_gate_evidence. CITE: assessment-r003, prompt-s19a
+
+ASSUMPTION: The R003 Dream call count is now stated as "30 itemized (24 discovery, 3 design challenge, 3 prompt-v3 review)" against a journal total of 33. assessment-r003 states 27 of 40 for passes 1, 2, 4 and the challenge. 24 + 3 = 27 matches, so 24 discovery plus 3 challenge fits. The 3 prompt-v3 review calls are plausibly additional (27 + 3 = 30). The disclosure of 33 is not checkable. This is a reasonable resolution of round 1, but the 3 review calls are not supported by the supplied assessment, and the 33 figure is unverifiable. UNKNOWN: r003_dream_journal_total. CITE: assessment-r003
+
+ASSUMPTION: The R004 HowlDream count ("4 calls for the spec critique, plus two prompt-v4 review rounds. Synthesis: 3") has no supporting evidence in the supplied files. It is a new unsupported number introduced by the revision. UNKNOWN: r004_dream_call_counts. CITE: assessment-r004
+
+ASSUMPTION: The idea-unit counts (45, 49, 53) are now supported by opportunities-excerpt (45, 49 and 53 units), so they are resolved. The 2026-09-30 season end is also supported there. The "5 of 6" MiLB promotion convergence is supported there too. However, the excerpt is a controller file with independent_of_implementation false, and the synthesis cites it, which is fine. CITE: opportunities-excerpt
+
+ASSUMPTION: The synthesis says "COACH persistence... none was feasibility-tested", and the Not selected line says RULE5 was rejected "after feasibility". opportunities-excerpt lists COACH as "Low n; confounding; null likely", with no feasibility test, so the revised wording is consistent. Round 1's COACH point is resolved. CITE: opportunities-excerpt
+
+ASSUMPTION: Section 5 option 4 says a "feasibility-only check (COACH, MiLB promotion timing)". That is a credible, cheap, bounded public-data FOLLOW_UP, yet the PAUSED_NEEDS_HELP statement "No credible next experiment was identified" and the INFERENCE "none of these is likely to answer the question better" sit beside it. The two cohere only as "none is likely to answer better". Section 19 asks for pausing if no meaningful experiment can be identified, and a feasibility check on two open finalists arguably is one. Tighten the wording. CITE: prompt-s19, opportunities-excerpt
+IDEA: Replace "No credible next experiment was identified" with "No experiment was identified that is likely to answer the question better; feasibility-only checks of COACH and MiLB promotion timing are cheap options for the owner."
+
+ASSUMPTION: The recommendation is "option 1" (stop). Stopping is a user decision, and the synthesis presents a recommendation rather than a decision, which is acceptable. But recommending stop while its own table shows an unused pivot and two open finalists is weakly justified by the evidence. The justification (low expected value) is an INFERENCE and should be labelled so. CITE: assessment-r001, opportunities-excerpt
+
+ASSUMPTION: "Tests prove" list: the keyboard and "no runtime network requests" items are supported by assessment-r004. "No word or number breaks in table cells" is supported by assessment-r005 (per-token single-line test). The "no horizontal page scroll at 320, 375 and 1280 px" is supported. Round 1's overclaim is resolved. CITE: assessment-r004, assessment-r005
+
+ASSUMPTION: The "Controller deviations" table omits R003's AMBIGUOUS label correction as a deviation (it appears only in section 2) and omits the R004 contract change on research/ method_status being a separate commit for owner review. It is listed but without the commit. Minor. Also the R004 "Product data files regenerated outside Howl" is listed. CITE: assessment-r003, assessment-r004
+
+ASSUMPTION: The session count "R004 6 plus 2 repair" follows R004's deviations section, and assessment-r004 contains a correction note saying the earlier "1 repair session" line was fixed. The conflict is resolved in the assessment itself. Round 1's CONFLICT r004_repair_session_count is resolved. CITE: assessment-r004
+
+ASSUMPTION: Integration text says "Sessions ended BLOCKED in R001 (S1, S2) and HANDOFF in R004 (S1, S2 and the CI-fix session)". assessment-r004 says two sessions ended HANDOFF and findings-index says S1 (CUBS-P-009) and S2 ended HANDOFF. A HANDOFF for the "CI-fix session" (d516f2a9) is not supported anywhere supplied. Possible new error. Also "S1, S2" for R001 BLOCKED: findings support S1 (DOG-037, BLOCKED) and S2 (AUDIT BLOCKED, DOG-042), which is fine. CITE: assessment-r004, findings-index
+UNKNOWN: r004_ci_fix_session_handoff
+
+ASSUMPTION: "The campaign paused for help six times in R001 alone (journal)" is not supported by the supplied evidence. assessment-r001 lists ten help requests. This is a number conflict introduced or retained by the revision. CITE: assessment-r001
+CONFLICT: r001_help_request_count
+
+ASSUMPTION: Owner repair authorizations: R001 says "three repair authorizations" and the synthesis lists DOG-035, DOG-037/038, DOG-039 and DOG-044. That is four, including DOG-044, which is R004, so the list is plausible. The R001 count of three matches DOG-035, DOG-037/038 and DOG-039. Fine. CITE: assessment-r001
+
+ASSUMPTION: "R001 and R002: the controller merged under standing authorization" has no support. assessment-r001 does not say who merged, and the "standing authorization" is not in the evidence. UNKNOWN: r001_r002_merge_actor_and_authorization. CITE: assessment-r001, assessment-r002
+
+ASSUMPTION: DOG-039 "post-merge proof (R001)": assessment-r001 lists DOG-039 as merged with post-merge public proof, but the findings index registers its fix status (FIXED, #166, af9f40a) while the index's evidence line gives no post-merge proof file. DOG-035 has a file. The claim is supported only by R001's grouped statement. The R002 "Registry" row also shows 037/038/039 as FIX IN REVIEW until #167, so the registry disagreed with the assessment. Also the DOG-036 index entry is itself still FIXED. CITE: findings-index, assessment-r002
+CONFLICT: dog039_post_merge_proof
+
+ASSUMPTION: The DOG-037/038 live proof row ("Live: AGY skipped...") is supported by the index. DOG-040 "reproduced once" matches R002. DOG-042 live reroutes in R003 match. Round 1's proof points are resolved. CITE: findings-index, assessment-r003
+
+ASSUMPTION: "Exploratory whole-pool... the obvious rule already found what the model found" is labelled in the Reason column as INFERENCE, which resolves round 1. But the first-paragraph phrase "R001... the opportunity was too small to test" is stated flatly as a reason. It is an interpretation, though assessment-r001 supports it directly. Low risk. CITE: assessment-r001
+
+ASSUMPTION: CALC 23 / 30 = 0.77 holds as stated ("at most"), but "30 clubs" appears nowhere in the evidence, and the 23 is a 2024 validation-year count. The "under one per club" is from assessment-r001, so only the 30 is outside the evidence. CITE: assessment-r001
+
+ASSUMPTION: Required section 19 items still missing or thin. (a) Strong alternatives for R003 are summarised only through OPPORTUNITIES.md, with no stated selection rationale beyond the critique. (b) Why the SENDHOLD decision mattered is not stated. (c) Per-repository manifest fields (branch, upstream, pushed, clean/dirty, modified-by-mission, merge target SHAs) are replaced by a short state table and a pointer to REPOSITORIES.json. (d) Help requests with user responses and prevention lessons are not carried over (assessment-r001 lists them). (e) The synthesis does not state a run-level outcome and delivery state for the synthesis itself. These are partial and the synthesis labels itself a non-run, which mitigates (e). CITE: prompt-s19, assessment-r001, assessment-r003
+
+ASSUMPTION: The synthesis' own registry PR ("the registry status branch and PR from this synthesis") is listed with no state. Under prompt-s19, delivery for changed repositories must be tracked, and the PR state is not given. UNKNOWN: synthesis_registry_pr_state. CITE: prompt-s19
+
+ASSUMPTION: New claim: "Prompt and synthesis reviews found real errors in every round". Round 1 is the only synthesis review supplied, and the prompt-review rounds are not in the evidence, so "every round" is unverified. CITE: review-round1
+
+ASSUMPTION: New claim: "That made R001's negative explicit rather than overfit". The design v2 changes preceded an early stop, but the evidence shows only ordering, not that v2 avoided overfitting. Causal credit is unsupported. CITE: assessment-r001
+
+ASSUMPTION: "Several of those checks caught defects that Howl review did not" is supported by assessment-r003 and assessment-r004. Fine. CITE: assessment-r004
+
+ASSUMPTION: Round 1's remaining items resolved well: the Short answer is scoped to two candidates, the R001 pre-registered versus exploratory split is explicit, missing information is limited to R003 as an INFERENCE, readability claims are narrowed, false rejections are added, and campaign state is PAUSED_NEEDS_HELP. The MILBFA confirmatory test is no longer dismissed outright. CITE: review-round1
+
+FACT: unsupported_or_conflicting_items_found=8
+===== candidates.jsonl hd-20261011-043219-eaa237904514/candidates/0/0 
+ASSUMPTION: The R003 delivery cell reads "MERGED_VERIFIED (cubs-edge-lab 91f06c5; the stacked PRs #7 to #9 were landed on main by #10)". assessment-r003 lists #7 to #9 as PR_OPEN, and #10 and 91f06c5 appear only in the candidate. assessment-r004 shows R003 later had stacked PRs merged into their parents (prompt-s19a lesson 7 cites R003 PRs #8 and #9). The candidate's account is plausible but not independently checkable, and the reconciliation relies on "journal and index", which the index does not contain. Cite journal evidence or mark it UNKNOWN. CITE: assessment-r003, assessment-r004, findings-index
+
+ASSUMPTION: Candidate says "R003: 30 calls itemized (24 discovery, 3 design challenge, 3 prompt-v3 review). The journal total says 33 of 40". assessment-r003 says 27 of 40 for passes 1, 2, 4 plus the design challenge. The 24 discovery plus 3 challenge itemization equals 27, which matches. The 33 figure is the journal total, which is not supplied. The prompt-v3 review calls (3) are counted separately, so the candidate's 30 and the assessment's 27 are reconcilable but not the same number. The "3-call difference is not itemized" wording is therefore confusing. State that 27 comes from assessment-r003 and 33 is unverified. CONFLICT: howldream_calls_r003. CITE: assessment-r003
+
+ASSUMPTION: The R004 HowlDream line "4 calls for the spec critique, plus two prompt-v4 review rounds. Synthesis: 3" has no counts in assessment-r004. The "4 calls" is unsupported. UNKNOWN: howldream_calls_r004
+
+ASSUMPTION: "Section 19A now holds 18 lesson bullets (EXECUTION-PROMPT.md)" can be partially checked against prompt-s19a, which was supplied. Counting bullets: seven in the first block (v2), four in v3, six in v4 (PR gate, gate command, PR targeting, CI, screenshots, protected inputs, repair sessions are seven). That gives 7 + 4 + 7 = 18. So this is supported, and round 1's reviewer was wrong. CALC: 7 + 4 + 7 = 18. CITE: prompt-s19a. This matters because the candidate's own wording says v2 "added section 19A" without a count of its own, so state v2 = 7 bullets explicitly.
+
+ASSUMPTION: Candidate states "v3 added four lessons and v4 seven", while assessment-r003 lists four lessons for v3 and assessment-r004 lists seven for v4. This matches. The candidate hashes for v3 (2a958c2c…) are not in the supplied evidence. UNKNOWN: prompt_v3_sha256
+
+ASSUMPTION: Round 1 asked whether the idea-unit counts, season end date and 5-of-6 convergence were supported. opportunities-excerpt now supplies 45 and 49 units for R001 passes, 53 for R003 pass 1, the 2026-09-30 season end, and pass-4 convergence (MiLB promotion 5 of 6). Those are supported by the excerpt, so the "not adopted" reasoning is justified. However, the excerpt labels 45 and 49 as passes in R001, and the 53-unit pass has a separate run id dated 2026-10-09, which is also R003 by date. The candidate's attribution of the 53-unit pass to R003 is consistent. CITE: opportunities-excerpt
+
+ASSUMPTION: The candidate says CALLUP "was rejected for R001 only". assessment-r001 supports this ("rejected for this run"). RULE5 "rejected after feasibility" is supported (S1 measured feasibility for three finalists). Round 1's COACH concern is addressed: the candidate now lists COACH as still open and not feasibility-tested, matching opportunities-excerpt (SENDHOLD note: COACH remains open). CITE: assessment-r001, opportunities-excerpt
+
+ASSUMPTION: The candidate says "In-game ideas (opposing bullpen, pitch-sequence predictability, tempo, disengagements) are parked". The excerpt does not list these parked ideas, and no status table is supplied for them. The excerpt does say remaining finalists are COACH persistence, MILBPROMO and REPLAY/STARTER/IBB. UNKNOWN: parked_ingame_idea_list
+
+ASSUMPTION: The candidate says that MiLB promotion and replay or starter decisions "are in-season (2027) and share CALLUP's survivorship risk". Survivorship risk for MiLB promotion is an inference. The evidence says CALLUP was rejected for survivorship bias in R001. No evidence says that MILBPROMO or replay share it. Replay and starter removal are MLB game decisions with no promotion-selection mechanism, so the claim is probably wrong for them. This weakens the "Against" column for new discovery, and so weakens the pause. IDEA: replace with "in-season decisions can't be tested until 2027; feasibility not assessed."
+
+ASSUMPTION: The pause rationale is better than in round 1, but still partly internal-inconsistent. Section 19 allows pausing when "no meaningful next experiment can be identified". The candidate's table lists a feasibility-only check on MiLB promotion timing and COACH as an available option (option 4), and the excerpt says these finalists "stay open". Yet section 5 says "No credible next experiment was identified". A feasibility-only check on a convergent 5-of-6 finalist is cheap, public-data and untested. Calling none credible is stronger than the evidence. Reword to "no experiment with a stated hypothesis and expected value above small was identified". CITE: prompt-s19, opportunities-excerpt
+
+ASSUMPTION: Recommendation "option 1: stop" goes beyond the evidence. The candidate itself says stopping is the owner's decision, but then recommends it while listing open finalists and a 2025 holdout test. Because the 2024 and 2025 whole-pool evidence is only exploratory, and the ceiling applies to the low-attention segment, the evidence supports "pause and ask", not a recommendation to stop. A neutral wording would present option 1 as one choice. IDEA: "Recommendation: owner's choice; the evidence does not favor any option strongly. Options 3 and 4 are the only baseball options with public data."
+
+ASSUMPTION: The unresolved-gap items from round 1 that remain unaddressed: the R003 hold-side counterfactual with data already on disk and a pooled-season analysis were considered only as "pool seasons", and the candidate dismisses it as exploratory. That is fair. But a pooled-season analysis labelled exploratory could still test whether the full covariate set changes the verdict at no request cost. The candidate calls it "against", which is a judgement not a falsification. Keep, but label it as such.
+
+ASSUMPTION: The "Short answer" and the table are now properly labelled for R001 and R003. One residual: the "What the method establishes (FACT)" bullet says "the 2025 holdout is still available for one confirmatory test", but that is an assertion from assessment-r001 and may not hold if the owner or later runs touched it; R005 says "no change to research/ or data/", which is supportive but not proof. Mark as per assessment-r001. CITE: assessment-r001, assessment-r005
+
+ASSUMPTION: The "R003 label amendment" bullet is placed under FACT. It correctly says the label changed after retrieval and before fit, with owner approval, and that the v2 definition was also NEGATIVE. The "about 94% of v2 AMBIGUOUS runners scored on the hit itself" figure is in assessment-r003 but is not carried over. Add it, since it explains why the amendment mattered. Also note that prompt lesson 2 says label rules should be checked against the full retrieved data before freezing; the amendment was a failure of that practice (found after retrieval, with only sample-level reading), which is a limitation on "held up under pre-registration". CITE: assessment-r003, prompt-s19a
+
+ASSUMPTION: The runs-left bullet puts "INFERENCE: the Brier gate worked as designed by blocking it" correctly labelled. Fine.
+
+ASSUMPTION: "CALC: 23 / 30 clubs = 0.77 at most" is arithmetic only. The club count of 30 is not in the evidence (assessment-r001 says only "under one per club"). Common knowledge, but it is an unsupplied input; and the 23 is the 2024 validation-year value while 2023 is 22, so "at most" holds only across the listed years. CALC: 23 / 30 = 0.77. UNKNOWN: club_count_source
+
+ASSUMPTION: The Cubs claim "1, 0, 1 and 0 of the league's 14, 12, 22 and 23 contributors" matches assessment-r001. "Even perfect selection ... roughly one player a year" is a sum of 2 over 4 years = 0.5, not roughly one. CALC: (1 + 0 + 1 + 0) / 4 = 0.5. The assessment says "roughly one player per year" and the candidate copies it. The arithmetic gives 0.5 a year on those Cubs counts, though the league-wide per-club mean (0.4 to 0.8) is comparable. Say "at most about one a year". CITE: assessment-r001
+
+ASSUMPTION: Delivered-list bullet "Two pre-registered evaluations with frozen designs, and their negative results" overstates R001. The R001 primary test stopped at its early-stop rule and no model was evaluated, so there was one completed pre-registered model evaluation (R003) and one pre-registered early stop (R001). Reword. CITE: assessment-r001, assessment-r003
+
+ASSUMPTION: The explorer claim "Tests prove ... no word or number breaks in table cells" is supported by R005 (per-token single-line test on every th and td). "Verdict-first order" is a test in R004. "No horizontal page scroll at 320, 375 and 1280" is R004 and R005. Round 1 concern is resolved. CITE: assessment-r004, assessment-r005
+
+ASSUMPTION: Run table, R004 delivery is "MERGED_VERIFIED" without a SHA. assessment-r004 gives main 5fc04e9 and howlplane 5253f3f. Add them. R002 delivery omits that the records merged "at closeout", which is minor. R001 delivery omits the howl-cubs-dogfood records "merged at closeout" caveat; assessment-r001 says "see journal receipt". CITE: assessment-r004, assessment-r001
+
+ASSUMPTION: Run table lists R003 prompt v2 and R004 v3, R005 v4, matching the assessments. R003's outcome, COMPLETE_NEGATIVE, matches. The R003 howl-cubs-dogfood records branch (records/R003) status is not carried forward. UNKNOWN: records_R003_merge_state
+
+ASSUMPTION: HowlPlane session counts "R001 15, R002 2, R003 5, R004 6 plus 2 repair, R005 2, synthesis 1" match the assessments (R002 "2 of 6"; R003 "5 of 10"; R005 "2 of 3"). The R004 repair count is resolved to 2 and the assessment-r004 internal contradiction is noted there as corrected. The "synthesis 1" session is not evidenced in any supplied record. UNKNOWN: synthesis_howlplane_session
+
+ASSUMPTION: The DOG table "all merged with regression tests" is broad. DOG-036's proof "Used in every later session" is the candidate's own claim; assessment-r001 and prompt-s19a recommend --verify-timeout but no assessment states it was used in every session. The R003 sessions' verify settings are not given. Mark unverified. Also the DOG-035 proof file is registered only in the index for DOG-035, which matches. DOG-039 proof "Regression tests and post-merge proof (R001)" rests on assessment-r001 alone; findings-index gives DOG-039 as FIXED in #166 af9f40a, so the round 1 conflict is resolved, though the index lists no proof file for it. CITE: findings-index, assessment-r001
+
+ASSUMPTION: "This synthesis also corrects the howlplane registry status lines for DOG-040 to 044, which still said FIX IN REVIEW". The index now shows DOG-040 to 044 as FIXED, which is consistent, but the PR carrying that change is not shown as merged; the candidate admits it is open ("plus the registry status branch and PR"). Delivery of the synthesis is therefore PR_PENDING for howlplane under section 19, and the candidate says "Campaign state: PAUSED_NEEDS_HELP" without stating the synthesis' own delivery state. State it. CITE: prompt-s19, findings-index
+
+ASSUMPTION: Section 19 items still thin: per-repository manifest fields (branch, upstream, pushed, clean/dirty, execution provenance) are only partly given (a state table with SHAs). "Help requested, user response and prevention lesson" is reduced to the paused-for-help count; assessment-r001 enumerates ten requests, and the candidate says "six times in R001 alone (journal)" which conflicts with ten in assessment-r001's list. CONFLICT: r001_help_request_count. CITE: assessment-r001, prompt-s19
+
+ASSUMPTION: Autonomy list says repair authorizations "DOG-035, DOG-037/038, DOG-039 (then CUBS-P-007) and DOG-044". assessment-r001 says three repair authorizations; the candidate lists three for R001 plus DOG-044 for R004, which is consistent. "R001 and R002: the controller merged under standing authorization" is not in the supplied evidence; assessment-r001 says only that "merged at closeout". UNKNOWN: r001_r002_merge_authorization
+
+ASSUMPTION: Controller deviations omit R003's note that the owner approved the v3 amendment (it is covered in section 2) and R004's product-file regeneration "later superseded" is stated. Fine. The R004 table row "An R001 wording correction in research/, although the contract said unchanged" matches assessment-r004. CITE: assessment-r004
+
+ASSUMPTION: Provider table: Devin "usually made no repository change in R004" matches. Claude refusals in R005 (targeted pytest) are stated. The candidate says "AGY ... later skipped for read-only roles", supported by findings-index. CITE: findings-index
+
+ASSUMPTION: The candidate says HowlDream "Prompt and synthesis reviews found real errors in every round". Round 1 contained incorrect findings itself (for example the 18-lesson challenge, which prompt-s19a supports), so "every round found real errors" is not shown; evidence shows only that rounds produced both valid and invalid findings. Soften. CITE: review-round1, prompt-s19a
+
+ASSUMPTION: Round 1 reconciliation, item "the R003 merges (journal and index: #7 to #9 were landed by #10)": the findings index does not mention #10, so "index" is the wrong citation. Also adopting a claim from files the reviewer did not see needs an independent check, which none supplied. UNKNOWN: pr_10_landing_evidence. CITE: findings-index
+
+ASSUMPTION: New problem introduced by the revision: the pause justification now cites "current data policy and season timing", yet option 4 includes a feasibility-only check that fits both. Also a first-draft claim "none is credible" was replaced, but section 3's INFERENCE still reads "none of these is likely to answer the question better ... without new inputs", which is fair as inference but should name the owner's cost/benefit. CITE: prompt-s19
+
+IDEA: Replace section 5's first sentence with "No experiment with a stated hypothesis and more than small expected value was identified; a feasibility-only check of MiLB promotion timing or COACH persistence on public data was not run and is available." Replace "Recommendation: option 1" with "Owner's choice; options 3 and 4 are the only public-data baseball experiments, both low expected value."
+
+IDEA: In the R003 HowlDream cell, write "R003: 27 of 40 (assessment-r003); journal total 33 not verified".
+
+FACT: round1_findings_resolved_or_justified=most
+FACT: new_problems_found=4
+===== candidates.jsonl hd-20261011-043219-eaa237904514/candidates/0/1 
+ASSUMPTION: Overall, the revision fixes most round-1 numeric and framing problems. The remaining defects are mainly unsupported delivery and journal claims, a few new overclaims, and a stop recommendation that is somewhat stronger than the evidence.
+
+**Check 1: numbers, labels, status**
+
+ASSUMPTION: The R003 delivery row says "MERGED_VERIFIED (cubs-edge-lab 91f06c5; the stacked PRs #7 to #9 were landed on main by #10)". No supplied record contains 91f06c5 or #10. assessment-r003 says PR_OPEN, and the reconciliation attributes the merge to "journal and index" although findings-index is silent on it. Non-adoption of round-1's finding is therefore not justified by the supplied files. CITE: assessment-r003
+CITE: findings-index
+ASSUMPTION: Prompt-s19a and assessment-r004 do show that R003's PRs #8 and #9 were merged into their parents (non-default branches), and that this needed a repair. That is consistent with a later PR, but it does not verify the SHA or that a fresh-clone gate passed on main. CITE: prompt-s19a
+CITE: assessment-r004
+UNKNOWN: r003_cubs_edge_lab_merge_sha_and_postmerge_gate
+ASSUMPTION: The autonomy section says "paused for help six times in R001 alone (journal)". assessment-r001 lists ten help requests. This is an internal conflict introduced by the revision. CITE: assessment-r001
+CONFLICT: r001_help_request_count
+ASSUMPTION: "Sessions ended ... HANDOFF in R004 (S1, S2 and the CI-fix session)" lists three sessions. assessment-r004 says two sessions ended HANDOFF, and the findings-index records only R4-S1 and R4-S2 ending HANDOFF. Nothing supplied says the CI-fix session ended HANDOFF. CITE: assessment-r004
+CITE: findings-index
+CONFLICT: r004_handoff_session_list
+ASSUMPTION: The synthesis states R003 HowlDream use as "30 calls itemized (24 discovery, 3 design challenge, 3 prompt-v3 review)" against a "journal total of 33". assessment-r003 supports only 27 of 40, covering the discovery passes and the design challenge. The 24/3 split, the 3 review calls and the 33 total are not in the supplied evidence, and the 3-call gap is disclosed but not resolved. CITE: assessment-r003
+UNKNOWN: r003_dream_calls_journal_total_and_breakdown
+ASSUMPTION: "R004: 4 calls for the spec critique, plus two prompt-v4 review rounds" and "Synthesis: 3" are new numbers. assessment-r004 gives no call count for them, and the model name "remote Sonnet" is not supplied. CITE: assessment-r004
+UNKNOWN: r004_dream_call_count
+ASSUMPTION: The synthesis says "HowlPlane ... Synthesis 1" session. No supplied record shows a HowlPlane session in the synthesis. CITE: assessment-r005
+UNKNOWN: synthesis_howlplane_session
+ASSUMPTION: The prompt hash for v3 (2a958c2c…) does not appear in any supplied record. The v1, v2 and v4 hashes are supported. CITE: assessment-r001
+CITE: assessment-r002
+CITE: assessment-r004
+UNKNOWN: prompt_v3_sha256
+ASSUMPTION: "Section 19A now holds 18 lesson bullets" is supported by prompt-s19a. Round-1's rejection of it was correctly not adopted. CITE: prompt-s19a
+CALC: 7 + 4 = 11
+CALC: 11 + 7 = 18
+ASSUMPTION: The idea-unit counts (45, 49, 53), the 2026-09-30 season end and the 5-of-6 MiLB convergence are supported by opportunities-excerpt. Non-adoption of those round-1 findings is justified. CITE: opportunities-excerpt
+ASSUMPTION: The R001 and R003 figures check out against the assessments:
+- the 12–23 low-attention positives;
+- the Cubs 14/12/10/8 signings and the 1/0/1/0 positives against 14/12/22/23;
+- the AUROC −0.016 with its interval;
+- 1,927 sends, 71 outs and 67 of 1,840;
+- Brier 0.0354, 0.0355 and −0.0001 with [−0.0003, 0.0005].
+CITE: assessment-r001
+CITE: assessment-r003
+CALC: 71 / 1927 = 0.0368
+CALC: 67 / 1840 = 0.0364
+ASSUMPTION: "DOG-036 ... Used in every later session" is unsupported. Only R002's use (`--verify-timeout 1000`) is shown. CITE: assessment-r002
+IDEA: Replace with "used in R002 (`--verify-timeout 1000`)".
+ASSUMPTION: "The registry status lines for DOG-040 to 044 still said FIX IN REVIEW" is not supported by the supplied records. The registry PR is unverified, and the synthesis's own delivery state for it is not stated. CITE: findings-index
+UNKNOWN: registry_status_pr_state
+ASSUMPTION: The delivery of the synthesis itself is undefined. The howlplane registry branch/PR and the records/synthesis branch are changes in other repositories. Under section 19 the run is not closed until they are MERGED_VERIFIED, yet the campaign state is set to PAUSED_NEEDS_HELP without a delivery state. CITE: prompt-s19
+IDEA: Add "Synthesis delivery: howlplane registry PR_PENDING; howl-cubs-dogfood records/synthesis PR_PENDING" or the actual state.
+ASSUMPTION: records/R003 and records/R004 merge status in howl-cubs-dogfood is not given. assessment-r004 says "records on records/R004" while also claiming run delivery MERGED_VERIFIED. CITE: assessment-r004
+UNKNOWN: records_r003_r004_merge_state
+
+**Check 2: overclaims**
+
+ASSUMPTION: "Prompt and synthesis reviews found real errors in every round" is not supported. The assessments only say prompts were adopted after review. Round 1 also contained several findings that proved wrong because the reviewer lacked OPPORTUNITIES.md and EXECUTION-PROMPT.md, so review effectiveness here is mixed. CITE: assessment-r003
+CITE: assessment-r004
+CITE: review-round1
+ASSUMPTION: "The R001 selection challenge ... made R001's negative explicit rather than overfit" is causal speculation. The evidence shows only that v2 followed the challenge. CITE: assessment-r001
+IDEA: Replace with "v2 followed the challenge and added stronger baselines, the low-attention primary test and the early-stop rule (INFERENCE: this shaped the early stop)".
+ASSUMPTION: "Failover rerouted work in most sessions" is not quantified. Failover evidence is "every session" in R003 and R004 and "both sessions" in R005, while R001 is only described qualitatively. CITE: assessment-r001
+CITE: assessment-r003
+CITE: assessment-r004
+CITE: assessment-r005
+ASSUMPTION: "Merges: R001 and R002: the controller merged under standing authorization" has no supporting evidence. assessment-r001 and assessment-r002 do not name a merge actor or an authorization. R004's merge actor is also not stated. CITE: assessment-r001
+CITE: assessment-r002
+UNKNOWN: r001_r002_r004_merge_actor_and_authority
+ASSUMPTION: "The R003 feasibility sample, the seasons" as owner decisions is not in the supplied evidence. assessment-r003 shows the 4,900-request authorization and the v3 approval. CITE: assessment-r003
+ASSUMPTION: "Checksums are committed" is not supported. assessment-r001 mentions only a content-free manifest. CITE: assessment-r001
+ASSUMPTION: "Baseball claim: Negative" for R001 overstates a run whose primary test stopped early with no model. CITE: assessment-r001
+IDEA: Use "No usefulness shown".
+ASSUMPTION: "Neither showed an advantage over a simple baseline" is accurate for R003, but R001's only baseline comparison is exploratory. The two bullets below the sentence state this correctly, and the lead sentence should match. CITE: assessment-r001
+IDEA: "Neither produced evidence of an advantage" instead of "over a simple baseline".
+ASSUMPTION: R003 is called "pre-registered" in the short answer, but its primary label was amended (v3) after retrieval, before any fit, with owner approval. The body discloses this, and the lead should say "pre-registered design as amended (v3)". CITE: assessment-r003
+ASSUMPTION: Neither "the Cubs ... even perfect selection ... roughly one player a year" nor the CALC 23/30 is independently derivable. The synthesis uses 30 clubs, which is not in the evidence. The Cubs' own positives (1, 0, 1, 0) average 0.5 per year. This is inherited from R001 and should be labeled INFERENCE. CITE: assessment-r001
+CALC: 2 / 4 = 0.5
+ASSUMPTION: "MiLB promotion and replay or starter decisions ... share CALLUP's survivorship risk" is not in the evidence. CALLUP's rejection was specific to R001 (in-season, survivorship bias, strong public projections). opportunities-excerpt gives MILBPROMO no feasibility status beyond "stay open". CITE: assessment-r001
+CITE: opportunities-excerpt
+ASSUMPTION: "None was feasibility-tested" for the open finalists is consistent with "stay open", but the excerpt does not state it. COACH's "null likely" is a prior guess, not a feasibility result. CITE: opportunities-excerpt
+
+**Check 3: answer and INFERENCE lines**
+
+ASSUMPTION: Limiting "missing information" to R003 and describing R001 as "too small to test" fixes the round-1 problem. This is fair for R001: assessment-r001 gives a thin pool and a low ceiling, not a missing data source. CITE: assessment-r001
+ASSUMPTION: The text says "the deciding information is not public" in one place and "not in the public feed" in another. Only the Stats API feed was examined, under MLBAM's non-bulk terms. Other public sources were not assessed. The assessment says tracking "would decide" the question, which is untested. CITE: assessment-r003
+IDEA: Use "play-level tracking is not in the Stats API feed and is the likely missing input (INFERENCE, untested)".
+ASSUMPTION: The synthesis never states that the hold counterfactual was unobservable (the feasibility run was PARTIAL, PR #6). The Brier test scores only observed sends. So the negative says nothing about whether holds were wrong, and a 96% success rate is also consistent with under-sending. CITE: assessment-r003
+IDEA: Add "Hold-side counterfactual unobservable; the test cannot show coaches were right to hold".
+ASSUMPTION: Under "FACT", the "runs left ... Brier gate worked as designed" line is already marked INFERENCE. Labeling is otherwise adequate after the revision.
+
+**Check 4: required section 19 items**
+
+ASSUMPTION: Problem discovered, intended decision and why it mattered are still missing for both MILBFA and SENDHOLD. MILBFA is never described (November minor-league free-agency pool, decision owner, 585–908 players). SENDHOLD's decision and rationale are only implicit. CITE: prompt-s19
+CITE: assessment-r001
+CITE: assessment-r003
+ASSUMPTION: R003's selection rationale is omitted. assessment-r003 says the first-pass candidates were rejected as too few cases and SENDHOLD was chosen for thousands of cases. The synthesis does not explain why SENDHOLD (4 of 6) was chosen over MILBPROMO (5 of 6), which matters for the stop recommendation. CITE: assessment-r003
+CITE: opportunities-excerpt
+ASSUMPTION: R001's baselines (B0, B1, B2, P, M) and evaluation design are reduced to "retrieval tools" and "two pre-registered evaluations". CITE: assessment-r001
+ASSUMPTION: The durability manifest items are not reproduced. Missing are branch, upstream, clean/dirty (asserted as "clean" without evidence), pushed state, PR check states, merge SHAs for earlier runs and modified-by-mission. The text points to REPOSITORIES.json, which is not supplied. CITE: prompt-s19
+UNKNOWN: repositories_manifest_fields
+ASSUMPTION: Help requests with the user's responses and the prevention/recovery lessons are listed only as decision categories. CITE: assessment-r001
+ASSUMPTION: The controller advanced past R003 while its PRs awaited the owner's merge (PR_OPEN). Section 19 says a run cannot advance until its required changes are MERGED_VERIFIED. The timing is not in the evidence, and the deviations table does not mention it. CITE: assessment-r003
+CITE: prompt-s19
+UNKNOWN: r003_pr_merge_timing_vs_r004_start
+
+**Check 5: pause/stop recommendation**
+
+ASSUMPTION: "No credible next experiment was identified" conflicts with the synthesis's own options 3 and 4. A bounded one-shot MILBFA confirmatory test (R001's "strongest next opportunity") and a feasibility-only COACH or MiLB check are both meaningful and public-data. Section 19 permits a pause for owner direction, but the stated reason should be "no experiment with a ready hypothesis and meaningful expected value". CITE: prompt-s19
+CITE: assessment-r001
+ASSUMPTION: COACH is an offseason decision (October to December, "now"), cheap to feasibility-test, and uses cached stats. The synthesis dismisses it with the prior "null likely" and "few dozen movers", not a feasibility result. Pausing for an answer may also lose the window. CITE: opportunities-excerpt
+ASSUMPTION: "R001's pivot was unused" is a per-run allowance in section 19, not a campaign resource. A new discovery would be a new DISCOVERY_BUILD with its own pivot. CITE: prompt-s19
+ASSUMPTION: Recommending option 1 (stop) is a reasonable cost-benefit judgment, but it rests on inference from two negative discovery runs out of a larger open list. It should be labeled INFERENCE. The synthesis itself says stopping is the owner's decision. CITE: assessment-r001
+CITE: assessment-r003
+IDEA: Replace "Recommendation: option 1" with "Recommendation (INFERENCE, low expected value of further public-data work): option 1, or a feasibility-only COACH check if the owner wants one more bounded run. Option 5 requires a repair authorization."
+
+**Round-1 reconciliation**
+
+ASSUMPTION: Adopted items verified in the text:
+- the R001 framing;
+- missing information limited to R003;
+- the per-run split of the robustness claims;
+- the R003 amendment disclosure;
+- narrower explorer claims;
+- AGY's DOG-037 behavior;
+- DOG-042's live evidence;
+- the false rejections;
+- the run table;
+- campaign state;
+- the options list.
+CITE: review-round1
+ASSUMPTION: The "Not adopted" items for the idea-unit counts, the season end date, the 5-of-6 convergence and the 18 lessons are justified by the supplied files. The "R003 merges" non-adoption is not, as noted above. CITE: opportunities-excerpt
+CITE: prompt-s19a
+ASSUMPTION: Record corrections are plausible. findings-index supports the DOG-035 registry text and DOG-039 as FIXED in #166. assessment-r004 has the corrected repair-session line. One round-1 item was itself wrong: assessment-r004's repair-session count is now consistent at two. CITE: findings-index
+CITE: assessment-r004
+ASSUMPTION: New problems introduced by the revision:
+- the unsupported CI-fix HANDOFF;
+- "six" help pauses;
+- the R004 and R003 Dream call counts;
+- standing authorization for merges;
+- "most sessions";
+- "every round" for review.
+CITE: review-round1

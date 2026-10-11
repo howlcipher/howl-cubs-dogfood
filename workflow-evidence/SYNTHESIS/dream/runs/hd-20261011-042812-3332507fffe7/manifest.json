@@ -1,0 +1,98 @@
+{
+  "schema": "howldream.run/v1",
+  "run_id": "hd-20261011-042812-3332507fffe7",
+  "experiment_id": "1b055f7f4fb63b95fecfc8b30e651f3e4f45584e05da92c33cb9ef9fe104ad89",
+  "version": "0.4.4",
+  "git_commit": "f1cc5ca1f9e1d120da6cbf18bbc192ab6ef23abe",
+  "implementation_hash": "4146772cb46f4e4a159f89881dc87831680ca5d5527763163c20294427d2469c",
+  "mode": "dream",
+  "started_at": "2026-10-11T04:28:12.890471+00:00",
+  "provider": {
+    "kind": "command",
+    "model": "claude-sonnet-5-5",
+    "base_url": null,
+    "allow_remote": true,
+    "allow_local_inference": false,
+    "forbid_local_inference": true,
+    "timeout_seconds": 300,
+    "max_tokens": 4096
+  },
+  "capabilities": {
+    "supports_seed": false,
+    "supports_temperature": false,
+    "supports_top_p": false,
+    "supports_logprobs": false,
+    "supports_tool_calls": false,
+    "supports_structured_output": false,
+    "supports_token_usage": false,
+    "supports_local_instrumentation": false
+  },
+  "authority": "NONE",
+  "parent_run": null,
+  "status": "COMPLETE",
+  "errors": [],
+  "template_version": "line_experiment/v2",
+  "template_hash": "8096777d16cf15dcd68f34f709eeb4f81e1b983ba58fdda00c8008f2aa7add7b",
+  "source_hashes": {
+    "prompt-s19": "78299cc5448eec2937a67e386bcc9568ab7cfe2952d30cf9dcf1eb5e54f69196",
+    "assessment-r001": "d5fbe081d83fde016b386a7c4183f992ce820bfef9f10655ba11d4396b433ab5",
+    "assessment-r002": "f62e923e65fc1a610fd90a321247cc4982d8d0eb9870a0478253998e77c70fc3",
+    "assessment-r003": "a0f597923989ae0853448254b44185805e02bb0bfb391a59ea3e0c7c0b6a956c",
+    "assessment-r004": "c3f0dc04709a111bd17c7afbbb1cb6c9c0cd217a97f28c8850befc5b75f8585c",
+    "assessment-r005": "9bb887313cee04916b09aa0a427b706b77aa2848ea90fc3145b3d3e799650884",
+    "findings-index": "5ed62f7132f8e06a9809e50170b25364660421373049fe228729ce9b06a56bf2"
+  },
+  "replay": "CONFIGURATION_REPLAY_NOT_GUARANTEED",
+  "replay_available": true,
+  "warnings": [
+    "Verification is scoped to supplied evidence; generated text has no authority.",
+    "EXPERIMENT_CONTROL_NOT_APPLIED: inspect sampling requested/supported/applied; condition differences are confounded",
+    "DISCOVERY_ANCHORING_HIGH"
+  ],
+  "call_count": 3,
+  "analysis": {
+    "version": "0.4.4",
+    "implementation_hash": "4146772cb46f4e4a159f89881dc87831680ca5d5527763163c20294427d2469c",
+    "analyzed_at": "2026-10-11T04:30:00.572105+00:00",
+    "git_commit": "f1cc5ca1f9e1d120da6cbf18bbc192ab6ef23abe"
+  },
+  "participation": [
+    {
+      "operation": "GENERATED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": "claude",
+      "origin_model": "claude-sonnet-5-5",
+      "subject_count": 2,
+      "inference_occurred": true,
+      "note": "Dream prompted the provider; the provider authored the text."
+    },
+    {
+      "operation": "CLUSTERED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 9,
+      "inference_occurred": false,
+      "note": "Deterministic concept-token clustering; no inference."
+    }
+  ],
+  "observed_models": [
+    "claude-sonnet-5-5"
+  ],
+  "completed_at": "2026-10-11T04:30:02.783546+00:00",
+  "file_hashes": {
+    "baseline.jsonl": "ea3437e3fffcfc14f6e2b668a9de1d4c61e50e7a96de96498f0d75e24cb91586",
+    "candidates.jsonl": "43e5dbd2c53b4d1dd59b5a9e2f37e886887a51ee959fb4074407af4523385cbe",
+    "claims.jsonl": "65361bd639555c2f82619bff3eb45beef8f49d5a290b37c76fca4a07b4d601e9",
+    "discovery.json": "59fd5dd86c4e8abc4aef4d34325589b28d23832ca42300970b5f98074b0873a1",
+    "experiment.json": "a468402116117af6ccb19d77bcbf43e063fb17ea991bfbe1d14d5e7f6dca0ade",
+    "handoff.json": "d97095ceb057f2edb7d9a7b8c67024c4e755fc17f974582afa6716cc7e5de16c",
+    "metrics.json": "23961d5d5778dd75893e5eedf26d928734dd44b3ed27678d8e5419d937e36b9b",
+    "report.md": "5776ba547424acfd94c6bc25cd8b0341f0d1af49636a13476b0ab7a88c2a60d6",
+    "scores.json": "cd516be03b1574a87a7be95b724076c9caa391df24ef6d78c307e89562ec9e73",
+    "verification.jsonl": "bc4502049700b328aef3763187c34569dc57d7c8223d7f172470effd984147fb",
+    "exploration_envelope.json": "b8499d29ab52a003dd8ba84cae4fc46b36b684f8ddce8cdf3a2888b82a698321"
+  }
+}

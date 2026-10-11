@@ -1,0 +1,286 @@
+{
+  "context_echo_ratio": 1.0,
+  "evidence_echo_ratio": 1.0,
+  "novel_concept_ratio": 0.3333333333333333,
+  "repeated_family_ratio": 0.1111111111111111,
+  "idea_count": 9,
+  "cluster_count": 8,
+  "units": [
+    {
+      "id": "hd-20261011-042812-3332507fffe7/candidates/0/0/idea/1",
+      "candidate_id": "hd-20261011-042812-3332507fffe7/candidates/0/0",
+      "text": "IDEA: Reword to \"In R003 the deciding information was not public; in R001 the opportunity was too small to test.\"",
+      "source_span": [
+        534,
+        647
+      ],
+      "source_hash": "121f01f026233e2d226269b793a7db25c2bdf53d253e5452674dc7243ab0777b",
+      "cluster": "cluster-1",
+      "representative": "hd-20261011-042812-3332507fffe7/candidates/0/0/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.7272727272727273,
+      "context_token_overlap": 0.9090909090909091,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261011-042812-3332507fffe7/candidates/0/0/idea/2",
+      "candidate_id": "hd-20261011-042812-3332507fffe7/candidates/0/0",
+      "text": "IDEA: Label the \"Why\" column \"INFERENCE\" for both rows.",
+      "source_span": [
+        2222,
+        2277
+      ],
+      "source_hash": "121f01f026233e2d226269b793a7db25c2bdf53d253e5452674dc7243ab0777b",
+      "cluster": "cluster-2",
+      "representative": "hd-20261011-042812-3332507fffe7/candidates/0/0/idea/2",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 1.0,
+      "context_token_overlap": 1.0,
+      "evidence_family_echo": false,
+      "context_family_echo": false
+    },
+    {
+      "id": "hd-20261011-042812-3332507fffe7/candidates/0/0/idea/3",
+      "candidate_id": "hd-20261011-042812-3332507fffe7/candidates/0/0",
+      "text": "IDEA: Replace with \"no mid-word breaks, no page scroll at 320, 375 and 1280 px; one tall-row item open; readability not user-tested\".",
+      "source_span": [
+        4037,
+        4170
+      ],
+      "source_hash": "121f01f026233e2d226269b793a7db25c2bdf53d253e5452674dc7243ab0777b",
+      "cluster": "cluster-3",
+      "representative": "hd-20261011-042812-3332507fffe7/candidates/0/0/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 1.0,
+      "context_token_overlap": 1.0,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-042812-3332507fffe7/candidates/0/0/idea/4",
+      "candidate_id": "hd-20261011-042812-3332507fffe7/candidates/0/0",
+      "text": "IDEA: Reword the recommendation to \"PAUSED_NEEDS_HELP: owner chooses among a one-shot MILBFA confirmatory test (low expected value), a feasibility check of MiLB promotion timing, or stopping.\"",
+      "source_span": [
+        9416,
+        9608
+      ],
+      "source_hash": "121f01f026233e2d226269b793a7db25c2bdf53d253e5452674dc7243ab0777b",
+      "cluster": "cluster-4",
+      "representative": "hd-20261011-042812-3332507fffe7/candidates/0/0/idea/4",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.5714285714285714,
+      "context_token_overlap": 0.6190476190476191,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-042812-3332507fffe7/candidates/0/0/idea/5",
+      "candidate_id": "hd-20261011-042812-3332507fffe7/candidates/0/0",
+      "text": "IDEA: Add \"acceptance also falsely rejected a passing tree three times (DOG-044)\" to the review-effectiveness list.",
+      "source_span": [
+        10418,
+        10533
+      ],
+      "source_hash": "121f01f026233e2d226269b793a7db25c2bdf53d253e5452674dc7243ab0777b",
+      "cluster": "cluster-5",
+      "representative": "hd-20261011-042812-3332507fffe7/candidates/0/0/idea/5",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.7857142857142857,
+      "context_token_overlap": 0.7857142857142857,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-042812-3332507fffe7/candidates/0/1/idea/1",
+      "candidate_id": "hd-20261011-042812-3332507fffe7/candidates/0/1",
+      "text": "IDEA: Reword the opening conclusion to: \"Two public-data candidates (MILBFA, SENDHOLD) did not show an advantage over simple baselines. For SENDHOLD the deciding information (play-level tracking) is not in the public feed. For MILBFA the pre-registered segment was too small (12-23 contributors a year, below 30), and no model was fitted for it.\"",
+      "source_span": [
+        12897,
+        13243
+      ],
+      "source_hash": "a3f3795d151760c4b0179ea58088e27bb335ccd2b2702140dc5973579dbf91a0",
+      "cluster": "cluster-6",
+      "representative": "hd-20261011-042812-3332507fffe7/candidates/0/1/idea/1",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.8611111111111112,
+      "context_token_overlap": 0.9166666666666666,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-042812-3332507fffe7/candidates/0/1/idea/2",
+      "candidate_id": "hd-20261011-042812-3332507fffe7/candidates/0/1",
+      "text": "IDEA: Replace the recommendation with: \"Campaign state PAUSED_NEEDS_HELP. Options for the owner: stop; non-public data; a one-shot pre-registered MILBFA confirmatory test on the unused 2025 holdout (new feature hypothesis required, expected value small); or Howl-only regression on CUBS-P-009, -011, -012 and NOTE-010.\"",
+      "source_span": [
+        13244,
+        13563
+      ],
+      "source_hash": "a3f3795d151760c4b0179ea58088e27bb335ccd2b2702140dc5973579dbf91a0",
+      "cluster": "cluster-4",
+      "representative": "hd-20261011-042812-3332507fffe7/candidates/0/0/idea/4",
+      "similar_to": "hd-20261011-042812-3332507fffe7/candidates/0/0/idea/4",
+      "similarity_to_representative": 0.5,
+      "evidence_token_overlap": 0.9473684210526315,
+      "context_token_overlap": 0.9736842105263158,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-042812-3332507fffe7/candidates/0/1/idea/3",
+      "candidate_id": "hd-20261011-042812-3332507fffe7/candidates/0/1",
+      "text": "IDEA: Add a one-row-per-run table: run ID, type, prompt version, outcome (COMPLETE_NEGATIVE, COMPLETE_REGRESSION, COMPLETE_NEGATIVE, COMPLETE_USEFUL, COMPLETE_USEFUL), delivery state, and \"baseball claim: yes or no\".",
+      "source_span": [
+        13564,
+        13780
+      ],
+      "source_hash": "a3f3795d151760c4b0179ea58088e27bb335ccd2b2702140dc5973579dbf91a0",
+      "cluster": "cluster-7",
+      "representative": "hd-20261011-042812-3332507fffe7/candidates/0/1/idea/3",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.95,
+      "context_token_overlap": 0.95,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    },
+    {
+      "id": "hd-20261011-042812-3332507fffe7/candidates/0/1/idea/4",
+      "candidate_id": "hd-20261011-042812-3332507fffe7/candidates/0/1",
+      "text": "IDEA: Mark the INFERENCE items inside the results table as INFERENCE (the 96% explanation and the \"obvious rule\" explanation), and fix the R003 call count (27 of 40) and the DOG-042 live-proof statement.",
+      "source_span": [
+        13781,
+        13984
+      ],
+      "source_hash": "a3f3795d151760c4b0179ea58088e27bb335ccd2b2702140dc5973579dbf91a0",
+      "cluster": "cluster-8",
+      "representative": "hd-20261011-042812-3332507fffe7/candidates/0/1/idea/4",
+      "similar_to": null,
+      "similarity_to_representative": 1.0,
+      "evidence_token_overlap": 0.9523809523809523,
+      "context_token_overlap": 0.9523809523809523,
+      "evidence_family_echo": true,
+      "context_family_echo": true
+    }
+  ],
+  "clusters": [
+    {
+      "id": "cluster-1",
+      "representative": "hd-20261011-042812-3332507fffe7/candidates/0/0/idea/1",
+      "representative_text": "IDEA: Reword to \"In R003 the deciding information was not public; in R001 the opportunity was too small to test.\"",
+      "label": "deciding, information, opportunity, public, r001, r003, reword, small",
+      "members": [
+        "hd-20261011-042812-3332507fffe7/candidates/0/0/idea/1"
+      ]
+    },
+    {
+      "id": "cluster-2",
+      "representative": "hd-20261011-042812-3332507fffe7/candidates/0/0/idea/2",
+      "representative_text": "IDEA: Label the \"Why\" column \"INFERENCE\" for both rows.",
+      "label": "both, column, inference, label, rows, why",
+      "members": [
+        "hd-20261011-042812-3332507fffe7/candidates/0/0/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-3",
+      "representative": "hd-20261011-042812-3332507fffe7/candidates/0/0/idea/3",
+      "representative_text": "IDEA: Replace with \"no mid-word breaks, no page scroll at 320, 375 and 1280 px; one tall-row item open; readability not user-tested\".",
+      "label": "1280, 320, 375, at, breaks, item, mid, no",
+      "members": [
+        "hd-20261011-042812-3332507fffe7/candidates/0/0/idea/3"
+      ]
+    },
+    {
+      "id": "cluster-4",
+      "representative": "hd-20261011-042812-3332507fffe7/candidates/0/0/idea/4",
+      "representative_text": "IDEA: Reword the recommendation to \"PAUSED_NEEDS_HELP: owner chooses among a one-shot MILBFA confirmatory test (low expected value), a feasibility check of MiLB promotion timing, or stopping.\"",
+      "label": "among, check, chooses, confirmatory, expected, feasibility, help, low",
+      "members": [
+        "hd-20261011-042812-3332507fffe7/candidates/0/0/idea/4",
+        "hd-20261011-042812-3332507fffe7/candidates/0/1/idea/2"
+      ]
+    },
+    {
+      "id": "cluster-5",
+      "representative": "hd-20261011-042812-3332507fffe7/candidates/0/0/idea/5",
+      "representative_text": "IDEA: Add \"acceptance also falsely rejected a passing tree three times (DOG-044)\" to the review-effectiveness list.",
+      "label": "044, acceptance, add, also, dog, effectiveness, falsely, list",
+      "members": [
+        "hd-20261011-042812-3332507fffe7/candidates/0/0/idea/5"
+      ]
+    },
+    {
+      "id": "cluster-6",
+      "representative": "hd-20261011-042812-3332507fffe7/candidates/0/1/idea/1",
+      "representative_text": "IDEA: Reword the opening conclusion to: \"Two public-data candidates (MILBFA, SENDHOLD) did not show an advantage over simple baselines. For SENDHOLD the deciding information (play-level tracking) is not in the public feed. For MILBFA the pre-registered segment was too small (12-23 contributors a year, below 30), and no model was fitted for it.\"",
+      "label": "12, 23, 30, advantage, baselines, below, candidates, conclusion",
+      "members": [
+        "hd-20261011-042812-3332507fffe7/candidates/0/1/idea/1"
+      ]
+    },
+    {
+      "id": "cluster-7",
+      "representative": "hd-20261011-042812-3332507fffe7/candidates/0/1/idea/3",
+      "representative_text": "IDEA: Add a one-row-per-run table: run ID, type, prompt version, outcome (COMPLETE_NEGATIVE, COMPLETE_REGRESSION, COMPLETE_NEGATIVE, COMPLETE_USEFUL, COMPLETE_USEFUL), delivery state, and \"baseball claim: yes or no\".",
+      "label": "add, baseball, claim, complete, delivery, id, negative, no",
+      "members": [
+        "hd-20261011-042812-3332507fffe7/candidates/0/1/idea/3"
+      ]
+    },
+    {
+      "id": "cluster-8",
+      "representative": "hd-20261011-042812-3332507fffe7/candidates/0/1/idea/4",
+      "representative_text": "IDEA: Mark the INFERENCE items inside the results table as INFERENCE (the 96% explanation and the \"obvious rule\" explanation), and fix the R003 call count (27 of 40) and the DOG-042 live-proof statement.",
+      "label": "042, 27, 40, 96, call, count, dog, explanation",
+      "members": [
+        "hd-20261011-042812-3332507fffe7/candidates/0/1/idea/4"
+      ]
+    }
+  ],
+  "ranking": [],
+  "warnings": [
+    "DISCOVERY_ANCHORING_HIGH"
+  ],
+  "explored_families": [
+    "deciding, information, opportunity, public, r001, r003, reword, small",
+    "both, column, inference, label, rows, why",
+    "1280, 320, 375, at, breaks, item, mid, no",
+    "among, check, chooses, confirmatory, expected, feasibility, help, low",
+    "044, acceptance, add, also, dog, effectiveness, falsely, list",
+    "12, 23, 30, advantage, baselines, below, candidates, conclusion",
+    "add, baseball, claim, complete, delivery, id, negative, no",
+    "042, 27, 40, 96, call, count, dog, explanation"
+  ],
+  "method": "concept_tokens_and_leading_phrases/v3; Jaccard cluster threshold 0.5 or first-8-content-word phrase link; echo coverage 0.6 or first-16-word phrase link",
+  "measurement_type": "ADVISORY_HEURISTIC",
+  "limitations": "Not semantic equivalence, calibrated novelty, entailment or usefulness",
+  "participation": [
+    {
+      "operation": "GENERATED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": "claude",
+      "origin_model": "claude-sonnet-5-5",
+      "subject_count": 2,
+      "inference_occurred": true,
+      "note": "Dream prompted the provider; the provider authored the text."
+    },
+    {
+      "operation": "CLUSTERED",
+      "transforming_component": "howldream",
+      "origin_component": "howldream",
+      "origin_provider": null,
+      "origin_model": null,
+      "subject_count": 9,
+      "inference_occurred": false,
+      "note": "Deterministic concept-token clustering; no inference."
+    }
+  ]
+}

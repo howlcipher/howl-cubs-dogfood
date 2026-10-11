@@ -2,9 +2,9 @@
 
 - Run: R005, FOLLOW_UP (explorer readability). Prompt: EXECUTION-PROMPT v4 (sha256 048f2f5b…), the first run under it.
 - **Outcome: COMPLETE_USEFUL, bounded claim.** The three R004 readability defects are fixed, and screenshot inspection found and fixed a fourth (digits split across lines in data cells). Every R004 fidelity guard still passes. One minor item is open. This makes no claim of real user value: no user testing was available.
-- **Delivery: PR_PENDING.**
-  - cubs-edge-lab #16: one PR to main, not stacked. The repository has no CI; the PR says so.
-  - howl-cubs-dogfood: records/R005.
+- **Delivery: MERGED_VERIFIED.**
+  - cubs-edge-lab #16: one PR to main, not stacked, merged at the reviewed head 0cc6bdc as 97901d2 (by me, at the owner's explicit request). The repository has no CI; the PR says so. A fresh GitHub clone of main 97901d2 passes `sh scripts/gate.sh` (hash b20458f5…, unchanged): 402 passed, 6 README-documented local-data skips.
+  - howl-cubs-dogfood: records/R005 merged via #6 as 64e7969.
   - howlplane, howl and howldream: NOT_APPLICABLE.
 
 ## Acceptance against the contract
